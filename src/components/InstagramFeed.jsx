@@ -1,15 +1,15 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const POSTS = [
-  { url: 'https://images.unsplash.com/photo-1557170334-a9632e77c6e4?w=400&q=80', alt: 'Lifestyle 1' },
-  { url: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&q=80', alt: 'Lifestyle 2' },
-  { url: 'https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=400&q=80', alt: 'Lifestyle 3' },
-  { url: 'https://images.unsplash.com/photo-1590156562745-5d9f1f09a6e0?w=400&q=80', alt: 'Lifestyle 4' },
-  { url: 'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&q=80', alt: 'Lifestyle 5' },
-  { url: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80', alt: 'Lifestyle 6' },
-  { url: 'https://images.unsplash.com/photo-1600369671236-e74521d4b6ad?w=400&q=80', alt: 'Lifestyle 7' },
-  { url: 'https://images.unsplash.com/photo-1541643600914-78b084683702?w=400&q=80', alt: 'Lifestyle 8' },
-  { url: 'https://images.unsplash.com/photo-1547887538-047f814d0a6f?w=400&q=80', alt: 'Lifestyle 9' },
+  { url: '/products/IMG_8597.jpg', alt: 'KiKi Fragancia' },
+  { url: '/products/IMG_8642.jpg', alt: 'KiKi Fragancia' },
+  { url: '/products/IMG_8643.jpg', alt: 'Khamrah · KiKi Fragancia' },
+  { url: '/products/IMG_8680.jpg', alt: 'KiKi Fragancia' },
+  { url: '/products/IMG_8863.jpg', alt: 'Dior · KiKi Fragancia' },
+  { url: '/products/IMG_8879.jpg', alt: 'Gucci · KiKi Fragancia' },
+  { url: '/products/IMG_8895.jpg', alt: 'Calvin Klein · KiKi Fragancia' },
+  { url: '/products/IMG_8943.jpg', alt: 'KiKi Fragancia' },
+  { url: '/products/IMG_8954.jpg', alt: 'KiKi Fragancia' },
 ]
 
 const InstagramIcon = () => (
@@ -43,16 +43,16 @@ function PostCell({ post, delay }) {
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={{
-          background: 'rgba(10,10,10,0)',
+          background: 'rgba(26,18,8,0)',
           transition: 'background 0.3s ease',
         }}
         onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(10,10,10,0.52)'
+          e.currentTarget.style.background = 'rgba(26,18,8,0.55)'
           e.currentTarget.previousSibling.style.transform = 'scale(1.04)'
           e.currentTarget.querySelector('svg').style.opacity = '1'
         }}
         onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(10,10,10,0)'
+          e.currentTarget.style.background = 'rgba(26,18,8,0)'
           e.currentTarget.previousSibling.style.transform = 'scale(1)'
           e.currentTarget.querySelector('svg').style.opacity = '0'
         }}
@@ -75,12 +75,12 @@ export default function InstagramFeed() {
         {/* Header */}
         <div ref={headRef} className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
           <div className="flex items-center gap-4">
-            {/* Avatar placeholder */}
+            {/* Avatar */}
             <div
               style={{
                 width: '44px',
                 height: '44px',
-                background: 'linear-gradient(135deg, #C9A84C 0%, #1C1A16 100%)',
+                background: 'linear-gradient(135deg, #C4781A 0%, #251A0E 100%)',
                 flexShrink: 0,
               }}
             />
@@ -95,7 +95,7 @@ export default function InstagramFeed() {
                 className="font-sans text-carbon/40"
                 style={{ fontSize: '12px', fontWeight: 300 }}
               >
-                Perfumería · Venezuela
+                Fragancias verificadas · Venezuela
               </p>
             </div>
 
@@ -106,8 +106,8 @@ export default function InstagramFeed() {
                 fontSize: '10px',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#C9A84C',
-                border: '1px solid rgba(201,168,76,0.4)',
+                color: '#C4781A',
+                border: '1px solid rgba(196,120,26,0.4)',
                 padding: '4px 10px',
               }}
             >
@@ -119,8 +119,10 @@ export default function InstagramFeed() {
             href="https://instagram.com/kiki_fragancia"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-carbon/50 hover:text-gold transition-colors duration-200 self-start sm:self-auto"
-            style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase' }}
+            className="font-sans text-carbon/50 self-start sm:self-auto"
+            style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', transition: 'color 0.2s ease' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#C4781A'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(26,18,8,0.5)'}
           >
             Ver perfil →
           </a>

@@ -14,7 +14,7 @@ function ProductCard({ product, delay }) {
         border: '1px solid #E8E4DC',
         transition: 'border-color 0.3s ease',
       }}
-      onMouseEnter={e => e.currentTarget.style.borderColor = '#C9A84C'}
+      onMouseEnter={e => e.currentTarget.style.borderColor = '#C4781A'}
       onMouseLeave={e => e.currentTarget.style.borderColor = '#E8E4DC'}
     >
       {/* Imagen */}
@@ -38,8 +38,8 @@ function ProductCard({ product, delay }) {
             fontSize: '9px',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
-            color: '#C9A84C',
-            border: '1px solid rgba(201,168,76,0.4)',
+            color: '#C4781A',
+            border: '1px solid rgba(196,120,26,0.4)',
             padding: '3px 8px',
           }}
         >
@@ -66,7 +66,7 @@ function ProductCard({ product, delay }) {
         {product.price && (
           <p
             className="font-display"
-            style={{ fontSize: '20px', color: '#C9A84C', fontWeight: 400 }}
+            style={{ fontSize: '20px', color: '#C4781A', fontWeight: 400 }}
           >
             {product.price}
           </p>
@@ -82,7 +82,7 @@ function ProductCard({ product, delay }) {
           style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
         >
           Agregar al carrito
-          <span style={{ color: '#C9A84C' }}>→</span>
+          <span style={{ color: '#C4781A' }}>→</span>
         </Link>
       </div>
     </article>
@@ -101,15 +101,15 @@ export default function Catalog() {
           <div>
             <p
               className="font-sans uppercase tracking-[0.25em] mb-4"
-              style={{ fontSize: '10px', color: '#C9A84C' }}
+              style={{ fontSize: '10px', color: '#C4781A' }}
             >
-              Colección actual
+              Esta semana en KiKi
             </p>
             <h2
               className="font-display text-carbon"
               style={{ fontSize: 'clamp(32px, 5vw, 46px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.1 }}
             >
-              Fragancias<br />Seleccionadas
+              Lo que estamos<br />vendiendo ahora
             </h2>
           </div>
 
@@ -117,7 +117,7 @@ export default function Catalog() {
             className="font-sans text-carbon/45 max-w-xs"
             style={{ fontSize: '13px', fontWeight: 300, lineHeight: 1.7 }}
           >
-            Cada pieza es verificada antes de llegar a tus manos. Sin intermediarios. Sin falsificaciones.
+            Todo lo que ves aquí, lo tenemos. Todo lo que vendemos, lo conocemos.
           </p>
         </div>
 
