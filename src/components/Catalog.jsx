@@ -10,12 +10,12 @@ function ProductCard({ product, delay }) {
       ref={ref}
       className="group flex flex-col"
       style={{
-        background: '#FFFFFF',
-        border: '1px solid #E8E4DC',
+        background: '#EDE5D8',
+        border: '1px solid rgba(196,120,26,0.12)',
         transition: 'border-color 0.3s ease',
       }}
       onMouseEnter={e => e.currentTarget.style.borderColor = '#C4781A'}
-      onMouseLeave={e => e.currentTarget.style.borderColor = '#E8E4DC'}
+      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(196,120,26,0.12)'}
     >
       {/* Imagen */}
       <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
@@ -77,11 +77,11 @@ function ProductCard({ product, delay }) {
 
         {/* CTA */}
         <Link
-          to="/tienda"
+          to={`/tienda/${product.id}`}
           className="font-sans text-carbon hover:text-gold transition-colors duration-200 flex items-center gap-2 mt-1"
           style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
         >
-          Agregar al carrito
+          Ver producto
           <span style={{ color: '#C4781A' }}>→</span>
         </Link>
       </div>

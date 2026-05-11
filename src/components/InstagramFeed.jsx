@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const POSTS = [
@@ -22,6 +23,7 @@ const InstagramIcon = () => (
 
 function PostCell({ post, delay }) {
   const ref = useScrollReveal({ threshold: 0.1, delay })
+  const [hovered, setHovered] = useState(false)
 
   return (
     <a
@@ -31,33 +33,28 @@ function PostCell({ post, delay }) {
       rel="noopener noreferrer"
       className="relative block overflow-hidden"
       style={{ aspectRatio: '1/1' }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <img
         src={post.url}
         alt={post.alt}
         className="w-full h-full object-cover"
-        style={{ transition: 'transform 0.5s ease' }}
+        style={{
+          transform: hovered ? 'scale(1.04)' : 'scale(1)',
+          transition: 'transform 0.5s ease',
+        }}
       />
 
       {/* Overlay en hover */}
       <div
         className="absolute inset-0 flex items-center justify-center"
         style={{
-          background: 'rgba(26,18,8,0)',
+          background: hovered ? 'rgba(26,18,8,0.55)' : 'rgba(26,18,8,0)',
           transition: 'background 0.3s ease',
         }}
-        onMouseEnter={e => {
-          e.currentTarget.style.background = 'rgba(26,18,8,0.55)'
-          e.currentTarget.previousSibling.style.transform = 'scale(1.04)'
-          e.currentTarget.querySelector('svg').style.opacity = '1'
-        }}
-        onMouseLeave={e => {
-          e.currentTarget.style.background = 'rgba(26,18,8,0)'
-          e.currentTarget.previousSibling.style.transform = 'scale(1)'
-          e.currentTarget.querySelector('svg').style.opacity = '0'
-        }}
       >
-        <span style={{ opacity: 0, transition: 'opacity 0.3s ease' }}>
+        <span style={{ opacity: hovered ? 1 : 0, transition: 'opacity 0.3s ease' }}>
           <InstagramIcon />
         </span>
       </div>

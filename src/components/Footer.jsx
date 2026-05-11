@@ -175,7 +175,7 @@ export default function Footer() {
           className="font-sans text-center"
           style={{ fontSize: '11px', fontWeight: 300, color: 'rgba(250,250,248,0.2)', letterSpacing: '0.05em', lineHeight: 1.8 }}
         >
-          Hecho con obsesión por el detalle&nbsp;·&nbsp;Venezuela&nbsp;·&nbsp;© 2025 KiKi Fragancia
+          Hecho con obsesión por el detalle&nbsp;·&nbsp;Venezuela&nbsp;·&nbsp;© 2026 KiKi Fragancia
         </p>
 
       </div>

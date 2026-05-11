@@ -417,7 +417,7 @@ function ProductCard({ product, index }) {
               onMouseEnter={e => { if (!added) { e.currentTarget.style.background = '#0A0A0A'; e.currentTarget.style.color = '#FAFAF8' }}}
               onMouseLeave={e => { if (!added) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0A0A0A' }}}
             >
-              {added ? <><CheckIcon /> ¡Agregado!</> : 'Agregar al carrito'}
+              {added ? <><CheckIcon /> Agregado</> : 'Agregar al carrito'}
             </button>
           </div>
         </div>
@@ -472,7 +472,7 @@ export default function Tienda() {
     <>
       <Header />
 
-      <div style={{ background: '#EDE5D8', minHeight: 'calc(100vh - 64px)', paddingTop: '64px' }}>
+      <div style={{ background: '#EDE5D8', minHeight: 'calc(100dvh - 64px)', paddingTop: '64px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'flex-start' }}>
 
           {/* ── Sidebar desktop (≥ 768px) ── */}
