@@ -1,13 +1,3 @@
-const imageModules = import.meta.glob('../assets/products/*', { eager: true })
-
-export function getProductImage(filename) {
-  if (!filename) return ''
-  const key = Object.keys(imageModules).find(k =>
-    k.toLowerCase().endsWith('/' + filename.toLowerCase())
-  )
-  return key ? imageModules[key].default : ''
-}
-
 export const products = [
   // ARMAF
   { id: 1,  house: 'ARMAF',           name: 'Club de Nuit Sillage',        image: 'IMG_8597.jpg', familia: 'Amaderado',        tipo: 'Eau de Parfum',    genero: 'Unisex',   descripcion: 'Icónico y sofisticado. Madera, almizcle y fruta negra.' },

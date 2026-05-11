@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { products, getProductImage } from '../data/products'
+import { products } from '../data/products'
 import { useCartContext } from '../context/CartContext'
 
 // ─── Constantes de filtro ──────────────────────────────────────────────────────
@@ -262,7 +262,7 @@ function ProductCard({ product, index }) {
       {/* ── Foto 200px ── */}
       <div style={{ width: '200px', height: '180px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
         <img
-          src={getProductImage(product.image)}
+          src={`/products/${product.image}`}
           alt={`${product.house} ${product.name}`}
           style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
