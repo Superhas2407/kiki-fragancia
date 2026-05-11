@@ -442,13 +442,14 @@ export default function Tienda() {
 
           {/* ── Sidebar desktop (≥ 768px) ── */}
           <aside
-            className="hidden md:block"
+            className="hidden md:block filter-sidebar"
             style={{
               width: '260px',
               flexShrink: 0,
               position: 'sticky',
-              top: '64px',
-              alignSelf: 'flex-start',
+              top: '80px',
+              height: 'calc(100vh - 100px)',
+              overflowY: 'auto',
               borderRight: '1px solid rgba(10,10,10,0.08)',
               padding: '40px 28px',
             }}

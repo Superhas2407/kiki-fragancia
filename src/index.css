@@ -61,6 +61,15 @@
   transition: background-position 0.65s ease;
 }
 
+/* Filter sidebar — scrollable sin barra visible */
+.filter-sidebar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.filter-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Hero — scroll indicator */
 @keyframes scroll-breath {
   0%, 100% { opacity: 0.8; transform: scaleY(1); }
