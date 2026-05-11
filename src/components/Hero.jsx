@@ -59,7 +59,7 @@ export default function Hero() {
           style={{ fontSize: '11px', fontWeight: 300, maxWidth: '380px', lineHeight: '1.9' }}
         >
           Fragancias 100&nbsp;% originales de las casas más<br className="hidden md:block" />
-          exclusivas del mundo. Verificadas. Entregadas.
+          exclusivas del mundo. Verificadas. Exclusivas.
         </p>
 
         {/* CTA */}

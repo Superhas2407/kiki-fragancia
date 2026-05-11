@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { products } from '../data/products'
@@ -27,6 +28,12 @@ const CheckIcon = () => (
 const FilterIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
     <line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="11" y1="18" x2="13" y2="18" />
+  </svg>
+)
+
+const SearchIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 )
 
@@ -243,7 +250,7 @@ function ProductCard({ product, index }) {
   function handleAdd() {
     addItem(product)
     setAdded(true)
-    setTimeout(() => setAdded(false), 1100)
+    setTimeout(() => setAdded(false), 1500)
   }
 
   return (
@@ -337,6 +344,23 @@ function ProductCard({ product, index }) {
           </span>
         )}
 
+        {/* Ver detalles */}
+        <Link
+          to={`/tienda/${product.id}`}
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase',
+            color: 'rgba(10,10,10,0.35)', textDecoration: 'none',
+            display: 'inline-flex', alignItems: 'center', gap: '4px',
+            marginTop: '10px', alignSelf: 'flex-start',
+            transition: 'color 0.2s ease',
+          }}
+          onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+          onMouseLeave={e => e.currentTarget.style.color = 'rgba(10,10,10,0.35)'}
+        >
+          Ver detalles →
+        </Link>
+
         <div style={{ flex: 1 }} />
 
         {/* ── Pie: acciones ── */}
@@ -393,7 +417,7 @@ function ProductCard({ product, index }) {
               onMouseEnter={e => { if (!added) { e.currentTarget.style.background = '#0A0A0A'; e.currentTarget.style.color = '#FAFAF8' }}}
               onMouseLeave={e => { if (!added) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0A0A0A' }}}
             >
-              {added ? <><CheckIcon /> Agregado</> : 'Agregar al carrito'}
+              {added ? <><CheckIcon /> ¡Agregado!</> : 'Agregar al carrito'}
             </button>
           </div>
         </div>
@@ -410,19 +434,28 @@ export default function Tienda() {
   const [selectedTipos, setSelectedTipos]       = useState([])
   const [selectedGeneros, setSelectedGeneros]   = useState([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const toggleMarca   = v => setSelectedMarcas(p   => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleFamilia = v => setSelectedFamilias(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleTipo    = v => setSelectedTipos(p    => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleGenero  = v => setSelectedGeneros(p  => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
 
-  const hasFilters   = selectedMarcas.length > 0 || selectedFamilias.length > 0 || selectedTipos.length > 0 || selectedGeneros.length > 0 || sortBy !== 'featured'
-  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedFamilias([]); setSelectedTipos([]); setSelectedGeneros([]) }
+  const hasFilters   = selectedMarcas.length > 0 || selectedFamilias.length > 0 || selectedTipos.length > 0 || selectedGeneros.length > 0 || sortBy !== 'featured' || searchQuery.trim() !== ''
+  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedFamilias([]); setSelectedTipos([]); setSelectedGeneros([]); setSearchQuery('') }
 
   const activeFilterCount = selectedMarcas.length + selectedFamilias.length + selectedTipos.length + selectedGeneros.length + (sortBy !== 'featured' ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...products]
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase()
+      result = result.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.house.toLowerCase().includes(q) ||
+        p.familia.toLowerCase().includes(q)
+      )
+    }
     if (selectedMarcas.length)   result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedFamilias.length) result = result.filter(p => selectedFamilias.includes(p.familia))
     if (selectedTipos.length)    result = result.filter(p => selectedTipos.includes(p.tipo))
@@ -431,7 +464,7 @@ export default function Tienda() {
     if (sortBy === 'price-desc') result.sort((a,b) => parseFloat((b.price||'$0').replace('$','')) - parseFloat((a.price||'$0').replace('$','')))
     if (sortBy === 'name')       result.sort((a,b) => a.name.localeCompare(b.name))
     return result
-  }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos, selectedGeneros])
+  }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos, selectedGeneros, searchQuery])
 
   const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, selectedGeneros, toggleGenero, hasFilters, clearFilters, allProducts: products }
 
@@ -463,7 +496,7 @@ export default function Tienda() {
           <div className="tienda-products" style={{ flex: 1, padding: '40px 32px 80px' }}>
 
             {/* Barra superior */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
               <div>
                 <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 400, color: '#0A0A0A', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                   Fragancias
@@ -494,6 +527,43 @@ export default function Tienda() {
                   </span>
                 )}
               </button>
+            </div>
+
+            {/* Buscador */}
+            <div style={{ marginBottom: '24px' }}>
+              <div style={{
+                display: 'flex', alignItems: 'center',
+                border: '1px solid rgba(10,10,10,0.12)',
+                background: '#FFFFFF',
+                padding: '0 16px', gap: '12px',
+              }}>
+                <span style={{ color: 'rgba(10,10,10,0.3)', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                  <SearchIcon />
+                </span>
+                <input
+                  type="text"
+                  placeholder="Buscar por nombre, marca o familia..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  style={{
+                    flex: 1,
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: '13px', fontWeight: 300,
+                    color: '#0A0A0A',
+                    background: 'none', border: 'none', outline: 'none',
+                    padding: '12px 0', letterSpacing: '0.02em',
+                  }}
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Limpiar búsqueda"
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(10,10,10,0.35)', display: 'flex', alignItems: 'center', padding: '4px', flexShrink: 0 }}
+                  >
+                    <CloseIcon />
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Lista de productos */}

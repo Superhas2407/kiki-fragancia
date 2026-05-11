@@ -56,7 +56,7 @@ export default function Footer() {
               className="font-sans"
               style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,248,0.4)', lineHeight: 1.75, maxWidth: '240px' }}
             >
-              Perfumería de nicho 100&nbsp;% original. Verificada. Entregada a toda Venezuela.
+              Perfumería de nicho 100&nbsp;% original. Verificada. Disponible en Venezuela.
             </p>
 
             {/* Badge verificación */}

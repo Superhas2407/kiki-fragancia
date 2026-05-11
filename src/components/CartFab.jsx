@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react'
 import { useCartContext } from '../context/CartContext'
 
 const BagIcon = () => (
@@ -10,6 +11,16 @@ const BagIcon = () => (
 
 export default function CartFab() {
   const { totalItems, setDrawerOpen } = useCartContext()
+  const [pulsing, setPulsing] = useState(false)
+  const prevCountRef = useRef(0)
+
+  useEffect(() => {
+    if (totalItems > prevCountRef.current) {
+      setPulsing(true)
+      setTimeout(() => setPulsing(false), 300)
+    }
+    prevCountRef.current = totalItems
+  }, [totalItems])
 
   return (
     <button
@@ -37,6 +48,7 @@ export default function CartFab() {
       <BagIcon />
       {totalItems > 0 && (
         <span
+          className={pulsing ? 'cart-badge-pulse' : ''}
           style={{
             position: 'absolute',
             top: '-8px',

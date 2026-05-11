@@ -48,7 +48,7 @@ export default function BrandStory() {
             className="font-sans"
             style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(250,250,248,0.35)', lineHeight: 1.8 }}
           >
-            Cada frasco que llega a tus manos ha pasado por nuestra revisión de autenticidad. No vendemos perfumes. Entregamos experiencias verificadas.
+            Cada frasco que llega a tus manos ha pasado por nuestra revisión de autenticidad. No vendemos perfumes. Garantizamos experiencias verificadas.
           </p>
 
           {/* Firma */}
