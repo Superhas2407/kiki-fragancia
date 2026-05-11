@@ -1,25 +1,58 @@
 export default function Hero() {
   return (
     <section
-      className="relative flex items-center overflow-hidden"
-      style={{
-        minHeight: '100vh',
-        background: 'linear-gradient(150deg, #1A1208 0%, #251A0E 60%, #3D2410 100%)',
-      }}
+      className="relative overflow-hidden"
+      style={{ minHeight: '100vh' }}
     >
-      {/* Gradiente de cierre inferior */}
-      <div
-        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+      {/* Foto de fondo — Khamrah */}
+      <img
+        src="/khamrah-hero.jpg"
+        alt=""
+        aria-hidden="true"
         style={{
-          height: '30%',
-          background: 'linear-gradient(to bottom, transparent, #251A0E)',
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          display: 'block',
         }}
       />
 
-      {/* Contenido — alineado a la izquierda */}
+      {/* Overlay direccional — oscuro izquierda, transparente derecha */}
       <div
-        className="relative z-10 flex flex-col items-start py-24"
-        style={{ paddingLeft: 'clamp(40px, 8vw, 120px)', paddingRight: '24px', maxWidth: '840px' }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'linear-gradient(to right, rgba(26,18,8,0.82) 0%, rgba(26,18,8,0.55) 50%, rgba(26,18,8,0.15) 100%)',
+        }}
+      />
+
+      {/* Gradiente de cierre inferior */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '28%',
+          background: 'linear-gradient(to bottom, transparent, #251A0E)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Contenido — izquierda */}
+      <div
+        className="relative z-10 flex flex-col items-start justify-center"
+        style={{
+          minHeight: '100vh',
+          paddingLeft: 'clamp(40px, 8vw, 120px)',
+          paddingRight: '24px',
+          paddingTop: '96px',
+          paddingBottom: '96px',
+          maxWidth: '580px',
+        }}
       >
         {/* Kicker */}
         <p
@@ -43,10 +76,9 @@ export default function Hero() {
         {/* Subtítulo */}
         <p
           className="font-sans text-ivory/50 uppercase tracking-[0.22em] mb-8"
-          style={{ fontSize: '11px', fontWeight: 300, maxWidth: '380px', lineHeight: '1.9' }}
+          style={{ fontSize: '11px', fontWeight: 300, lineHeight: '1.9' }}
         >
-          Fragancias 100&nbsp;% originales de las casas más<br className="hidden md:block" />
-          exclusivas del mundo. Verificadas. Exclusivas.
+          Fragancias 100&nbsp;% originales.<br />Verificadas. Exclusivas.
         </p>
 
         {/* Slogan */}
@@ -57,9 +89,8 @@ export default function Hero() {
             style={{
               fontSize: 'clamp(16px, 2vw, 22px)',
               fontWeight: 300,
-              color: 'rgba(247,242,234,0.7)',
+              color: 'rgba(247,242,234,0.75)',
               lineHeight: 1.5,
-              maxWidth: '480px',
               letterSpacing: '0.01em',
             }}
           >
@@ -87,8 +118,8 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-8 left-1/2 flex flex-col items-center gap-2"
-        style={{ transform: 'translateX(-50%)' }}
+        className="absolute bottom-8 flex flex-col items-center gap-2"
+        style={{ left: 'clamp(40px, 8vw, 120px)' }}
         aria-hidden="true"
       >
         <span
