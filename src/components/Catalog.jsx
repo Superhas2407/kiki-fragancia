@@ -20,7 +20,7 @@ function ProductCard({ product, delay }) {
       {/* Imagen */}
       <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
         <img
-          src={product.image}
+          src={`/products/${product.image}`}
           alt={`${product.house} ${product.name}`}
           className="w-full h-full object-cover"
           style={{ transition: 'transform 0.55s ease' }}
@@ -63,12 +63,14 @@ function ProductCard({ product, delay }) {
         </h3>
 
         {/* Precio */}
-        <p
-          className="font-display"
-          style={{ fontSize: '20px', color: '#C9A84C', fontWeight: 400 }}
-        >
-          {product.price}
-        </p>
+        {product.price && (
+          <p
+            className="font-display"
+            style={{ fontSize: '20px', color: '#C9A84C', fontWeight: 400 }}
+          >
+            {product.price}
+          </p>
+        )}
 
         {/* Spacer */}
         <div className="flex-1" />
@@ -121,7 +123,7 @@ export default function Catalog() {
 
         {/* Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {products.map((product, i) => (
+          {products.filter(p => p.featured).map((product, i) => (
             <ProductCard key={product.id} product={product} delay={i * 80} />
           ))}
         </div>
@@ -133,7 +135,7 @@ export default function Catalog() {
             className="font-sans text-carbon/50 hover:text-gold transition-colors duration-200"
             style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
           >
-            Ver tienda completa →
+            Ver Catálogo Completo →
           </Link>
         </div>
 
