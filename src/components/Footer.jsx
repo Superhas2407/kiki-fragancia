@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 const NAV_LINKS = [
-  { label: 'Colección', to: '/tienda' },
-  { label: 'Nosotros',  to: '#nosotros' },
-  { label: 'Instagram', to: '#instagram' },
-  { label: 'Contacto',  to: '#contacto' },
+  { label: 'Colección', type: 'route',    to: '/tienda' },
+  { label: 'Nosotros',  type: 'anchor',   id: 'nosotros' },
+  { label: 'Instagram', type: 'external', to: 'https://instagram.com/kiki_fragancia' },
+  { label: 'Contacto',  type: 'anchor',   id: 'contacto' },
 ]
 
 const WhatsAppIcon = ({ size = 18 }) => (
@@ -21,6 +21,21 @@ const ShieldIcon = () => (
 )
 
 export default function Footer() {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const handleAnchor = (id) => (e) => {
+    e.preventDefault()
+    if (location.pathname === '/') {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/')
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 120)
+    }
+  }
+
   return (
     <footer id="contacto" style={{ background: '#0A0A0A', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-10">
@@ -71,31 +86,41 @@ export default function Footer() {
             >
               Navegación
             </p>
-            {NAV_LINKS.map(link => (
-              link.to.startsWith('/') ? (
-                <Link
-                  key={link.label}
-                  to={link.to}
+            {NAV_LINKS.map(link => {
+              const sharedStyle = { fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,248,0.5)', letterSpacing: '0.02em', textDecoration: 'none' }
+              const hoverOn  = e => { e.currentTarget.style.color = '#C9A84C' }
+              const hoverOff = e => { e.currentTarget.style.color = 'rgba(250,250,248,0.5)' }
+
+              if (link.type === 'route') return (
+                <Link key={link.label} to={link.to}
                   className="font-sans transition-colors duration-200"
-                  style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,248,0.5)', letterSpacing: '0.02em', textDecoration: 'none' }}
-                  onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
+                  style={sharedStyle}
+                  onMouseEnter={hoverOn} onMouseLeave={hoverOff}
                 >
                   {link.label}
                 </Link>
-              ) : (
-                <a
-                  key={link.label}
-                  href={link.to}
+              )
+              if (link.type === 'external') return (
+                <a key={link.label} href={link.to}
+                  target="_blank" rel="noopener noreferrer"
                   className="font-sans transition-colors duration-200"
-                  style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,248,0.5)', letterSpacing: '0.02em' }}
-                  onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
+                  style={sharedStyle}
+                  onMouseEnter={hoverOn} onMouseLeave={hoverOff}
                 >
                   {link.label}
                 </a>
               )
-            ))}
+              return (
+                <a key={link.label} href={`#${link.id}`}
+                  onClick={handleAnchor(link.id)}
+                  className="font-sans transition-colors duration-200"
+                  style={sharedStyle}
+                  onMouseEnter={hoverOn} onMouseLeave={hoverOff}
+                >
+                  {link.label}
+                </a>
+              )
+            })}
           </div>
 
           {/* Col 3 — Contacto */}
