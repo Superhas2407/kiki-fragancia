@@ -53,10 +53,16 @@ export default function Footer() {
               KiKi Fragancia
             </a>
             <p
+              className="font-display italic"
+              style={{ fontSize: '16px', fontWeight: 300, color: 'rgba(250,250,248,0.5)', lineHeight: 1.55, maxWidth: '240px' }}
+            >
+              Oler bien deja gratos recuerdos, con KiKi Fragancia nunca te olvidarán.
+            </p>
+            <p
               className="font-sans"
               style={{ fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,248,0.4)', lineHeight: 1.75, maxWidth: '240px' }}
             >
-              Perfumería de nicho 100&nbsp;% original. Verificada. Disponible en Venezuela.
+              Perfumes 100&nbsp;% originales. Verificados. Disponibles en Venezuela.
             </p>
 
             {/* Badge verificación */}

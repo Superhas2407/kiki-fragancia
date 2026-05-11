@@ -42,7 +42,7 @@ export default function BrandStory() {
             className="font-sans"
             style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(250,250,248,0.55)', lineHeight: 1.8 }}
           >
-            KiKi Fragancia nació de una obsesión: acercar las casas de nicho más exclusivas del mundo a quienes entienden que un aroma es la expresión más íntima del carácter.
+            KiKi Fragancia nació de una obsesión: acercar las casas más exclusivas del mundo a quienes entienden que un aroma es la expresión más íntima del carácter.
           </p>
           <p
             className="font-sans"

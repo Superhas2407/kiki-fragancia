@@ -55,12 +55,30 @@ export default function Hero() {
 
         {/* Subtítulo */}
         <p
-          className="font-sans text-ivory/50 uppercase tracking-[0.22em] mb-12"
+          className="font-sans text-ivory/50 uppercase tracking-[0.22em] mb-8"
           style={{ fontSize: '11px', fontWeight: 300, maxWidth: '380px', lineHeight: '1.9' }}
         >
           Fragancias 100&nbsp;% originales de las casas más<br className="hidden md:block" />
           exclusivas del mundo. Verificadas. Exclusivas.
         </p>
+
+        {/* Slogan */}
+        <div className="flex flex-col items-center mb-12 gap-4">
+          <div style={{ width: '40px', height: '1px', background: '#C9A84C', opacity: 0.55 }} />
+          <p
+            className="font-display italic text-center"
+            style={{
+              fontSize: 'clamp(16px, 2vw, 22px)',
+              fontWeight: 300,
+              color: 'rgba(250,250,248,0.7)',
+              lineHeight: 1.5,
+              maxWidth: '480px',
+              letterSpacing: '0.01em',
+            }}
+          >
+            Oler bien deja gratos recuerdos,<br />con KiKi Fragancia nunca te olvidarán.
+          </p>
+        </div>
 
         {/* CTA */}
         <a

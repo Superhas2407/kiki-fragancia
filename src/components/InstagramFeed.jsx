@@ -95,7 +95,7 @@ export default function InstagramFeed() {
                 className="font-sans text-carbon/40"
                 style={{ fontSize: '12px', fontWeight: 300 }}
               >
-                Perfumería de Nicho · Venezuela
+                Perfumería · Venezuela
               </p>
             </div>
 
