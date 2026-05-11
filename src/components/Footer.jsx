@@ -115,7 +115,7 @@ export default function Footer() {
 
             {/* Botón WhatsApp */}
             <a
-              href="https://wa.me/58000000000"
+              href="https://wa.me/584120221983"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 self-start font-sans transition-opacity duration-200 hover:opacity-85"

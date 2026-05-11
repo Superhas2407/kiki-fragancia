@@ -77,7 +77,7 @@ export default function Header() {
             })}
 
             <a
-              href="https://wa.me/58000000000"
+              href="https://wa.me/584120221983"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold hover:opacity-80 transition-opacity"
@@ -90,7 +90,7 @@ export default function Header() {
           {/* Mobile: WhatsApp + hamburger */}
           <div className="flex md:hidden items-center gap-5">
             <a
-              href="https://wa.me/58000000000"
+              href="https://wa.me/584120221983"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gold"
@@ -153,7 +153,7 @@ export default function Header() {
           <div style={{ width: '40px', height: '1px', background: '#C9A84C', opacity: 0.4 }} />
 
           <a
-            href="https://wa.me/58000000000"
+            href="https://wa.me/584120221983"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-gold"
