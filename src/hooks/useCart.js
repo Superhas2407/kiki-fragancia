@@ -34,7 +34,8 @@ export function useCart() {
   const totalItems = items.reduce((sum, i) => sum + i.quantity, 0)
 
   const totalPrice = items.reduce((sum, i) => {
-    return sum + parseFloat(i.price.replace('$', '')) * i.quantity
+    const unit = parseFloat((i.price || '$0').replace('$', '')) || 0
+    return sum + unit * i.quantity
   }, 0)
 
   return { items, addItem, removeItem, updateQuantity, clearCart, totalItems, totalPrice }

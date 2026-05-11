@@ -20,9 +20,9 @@ const TrashIcon = () => (
 
 function buildMessage(items, totalPrice) {
   const lines = items.map(item => {
-    const unit = parseFloat(item.price.replace('$', ''))
-    const lineTotal = unit * item.quantity
-    return `- ${item.house} ${item.name} x${item.quantity} — $${lineTotal}`
+    const unit = parseFloat((item.price || '$0').replace('$', '')) || 0
+    const lineTotal = unit > 0 ? ` — $${unit * item.quantity}` : ''
+    return `- ${item.house} ${item.name} x${item.quantity}${lineTotal}`
   })
   return (
     `Hola KiKi Fragancia, me interesa hacer el siguiente pedido:\n\n` +
@@ -131,7 +131,7 @@ export default function CartDrawer() {
           ) : (
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', listStyle: 'none', padding: 0, margin: 0 }}>
               {items.map(item => {
-                const unit = parseFloat(item.price.replace('$', ''))
+                const unit = parseFloat((item.price || '$0').replace('$', '')) || 0
                 const lineTotal = unit * item.quantity
                 return (
                   <li
@@ -145,7 +145,7 @@ export default function CartDrawer() {
                   >
                     {/* Imagen */}
                     <img
-                      src={item.image}
+                      src={`/products/${item.image}`}
                       alt={item.name}
                       style={{ width: '64px', height: '80px', objectFit: 'cover', flexShrink: 0 }}
                     />
@@ -158,9 +158,11 @@ export default function CartDrawer() {
                       <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '17px', color: '#FAFAF8', fontWeight: 400 }}>
                         {item.name}
                       </p>
-                      <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', color: '#C9A84C' }}>
-                        ${lineTotal}
-                      </p>
+                      {unit > 0 && (
+                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', color: '#C9A84C' }}>
+                          ${lineTotal}
+                        </p>
+                      )}
 
                       {/* Cantidad + eliminar */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
