@@ -248,6 +248,7 @@ function ProductCard({ product, index }) {
 
   return (
     <article
+      className="product-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -259,8 +260,8 @@ function ProductCard({ product, index }) {
         transition: 'opacity 0.2s ease',
       }}
     >
-      {/* ── Foto 200px ── */}
-      <div style={{ width: '200px', height: '180px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
+      {/* ── Foto ── */}
+      <div className="product-card-img-wrap" style={{ width: '200px', height: '180px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
         <img
           src={`/products/${product.image}`}
           alt={`${product.house} ${product.name}`}
@@ -339,7 +340,7 @@ function ProductCard({ product, index }) {
         <div style={{ flex: 1 }} />
 
         {/* ── Pie: acciones ── */}
-        <div style={{
+        <div className="product-card-actions-row" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
           borderTop: '1px solid rgba(10,10,10,0.07)',
           paddingTop: '14px', marginTop: '14px',
@@ -375,6 +376,7 @@ function ProductCard({ product, index }) {
 
             {/* Botón agregar */}
             <button
+              className="product-card-add-btn"
               onClick={handleAdd}
               style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -458,7 +460,7 @@ export default function Tienda() {
           </aside>
 
           {/* ── Columna de productos ── */}
-          <div style={{ flex: 1, padding: '40px 32px 80px' }}>
+          <div className="tienda-products" style={{ flex: 1, padding: '40px 32px 80px' }}>
 
             {/* Barra superior */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '32px' }}>
@@ -518,37 +520,69 @@ export default function Tienda() {
         </div>
       </div>
 
-      {/* ── Drawer de filtros mobile ── */}
-      <>
-        <div
-          onClick={() => setMobileFiltersOpen(false)}
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 90,
-            opacity: mobileFiltersOpen ? 1 : 0,
-            pointerEvents: mobileFiltersOpen ? 'auto' : 'none',
-            transition: 'opacity 0.3s ease',
-          }}
-        />
-        <div
-          style={{
-            position: 'fixed', top: 0, left: 0, bottom: 0,
-            width: '85%', maxWidth: '320px',
-            background: '#F5F0E8',
-            borderRight: '1px solid rgba(10,10,10,0.1)',
-            zIndex: 100, padding: '24px',
-            overflowY: 'auto',
-            transform: mobileFiltersOpen ? 'translateX(0)' : 'translateX(-100%)',
-            transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)',
-          }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
-            <button onClick={() => setMobileFiltersOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(10,10,10,0.5)' }}>
-              <CloseIcon />
-            </button>
-          </div>
+      {/* ── Modal fullscreen de filtros mobile ── */}
+      <div
+        className="md:hidden"
+        style={{
+          position: 'fixed', inset: 0,
+          background: '#FFFFFF',
+          zIndex: 100,
+          display: 'flex', flexDirection: 'column',
+          opacity: mobileFiltersOpen ? 1 : 0,
+          pointerEvents: mobileFiltersOpen ? 'auto' : 'none',
+          transition: 'opacity 0.25s ease',
+        }}
+      >
+        {/* Header */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '0 20px', height: '60px',
+          borderBottom: '1px solid rgba(10,10,10,0.08)',
+          flexShrink: 0,
+        }}>
+          <span style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: '22px', fontStyle: 'italic',
+            color: '#0A0A0A', fontWeight: 400,
+          }}>
+            Filtros
+          </span>
+          <button
+            onClick={() => setMobileFiltersOpen(false)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(10,10,10,0.5)', padding: '4px', display: 'flex', alignItems: 'center' }}
+            aria-label="Cerrar filtros"
+          >
+            <CloseIcon />
+          </button>
+        </div>
+
+        {/* Contenido scrollable */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '0 20px 20px' }}>
           <FilterPanel {...filterProps} />
         </div>
-      </>
+
+        {/* Botón aplicar */}
+        <div style={{ padding: '16px 20px', borderTop: '1px solid rgba(10,10,10,0.08)', flexShrink: 0 }}>
+          <button
+            onClick={() => setMobileFiltersOpen(false)}
+            style={{
+              width: '100%',
+              background: '#C9A84C',
+              color: '#0A0A0A',
+              border: 'none',
+              padding: '14px',
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '11px',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              fontWeight: 500,
+              cursor: 'pointer',
+            }}
+          >
+            Aplicar filtros
+          </button>
+        </div>
+      </div>
 
       <Footer />
     </>
