@@ -1,13 +1,14 @@
 import { useState, useMemo } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { products } from '../data/products'
+import { products, getProductImage } from '../data/products'
 import { useCartContext } from '../context/CartContext'
 
 // ─── Constantes de filtro ──────────────────────────────────────────────────────
 const MARCAS    = [...new Set(products.map(p => p.house))].sort()
-const FAMILIAS  = [...new Set(products.map(p => p.family))].sort()
-const TIPOS     = [...new Set(products.map(p => p.type))].sort()
+const FAMILIAS  = [...new Set(products.map(p => p.familia))].sort()
+const TIPOS     = [...new Set(products.map(p => p.tipo))].sort()
+const GENEROS   = ['Masculino', 'Femenino', 'Unisex']
 
 const SORT_OPTIONS = [
   { label: 'Destacados',    key: 'featured'   },
@@ -114,7 +115,7 @@ function FilterSection({ title, children }) {
 }
 
 // ─── Panel de filtros completo ─────────────────────────────────────────────────
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, hasFilters, clearFilters, allProducts }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, selectedGeneros, toggleGenero, hasFilters, clearFilters, allProducts }) {
 
   function countFor(field, value) {
     return allProducts.filter(p => p[field] === value).length
@@ -200,7 +201,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
             key={f} label={f}
             checked={selectedFamilias.includes(f)}
             onToggle={() => toggleFamilia(f)}
-            count={countFor('family', f)}
+            count={countFor('familia', f)}
           />
         ))}
       </FilterSection>
@@ -212,7 +213,19 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
             key={t} label={t}
             checked={selectedTipos.includes(t)}
             onToggle={() => toggleTipo(t)}
-            count={countFor('type', t)}
+            count={countFor('tipo', t)}
+          />
+        ))}
+      </FilterSection>
+
+      {/* Género */}
+      <FilterSection title="Género">
+        {GENEROS.map(g => (
+          <GoldCheckbox
+            key={g} label={g}
+            checked={selectedGeneros.includes(g)}
+            onToggle={() => toggleGenero(g)}
+            count={countFor('genero', g)}
           />
         ))}
       </FilterSection>
@@ -249,7 +262,7 @@ function ProductCard({ product, index }) {
       {/* ── Foto 200px ── */}
       <div style={{ width: '200px', height: '180px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
         <img
-          src={product.image}
+          src={getProductImage(product.image)}
           alt={`${product.house} ${product.name}`}
           style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block',
@@ -285,7 +298,7 @@ function ProductCard({ product, index }) {
             fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'rgba(10,10,10,0.35)', whiteSpace: 'nowrap',
           }}>
-            {product.family}&nbsp;·&nbsp;{product.type}
+            {product.familia}&nbsp;·&nbsp;{product.tipo}
           </p>
         </div>
 
@@ -311,15 +324,17 @@ function ProductCard({ product, index }) {
           {product.name}
         </h2>
 
-        {/* Precio — inmediatamente bajo el nombre */}
-        <span style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: '28px', fontWeight: 400,
-          color: '#C9A84C', letterSpacing: '-0.02em', lineHeight: 1,
-          marginTop: '6px',
-        }}>
-          {product.price}
-        </span>
+        {/* Precio */}
+        {product.price && (
+          <span style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: '28px', fontWeight: 400,
+            color: '#C9A84C', letterSpacing: '-0.02em', lineHeight: 1,
+            marginTop: '6px',
+          }}>
+            {product.price}
+          </span>
+        )}
 
         <div style={{ flex: 1 }} />
 
@@ -390,30 +405,33 @@ export default function Tienda() {
   const [sortBy, setSortBy]                   = useState('featured')
   const [selectedMarcas, setSelectedMarcas]   = useState([])
   const [selectedFamilias, setSelectedFamilias] = useState([])
-  const [selectedTipos, setSelectedTipos]     = useState([])
+  const [selectedTipos, setSelectedTipos]       = useState([])
+  const [selectedGeneros, setSelectedGeneros]   = useState([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   const toggleMarca   = v => setSelectedMarcas(p   => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleFamilia = v => setSelectedFamilias(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleTipo    = v => setSelectedTipos(p    => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
+  const toggleGenero  = v => setSelectedGeneros(p  => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
 
-  const hasFilters   = selectedMarcas.length > 0 || selectedFamilias.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured'
-  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedFamilias([]); setSelectedTipos([]) }
+  const hasFilters   = selectedMarcas.length > 0 || selectedFamilias.length > 0 || selectedTipos.length > 0 || selectedGeneros.length > 0 || sortBy !== 'featured'
+  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedFamilias([]); setSelectedTipos([]); setSelectedGeneros([]) }
 
-  const activeFilterCount = selectedMarcas.length + selectedFamilias.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedFamilias.length + selectedTipos.length + selectedGeneros.length + (sortBy !== 'featured' ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...products]
     if (selectedMarcas.length)   result = result.filter(p => selectedMarcas.includes(p.house))
-    if (selectedFamilias.length) result = result.filter(p => selectedFamilias.includes(p.family))
-    if (selectedTipos.length)    result = result.filter(p => selectedTipos.includes(p.type))
-    if (sortBy === 'price-asc')  result.sort((a,b) => parseFloat(a.price.replace('$','')) - parseFloat(b.price.replace('$','')))
-    if (sortBy === 'price-desc') result.sort((a,b) => parseFloat(b.price.replace('$','')) - parseFloat(a.price.replace('$','')))
+    if (selectedFamilias.length) result = result.filter(p => selectedFamilias.includes(p.familia))
+    if (selectedTipos.length)    result = result.filter(p => selectedTipos.includes(p.tipo))
+    if (selectedGeneros.length)  result = result.filter(p => selectedGeneros.includes(p.genero))
+    if (sortBy === 'price-asc')  result.sort((a,b) => parseFloat((a.price||'$0').replace('$','')) - parseFloat((b.price||'$0').replace('$','')))
+    if (sortBy === 'price-desc') result.sort((a,b) => parseFloat((b.price||'$0').replace('$','')) - parseFloat((a.price||'$0').replace('$','')))
     if (sortBy === 'name')       result.sort((a,b) => a.name.localeCompare(b.name))
     return result
-  }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos])
+  }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos, selectedGeneros])
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, hasFilters, clearFilters, allProducts: products }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, selectedGeneros, toggleGenero, hasFilters, clearFilters, allProducts: products }
 
   return (
     <>
