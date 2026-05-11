@@ -15,7 +15,7 @@ export default function Hero() {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          objectPosition: 'center',
+          objectPosition: '60% center',
           display: 'block',
         }}
       />
@@ -25,7 +25,7 @@ export default function Hero() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to right, rgba(26,18,8,0.82) 0%, rgba(26,18,8,0.55) 50%, rgba(26,18,8,0.15) 100%)',
+          background: 'linear-gradient(to right, rgba(26,18,8,0.75) 0%, rgba(26,18,8,0.35) 55%, rgba(26,18,8,0.05) 100%)',
         }}
       />
 
