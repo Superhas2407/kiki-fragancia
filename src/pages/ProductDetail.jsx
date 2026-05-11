@@ -44,11 +44,11 @@ export default function ProductDetail() {
     return (
       <>
         <Header />
-        <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '20px', background: '#F5F0E8' }}>
+        <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '20px', background: '#EDE5D8' }}>
           <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', fontStyle: 'italic', color: 'rgba(10,10,10,0.3)' }}>
             Fragancia no encontrada
           </p>
-          <Link to="/tienda" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', textDecoration: 'none' }}>
+          <Link to="/tienda" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C4781A', textDecoration: 'none' }}>
             ← Volver al catálogo
           </Link>
         </div>
@@ -71,7 +71,7 @@ export default function ProductDetail() {
     <>
       <Header />
 
-      <div style={{ background: '#F5F0E8', minHeight: 'calc(100vh - 64px)', paddingTop: '64px' }}>
+      <div style={{ background: '#EDE5D8', minHeight: 'calc(100vh - 64px)', paddingTop: '64px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '48px 24px 80px' }}>
 
           {/* Breadcrumb */}
@@ -79,7 +79,7 @@ export default function ProductDetail() {
             <Link
               to="/tienda"
               style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.4)', textDecoration: 'none', transition: 'color 0.2s ease' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+              onMouseEnter={e => e.currentTarget.style.color = '#C4781A'}
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(10,10,10,0.4)'}
             >
               Catálogo
@@ -108,11 +108,11 @@ export default function ProductDetail() {
                   padding: '6px 12px',
                   display: 'flex', alignItems: 'center', gap: '6px',
                 }}>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C4781A" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                     <polyline points="9 12 11 14 15 10" />
                   </svg>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C' }}>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C4781A' }}>
                     Original Verificado
                   </span>
                 </div>
@@ -141,7 +141,7 @@ export default function ProductDetail() {
 
               {/* Precio */}
               {product.price && (
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', fontWeight: 400, color: '#C9A84C', letterSpacing: '-0.02em', marginBottom: '20px' }}>
+                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '32px', fontWeight: 400, color: '#C4781A', letterSpacing: '-0.02em', marginBottom: '20px' }}>
                   {product.price}
                 </p>
               )}
@@ -175,7 +175,7 @@ export default function ProductDetail() {
               {/* Notas olfativas */}
               <div style={{ marginBottom: '36px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-                  <span style={{ width: '24px', height: '1px', background: '#C9A84C' }} />
+                  <span style={{ width: '24px', height: '1px', background: '#C4781A' }} />
                   <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.4)', margin: 0 }}>
                     Notas olfativas
                   </p>
@@ -185,9 +185,9 @@ export default function ProductDetail() {
                     <span key={nota} style={{
                       fontFamily: "'DM Sans', sans-serif",
                       fontSize: '11px', fontWeight: 300,
-                      color: i === 0 ? '#C9A84C' : 'rgba(10,10,10,0.55)',
-                      background: i === 0 ? 'rgba(201,168,76,0.08)' : 'rgba(10,10,10,0.04)',
-                      border: `1px solid ${i === 0 ? 'rgba(201,168,76,0.3)' : 'rgba(10,10,10,0.08)'}`,
+                      color: i === 0 ? '#C4781A' : 'rgba(10,10,10,0.55)',
+                      background: i === 0 ? 'rgba(196,120,26,0.08)' : 'rgba(10,10,10,0.04)',
+                      border: `1px solid ${i === 0 ? 'rgba(196,120,26,0.3)' : 'rgba(10,10,10,0.08)'}`,
                       padding: '6px 14px',
                     }}>
                       {nota}
@@ -204,8 +204,8 @@ export default function ProductDetail() {
                     fontFamily: "'DM Sans', sans-serif",
                     fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase',
                     padding: '15px 32px',
-                    border: added ? '1px solid #C9A84C' : '1px solid #0A0A0A',
-                    background: added ? '#C9A84C' : '#0A0A0A',
+                    border: added ? '1px solid #C4781A' : '1px solid #0A0A0A',
+                    background: added ? '#C4781A' : '#0A0A0A',
                     color: added ? '#0A0A0A' : '#FAFAF8',
                     cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',

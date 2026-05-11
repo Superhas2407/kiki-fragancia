@@ -66,8 +66,8 @@ export default function CartDrawer() {
           bottom: 0,
           width: '100%',
           maxWidth: '420px',
-          background: '#0A0A0A',
-          borderLeft: '1px solid rgba(201,168,76,0.2)',
+          background: '#1A1208',
+          borderLeft: '1px solid rgba(196,120,26,0.2)',
           zIndex: 80,
           display: 'flex',
           flexDirection: 'column',
@@ -95,8 +95,8 @@ export default function CartDrawer() {
             {totalItems > 0 && (
               <span
                 style={{
-                  background: '#C9A84C',
-                  color: '#0A0A0A',
+                  background: '#C4781A',
+                  color: '#1A1208',
                   fontSize: '10px',
                   fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 600,
@@ -159,7 +159,7 @@ export default function CartDrawer() {
                         {item.name}
                       </p>
                       {unit > 0 && (
-                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', color: '#C9A84C' }}>
+                        <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '16px', color: '#C4781A' }}>
                           ${lineTotal}
                         </p>
                       )}
@@ -206,16 +206,16 @@ export default function CartDrawer() {
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                 Subtotal
               </span>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '26px', color: '#C9A84C', fontWeight: 400 }}>
+              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '26px', color: '#C4781A', fontWeight: 400 }}>
                 ${totalPrice}
               </span>
             </div>
             <button
               onClick={handleWhatsApp}
               style={{
-                background: '#C9A84C',
+                background: '#C4781A',
                 border: 'none',
-                color: '#0A0A0A',
+                color: '#1A1208',
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,

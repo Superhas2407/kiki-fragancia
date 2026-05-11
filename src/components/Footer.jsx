@@ -37,7 +37,7 @@ export default function Footer() {
   }
 
   return (
-    <footer id="contacto" style={{ background: '#0A0A0A', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+    <footer id="contacto" style={{ background: '#1A1208', borderTop: '1px solid rgba(196,120,26,0.15)' }}>
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-10">
 
         {/* Grid 3 columnas */}
@@ -48,7 +48,7 @@ export default function Footer() {
             <a
               href="#"
               className="font-display italic leading-none"
-              style={{ fontSize: '32px', color: '#C9A84C', letterSpacing: '-0.02em' }}
+              style={{ fontSize: '32px', color: '#C4781A', letterSpacing: '-0.02em' }}
             >
               KiKi Fragancia
             </a>
@@ -69,9 +69,9 @@ export default function Footer() {
             <div
               className="flex items-center gap-2 self-start"
               style={{
-                border: '1px solid rgba(201,168,76,0.35)',
+                border: '1px solid rgba(196,120,26,0.35)',
                 padding: '7px 12px',
-                color: '#C9A84C',
+                color: '#C4781A',
               }}
             >
               <ShieldIcon />
@@ -94,8 +94,8 @@ export default function Footer() {
             </p>
             {NAV_LINKS.map(link => {
               const sharedStyle = { fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,248,0.5)', letterSpacing: '0.02em', textDecoration: 'none' }
-              const hoverOn  = e => { e.currentTarget.style.color = '#C9A84C' }
-              const hoverOff = e => { e.currentTarget.style.color = 'rgba(250,250,248,0.5)' }
+              const hoverOn  = e => { e.currentTarget.style.color = '#F7F2EA' }
+              const hoverOff = e => { e.currentTarget.style.color = 'rgba(247,242,234,0.5)' }
 
               if (link.type === 'route') return (
                 <Link key={link.label} to={link.to}

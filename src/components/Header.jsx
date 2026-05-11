@@ -50,10 +50,10 @@ export default function Header() {
       <header
         className="fixed top-0 left-0 right-0 z-40 transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(10,10,10,0.92)' : '#1A1714',
+          background: scrolled ? 'rgba(26,18,8,0.93)' : '#1A1208',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: scrolled ? '1px solid #C9A84C' : '1px solid rgba(201,168,76,0.15)',
+          borderBottom: scrolled ? '1px solid #C4781A' : '1px solid rgba(196,120,26,0.15)',
         }}
       >
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -113,7 +113,7 @@ export default function Header() {
       <div
         className="fixed inset-0 z-50 flex flex-col md:hidden transition-all duration-300"
         style={{
-          background: 'rgba(10,10,10,0.97)',
+          background: 'rgba(26,18,8,0.97)',
           opacity: menuOpen ? 1 : 0,
           pointerEvents: menuOpen ? 'auto' : 'none',
         }}
@@ -150,7 +150,7 @@ export default function Header() {
           })}
 
           {/* Separador */}
-          <div style={{ width: '40px', height: '1px', background: '#C9A84C', opacity: 0.4 }} />
+          <div style={{ width: '40px', height: '1px', background: '#C4781A', opacity: 0.5 }} />
 
           <a
             href="https://wa.me/584120221983"

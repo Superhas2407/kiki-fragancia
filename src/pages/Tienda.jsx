@@ -57,8 +57,8 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       {/* Caja */}
       <span style={{
         width: '15px', height: '15px', flexShrink: 0,
-        border: checked ? '1px solid #C9A84C' : '1px solid rgba(10,10,10,0.18)',
-        background: checked ? '#C9A84C' : 'transparent',
+        border: checked ? '1px solid #C4781A' : '1px solid rgba(10,10,10,0.18)',
+        background: checked ? '#C4781A' : 'transparent',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.18s ease, border-color 0.18s ease',
       }}>
@@ -87,7 +87,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
         <span style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: '10px',
-          color: checked ? '#C9A84C' : 'rgba(10,10,10,0.25)',
+          color: checked ? '#C4781A' : 'rgba(10,10,10,0.25)',
           transition: 'color 0.18s ease',
         }}>
           {count}
@@ -103,7 +103,7 @@ function FilterSection({ title, children }) {
     <div style={{ paddingTop: '24px', marginTop: '24px', borderTop: '1px solid rgba(10,10,10,0.07)' }}>
       {/* Encabezado con línea gold */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-        <span style={{ width: '18px', height: '1px', background: '#C9A84C', flexShrink: 0 }} />
+        <span style={{ width: '18px', height: '1px', background: '#C4781A', flexShrink: 0 }} />
         <span style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: '9px',
@@ -141,11 +141,11 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
       >
         <span style={{
           width: '15px', height: '15px', flexShrink: 0,
-          border: active ? '1px solid #C9A84C' : '1px solid rgba(10,10,10,0.18)',
+          border: active ? '1px solid #C4781A' : '1px solid rgba(10,10,10,0.18)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'border-color 0.18s ease',
         }}>
-          {active && <span style={{ width: '6px', height: '6px', background: '#C9A84C' }} />}
+          {active && <span style={{ width: '6px', height: '6px', background: '#C4781A' }} />}
         </span>
         <span style={{
           fontFamily: "'DM Sans', sans-serif",
@@ -170,7 +170,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
           <button onClick={clearFilters} style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: '9px',
             letterSpacing: '0.15em', textTransform: 'uppercase',
-            color: '#C9A84C', background: 'none', border: 'none',
+            color: '#C4781A', background: 'none', border: 'none',
             cursor: 'pointer', padding: 0,
           }}>
             Limpiar todo
@@ -181,7 +181,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
       {/* Ordenar */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-          <span style={{ width: '18px', height: '1px', background: '#C9A84C' }} />
+          <span style={{ width: '18px', height: '1px', background: '#C4781A' }} />
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.4)' }}>
             Ordenar
           </span>
@@ -337,7 +337,7 @@ function ProductCard({ product, index }) {
           <span style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: '28px', fontWeight: 400,
-            color: '#C9A84C', letterSpacing: '-0.02em', lineHeight: 1,
+            color: '#C4781A', letterSpacing: '-0.02em', lineHeight: 1,
             marginTop: '6px',
           }}>
             {product.price}
@@ -355,7 +355,7 @@ function ProductCard({ product, index }) {
             marginTop: '10px', alignSelf: 'flex-start',
             transition: 'color 0.2s ease',
           }}
-          onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+          onMouseEnter={e => e.currentTarget.style.color = '#C4781A'}
           onMouseLeave={e => e.currentTarget.style.color = 'rgba(10,10,10,0.35)'}
         >
           Ver detalles →
@@ -406,8 +406,8 @@ function ProductCard({ product, index }) {
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase',
                 padding: '12px 28px',
-                border: added ? '1px solid #C9A84C' : '1px solid #0A0A0A',
-                background: added ? '#C9A84C' : 'transparent',
+                border: added ? '1px solid #C4781A' : '1px solid #0A0A0A',
+                background: added ? '#C4781A' : 'transparent',
                 color: added ? '#0A0A0A' : '#0A0A0A',
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', gap: '8px',
@@ -472,7 +472,7 @@ export default function Tienda() {
     <>
       <Header />
 
-      <div style={{ background: '#F5F0E8', minHeight: 'calc(100vh - 64px)', paddingTop: '64px' }}>
+      <div style={{ background: '#EDE5D8', minHeight: 'calc(100vh - 64px)', paddingTop: '64px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'flex-start' }}>
 
           {/* ── Sidebar desktop (≥ 768px) ── */}
@@ -522,7 +522,7 @@ export default function Tienda() {
                 <FilterIcon />
                 Filtros
                 {activeFilterCount > 0 && (
-                  <span style={{ background: '#C9A84C', color: '#0A0A0A', fontSize: '10px', fontWeight: 600, padding: '1px 6px' }}>
+                  <span style={{ background: '#C4781A', color: '#0A0A0A', fontSize: '10px', fontWeight: 600, padding: '1px 6px' }}>
                     {activeFilterCount}
                   </span>
                 )}
@@ -574,7 +574,7 @@ export default function Tienda() {
                 </p>
                 <button
                   onClick={clearFilters}
-                  style={{ marginTop: '20px', fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer' }}
+                  style={{ marginTop: '20px', fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C4781A', background: 'none', border: 'none', cursor: 'pointer' }}
                 >
                   Limpiar filtros →
                 </button>
@@ -637,7 +637,7 @@ export default function Tienda() {
             onClick={() => setMobileFiltersOpen(false)}
             style={{
               width: '100%',
-              background: '#C9A84C',
+              background: '#C4781A',
               color: '#0A0A0A',
               border: 'none',
               padding: '14px',

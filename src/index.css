@@ -3,24 +3,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory:     #FAFAF8;
-  --color-ivory-2:   #F3F1EC;
-  --color-carbon:    #0A0A0A;
-  --color-gold:      #C9A84C;
-  --color-warm-dark: #1C1A16;
-  --color-border:    #E8E4DC;
+  --color-ivory:     #F7F2EA;
+  --color-ivory-2:   #EDE5D8;
+  --color-carbon:    #1A1208;
+  --color-gold:      #B8892A;
+  --color-amber:     #C4781A;
+  --color-terracota: #8B4A2F;
+  --color-warm-dark: #251A0E;
+  --color-border:    #D9CDBA;
 
   --font-display: 'Cormorant Garamond', serif;
   --font-sans:    'DM Sans', sans-serif;
 }
 
 :root {
-  --ivory: #FAFAF8;
-  --ivory-2: #F3F1EC;
-  --carbon: #0A0A0A;
-  --gold: #C9A84C;
-  --warm-dark: #1C1A16;
-  --border: #E8E4DC;
+  --ivory: #F7F2EA;
+  --ivory-2: #EDE5D8;
+  --carbon: #1A1208;
+  --gold: #B8892A;
+  --amber: #C4781A;
+  --terracota: #8B4A2F;
+  --warm-dark: #251A0E;
+  --border: #D9CDBA;
 }
 
 @layer base {
@@ -49,7 +53,7 @@
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(201, 168, 76, 0.45) 50%,
+    rgba(196, 120, 26, 0.45) 50%,
     transparent 65%
   );
   background-size: 250% 100%;

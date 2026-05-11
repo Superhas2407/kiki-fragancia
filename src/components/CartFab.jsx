@@ -33,8 +33,8 @@ export default function CartFab() {
         zIndex: 60,
         width: '54px',
         height: '54px',
-        background: '#0A0A0A',
-        border: '1px solid rgba(201,168,76,0.35)',
+        background: '#1A1208',
+        border: '1px solid rgba(196,120,26,0.35)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -42,8 +42,8 @@ export default function CartFab() {
         cursor: 'pointer',
         transition: 'border-color 0.2s ease',
       }}
-      onMouseEnter={e => e.currentTarget.style.borderColor = '#C9A84C'}
-      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.35)'}
+      onMouseEnter={e => e.currentTarget.style.borderColor = '#C4781A'}
+      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(196,120,26,0.35)'}
     >
       <BagIcon />
       {totalItems > 0 && (
@@ -53,8 +53,8 @@ export default function CartFab() {
             position: 'absolute',
             top: '-8px',
             right: '-8px',
-            background: '#C9A84C',
-            color: '#0A0A0A',
+            background: '#C4781A',
+            color: '#1A1208',
             width: '20px',
             height: '20px',
             fontSize: '11px',
