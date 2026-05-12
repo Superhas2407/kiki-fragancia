@@ -1,10 +1,72 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { products } from '../data/products-enriched'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
+// ─── Pirámide ───────────────────────────────────────────────
+const NOTE_EMOJI = {
+  'bergamota':'🍋','limón':'🍋','limon':'🍋','naranja':'🍊','mandarina':'🍊',
+  'manzana':'🍎','canela':'🟤','vainilla':'🤍','rosa':'🌹','jazmín':'🌸',
+  'jazmin':'🌸','sándalo':'🪵','sandalo':'🪵','ámbar':'🟡','ambar':'🟡',
+  'almizcle':'🤍','musgo':'🌿','oud':'🪵','pachulí':'🌿','pachuli':'🌿',
+  'vetiver':'🌾','cedro':'🌲','iris':'💜','violeta':'💜','incienso':'🕯️',
+  'cardamomo':'🌿','jengibre':'🔥','pimienta':'⚫','lavanda':'💜',
+  'neroli':'🌸','caramelo':'🍬','chocolate':'🍫','menta':'🌿',
+  'fresia':'🌺','tuberosa':'🌺','tonka':'🫘','benjuí':'🟤','benjui':'🟤',
+  'mirra':'🪨','patchouli':'🌿','azafrán':'🌼','azafran':'🌼',
+  'resina':'🟤','ámbar gris':'🌊','limón verde':'🍋','bergamota rosa':'🌹',
+}
+function getNoteEmoji(nota) {
+  const lower = nota.toLowerCase().trim()
+  for (const [key, emoji] of Object.entries(NOTE_EMOJI)) {
+    if (lower.includes(key)) return emoji
+  }
+  return '🌸'
+}
+function parseNotes(str) {
+  if (!str) return []
+  return str.split(',').map(n => n.trim()).filter(Boolean)
+}
+
+// ─── Acordes ────────────────────────────────────────────────
+const ACORDES_POR_FAMILIA = {
+  'Oriental':         [['dulce',90],['cálido especiado',80],['avainillado',70],['ámbar',65]],
+  'Amaderado':        [['amaderado',85],['terroso',70],['especiado',60],['seco',55]],
+  'Floral':           [['floral',90],['fresco',75],['powder',65],['verde',50]],
+  'Gourmand':         [['dulce',95],['gourmand',85],['avainillado',80],['caramelo',70]],
+  'Cítrico':          [['cítrico',90],['fresco',85],['verde',70],['aromático',55]],
+  'Floral Oriental':  [['floral',80],['dulce',70],['especiado',65],['ámbar',60]],
+  'Floral Amaderado': [['floral',75],['amaderado',70],['powder',60],['fresco',50]],
+  'Frutal':           [['frutal',85],['fresco',75],['floral',60],['dulce',55]],
+  'Frutal Amaderado': [['frutal',80],['amaderado',70],['fresco',60],['dulce',50]],
+  'Aromático':        [['aromático',85],['fresco',75],['verde',65],['especiado',55]],
+}
+const ACORDE_COLOR = {
+  'dulce':'#E8566C','cálido especiado':'#D4724A','avainillado':'#D4C07A',
+  'ámbar':'#C4722A','canela':'#A0522D','amaderado':'#8B6914','seco':'#8B7355',
+  'terroso':'#8B7355','floral':'#E8A0B4','cítrico':'#F4C842','aromático':'#7FB069',
+  'powder':'#C9A0DC','gourmand':'#D4956A','fresco':'#7FB069','verde':'#6B8E4E',
+  'especiado':'#D4724A','frutal':'#C0392B','caramelo':'#D4956A',
+}
+
+// ─── Cuándo usarlo ──────────────────────────────────────────
+const CUANDO_POR_FAMILIA = {
+  'Oriental':         { estaciones:[['otoño','🍂',true],['invierno','❄️',true],['primavera','🌿',false],['verano','☀️',false]],   momentos:[['noche','🌙',true],['día','🌤️',false]] },
+  'Amaderado':        { estaciones:[['otoño','🍂',true],['invierno','❄️',true],['primavera','🌿',true],['verano','☀️',false]],    momentos:[['noche','🌙',true],['día','🌤️',true]] },
+  'Floral':           { estaciones:[['primavera','🌿',true],['verano','☀️',true],['otoño','🍂',false],['invierno','❄️',false]],   momentos:[['día','🌤️',true],['noche','🌙',false]] },
+  'Gourmand':         { estaciones:[['otoño','🍂',true],['invierno','❄️',true],['primavera','🌿',false],['verano','☀️',false]],   momentos:[['noche','🌙',true],['día','🌤️',false]] },
+  'Cítrico':          { estaciones:[['primavera','🌿',true],['verano','☀️',true],['otoño','🍂',false],['invierno','❄️',false]],   momentos:[['día','🌤️',true],['noche','🌙',false]] },
+  'Floral Oriental':  { estaciones:[['primavera','🌿',true],['otoño','🍂',true],['invierno','❄️',true],['verano','☀️',false]],    momentos:[['noche','🌙',true],['día','🌤️',true]] },
+  'Floral Amaderado': { estaciones:[['primavera','🌿',true],['otoño','🍂',true],['verano','☀️',false],['invierno','❄️',false]],   momentos:[['día','🌤️',true],['noche','🌙',true]] },
+  'Frutal':           { estaciones:[['primavera','🌿',true],['verano','☀️',true],['otoño','🍂',false],['invierno','❄️',false]],   momentos:[['día','🌤️',true],['noche','🌙',false]] },
+  'Frutal Amaderado': { estaciones:[['primavera','🌿',true],['verano','☀️',true],['otoño','🍂',true],['invierno','❄️',false]],    momentos:[['día','🌤️',true],['noche','🌙',false]] },
+  'Aromático':        { estaciones:[['primavera','🌿',true],['verano','☀️',true],['otoño','🍂',true],['invierno','❄️',false]],    momentos:[['día','🌤️',true],['noche','🌙',false]] },
+}
+const DEFAULT_CUANDO = { estaciones:[['otoño','🍂',true],['invierno','❄️',true],['primavera','🌿',false],['verano','☀️',false]], momentos:[['noche','🌙',true],['día','🌤️',false]] }
+
+// ─── Legado ─────────────────────────────────────────────────
 const NOTAS_POR_FAMILIA = {
   'Oriental':   ['Oud', 'Vainilla', 'Ámbar', 'Almizcle', 'Sándalo'],
   'Floral':     ['Rosa', 'Jazmín', 'Peonia', 'Iris', 'Nardo'],
@@ -37,6 +99,8 @@ export default function ProductDetail() {
   const { id } = useParams()
   const { addItem } = useCartContext()
   const [added, setAdded] = useState(false)
+  const [acordesReady, setAcordesReady] = useState(false)
+  useEffect(() => { const t = setTimeout(() => setAcordesReady(true), 60); return () => clearTimeout(t) }, [])
 
   const product = products.find(p => p.id === Number(id))
 
@@ -242,6 +306,150 @@ export default function ProductDetail() {
 
             </div>
           </div>
+
+        </div>
+      </div>
+
+      {/* ===== SECCIONES OSCURAS ===== */}
+      <div style={{ background: '#1C1A16' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '72px 24px 88px' }}>
+
+          {/* — 1: PIRÁMIDE — */}
+          {(product.notasSalida || product.notasCorazon || product.notasFondo) && (<>
+            <div style={{ marginBottom: '64px' }}>
+              <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'10px', letterSpacing:'0.28em', textTransform:'uppercase', color:'#C9A84C', margin:'0 0 6px' }}>
+                Composición
+              </p>
+              <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'28px', fontWeight:400, fontStyle:'italic', color:'#F7F2EA', letterSpacing:'-0.01em', margin:'0 0 40px' }}>
+                Pirámide del perfume
+              </h2>
+              <div style={{ position:'relative', paddingLeft:'20px' }}>
+                {/* línea vertical dorada */}
+                <div style={{
+                  position:'absolute', left:0, top:0, bottom:0, width:'2px',
+                  background:'linear-gradient(to bottom, rgba(201,168,76,0.9) 0%, rgba(201,168,76,0.4) 60%, rgba(201,168,76,0.05) 100%)',
+                }} />
+                <div style={{ display:'flex', flexDirection:'column', gap:'32px' }}>
+                  {[
+                    { label:'Notas de Salida',   notes: parseNotes(product.notasSalida),  sub:'Primeras impresiones · 0–30 min',  chipBg:'rgba(201,168,76,0.15)' },
+                    { label:'Notas de Corazón',  notes: parseNotes(product.notasCorazon), sub:'El alma del perfume · 30 min–3 h', chipBg:'rgba(201,168,76,0.10)' },
+                    { label:'Notas de Fondo',    notes: parseNotes(product.notasFondo),   sub:'La huella que permanece · 3+ h',   chipBg:'rgba(201,168,76,0.05)' },
+                  ].map(({ label, notes, sub, chipBg }) => notes.length > 0 && (
+                    <div key={label}>
+                      <div style={{ display:'flex', alignItems:'baseline', gap:'12px', marginBottom:'12px' }}>
+                        <p style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'15px', fontWeight:600, letterSpacing:'0.1em', textTransform:'uppercase', color:'#C9A84C', margin:0 }}>
+                          {label}
+                        </p>
+                        <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'10px', color:'rgba(247,242,234,0.3)', letterSpacing:'0.04em' }}>
+                          {sub}
+                        </span>
+                      </div>
+                      <div style={{ display:'flex', gap:'8px', flexWrap:'wrap' }}>
+                        {notes.map(nota => (
+                          <span key={nota} style={{
+                            fontFamily:"'DM Sans',sans-serif", fontSize:'12px', fontWeight:300,
+                            color:'rgba(247,242,234,0.75)',
+                            border:'1px solid rgba(201,168,76,0.25)',
+                            padding:'6px 14px',
+                            display:'flex', alignItems:'center', gap:'6px',
+                            background: chipBg,
+                          }}>
+                            <span>{getNoteEmoji(nota)}</span>{nota}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div style={{ height:'1px', background:'rgba(201,168,76,0.12)', marginBottom:'64px' }} />
+          </>)}
+
+          {/* — 2: ACORDES — */}
+          <div style={{ marginBottom:'64px' }}>
+            <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'10px', letterSpacing:'0.28em', textTransform:'uppercase', color:'#C9A84C', margin:'0 0 6px' }}>
+              Perfil olfativo
+            </p>
+            <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'28px', fontWeight:400, fontStyle:'italic', color:'#F7F2EA', letterSpacing:'-0.01em', margin:'0 0 36px' }}>
+              Acordes principales
+            </h2>
+            <div style={{ display:'flex', flexDirection:'column', gap:'18px', maxWidth:'560px' }}>
+              {(ACORDES_POR_FAMILIA[product.familia] || ACORDES_POR_FAMILIA['Oriental']).map(([nombre, pct]) => {
+                const color = ACORDE_COLOR[nombre] || '#C9A84C'
+                return (
+                  <div key={nombre}>
+                    <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'8px' }}>
+                      <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'11px', fontWeight:300, color:'rgba(247,242,234,0.6)', letterSpacing:'0.06em', textTransform:'capitalize' }}>
+                        {nombre}
+                      </span>
+                      <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'11px', color:'rgba(247,242,234,0.3)' }}>
+                        {pct}%
+                      </span>
+                    </div>
+                    <div style={{ height:'10px', background:'rgba(255,255,255,0.05)', borderRadius:'1px', overflow:'hidden' }}>
+                      <div style={{
+                        height:'100%',
+                        width: acordesReady ? `${pct}%` : '0%',
+                        background: `linear-gradient(90deg, ${color}cc, ${color})`,
+                        transition:'width 0.8s cubic-bezier(0.4,0,0.2,1)',
+                      }} />
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          <div style={{ height:'1px', background:'rgba(201,168,76,0.12)', marginBottom:'64px' }} />
+
+          {/* — 3: CUÁNDO USARLO — */}
+          {(() => {
+            const cuando = CUANDO_POR_FAMILIA[product.familia] || DEFAULT_CUANDO
+            return (
+              <div>
+                <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'10px', letterSpacing:'0.28em', textTransform:'uppercase', color:'#C9A84C', margin:'0 0 6px' }}>
+                  Contexto ideal
+                </p>
+                <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'28px', fontWeight:400, fontStyle:'italic', color:'#F7F2EA', letterSpacing:'-0.01em', margin:'0 0 36px' }}>
+                  Cuándo usarlo
+                </h2>
+                <div style={{ display:'flex', gap:'20px', flexWrap:'wrap' }}>
+                  {[
+                    { titulo:'Estaciones', items: cuando.estaciones },
+                    { titulo:'Momentos',   items: cuando.momentos },
+                  ].map(({ titulo, items }) => (
+                    <div key={titulo} style={{ flex:1, minWidth:'220px', border:'1px solid rgba(201,168,76,0.15)', padding:'28px 32px' }}>
+                      <p style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'9px', letterSpacing:'0.22em', textTransform:'uppercase', color:'rgba(247,242,234,0.3)', margin:'0 0 24px' }}>
+                        {titulo}
+                      </p>
+                      <div style={{ display:'flex', gap:'28px', justifyContent:'center' }}>
+                        {items.map(([nombre, icono, activo]) => (
+                          <div key={nombre} style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:'10px' }}>
+                            <span style={{
+                              fontSize:'3rem',
+                              opacity: activo ? 1 : 0.2,
+                              filter: activo ? 'none' : 'grayscale(1)',
+                              display:'flex', alignItems:'center', justifyContent:'center',
+                              width:'64px', height:'64px',
+                              borderRadius:'50%',
+                              boxShadow: activo ? '0 0 20px rgba(201,168,76,0.4)' : 'none',
+                              transition:'box-shadow 0.3s ease',
+                            }}>
+                              {icono}
+                            </span>
+                            <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:'9px', letterSpacing:'0.12em', textTransform:'uppercase', color: activo ? '#C9A84C' : '#444' }}>
+                              {nombre}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })()}
 
         </div>
       </div>
