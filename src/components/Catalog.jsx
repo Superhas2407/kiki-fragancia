@@ -1,88 +1,133 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { products } from '../data/products-enriched'
 
 function ProductCard({ product, delay }) {
-  const ref = useScrollReveal({ threshold: 0.1, delay })
+  const ref = useScrollReveal({ threshold: 0.08, delay })
+  const [hovered, setHovered] = useState(false)
 
   return (
     <article
       ref={ref}
-      className="group flex flex-col"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
-        background: '#EDE5D8',
-        border: '1px solid rgba(196,120,26,0.12)',
-        transition: 'border-color 0.3s ease',
+        background: '#EDE8DF',
+        display: 'flex', flexDirection: 'column',
+        boxShadow: hovered
+          ? '0 20px 48px rgba(10,6,2,0.14), 0 4px 12px rgba(10,6,2,0.08)'
+          : '0 2px 8px rgba(10,6,2,0.04)',
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease',
       }}
-      onMouseEnter={e => e.currentTarget.style.borderColor = '#C4781A'}
-      onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(196,120,26,0.12)'}
     >
       {/* Imagen */}
-      <div className="overflow-hidden" style={{ aspectRatio: '3/4' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '3/4' }}>
         <img
           src={`/products/${product.image}`}
           alt={`${product.house} ${product.name}`}
-          className="w-full h-full object-cover"
-          style={{ transition: 'transform 0.55s ease' }}
-          onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
-          onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+          style={{
+            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+            transform: hovered ? 'scale(1.06)' : 'scale(1)',
+            transition: 'transform 0.65s cubic-bezier(0.22,1,0.36,1)',
+          }}
         />
+
+        {/* Overlay hover con familia */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: hovered ? 'rgba(10,6,2,0.42)' : 'rgba(10,6,2,0)',
+          transition: 'background 0.4s ease',
+          display: 'flex', alignItems: 'flex-end', padding: '20px',
+        }}>
+          <span style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase',
+            color: '#C9A84C',
+            border: '1px solid rgba(201,168,76,0.6)',
+            padding: '4px 10px',
+            background: 'rgba(10,6,2,0.6)',
+            backdropFilter: 'blur(4px)',
+            opacity: hovered ? 1 : 0,
+            transform: hovered ? 'translateY(0)' : 'translateY(8px)',
+            transition: 'opacity 0.35s ease 0.05s, transform 0.35s ease 0.05s',
+          }}>
+            {product.familia}
+          </span>
+        </div>
       </div>
 
       {/* Info */}
-      <div className="flex flex-col flex-1 p-5 gap-3">
-        {/* Badge */}
-        <span
-          className="font-sans self-start"
-          style={{
-            fontSize: '9px',
-            letterSpacing: '0.2em',
-            textTransform: 'uppercase',
-            color: '#C4781A',
-            border: '1px solid rgba(196,120,26,0.4)',
-            padding: '3px 8px',
-          }}
-        >
-          Disponible
-        </span>
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '22px 20px 20px', gap: 0 }}>
 
         {/* Casa */}
-        <p
-          className="font-sans text-carbon/40"
-          style={{ fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase' }}
-        >
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: 'rgba(10,10,10,0.35)',
+          margin: '0 0 8px',
+        }}>
           {product.house}
         </p>
 
         {/* Nombre */}
-        <h3
-          className="font-display text-carbon leading-tight"
-          style={{ fontSize: '21px', fontWeight: 400, letterSpacing: '-0.01em' }}
-        >
+        <h3 style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: 'clamp(18px, 2.2vw, 22px)',
+          fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.15,
+          color: '#0A0A0A',
+          margin: '0 0 10px',
+        }}>
           {product.name}
         </h3>
 
+        {/* Tipo + ml */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: '10px', fontWeight: 300,
+          color: 'rgba(10,10,10,0.38)',
+          letterSpacing: '0.04em',
+          margin: '0 0 14px',
+        }}>
+          {[product.ml && `${product.ml} ml`, product.tipo].filter(Boolean).join(' · ')}
+        </p>
+
         {/* Precio */}
         {product.price && (
-          <p
-            className="font-display"
-            style={{ fontSize: '20px', color: '#C4781A', fontWeight: 400 }}
-          >
+          <p style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: '22px', fontWeight: 400,
+            color: '#C4781A',
+            margin: '0 0 18px',
+          }}>
             {product.price}
           </p>
         )}
 
-        {/* Spacer */}
-        <div className="flex-1" />
+        <div style={{ flex: 1 }} />
+
+        {/* Divisor */}
+        <div style={{ height: '1px', background: 'rgba(10,10,10,0.08)', margin: '0 0 16px' }} />
 
         {/* CTA */}
         <Link
           to={`/tienda/${product.id}`}
-          className="font-sans text-carbon hover:text-gold transition-colors duration-200 flex items-center gap-2 mt-1"
-          style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', textDecoration: 'none' }}
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase',
+            textDecoration: 'none',
+            color: hovered ? '#C4781A' : 'rgba(10,10,10,0.5)',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            transition: 'color 0.25s ease',
+          }}
         >
           Ver producto
-          <span style={{ color: '#C4781A' }}>→</span>
+          <span style={{
+            transform: hovered ? 'translateX(4px)' : 'translateX(0)',
+            transition: 'transform 0.3s ease',
+            color: '#C4781A',
+          }}>→</span>
         </Link>
       </div>
     </article>
@@ -90,52 +135,91 @@ function ProductCard({ product, delay }) {
 }
 
 export default function Catalog() {
-  const headRef = useScrollReveal({ threshold: 0.2 })
+  const headRef = useScrollReveal({ threshold: 0.15 })
+  const [linkHover, setLinkHover] = useState(false)
 
   return (
-    <section id="catalogo" style={{ background: '#F3F1EC', padding: '96px 0' }}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="catalogo" style={{ background: '#F2EEE6', padding: '120px 0' }}>
+      <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px' }}>
 
         {/* Header */}
-        <div ref={headRef} className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-          <div>
-            <p
-              className="font-sans uppercase tracking-[0.25em] mb-4"
-              style={{ fontSize: '10px', color: '#C4781A' }}
-            >
+        <div
+          ref={headRef}
+          style={{
+            display: 'flex', flexDirection: 'column', gap: '8px',
+            marginBottom: '64px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+            <div style={{ width: '32px', height: '1px', background: '#C4781A' }} />
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase',
+              color: '#C4781A', margin: 0,
+            }}>
               Esta semana en KiKi
             </p>
-            <h2
-              className="font-display text-carbon"
-              style={{ fontSize: 'clamp(32px, 5vw, 46px)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.1 }}
-            >
-              Lo que estamos<br />vendiendo ahora
-            </h2>
           </div>
 
-          <p
-            className="font-sans text-carbon/45 max-w-xs"
-            style={{ fontSize: '13px', fontWeight: 300, lineHeight: 1.7 }}
-          >
-            Todo lo que ves aquí, lo tenemos. Todo lo que vendemos, lo conocemos.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0', alignItems: 'flex-start' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%', gap: '24px' }}>
+              <h2 style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: 'clamp(34px, 5vw, 50px)',
+                fontWeight: 400, fontStyle: 'italic',
+                letterSpacing: '-0.02em', lineHeight: 1.08,
+                color: '#0A0A0A', margin: 0,
+              }}>
+                Lo que estamos<br />vendiendo ahora
+              </h2>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '13px', fontWeight: 300, lineHeight: 1.75,
+                color: 'rgba(10,10,10,0.42)',
+                maxWidth: '280px', margin: 0,
+              }}>
+                Todo lo que ves aquí, lo tenemos.<br />Todo lo que vendemos, lo conocemos.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '20px',
+        }}
+          className="md:grid-cols-3"
+        >
           {products.filter(p => p.featured).map((product, i) => (
-            <ProductCard key={product.id} product={product} delay={i * 80} />
+            <ProductCard key={product.id} product={product} delay={i * 90} />
           ))}
         </div>
 
-        {/* Línea inferior */}
-        <div className="mt-14 flex justify-center">
+        {/* Ver catálogo */}
+        <div style={{ marginTop: '64px', display: 'flex', justifyContent: 'center' }}>
           <Link
             to="/tienda"
-            className="font-sans text-carbon/50 hover:text-gold transition-colors duration-200"
-            style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none' }}
+            onMouseEnter={() => setLinkHover(true)}
+            onMouseLeave={() => setLinkHover(false)}
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase',
+              textDecoration: 'none',
+              color: linkHover ? '#0A0A0A' : 'rgba(10,10,10,0.45)',
+              border: `1px solid ${linkHover ? 'rgba(10,10,10,0.35)' : 'rgba(10,10,10,0.15)'}`,
+              padding: '13px 36px',
+              transition: 'color 0.25s ease, border-color 0.25s ease',
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+            }}
           >
-            Ver Catálogo Completo →
+            Ver catálogo completo
+            <span style={{
+              color: '#C4781A',
+              transform: linkHover ? 'translateX(4px)' : 'translateX(0)',
+              transition: 'transform 0.3s ease',
+            }}>→</span>
           </Link>
         </div>
 
