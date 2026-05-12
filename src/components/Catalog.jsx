@@ -139,47 +139,42 @@ export default function Catalog() {
   const [linkHover, setLinkHover] = useState(false)
 
   return (
-    <section id="catalogo" className="catalog-section" style={{ background: '#F2EEE6', padding: '120px 0' }}>
-      <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px' }}>
+    <section id="catalogo" className="catalog-section" style={{ background: '#FAFAF8' }}>
+      <div className="catalog-inner" style={{ maxWidth: '1152px', margin: '0 auto', padding: '60px 2rem 80px' }}>
 
         {/* Header */}
         <div
           ref={headRef}
           style={{
-            display: 'flex', flexDirection: 'column', gap: '8px',
-            marginBottom: '64px',
+            display: 'flex', flexDirection: 'column',
+            marginBottom: '52px',
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-            <div style={{ width: '32px', height: '1px', background: '#C4781A' }} />
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase',
-              color: '#C4781A', margin: 0,
-            }}>
-              Esta semana en KiKi
-            </p>
-          </div>
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase',
+            color: '#C9A84C', margin: '0 0 16px',
+          }}>
+            Esta semana en KiKi
+          </p>
 
-          <div>
-            <h2 style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 'clamp(34px, 5vw, 50px)',
-              fontWeight: 400, fontStyle: 'italic',
-              letterSpacing: '-0.02em', lineHeight: 1.08,
-              color: '#0A0A0A', margin: 0,
-            }}>
-              Lo que estamos<br />vendiendo ahora
-            </h2>
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '1rem', fontWeight: 300, lineHeight: 1.75,
-              color: 'rgba(10,10,10,0.60)',
-              margin: '20px 0 0',
-            }}>
-              Todo lo que ves aquí, lo tenemos. Todo lo que vendemos, lo conocemos.
-            </p>
-          </div>
+          <h2 style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+            fontWeight: 400, fontStyle: 'italic',
+            letterSpacing: '-0.02em', lineHeight: 1.08,
+            color: '#0A0A0A', margin: '0 0 18px',
+          }}>
+            Lo que estamos vendiendo ahora
+          </h2>
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '1rem', fontWeight: 300, lineHeight: 1.75,
+            color: 'rgba(10,10,10,0.60)',
+            margin: 0,
+          }}>
+            Todo lo que ves aquí, lo tenemos. Todo lo que vendemos, lo conocemos.
+          </p>
         </div>
 
         {/* Grid */}

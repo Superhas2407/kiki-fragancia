@@ -85,9 +85,31 @@
 
 /* Catalog landing — mobile */
 @media (max-width: 767px) {
-  .catalog-section {
-    padding: 80px 0 !important;
+  .catalog-inner {
+    padding: 40px 1.5rem 60px !important;
   }
+}
+
+/* Filter toggle button — visible en móvil, oculto en desktop */
+.filter-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (min-width: 768px) {
+  .filter-toggle-btn { display: none; }
+}
+
+/* Mobile filter drawer + backdrop */
+.mobile-filter-backdrop {
+  display: block;
+}
+.mobile-filter-drawer {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .mobile-filter-backdrop,
+  .mobile-filter-drawer { display: none; }
 }
 
 /* Tienda — mobile responsive */

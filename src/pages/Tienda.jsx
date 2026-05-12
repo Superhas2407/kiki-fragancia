@@ -438,6 +438,7 @@ export default function Tienda() {
   const [selectedGeneros, setSelectedGeneros]   = useState([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [filterBtnHover, setFilterBtnHover] = useState(false)
 
   const toggleMarca   = v => setSelectedMarcas(p   => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleFamilia = v => setSelectedFamilias(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
@@ -511,21 +512,32 @@ export default function Tienda() {
 
               {/* Botón filtros mobile */}
               <button
-                className="flex md:hidden"
+                className="filter-toggle-btn"
                 onClick={() => setMobileFiltersOpen(true)}
+                onMouseEnter={() => setFilterBtnHover(true)}
+                onMouseLeave={() => setFilterBtnHover(false)}
                 style={{
                   fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
                   letterSpacing: '0.12em', textTransform: 'uppercase',
-                  background: '#0A0A0A', color: '#FAFAF8',
-                  border: 'none', cursor: 'pointer',
-                  padding: '10px 16px',
-                  alignItems: 'center', gap: '8px',
+                  background: filterBtnHover ? '#C9A84C' : 'transparent',
+                  color: filterBtnHover ? '#0A0A0A' : '#C9A84C',
+                  border: '1px solid #C9A84C',
+                  cursor: 'pointer',
+                  padding: '9px 16px',
+                  transition: 'background 0.2s ease, color 0.2s ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 <FilterIcon />
                 Filtros
                 {activeFilterCount > 0 && (
-                  <span style={{ background: '#C4781A', color: '#0A0A0A', fontSize: '10px', fontWeight: 600, padding: '1px 6px' }}>
+                  <span style={{
+                    background: filterBtnHover ? '#0A0A0A' : '#C9A84C',
+                    color: filterBtnHover ? '#C9A84C' : '#0A0A0A',
+                    fontSize: '10px', fontWeight: 600,
+                    padding: '1px 6px', marginLeft: '6px',
+                    transition: 'background 0.2s ease, color 0.2s ease',
+                  }}>
                     {activeFilterCount}
                   </span>
                 )}
@@ -594,20 +606,36 @@ export default function Tienda() {
         </div>
       </div>
 
-      {/* ── Modal fullscreen de filtros mobile ── */}
+      {/* ── Backdrop mobile ── */}
       <div
-        className="md:hidden"
+        className="mobile-filter-backdrop"
+        onClick={() => setMobileFiltersOpen(false)}
         style={{
           position: 'fixed', inset: 0,
-          background: '#FFFFFF',
-          zIndex: 100,
-          display: 'flex', flexDirection: 'column',
+          background: 'rgba(0,0,0,0.45)',
+          zIndex: 99,
           opacity: mobileFiltersOpen ? 1 : 0,
           pointerEvents: mobileFiltersOpen ? 'auto' : 'none',
-          transition: 'opacity 0.25s ease',
+          transition: 'opacity 0.3s ease',
+        }}
+      />
+
+      {/* ── Drawer desde la izquierda ── */}
+      <div
+        className="mobile-filter-drawer"
+        style={{
+          position: 'fixed',
+          top: 0, left: 0, bottom: 0,
+          width: '290px',
+          maxWidth: '85vw',
+          background: '#FAFAF8',
+          zIndex: 100,
+          flexDirection: 'column',
+          transform: mobileFiltersOpen ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 0.35s cubic-bezier(0.22,1,0.36,1)',
         }}
       >
-        {/* Header */}
+        {/* Header del drawer */}
         <div style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '0 20px', height: '60px',
@@ -641,7 +669,7 @@ export default function Tienda() {
             onClick={() => setMobileFiltersOpen(false)}
             style={{
               width: '100%',
-              background: '#C4781A',
+              background: '#C9A84C',
               color: '#0A0A0A',
               border: 'none',
               padding: '14px',
