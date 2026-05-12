@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
-import { products } from '../data/products'
+import { products } from '../data/products-enriched'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 

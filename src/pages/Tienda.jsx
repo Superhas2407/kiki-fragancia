@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { products } from '../data/products'
+import { products } from '../data/products-enriched'
 import { useCartContext } from '../context/CartContext'
 
 // ─── Constantes de filtro ──────────────────────────────────────────────────────

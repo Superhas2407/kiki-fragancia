@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { products } from '../data/products'
+import { products } from '../data/products-enriched'
 
 function ProductCard({ product, delay }) {
   const ref = useScrollReveal({ threshold: 0.1, delay })
