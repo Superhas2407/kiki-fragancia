@@ -139,7 +139,7 @@ export default function Catalog() {
   const [linkHover, setLinkHover] = useState(false)
 
   return (
-    <section id="catalogo" style={{ background: '#F2EEE6', padding: '120px 0' }}>
+    <section id="catalogo" className="catalog-section" style={{ background: '#F2EEE6', padding: '120px 0' }}>
       <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px' }}>
 
         {/* Header */}
@@ -161,26 +161,24 @@ export default function Catalog() {
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0', alignItems: 'flex-start' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%', gap: '24px' }}>
-              <h2 style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(34px, 5vw, 50px)',
-                fontWeight: 400, fontStyle: 'italic',
-                letterSpacing: '-0.02em', lineHeight: 1.08,
-                color: '#0A0A0A', margin: 0,
-              }}>
-                Lo que estamos<br />vendiendo ahora
-              </h2>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '13px', fontWeight: 300, lineHeight: 1.75,
-                color: 'rgba(10,10,10,0.42)',
-                maxWidth: '280px', margin: 0,
-              }}>
-                Todo lo que ves aquí, lo tenemos.<br />Todo lo que vendemos, lo conocemos.
-              </p>
-            </div>
+          <div>
+            <h2 style={{
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: 'clamp(34px, 5vw, 50px)',
+              fontWeight: 400, fontStyle: 'italic',
+              letterSpacing: '-0.02em', lineHeight: 1.08,
+              color: '#0A0A0A', margin: 0,
+            }}>
+              Lo que estamos<br />vendiendo ahora
+            </h2>
+            <p style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '1rem', fontWeight: 300, lineHeight: 1.75,
+              color: 'rgba(10,10,10,0.60)',
+              margin: '20px 0 0',
+            }}>
+              Todo lo que ves aquí, lo tenemos. Todo lo que vendemos, lo conocemos.
+            </p>
           </div>
         </div>
 

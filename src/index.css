@@ -83,6 +83,13 @@
   display: none;
 }
 
+/* Catalog landing — mobile */
+@media (max-width: 767px) {
+  .catalog-section {
+    padding: 80px 0 !important;
+  }
+}
+
 /* Tienda — mobile responsive */
 @media (max-width: 767px) {
   .tienda-products {
@@ -103,6 +110,17 @@
   .product-card-add-btn {
     width: 100% !important;
     justify-content: center !important;
+  }
+  /* Prevent any horizontal overflow */
+  .tienda-products * {
+    max-width: 100%;
+  }
+  /* Nowrap text on small screens */
+  .product-card-meta {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: calc(100% - 32px);
   }
 }
 

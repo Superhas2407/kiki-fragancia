@@ -301,11 +301,14 @@ function ProductCard({ product, index }) {
             {String(index + 1).padStart(2, '0')}
           </span>
           <span style={{ height: '1px', background: 'rgba(10,10,10,0.08)', flex: 1 }} />
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: 'rgba(10,10,10,0.35)', whiteSpace: 'nowrap',
-          }}>
+          <p
+            className="product-card-meta"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: 'rgba(10,10,10,0.35)', whiteSpace: 'nowrap',
+            }}
+          >
             {product.familia}&nbsp;·&nbsp;{product.tipo}
           </p>
         </div>
@@ -508,7 +511,7 @@ export default function Tienda() {
 
               {/* Botón filtros mobile */}
               <button
-                className="flex md:hidden items-center gap-2"
+                className="flex md:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
                 style={{
                   fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
@@ -516,7 +519,7 @@ export default function Tienda() {
                   background: '#0A0A0A', color: '#FAFAF8',
                   border: 'none', cursor: 'pointer',
                   padding: '10px 16px',
-                  display: 'flex', alignItems: 'center', gap: '8px',
+                  alignItems: 'center', gap: '8px',
                 }}
               >
                 <FilterIcon />
@@ -530,9 +533,10 @@ export default function Tienda() {
             </div>
 
             {/* Buscador */}
-            <div style={{ marginBottom: '24px' }}>
+            <div style={{ marginBottom: '24px', width: '100%' }}>
               <div style={{
                 display: 'flex', alignItems: 'center',
+                width: '100%',
                 border: '1px solid rgba(10,10,10,0.12)',
                 background: '#FFFFFF',
                 padding: '0 16px', gap: '12px',
