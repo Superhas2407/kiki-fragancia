@@ -1,11 +1,27 @@
-import { Component } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Component, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import Landing from './pages/Landing'
 import Tienda from './pages/Tienda'
 import ProductDetail from './pages/ProductDetail'
 import CartDrawer from './components/CartDrawer'
 import CartFab from './components/CartFab'
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+        else window.scrollTo({ top: 0, behavior: 'instant' })
+      }, 100)
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [pathname, hash])
+  return null
+}
 
 class ErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { hasError: false } }
@@ -21,6 +37,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <CartProvider>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/tienda" element={<Tienda />} />

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { products } from '../data/products-enriched'
@@ -87,6 +88,11 @@ export default function ProductDetail() {
   const [imgHover,     setImgHover]     = useState(false)
   const [waHover,      setWaHover]      = useState(false)
   const [cartHover,    setCartHover]    = useState(false)
+  const [descExpanded, setDescExpanded] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [])
 
   useEffect(() => {
     const t1 = setTimeout(() => setMounted(true), 60)
@@ -100,13 +106,13 @@ export default function ProductDetail() {
     return (
       <>
         <Header />
-        <div style={{ minHeight: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '24px', background: '#EDE8DF' }}>
-          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '36px', fontStyle: 'italic', color: 'rgba(10,10,10,0.25)', margin: 0 }}>
+        <div style={{ minHeight: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '24px', background: '#0A0A0A' }}>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '36px', fontStyle: 'italic', color: 'rgba(250,250,248,0.25)', margin: 0 }}>
             Fragancia no encontrada
           </p>
           <Link
             to="/tienda"
-            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C4781A', textDecoration: 'none' }}
+            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', textDecoration: 'none' }}
           >
             ← Volver al catálogo
           </Link>
@@ -139,43 +145,45 @@ export default function ProductDetail() {
       <Header />
 
       {/* ── Sección principal (clara) ── */}
-      <div style={{ background: '#EDE8DF', minHeight: 'calc(100dvh - 72px)', paddingTop: '72px' }}>
-        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '52px 24px 88px' }}>
+      <div style={{ background: '#0A0A0A', minHeight: 'auto', paddingTop: '76px' }}>
+        <div className="product-detail-inner" style={{ maxWidth: '1152px', margin: '0 auto', padding: '52px 24px 88px' }}>
 
           {/* Breadcrumb */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '48px', ...reveal(0) }}>
+          <div className="product-detail-breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '48px', ...reveal(0) }}>
             <Link
               to="/tienda"
-              style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.35)', textDecoration: 'none', transition: 'color 0.2s ease' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#C4781A'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(10,10,10,0.35)'}
+              style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(250,250,248,0.4)', textDecoration: 'none', transition: 'color 0.2s ease' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.4)'}
             >
               Catálogo
             </Link>
-            <span style={{ color: 'rgba(10,10,10,0.18)', fontSize: '10px' }}>/</span>
-            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.45)' }}>
+            <span style={{ color: 'rgba(250,250,248,0.2)', fontSize: '10px' }}>/</span>
+            <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(250,250,248,0.4)' }}>
               {product.name}
             </span>
           </div>
 
           {/* Layout imagen + info */}
-          <div style={{ display: 'flex', gap: '72px', alignItems: 'flex-start' }} className="flex-col md:flex-row">
+          <div className="product-detail-layout" style={{ alignItems: 'start' }}>
 
             {/* ── Imagen ── */}
             <div
-              style={{ width: '420px', flexShrink: 0, ...reveal(80) }}
-              className="w-full md:w-[420px]"
+              className="product-detail-img"
+              style={{ ...reveal(80) }}
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
             >
-              <div style={{
+              <div className="product-detail-img-wrap" style={{
                 position: 'relative', overflow: 'hidden',
+                background: '#111111',
                 boxShadow: imgHover
-                  ? '0 32px 64px rgba(10,6,2,0.18), 0 8px 24px rgba(10,6,2,0.10)'
-                  : '0 8px 32px rgba(10,6,2,0.08)',
+                  ? '0 32px 64px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.3)'
+                  : '0 8px 32px rgba(0,0,0,0.3)',
                 transition: 'box-shadow 0.5s ease',
               }}>
                 <img
+                  className="product-detail-img-photo"
                   src={`/products/${product.image}`}
                   alt={`${product.house} ${product.name}`}
                   style={{
@@ -188,7 +196,8 @@ export default function ProductDetail() {
                 {/* Badge verificado */}
                 <div style={{
                   position: 'absolute', top: '16px', left: '16px',
-                  background: 'rgba(10,8,4,0.75)', backdropFilter: 'blur(10px)',
+                  background: 'rgba(201,168,76,0.15)', backdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(201,168,76,0.3)',
                   padding: '6px 12px',
                   display: 'flex', alignItems: 'center', gap: '7px',
                 }}>
@@ -221,16 +230,16 @@ export default function ProductDetail() {
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingTop: '4px' }}>
 
               {/* Casa */}
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.26em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.35)', margin: '0 0 14px', ...reveal(140) }}>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', letterSpacing: '0.26em', textTransform: 'uppercase', color: '#C9A84C', margin: '0 0 14px', ...reveal(140) }}>
                 {product.house}
               </p>
 
               {/* Nombre */}
-              <h1 style={{
+              <h1 className="product-detail-title" style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 fontSize: 'clamp(38px, 4.5vw, 58px)',
                 fontWeight: 400, fontStyle: 'italic',
-                color: '#0A0A0A',
+                color: '#FAFAF8',
                 letterSpacing: '-0.03em', lineHeight: 1.04,
                 margin: '0 0 14px',
                 ...reveal(200),
@@ -242,7 +251,7 @@ export default function ProductDetail() {
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '12px', fontWeight: 300,
-                color: 'rgba(10,10,10,0.42)', letterSpacing: '0.06em',
+                color: 'rgba(250,250,248,0.6)', letterSpacing: '0.06em',
                 margin: '0 0 22px',
                 ...reveal(250),
               }}>
@@ -263,27 +272,63 @@ export default function ProductDetail() {
               )}
 
               {/* Divisor */}
-              <div style={{ height: '1px', background: 'rgba(10,10,10,0.08)', margin: '0 0 28px', ...reveal(340) }} />
+              <div style={{ height: '1px', background: 'rgba(201,168,76,0.2)', margin: '0 0 28px', ...reveal(340) }} />
 
               {/* Descripción */}
               {product.descripcion && (
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontSize: '14px', fontWeight: 300,
-                  color: 'rgba(10,10,10,0.55)', lineHeight: 1.8,
-                  margin: '0 0 32px', maxWidth: '460px',
-                  ...reveal(380),
-                }}>
-                  {product.descripcion}
-                </p>
+                <div style={{ marginBottom: '32px', position: 'relative', ...reveal(380) }}>
+                  <motion.div
+                    className="product-desc-collapsible"
+                    animate={{ height: descExpanded ? 'auto' : 72 }}
+                    initial={false}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <p style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: '14px', fontWeight: 300,
+                      color: 'rgba(250,250,248,0.8)', lineHeight: 1.7,
+                      margin: 0,
+                    }}>
+                      {product.descripcion}
+                    </p>
+                  </motion.div>
+                  <AnimatePresence>
+                    {!descExpanded && (
+                      <motion.div
+                        className="desc-fade-mask"
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        style={{
+                          position: 'absolute', bottom: 0, left: 0, right: 0,
+                          height: '2.5em',
+                          background: 'linear-gradient(transparent, #0A0A0A)',
+                          pointerEvents: 'none',
+                        }}
+                      />
+                    )}
+                  </AnimatePresence>
+                  <button
+                    className="desc-expand-btn"
+                    onClick={() => setDescExpanded(v => !v)}
+                    style={{
+                      fontFamily: "'DM Sans', sans-serif", fontSize: '13px',
+                      color: '#C9A84C', background: 'none', border: 'none',
+                      cursor: 'pointer', padding: '8px 0 0', letterSpacing: '0.04em',
+                    }}
+                  >
+                    {descExpanded ? 'Leer menos ↑' : 'Leer más ↓'}
+                  </button>
+                </div>
               )}
 
               {/* Preview notas de salida */}
               {notasPreview.length > 0 && (
                 <div style={{ marginBottom: '36px', ...reveal(420) }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-                    <div style={{ width: '24px', height: '1px', background: '#C4781A' }} />
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '9px', letterSpacing: '0.26em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.38)', margin: 0 }}>
+                    <div style={{ width: '24px', height: '1px', background: '#C9A84C' }} />
+                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C9A84C', margin: 0 }}>
                       Notas de salida
                     </p>
                   </div>
@@ -292,9 +337,9 @@ export default function ProductDetail() {
                       <span key={nota} style={{
                         fontFamily: "'DM Sans', sans-serif",
                         fontSize: '11px', fontWeight: 300,
-                        color: i === 0 ? '#C4781A' : 'rgba(10,10,10,0.50)',
-                        background: i === 0 ? 'rgba(196,120,26,0.07)' : 'rgba(10,10,10,0.04)',
-                        border: `1px solid ${i === 0 ? 'rgba(196,120,26,0.28)' : 'rgba(10,10,10,0.08)'}`,
+                        color: '#FAFAF8',
+                        background: 'rgba(250,250,248,0.08)',
+                        border: '1px solid rgba(250,250,248,0.15)',
                         padding: '5px 13px',
                         display: 'flex', alignItems: 'center', gap: '5px',
                       }}>
@@ -307,7 +352,7 @@ export default function ProductDetail() {
               )}
 
               {/* Acciones */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '420px', ...reveal(480) }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', ...reveal(480) }}>
 
                 {/* Agregar al carrito */}
                 <button
@@ -320,14 +365,12 @@ export default function ProductDetail() {
                     padding: '16px 32px', width: '100%',
                     cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
-                    border: added
-                      ? '1px solid #C9A84C'
-                      : cartHover ? '1px solid rgba(10,10,10,0.6)' : '1px solid #0A0A0A',
-                    background: added ? '#C9A84C' : cartHover ? 'rgba(10,10,10,0.88)' : '#0A0A0A',
-                    color: added ? '#0A0A0A' : '#FAFAF8',
+                    border: '1px solid #C9A84C',
+                    background: cartHover && !added ? '#E8C96A' : '#C9A84C',
+                    color: '#0A0A0A',
                     transform: cartHover && !added ? 'translateY(-2px)' : 'translateY(0)',
-                    boxShadow: cartHover && !added ? '0 8px 24px rgba(10,6,2,0.18)' : 'none',
-                    transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
+                    boxShadow: cartHover && !added ? '0 8px 24px rgba(201,168,76,0.25)' : 'none',
+                    transition: 'background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
                   }}
                 >
                   {added ? <><CheckIcon /> Agregado</> : 'Agregar al carrito'}
@@ -346,9 +389,9 @@ export default function ProductDetail() {
                     padding: '16px 32px', width: '100%',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
                     textDecoration: 'none',
-                    border: waHover ? '1px solid #25D366' : '1px solid rgba(10,10,10,0.15)',
-                    background: waHover ? 'rgba(37,211,102,0.06)' : 'transparent',
-                    color: waHover ? '#25D366' : 'rgba(10,10,10,0.55)',
+                    border: '1px solid #C9A84C',
+                    background: waHover ? '#C9A84C' : 'transparent',
+                    color: waHover ? '#0A0A0A' : '#C9A84C',
                     transform: waHover ? 'translateY(-2px)' : 'translateY(0)',
                     transition: 'border-color 0.25s ease, color 0.25s ease, background 0.25s ease, transform 0.25s ease',
                   }}
@@ -362,7 +405,7 @@ export default function ProductDetail() {
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '10px', fontWeight: 300,
-                color: 'rgba(10,10,10,0.28)', letterSpacing: '0.03em',
+                color: 'rgba(250,250,248,0.3)', letterSpacing: '0.03em',
                 margin: '18px 0 0',
                 ...reveal(540),
               }}>
@@ -377,7 +420,7 @@ export default function ProductDetail() {
 
       {/* ── Secciones oscuras ── */}
       <div style={{ background: '#161310' }}>
-        <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '80px 24px 96px' }}>
+        <div className="pd-dark-inner" style={{ maxWidth: '1152px', margin: '0 auto', padding: '80px 24px 96px' }}>
 
           {/* — 1: PIRÁMIDE — */}
           {(product.notasSalida || product.notasCorazon || product.notasFondo) && (<>
@@ -445,7 +488,7 @@ export default function ProductDetail() {
             <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:'clamp(26px,3vw,34px)', fontWeight:400, fontStyle:'italic', color:'#F7F2EA', letterSpacing:'-0.01em', margin:'0 0 40px' }}>
               Acordes principales
             </h2>
-            <div style={{ display:'flex', flexDirection:'column', gap:'20px', maxWidth:'520px' }}>
+            <div style={{ display:'flex', flexDirection:'column', gap:'20px' }}>
               {(ACORDES_POR_FAMILIA[product.familia] || ACORDES_POR_FAMILIA['Oriental']).map(([nombre, pct]) => {
                 const color = ACORDE_COLOR[nombre] || '#C9A84C'
                 return (

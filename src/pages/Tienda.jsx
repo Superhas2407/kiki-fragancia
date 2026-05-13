@@ -1,29 +1,24 @@
-import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useMemo, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { products } from '../data/products-enriched'
-import { useCartContext } from '../context/CartContext'
+import ProductCard from '../components/ProductCard'
+import WheelPagination from '../components/ui/WheelPagination'
 
-// ─── Constantes de filtro ──────────────────────────────────────────────────────
-const MARCAS    = [...new Set(products.map(p => p.house))].sort()
-const FAMILIAS  = [...new Set(products.map(p => p.familia))].sort()
-const TIPOS     = [...new Set(products.map(p => p.tipo))].sort()
-const GENEROS   = ['Masculino', 'Femenino', 'Unisex']
+const ITEMS_PER_PAGE = 24
+
+const MARCAS   = [...new Set(products.map(p => p.house))].sort()
+const FAMILIAS = [...new Set(products.map(p => p.familia))].sort()
+const TIPOS    = [...new Set(products.map(p => p.tipo))].sort()
+const GENEROS  = ['Masculino', 'Femenino', 'Unisex']
 
 const SORT_OPTIONS = [
-  { label: 'Destacados',    key: 'featured'   },
-  { label: 'Menor precio',  key: 'price-asc'  },
-  { label: 'Mayor precio',  key: 'price-desc' },
-  { label: 'Nombre A – Z', key: 'name'        },
+  { label: 'Destacados',   key: 'featured'   },
+  { label: 'Menor precio', key: 'price-asc'  },
+  { label: 'Mayor precio', key: 'price-desc' },
+  { label: 'Nombre A – Z', key: 'name'       },
 ]
-
-// ─── Íconos ───────────────────────────────────────────────────────────────────
-const CheckIcon = () => (
-  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-)
 
 const FilterIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -43,7 +38,6 @@ const CloseIcon = () => (
   </svg>
 )
 
-// ─── Checkbox custom gold ──────────────────────────────────────────────────────
 function GoldCheckbox({ label, checked, onToggle, count }) {
   return (
     <button
@@ -54,11 +48,10 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
         padding: '6px 0', width: '100%', textAlign: 'left',
       }}
     >
-      {/* Caja */}
       <span style={{
         width: '15px', height: '15px', flexShrink: 0,
-        border: checked ? '1px solid #C4781A' : '1px solid rgba(10,10,10,0.18)',
-        background: checked ? '#C4781A' : 'transparent',
+        border: checked ? '1px solid #C9A84C' : '1px solid rgba(250,250,248,0.2)',
+        background: checked ? '#C9A84C' : 'transparent',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.18s ease, border-color 0.18s ease',
       }}>
@@ -68,26 +61,19 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
           </svg>
         )}
       </span>
-
-      {/* Label */}
       <span style={{
-        fontFamily: "'DM Sans', sans-serif",
-        fontSize: '12px',
+        fontFamily: "'DM Sans', sans-serif", fontSize: '12px',
         fontWeight: checked ? 400 : 300,
-        color: checked ? '#0A0A0A' : 'rgba(10,10,10,0.55)',
-        letterSpacing: '0.03em',
-        flex: 1,
+        color: checked ? '#FAFAF8' : 'rgba(250,250,248,0.5)',
+        letterSpacing: '0.03em', flex: 1,
         transition: 'color 0.18s ease',
       }}>
         {label}
       </span>
-
-      {/* Conteo */}
       {count !== undefined && (
         <span style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '10px',
-          color: checked ? '#C4781A' : 'rgba(10,10,10,0.25)',
+          fontFamily: "'DM Sans', sans-serif", fontSize: '10px',
+          color: checked ? '#C9A84C' : 'rgba(250,250,248,0.22)',
           transition: 'color 0.18s ease',
         }}>
           {count}
@@ -97,33 +83,25 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
   )
 }
 
-// ─── Sección de filtro con línea decorativa ────────────────────────────────────
 function FilterSection({ title, children }) {
   return (
-    <div style={{ paddingTop: '24px', marginTop: '24px', borderTop: '1px solid rgba(10,10,10,0.07)' }}>
-      {/* Encabezado con línea gold */}
+    <div style={{ paddingTop: '24px', marginTop: '24px', borderTop: '1px solid rgba(250,250,248,0.07)' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-        <span style={{ width: '18px', height: '1px', background: '#C4781A', flexShrink: 0 }} />
+        <span style={{ width: '18px', height: '1px', background: '#C9A84C', flexShrink: 0 }} />
         <span style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '9px',
-          letterSpacing: '0.28em',
-          textTransform: 'uppercase',
-          color: 'rgba(10,10,10,0.4)',
+          fontFamily: "'DM Sans', sans-serif", fontSize: '9px',
+          letterSpacing: '0.28em', textTransform: 'uppercase',
+          color: '#C9A84C',
         }}>
           {title}
         </span>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {children}
-      </div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>{children}</div>
     </div>
   )
 }
 
-// ─── Panel de filtros completo ─────────────────────────────────────────────────
 function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, selectedGeneros, toggleGenero, hasFilters, clearFilters, allProducts }) {
-
   function countFor(field, value) {
     return allProducts.filter(p => p[field] === value).length
   }
@@ -141,16 +119,16 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
       >
         <span style={{
           width: '15px', height: '15px', flexShrink: 0,
-          border: active ? '1px solid #C4781A' : '1px solid rgba(10,10,10,0.18)',
+          border: active ? '1px solid #C9A84C' : '1px solid rgba(250,250,248,0.2)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'border-color 0.18s ease',
         }}>
-          {active && <span style={{ width: '6px', height: '6px', background: '#C4781A' }} />}
+          {active && <span style={{ width: '6px', height: '6px', background: '#C9A84C' }} />}
         </span>
         <span style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '12px', fontWeight: active ? 400 : 300,
-          color: active ? '#0A0A0A' : 'rgba(10,10,10,0.55)',
+          fontFamily: "'DM Sans', sans-serif", fontSize: '12px',
+          fontWeight: active ? 400 : 300,
+          color: active ? '#FAFAF8' : 'rgba(250,250,248,0.5)',
           transition: 'color 0.18s ease',
         }}>
           {label}
@@ -161,284 +139,78 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
 
   return (
     <div>
-      {/* Cabecera */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '24px' }}>
-        <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '22px', fontWeight: 400, color: '#0A0A0A', fontStyle: 'italic', margin: 0 }}>
+        <h2 style={{
+          fontFamily: "'Cormorant Garamond', serif", fontSize: '22px',
+          fontWeight: 400, color: '#FAFAF8', fontStyle: 'italic', margin: 0,
+        }}>
           Filtrar
         </h2>
         {hasFilters && (
           <button onClick={clearFilters} style={{
             fontFamily: "'DM Sans', sans-serif", fontSize: '9px',
             letterSpacing: '0.15em', textTransform: 'uppercase',
-            color: '#C4781A', background: 'none', border: 'none',
-            cursor: 'pointer', padding: 0,
+            color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer', padding: 0,
           }}>
             Limpiar todo
           </button>
         )}
       </div>
 
-      {/* Ordenar */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-          <span style={{ width: '18px', height: '1px', background: '#C4781A' }} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '9px', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(10,10,10,0.4)' }}>
+          <span style={{ width: '18px', height: '1px', background: '#C9A84C' }} />
+          <span style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: '9px',
+            letterSpacing: '0.28em', textTransform: 'uppercase',
+            color: '#C9A84C',
+          }}>
             Ordenar
           </span>
         </div>
         {SORT_OPTIONS.map(opt => <RadioItem key={opt.key} label={opt.label} value={opt.key} />)}
       </div>
 
-      {/* Marca */}
       <FilterSection title="Marca">
         {MARCAS.map(m => (
-          <GoldCheckbox
-            key={m} label={m}
-            checked={selectedMarcas.includes(m)}
-            onToggle={() => toggleMarca(m)}
-            count={countFor('house', m)}
-          />
+          <GoldCheckbox key={m} label={m} checked={selectedMarcas.includes(m)} onToggle={() => toggleMarca(m)} count={countFor('house', m)} />
         ))}
       </FilterSection>
 
-      {/* Familia Olfativa */}
       <FilterSection title="Familia Olfativa">
         {FAMILIAS.map(f => (
-          <GoldCheckbox
-            key={f} label={f}
-            checked={selectedFamilias.includes(f)}
-            onToggle={() => toggleFamilia(f)}
-            count={countFor('familia', f)}
-          />
+          <GoldCheckbox key={f} label={f} checked={selectedFamilias.includes(f)} onToggle={() => toggleFamilia(f)} count={countFor('familia', f)} />
         ))}
       </FilterSection>
 
-      {/* Tipo */}
       <FilterSection title="Tipo">
         {TIPOS.map(t => (
-          <GoldCheckbox
-            key={t} label={t}
-            checked={selectedTipos.includes(t)}
-            onToggle={() => toggleTipo(t)}
-            count={countFor('tipo', t)}
-          />
+          <GoldCheckbox key={t} label={t} checked={selectedTipos.includes(t)} onToggle={() => toggleTipo(t)} count={countFor('tipo', t)} />
         ))}
       </FilterSection>
 
-      {/* Género */}
       <FilterSection title="Género">
         {GENEROS.map(g => (
-          <GoldCheckbox
-            key={g} label={g}
-            checked={selectedGeneros.includes(g)}
-            onToggle={() => toggleGenero(g)}
-            count={countFor('genero', g)}
-          />
+          <GoldCheckbox key={g} label={g} checked={selectedGeneros.includes(g)} onToggle={() => toggleGenero(g)} count={countFor('genero', g)} />
         ))}
       </FilterSection>
     </div>
   )
 }
 
-// ─── Fila de producto editorial ────────────────────────────────────────────────
-function ProductCard({ product, index }) {
-  const { items, addItem, updateQuantity } = useCartContext()
-  const [added, setAdded] = useState(false)
-  const [hovered, setHovered] = useState(false)
-  const cartItem = items.find(i => i.id === product.id)
-
-  function handleAdd() {
-    addItem(product)
-    setAdded(true)
-    setTimeout(() => setAdded(false), 1500)
-  }
-
-  return (
-    <article
-      className="product-card"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: 'flex',
-        gap: '28px',
-        padding: '20px 0',
-        borderBottom: '1px solid rgba(10,10,10,0.07)',
-        alignItems: 'stretch',
-        transition: 'opacity 0.2s ease',
-      }}
-    >
-      {/* ── Foto ── */}
-      <div className="product-card-img-wrap" style={{ width: '200px', height: '180px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
-        <img
-          src={`/products/${product.image}`}
-          alt={`${product.house} ${product.name}`}
-          style={{
-            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
-            transform: hovered ? 'scale(1.05)' : 'scale(1)',
-            transition: 'transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94)',
-          }}
-        />
-        {/* Overlay sutil en hover */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(10,10,10,0.08)',
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 0.4s ease',
-          pointerEvents: 'none',
-        }} />
-      </div>
-
-      {/* ── Info ── */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingTop: '4px' }}>
-
-        {/* Número + metadatos */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '8px' }}>
-          <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: '13px', color: 'rgba(10,10,10,0.2)',
-            fontStyle: 'italic', fontWeight: 400, flexShrink: 0,
-          }}>
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          <span style={{ height: '1px', background: 'rgba(10,10,10,0.08)', flex: 1 }} />
-          <p
-            className="product-card-meta"
-            style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '9px', letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'rgba(10,10,10,0.35)', whiteSpace: 'nowrap',
-            }}
-          >
-            {product.familia}&nbsp;·&nbsp;{product.tipo}
-          </p>
-        </div>
-
-        {/* Casa */}
-        <p style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase',
-          color: 'rgba(10,10,10,0.4)', marginBottom: '6px',
-        }}>
-          {product.house}
-        </p>
-
-        {/* Nombre — protagonista */}
-        <h2 style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 'clamp(28px, 2.8vw, 38px)',
-          fontWeight: 400, fontStyle: 'italic',
-          color: '#0A0A0A',
-          letterSpacing: '-0.03em',
-          lineHeight: 1.05,
-          margin: 0,
-        }}>
-          {product.name}
-        </h2>
-
-        {/* Precio */}
-        {product.price && (
-          <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: '28px', fontWeight: 400,
-            color: '#C4781A', letterSpacing: '-0.02em', lineHeight: 1,
-            marginTop: '6px',
-          }}>
-            {product.price}
-          </span>
-        )}
-
-        {/* Ver detalles */}
-        <Link
-          to={`/tienda/${product.id}`}
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase',
-            color: 'rgba(10,10,10,0.35)', textDecoration: 'none',
-            display: 'inline-flex', alignItems: 'center', gap: '4px',
-            marginTop: '10px', alignSelf: 'flex-start',
-            transition: 'color 0.2s ease',
-          }}
-          onMouseEnter={e => e.currentTarget.style.color = '#C4781A'}
-          onMouseLeave={e => e.currentTarget.style.color = 'rgba(10,10,10,0.35)'}
-        >
-          Ver detalles →
-        </Link>
-
-        <div style={{ flex: 1 }} />
-
-        {/* ── Pie: acciones ── */}
-        <div className="product-card-actions-row" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
-          borderTop: '1px solid rgba(10,10,10,0.07)',
-          paddingTop: '14px', marginTop: '14px',
-          gap: '16px', flexWrap: 'wrap',
-        }}>
-          {/* Acciones */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-
-            {/* Selector cantidad (solo si está en carrito) */}
-            {cartItem && (
-              <div style={{
-                display: 'flex', alignItems: 'center',
-                border: '1px solid rgba(10,10,10,0.15)',
-              }}>
-                <button
-                  onClick={() => updateQuantity(product.id, cartItem.quantity - 1)}
-                  style={{ width: '32px', height: '36px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '17px', color: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                >−</button>
-                <span style={{
-                  width: '36px', textAlign: 'center',
-                  fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: '#0A0A0A',
-                  borderLeft: '1px solid rgba(10,10,10,0.1)', borderRight: '1px solid rgba(10,10,10,0.1)',
-                  lineHeight: '36px',
-                }}>
-                  {cartItem.quantity}
-                </span>
-                <button
-                  onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
-                  style={{ width: '32px', height: '36px', background: 'none', border: 'none', cursor: 'pointer', fontSize: '17px', color: '#0A0A0A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                >+</button>
-              </div>
-            )}
-
-            {/* Botón agregar */}
-            <button
-              className="product-card-add-btn"
-              onClick={handleAdd}
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '10px', letterSpacing: '0.18em', textTransform: 'uppercase',
-                padding: '12px 28px',
-                border: added ? '1px solid #C4781A' : '1px solid #0A0A0A',
-                background: added ? '#C4781A' : 'transparent',
-                color: added ? '#0A0A0A' : '#0A0A0A',
-                cursor: 'pointer',
-                display: 'flex', alignItems: 'center', gap: '8px',
-                transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease',
-                whiteSpace: 'nowrap',
-              }}
-              onMouseEnter={e => { if (!added) { e.currentTarget.style.background = '#0A0A0A'; e.currentTarget.style.color = '#FAFAF8' }}}
-              onMouseLeave={e => { if (!added) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#0A0A0A' }}}
-            >
-              {added ? <><CheckIcon /> Agregado</> : 'Agregar al carrito'}
-            </button>
-          </div>
-        </div>
-      </div>
-    </article>
-  )
-}
-
-// ─── Página principal ──────────────────────────────────────────────────────────
 export default function Tienda() {
-  const [sortBy, setSortBy]                   = useState('featured')
-  const [selectedMarcas, setSelectedMarcas]   = useState([])
-  const [selectedFamilias, setSelectedFamilias] = useState([])
-  const [selectedTipos, setSelectedTipos]       = useState([])
-  const [selectedGeneros, setSelectedGeneros]   = useState([])
+  const [sortBy, setSortBy]                       = useState('featured')
+  const [selectedMarcas, setSelectedMarcas]       = useState([])
+  const [selectedFamilias, setSelectedFamilias]   = useState([])
+  const [selectedTipos, setSelectedTipos]         = useState([])
+  const [selectedGeneros, setSelectedGeneros]     = useState([])
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [filterBtnHover, setFilterBtnHover] = useState(false)
+  const [searchQuery, setSearchQuery]             = useState('')
+  const [filterBtnHover, setFilterBtnHover]       = useState(false)
+  const [currentPage, setCurrentPage]             = useState(1)
+  const [searchFocused, setSearchFocused]         = useState(false)
+  const topRef = useRef(null)
+  const filterMountRef = useRef(true)
 
   const toggleMarca   = v => setSelectedMarcas(p   => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleFamilia = v => setSelectedFamilias(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
@@ -447,7 +219,6 @@ export default function Tienda() {
 
   const hasFilters   = selectedMarcas.length > 0 || selectedFamilias.length > 0 || selectedTipos.length > 0 || selectedGeneros.length > 0 || sortBy !== 'featured' || searchQuery.trim() !== ''
   const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedFamilias([]); setSelectedTipos([]); setSelectedGeneros([]); setSearchQuery('') }
-
   const activeFilterCount = selectedMarcas.length + selectedFamilias.length + selectedTipos.length + selectedGeneros.length + (sortBy !== 'featured' ? 1 : 0)
 
   const filtered = useMemo(() => {
@@ -464,11 +235,29 @@ export default function Tienda() {
     if (selectedFamilias.length) result = result.filter(p => selectedFamilias.includes(p.familia))
     if (selectedTipos.length)    result = result.filter(p => selectedTipos.includes(p.tipo))
     if (selectedGeneros.length)  result = result.filter(p => selectedGeneros.includes(p.genero))
-    if (sortBy === 'price-asc')  result.sort((a,b) => parseFloat((a.price||'$0').replace('$','')) - parseFloat((b.price||'$0').replace('$','')))
-    if (sortBy === 'price-desc') result.sort((a,b) => parseFloat((b.price||'$0').replace('$','')) - parseFloat((a.price||'$0').replace('$','')))
-    if (sortBy === 'name')       result.sort((a,b) => a.name.localeCompare(b.name))
+    if (sortBy === 'price-asc')  result.sort((a, b) => parseFloat((a.price || '$0').replace('$', '')) - parseFloat((b.price || '$0').replace('$', '')))
+    if (sortBy === 'price-desc') result.sort((a, b) => parseFloat((b.price || '$0').replace('$', '')) - parseFloat((a.price || '$0').replace('$', '')))
+    if (sortBy === 'name')       result.sort((a, b) => a.name.localeCompare(b.name))
     return result
   }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos, selectedGeneros, searchQuery])
+
+  useEffect(() => {
+    if (filterMountRef.current) { filterMountRef.current = false; return }
+    setCurrentPage(1)
+    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos, selectedGeneros, searchQuery])
+
+  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE)
+
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE
+    return filtered.slice(start, start + ITEMS_PER_PAGE)
+  }, [filtered, currentPage])
+
+  function handlePageChange(page) {
+    setCurrentPage(page)
+    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedFamilias, toggleFamilia, selectedTipos, toggleTipo, selectedGeneros, toggleGenero, hasFilters, clearFilters, allProducts: products }
 
@@ -476,41 +265,62 @@ export default function Tienda() {
     <>
       <Header />
 
-      <div style={{ background: '#EDE5D8', minHeight: 'calc(100dvh - 64px)', paddingTop: '64px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'flex-start' }}>
+      <div style={{ background: '#0A0A0A', minHeight: '100dvh', paddingTop: '76px' }}>
+        <div className="tienda-layout" style={{ maxWidth: '1440px', margin: '0 auto' }}>
 
-          {/* ── Sidebar desktop (≥ 768px) ── */}
-          <aside
-            className="hidden md:block filter-sidebar"
+          {/* ── Sidebar desktop (≥ 1280px) ── */}
+          <motion.aside
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="tienda-sidebar filter-sidebar"
             style={{
-              width: '260px',
-              flexShrink: 0,
               position: 'sticky',
-              top: '80px',
-              height: 'calc(100vh - 100px)',
+              top: '76px',
+              height: 'calc(100vh - 76px)',
               overflowY: 'auto',
-              borderRight: '1px solid rgba(10,10,10,0.08)',
+              borderRight: '1px solid rgba(201,168,76,0.1)',
               padding: '40px 28px',
+              background: '#0A0A0A',
             }}
           >
             <FilterPanel {...filterProps} />
-          </aside>
+          </motion.aside>
 
           {/* ── Columna de productos ── */}
-          <div className="tienda-products" style={{ flex: 1, padding: '40px 32px 80px' }}>
+          <div ref={topRef} style={{ minWidth: 0 }}>
 
-            {/* Barra superior */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-              <div>
-                <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 400, color: '#0A0A0A', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            {/* Barra superior: título + botón filtros */}
+            <div
+              className="tienda-pad"
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                paddingTop: '32px', paddingBottom: '0', marginBottom: '20px',
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <h1 style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                  fontWeight: 400, color: '#FAFAF8',
+                  letterSpacing: '-0.02em', lineHeight: 1.08,
+                  fontStyle: 'italic', margin: 0,
+                }}>
                   Fragancias
                 </h1>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '12px', color: 'rgba(10,10,10,0.4)', marginTop: '6px', letterSpacing: '0.05em' }}>
+                <p style={{
+                  fontFamily: "'DM Sans', sans-serif", fontSize: '12px',
+                  color: '#C9A84C', marginTop: '6px', letterSpacing: '0.05em',
+                }}>
                   {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
                 </p>
-              </div>
+              </motion.div>
 
-              {/* Botón filtros mobile */}
+              {/* Botón filtros — visible en < 1280px */}
               <button
                 className="filter-toggle-btn"
                 onClick={() => setMobileFiltersOpen(true)}
@@ -522,8 +332,7 @@ export default function Tienda() {
                   background: filterBtnHover ? '#C9A84C' : 'transparent',
                   color: filterBtnHover ? '#0A0A0A' : '#C9A84C',
                   border: '1px solid #C9A84C',
-                  cursor: 'pointer',
-                  padding: '9px 16px',
+                  cursor: 'pointer', padding: '9px 16px',
                   transition: 'background 0.2s ease, color 0.2s ease',
                   whiteSpace: 'nowrap',
                 }}
@@ -534,8 +343,7 @@ export default function Tienda() {
                   <span style={{
                     background: filterBtnHover ? '#0A0A0A' : '#C9A84C',
                     color: filterBtnHover ? '#C9A84C' : '#0A0A0A',
-                    fontSize: '10px', fontWeight: 600,
-                    padding: '1px 6px', marginLeft: '6px',
+                    fontSize: '10px', fontWeight: 600, padding: '1px 6px', marginLeft: '6px',
                     transition: 'background 0.2s ease, color 0.2s ease',
                   }}>
                     {activeFilterCount}
@@ -545,15 +353,26 @@ export default function Tienda() {
             </div>
 
             {/* Buscador */}
-            <div style={{ marginBottom: '24px', width: '100%' }}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="tienda-pad"
+              style={{ marginBottom: '28px' }}
+            >
               <div style={{
                 display: 'flex', alignItems: 'center',
-                width: '100%',
-                border: '1px solid rgba(10,10,10,0.12)',
-                background: '#FFFFFF',
+                border: `1px solid ${searchFocused ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
+                borderRadius: '2px',
+                background: '#1a1a1a',
                 padding: '0 16px', gap: '12px',
+                transition: 'border-color 0.2s ease',
               }}>
-                <span style={{ color: 'rgba(10,10,10,0.3)', display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                <span style={{
+                  color: searchFocused ? '#C9A84C' : 'rgba(250,250,248,0.3)',
+                  display: 'flex', alignItems: 'center', flexShrink: 0,
+                  transition: 'color 0.2s ease',
+                }}>
                   <SearchIcon />
                 </span>
                 <input
@@ -561,12 +380,12 @@ export default function Tienda() {
                   placeholder="Buscar por nombre, marca o familia..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
+                  onFocus={() => setSearchFocused(true)}
+                  onBlur={() => setSearchFocused(false)}
                   style={{
                     flex: 1,
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '13px', fontWeight: 300,
-                    color: '#0A0A0A',
-                    background: 'none', border: 'none', outline: 'none',
+                    fontFamily: "'DM Sans', sans-serif", fontSize: '13px', fontWeight: 300,
+                    color: '#FAFAF8', background: 'none', border: 'none', outline: 'none',
                     padding: '12px 0', letterSpacing: '0.02em',
                   }}
                 />
@@ -574,117 +393,155 @@ export default function Tienda() {
                   <button
                     onClick={() => setSearchQuery('')}
                     aria-label="Limpiar búsqueda"
-                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(10,10,10,0.35)', display: 'flex', alignItems: 'center', padding: '4px', flexShrink: 0 }}
+                    style={{
+                      background: 'none', border: 'none', cursor: 'pointer',
+                      color: 'rgba(250,250,248,0.35)', display: 'flex',
+                      alignItems: 'center', padding: '4px', flexShrink: 0,
+                    }}
                   >
                     <CloseIcon />
                   </button>
                 )}
               </div>
-            </div>
+            </motion.div>
 
             {/* Lista de productos */}
-            {filtered.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '80px 0' }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '24px', color: 'rgba(10,10,10,0.3)', fontStyle: 'italic' }}>
-                  Sin resultados para esos filtros
-                </p>
-                <button
-                  onClick={clearFilters}
-                  style={{ marginTop: '20px', fontFamily: "'DM Sans', sans-serif", fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C4781A', background: 'none', border: 'none', cursor: 'pointer' }}
-                >
-                  Limpiar filtros →
-                </button>
-              </div>
-            ) : (
-              <div style={{ borderTop: '1px solid rgba(10,10,10,0.07)' }}>
-                {filtered.map((product, i) => (
-                  <ProductCard key={product.id} product={product} index={i} />
-                ))}
-              </div>
-            )}
+            <div className="tienda-pad" style={{ paddingBottom: '80px' }}>
+              {filtered.length === 0 ? (
+                <div style={{ textAlign: 'center', padding: '80px 0' }}>
+                  <p style={{
+                    fontFamily: "'Cormorant Garamond', serif", fontSize: '24px',
+                    color: 'rgba(250,250,248,0.3)', fontStyle: 'italic',
+                  }}>
+                    Sin resultados para esos filtros
+                  </p>
+                  <button
+                    onClick={clearFilters}
+                    style={{
+                      marginTop: '20px', fontFamily: "'DM Sans', sans-serif",
+                      fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
+                      color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer',
+                    }}
+                  >
+                    Limpiar filtros →
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <motion.div layout className="tienda-product-grid">
+                    <AnimatePresence mode="popLayout">
+                      {paginatedProducts.map((product, index) => (
+                        <motion.div
+                          key={product.id}
+                          layout
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          transition={{ duration: 0.28, delay: Math.min(index * 0.05, 0.35) }}
+                        >
+                          <ProductCard product={product} />
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
+
+                  <WheelPagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
+                  />
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ── Backdrop mobile ── */}
-      <div
-        className="mobile-filter-backdrop"
-        onClick={() => setMobileFiltersOpen(false)}
-        style={{
-          position: 'fixed', inset: 0,
-          background: 'rgba(0,0,0,0.45)',
-          zIndex: 99,
-          opacity: mobileFiltersOpen ? 1 : 0,
-          pointerEvents: mobileFiltersOpen ? 'auto' : 'none',
-          transition: 'opacity 0.3s ease',
-        }}
-      />
-
-      {/* ── Drawer desde la izquierda ── */}
-      <div
-        className="mobile-filter-drawer"
-        style={{
-          position: 'fixed',
-          top: 0, left: 0, bottom: 0,
-          width: '290px',
-          maxWidth: '85vw',
-          background: '#FAFAF8',
-          zIndex: 100,
-          flexDirection: 'column',
-          transform: mobileFiltersOpen ? 'translateX(0)' : 'translateX(-100%)',
-          transition: 'transform 0.35s cubic-bezier(0.22,1,0.36,1)',
-        }}
-      >
-        {/* Header del drawer */}
-        <div style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '0 20px', height: '60px',
-          borderBottom: '1px solid rgba(10,10,10,0.08)',
-          flexShrink: 0,
-        }}>
-          <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: '22px', fontStyle: 'italic',
-            color: '#0A0A0A', fontWeight: 400,
-          }}>
-            Filtros
-          </span>
-          <button
-            onClick={() => setMobileFiltersOpen(false)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(10,10,10,0.5)', padding: '4px', display: 'flex', alignItems: 'center' }}
-            aria-label="Cerrar filtros"
-          >
-            <CloseIcon />
-          </button>
-        </div>
-
-        {/* Contenido scrollable */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '0 20px 20px' }}>
-          <FilterPanel {...filterProps} />
-        </div>
-
-        {/* Botón aplicar */}
-        <div style={{ padding: '16px 20px', borderTop: '1px solid rgba(10,10,10,0.08)', flexShrink: 0 }}>
-          <button
+      {/* ── Backdrop ── */}
+      <AnimatePresence>
+        {mobileFiltersOpen && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
             onClick={() => setMobileFiltersOpen(false)}
             style={{
-              width: '100%',
-              background: '#C9A84C',
-              color: '#0A0A0A',
-              border: 'none',
-              padding: '14px',
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '11px',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              fontWeight: 500,
-              cursor: 'pointer',
+              position: 'fixed', inset: 0,
+              background: 'rgba(0,0,0,0.6)',
+              zIndex: 99,
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ── Drawer desde la izquierda ── */}
+      <AnimatePresence>
+        {mobileFiltersOpen && (
+          <motion.div
+            key="drawer"
+            initial={{ x: '-100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+            style={{
+              position: 'fixed',
+              top: 0, left: 0, bottom: 0,
+              width: '290px', maxWidth: '85vw',
+              background: '#0A0A0A',
+              zIndex: 100,
+              display: 'flex', flexDirection: 'column',
             }}
           >
-            Aplicar filtros
-          </button>
-        </div>
-      </div>
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '0 20px', height: '60px',
+              borderBottom: '1px solid rgba(250,250,248,0.07)',
+              flexShrink: 0,
+            }}>
+              <span style={{
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '22px', fontStyle: 'italic', color: '#FAFAF8', fontWeight: 400,
+              }}>
+                Filtros
+              </span>
+              <button
+                onClick={() => setMobileFiltersOpen(false)}
+                style={{
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  color: 'rgba(250,250,248,0.45)', padding: '4px', display: 'flex', alignItems: 'center',
+                }}
+                aria-label="Cerrar filtros"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+
+            <div style={{ flex: 1, overflowY: 'auto', padding: '0 20px 20px' }}>
+              <FilterPanel {...filterProps} />
+            </div>
+
+            <div style={{
+              padding: '16px 20px',
+              borderTop: '1px solid rgba(250,250,248,0.07)',
+              flexShrink: 0,
+            }}>
+              <button
+                onClick={() => setMobileFiltersOpen(false)}
+                style={{
+                  width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
+                  padding: '14px', fontFamily: "'DM Sans', sans-serif",
+                  fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase',
+                  fontWeight: 500, cursor: 'pointer',
+                }}
+              >
+                Aplicar filtros
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </>

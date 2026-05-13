@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const NAV_LINKS = [
   { label: 'Colección', type: 'route',    to: '/tienda' },
@@ -22,7 +22,7 @@ const InstagramIcon = ({ size = 15 }) => (
   </svg>
 )
 
-function NavItem({ link, handleAnchor }) {
+function NavItem({ link }) {
   const [hovered, setHovered] = useState(false)
   const base = {
     fontFamily: "'DM Sans', sans-serif",
@@ -41,26 +41,14 @@ function NavItem({ link, handleAnchor }) {
   }
   if (link.type === 'route')    return <Link to={link.to} style={base} {...events}>{link.label}</Link>
   if (link.type === 'external') return <a href={link.to} target="_blank" rel="noopener noreferrer" style={base} {...events}>{link.label}</a>
-  return <a href={`#${link.id}`} onClick={handleAnchor(link.id)} style={base} {...events}>{link.label}</a>
+  return <Link to={`/#${link.id}`} style={base} {...events}>{link.label}</Link>
 }
 
 export default function Footer() {
-  const navigate  = useNavigate()
-  const location  = useLocation()
   const [waHover, setWaHover] = useState(false)
 
-  const handleAnchor = (id) => (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate('/')
-      setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }), 120)
-    }
-  }
-
   return (
-    <footer id="contacto" style={{ background: '#110E08', position: 'relative', overflow: 'hidden' }}>
+    <footer id="contacto" style={{ background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
 
       {/* Línea de entrada dorada */}
       <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent 100%)' }} />
@@ -102,7 +90,7 @@ export default function Footer() {
               color: 'rgba(247,242,234,0.45)', lineHeight: 1.65,
               maxWidth: '240px', margin: 0,
             }}>
-              Oler bien deja gratos recuerdos, con KiKi Fragancia nunca te olvidarán.
+              Oler bien deja gratos recuerdos, y con KiKi Fragancia nunca te olvidarán.
             </p>
 
             <p style={{
@@ -145,7 +133,7 @@ export default function Footer() {
               Navegación
             </p>
             {NAV_LINKS.map(link => (
-              <NavItem key={link.label} link={link} handleAnchor={handleAnchor} />
+              <NavItem key={link.label} link={link} />
             ))}
           </div>
 
@@ -210,14 +198,14 @@ export default function Footer() {
               onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,242,234,0.35)'}
             >
               <InstagramIcon />
-              @kiki_fragancia · 33k seguidores
+              @kiki_fragancia · 110k seguidores
             </a>
           </div>
 
         </div>
 
         {/* Divisor */}
-        <div style={{ height: '1px', background: 'rgba(247,242,234,0.07)', marginBottom: '28px' }} />
+        <div style={{ height: '1px', background: 'rgba(201,168,76,0.15)', marginBottom: '28px' }} />
 
         {/* Pie */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
