@@ -735,7 +735,7 @@
 .card-cta { padding: 0 14px 14px; }
 .card-btn {
   width: 100%; font-family: var(--font-s); font-size: 10px;
-  letter-spacing: 0.15em; text-transform: uppercase; padding: 10px 0;
+  letter-spacing: 0.15em; text-transform: uppercase; padding: 14px 0;
   background: transparent; border: 1px solid var(--gold); color: var(--gold);
   cursor: pointer; transition: background .2s ease, color .2s ease;
 }
