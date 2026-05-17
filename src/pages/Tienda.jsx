@@ -345,7 +345,7 @@ export default function Tienda() {
                   background: filterBtnHover ? '#C9A84C' : 'transparent',
                   color: filterBtnHover ? '#0A0A0A' : '#C9A84C',
                   border: '1px solid #C9A84C',
-                  cursor: 'pointer', padding: '9px 16px',
+                  cursor: 'pointer', padding: '12px 16px',
                   transition: 'background 0.2s ease, color 0.2s ease',
                   whiteSpace: 'nowrap',
                 }}
