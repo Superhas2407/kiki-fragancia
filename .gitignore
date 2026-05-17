@@ -27,3 +27,4 @@ dist-ssr
 .env
 CONTEXT.md
 kiki-para-claude-design.txt
+.gstack/
