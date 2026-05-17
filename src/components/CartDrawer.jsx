@@ -18,17 +18,19 @@ const TrashIcon = () => (
   </svg>
 )
 
-function buildMessage(items, totalPrice) {
+function buildMessage(items) {
   const lines = items.map(item => {
     const unit = parseFloat((item.price || '$0').replace('$', '')) || 0
     const lineTotal = unit > 0 ? ` — $${unit * item.quantity}` : ''
     return `- ${item.house} ${item.name} x${item.quantity}${lineTotal}`
   })
+  const hasPrice = items.some(item => parseFloat((item.price || '$0').replace('$', '')) > 0)
+  const totalLine = hasPrice ? `\nTotal: $${items.reduce((acc, item) => acc + (parseFloat((item.price || '$0').replace('$', '')) || 0) * item.quantity, 0)}\n` : ''
   return (
-    `Hola KiKi Fragancia, me interesa hacer el siguiente pedido:\n\n` +
-    `${lines.join('\n')}\n\n` +
-    `Total: $${totalPrice}\n\n` +
-    `¿Está disponible?`
+    `Hola KiKi Fragancia, me interesa consultar las siguientes fragancias:\n\n` +
+    `${lines.join('\n')}\n` +
+    totalLine +
+    `\n¿Están disponibles?`
   )
 }
 
@@ -36,7 +38,7 @@ export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
 
   function handleWhatsApp() {
-    const message = buildMessage(items, totalPrice)
+    const message = buildMessage(items)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
     window.open(url, '_blank', 'noopener,noreferrer')
   }
@@ -202,20 +204,22 @@ export default function CartDrawer() {
         {/* Footer del drawer */}
         {items.length > 0 && (
           <div style={{ padding: '20px 24px', borderTop: '1px solid rgba(232,228,220,0.1)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-                Subtotal
-              </span>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '26px', color: '#C4781A', fontWeight: 400 }}>
-                ${totalPrice}
-              </span>
-            </div>
+            {totalPrice > 0 && (
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                  Subtotal
+                </span>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 400 }}>
+                  ${totalPrice}
+                </span>
+              </div>
+            )}
             <button
               onClick={handleWhatsApp}
               style={{
-                background: '#C4781A',
+                background: 'var(--gold)',
                 border: 'none',
-                color: '#1A1208',
+                color: '#0A0A0A',
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: '11px',
                 fontWeight: 500,
@@ -229,10 +233,10 @@ export default function CartDrawer() {
               onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
               onMouseLeave={e => e.currentTarget.style.opacity = '1'}
             >
-              Finalizar por WhatsApp →
+              Consultar por WhatsApp →
             </button>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '10px', color: 'rgba(250,250,248,0.2)', textAlign: 'center', letterSpacing: '0.05em' }}>
-              Te responderemos para confirmar disponibilidad
+              Te responderemos para confirmar disponibilidad y precios
             </p>
           </div>
         )}

@@ -15,10 +15,9 @@ const TIPOS    = [...new Set(products.map(p => p.tipo))].sort()
 const GENEROS  = ['Masculino', 'Femenino', 'Unisex']
 
 const SORT_OPTIONS = [
-  { label: 'Destacados',   key: 'featured'   },
-  { label: 'Menor precio', key: 'price-asc'  },
-  { label: 'Mayor precio', key: 'price-desc' },
-  { label: 'Nombre A – Z', key: 'name'       },
+  { label: 'Destacados',   key: 'featured'  },
+  { label: 'Nombre A – Z', key: 'name'      },
+  { label: 'Nombre Z – A', key: 'name-desc' },
 ]
 
 const FilterIcon = () => (
@@ -250,9 +249,8 @@ export default function Tienda() {
     if (selectedFamilias.length) result = result.filter(p => selectedFamilias.includes(p.familia))
     if (selectedTipos.length)    result = result.filter(p => selectedTipos.includes(p.tipo))
     if (selectedGeneros.length)  result = result.filter(p => selectedGeneros.includes(p.genero))
-    if (sortBy === 'price-asc')  result.sort((a, b) => parseFloat((a.price || '$0').replace('$', '')) - parseFloat((b.price || '$0').replace('$', '')))
-    if (sortBy === 'price-desc') result.sort((a, b) => parseFloat((b.price || '$0').replace('$', '')) - parseFloat((a.price || '$0').replace('$', '')))
-    if (sortBy === 'name')       result.sort((a, b) => a.name.localeCompare(b.name))
+    if (sortBy === 'name')      result.sort((a, b) => a.name.localeCompare(b.name))
+    if (sortBy === 'name-desc') result.sort((a, b) => b.name.localeCompare(a.name))
     return result
   }, [sortBy, selectedMarcas, selectedFamilias, selectedTipos, selectedGeneros, searchQuery])
 

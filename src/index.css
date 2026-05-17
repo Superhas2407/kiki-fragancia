@@ -618,7 +618,7 @@
 }
 
 /* ── GUARANTEE ── */
-.guarantee-section { background: var(--ivory); }
+.guarantee-section { background: #0A0A0A; }
 .pillars-grid {
   display: grid; grid-template-columns: 1fr; gap: 28px;
 }
@@ -626,20 +626,20 @@
 @media (min-width: 1024px) { .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 48px; } }
 
 .pillar-card {
-  border-top: 1px solid rgba(26,18,8,.14);
+  border-top: 1px solid rgba(201,168,76,.15);
   padding-top: 28px; display: flex; flex-direction: column;
 }
 .pillar-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
-.pillar-line { width: 28px; height: 1px; background: var(--amber); margin-top: 12px; flex-shrink: 0; }
+.pillar-line { width: 28px; height: 1px; background: var(--gold); margin-top: 12px; flex-shrink: 0; }
 .pillar-title {
   font-family: var(--font-d);
   font-size: clamp(17px, 1.4vw, 22px);
-  font-weight: 400; color: var(--carbon);
+  font-weight: 400; color: var(--ivory);
   letter-spacing: -0.01em; line-height: 1.2;
 }
 .pillar-desc {
   font-family: var(--font-s); font-size: 14px; font-weight: 300;
-  color: rgba(26,18,8,.52); line-height: 1.78;
+  color: rgba(247,242,234,.5); line-height: 1.78;
 }
 
 /* ── CATALOG ── */
@@ -661,6 +661,10 @@
 .kiki-product-card-light { background: #FFF; border: 1px solid rgba(26,18,8,.1); box-shadow: 0 2px 16px rgba(26,18,8,.06); }
 .kiki-product-card-dark:hover  { border-color: rgba(201,168,76,.55); }
 .kiki-product-card-light:hover { border-color: rgba(196,120,26,.4); }
+@media (hover: none) {
+  .kiki-product-card-dark:active  { border-color: rgba(201,168,76,.7); background: rgba(201,168,76,.07); }
+  .kiki-product-card-light:active { border-color: rgba(196,120,26,.6); }
+}
 
 .card-ripple {
   position: absolute; width: 0; height: 0;

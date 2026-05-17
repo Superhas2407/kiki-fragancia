@@ -35,8 +35,8 @@ export default function Guarantee() {
       <div className="kiki-container">
         <div ref={headRef} className="kiki-section-head" style={{ maxWidth: 520 }}>
           <span className="eyebrow-gold">Por qué elegirnos</span>
-          <h2 className="kiki-section-title title-dark">Lo que nos define</h2>
-          <p className="kiki-section-subtitle subtitle-dark">
+          <h2 className="kiki-section-title title-light">Lo que nos define</h2>
+          <p className="kiki-section-subtitle subtitle-light">
             Cada frasco que vendemos lo conocemos.<br />No somos una tienda. Somos entendidos.
           </p>
         </div>

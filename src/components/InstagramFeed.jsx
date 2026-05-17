@@ -66,7 +66,7 @@ export default function InstagramFeed() {
   const headRef = useScrollReveal({ threshold: 0.2 })
 
   return (
-    <section style={{ background: 'var(--ivory)', padding: '96px 0' }}>
+    <section style={{ background: '#0A0A0A', padding: '96px 0', borderTop: '1px solid rgba(201,168,76,0.1)' }}>
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -77,20 +77,20 @@ export default function InstagramFeed() {
               style={{
                 width: '44px',
                 height: '44px',
-                background: 'linear-gradient(135deg, #C4781A 0%, #251A0E 100%)',
+                background: 'linear-gradient(135deg, var(--gold) 0%, #251A0E 100%)',
                 flexShrink: 0,
               }}
             />
             <div>
               <p
-                className="font-sans text-carbon"
-                style={{ fontSize: '14px', fontWeight: 400, letterSpacing: '0.01em' }}
+                className="font-sans"
+                style={{ fontSize: '14px', fontWeight: 400, letterSpacing: '0.01em', color: 'var(--ivory)' }}
               >
                 @kiki_fragancia
               </p>
               <p
-                className="font-sans text-carbon/40"
-                style={{ fontSize: '12px', fontWeight: 300 }}
+                className="font-sans"
+                style={{ fontSize: '12px', fontWeight: 300, color: 'rgba(247,242,234,0.4)' }}
               >
                 Fragancias verificadas · Venezuela
               </p>
@@ -103,8 +103,8 @@ export default function InstagramFeed() {
                 fontSize: '10px',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#C4781A',
-                border: '1px solid rgba(196,120,26,0.4)',
+                color: 'var(--gold)',
+                border: '1px solid rgba(201,168,76,0.35)',
                 padding: '4px 10px',
               }}
             >
@@ -116,10 +116,10 @@ export default function InstagramFeed() {
             href="https://instagram.com/kiki_fragancia"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-carbon/50 self-start sm:self-auto"
-            style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', transition: 'color 0.2s ease' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#C4781A'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(26,18,8,0.5)'}
+            className="font-sans self-start sm:self-auto"
+            style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', color: 'rgba(247,242,234,0.4)', transition: 'color 0.2s ease' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,242,234,0.4)'}
           >
             Ver perfil →
           </a>

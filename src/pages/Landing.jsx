@@ -5,6 +5,7 @@ import Guarantee from '../components/Guarantee'
 import Catalog from '../components/Catalog'
 import FamiliasSection from '../components/FamiliasSection'
 import BrandStory from '../components/BrandStory'
+import InstagramFeed from '../components/InstagramFeed'
 import Footer from '../components/Footer'
 
 export default function Landing() {
@@ -13,11 +14,12 @@ export default function Landing() {
       <Header />
       <main>
         <Hero />
-        <BrandsMarquee />
-        <Guarantee />
         <Catalog theme="dark" />
         <FamiliasSection />
+        <BrandsMarquee />
+        <Guarantee />
         <BrandStory />
+        <InstagramFeed />
       </main>
       <Footer />
     </>
