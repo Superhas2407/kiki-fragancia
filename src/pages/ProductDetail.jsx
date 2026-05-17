@@ -48,21 +48,45 @@ const ACORDE_COLOR = {
   powder:'#C9A0DC', gourmand:'#D4956A', fresco:'#7FB069', verde:'#6B8E4E',
   especiado:'#D4724A', frutal:'#C0392B', caramelo:'#D4956A',
 }
+const SunIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+    <circle cx="12" cy="12" r="4" /><line x1="12" y1="2" x2="12" y2="4" /><line x1="12" y1="20" x2="12" y2="22" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="2" y1="12" x2="4" y2="12" /><line x1="20" y1="12" x2="22" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+)
+const RainIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+    <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" />
+    <line x1="8" y1="19" x2="8" y2="21" /><line x1="8" y1="13" x2="8" y2="15" />
+    <line x1="16" y1="19" x2="16" y2="21" /><line x1="16" y1="13" x2="16" y2="15" />
+    <line x1="12" y1="21" x2="12" y2="23" /><line x1="12" y1="15" x2="12" y2="17" />
+  </svg>
+)
+const MoonIcon = () => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+)
+
+const CUANDO_ICONS = { sun: SunIcon, rain: RainIcon, moon: MoonIcon }
+
 const CUANDO_POR_FAMILIA = {
-  'Oriental':         { clima:[['Época seca','☀️',false],['Lluviosa','🌧️',true]],  momentos:[['Día','🌤️',false],['Noche','🌙',true]] },
-  'Amaderado':        { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',true]],  momentos:[['Día','🌤️',true], ['Noche','🌙',true]] },
-  'Floral':           { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',false]], momentos:[['Día','🌤️',true], ['Noche','🌙',false]] },
-  'Gourmand':         { clima:[['Época seca','☀️',false],['Lluviosa','🌧️',true]],  momentos:[['Día','🌤️',false],['Noche','🌙',true]] },
-  'Cítrico':          { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',false]], momentos:[['Día','🌤️',true], ['Noche','🌙',false]] },
-  'Floral Oriental':  { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',true]],  momentos:[['Día','🌤️',true], ['Noche','🌙',true]] },
-  'Floral Amaderado': { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',false]], momentos:[['Día','🌤️',true], ['Noche','🌙',true]] },
-  'Frutal':           { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',false]], momentos:[['Día','🌤️',true], ['Noche','🌙',false]] },
-  'Frutal Amaderado': { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',true]],  momentos:[['Día','🌤️',true], ['Noche','🌙',false]] },
-  'Aromático':        { clima:[['Época seca','☀️',true], ['Lluviosa','🌧️',false]], momentos:[['Día','🌤️',true], ['Noche','🌙',false]] },
+  'Oriental':         { clima:[['Época seca','sun',false],['Lluviosa','rain',true]],  momentos:[['Día','sun',false],['Noche','moon',true]] },
+  'Amaderado':        { clima:[['Época seca','sun',true], ['Lluviosa','rain',true]],  momentos:[['Día','sun',true], ['Noche','moon',true]] },
+  'Floral':           { clima:[['Época seca','sun',true], ['Lluviosa','rain',false]], momentos:[['Día','sun',true], ['Noche','moon',false]] },
+  'Gourmand':         { clima:[['Época seca','sun',false],['Lluviosa','rain',true]],  momentos:[['Día','sun',false],['Noche','moon',true]] },
+  'Cítrico':          { clima:[['Época seca','sun',true], ['Lluviosa','rain',false]], momentos:[['Día','sun',true], ['Noche','moon',false]] },
+  'Floral Oriental':  { clima:[['Época seca','sun',true], ['Lluviosa','rain',true]],  momentos:[['Día','sun',true], ['Noche','moon',true]] },
+  'Floral Amaderado': { clima:[['Época seca','sun',true], ['Lluviosa','rain',false]], momentos:[['Día','sun',true], ['Noche','moon',true]] },
+  'Frutal':           { clima:[['Época seca','sun',true], ['Lluviosa','rain',false]], momentos:[['Día','sun',true], ['Noche','moon',false]] },
+  'Frutal Amaderado': { clima:[['Época seca','sun',true], ['Lluviosa','rain',true]],  momentos:[['Día','sun',true], ['Noche','moon',false]] },
+  'Aromático':        { clima:[['Época seca','sun',true], ['Lluviosa','rain',false]], momentos:[['Día','sun',true], ['Noche','moon',false]] },
 }
 const DEFAULT_CUANDO = {
-  clima:[['Época seca','☀️',false],['Lluviosa','🌧️',true]],
-  momentos:[['Día','🌤️',false],['Noche','🌙',true]],
+  clima:[['Época seca','sun',false],['Lluviosa','rain',true]],
+  momentos:[['Día','sun',false],['Noche','moon',true]],
 }
 
 const WhatsAppIcon = ({ size = 15 }) => (
@@ -346,18 +370,23 @@ export default function ProductDetail() {
                 <div key={titulo} className="pd-cuando-card">
                   <p className="pd-cuando-label">{titulo}</p>
                   <div className="pd-cuando-items">
-                    {items.map(([nombre, icono, activo]) => (
-                      <div key={nombre} className="pd-cuando-item">
-                        <span className="pd-cuando-icon" style={{
-                          opacity: activo ? 1 : 0.18,
-                          filter: activo ? 'none' : 'grayscale(1)',
-                          boxShadow: activo ? '0 0 22px rgba(201,168,76,.35)' : 'none',
-                        }}>{icono}</span>
-                        <span className="pd-cuando-text" style={{ color: activo ? 'var(--gold)' : 'rgba(247,242,234,.2)' }}>
-                          {nombre}
-                        </span>
-                      </div>
-                    ))}
+                    {items.map(([nombre, iconKey, activo]) => {
+                      const Icon = CUANDO_ICONS[iconKey]
+                      return (
+                        <div key={nombre} className="pd-cuando-item">
+                          <span className="pd-cuando-icon" style={{
+                            opacity: activo ? 1 : 0.18,
+                            color: activo ? 'var(--gold)' : 'rgba(247,242,234,.4)',
+                            boxShadow: activo ? '0 0 22px rgba(201,168,76,.25)' : 'none',
+                          }}>
+                            {Icon && <Icon />}
+                          </span>
+                          <span className="pd-cuando-text" style={{ color: activo ? 'var(--gold)' : 'rgba(247,242,234,.2)' }}>
+                            {nombre}
+                          </span>
+                        </div>
+                      )
+                    })}
                   </div>
                 </div>
               ))}
