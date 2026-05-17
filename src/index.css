@@ -465,6 +465,7 @@
 .mobile-wa-link {
   font-family: var(--font-s); font-size: 11px;
   letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
+  min-height: 44px; display: flex; align-items: center;
 }
 .mobile-footer-label {
   font-family: var(--font-s); font-size: 9px; letter-spacing: 0.2em;
@@ -535,7 +536,8 @@
   font-family: var(--font-s); font-size: 9px;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: rgba(250,250,248,.3); text-decoration: none;
-  transition: color .2s ease;
+  transition: color .2s ease; display: inline-flex; align-items: center;
+  min-height: 44px; padding: 4px 0;
 }
 .instagram-link:hover { color: var(--gold); }
 
