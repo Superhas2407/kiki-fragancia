@@ -1,162 +1,96 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 const GENDER_BADGE = {
-  Hombre: { bg: 'rgba(201,168,76,0.15)',   color: '#C9A84C'  },
-  Mujer:  { bg: 'rgba(255,182,193,0.15)',  color: '#ffb6c1'  },
-  Unisex: { bg: 'rgba(250,250,248,0.10)',  color: '#FAFAF8'  },
+  Masculino: { bg: 'rgba(201,168,76,0.15)', color: '#C9A84C',  border: 'rgba(201,168,76,0.3)' },
+  Hombre:    { bg: 'rgba(201,168,76,0.15)', color: '#C9A84C',  border: 'rgba(201,168,76,0.3)' },
+  Femenino:  { bg: 'rgba(255,182,193,0.15)', color: '#E8A0B4', border: 'rgba(232,160,180,0.3)' },
+  Mujer:     { bg: 'rgba(255,182,193,0.15)', color: '#E8A0B4', border: 'rgba(232,160,180,0.3)' },
+  Unisex:    { bg: 'rgba(250,250,248,0.1)',  color: '#FAFAF8', border: 'rgba(250,250,248,0.2)' },
 }
 
-function HeartIcon({ filled }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill={filled ? '#C9A84C' : 'none'} stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  )
-}
+export default function ProductCard({ product, theme = 'dark' }) {
+  const navigate = useNavigate()
+  const [ripples, setRipples] = useState([])
+  const cardRef = useRef(null)
+  const isDark = theme === 'dark'
 
-export default function ProductCard({ product }) {
-  const navigate  = useNavigate()
-  const [liked,   setLiked]   = useState(false)
-  const [hovered, setHovered] = useState(false)
-  const [btnHov,  setBtnHov]  = useState(false)
+  const handleMouseEnter = (e) => {
+    const rect = cardRef.current.getBoundingClientRect()
+    const id = Date.now()
+    setRipples(r => [...r, { id, x: e.clientX - rect.left, y: e.clientY - rect.top }])
+    setTimeout(() => setRipples(r => r.filter(rp => rp.id !== id)), 750)
+
+    // 3D tilt
+    const card = cardRef.current
+    card.style.transition = 'transform .1s ease'
+  }
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current
+    if (!card) return
+    const rect = card.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) scale(1.02)`
+  }
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current
+    if (!card) return
+    card.style.transition = 'transform .55s cubic-bezier(.22,1,.36,1)'
+    card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)'
+  }
 
   const badge = GENDER_BADGE[product.genero] || GENDER_BADGE.Unisex
 
+  const imgSrc = product.image
+    ? `/products/${product.image}`
+    : null
+
   return (
     <article
+      ref={cardRef}
+      className={`kiki-product-card ${isDark ? 'kiki-product-card-dark' : 'kiki-product-card-light'}`}
       onClick={() => navigate(`/tienda/${product.id}`)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: '#111111',
-        border: `1px solid ${hovered ? 'rgba(201,168,76,0.5)' : 'rgba(201,168,76,0.2)'}`,
-        display: 'flex', flexDirection: 'column',
-        cursor: 'pointer',
-        transition: 'border-color 0.25s ease',
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ willChange: 'transform' }}
+      aria-label={`${product.house} ${product.name}`}
     >
-      {/* ── Imagen ── */}
-      <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden' }}>
-        <motion.img
-          src={`/products/${product.image}`}
-          alt={`${product.house} ${product.name}`}
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-        />
+      {ripples.map(rp => (
+        <span key={rp.id} className="card-ripple" style={{ left: rp.x, top: rp.y }} />
+      ))}
 
-        {/* Badge género */}
-        <span style={{
-          position: 'absolute', top: '10px', left: '10px',
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '9px', letterSpacing: '0.12em', textTransform: 'uppercase',
-          padding: '3px 8px',
-          background: badge.bg, color: badge.color,
-          backdropFilter: 'blur(4px)',
-        }}>
-          {product.genero}
-        </span>
-
-        {/* Botón corazón */}
-        <button
-          onClick={e => { e.stopPropagation(); setLiked(v => !v) }}
-          style={{
-            position: 'absolute', top: '8px', right: '8px',
-            width: '30px', height: '30px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'rgba(10,10,10,0.55)',
-            border: '1px solid rgba(201,168,76,0.4)',
-            backdropFilter: 'blur(4px)',
-            cursor: 'pointer',
-            transition: 'border-color 0.2s ease, background 0.2s ease',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = '#C9A84C'; e.currentTarget.style.background = 'rgba(201,168,76,0.15)' }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(201,168,76,0.4)'; e.currentTarget.style.background = 'rgba(10,10,10,0.55)' }}
-          aria-label={liked ? 'Quitar de favoritos' : 'Añadir a favoritos'}
-        >
-          <HeartIcon filled={liked} />
-        </button>
-      </div>
-
-      {/* ── Contenido ── */}
-      <div style={{ padding: '16px 16px 8px', flex: 1, display: 'flex', flexDirection: 'column', gap: 0 }}>
-
-        {/* Casa */}
-        <p style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
-          color: '#C9A84C', margin: '0 0 6px',
-        }}>
-          {product.house}
-        </p>
-
-        {/* Nombre */}
-        <h3 style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 'clamp(17px, 1.5vw, 20px)', fontStyle: 'italic', fontWeight: 400,
-          color: '#FAFAF8', letterSpacing: '-0.01em', lineHeight: 1.2,
-          margin: 0,
-          display: '-webkit-box', WebkitLineClamp: 1,
-          WebkitBoxOrient: 'vertical', overflow: 'hidden',
-        }}>
-          {product.name}
-        </h3>
-
-        {/* Separador */}
-        <div style={{ height: '1px', background: 'rgba(201,168,76,0.2)', margin: '8px 0' }} />
-
-        {/* Familia + ml */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
-            color: 'rgba(250,250,248,0.6)',
-          }}>
-            {product.familia}
-          </span>
-          {product.ml && (
-            <span style={{
-              fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
-              color: '#C9A84C',
-            }}>
-              {product.ml} ml
-            </span>
-          )}
-        </div>
-
-        {/* Ocasión — oculta en móvil */}
-        {product.ocasion && (
-          <p className="product-card-occasion" style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
-            color: 'rgba(250,250,248,0.4)', fontStyle: 'italic',
-            margin: '4px 0 0',
-            display: '-webkit-box', WebkitLineClamp: 1,
-            WebkitBoxOrient: 'vertical', overflow: 'hidden',
-          }}>
-            {product.ocasion}
-          </p>
+      <div className="card-img-wrap">
+        {imgSrc ? (
+          <img src={imgSrc} alt={`${product.house} ${product.name}`} className="card-img-photo" />
+        ) : (
+          <div className="card-img-placeholder">
+            <span className="card-img-label">{product.house}<br />{product.name}<br />product photo</span>
+          </div>
+        )}
+        {product.genero && (
+          <div className="card-genre-badge" style={{ background: badge.bg, color: badge.color, borderColor: badge.border }}>
+            {product.genero}
+          </div>
         )}
       </div>
 
-      {/* ── Footer: CTA ── */}
-      <div style={{ padding: '0 16px 16px' }}>
-        <button
-          onMouseEnter={() => setBtnHov(true)}
-          onMouseLeave={() => setBtnHov(false)}
-          style={{
-            width: '100%',
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
-            padding: '10px 0',
-            background: btnHov ? '#C9A84C' : 'transparent',
-            border: '1px solid #C9A84C',
-            color: btnHov ? '#0A0A0A' : '#C9A84C',
-            cursor: 'pointer',
-            transition: 'background 0.2s ease, color 0.2s ease',
-          }}
-        >
-          Ver Fragancia →
+      <div className="card-info">
+        <p className="card-house">{product.house}</p>
+        <p className="card-name">{product.name}</p>
+        <div className="card-divider"></div>
+        <div className="card-meta">
+          <span className="card-familia">{product.familia}</span>
+          {product.ml && <span className="card-ml">{product.ml}ml</span>}
+        </div>
+      </div>
+
+      <div className="card-cta">
+        <button className="card-btn" onClick={e => { e.stopPropagation(); navigate(`/tienda/${product.id}`) }}>
+          Ver detalles
         </button>
       </div>
     </article>

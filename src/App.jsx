@@ -6,6 +6,7 @@ import Tienda from './pages/Tienda'
 import ProductDetail from './pages/ProductDetail'
 import CartDrawer from './components/CartDrawer'
 import CartFab from './components/CartFab'
+import CursorTrail from './components/CursorTrail'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -37,6 +38,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <CartProvider>
+        <CursorTrail />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />

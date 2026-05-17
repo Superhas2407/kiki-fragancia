@@ -1,171 +1,66 @@
 import { useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useAnimCounter } from '../hooks/useAnimCounter'
 
-const STATS = [
-  { value: '228+',  label: 'Fragancias' },
-  { value: '100%',  label: 'Verificadas' },
-  { value: '33k',   label: 'Seguidores' },
-]
+function StatCounter({ target, suffix = '', label }) {
+  const { val, ref } = useAnimCounter(target)
+  return (
+    <div className="stat-item" ref={ref}>
+      <div className="stat-value">{val}{suffix}</div>
+      <div className="stat-label">{label}</div>
+    </div>
+  )
+}
 
 export default function BrandStory() {
-  const eyebrowRef = useScrollReveal({ threshold: 0.2, delay: 0   })
-  const quoteRef   = useScrollReveal({ threshold: 0.2, delay: 120  })
-  const textRef    = useScrollReveal({ threshold: 0.2, delay: 260  })
-  const statsRef   = useScrollReveal({ threshold: 0.2, delay: 380  })
-  const imgRef     = useScrollReveal({ threshold: 0.1, delay: 80   })
+  const eyebrowRef = useScrollReveal({ threshold: 0.2, delay: 0 })
+  const quoteRef   = useScrollReveal({ threshold: 0.2, delay: 120 })
+  const textRef    = useScrollReveal({ threshold: 0.2, delay: 260 })
+  const statsRef   = useScrollReveal({ threshold: 0.2, delay: 380 })
+  const imgRef     = useScrollReveal({ threshold: 0.1, delay: 80 })
   const [imgHover, setImgHover] = useState(false)
 
   return (
-    <section id="nosotros" style={{ background: '#1C1408', padding: '128px 0', overflow: 'hidden' }}>
-      <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '80px' }} className="flex-col md:flex-row">
+    <section id="nosotros" className="brand-story-section section-pad">
+      <div className="kiki-container">
+        <div className="brand-story-inner">
 
-          {/* ── Columna izquierda ── */}
-          <div style={{ flex: '0 0 52%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-
-            {/* Eyebrow */}
-            <div ref={eyebrowRef} style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '48px' }}>
-              <div style={{ width: '32px', height: '1px', background: '#C9A84C' }} />
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '10px', letterSpacing: '0.28em', textTransform: 'uppercase',
-                color: '#C9A84C', margin: 0,
-              }}>
-                Nuestra historia
-              </p>
+          {/* Left: text */}
+          <div>
+            <div ref={eyebrowRef} className="brand-story-eyebrow">
+              <div className="gold-line"></div>
+              <span className="eyebrow-gold" style={{ marginBottom: 0 }}>Nuestra historia</span>
             </div>
 
-            {/* Cita con comilla decorativa */}
-            <div ref={quoteRef} style={{ position: 'relative', marginBottom: '36px' }}>
-              <span
-                aria-hidden="true"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '140px', lineHeight: 1,
-                  color: 'rgba(201,168,76,0.10)',
-                  position: 'absolute',
-                  top: '-28px', left: '-20px',
-                  pointerEvents: 'none',
-                  userSelect: 'none',
-                }}
-              >"</span>
-              <blockquote style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: 'clamp(32px, 5.5vw, 60px)',
-                fontWeight: 300, fontStyle: 'italic',
-                color: '#F7F2EA',
-                letterSpacing: '-0.025em', lineHeight: 1.12,
-                margin: 0,
-                position: 'relative', zIndex: 1,
-              }}>
-                Un perfume no se compra.<br />Se elige.
-              </blockquote>
+            <div ref={quoteRef} className="brand-story-quote">
+              <span className="quote-mark">"</span>
+              No vendemos perfumes.<br />Vendemos la fragancia<br />que te representa.
             </div>
 
-            {/* Divisor */}
-            <div style={{ width: '40px', height: '1px', background: 'rgba(201,168,76,0.35)', marginBottom: '32px' }} />
+            <p ref={textRef} className="brand-story-text">
+              KiKi Fragancia nació del amor por las fragancias originales y la convicción
+              de que cada persona merece encontrar su firma olfativa. Con más de 228 referencias
+              de las mejores casas del mundo, somos la perfumería de confianza de Venezuela.
+            </p>
+            <p ref={textRef} className="brand-story-attr">— KiKi Fragancia, Caracas</p>
 
-            {/* Texto */}
-            <div ref={textRef} style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '460px', marginBottom: '52px' }}>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '15px', fontWeight: 300,
-                color: 'rgba(247,242,234,0.60)', lineHeight: 1.85,
-                margin: 0,
-              }}>
-                KiKi Fragancia nació de una obsesión: acercar las casas más exclusivas del mundo a quienes entienden que un aroma es la expresión más íntima del carácter.
-              </p>
-              <p style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '15px', fontWeight: 300,
-                color: 'rgba(247,242,234,0.35)', lineHeight: 1.85,
-                margin: 0,
-              }}>
-                Cada frasco que llega a tus manos ha pasado por nuestra revisión de autenticidad. No vendemos perfumes. Garantizamos experiencias verificadas.
-              </p>
-
-              <p style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '18px', fontWeight: 300, fontStyle: 'italic',
-                color: '#C9A84C', letterSpacing: '0.02em',
-                margin: '8px 0 0',
-              }}>
-                — KiKi Fragancia, Venezuela
-              </p>
-            </div>
-
-            {/* Stats */}
-            <div ref={statsRef} style={{ display: 'flex', gap: '0', borderTop: '1px solid rgba(201,168,76,0.12)' }}>
-              {STATS.map((s, i) => (
-                <div
-                  key={s.label}
-                  style={{
-                    flex: 1,
-                    padding: '28px 0 0',
-                    paddingRight: '32px',
-                    borderRight: i < STATS.length - 1 ? '1px solid rgba(201,168,76,0.12)' : 'none',
-                    marginRight: i < STATS.length - 1 ? '32px' : '0',
-                  }}
-                >
-                  <p style={{
-                    fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: '36px', fontWeight: 400,
-                    color: '#C9A84C', letterSpacing: '-0.02em',
-                    margin: '0 0 6px',
-                    lineHeight: 1,
-                  }}>
-                    {s.value}
-                  </p>
-                  <p style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: '9px', letterSpacing: '0.2em', textTransform: 'uppercase',
-                    color: 'rgba(247,242,234,0.30)',
-                    margin: 0,
-                  }}>
-                    {s.label}
-                  </p>
-                </div>
-              ))}
+            <div ref={statsRef} className="stats-row">
+              <StatCounter target={228} suffix="+" label="Fragancias" />
+              <StatCounter target={100} suffix="%" label="Originales verificadas" />
+              <StatCounter target={110} suffix="k" label="Seguidores" />
             </div>
           </div>
 
-          {/* ── Columna derecha — imagen ── */}
+          {/* Right: image */}
           <div
             ref={imgRef}
-            className="hidden md:block"
-            style={{ flex: '0 0 44%', position: 'relative' }}
+            className="brand-story-img-wrap"
+            onMouseEnter={() => setImgHover(true)}
+            onMouseLeave={() => setImgHover(false)}
           >
-            {/* Marco offset dorado */}
-            <div style={{
-              position: 'absolute',
-              top: '20px', left: '20px', right: '-20px', bottom: '-20px',
-              border: '1px solid rgba(201,168,76,0.25)',
-              pointerEvents: 'none',
-              transition: 'border-color 0.4s ease',
-              borderColor: imgHover ? 'rgba(201,168,76,0.55)' : 'rgba(201,168,76,0.25)',
-            }} />
-
-            {/* Imagen */}
-            <div
-              style={{ overflow: 'hidden', position: 'relative', cursor: 'default' }}
-              onMouseEnter={() => setImgHover(true)}
-              onMouseLeave={() => setImgHover(false)}
-            >
-              <img
-                src="/products/IMG_8643.JPG"
-                alt="Khamrah · KiKi Fragancia"
-                style={{
-                  width: '100%', aspectRatio: '3/4', objectFit: 'cover', display: 'block',
-                  transform: imgHover ? 'scale(1.04)' : 'scale(1)',
-                  transition: 'transform 0.7s cubic-bezier(0.22,1,0.36,1)',
-                }}
-              />
-              {/* Overlay sutil en hover */}
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: imgHover ? 'rgba(10,6,2,0.18)' : 'rgba(10,6,2,0)',
-                transition: 'background 0.4s ease',
-              }} />
+            <div className="brand-story-img-frame" style={{ borderColor: imgHover ? 'rgba(201,168,76,.45)' : 'rgba(201,168,76,.22)' }}></div>
+            <div className="brand-story-img-placeholder" style={{ transform: imgHover ? 'scale(1.03)' : 'scale(1)' }}>
+              <span className="brand-story-img-label">brand-story.jpg<br />lifestyle photo<br />perfume editorial</span>
             </div>
           </div>
 

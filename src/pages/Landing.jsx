@@ -1,10 +1,11 @@
-import Header       from '../components/Header'
-import Hero         from '../components/Hero'
-import Guarantee    from '../components/Guarantee'
-import Catalog      from '../components/Catalog'
-import BrandStory   from '../components/BrandStory'
-import InstagramFeed from '../components/InstagramFeed'
-import Footer       from '../components/Footer'
+import Header from '../components/Header'
+import Hero from '../components/Hero'
+import BrandsMarquee from '../components/BrandsMarquee'
+import Guarantee from '../components/Guarantee'
+import Catalog from '../components/Catalog'
+import FamiliasSection from '../components/FamiliasSection'
+import BrandStory from '../components/BrandStory'
+import Footer from '../components/Footer'
 
 export default function Landing() {
   return (
@@ -12,10 +13,11 @@ export default function Landing() {
       <Header />
       <main>
         <Hero />
+        <BrandsMarquee />
         <Guarantee />
-        <Catalog />
+        <Catalog theme="dark" />
+        <FamiliasSection />
         <BrandStory />
-        <InstagramFeed />
       </main>
       <Footer />
     </>

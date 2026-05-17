@@ -1,12 +1,4 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-
-const NAV_LINKS = [
-  { label: 'Colección', type: 'route',    to: '/tienda' },
-  { label: 'Nosotros',  type: 'anchor',   id: 'nosotros' },
-  { label: 'Instagram', type: 'external', to: 'https://instagram.com/kiki_fragancia' },
-  { label: 'Contacto',  type: 'anchor',   id: 'contacto' },
-]
 
 const WhatsAppIcon = ({ size = 17 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -14,219 +6,87 @@ const WhatsAppIcon = ({ size = 17 }) => (
   </svg>
 )
 
-const InstagramIcon = ({ size = 15 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <circle cx="12" cy="12" r="4" />
-    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+const ShieldIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <polyline points="9 12 11 14 15 10" />
   </svg>
 )
 
-function NavItem({ link }) {
-  const [hovered, setHovered] = useState(false)
-  const base = {
-    fontFamily: "'DM Sans', sans-serif",
-    fontSize: '12px', fontWeight: 300,
-    letterSpacing: '0.04em',
-    color: hovered ? '#F7F2EA' : 'rgba(247,242,234,0.42)',
-    textDecoration: 'none',
-    transition: 'color 0.25s ease',
-    display: 'inline-block',
-    paddingBottom: '1px',
-    borderBottom: `1px solid ${hovered ? 'rgba(247,242,234,0.3)' : 'transparent'}`,
-  }
-  const events = {
-    onMouseEnter: () => setHovered(true),
-    onMouseLeave: () => setHovered(false),
-  }
-  if (link.type === 'route')    return <Link to={link.to} style={base} {...events}>{link.label}</Link>
-  if (link.type === 'external') return <a href={link.to} target="_blank" rel="noopener noreferrer" style={base} {...events}>{link.label}</a>
-  return <Link to={`/#${link.id}`} style={base} {...events}>{link.label}</Link>
-}
-
 export default function Footer() {
-  const [waHover, setWaHover] = useState(false)
-
   return (
-    <footer id="contacto" style={{ background: '#0A0A0A', position: 'relative', overflow: 'hidden' }}>
+    <footer id="contacto" className="kiki-footer">
+      <div className="footer-top-line"></div>
+      <div className="footer-glow"></div>
 
-      {/* Línea de entrada dorada */}
-      <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.5) 30%, rgba(201,168,76,0.5) 70%, transparent 100%)' }} />
-
-      {/* Resplandor ambiental */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute', top: 0, left: '50%',
-          transform: 'translateX(-50%)',
-          width: '600px', height: '300px',
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%)',
-          pointerEvents: 'none',
-        }}
-      />
-
-      <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '80px 24px 48px', position: 'relative' }}>
-
-        {/* Grid 3 columnas */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1,1fr)', gap: '48px', marginBottom: '72px' }} className="md:grid-cols-3">
+      <div className="footer-inner">
+        <div className="footer-grid">
 
           {/* Col 1 — Brand */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <Link
-              to="/"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '30px', fontWeight: 500, fontStyle: 'italic',
-                color: '#C9A84C', letterSpacing: '-0.02em',
-                textDecoration: 'none', lineHeight: 1,
-              }}
-            >
-              KiKi Fragancia
-            </Link>
-
-            <p style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: '16px', fontWeight: 300, fontStyle: 'italic',
-              color: 'rgba(247,242,234,0.45)', lineHeight: 1.65,
-              maxWidth: '240px', margin: 0,
-            }}>
-              Oler bien deja gratos recuerdos, y con KiKi Fragancia nunca te olvidarán.
+          <div>
+            <Link to="/" className="footer-logo">KiKi Fragancia</Link>
+            <p className="footer-tagline">
+              La fragancia que te define,<br />verificada y original.
             </p>
-
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '12px', fontWeight: 300,
-              color: 'rgba(247,242,234,0.28)', lineHeight: 1.8,
-              maxWidth: '240px', margin: 0,
-            }}>
-              Perfumes 100&nbsp;% originales. Verificados.<br />Disponibles en Venezuela.
+            <p className="footer-sub">
+              Perfumería de lujo venezolana.<br />
+              Más de 228 referencias de las mejores casas del mundo.
             </p>
-
-            {/* Badge verificación */}
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              border: '1px solid rgba(201,168,76,0.28)',
-              padding: '8px 14px',
-              alignSelf: 'flex-start',
-            }}>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 12 11 14 15 10" />
-              </svg>
-              <span style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase',
-                color: '#C9A84C',
-              }}>
-                100% Originales Verificados
-              </span>
+            <div className="footer-badge">
+              <ShieldIcon />
+              <span className="footer-badge-text">100% originales verificados</span>
             </div>
           </div>
 
-          {/* Col 2 — Navegación */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '9px', letterSpacing: '0.24em', textTransform: 'uppercase',
-              color: 'rgba(247,242,234,0.22)', margin: '0 0 4px',
-            }}>
-              Navegación
-            </p>
-            {NAV_LINKS.map(link => (
-              <NavItem key={link.label} link={link} />
-            ))}
+          {/* Col 2 — Nav */}
+          <div>
+            <span className="footer-col-label">Explorar</span>
+            <nav className="footer-nav">
+              <Link to="/tienda" className="footer-nav-link">Colección completa</Link>
+              <a href="/#nosotros" className="footer-nav-link">Nuestra historia</a>
+              <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="footer-nav-link">Instagram</a>
+              <a href="/#catalogo" className="footer-nav-link">Destacados</a>
+            </nav>
           </div>
 
-          {/* Col 3 — Contacto */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '9px', letterSpacing: '0.24em', textTransform: 'uppercase',
-              color: 'rgba(247,242,234,0.22)', margin: '0 0 4px',
-            }}>
-              Contacto
+          {/* Col 3 — Contact */}
+          <div>
+            <span className="footer-col-label">Contacto</span>
+            <p className="footer-contact-desc">
+              Respondemos en menos de 2 horas.<br />
+              Asesoría personalizada sin costo.
             </p>
-
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: '13px', fontWeight: 300,
-              color: 'rgba(247,242,234,0.38)', lineHeight: 1.8,
-              margin: 0,
-            }}>
-              Consultas, pedidos y asesoría olfativa por WhatsApp. Respondemos en menos de 2 horas.
-            </p>
-
-            {/* Botón WhatsApp */}
             <a
               href="https://wa.me/584120221983"
               target="_blank"
               rel="noopener noreferrer"
-              onMouseEnter={() => setWaHover(true)}
-              onMouseLeave={() => setWaHover(false)}
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: '10px',
-                alignSelf: 'flex-start',
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '10px', letterSpacing: '0.16em', textTransform: 'uppercase',
-                fontWeight: 400,
-                background: waHover ? '#1da851' : '#25D366',
-                color: '#FFFFFF',
-                padding: '12px 22px',
-                textDecoration: 'none',
-                transition: 'background 0.25s ease, transform 0.25s ease',
-                transform: waHover ? 'translateY(-2px)' : 'translateY(0)',
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                fontFamily: 'var(--font-s)', fontSize: 10,
+                letterSpacing: '0.16em', textTransform: 'uppercase',
+                background: '#25D366', color: '#FFF',
+                padding: '12px 22px', textDecoration: 'none',
+                marginBottom: 14,
+                transition: 'background .25s ease, transform .25s ease',
               }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
-              <WhatsAppIcon />
+              <WhatsAppIcon size={15} />
               Escribir por WhatsApp
             </a>
-
-            {/* Instagram */}
-            <a
-              href="https://instagram.com/kiki_fragancia"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '11px', fontWeight: 300,
-                color: 'rgba(247,242,234,0.35)',
-                textDecoration: 'none',
-                transition: 'color 0.25s ease',
-              }}
-              onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,242,234,0.35)'}
-            >
-              <InstagramIcon />
-              @kiki_fragancia · 110k seguidores
+            <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="footer-insta">
+              @kiki_fragancia
             </a>
           </div>
 
         </div>
 
-        {/* Divisor */}
-        <div style={{ height: '1px', background: 'rgba(201,168,76,0.15)', marginBottom: '28px' }} />
-
-        {/* Pie */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: '10px', fontWeight: 300,
-            color: 'rgba(247,242,234,0.18)', letterSpacing: '0.06em',
-            margin: 0,
-          }}>
-            © 2026 KiKi Fragancia · Venezuela
-          </p>
-          <p style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: '12px', fontStyle: 'italic',
-            color: 'rgba(247,242,234,0.18)',
-            margin: 0,
-          }}>
-            Hecho con obsesión por el detalle
-          </p>
+        <div className="footer-bottom"></div>
+        <div className="footer-meta">
+          <span className="footer-copy">© {new Date().getFullYear()} KiKi Fragancia. Todos los derechos reservados.</span>
+          <span className="footer-craft">Perfumería de lujo venezolana</span>
         </div>
-
       </div>
     </footer>
   )
