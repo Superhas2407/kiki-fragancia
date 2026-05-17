@@ -65,7 +65,7 @@ export default function Footer() {
                 fontFamily: 'var(--font-s)', fontSize: 10,
                 letterSpacing: '0.16em', textTransform: 'uppercase',
                 background: '#25D366', color: '#FFF',
-                padding: '12px 22px', textDecoration: 'none',
+                padding: '14px 22px', textDecoration: 'none',
                 marginBottom: 14,
                 transition: 'background .25s ease, transform .25s ease',
               }}
