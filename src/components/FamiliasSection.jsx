@@ -1,16 +1,28 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { products } from '../data/products-enriched'
 
-const FAMILIAS = [
-  { name: 'Amaderado',  count: 48, color: '#8B6914', desc: 'Cedro, sándalo y vetiver. Cálidos, secos y atemporales.' },
-  { name: 'Oriental',   count: 36, color: '#C4722A', desc: 'Oud, ámbar y especias. Intensos y envolventes.' },
-  { name: 'Floral',     count: 52, color: '#E8A0B4', desc: 'Rosa, jazmín y tuberosa. Románticos y luminosos.' },
-  { name: 'Cítrico',    count: 29, color: '#F4C842', desc: 'Bergamota, limón y naranja. Frescos y vibrantes.' },
-  { name: 'Gourmand',   count: 18, color: '#E8566C', desc: 'Vainilla, café y cacao. Dulces y adictivos.' },
-  { name: 'Marino',     count: 14, color: '#7FB0C4', desc: 'Brisa salina y notas acuáticas. Limpios y libres.' },
-  { name: 'Especiado',  count: 31, color: '#C4781A', desc: 'Pimienta, cardamomo y jengibre. Audaces y con carácter.' },
-]
+const FAMILIA_META = {
+  'Amaderado':       { color: '#8B6914', desc: 'Cedro, sándalo y vetiver. Cálidos, secos y atemporales.' },
+  'Oriental':        { color: '#C4722A', desc: 'Oud, ámbar y especias. Intensos y envolventes.' },
+  'Floral':          { color: '#E8A0B4', desc: 'Rosa, jazmín y tuberosa. Románticos y luminosos.' },
+  'Cítrico':         { color: '#F4C842', desc: 'Bergamota, limón y naranja. Frescos y vibrantes.' },
+  'Gourmand':        { color: '#E8566C', desc: 'Vainilla, café y cacao. Dulces y adictivos.' },
+  'Aromático':       { color: '#7CB9A8', desc: 'Lavanda, romero y salvia. Frescos, herbáceos y limpios.' },
+  'Floral Amaderado':{ color: '#C9A0A8', desc: 'Flores sobre base de madera. Elegantes y sofisticados.' },
+  'Floral Frutal':   { color: '#E8A86C', desc: 'Pétalos y frutos. Alegres, frescos y femeninos.' },
+  'Floral Oriental': { color: '#C48B5A', desc: 'Flores con especias y ámbar. Sensuales y complejos.' },
+  'Frutal':          { color: '#E87A6C', desc: 'Durazno, pera y frutos rojos. Vivaces y golosos.' },
+  'Frutal Amaderado':{ color: '#B09070', desc: 'Frutos sobre madera. Modernos y equilibrados.' },
+}
+
+const FAMILIAS = Object.keys(FAMILIA_META).map(name => ({
+  name,
+  color: FAMILIA_META[name].color,
+  desc:  FAMILIA_META[name].desc,
+  count: products.filter(p => p.familia === name).length,
+})).filter(f => f.count > 0)
 
 function RevealWrap({ children, delay = 0 }) {
   const ref = useScrollReveal({ delay })

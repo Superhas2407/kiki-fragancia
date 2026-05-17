@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -199,6 +200,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedF
 }
 
 export default function Tienda() {
+  const [searchParams] = useSearchParams()
   const [sortBy, setSortBy]                       = useState('featured')
   const [selectedMarcas, setSelectedMarcas]       = useState([])
   const [selectedFamilias, setSelectedFamilias]   = useState([])
@@ -211,6 +213,19 @@ export default function Tienda() {
   const [searchFocused, setSearchFocused]         = useState(false)
   const topRef = useRef(null)
   const filterMountRef = useRef(true)
+
+  useEffect(() => {
+    const marca = searchParams.get('marca')
+    const familia = searchParams.get('familia')
+    if (marca) {
+      const matched = MARCAS.find(m => m.toLowerCase() === marca.toLowerCase())
+      if (matched) setSelectedMarcas([matched])
+    }
+    if (familia) {
+      const matched = FAMILIAS.find(f => f.toLowerCase() === familia.toLowerCase())
+      if (matched) setSelectedFamilias([matched])
+    }
+  }, [])
 
   const toggleMarca   = v => setSelectedMarcas(p   => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleFamilia = v => setSelectedFamilias(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
