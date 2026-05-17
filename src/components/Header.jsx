@@ -87,7 +87,7 @@ export default function Header() {
           <span style={{ fontFamily: 'var(--font-d)', fontSize: 24, fontWeight: 500, fontStyle: 'italic', color: 'var(--gold)', letterSpacing: '-0.02em' }}>
             KiKi Fragancia
           </span>
-          <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.55)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 4 }} aria-label="Cerrar menú">
+          <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.55)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 11, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
             <CloseIcon />
           </button>
         </div>

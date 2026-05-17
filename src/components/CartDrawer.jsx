@@ -112,7 +112,7 @@ export default function CartDrawer() {
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
-            style={{ background: 'none', border: 'none', color: 'rgba(250,250,248,0.5)', cursor: 'pointer', padding: '4px' }}
+            style={{ background: 'none', border: 'none', color: 'rgba(250,250,248,0.5)', cursor: 'pointer', padding: '11px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             aria-label="Cerrar carrito"
           >
             <CloseIcon />
