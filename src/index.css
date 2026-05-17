@@ -605,7 +605,7 @@
   animation: marqueeScroll 40s linear infinite;
 }
 .marquee-inner:hover { animation-play-state: paused; }
-.marquee-item { display: inline-flex; align-items: center; }
+.marquee-item { display: inline-flex; align-items: center; padding: 14px 0; }
 .marquee-brand {
   font-family: var(--font-s); font-size: 10px;
   letter-spacing: 0.28em; text-transform: uppercase;
