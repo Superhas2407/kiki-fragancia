@@ -421,23 +421,55 @@ export default function Tienda() {
             {/* Lista de productos */}
             <div className="tienda-pad" style={{ paddingBottom: '80px' }}>
               {filtered.length === 0 ? (
-                <div style={{ textAlign: 'center', padding: '80px 0' }}>
+                <div style={{ textAlign: 'center', padding: '80px 20px' }}>
+                  <svg aria-hidden="true" width="40" height="40" viewBox="0 0 40 40" fill="none" style={{ margin: '0 auto 24px', display: 'block' }}>
+                    <ellipse cx="20" cy="32" rx="8" ry="2.5" fill="rgba(201,168,76,0.12)" />
+                    <rect x="16" y="8" width="8" height="18" rx="4" fill="rgba(201,168,76,0.18)" />
+                    <rect x="17.5" y="4" width="5" height="5" rx="1.5" fill="rgba(201,168,76,0.25)" />
+                    <rect x="19" y="2" width="2" height="3" rx="1" fill="rgba(201,168,76,0.3)" />
+                    <ellipse cx="20" cy="17" rx="3" ry="4" fill="rgba(201,168,76,0.22)" />
+                  </svg>
                   <p style={{
-                    fontFamily: "'Cormorant Garamond', serif", fontSize: '24px',
-                    color: 'rgba(250,250,248,0.3)', fontStyle: 'italic',
+                    fontFamily: "'Cormorant Garamond', serif", fontSize: '26px',
+                    color: 'rgba(250,250,248,0.45)', fontStyle: 'italic', marginBottom: '8px',
                   }}>
-                    Sin resultados para esos filtros
+                    No encontramos esa fragancia
                   </p>
-                  <button
-                    onClick={clearFilters}
-                    style={{
-                      marginTop: '20px', fontFamily: "'DM Sans', sans-serif",
-                      fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase',
-                      color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer',
-                    }}
-                  >
-                    Limpiar filtros →
-                  </button>
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif", fontSize: '13px',
+                    color: 'rgba(250,250,248,0.25)', marginBottom: '28px',
+                  }}>
+                    228 fragancias esperan — intenta con otros filtros
+                  </p>
+                  <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <button
+                      onClick={clearFilters}
+                      style={{
+                        fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
+                        letterSpacing: '0.15em', textTransform: 'uppercase',
+                        color: '#C9A84C', background: 'none',
+                        border: '1px solid rgba(201,168,76,0.35)',
+                        padding: '10px 20px', cursor: 'pointer',
+                      }}
+                    >
+                      Ver todas
+                    </button>
+                    <a
+                      href="https://wa.me/584120221983"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontFamily: "'DM Sans', sans-serif", fontSize: '11px',
+                        letterSpacing: '0.15em', textTransform: 'uppercase',
+                        color: '#0A0A0A', background: '#C9A84C',
+                        border: '1px solid #C9A84C',
+                        padding: '10px 20px', textDecoration: 'none',
+                        display: 'inline-flex', alignItems: 'center',
+                      }}
+                    >
+                      Consultar por WhatsApp
+                    </a>
+                  </div>
                 </div>
               ) : (
                 <>

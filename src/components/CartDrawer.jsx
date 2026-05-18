@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import { useCartContext } from '../context/CartContext'
 
 const WHATSAPP_NUMBER = '584120221983'
@@ -36,11 +37,21 @@ function buildMessage(items) {
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
+  const [showToast, setShowToast] = useState(false)
+  const toastTimerRef = useRef(null)
+
+  useEffect(() => {
+    return () => { if (toastTimerRef.current) clearTimeout(toastTimerRef.current) }
+  }, [])
 
   function handleWhatsApp() {
     const message = buildMessage(items)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
     window.open(url, '_blank', 'noopener,noreferrer')
+    setDrawerOpen(false)
+    setShowToast(true)
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current)
+    toastTimerRef.current = setTimeout(() => setShowToast(false), 3000)
   }
 
   return (
@@ -240,6 +251,30 @@ export default function CartDrawer() {
             </p>
           </div>
         )}
+      </div>
+
+      {/* Toast de confirmación WA */}
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '32px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          background: '#25D366',
+          color: '#fff',
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: '13px',
+          fontWeight: 500,
+          letterSpacing: '0.04em',
+          padding: '12px 24px',
+          zIndex: 200,
+          opacity: showToast ? 1 : 0,
+          pointerEvents: 'none',
+          transition: 'opacity 0.4s ease',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        ¡Listo! Te responderemos pronto
       </div>
     </>
   )

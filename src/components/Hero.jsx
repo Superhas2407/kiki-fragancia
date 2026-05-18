@@ -36,6 +36,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          aria-hidden="true"
           className="hero-video"
         >
           <source src="/hero.webm" type="video/webm" />

@@ -141,22 +141,22 @@ Synthesized from this review's findings. Each task derives from a specific findi
   - Files: `src/pages/ProductDetail.jsx:256-260`
   - Verify: click en "Agregar al carrito" → botón se vuelve verde → vuelve a gold en 1.8s
 
-- [ ] **T4 (P2, human: ~30min / CC: ~10min)** — Tienda — Mejorar empty state con icono + 2 CTAs
+- [x] **T4 (P2, human: ~30min / CC: ~10min)** — Tienda — Mejorar empty state con icono + 2 CTAs
   - Surfaced by: Pass 2, D5 — empty state frío sin calor ni alternativas
   - Files: `src/pages/Tienda.jsx:423-441`
   - Verify: aplicar cualquier filtro que dé 0 resultados → ver nuevo empty state
 
-- [ ] **T5 (P2, human: ~30min / CC: ~10min)** — CartDrawer — Cerrar drawer + toast verde al consultar WA
+- [x] **T5 (P2, human: ~30min / CC: ~10min)** — CartDrawer — Cerrar drawer + toast verde al consultar WA
   - Surfaced by: Pass 3, D6 — sin confirmación post-acción en el funnel
   - Files: `src/components/CartDrawer.jsx`, posiblemente `src/App.jsx`
   - Verify: agregar producto al carrito → "Consultar por WhatsApp" → drawer se cierra → toast verde 3s
 
-- [ ] **T6 (P2, human: ~15min / CC: ~5min)** — Hero/VaporCanvas/CursorTrail — aria-hidden en elementos decorativos
+- [x] **T6 (P2, human: ~15min / CC: ~5min)** — Hero/VaporCanvas/CursorTrail — aria-hidden en elementos decorativos
   - Surfaced by: Pass 6, D10 — elementos decorativos anunciados por screen readers
   - Files: `src/components/Hero.jsx`, `src/components/VaporCanvas.jsx`, `src/components/CursorTrail.jsx`
   - Verify: inspeccionar DOM → video y canvas tienen `aria-hidden="true"`
 
-- [ ] **T7 (P3, human: ~45min / CC: ~15min)** — Root — Crear DESIGN.md
+- [x] **T7 (P3, human: ~45min / CC: ~15min)** — Root — Crear DESIGN.md
   - Surfaced by: Pass 5, D8 — sin documento de sistema de diseño
   - Files: `DESIGN.md` (nuevo)
   - Verify: archivo existe con paleta, tipografía, reglas de tema y excepciones CSS
@@ -188,9 +188,9 @@ Synthesized from this review's findings. Each task derives from a specific findi
 |--------|---------|-----|------|--------|----------|
 | CEO Review | `/plan-ceo-review` | Scope & strategy | 0 | — | — |
 | Codex Review | `/codex review` | Independent 2nd opinion | 0 | — | — |
-| Eng Review | `/plan-eng-review` | Architecture & tests (required) | 0 | — | — |
-| Design Review | `/plan-design-review` | UI/UX gaps | 1 | issues_open | score: 5/10 → 8/10, 10 decisions made |
+| Eng Review | `/plan-eng-review` | Architecture & tests (required) | 1 | complete | PASS — all tasks localized, toast cleanup safe, no test infra needed |
+| Design Review | `/plan-design-review` | UI/UX gaps | 1 | complete | score: 5/10 → 8/10, 10 decisions, all 7 tasks implemented |
 | DX Review | `/plan-devex-review` | Developer experience gaps | 0 | — | — |
 
 - **UNRESOLVED:** 1 (Instagram API — diferida intencionalmente)
-- **VERDICT:** Design Review corrido. Eng Review required antes de ship.
+- **VERDICT:** Design Review + Eng Review completos. Todas las tareas implementadas. Listo para ship.
