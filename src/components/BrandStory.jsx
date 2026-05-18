@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useAnimCounter } from '../hooks/useAnimCounter'
 
@@ -17,9 +16,6 @@ export default function BrandStory() {
   const quoteRef   = useScrollReveal({ threshold: 0.2, delay: 120 })
   const textRef    = useScrollReveal({ threshold: 0.2, delay: 260 })
   const statsRef   = useScrollReveal({ threshold: 0.2, delay: 380 })
-  const imgRef     = useScrollReveal({ threshold: 0.1, delay: 80 })
-  const [imgHover, setImgHover] = useState(false)
-
   return (
     <section id="nosotros" className="brand-story-section section-pad">
       <div className="kiki-container">
@@ -51,18 +47,7 @@ export default function BrandStory() {
             </div>
           </div>
 
-          {/* Right: image */}
-          <div
-            ref={imgRef}
-            className="brand-story-img-wrap"
-            onMouseEnter={() => setImgHover(true)}
-            onMouseLeave={() => setImgHover(false)}
-          >
-            <div className="brand-story-img-frame" style={{ borderColor: imgHover ? 'rgba(201,168,76,.45)' : 'rgba(201,168,76,.22)' }}></div>
-            <div className="brand-story-img-placeholder" style={{ transform: imgHover ? 'scale(1.03)' : 'scale(1)' }}>
-              <span className="brand-story-img-label">brand-story.jpg<br />lifestyle photo<br />perfume editorial</span>
-            </div>
-          </div>
+          {/* Right: image — hidden until real lifestyle photo is available (PLAN.md T1) */}
 
         </div>
       </div>

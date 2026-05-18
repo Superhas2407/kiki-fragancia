@@ -256,13 +256,13 @@ export default function ProductDetail() {
                       fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '.2em',
                       textTransform: 'uppercase', padding: '16px 32px', width: '100%',
                       cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      border: '1px solid var(--gold)',
-                      background: added ? 'var(--gold)' : 'var(--gold)',
-                      color: '#0A0A0A',
-                      transition: 'background .2s ease, transform .2s ease',
+                      border: added ? '1px solid #25D366' : '1px solid var(--gold)',
+                      background: added ? '#25D366' : 'var(--gold)',
+                      color: added ? '#FFF' : '#0A0A0A',
+                      transition: 'background .25s ease, border-color .25s ease, color .25s ease',
                     }}
                     onMouseEnter={e => { if (!added) e.currentTarget.style.background = '#E8C96A' }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'var(--gold)' }}
+                    onMouseLeave={e => { if (!added) e.currentTarget.style.background = 'var(--gold)' }}
                   >
                     {added ? '✓ Agregado' : 'Agregar al carrito'}
                   </button>

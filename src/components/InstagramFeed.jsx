@@ -108,7 +108,7 @@ export default function InstagramFeed() {
                 padding: '4px 10px',
               }}
             >
-              33k+
+              110k+
             </span>
           </div>
 
