@@ -1,16 +1,55 @@
-# React + Vite
+# KiKi Fragancia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Catálogo de perfumería venezolana de lujo. Landing page estática + tienda + detalle de producto. Sin backend — todo el proceso de compra es vía WhatsApp.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+| Herramienta | Versión |
+|-------------|---------|
+| React | 19.2.6 |
+| Vite | 8.0.12 |
+| Tailwind CSS | v4.3 (`@import "tailwindcss"` + `@theme {}` — sin `tailwind.config.js`) |
+| React Router | v7.15 |
+| framer-motion | v12.38 (solo en Tienda y WheelPagination) |
 
-## React Compiler
+## Desarrollo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev      # localhost:5173
+npm run build    # dist/
+npm run preview  # preview del build
+```
 
-## Expanding the ESLint configuration
+## Rutas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+/             → Landing (Hero, Catálogo, Familias, Marcas, BrandStory, Instagram, Footer)
+/tienda       → Catálogo completo (filtros, búsqueda, paginación)
+/tienda/:id   → Detalle de producto
+```
+
+## Arquitectura CSS
+
+Dos sistemas coexistiendo sin conflicto:
+
+- **Landing + ProductDetail** → clases custom en `src/index.css` (`.kiki-container`, `.hero-section`, `.pd-layout`, etc.)
+- **Tienda + CartDrawer** → utilidades de Tailwind
+
+No mezclar en nuevos componentes. Ver `DESIGN.md` para las reglas completas.
+
+## Datos
+
+228 productos en `src/data/products-enriched.js`. Sin precios — los clientes consultan por WhatsApp. Todas las imágenes están en `public/products/`.
+
+## Deployment
+
+Vercel — auto-deploy desde `Superhas2407/kiki-fragancia` (branch `main`).
+
+## Documentos del proyecto
+
+| Archivo | Contenido |
+|---------|-----------|
+| `DESIGN.md` | Sistema de diseño: paleta, tipografía, reglas de CSS, decisiones |
+| `PLAN.md` | Plan de mejoras de diseño (design review + eng review completados) |
+| `CONTEXT.md` | Contexto completo del proyecto (en `.gitignore`, solo local) |
