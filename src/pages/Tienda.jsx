@@ -4,10 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { products } from '../data/products-enriched'
-import ProductCard from '../components/ProductCard'
+import VitrinaCard from '../components/VitrinaCard'
 import WheelPagination from '../components/ui/WheelPagination'
 
-const ITEMS_PER_PAGE = 24
+// Mismo set de filtros que la versión anterior. Solo cambia la presentación:
+// VitrinaCard en grid de 2 columnas en lugar de ProductCard en 3-4.
+
+const ITEMS_PER_PAGE = 12 // menos cards por página al ser más grandes
 
 const MARCAS   = [...new Set(products.map(p => p.house))].sort()
 const FAMILIAS = [...new Set(products.map(p => p.familia))].sort()
@@ -418,7 +421,7 @@ export default function Tienda() {
               </div>
             </motion.div>
 
-            {/* Lista de productos */}
+            {/* Lista de productos — VITRINA */}
             <div className="tienda-pad" style={{ paddingBottom: '80px' }}>
               {filtered.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '80px 20px' }}>
@@ -473,18 +476,18 @@ export default function Tienda() {
                 </div>
               ) : (
                 <>
-                  <motion.div layout className="tienda-product-grid">
+                  <motion.div layout className="vitrina-grid">
                     <AnimatePresence mode="popLayout">
                       {paginatedProducts.map((product, index) => (
                         <motion.div
                           key={product.id}
                           layout
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 24 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.95 }}
-                          transition={{ duration: 0.28, delay: Math.min(index * 0.05, 0.35) }}
+                          exit={{ opacity: 0, scale: 0.96 }}
+                          transition={{ duration: 0.35, delay: Math.min(index * 0.06, 0.4), ease: [0.22, 1, 0.36, 1] }}
                         >
-                          <ProductCard product={product} />
+                          <VitrinaCard product={product} />
                         </motion.div>
                       ))}
                     </AnimatePresence>
