@@ -1174,23 +1174,22 @@
 ::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,.55); }
 ::selection { background: rgba(201,168,76,.25); color: #FAFAF8; }
 /* ============================================================
-   VITRINA CARD STYLES — append to end of src/index.css
-   Diseño "galería museo" para la Tienda: cards grandes en
-   grid 2-col con foto del producto llenando el display +
-   quick-add al carrito en hover.
+   VITRINA CARD STYLES v2 — append to end of src/index.css
+   Galería museo: marco con corner brackets, pedestal restaurado,
+   vignette inferior, eyebrow en notas, dot de género, hover glow.
    ============================================================ */
 
-/* Grid 2 columnas para la vitrina */
+/* Grid 2 columnas para la vitrina — gap más amplio en desktop */
 .vitrina-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px 28px;
+  gap: 48px 28px;
 }
 @media (min-width: 768px) {
-  .vitrina-grid { grid-template-columns: repeat(2, 1fr); gap: 56px 40px; }
+  .vitrina-grid { grid-template-columns: repeat(2, 1fr); gap: 64px 48px; }
 }
 @media (min-width: 1280px) {
-  .vitrina-grid { gap: 64px 48px; }
+  .vitrina-grid { gap: 80px 72px; }
 }
 
 /* Card */
@@ -1200,7 +1199,7 @@
   text-decoration: none;
   color: inherit;
   display: grid;
-  gap: 20px;
+  gap: 22px;
   background: none;
   border: none;
   padding: 0;
@@ -1214,42 +1213,79 @@
   overflow: hidden;
   isolation: isolate;
   background:
-    radial-gradient(ellipse at 50% 50%, var(--fam-c, var(--gold)) -60%, transparent 65%),
-    linear-gradient(180deg, #0E0B07 0%, #060403 100%);
-  border: 1px solid rgba(201,168,76,0.08);
-  transition: border-color .35s ease;
+    radial-gradient(ellipse at 50% 42%, var(--fam-c, var(--gold)) -60%, transparent 62%),
+    linear-gradient(180deg, #100C07 0%, #060403 100%);
+  border: 1px solid rgba(201,168,76,0.10);
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: border-color .4s ease, box-shadow .4s ease;
 }
-.vitrina-card:hover .vitrina-display { border-color: rgba(201,168,76,0.28); }
+.vitrina-card:hover .vitrina-display {
+  border-color: rgba(201,168,76,0.32);
+  box-shadow:
+    inset 0 0 0 1px rgba(201,168,76,0.08),
+    0 0 32px -8px rgba(201,168,76,0.18);
+}
 
+/* Inner ambient — sombra concentrada al fondo */
 .vitrina-display::before {
   content: "";
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 82%, transparent 0%, rgba(0,0,0,0.40) 100%);
+  background: radial-gradient(ellipse at 50% 88%, transparent 0%, rgba(0,0,0,0.50) 100%);
   z-index: 1;
   pointer-events: none;
 }
 
+/* Vignette inferior — hunde el reflejo del producto en el pedestal */
+.vitrina-vignette {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 35%;
+  background:
+    linear-gradient(to top,
+      rgba(0,0,0,0.55) 0%,
+      rgba(0,0,0,0.30) 50%,
+      transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Gallery frame — corner brackets en oro */
+.vitrina-frame-corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border: 1px solid rgba(201,168,76,0.45);
+  z-index: 6;
+  pointer-events: none;
+  transition: border-color .4s ease, width .35s ease, height .35s ease;
+}
+.vitrina-frame-corner.tl { top: 12px; left: 12px;  border-right: none; border-bottom: none; }
+.vitrina-frame-corner.tr { top: 12px; right: 12px; border-left: none;  border-bottom: none; }
+.vitrina-frame-corner.bl { bottom: 12px; left: 12px;  border-right: none; border-top: none; }
+.vitrina-frame-corner.br { bottom: 12px; right: 12px; border-left: none;  border-top: none; }
+.vitrina-card:hover .vitrina-frame-corner {
+  border-color: rgba(201,168,76,0.85);
+  width: 28px; height: 28px;
+}
+
 /* Spotlight = contenedor que sostiene el producto.
-   Ocupa casi todo el display (92%) para que las fotos
-   verticales se vean grandes y centrales. */
+   78% recupera el "pedestal feel" + revela el tinte de familia. */
 .vitrina-spotlight {
   position: absolute; left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  width: 92%; height: 92%;
-  z-index: 3;
+  width: 78%; height: 78%;
+  z-index: 4;
   display: flex; align-items: center; justify-content: center;
-  transition: transform .55s cubic-bezier(.22,1,.36,1);
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
 }
 
 /* Pedestal — sombra suave debajo del producto */
 .vitrina-pedestal {
-  position: absolute; bottom: 5%; left: 50%;
+  position: absolute; bottom: 7%; left: 50%;
   transform: translateX(-50%);
-  width: 50%; height: 5%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.75) 100%);
-  filter: blur(10px);
-  border-radius: 50%;
-  z-index: 2;
+  width: 60%; height: 6%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.95) 0%, transparent 70%);
+  filter: blur(4px);
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -1260,11 +1296,11 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 28px 36px rgba(0,0,0,0.65));
+  filter: drop-shadow(0 28px 36px rgba(0,0,0,0.7));
   transition: filter .4s ease;
 }
 .vitrina-card:hover .vitrina-img {
-  filter: drop-shadow(0 36px 48px rgba(0,0,0,0.8));
+  filter: drop-shadow(0 40px 56px rgba(0,0,0,0.85));
 }
 
 .vitrina-placeholder {
@@ -1286,50 +1322,63 @@
   padding: 16px;
 }
 
-/* Esquinas — número de pieza + familia tag */
+/* Esquinas — N° editorial + familia tag */
 .vitrina-corner {
   position: absolute;
-  top: 20px; left: 20px; right: 20px;
+  top: 24px; left: 24px; right: 24px;
   display: flex; justify-content: space-between; align-items: flex-start;
-  z-index: 4;
+  z-index: 7;
   pointer-events: none;
 }
 .vitrina-num {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.vitrina-num > span:first-child {
   font-family: 'DM Sans', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.32em;
+  font-size: 9.5px;
+  letter-spacing: 0.34em;
   color: var(--gold);
   text-transform: uppercase;
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
+.vitrina-num-line {
+  display: block;
+  width: 28px; height: 1px;
+  background: rgba(201,168,76,0.55);
+  transition: width .35s ease;
+}
+.vitrina-card:hover .vitrina-num-line { width: 42px; }
+
 .vitrina-familia {
   font-family: 'DM Sans', sans-serif;
   font-size: 8.5px;
-  letter-spacing: 0.28em;
-  color: rgba(247,242,234,0.7);
+  letter-spacing: 0.30em;
+  color: rgba(247,242,234,0.72);
   text-transform: uppercase;
   text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
-/* Quick-add CTA — appears on hover in bottom-right corner */
+/* Quick-add CTA — bottom-right on hover */
 .vitrina-quick-add {
   position: absolute;
   bottom: 16px;
   right: 16px;
-  z-index: 5;
+  z-index: 8;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 14px;
+  padding: 10px 14px;
   font-family: 'DM Sans', sans-serif;
   font-size: 9.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: rgba(10,8,4,0.85);
-  border: 1px solid rgba(201,168,76,0.35);
+  background: rgba(10,8,4,0.86);
+  border: 1px solid rgba(201,168,76,0.40);
   color: var(--gold);
   cursor: pointer;
-  min-height: 36px;
+  min-height: 38px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   opacity: 0;
@@ -1353,7 +1402,7 @@
   transform: translateY(0);
 }
 
-/* Touch devices — show quick-add always (no hover state) */
+/* Touch devices — show quick-add always */
 @media (hover: none) {
   .vitrina-quick-add { opacity: 1; transform: translateY(0); }
 }
@@ -1361,7 +1410,7 @@
 /* Info row debajo del display */
 .vitrina-info {
   display: grid;
-  gap: 8px;
+  gap: 10px;
   padding: 0 4px;
 }
 .vitrina-info-row {
@@ -1370,11 +1419,21 @@
   flex-wrap: wrap;
 }
 .vitrina-house {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-family: 'DM Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
+}
+.vitrina-gender-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
 }
 .vitrina-meta {
   font-family: 'DM Sans', sans-serif;
@@ -1401,6 +1460,22 @@
   background: rgba(201,168,76,0.10);
   margin: 2px 0;
 }
+
+/* Notes block — con eyebrow label */
+.vitrina-notes-block {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.vitrina-notes-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  flex-shrink: 0;
+}
 .vitrina-notes {
   display: flex;
   flex-wrap: wrap;
@@ -1408,10 +1483,10 @@
 }
 .vitrina-note {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
+  font-size: 14px;
   font-style: italic;
   font-weight: 300;
-  color: rgba(247,242,234,0.55);
+  color: rgba(247,242,234,0.62);
 }
 .vitrina-note + .vitrina-note::before {
   content: "·";
