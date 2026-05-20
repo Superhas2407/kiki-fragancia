@@ -40,10 +40,12 @@ Load order in `index.html`: Cormorant Garamond → DM Sans.
 
 | System | Where used | How |
 |--------|-----------|-----|
-| kiki CSS classes | Landing page, ProductDetail, BrandStory, Hero, Guarantee | `src/index.css` class names: `.kiki-container`, `.brand-story-section`, etc. |
-| Tailwind utilities | Tienda, CartDrawer, InstagramFeed | `@import "tailwindcss"` — Tailwind v4 (no `tailwind.config.js`) |
+| kiki CSS classes | Landing page, ProductDetail, BrandStory, Hero, Guarantee, VitrinaCard | `src/index.css` class names: `.kiki-container`, `.vitrina-card`, `.brand-story-section`, etc. |
+| Tailwind utilities | Tienda layout/sidebar, CartDrawer, InstagramFeed | `@import "tailwindcss"` — Tailwind v4 (no `tailwind.config.js`) |
 
 **Exception:** InstagramFeed uses Tailwind (`grid grid-cols-3 gap-1`) despite being on the landing page. This is a known, intentional exception. Do NOT migrate it.
+
+**Note:** VitrinaCard uses kiki CSS classes (`.vitrina-*`) even though it renders inside Tienda. The card itself is a landing-aesthetic component — museum treatment, Cormorant italic, gold accents. The Tienda page shell (sidebar, filters, header bar) uses Tailwind.
 
 ## Component Rules
 
@@ -58,6 +60,33 @@ All interactive elements: `minHeight: '44px'`, `minWidth: '44px'`. Enforced via 
 - `src/components/Hero.jsx` — `<video aria-hidden="true">`
 - `src/components/VaporCanvas.jsx` — `<canvas aria-hidden="true">`
 - `src/components/CursorTrail.jsx` — `<canvas aria-hidden="true">`
+
+### VitrinaCard — family color system
+Each olfactive family injects two CSS custom properties into the card:
+- `--fam-c`: accent color (used in radial background glow)
+- `--fam-c2`: deep shadow color
+
+| Familia | `--fam-c` | `--fam-c2` |
+|---------|-----------|-----------|
+| Amaderado | `#8B6332` | `#3A2719` |
+| Oriental | `#B65A2D` | `#4C2014` |
+| Floral | `#C77B9E` | `#4D2434` |
+| Floral Oriental | `#A6566B` | `#451E2A` |
+| Floral Amaderado | `#9A6E5C` | `#3A2218` |
+| Floral Frutal | `#C77F58` | `#48241A` |
+| Frutal | `#C77F3D` | `#48261A` |
+| Frutal Amaderado | `#A56E4A` | `#3F2218` |
+| Gourmand | `#7B4F2A` | `#321E10` |
+| Cítrico | `#D4B048` | `#42351C` |
+| Aromático | `#6F8A5C` | `#26321E` |
+| (fallback) | `#C9A84C` | `#3D2F12` |
+
+### VitrinaCard — gender dot colors
+| Género | Color |
+|--------|-------|
+| Masculino | `#C9A84C` (gold) |
+| Femenino | `#E8A0B4` (pink) |
+| Unisex | `#E0DDD4` (off-white) |
 
 ### Cart / WA flow
 - No prices shown in ProductDetail (intentional — catalog pricing strategy)
@@ -77,3 +106,4 @@ All interactive elements: `minHeight: '44px'`, `minWidth: '44px'`. Enforced via 
 | D7 | Guarantee/Pilares: minimal gold-line, no icons (intentional) | `src/components/Guarantee.jsx` |
 | D9 | InstagramFeed Tailwind: known exception, do not migrate | `src/components/InstagramFeed.jsx` |
 | D10 | aria-hidden on video + two canvases | Hero, VaporCanvas, CursorTrail |
+| D11 | VitrinaCard replaces ProductCard in Tienda — museum gallery treatment, 2-col grid, 12/page | `src/components/VitrinaCard.jsx`, `src/pages/Tienda.jsx` |
