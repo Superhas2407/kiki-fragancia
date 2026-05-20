@@ -126,17 +126,17 @@ El color vuelve a gold después de 1.8s cuando `added` vuelve a false.
 
 Synthesized from this review's findings. Each task derives from a specific finding above.
 
-- [ ] **T1 (P1, human: ~10min / CC: ~2min)** — BrandStory — Ocultar imagen placeholder
+- [x] **T1 (P1, human: ~10min / CC: ~2min)** — BrandStory — Ocultar imagen placeholder
   - Surfaced by: Pass 1, D2 — texto placeholder visible en producción
   - Files: `src/components/BrandStory.jsx`
   - Verify: abrir `/` y ver sección "Nuestra historia" — no debe mostrar texto placeholder
 
-- [ ] **T2 (P1, human: ~5min / CC: ~1min)** — InstagramFeed — Unificar conteo de seguidores a 110k+
+- [x] **T2 (P1, human: ~5min / CC: ~1min)** — InstagramFeed — Unificar conteo de seguidores a 110k+
   - Surfaced by: Pass 1, D3 — 33k+ vs 110k inconsistencia
   - Files: `src/components/InstagramFeed.jsx:111`
   - Verify: feed muestra "110k+" en el badge
 
-- [ ] **T3 (P1, human: ~15min / CC: ~3min)** — ProductDetail — Verde #25D366 en botón "Agregar" cuando added=true
+- [x] **T3 (P1, human: ~15min / CC: ~3min)** — ProductDetail — Verde #25D366 en botón "Agregar" cuando added=true
   - Surfaced by: Pass 2, D4 — sin feedback visual en add-to-cart
   - Files: `src/pages/ProductDetail.jsx:256-260`
   - Verify: click en "Agregar al carrito" → botón se vuelve verde → vuelve a gold en 1.8s
@@ -160,6 +160,20 @@ Synthesized from this review's findings. Each task derives from a specific findi
   - Surfaced by: Pass 5, D8 — sin documento de sistema de diseño
   - Files: `DESIGN.md` (nuevo)
   - Verify: archivo existe con paleta, tipografía, reglas de tema y excepciones CSS
+
+---
+
+## Próximas tareas (nueva fase — catálogo y fotos)
+
+Identificadas en sesión 2026-05-19 antes de iniciar trabajo con PDF de catálogo.
+
+- [ ] **TC1** — Importar catálogo desde PDF: actualizar `src/data/products-enriched.js` con todos los productos correctos, precios si los hay, y datos completos. El usuario entregará el PDF en el próximo chat.
+- [ ] **TC2** — Limpiar galería de fotos en `public/products/`: eliminar imágenes duplicadas y fotos de sets que no deberían estar en el catálogo individual.
+- [ ] **TC3** — Asignar imágenes correctas a todos los productos: actualmente varios productos usan el placeholder de KiKi Fragancia (sin campo `image` asignado). Después de TC2, hacer el mapeo correcto `product.image → filename`.
+
+**Bloqueos conocidos:**
+- TC1 y TC3 dependen del PDF del catálogo que entregará el usuario.
+- TC2 requiere que el usuario identifique qué fotos eliminar (sets, duplicados).
 
 ---
 
@@ -193,4 +207,4 @@ Synthesized from this review's findings. Each task derives from a specific findi
 | DX Review | `/plan-devex-review` | Developer experience gaps | 0 | — | — |
 
 - **UNRESOLVED:** 1 (Instagram API — diferida intencionalmente)
-- **VERDICT:** Design Review + Eng Review completos. Todas las tareas implementadas. Listo para ship.
+- **VERDICT:** Design Review + Eng Review completos. Todas las tareas T1–T7 implementadas y verificadas en browser. Próxima fase: TC1–TC3 (catálogo PDF + limpieza de fotos).

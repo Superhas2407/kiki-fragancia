@@ -46,10 +46,16 @@ No mezclar en nuevos componentes. Ver `DESIGN.md` para las reglas completas.
 
 Vercel — auto-deploy desde `Superhas2407/kiki-fragancia` (branch `main`).
 
+## Estado actual
+
+- Todas las tareas de diseño T1–T7 completadas y verificadas en browser (2026-05-19)
+- VitrinaCard implementado y funcionando en Tienda (galería museo, 2 cols, 12/página)
+- Próxima fase: actualizar catálogo desde PDF + limpiar fotos de `public/products/`
+
 ## Documentos del proyecto
 
 | Archivo | Contenido |
 |---------|-----------|
-| `DESIGN.md` | Sistema de diseño: paleta, tipografía, reglas de CSS, decisiones |
-| `PLAN.md` | Plan de mejoras de diseño (design review + eng review completados) |
+| `DESIGN.md` | Sistema de diseño: paleta, tipografía, reglas de CSS, decisiones, QA status |
+| `PLAN.md` | Plan de mejoras (T1–T7 completos) + próximas tareas TC1–TC3 |
 | `CONTEXT.md` | Contexto completo del proyecto (en `.gitignore`, solo local) |

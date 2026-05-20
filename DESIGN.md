@@ -107,3 +107,12 @@ Each olfactive family injects two CSS custom properties into the card:
 | D9 | InstagramFeed Tailwind: known exception, do not migrate | `src/components/InstagramFeed.jsx` |
 | D10 | aria-hidden on video + two canvases | Hero, VaporCanvas, CursorTrail |
 | D11 | VitrinaCard replaces ProductCard in Tienda — museum gallery treatment, 2-col grid, 12/page | `src/components/VitrinaCard.jsx`, `src/pages/Tienda.jsx` |
+
+## QA Status
+
+Verificado en browser (Playwright headless) el 2026-05-19:
+- VitrinaCard: corner brackets, spotlight, N° editorial, eyebrow notas, quick-add — todos funcionando
+- Empty state: SVG + copy + 2 CTAs — funcionando
+- CartDrawer toast WA — funcionando
+- Mobile 375px — 1 columna, layout correcto
+- 0 errores de consola
