@@ -162,6 +162,14 @@ export default function VitrinaCard({ product }) {
             </div>
           </div>
         )}
+        {product.precioUSD > 0 && (
+          <div className="vitrina-price">
+            <span className="vitrina-price-usd">${product.precioUSD}</span>
+            {product.precioBS > 0 && (
+              <span className="vitrina-price-bs">Bs. {product.precioBS.toLocaleString('es-VE')}</span>
+            )}
+          </div>
+        )}
       </div>
     </article>
   )

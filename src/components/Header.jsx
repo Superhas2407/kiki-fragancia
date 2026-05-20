@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useCartContext } from '../context/CartContext'
+import { useCurrency } from '../context/CurrencyContext'
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -8,9 +10,11 @@ const NAV_LINKS = [
   { label: 'Contacto',  to: '/#contacto',                           type: 'anchor'   },
 ]
 
-const WhatsAppIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+const CartIcon = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <path d="M16 10a4 4 0 01-8 0" />
   </svg>
 )
 
@@ -28,6 +32,104 @@ const CloseIcon = () => (
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 )
+
+function CurrencyToggle() {
+  const { currency, toggleCurrency } = useCurrency()
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  function select(c) {
+    if (c !== currency) toggleCurrency()
+    setOpen(false)
+  }
+
+  return (
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen(v => !v)}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 4,
+          background: 'none', border: '1px solid rgba(201,168,76,0.3)',
+          color: '#C9A84C', cursor: 'pointer',
+          fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.15em',
+          padding: '6px 10px', transition: 'border-color .2s',
+        }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.7)'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)'}
+        aria-label="Cambiar moneda"
+      >
+        {currency}
+        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      {open && (
+        <div style={{
+          position: 'absolute', top: 'calc(100% + 6px)', right: 0,
+          background: '#141414', border: '1px solid rgba(201,168,76,0.2)',
+          minWidth: 80, zIndex: 200,
+        }}>
+          {['USD', 'BS'].map(c => (
+            <button
+              key={c}
+              onClick={() => select(c)}
+              style={{
+                display: 'block', width: '100%', padding: '9px 14px',
+                background: c === currency ? 'rgba(201,168,76,0.1)' : 'none',
+                border: 'none', cursor: 'pointer', textAlign: 'left',
+                fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.15em',
+                color: c === currency ? '#C9A84C' : 'rgba(250,250,248,0.6)',
+              }}
+            >
+              {c === 'USD' ? 'USD — Dólares' : 'Bs — Bolívares'}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function CartButton() {
+  const { items, setDrawerOpen } = useCartContext()
+  const count = items.reduce((s, i) => s + i.qty, 0)
+
+  return (
+    <button
+      onClick={() => setDrawerOpen(true)}
+      aria-label={`Carrito (${count} items)`}
+      style={{
+        position: 'relative', background: 'none', border: 'none',
+        cursor: 'pointer', color: 'rgba(250,250,248,0.75)',
+        display: 'flex', alignItems: 'center', padding: '4px',
+        transition: 'color .2s',
+      }}
+      onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+      onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.75)'}
+    >
+      <CartIcon size={20} />
+      {count > 0 && (
+        <span style={{
+          position: 'absolute', top: -2, right: -4,
+          background: '#C9A84C', color: '#0A0A0A',
+          fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-s)',
+          width: 16, height: 16, borderRadius: '50%',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {count > 9 ? '9+' : count}
+        </span>
+      )}
+    </button>
+  )
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -65,16 +167,15 @@ export default function Header() {
                 return <a key={link.label} href={link.to} className="nav-pill-item">{link.label}</a>
               })}
             </div>
-            <a href="https://wa.me/584120221983" target="_blank" rel="noopener noreferrer" className="btn-wa">
-              <WhatsAppIcon />
-              WhatsApp
-            </a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <CurrencyToggle />
+              <CartButton />
+            </div>
           </nav>
 
           <div className="kiki-mobile-controls">
-            <a href="https://wa.me/584120221983" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)', display: 'flex' }} aria-label="WhatsApp">
-              <WhatsAppIcon size={20} />
-            </a>
+            <CurrencyToggle />
+            <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
             </button>
@@ -82,39 +183,68 @@ export default function Header() {
         </div>
       </header>
 
+      {/* Backdrop */}
+      <div
+        className={`kiki-mobile-backdrop${menuOpen ? ' open' : ''}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Sidebar deslizante */}
       <div className={`kiki-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-header">
-          <span style={{ fontFamily: 'var(--font-d)', fontSize: 24, fontWeight: 500, fontStyle: 'italic', color: 'var(--gold)', letterSpacing: '-0.02em' }}>
+          <span style={{ fontFamily: 'var(--font-d)', fontSize: 20, fontWeight: 500, fontStyle: 'italic', color: 'var(--gold)', letterSpacing: '-0.02em' }}>
             KiKi Fragancia
           </span>
-          <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.55)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 11, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
+          <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.45)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
             <CloseIcon />
           </button>
         </div>
 
         <nav className="kiki-mobile-nav">
+
+          {/* Sección: Fragancias por género */}
+          <div style={{ padding: '20px 24px 8px', width: '100%' }}>
+            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
+              Fragancias
+            </span>
+          </div>
+          {[
+            { to: '/tienda',                    label: 'Todas' },
+            { to: '/tienda?genero=Masculino',   label: 'Hombre' },
+            { to: '/tienda?genero=Femenino',    label: 'Mujer' },
+            { to: '/tienda?genero=Unisex',      label: 'Unisex' },
+            { to: '/tienda?genero=Niño',        label: 'Kids' },
+          ].map((l, i) => (
+            <Link
+              key={l.to}
+              to={l.to}
+              className="mobile-nav-link"
+              style={{ transitionDelay: `${i * 40 + 60}ms` }}
+            >
+              {l.label}
+            </Link>
+          ))}
+
+          {/* Divisor */}
+          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'rgba(201,168,76,0.08)', flexShrink: 0 }} />
+
+          {/* Sección: Navegación general */}
+          <div style={{ padding: '8px 24px 8px', width: '100%' }}>
+            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
+              Menú
+            </span>
+          </div>
           {NAV_LINKS.map((link, i) => {
-            const delay = i * 80 + 120
-            const linkProps = {
-              className: 'mobile-nav-link',
-              style: { transitionDelay: `${delay}ms` },
-            }
+            const delay = i * 40 + 280
+            const linkProps = { className: 'mobile-nav-link', style: { transitionDelay: `${delay}ms` } }
             if (link.type === 'route')
               return <Link key={link.label} to={link.to} {...linkProps}>{link.label}</Link>
             if (link.type === 'external')
               return <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" {...linkProps}>{link.label}</a>
             return <a key={link.label} href={link.to} {...linkProps}>{link.label}</a>
           })}
-          <a
-            href="https://wa.me/584120221983"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mobile-wa-link"
-            style={{ opacity: menuOpen ? 1 : 0, transform: menuOpen ? 'translateY(0)' : 'translateY(20px)', transition: `opacity .45s ease ${NAV_LINKS.length * 80 + 200}ms, transform .45s cubic-bezier(.22,1,.36,1) ${NAV_LINKS.length * 80 + 200}ms`, display: 'flex', alignItems: 'center', gap: 8 }}
-          >
-            <WhatsAppIcon size={14} />
-            Escribir por WhatsApp
-          </a>
+
         </nav>
 
         <p className="mobile-footer-label">KiKi Fragancia · Venezuela</p>

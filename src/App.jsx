@@ -1,12 +1,14 @@
 import { Component, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
+import { CurrencyProvider } from './context/CurrencyContext'
 import Landing from './pages/Landing'
 import Tienda from './pages/Tienda'
 import ProductDetail from './pages/ProductDetail'
 import CartDrawer from './components/CartDrawer'
-import CartFab from './components/CartFab'
 import CursorTrail from './components/CursorTrail'
+import Header from './components/Header'
+import GlobalSidebar from './components/GlobalSidebar'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -34,22 +36,37 @@ class ErrorBoundary extends Component {
   }
 }
 
+function AppShell() {
+  return (
+    <>
+      <CursorTrail />
+      <ScrollToTop />
+      <Header />
+      <div className="app-shell">
+        <GlobalSidebar />
+        <div className="app-main">
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/tienda" element={<Tienda />} />
+            <Route path="/tienda/:id" element={<ProductDetail />} />
+          </Routes>
+        </div>
+      </div>
+      <ErrorBoundary>
+        <CartDrawer />
+      </ErrorBoundary>
+    </>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-      <CartProvider>
-        <CursorTrail />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/tienda" element={<Tienda />} />
-          <Route path="/tienda/:id" element={<ProductDetail />} />
-        </Routes>
-        <ErrorBoundary>
-          <CartFab />
-          <CartDrawer />
-        </ErrorBoundary>
-      </CartProvider>
+      <CurrencyProvider>
+        <CartProvider>
+          <AppShell />
+        </CartProvider>
+      </CurrencyProvider>
     </BrowserRouter>
   )
 }

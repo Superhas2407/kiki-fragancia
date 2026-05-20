@@ -1,28 +1,82 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
-import { products } from '../data/products-enriched'
+import { allProducts as products } from '../data/all-products'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-const NOTE_EMOJI = {
-  bergamota:'🍋', limón:'🍋', limon:'🍋', naranja:'🍊', mandarina:'🍊',
-  manzana:'🍎', canela:'🟤', vainilla:'🤍', rosa:'🌹', jazmín:'🌸',
-  jazmin:'🌸', sándalo:'🪵', sandalo:'🪵', ámbar:'🟡', ambar:'🟡',
-  almizcle:'🤍', musgo:'🌿', oud:'🪵', pachulí:'🌿', pachuli:'🌿',
-  vetiver:'🌾', cedro:'🌲', iris:'💜', violeta:'💜', incienso:'🕯️',
-  cardamomo:'🌿', jengibre:'🔥', pimienta:'⚫', lavanda:'💜',
-  neroli:'🌸', caramelo:'🍬', chocolate:'🍫', menta:'🌿',
-  fresia:'🌺', tuberosa:'🌺', tonka:'🫘', benjuí:'🟤', benjui:'🟤',
-  mirra:'🪨', patchouli:'🌿', azafrán:'🌼', azafran:'🌼',
-  resina:'🟤',
+// SVG icons per note family — no emoji, consistent with luxury aesthetic
+const NOTE_ICONS = {
+  // Cítricos
+  bergamota: 'citrus', limón: 'citrus', limon: 'citrus', naranja: 'citrus', mandarina: 'citrus', pomelo: 'citrus',
+  // Florales
+  rosa: 'floral', jazmín: 'floral', jazmin: 'floral', neroli: 'floral', fresia: 'floral',
+  tuberosa: 'floral', iris: 'floral', violeta: 'floral', lavanda: 'floral', ylang: 'floral',
+  // Amaderados
+  sándalo: 'wood', sandalo: 'wood', cedro: 'wood', oud: 'wood', patchouli: 'wood',
+  pachulí: 'wood', pachuli: 'wood', vetiver: 'wood', musgo: 'wood',
+  // Especiados
+  pimienta: 'spice', cardamomo: 'spice', canela: 'spice', jengibre: 'spice', azafrán: 'spice', azafran: 'spice',
+  // Gourmand
+  vainilla: 'sweet', caramelo: 'sweet', chocolate: 'sweet', tonka: 'sweet',
+  // Balsámicos / resinas
+  ámbar: 'resin', ambar: 'resin', incienso: 'resin', benjuí: 'resin', benjui: 'resin',
+  mirra: 'resin', resina: 'resin',
+  // Frescos
+  menta: 'fresh', almizcle: 'fresh',
 }
-function getNoteEmoji(nota) {
+
+const NOTE_SVG = {
+  citrus: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <circle cx="12" cy="12" r="9" /><line x1="12" y1="3" x2="12" y2="21" /><path d="M3 12 Q7 8 12 12 Q17 16 21 12" />
+    </svg>
+  ),
+  floral: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 2 Q14 7 12 9 Q10 7 12 2" /><path d="M12 15 Q14 17 12 22 Q10 17 12 15" />
+      <path d="M2 12 Q7 10 9 12 Q7 14 2 12" /><path d="M15 12 Q17 10 22 12 Q17 14 15 12" />
+    </svg>
+  ),
+  wood: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <path d="M12 2 L12 22" /><path d="M5 6 Q8 9 12 8 Q16 9 19 6" /><path d="M4 13 Q8 16 12 15 Q16 16 20 13" />
+    </svg>
+  ),
+  spice: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9" />
+    </svg>
+  ),
+  sweet: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <path d="M12 2 Q18 2 20 8 Q22 14 17 18 Q14 22 12 22 Q10 22 7 18 Q2 14 4 8 Q6 2 12 2" />
+      <path d="M9 10 Q12 14 15 10" />
+    </svg>
+  ),
+  resin: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <path d="M12 3 L20 8 L20 16 L12 21 L4 16 L4 8 Z" /><path d="M12 3 L12 21" /><path d="M4 8 L20 8" />
+    </svg>
+  ),
+  fresh: (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <path d="M12 22 Q4 16 4 10 A8 8 0 0 1 20 10 Q20 16 12 22Z" />
+    </svg>
+  ),
+}
+
+function getNoteIcon(nota) {
   const lower = nota.toLowerCase().trim()
-  for (const [key, emoji] of Object.entries(NOTE_EMOJI)) {
-    if (lower.includes(key)) return emoji
+  for (const [key, family] of Object.entries(NOTE_ICONS)) {
+    if (lower.includes(key)) return NOTE_SVG[family]
   }
-  return '✦'
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+      <circle cx="12" cy="12" r="2" /><line x1="12" y1="2" x2="12" y2="8" /><line x1="12" y1="16" x2="12" y2="22" /><line x1="2" y1="12" x2="8" y2="12" /><line x1="16" y1="12" x2="22" y2="12" />
+    </svg>
+  )
 }
 function parseNotes(str) {
   if (!str) return []
@@ -242,7 +296,7 @@ export default function ProductDetail() {
                     <div className="pd-notes-chips">
                       {notas.salida.slice(0, 4).map(n => (
                         <span key={n} className="pd-note-chip">
-                          <span className="pd-note-emoji">{getNoteEmoji(n)}</span>{n}
+                          <span className="pd-note-emoji">{getNoteIcon(n)}</span>{n}
                         </span>
                       ))}
                     </div>
@@ -318,7 +372,7 @@ export default function ProductDetail() {
                         <div className="pd-chips">
                           {notes.map(n => (
                             <span key={n} className="pd-chip" style={{ background: bg }}>
-                              <span className="pd-note-emoji">{getNoteEmoji(n)}</span>{n}
+                              <span className="pd-note-emoji">{getNoteIcon(n)}</span>{n}
                             </span>
                           ))}
                         </div>

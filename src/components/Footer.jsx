@@ -6,6 +6,21 @@ const WhatsAppIcon = ({ size = 17 }) => (
   </svg>
 )
 
+const InstagramIcon = ({ size = 17 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+  </svg>
+)
+
+const LocationIcon = ({ size = 14 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+    <circle cx="12" cy="10" r="3" />
+  </svg>
+)
+
 const ShieldIcon = () => (
   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -36,16 +51,31 @@ export default function Footer() {
               <ShieldIcon />
               <span className="footer-badge-text">100% originales verificados</span>
             </div>
+
+            {/* Dirección */}
+            <div style={{ marginTop: 20, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
+              <span style={{ color: '#C9A84C', marginTop: 1, flexShrink: 0 }}>
+                <LocationIcon />
+              </span>
+              <p style={{
+                fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.04em',
+                color: 'rgba(250,250,248,0.45)', lineHeight: 1.6, margin: 0,
+              }}>
+                C.C. Metrópolis, Local B-14<br />
+                Barquisimeto, Lara · Venezuela
+              </p>
+            </div>
           </div>
 
           {/* Col 2 — Nav */}
           <div>
             <span className="footer-col-label">Explorar</span>
             <nav className="footer-nav">
-              <Link to="/tienda" className="footer-nav-link">Colección completa</Link>
-              <a href="/#nosotros" className="footer-nav-link">Nuestra historia</a>
-              <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="footer-nav-link">Instagram</a>
-              <a href="/#catalogo" className="footer-nav-link">Destacados</a>
+              <Link to="/tienda" className="footer-nav-link">Todas las fragancias</Link>
+              <Link to="/tienda?genero=Masculino" className="footer-nav-link">Hombre</Link>
+              <Link to="/tienda?genero=Femenino" className="footer-nav-link">Mujer</Link>
+              <Link to="/tienda?genero=Unisex" className="footer-nav-link">Unisex</Link>
+              <Link to="/tienda?genero=Niño" className="footer-nav-link">Kids</Link>
             </nav>
           </div>
 
@@ -56,28 +86,47 @@ export default function Footer() {
               Respondemos en menos de 2 horas.<br />
               Asesoría personalizada sin costo.
             </p>
-            <a
-              href="https://wa.me/584120221983"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10,
-                fontFamily: 'var(--font-s)', fontSize: 10,
-                letterSpacing: '0.16em', textTransform: 'uppercase',
-                background: '#25D366', color: '#FFF',
-                padding: '14px 22px', textDecoration: 'none',
-                marginBottom: 14,
-                transition: 'background .25s ease, transform .25s ease',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.transform = 'translateY(0)' }}
-            >
-              <WhatsAppIcon size={15} />
-              Escribir por WhatsApp
-            </a>
-            <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="footer-insta">
-              @kiki_fragancia
-            </a>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <a
+                href="https://wa.me/584120221983"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 10,
+                  fontFamily: 'var(--font-s)', fontSize: 10,
+                  letterSpacing: '0.16em', textTransform: 'uppercase',
+                  background: '#25D366', color: '#FFF',
+                  padding: '14px 22px', textDecoration: 'none',
+                  transition: 'background .25s ease, transform .25s ease',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                <WhatsAppIcon size={15} />
+                Escribir por WhatsApp
+              </a>
+
+              <a
+                href="https://instagram.com/kiki_fragancia"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 10,
+                  fontFamily: 'var(--font-s)', fontSize: 10,
+                  letterSpacing: '0.16em', textTransform: 'uppercase',
+                  background: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)',
+                  color: '#FFF',
+                  padding: '14px 22px', textDecoration: 'none',
+                  transition: 'opacity .25s ease, transform .25s ease',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.opacity = '0.85'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                <InstagramIcon size={15} />
+                @kiki_fragancia
+              </a>
+            </div>
           </div>
 
         </div>
