@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { allProducts as products } from '../data/all-products'
+import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -77,6 +78,33 @@ function getNoteIcon(nota) {
       <circle cx="12" cy="12" r="2" /><line x1="12" y1="2" x2="12" y2="8" /><line x1="12" y1="16" x2="12" y2="22" /><line x1="2" y1="12" x2="8" y2="12" /><line x1="16" y1="12" x2="22" y2="12" />
     </svg>
   )
+}
+
+function getNoteImage(nota) {
+  const lower = nota.toLowerCase().trim()
+  if (NOTES_IMAGES[lower]) return NOTES_IMAGES[lower]
+  for (const [key, src] of Object.entries(NOTES_IMAGES)) {
+    if (lower.includes(key) || key.includes(lower)) return src
+  }
+  return null
+}
+
+function NoteIcon({ nota, size = 22 }) {
+  const img = getNoteImage(nota)
+  if (img) {
+    return (
+      <img
+        src={img}
+        alt={nota}
+        style={{
+          width: size, height: size, borderRadius: '50%',
+          objectFit: 'cover', flexShrink: 0,
+          border: '1px solid rgba(201,168,76,0.25)',
+        }}
+      />
+    )
+  }
+  return <span className="pd-note-emoji">{getNoteIcon(nota)}</span>
 }
 function parseNotes(str) {
   if (!str) return []
@@ -296,7 +324,7 @@ export default function ProductDetail() {
                     <div className="pd-notes-chips">
                       {notas.salida.slice(0, 4).map(n => (
                         <span key={n} className="pd-note-chip">
-                          <span className="pd-note-emoji">{getNoteIcon(n)}</span>{n}
+                          <NoteIcon nota={n} />{n}
                         </span>
                       ))}
                     </div>
@@ -371,8 +399,8 @@ export default function ProductDetail() {
                         </div>
                         <div className="pd-chips">
                           {notes.map(n => (
-                            <span key={n} className="pd-chip" style={{ background: bg }}>
-                              <span className="pd-note-emoji">{getNoteIcon(n)}</span>{n}
+                            <span key={n} className="pd-chip" style={{ background: bg, padding: getNoteImage(n) ? '4px 14px 4px 4px' : undefined }}>
+                              <NoteIcon nota={n} size={40} />{n}
                             </span>
                           ))}
                         </div>
