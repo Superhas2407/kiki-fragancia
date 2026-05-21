@@ -218,7 +218,7 @@ export default function Hero() {
               Explorar colección <span className="btn-arrow">→</span>
             </Link>
             <a
-              href="https://wa.me/584120221983"
+              href="https://instagram.com/kiki_fragancia"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -232,7 +232,7 @@ export default function Hero() {
               onMouseEnter={e => { e.currentTarget.style.color = '#FAFAF8'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.4)' }}
               onMouseLeave={e => { e.currentTarget.style.color = 'rgba(250,250,248,.45)'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.15)' }}
             >
-              WhatsApp
+              Instagram
             </a>
           </div>
 

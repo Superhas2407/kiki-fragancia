@@ -197,7 +197,7 @@ export default function Header() {
               })}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              {location.pathname !== '/tienda' && (
+              {location.pathname !== '/tienda' && location.pathname !== '/' && (
                 <button
                   onClick={() => setSearchOpen(true)}
                   aria-label="Buscar"
@@ -218,7 +218,7 @@ export default function Header() {
           </nav>
 
           <div className="kiki-mobile-controls">
-            {location.pathname !== '/tienda' && (
+            {location.pathname !== '/tienda' && location.pathname !== '/' && (
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Buscar"
