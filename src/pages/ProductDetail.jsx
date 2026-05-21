@@ -222,7 +222,7 @@ export default function ProductDetail() {
   })
 
   const waMsg = encodeURIComponent(`Hola, me interesa *${product.house} ${product.name}*. ¿Podrías darme más información?`)
-  const waUrl = `https://wa.me/584120221983?text=${waMsg}`
+  const waUrl = `https://wa.me/584149112002?text=${waMsg}`
 
   const notas = {
     salida:  parseNotes(product.notasSalida),

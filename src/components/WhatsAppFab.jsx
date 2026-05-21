@@ -1,4 +1,6 @@
-const WA_URL = 'https://wa.me/584120221983?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20fragancias.'
+import { useCartContext } from '../context/CartContext'
+
+const WA_URL = 'https://wa.me/584149112002?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20fragancias.'
 
 const WhatsAppIcon = () => (
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -7,6 +9,9 @@ const WhatsAppIcon = () => (
 )
 
 export default function WhatsAppFab() {
+  const { drawerOpen } = useCartContext()
+  if (drawerOpen) return null
+
   return (
     <a
       href={WA_URL}

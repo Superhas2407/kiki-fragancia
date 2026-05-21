@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useCartContext } from '../context/CartContext'
 
-const WHATSAPP_NUMBER = '584120221983'
+const WHATSAPP_NUMBER = '584149112002'
 
 const CloseIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">

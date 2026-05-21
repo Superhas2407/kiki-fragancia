@@ -95,7 +95,7 @@ export default function Footer() {
                 color: 'rgba(250,250,248,0.45)',
               }}>
                 <WhatsAppIcon size={13} />
-                +58 412-022-1983
+                0414-911-2002
               </span>
 
               <a
