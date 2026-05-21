@@ -640,8 +640,12 @@
   .hero-main-title { font-size: clamp(32px, 9vw, 48px); margin-bottom: 12px; }
   .hero-tagline { line-height: 1.6; margin-bottom: 14px; }
   .hero-quote { font-size: 14px; margin-bottom: 20px; }
-  .hero-instagram { display: none; }
+  .hero-instagram { display: none !important; }
   .hero-cta-row { margin-top: 14px !important; }
+  .hero-bg-gradient {
+    background:
+      linear-gradient(180deg, rgba(10,6,2,0.88) 0%, rgba(10,6,2,0.7) 55%, rgba(10,6,2,0.15) 100%);
+  }
 }
 .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
 .eyebrow-text {
