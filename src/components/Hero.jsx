@@ -170,8 +170,8 @@ export default function Hero() {
             la firma que permanece cuando ya te fuiste.»
           </p>
 
-          {/* Buscador global */}
-          <div style={{ width: '100%', maxWidth: 480, ...rv(380) }}>
+          {/* Buscador global — oculto en mobile (usa lupa del header) */}
+          <div className="hero-search-desktop" style={{ width: '100%', maxWidth: 480, ...rv(380) }}>
             <form
               onSubmit={e => { e.preventDefault(); if (searchQuery.trim()) navigate(`/tienda?q=${encodeURIComponent(searchQuery.trim())}`) }}
               style={{

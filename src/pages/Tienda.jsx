@@ -315,12 +315,12 @@ export default function Tienda() {
             })}
           </div>
 
-          {/* Buscador */}
+          {/* Buscador — oculto en mobile (usa lupa del header) */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="tienda-pad"
+            className="tienda-pad tienda-search-desktop"
             style={{ marginBottom: 28 }}
           >
             <div style={{

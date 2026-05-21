@@ -191,6 +191,14 @@
   .tienda-pad { padding-left: 16px; padding-right: 16px; }
 }
 
+/* Search bars — desktop only (mobile uses header lupa) */
+.hero-search-desktop,
+.tienda-search-desktop { display: none; }
+@media (min-width: 768px) {
+  .hero-search-desktop,
+  .tienda-search-desktop { display: block; }
+}
+
 /* Tienda — gender chips (mobile/tablet only) */
 .tienda-genero-chips {
   display: flex;

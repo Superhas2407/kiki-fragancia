@@ -218,20 +218,18 @@ export default function Header() {
           </nav>
 
           <div className="kiki-mobile-controls">
-            {location.pathname !== '/tienda' && location.pathname !== '/' && (
-              <button
-                onClick={() => setSearchOpen(true)}
-                aria-label="Buscar"
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
-                  padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
-                  transition: 'color .2s',
-                }}
-              >
-                <SearchIcon />
-              </button>
-            )}
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Buscar"
+              style={{
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
+                transition: 'color .2s',
+              }}
+            >
+              <SearchIcon />
+            </button>
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
