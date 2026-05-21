@@ -33,6 +33,7 @@ export default function Hero() {
   const [entering, setEntering]     = useState(false)
   const timerRef = useRef(null)
   const currentRef = useRef(0)
+  const touchStartX = useRef(null)
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80)
@@ -74,13 +75,14 @@ export default function Hero() {
   })
 
   // isEntering: el slide está entrando (fade 0→1). isPrev: el slide queda atrás estático.
-  function SlideMedia({ slide, z, isEntering, isPrev }) {
+  function SlideMedia({ slide, z, isEntering, isPrev, index }) {
     const wrapStyle = {
       position: 'absolute', inset: 0, zIndex: z,
       opacity: isPrev ? 1 : 1,
       animation: isEntering ? `heroFadeIn ${FADE_MS}ms cubic-bezier(0.4,0,0.2,1) forwards` : 'none',
     }
     const mediaStyle = { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }
+    const isEager = index <= 1
 
     if (slide.type === 'video') {
       return (
@@ -95,22 +97,49 @@ export default function Hero() {
       <div style={wrapStyle}>
         <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
           <source media="(max-width: 767px)" srcSet={slide.mobile} />
-          <img src={slide.desktop} alt="" aria-hidden="true" style={mediaStyle} />
+          <img
+            src={slide.desktop}
+            alt=""
+            aria-hidden="true"
+            style={mediaStyle}
+            loading={isEager ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : 'auto'}
+          />
         </picture>
       </div>
     )
   }
 
+  function handleTouchStart(e) {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  function handleTouchEnd(e) {
+    if (touchStartX.current === null) return
+    const delta = touchStartX.current - e.changedTouches[0].clientX
+    touchStartX.current = null
+    if (Math.abs(delta) < 50) return
+    const total = SLIDES.length
+    const next = delta > 0
+      ? (currentRef.current + 1) % total
+      : (currentRef.current - 1 + total) % total
+    goTo(next)
+  }
+
   return (
-    <section className="hero-section">
+    <section
+      className="hero-section"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Background carousel */}
       <div className="hero-bg" style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
         {/* Slide anterior — se queda estático atrás mientras el nuevo entra */}
         {prev !== null && (
-          <SlideMedia slide={SLIDES[prev]} z={1} isPrev />
+          <SlideMedia slide={SLIDES[prev]} z={1} isPrev index={prev} />
         )}
         {/* Slide actual — entra en fade-in cuando entering=true */}
-        <SlideMedia slide={SLIDES[current]} z={2} isEntering={entering} />
+        <SlideMedia slide={SLIDES[current]} z={2} isEntering={entering} index={current} />
 
         <div className="hero-bg-gradient" style={{ zIndex: 3 }}></div>
         <div className="hero-bg-pattern" style={{ zIndex: 3 }}></div>

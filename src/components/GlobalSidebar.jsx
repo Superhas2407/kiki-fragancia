@@ -38,6 +38,9 @@ export default function GlobalSidebar() {
   const navigate = useNavigate()
   const location = useLocation()
 
+  // Only show on /tienda (exact) — not on landing or product detail
+  if (location.pathname !== '/tienda') return null
+
   // Detect active item from URL search params
   const params = new URLSearchParams(location.search)
   const activeGenero = params.get('genero') || null
@@ -50,8 +53,7 @@ export default function GlobalSidebar() {
     }
   }
 
-  // Determine if we're on tienda
-  const onTienda = location.pathname === '/tienda' || location.pathname.startsWith('/tienda/')
+  const onTienda = true
 
   return (
     <aside className="global-sidebar">

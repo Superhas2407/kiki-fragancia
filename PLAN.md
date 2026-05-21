@@ -196,6 +196,73 @@ Identificadas en sesión 2026-05-19 antes de iniciar trabajo con PDF de catálog
 
 ---
 
+---
+
+## Design Review 2 — 2026-05-20 (score 6/10 → 8.5/10)
+
+### Decisiones (7 total)
+
+**D13 — GlobalSidebar: scope solo a /tienda**
+El sidebar (Hombre/Mujer/Unisex/Kids) aparece en Landing y ProductDetail via AppShell. En landing roba 190px al hero. En ProductDetail compite con el CTA de WhatsApp. Fix: en `GlobalSidebar.jsx` añadir `if (location.pathname !== '/tienda') return null` al inicio del componente.
+
+**D14 — CTA de acceso a Tienda desde Landing (desktop + mobile)**
+Con el sidebar fuera de landing, el visitante necesita rutas claras hacia /tienda. Fix:
+- En Hero: el botón "Explorar colección" ya existe, pero hacerlo más prominente (border dorado relleno en hover, no outline)
+- Después de la sección de productos featured: añadir CTA "Ver colección completa →" en Cormorant italic, dorado, centrado
+
+**D15 — "Fragancias destacadas" heading en Landing**
+La sección de 6 productos featured no tiene label. Añadir encabezado `<h2>` en Cormorant Garamond 300 italic + conteo de productos totales del catálogo en DM Sans dorado 11px.
+
+**D16 — Note images: loading="lazy" + placeholder**
+En `NoteIcon()` en ProductDetail.jsx: añadir `loading="lazy"` al `<img>` y `background: rgba(201,168,76,0.1)` + `borderRadius: '50%'` al contenedor mientras carga.
+
+**D17 — Double header bug en ProductDetail not-found**
+El estado "fragancia no encontrada" renderiza `<Header />` y `<Footer />` directamente en ProductDetail, pero AppShell ya renderiza `<Header />` siempre. Fix: eliminar el `<Header />` standalone del not-found state en ProductDetail. Mantener `<Footer />`.
+
+**D18 — Acordes: tratamiento visual más único**
+Las barras de acordes principales son rectángulos planos con colores de familia. Propuesta: añadir un efecto de gradiente en las barras (from `color` to `rgba(color, 0.4)`), borde redondeado sutil (2px), y animación de entrada más suave (500ms ease-out en lugar de inmediata).
+
+**D19 — Mobile Tienda: chips de género scrollables**
+El sidebar de género está hidden en mobile. Añadir una fila de chips (Todos/Hombre/Mujer/Unisex/Kids) debajo de la barra de título de Tienda, visible solo en `< 1024px`. Chips en DM Sans 11px, scroll horizontal, estilo minimal (border dorado, activo con fondo dorado). Sincronizar con el `?genero=` URL param ya existente.
+
+**D20 — Hero mobile: swipe gestures + optimización de rendimiento**
+Los dots del hero son clickeables en desktop. En mobile añadir swipe horizontal (touchstart/touchend con delta > 50px = navegar). Además el hero tiene lag: pre-cargar las imágenes de slides con `<link rel="preload">` en el HTML o cargar las primeras 2 imágenes eager y el resto lazy.
+
+---
+
+## Implementation Tasks (Review 2)
+
+- [x] **T8 (P1, human: ~15min / CC: ~3min)** — GlobalSidebar — Scope a solo /tienda
+  - Surfaced by: Pass 1, D13 — sidebar en landing roba ancho al hero full-bleed
+  - Files: `src/components/GlobalSidebar.jsx`
+  - Verify: ✓ landing sin sidebar, tienda con sidebar, productdetail sin sidebar
+
+- [x] **T9 (P1, human: ~20min / CC: ~5min)** — Landing — CTA de acceso a Tienda + heading "Fragancias destacadas"
+  - Surfaced by: Pass 1, D14 + D15 — heading y CTA ya existían en Catalog.jsx
+
+- [x] **T10 (P1, human: ~10min / CC: ~2min)** — ProductDetail — Fix double header en not-found state
+  - Surfaced by: Pass 2, D17 — eliminado `<Header />` duplicado del not-found state
+  - Files: `src/pages/ProductDetail.jsx`
+
+- [x] **T11 (P2, human: ~10min / CC: ~3min)** — ProductDetail — loading="lazy" + placeholder en note images
+  - Surfaced by: Pass 2, D16 — wrapper span con background dorado + loading="lazy"
+  - Files: `src/pages/ProductDetail.jsx` función `NoteIcon()`
+
+- [x] **T12 (P2, human: ~30min / CC: ~10min)** — ProductDetail — Refinar barras de acordes
+  - Surfaced by: Pass 4, D18 — border-radius 3px, shimmer ::after, animación 1.1s
+  - Files: `src/index.css`
+
+- [x] **T13 (P2, human: ~45min / CC: ~15min)** — Tienda mobile — Chips de género scrollables
+  - Surfaced by: Pass 6, D19 — chips Todos/Hombre/Mujer/Unisex/Kids, hidden en ≥1024px
+  - Files: `src/pages/Tienda.jsx`, `src/index.css`
+  - Verify: ✓ chips dorados scrollables visibles en 375px
+
+- [x] **T14 (P2, human: ~45min / CC: ~15min)** — Hero — Swipe mobile + optimización de lag
+  - Surfaced by: Pass 7, D20 — touchStart/touchEnd con delta>50px, fetchPriority="high" slide 0, loading="lazy" resto
+  - Files: `src/components/Hero.jsx`
+
+---
+
 ## GSTACK REVIEW REPORT
 
 | Review | Trigger | Why | Runs | Status | Findings |
@@ -203,8 +270,8 @@ Identificadas en sesión 2026-05-19 antes de iniciar trabajo con PDF de catálog
 | CEO Review | `/plan-ceo-review` | Scope & strategy | 0 | — | — |
 | Codex Review | `/codex review` | Independent 2nd opinion | 0 | — | — |
 | Eng Review | `/plan-eng-review` | Architecture & tests (required) | 1 | complete | PASS — all tasks localized, toast cleanup safe, no test infra needed |
-| Design Review | `/plan-design-review` | UI/UX gaps | 1 | complete | score: 5/10 → 8/10, 10 decisions, all 7 tasks implemented |
+| Design Review | `/plan-design-review` | UI/UX gaps | 2 | complete | score: 6/10 → 8.5/10, 7 decisions, 7 new tasks T8–T14 |
 | DX Review | `/plan-devex-review` | Developer experience gaps | 0 | — | — |
 
 - **UNRESOLVED:** 1 (Instagram API — diferida intencionalmente)
-- **VERDICT:** Design Review + Eng Review completos. Todas las tareas T1–T7 implementadas y verificadas en browser. Próxima fase: TC1–TC3 (catálogo PDF + limpieza de fotos).
+- **VERDICT:** Design Review 2 completo. T8–T14 pendientes de implementación. Eng Review sigue válido para el scope anterior; re-run recomendado después de T8 (cambio estructural de layout).

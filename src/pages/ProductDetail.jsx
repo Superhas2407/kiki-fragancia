@@ -93,15 +93,20 @@ function NoteIcon({ nota, size = 22 }) {
   const img = getNoteImage(nota)
   if (img) {
     return (
-      <img
-        src={img}
-        alt={nota}
-        style={{
-          width: size, height: size, borderRadius: '50%',
-          objectFit: 'cover', flexShrink: 0,
-          border: '1px solid rgba(201,168,76,0.25)',
-        }}
-      />
+      <span style={{
+        display: 'inline-flex', width: size, height: size,
+        borderRadius: '50%', flexShrink: 0,
+        background: 'rgba(201,168,76,0.12)',
+        border: '1px solid rgba(201,168,76,0.25)',
+        overflow: 'hidden',
+      }}>
+        <img
+          src={img}
+          alt={nota}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </span>
     )
   }
   return <span className="pd-note-emoji">{getNoteIcon(nota)}</span>
@@ -199,7 +204,6 @@ export default function ProductDetail() {
   if (!product) {
     return (
       <>
-        <Header />
         <div className="pd-page" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 24 }}>
           <p style={{ fontFamily: 'var(--font-d)', fontSize: 36, fontStyle: 'italic', color: 'rgba(250,250,248,.25)' }}>
             Fragancia no encontrada

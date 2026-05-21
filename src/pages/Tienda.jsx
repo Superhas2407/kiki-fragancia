@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '../components/Footer'
 import { allProducts as products } from '../data/all-products'
@@ -167,6 +167,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
 
 export default function Tienda() {
   const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const [sortBy, setSortBy]           = useState('featured')
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [drawerOpen, setDrawerOpen]   = useState(false)
@@ -290,6 +291,28 @@ export default function Tienda() {
                 </span>
               )}
             </button>
+          </div>
+
+          {/* Chips de género — visible solo en mobile/tablet (< 1024px) */}
+          <div className="tienda-genero-chips tienda-pad">
+            {[
+              { key: null,        label: 'Todos' },
+              { key: 'Masculino', label: 'Hombre' },
+              { key: 'Femenino',  label: 'Mujer' },
+              { key: 'Unisex',    label: 'Unisex' },
+              { key: 'Niño',      label: 'Kids' },
+            ].map(({ key, label }) => {
+              const isActive = urlGenero === key
+              return (
+                <button
+                  key={label}
+                  onClick={() => key === null ? navigate('/tienda') : navigate(`/tienda?genero=${key}`)}
+                  className={`tienda-genero-chip${isActive ? ' active' : ''}`}
+                >
+                  {label}
+                </button>
+              )
+            })}
           </div>
 
           {/* Buscador */}
