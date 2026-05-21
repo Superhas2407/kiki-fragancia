@@ -9,6 +9,7 @@ import CartDrawer from './components/CartDrawer'
 import CursorTrail from './components/CursorTrail'
 import Header from './components/Header'
 import GlobalSidebar from './components/GlobalSidebar'
+import WhatsAppFab from './components/WhatsAppFab'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -55,6 +56,7 @@ function AppShell() {
       <ErrorBoundary>
         <CartDrawer />
       </ErrorBoundary>
+      <WhatsAppFab />
     </>
   )
 }

@@ -87,24 +87,23 @@ export default function Footer() {
               Asesoría personalizada sin costo.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <a
                 href="https://wa.me/584120221983"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10,
-                  fontFamily: 'var(--font-s)', fontSize: 10,
-                  letterSpacing: '0.16em', textTransform: 'uppercase',
-                  background: '#25D366', color: '#FFF',
-                  padding: '14px 22px', textDecoration: 'none',
-                  transition: 'background .25s ease, transform .25s ease',
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontFamily: 'var(--font-s)', fontSize: 11,
+                  letterSpacing: '0.08em',
+                  color: '#25D366', textDecoration: 'none',
+                  transition: 'opacity .2s',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#1da851'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#25D366'; e.currentTarget.style.transform = 'translateY(0)' }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
               >
-                <WhatsAppIcon size={15} />
-                Escribir por WhatsApp
+                <WhatsAppIcon size={13} />
+                +58 412-022-1983
               </a>
 
               <a
@@ -112,18 +111,16 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10,
-                  fontFamily: 'var(--font-s)', fontSize: 10,
-                  letterSpacing: '0.16em', textTransform: 'uppercase',
-                  background: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)',
-                  color: '#FFF',
-                  padding: '14px 22px', textDecoration: 'none',
-                  transition: 'opacity .25s ease, transform .25s ease',
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontFamily: 'var(--font-s)', fontSize: 11,
+                  letterSpacing: '0.08em',
+                  color: 'rgba(250,250,248,0.5)', textDecoration: 'none',
+                  transition: 'color .2s',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.opacity = '0.85'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'translateY(0)' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#FAFAF8'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
               >
-                <InstagramIcon size={15} />
+                <InstagramIcon size={13} />
                 @kiki_fragancia
               </a>
             </div>

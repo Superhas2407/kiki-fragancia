@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
 
@@ -30,6 +30,12 @@ const CloseIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+)
+
+const SearchIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 )
 
@@ -134,7 +140,11 @@ function CartButton() {
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const searchInputRef = useRef(null)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
@@ -143,11 +153,30 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
+    document.body.style.overflow = (menuOpen || searchOpen) ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [menuOpen])
+  }, [menuOpen, searchOpen])
 
-  useEffect(() => { setMenuOpen(false) }, [location])
+  useEffect(() => { setMenuOpen(false); setSearchOpen(false) }, [location])
+
+  useEffect(() => {
+    if (searchOpen) setTimeout(() => searchInputRef.current?.focus(), 80)
+    else setSearchQuery('')
+  }, [searchOpen])
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setSearchOpen(false) }
+    if (searchOpen) document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [searchOpen])
+
+  function handleSearch(e) {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/tienda?q=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchOpen(false)
+    }
+  }
 
   return (
     <>
@@ -168,13 +197,37 @@ export default function Header() {
               })}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <button
+                onClick={() => setSearchOpen(true)}
+                aria-label="Buscar"
+                style={{
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                  padding: 4, transition: 'color .2s',
+                }}
+                onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.6)'}
+              >
+                <SearchIcon />
+              </button>
               <CurrencyToggle />
               <CartButton />
             </div>
           </nav>
 
           <div className="kiki-mobile-controls">
-            <CurrencyToggle />
+            <button
+              onClick={() => setSearchOpen(true)}
+              aria-label="Buscar"
+              style={{
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
+                transition: 'color .2s',
+              }}
+            >
+              <SearchIcon />
+            </button>
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -249,6 +302,82 @@ export default function Header() {
 
         <p className="mobile-footer-label">KiKi Fragancia · Venezuela</p>
       </div>
+
+      {/* Search overlay */}
+      {searchOpen && (
+        <div
+          style={{
+            position: 'fixed', inset: 0, zIndex: 300,
+            background: 'rgba(10,10,10,0.92)', backdropFilter: 'blur(12px)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            padding: '0 24px',
+          }}
+          onClick={e => { if (e.target === e.currentTarget) setSearchOpen(false) }}
+        >
+          <button
+            onClick={() => setSearchOpen(false)}
+            aria-label="Cerrar búsqueda"
+            style={{
+              position: 'absolute', top: 20, right: 20,
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: 'rgba(250,250,248,0.5)', padding: 8,
+              transition: 'color .2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = '#FAFAF8'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
+          >
+            <CloseIcon />
+          </button>
+
+          <p style={{
+            fontFamily: 'var(--font-d)', fontSize: 'clamp(11px, 1.5vw, 13px)',
+            letterSpacing: '0.28em', textTransform: 'uppercase',
+            color: '#C9A84C', marginBottom: 32,
+          }}>
+            Buscar fragancia
+          </p>
+
+          <form onSubmit={handleSearch} style={{ width: '100%', maxWidth: 560 }}>
+            <div style={{
+              display: 'flex', alignItems: 'center',
+              borderBottom: '1px solid rgba(201,168,76,0.6)',
+              gap: 16, paddingBottom: 12,
+            }}>
+              <span style={{ color: 'rgba(201,168,76,0.7)', display: 'flex', flexShrink: 0 }}>
+                <SearchIcon />
+              </span>
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                placeholder="Nombre, marca o familia..."
+                style={{
+                  flex: 1, background: 'none', border: 'none', outline: 'none',
+                  fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+                  fontWeight: 300, fontStyle: 'italic',
+                  color: '#FAFAF8', letterSpacing: '-0.01em',
+                }}
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(250,250,248,0.3)', display: 'flex', padding: 4 }}
+                >
+                  <CloseIcon />
+                </button>
+              )}
+            </div>
+            <p style={{
+              fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.08em',
+              color: 'rgba(250,250,248,0.25)', marginTop: 16, textAlign: 'center',
+            }}>
+              Presiona Enter para buscar · Esc para cerrar
+            </p>
+          </form>
+        </div>
+      )}
     </>
   )
 }
