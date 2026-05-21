@@ -247,7 +247,7 @@ export default function Hero() {
 
       {/* Dots de navegación */}
       <div style={{
-        position: 'absolute', bottom: 80, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 'clamp(20px, 5vh, 80px)', left: '50%', transform: 'translateX(-50%)',
         display: 'flex', gap: 8, zIndex: 10,
       }}>
         {SLIDES.map((_, i) => (
