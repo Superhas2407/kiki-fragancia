@@ -213,7 +213,7 @@ export default function Hero() {
             </form>
           </div>
 
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', ...rv(420) }}>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 28, ...rv(420) }}>
             <Link to="/tienda" className="btn-cta btn-shimmer-kiki">
               Explorar colección <span className="btn-arrow">→</span>
             </Link>
