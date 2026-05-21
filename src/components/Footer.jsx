@@ -88,23 +88,15 @@ export default function Footer() {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <a
-                href="https://wa.me/584120221983"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  fontFamily: 'var(--font-s)', fontSize: 11,
-                  letterSpacing: '0.08em',
-                  color: '#25D366', textDecoration: 'none',
-                  transition: 'opacity .2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
-                onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-              >
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                fontFamily: 'var(--font-s)', fontSize: 11,
+                letterSpacing: '0.08em',
+                color: 'rgba(250,250,248,0.45)',
+              }}>
                 <WhatsAppIcon size={13} />
                 +58 412-022-1983
-              </a>
+              </span>
 
               <a
                 href="https://instagram.com/kiki_fragancia"
