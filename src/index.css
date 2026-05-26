@@ -1171,6 +1171,12 @@
   flex-shrink: 0;
 }
 
+.pd-price { margin-bottom: 24px; }
+.pd-price-amount {
+  font-family: var(--font-s); font-size: 22px; font-weight: 400;
+  letter-spacing: 0.04em; color: #C9A84C;
+}
+
 .pd-actions { display: flex; flex-direction: column; gap: 10px; }
 .pd-btn-wa {
   font-family: var(--font-s); font-size: 10px; letter-spacing: .2em;

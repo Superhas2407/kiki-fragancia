@@ -37,13 +37,6 @@ export default function Catalog({ theme = 'dark' }) {
           ))}
         </div>
 
-        <div className="catalog-cta">
-          <Link to="/tienda" className={`btn-cta btn-shimmer-kiki ${isDark ? '' : ''}`}
-            style={isDark ? {} : { color: 'var(--carbon)', borderColor: 'rgba(26,18,8,.35)' }}
-          >
-            Ver los 228 productos <span className="btn-arrow">→</span>
-          </Link>
-        </div>
       </div>
     </section>
   )

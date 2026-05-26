@@ -47,7 +47,7 @@ export default function Footer() {
             </p>
             <p className="footer-sub">
               Perfumería de lujo venezolana.<br />
-              Más de 228 referencias de las mejores casas del mundo.
+              Fragancias originales de las mejores casas del mundo.
             </p>
             <div className="footer-badge">
               <ShieldIcon />
@@ -59,13 +59,20 @@ export default function Footer() {
               <span style={{ color: '#C9A84C', marginTop: 1, flexShrink: 0 }}>
                 <LocationIcon />
               </span>
-              <p style={{
-                fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.04em',
-                color: 'rgba(250,250,248,0.45)', lineHeight: 1.6, margin: 0,
-              }}>
-                C.C. Metrópolis, Local B-14<br />
-                Barquisimeto, Lara · Venezuela
-              </p>
+              <a
+                href="https://maps.app.goo.gl/HnYgeV6sxFbWJVN39"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.04em',
+                  color: 'rgba(250,250,248,0.45)', lineHeight: 1.6, margin: 0,
+                  textDecoration: 'none',
+                }}
+              >
+                CC Todo Tecnología, Local #29<br />
+                Av. Francisco de Miranda, Los Cortijos<br />
+                Caracas · Venezuela
+              </a>
             </div>
           </div>
 

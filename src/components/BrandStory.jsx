@@ -1,21 +1,9 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { useAnimCounter } from '../hooks/useAnimCounter'
-
-function StatCounter({ target, suffix = '', label }) {
-  const { val, ref } = useAnimCounter(target)
-  return (
-    <div className="stat-item" ref={ref}>
-      <div className="stat-value">{val}{suffix}</div>
-      <div className="stat-label">{label}</div>
-    </div>
-  )
-}
 
 export default function BrandStory() {
   const eyebrowRef = useScrollReveal({ threshold: 0.2, delay: 0 })
   const quoteRef   = useScrollReveal({ threshold: 0.2, delay: 120 })
   const textRef    = useScrollReveal({ threshold: 0.2, delay: 260 })
-  const statsRef   = useScrollReveal({ threshold: 0.2, delay: 380 })
   return (
     <section id="nosotros" className="brand-story-section section-pad">
       <div className="kiki-container">
@@ -29,24 +17,19 @@ export default function BrandStory() {
             </div>
 
             <div ref={quoteRef} className="brand-story-quote">
-              No vendemos perfumes.<br />Vendemos la fragancia<br />que te representa.
+              Cada fragancia<br />cuenta una historia.<br />La tuya empieza aquí.
             </div>
           </div>
 
-          {/* Right: texto, firma y estadísticas */}
+          {/* Right: texto y firma */}
           <div className="brand-story-right">
             <p ref={textRef} className="brand-story-text">
-              KiKi Fragancia nació del amor por las fragancias originales y la convicción
-              de que cada persona merece encontrar su firma olfativa. Con más de 228 referencias
-              de las mejores casas del mundo, somos la perfumería de confianza de Venezuela.
+              KiKi Fragancia nació en Caracas con una sola obsesión: traer a Venezuela
+              las fragancias originales de las grandes casas del mundo. Cada frasco es
+              100% verificado, y nuestro equipo te ayuda a encontrar la que realmente
+              va contigo — no la que simplemente está de moda.
             </p>
             <p ref={textRef} className="brand-story-attr">— KiKi Fragancia, Caracas</p>
-
-            <div ref={statsRef} className="stats-row">
-              <StatCounter target={228} suffix="+" label="Fragancias" />
-              <StatCounter target={100} suffix="%" label="Originales verificadas" />
-              <StatCounter target={110} suffix="k" label="Seguidores" />
-            </div>
           </div>
 
         </div>

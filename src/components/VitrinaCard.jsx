@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useCurrency } from '../context/CurrencyContext'
 
 // ============================================================
 // VitrinaCard v2 — Museum gallery treatment of a product
@@ -54,6 +55,7 @@ const CheckIcon = () => (
 
 export default function VitrinaCard({ product }) {
   const { addItem } = useCartContext()
+  const { formatPrice } = useCurrency()
   const cardRef = useRef(null)
   const [hover, setHover] = useState(false)
   const [added, setAdded] = useState(false)
@@ -142,16 +144,13 @@ export default function VitrinaCard({ product }) {
             {product.house}
           </span>
           <span className="vitrina-meta">
-            {product.tipo === 'Eau de Parfum' ? 'EDP' : product.tipo} · {product.ml}ml · {product.genero}
+            {product.tipo === 'Eau de Parfum' ? 'EDP' : product.tipo} · {product.ml}ml
           </span>
         </div>
         <h3 className="vitrina-name">{product.name}</h3>
-        {product.precioUSD > 0 && (
+        {product.precioUSD > 0 && formatPrice(product.precioUSD) && (
           <div className="vitrina-price">
-            <span className="vitrina-price-usd">${product.precioUSD}</span>
-            {product.precioBS > 0 && (
-              <span className="vitrina-price-bs">Bs. {product.precioBS.toLocaleString('es-VE')}</span>
-            )}
+            <span className="vitrina-price-usd">{formatPrice(product.precioUSD)}</span>
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useCurrency } from '../context/CurrencyContext'
 import { allProducts as products } from '../data/all-products'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
@@ -185,6 +186,7 @@ const WhatsAppIcon = ({ size = 15 }) => (
 export default function ProductDetail() {
   const { id } = useParams()
   const { addItem } = useCartContext()
+  const { formatPrice } = useCurrency()
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -332,6 +334,12 @@ export default function ProductDetail() {
                         </span>
                       ))}
                     </div>
+                  </div>
+                )}
+
+                {product.precioUSD > 0 && (
+                  <div className="pd-price" style={rv(430)}>
+                    <span className="pd-price-amount">{formatPrice(product.precioUSD)}</span>
                   </div>
                 )}
 
