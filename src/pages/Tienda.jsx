@@ -74,8 +74,16 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
   )
 }
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilters, clearFilters, productPool }) {
-  // Marcas disponibles en el pool actual (ya filtrado por género del sidebar)
+const TIPO_OPTIONS = [
+  { label: 'EDP',              value: 'Eau de Parfum'     },
+  { label: 'EDT',              value: 'Eau de Toilette'   },
+  { label: 'Parfum',           value: 'Parfum'            },
+  { label: 'Elixir',           value: 'Elixir'            },
+  { label: 'Extrait de Parfum',value: 'Extrait de Parfum' },
+  { label: 'EDC',              value: 'Eau de Cologne'    },
+]
+
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -83,6 +91,10 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
 
   function countFor(house) {
     return productPool.filter(p => p.house === house).length
+  }
+
+  function countForTipo(tipo) {
+    return productPool.filter(p => p.tipo === tipo).length
   }
 
   function RadioItem({ label, value }) {
@@ -148,6 +160,24 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
           <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+            Concentración
+          </span>
+        </div>
+        {TIPO_OPTIONS.filter(opt => countForTipo(opt.value) > 0).map(opt => (
+          <GoldCheckbox
+            key={opt.value}
+            label={opt.label}
+            checked={selectedTipos.includes(opt.value)}
+            onToggle={() => toggleTipo(opt.value)}
+            count={countForTipo(opt.value)}
+          />
+        ))}
+      </div>
+
+      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid rgba(250,250,248,0.07)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
             Marca
           </span>
         </div>
@@ -170,6 +200,7 @@ export default function Tienda() {
   const navigate = useNavigate()
   const [sortBy, setSortBy]           = useState('featured')
   const [selectedMarcas, setSelectedMarcas] = useState([])
+  const [selectedTipos, setSelectedTipos]   = useState([])
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
   const [currentPage, setCurrentPage] = useState(1)
@@ -189,14 +220,16 @@ export default function Tienda() {
   // Cuando cambia la URL, resetear filtros adicionales
   useEffect(() => {
     setSelectedMarcas([])
+    setSelectedTipos([])
     setCurrentPage(1)
   }, [urlGenero])
 
   const toggleMarca = v => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
+  const toggleTipo  = v => setSelectedTipos(p  => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
 
-  const hasFilters = selectedMarcas.length > 0 || sortBy !== 'featured'
-  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]) }
-  const activeFilterCount = selectedMarcas.length + (sortBy !== 'featured' ? 1 : 0)
+  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured'
+  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]) }
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0)
 
   // Pool base: filtrado por la selección del sidebar global
   const basePool = useMemo(() => {
@@ -207,6 +240,7 @@ export default function Tienda() {
   const filtered = useMemo(() => {
     let result = [...basePool]
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
+    if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
     if (searchQuery.trim()) {
       const q = searchQuery.toLowerCase()
       result = result.filter(p => p.name.toLowerCase().includes(q) || p.house.toLowerCase().includes(q))
@@ -216,7 +250,7 @@ export default function Tienda() {
     if (sortBy === 'price-asc')  result.sort((a, b) => (a.precioUSD || 9999) - (b.precioUSD || 9999))
     if (sortBy === 'price-desc') result.sort((a, b) => (b.precioUSD || 0) - (a.precioUSD || 0))
     return result
-  }, [basePool, selectedMarcas, searchQuery, sortBy])
+  }, [basePool, selectedMarcas, selectedTipos, searchQuery, sortBy])
 
   useEffect(() => {
     if (mountRef.current) { mountRef.current = false; return }
@@ -239,7 +273,7 @@ export default function Tienda() {
   const LABEL_MAP = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
   const sectionTitle = urlGenero ? (LABEL_MAP[urlGenero] || urlGenero) : 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilters, clearFilters, productPool: basePool }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool }
 
   return (
     <>
