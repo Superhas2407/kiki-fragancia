@@ -28,7 +28,8 @@ export const products = [
       "musgo",
       "cedro",
       "pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 2,
@@ -58,7 +59,8 @@ export const products = [
       "Sándalo",
       "Pachulí",
       "Jazmín"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 3,
@@ -87,7 +89,8 @@ export const products = [
       "Haba tonka",
       "Ámbar",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 4,
@@ -116,7 +119,8 @@ export const products = [
       "Ámbar gris",
       "Musgo de roble",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 5,
@@ -142,7 +146,8 @@ export const products = [
       "Almizcle",
       "Pachulí",
       "Especias frescas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 6,
@@ -171,7 +176,8 @@ export const products = [
       "Vetiver",
       "Musgo",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 7,
@@ -200,7 +206,8 @@ export const products = [
       "Ámbar",
       "Almizcle blanco",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 8,
@@ -228,7 +235,8 @@ export const products = [
       "Almizcle",
       "Vainilla",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 9,
@@ -256,7 +264,8 @@ export const products = [
       "Almizcle",
       "Vainilla",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 10,
@@ -284,7 +293,8 @@ export const products = [
       "Almizcle",
       "Vainilla",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 11,
@@ -314,7 +324,8 @@ export const products = [
       "Almizcle",
       "Sándalo",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 12,
@@ -344,7 +355,8 @@ export const products = [
       "Nuez moscada",
       "Ámbar",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 13,
@@ -375,7 +387,8 @@ export const products = [
       "Vainilla",
       "Haba tonka",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 14,
@@ -403,7 +416,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 15,
@@ -431,7 +445,8 @@ export const products = [
       "Vainilla",
       "Sándalo",
       "Abeto balsámico"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 16,
@@ -459,7 +474,8 @@ export const products = [
       "pachulí",
       "azúcar",
       "almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 17,
@@ -491,7 +507,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 18,
@@ -516,7 +533,8 @@ export const products = [
       "Especias",
       "Sándalo",
       "Notas empolvadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 19,
@@ -549,7 +567,8 @@ export const products = [
       "Sándalo",
       "Pachulí",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 20,
@@ -577,7 +596,8 @@ export const products = [
       "Amaderada",
       "Vainilla",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 21,
@@ -603,7 +623,8 @@ export const products = [
       "Ambroxan",
       "Sándalo",
       "Praliné"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 22,
@@ -634,7 +655,8 @@ export const products = [
       "Ámbar gris",
       "Vainilla",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 23,
@@ -662,7 +684,8 @@ export const products = [
       "Almizcle",
       "Ambroxan",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 24,
@@ -700,7 +723,8 @@ export const products = [
       "Cuero",
       "Pachulí",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 25,
@@ -716,7 +740,8 @@ export const products = [
     "notasFondo": "Ambroxan, Almizcle, Sándalo, Cedro",
     "ml": 105,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "categoria": "arabes"
   },
   {
     "id": 26,
@@ -749,7 +774,8 @@ export const products = [
       "Pachulí",
       "Cedro",
       "Ládano"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 27,
@@ -779,7 +805,8 @@ export const products = [
       "Haba tonka",
       "Pachulí",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 28,
@@ -809,7 +836,8 @@ export const products = [
       "benjuí",
       "ámbar",
       "haba tonka"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 29,
@@ -839,7 +867,8 @@ export const products = [
       "Almizcle",
       "Vainilla",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 30,
@@ -868,7 +897,8 @@ export const products = [
       "Cedro",
       "Sándalo",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 31,
@@ -897,7 +927,8 @@ export const products = [
       "Geranio",
       "Pimienta negra",
       "Cardamomo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 32,
@@ -929,7 +960,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 33,
@@ -962,7 +994,8 @@ export const products = [
       "Pachulí",
       "Haba tonka",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 34,
@@ -989,7 +1022,8 @@ export const products = [
       "Ambroxan",
       "Almizcle",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 35,
@@ -1015,7 +1049,8 @@ export const products = [
       "Vetiver",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 36,
@@ -1041,7 +1076,8 @@ export const products = [
       "Almizcle",
       "Pimienta rosa",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 37,
@@ -1073,7 +1109,8 @@ export const products = [
       "Praliné",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 38,
@@ -1103,7 +1140,8 @@ export const products = [
       "Almizcle",
       "Pachulí",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 39,
@@ -1127,7 +1165,8 @@ export const products = [
       "Almendra",
       "Cacao",
       "Caramelo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 40,
@@ -1154,7 +1193,8 @@ export const products = [
       "cacao",
       "sándalo",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 41,
@@ -1185,7 +1225,8 @@ export const products = [
       "cacao",
       "haba tonka",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 42,
@@ -1215,7 +1256,8 @@ export const products = [
       "Madera",
       "Crema",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 43,
@@ -1246,7 +1288,8 @@ export const products = [
       "Vetiver",
       "Pachulí",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 44,
@@ -1273,7 +1316,8 @@ export const products = [
       "Ámbar",
       "Amberwood",
       "Madera de gaiac"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 45,
@@ -1299,7 +1343,8 @@ export const products = [
       "Pimienta rosa",
       "Madera blanca",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 46,
@@ -1328,7 +1373,8 @@ export const products = [
       "Ambroxan",
       "Vetiver",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 47,
@@ -1359,7 +1405,8 @@ export const products = [
       "Incienso",
       "Vainilla",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 48,
@@ -1391,7 +1438,8 @@ export const products = [
       "Almizcle",
       "Cedro",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 49,
@@ -1418,7 +1466,8 @@ export const products = [
       "cardamomo",
       "haba tonka",
       "pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 50,
@@ -1448,7 +1497,8 @@ export const products = [
       "Tabaco",
       "Vainilla",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 51,
@@ -1474,7 +1524,8 @@ export const products = [
       "Sándalo",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 52,
@@ -1505,7 +1556,8 @@ export const products = [
       "Almizcle",
       "Caramelo",
       "Ládano"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 53,
@@ -1536,7 +1588,8 @@ export const products = [
       "Sándalo",
       "Pachulí",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 54,
@@ -1563,7 +1616,8 @@ export const products = [
       "Haba tonka",
       "Cacao",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 55,
@@ -1592,7 +1646,8 @@ export const products = [
       "Cedro",
       "Pachulí",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 56,
@@ -1618,7 +1673,8 @@ export const products = [
       "Violeta",
       "Ámbar gris",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 57,
@@ -1647,7 +1703,8 @@ export const products = [
       "Vetiver",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 58,
@@ -1675,7 +1732,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 59,
@@ -1700,7 +1758,8 @@ export const products = [
       "Azahar",
       "Vainilla",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 60,
@@ -1732,7 +1791,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 61,
@@ -1758,7 +1818,8 @@ export const products = [
       "Vainilla",
       "Almizcle blanco",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 62,
@@ -1784,7 +1845,8 @@ export const products = [
       "Vainilla",
       "Almizcle blanco",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 63,
@@ -1818,7 +1880,8 @@ export const products = [
       "Haba tonka",
       "Sándalo",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 64,
@@ -1846,7 +1909,8 @@ export const products = [
       "rosa",
       "almizcle",
       "vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 65,
@@ -1871,7 +1935,8 @@ export const products = [
       "Jengibre",
       "Cedro",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 66,
@@ -1900,7 +1965,8 @@ export const products = [
       "Almizcle",
       "Violeta",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 67,
@@ -1929,7 +1995,8 @@ export const products = [
       "Vainilla",
       "Maderas blancas",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 68,
@@ -1958,7 +2025,8 @@ export const products = [
       "Almizcle",
       "Raíz de lirio",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 69,
@@ -1987,7 +2055,8 @@ export const products = [
       "Sándalo",
       "Ámbar",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 70,
@@ -2015,7 +2084,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 71,
@@ -2043,7 +2113,8 @@ export const products = [
       "Romero",
       "Cedro de Virginia",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 72,
@@ -2071,7 +2142,8 @@ export const products = [
       "Haba tonka",
       "Madera de gaiac",
       "Benjuí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 73,
@@ -2100,7 +2172,8 @@ export const products = [
       "Vetiver",
       "Sándalo",
       "Grosella negra"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 74,
@@ -2127,7 +2200,8 @@ export const products = [
       "Vainilla",
       "Cedro",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 75,
@@ -2157,7 +2231,8 @@ export const products = [
       "Almizcle",
       "Ámbar",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 76,
@@ -2186,7 +2261,8 @@ export const products = [
       "sándalo",
       "ámbar",
       "almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 77,
@@ -2217,7 +2293,8 @@ export const products = [
       "Almizcle",
       "Pachulí",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 78,
@@ -2246,7 +2323,8 @@ export const products = [
       "Maderas",
       "Almizcle",
       "Algalia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 79,
@@ -2280,7 +2358,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 80,
@@ -2316,7 +2395,8 @@ export const products = [
       "Sándalo",
       "Musgo de roble",
       "Algalia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 81,
@@ -2336,7 +2416,8 @@ export const products = [
       "Mandarina",
       "Jacinto de agua",
       "Madera blanca"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 82,
@@ -2376,7 +2457,8 @@ export const products = [
       "Vainilla",
       "Violeta",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 83,
@@ -2416,7 +2498,8 @@ export const products = [
       "Raíz de lirio",
       "Ámbar",
       "Cedro de Virginia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 84,
@@ -2450,7 +2533,8 @@ export const products = [
       "Coco",
       "Vainilla",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 85,
@@ -2478,7 +2562,8 @@ export const products = [
       "Iso E Super",
       "Vetiver de Haití",
       "Almizcle blanco"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 86,
@@ -2503,7 +2588,8 @@ export const products = [
       "Pera",
       "Vetiver",
       "Cedro de Virginia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 87,
@@ -2533,7 +2619,8 @@ export const products = [
       "Heliotropo",
       "Bálsamo de Tolú",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 88,
@@ -2561,7 +2648,8 @@ export const products = [
       "Ambroxan",
       "Cedro",
       "Ládano"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 89,
@@ -2588,7 +2676,8 @@ export const products = [
       "Ámbar",
       "Pachulí",
       "Vetiver de Haití"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 90,
@@ -2613,7 +2702,8 @@ export const products = [
       "lavanda",
       "especias",
       "haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 91,
@@ -2642,7 +2732,8 @@ export const products = [
       "Miel",
       "Ambroxán",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 92,
@@ -2670,7 +2761,8 @@ export const products = [
       "Sándalo",
       "Ámbar",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 93,
@@ -2702,7 +2794,8 @@ export const products = [
       "Almizcle",
       "Ámbar",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 94,
@@ -2732,7 +2825,8 @@ export const products = [
       "notas amaderadas",
       "pachulí",
       "ámbar negro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 95,
@@ -2766,7 +2860,8 @@ export const products = [
       "Musgo",
       "Almizcle",
       "Madera de guayaco"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 96,
@@ -2794,7 +2889,8 @@ export const products = [
       "Ámbar",
       "Sándalo",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 97,
@@ -2824,7 +2920,8 @@ export const products = [
       "pachulí",
       "ámbar",
       "musgo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 98,
@@ -2853,7 +2950,8 @@ export const products = [
       "ámbar",
       "almizcle",
       "cuero"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 99,
@@ -2886,7 +2984,8 @@ export const products = [
       "Semillas de apio",
       "Alcaravea",
       "Clavo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 100,
@@ -2922,7 +3021,8 @@ export const products = [
       "Almizcle",
       "Musgo de roble",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 101,
@@ -2949,7 +3049,8 @@ export const products = [
       "Vetiver",
       "Benjuí",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 102,
@@ -2974,7 +3075,8 @@ export const products = [
       "maderas",
       "sándalo",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 103,
@@ -3001,7 +3103,8 @@ export const products = [
       "Almizcle",
       "Tabaco",
       "Heno"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 104,
@@ -3025,7 +3128,8 @@ export const products = [
       "lavanda",
       "haba tonka",
       "cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 105,
@@ -3052,7 +3156,8 @@ export const products = [
       "Miel",
       "Vainilla",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 106,
@@ -3076,7 +3181,8 @@ export const products = [
       "Salvia",
       "Vainilla",
       "Castaña"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 107,
@@ -3099,7 +3205,8 @@ export const products = [
       "Madreselva",
       "Raíz de lirio",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 108,
@@ -3122,7 +3229,8 @@ export const products = [
       "Azahar",
       "Sándalo",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 109,
@@ -3150,7 +3258,8 @@ export const products = [
       "pachulí",
       "vainilla",
       "vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 110,
@@ -3185,7 +3294,8 @@ export const products = [
       "Cedro",
       "Ámbar",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 111,
@@ -3213,7 +3323,8 @@ export const products = [
       "Vainilla",
       "Madera de cachemira",
       "Incienso de olíbano"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 112,
@@ -3244,7 +3355,8 @@ export const products = [
       "sándalo",
       "vainilla de Madagascar",
       "mirra"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 113,
@@ -3269,7 +3381,8 @@ export const products = [
       "sándalo",
       "olivo",
       "vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 114,
@@ -3301,7 +3414,8 @@ export const products = [
       "Cedro",
       "Almizcle",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 115,
@@ -3328,7 +3442,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 116,
@@ -3354,7 +3469,8 @@ export const products = [
       "Flor de azahar",
       "Vainilla",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 117,
@@ -3380,7 +3496,8 @@ export const products = [
       "Almizcle blanco",
       "Cedro",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 118,
@@ -3402,7 +3519,8 @@ export const products = [
       "Flores blancas",
       "Almizcle",
       "Acuerdo polvoroso"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 119,
@@ -3431,7 +3549,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Madera"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 120,
@@ -3460,7 +3579,8 @@ export const products = [
       "Ambroxan",
       "Madera de gaiac",
       "Incienso"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 121,
@@ -3487,7 +3607,8 @@ export const products = [
       "Almizcle",
       "Dulce",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 122,
@@ -3512,7 +3633,8 @@ export const products = [
       "Madera de cedro",
       "Resina",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 123,
@@ -3541,7 +3663,8 @@ export const products = [
       "Coco",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 124,
@@ -3569,7 +3692,8 @@ export const products = [
       "Praliné",
       "Cachemira",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 125,
@@ -3599,7 +3723,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 126,
@@ -3631,7 +3756,8 @@ export const products = [
       "Vainilla",
       "Coco",
       "Orquídea"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 127,
@@ -3659,7 +3785,8 @@ export const products = [
       "Orquídea de vainilla",
       "Almizcle",
       "Cuero"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 128,
@@ -3687,7 +3814,8 @@ export const products = [
       "Almizcle",
       "Incienso",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 129,
@@ -3714,7 +3842,8 @@ export const products = [
       "Cedro",
       "Vetiver",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 130,
@@ -3736,7 +3865,8 @@ export const products = [
       "Ciprés",
       "Sal de mar",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 131,
@@ -3764,7 +3894,8 @@ export const products = [
       "Almizcle",
       "Sándalo",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 132,
@@ -3795,7 +3926,8 @@ export const products = [
       "Praliné",
       "Ámbar",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 133,
@@ -3825,7 +3957,8 @@ export const products = [
       "Ámbar",
       "Cedro",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 134,
@@ -3856,7 +3989,8 @@ export const products = [
       "Cuero",
       "Almizcle",
       "Musgo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 135,
@@ -3886,7 +4020,8 @@ export const products = [
       "Vainilla",
       "Sándalo",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 136,
@@ -3911,7 +4046,8 @@ export const products = [
       "Pera",
       "Almizcle",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 137,
@@ -3938,7 +4074,8 @@ export const products = [
       "Ámbar gris",
       "Almizcle",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 138,
@@ -3967,7 +4104,8 @@ export const products = [
       "pachulí",
       "caramelo",
       "vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 139,
@@ -3993,7 +4131,8 @@ export const products = [
       "Praliné",
       "Vainilla",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 140,
@@ -4022,7 +4161,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 141,
@@ -4052,7 +4192,8 @@ export const products = [
       "Madera seca",
       "Benjuí",
       "Ládano"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 142,
@@ -4080,7 +4221,8 @@ export const products = [
       "Vainilla Bourbon",
       "Ámbar",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 143,
@@ -4109,7 +4251,8 @@ export const products = [
       "Incienso",
       "Madera de cachemira",
       "Ámbar seco"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 144,
@@ -4135,7 +4278,8 @@ export const products = [
       "Sal",
       "Vainilla",
       "Incienso"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 145,
@@ -4160,7 +4304,8 @@ export const products = [
       "Jazmín",
       "Vainilla",
       "Amberwood"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 146,
@@ -4187,7 +4332,8 @@ export const products = [
       "Ámbar gris",
       "Musgo de roble",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 147,
@@ -4214,7 +4360,8 @@ export const products = [
       "Madera de oud",
       "Ámbar",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 148,
@@ -4243,7 +4390,8 @@ export const products = [
       "sándalo",
       "cachemira",
       "musgo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 149,
@@ -4268,7 +4416,8 @@ export const products = [
       "Vainilla",
       "Sándalo",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 150,
@@ -4293,7 +4442,8 @@ export const products = [
       "Madera de oud",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 151,
@@ -4320,7 +4470,8 @@ export const products = [
       "Vainilla",
       "Musgo",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 152,
@@ -4346,7 +4497,8 @@ export const products = [
       "flores blancas",
       "vainilla",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 153,
@@ -4371,7 +4523,8 @@ export const products = [
       "Vainilla",
       "Benjuí",
       "Caramelo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 154,
@@ -4402,7 +4555,8 @@ export const products = [
       "Ládano",
       "Musgo",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 155,
@@ -4428,7 +4582,8 @@ export const products = [
       "Notas lácteas",
       "Mantequilla",
       "Azúcar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 156,
@@ -4455,7 +4610,8 @@ export const products = [
       "Praliné",
       "Vainilla",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 157,
@@ -4481,7 +4637,8 @@ export const products = [
       "praliné",
       "bizcocho",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 158,
@@ -4508,7 +4665,8 @@ export const products = [
       "vainilla",
       "leche",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 159,
@@ -4542,7 +4700,8 @@ export const products = [
       "Cedro",
       "Musgo de roble",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 160,
@@ -4571,7 +4730,8 @@ export const products = [
       "Ládano",
       "Haba tonka",
       "Madera de oud"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 161,
@@ -4601,7 +4761,8 @@ export const products = [
       "Amberwood",
       "Cedro",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 162,
@@ -4629,7 +4790,8 @@ export const products = [
       "Cuero",
       "Cistus",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 163,
@@ -4654,7 +4816,8 @@ export const products = [
       "Palo santo",
       "Incienso",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 164,
@@ -4688,7 +4851,8 @@ export const products = [
       "Almizcle blanco",
       "Ambroxan",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 165,
@@ -4718,7 +4882,8 @@ export const products = [
       "Castañas",
       "Sándalo",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 166,
@@ -4743,7 +4908,8 @@ export const products = [
       "Notas amaderadas",
       "Almizcle",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 167,
@@ -4775,7 +4941,8 @@ export const products = [
       "almizcle",
       "ámbar gris",
       "ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 168,
@@ -4801,7 +4968,8 @@ export const products = [
       "Almizcle",
       "Sándalo",
       "Caramelo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 169,
@@ -4833,7 +5001,8 @@ export const products = [
       "Ámbar",
       "Cedro",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 170,
@@ -4859,7 +5028,8 @@ export const products = [
       "Haba tonka",
       "Vainilla",
       "Oud"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 171,
@@ -4886,7 +5056,8 @@ export const products = [
       "Cedro",
       "Pachulí",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 172,
@@ -4917,7 +5088,8 @@ export const products = [
       "Benjuí",
       "Ámbar",
       "Madera de Akigala"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 173,
@@ -4948,7 +5120,8 @@ export const products = [
       "Ámbar",
       "Haba tonka",
       "Benjuí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 174,
@@ -4978,7 +5151,8 @@ export const products = [
       "Haba tonka",
       "Benjuí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 175,
@@ -5009,7 +5183,8 @@ export const products = [
       "Sándalo",
       "Ámbar",
       "Caramelo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 176,
@@ -5036,7 +5211,8 @@ export const products = [
       "Vainilla",
       "Caramelo",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 177,
@@ -5062,7 +5238,8 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 178,
@@ -5092,7 +5269,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 179,
@@ -5117,7 +5295,8 @@ export const products = [
       "Cedro de Virginia",
       "Ámbar",
       "Cistus"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 180,
@@ -5146,7 +5325,8 @@ export const products = [
       "almizcle",
       "cedro",
       "madera de oud"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 181,
@@ -5176,7 +5356,8 @@ export const products = [
       "Sándalo",
       "Haba tonka",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 182,
@@ -5204,7 +5385,8 @@ export const products = [
       "Haba tonka",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 183,
@@ -5230,7 +5412,8 @@ export const products = [
       "Vainilla",
       "Praliné",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 184,
@@ -5256,7 +5439,8 @@ export const products = [
       "ámbar",
       "cedro",
       "madera de oud"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 185,
@@ -5284,7 +5468,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 186,
@@ -5313,7 +5498,8 @@ export const products = [
       "Notas amaderadas",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 187,
@@ -5339,7 +5525,8 @@ export const products = [
       "Romero",
       "Pachulí",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 188,
@@ -5369,7 +5556,8 @@ export const products = [
       "Praliné",
       "Vainilla",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 189,
@@ -5397,7 +5585,8 @@ export const products = [
       "Sándalo",
       "Cachemira",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 190,
@@ -5423,7 +5612,8 @@ export const products = [
       "vainilla",
       "haba tonka",
       "pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 191,
@@ -5451,7 +5641,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Ambroxan"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 192,
@@ -5480,7 +5671,8 @@ export const products = [
       "Cuero",
       "Vetiver",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 193,
@@ -5512,7 +5704,8 @@ export const products = [
       "Lábdano",
       "Almizcle",
       "Cuero"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 194,
@@ -5538,7 +5731,8 @@ export const products = [
       "Ámbar",
       "Haba tonka",
       "Benjuí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 195,
@@ -5566,7 +5760,8 @@ export const products = [
       "Benjuí",
       "Haba tonka",
       "Ládano"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 196,
@@ -5595,7 +5790,8 @@ export const products = [
       "Vainilla",
       "Sándalo",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 197,
@@ -5620,7 +5816,8 @@ export const products = [
       "Incienso",
       "Ámbar",
       "Vetiver"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 198,
@@ -5647,7 +5844,8 @@ export const products = [
       "Sándalo",
       "Ámbar",
       "Oud"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 199,
@@ -5672,7 +5870,8 @@ export const products = [
       "Pachulí",
       "Vainilla",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 200,
@@ -5699,7 +5898,8 @@ export const products = [
       "Ámbar",
       "Sándalo",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 201,
@@ -5726,7 +5926,8 @@ export const products = [
       "vainilla",
       "ámbar",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 202,
@@ -5753,7 +5954,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 203,
@@ -5778,7 +5980,8 @@ export const products = [
       "Caramelo",
       "Pachulí",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 204,
@@ -5806,7 +6009,8 @@ export const products = [
       "Vainilla",
       "Cachemira",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 205,
@@ -5837,7 +6041,8 @@ export const products = [
       "Ámbar",
       "Vainilla",
       "Miel"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 206,
@@ -5864,7 +6069,8 @@ export const products = [
       "Sándalo",
       "Vainilla",
       "Pachulí"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 207,
@@ -5890,7 +6096,8 @@ export const products = [
       "Narciso",
       "Ámbar",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 208,
@@ -5918,7 +6125,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 209,
@@ -5946,7 +6154,8 @@ export const products = [
       "Palo de rosa",
       "Frambuesa",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 210,
@@ -5975,7 +6184,8 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 211,
@@ -6003,7 +6213,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Madera de ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 212,
@@ -6034,7 +6245,8 @@ export const products = [
       "Cedro",
       "Almizcle",
       "Ambroxán"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 213,
@@ -6062,7 +6274,8 @@ export const products = [
       "Vetiver",
       "Ciprés",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 214,
@@ -6087,7 +6300,8 @@ export const products = [
       "Manzana",
       "Cítricos",
       "Bergamota"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 215,
@@ -6120,7 +6334,8 @@ export const products = [
       "Madera de gaiac",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 216,
@@ -6148,7 +6363,8 @@ export const products = [
       "Madera de cachemira",
       "Trufa",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 217,
@@ -6176,7 +6392,8 @@ export const products = [
       "Almizcle",
       "Vainilla de Tahití",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 218,
@@ -6202,7 +6419,8 @@ export const products = [
       "Ylang-ylang",
       "Roble",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 219,
@@ -6232,7 +6450,8 @@ export const products = [
       "Ámbar",
       "Almizcle blanco",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 220,
@@ -6260,7 +6479,8 @@ export const products = [
       "Almizcle blanco",
       "Ámbar",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 221,
@@ -6288,7 +6508,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 222,
@@ -6321,7 +6542,8 @@ export const products = [
       "Vetiver",
       "Sándalo",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 223,
@@ -6349,7 +6571,8 @@ export const products = [
       "jazmín",
       "ámbar",
       "almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 224,
@@ -6374,7 +6597,8 @@ export const products = [
       "Carbón",
       "Pachulí",
       "Ambroxan"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 225,
@@ -6396,7 +6620,8 @@ export const products = [
       "Arándano rojo",
       "haba tonka",
       "notas florales"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 226,
@@ -6424,7 +6649,8 @@ export const products = [
       "Sándalo",
       "Vetiver",
       "Almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 227,
@@ -6453,7 +6679,8 @@ export const products = [
       "Almizcle",
       "Pachulí",
       "Madera de sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 228,
@@ -6487,7 +6714,8 @@ export const products = [
       "cedro",
       "almizcle",
       "sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 229,
@@ -6515,7 +6743,8 @@ export const products = [
       "Pachulí",
       "Vetiver",
       "Praliné"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 230,
@@ -6541,7 +6770,8 @@ export const products = [
       "vainilla",
       "ámbar",
       "almizcle"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 231,
@@ -6572,7 +6802,8 @@ export const products = [
       "Ámbar gris",
       "Pachulí",
       "Madera a la deriva"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 232,
@@ -6600,7 +6831,8 @@ export const products = [
       "Almizcle",
       "Notas amaderadas",
       "Ámbar"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 233,
@@ -6628,7 +6860,8 @@ export const products = [
       "Almizcle",
       "Ámbar",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 234,
@@ -6657,7 +6890,8 @@ export const products = [
       "Almizcle",
       "Pachulí",
       "Madera de cachemira"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 235,
@@ -6684,7 +6918,8 @@ export const products = [
       "Oud",
       "Rosa",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 236,
@@ -6710,7 +6945,8 @@ export const products = [
       "Almizcle",
       "Ámbar",
       "Cachemira"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 237,
@@ -6737,7 +6973,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Musgo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 238,
@@ -6762,7 +6999,8 @@ export const products = [
       "Menta",
       "Haba tonka",
       "Vainilla"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 239,
@@ -6796,7 +7034,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 240,
@@ -6823,7 +7062,8 @@ export const products = [
       "Almizcle",
       "Panacotta",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 241,
@@ -6848,7 +7088,8 @@ export const products = [
       "Cuero",
       "Pachulí",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 242,
@@ -6874,7 +7115,8 @@ export const products = [
       "Vainilla Bourbon",
       "Cachemira",
       "Madera de gaiac"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 243,
@@ -6894,7 +7136,8 @@ export const products = [
       "Té Lapsang Souchong",
       "Jazmín",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 244,
@@ -6915,7 +7158,8 @@ export const products = [
       "Ámbar",
       "Jazmín",
       "Benjuí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 245,
@@ -6938,7 +7182,8 @@ export const products = [
       "Pachulí",
       "Vainilla",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 246,
@@ -6969,7 +7214,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 247,
@@ -6994,7 +7240,8 @@ export const products = [
       "Bergamota",
       "Vetiver",
       "Alcaravea"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 248,
@@ -7018,7 +7265,8 @@ export const products = [
       "Almizcle",
       "Miel",
       "Whisky"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 249,
@@ -7038,7 +7286,8 @@ export const products = [
       "Pachulí",
       "Almizcle",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 250,
@@ -7063,7 +7312,8 @@ export const products = [
       "Musgo de roble",
       "Ambroxan",
       "Cedro"
-    ]
+    ],
+    "categoria": "nicho"
   },
   {
     "id": 251,
@@ -7087,7 +7337,8 @@ export const products = [
       "Vetiver",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 252,
@@ -7108,7 +7359,8 @@ export const products = [
       "Amberwood",
       "Vetiver de Haití",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 253,
@@ -7132,7 +7384,8 @@ export const products = [
       "Vetiver",
       "Pachulí",
       "Madera de ciprés"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 254,
@@ -7153,7 +7406,8 @@ export const products = [
       "Geranio",
       "Salvia esclarea",
       "Lavanda"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 255,
@@ -7177,7 +7431,8 @@ export const products = [
       "Pachulí",
       "Vainilla",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 256,
@@ -7202,7 +7457,8 @@ export const products = [
       "Pachulí",
       "Cuero",
       "Naranja amarga"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 257,
@@ -7222,7 +7478,8 @@ export const products = [
       "Ámbar",
       "Vainilla",
       "Almizcle blanco"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 258,
@@ -7243,7 +7500,8 @@ export const products = [
       "Almizcle blanco",
       "Musgo de roble",
       "Caña de azúcar"
-    ]
+    ],
+    "categoria": "nicho"
   },
   {
     "id": 259,
@@ -7261,7 +7519,8 @@ export const products = [
       "Pera",
       "Cedro de Virginia",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 260,
@@ -7282,7 +7541,8 @@ export const products = [
       "Orquídea de vainilla",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 261,
@@ -7305,7 +7565,8 @@ export const products = [
       "Ambroxan",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 262,
@@ -7323,7 +7584,8 @@ export const products = [
       "Rosa rosada",
       "Macarrones dulces",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 263,
@@ -7343,7 +7605,8 @@ export const products = [
       "Haba tonka",
       "Sándalo",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 264,
@@ -7363,7 +7626,8 @@ export const products = [
       "Enebro de Virginia",
       "Vetiver",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 265,
@@ -7380,7 +7644,8 @@ export const products = [
       "Pomelo",
       "Musgo de roble",
       "Pepino"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 266,
@@ -7397,7 +7662,8 @@ export const products = [
       "Caramelo",
       "Haba tonka",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 267,
@@ -7418,7 +7684,8 @@ export const products = [
       "Malvavisco",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 268,
@@ -7439,7 +7706,8 @@ export const products = [
       "Vainilla",
       "Almizcle blanco",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 269,
@@ -7458,7 +7726,8 @@ export const products = [
       "Semillas de ambreta",
       "Almizcle blanco",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 270,
@@ -7478,7 +7747,8 @@ export const products = [
       "Pachulí",
       "Benjuí",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 271,
@@ -7499,7 +7769,8 @@ export const products = [
       "Vetiver",
       "Sándalo",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 272,
@@ -7520,7 +7791,8 @@ export const products = [
       "Vainilla",
       "Cedro",
       "Musgo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 273,
@@ -7539,7 +7811,8 @@ export const products = [
       "Sándalo",
       "Incienso",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 274,
@@ -7560,7 +7833,8 @@ export const products = [
       "Almizcle",
       "Maderas blancas",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 275,
@@ -7583,7 +7857,8 @@ export const products = [
       "Madreselva",
       "Vainilla",
       "Madera de cachemira"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 276,
@@ -7605,7 +7880,8 @@ export const products = [
       "Tabaco",
       "Vainilla",
       "Ciste"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 277,
@@ -7627,7 +7903,8 @@ export const products = [
       "Pachulí",
       "Benjuí",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 278,
@@ -7649,7 +7926,8 @@ export const products = [
       "Vainilla",
       "Palo de rosa de Brasil",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 279,
@@ -7667,7 +7945,8 @@ export const products = [
       "Pomelo",
       "Enebro",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 280,
@@ -7690,7 +7969,8 @@ export const products = [
       "Sándalo",
       "Cypriol",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 281,
@@ -7711,7 +7991,8 @@ export const products = [
       "Sándalo",
       "Vainilla",
       "Almizcle blanco"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 282,
@@ -7732,7 +8013,8 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Maderas secas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 283,
@@ -7748,7 +8030,8 @@ export const products = [
       "Bergamota",
       "Flor de azahar",
       "Lavanda"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 284,
@@ -7769,7 +8052,8 @@ export const products = [
       "Cedro de Virginia",
       "Cuero",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 285,
@@ -7795,7 +8079,8 @@ export const products = [
       "Cedro de Texas",
       "Pachulí",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 286,
@@ -7815,7 +8100,8 @@ export const products = [
       "Iris",
       "Cuero",
       "Ámbar"
-    ]
+    ],
+    "categoria": "nicho"
   },
   {
     "id": 287,
@@ -7839,7 +8125,8 @@ export const products = [
       "Cedro",
       "Pachulí",
       "Mirra"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 288,
@@ -7859,7 +8146,8 @@ export const products = [
       "Ámbar negro",
       "Pachulí",
       "Madera de palisandro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 289,
@@ -7878,7 +8166,8 @@ export const products = [
       "Almizcle blanco",
       "Vainilla de Madagascar",
       "Ámbar"
-    ]
+    ],
+    "categoria": "nicho"
   },
   {
     "id": 290,
@@ -7906,7 +8195,8 @@ export const products = [
       "Gamuza",
       "Ládano",
       "Bálsamo del Perú"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 291,
@@ -7925,7 +8215,8 @@ export const products = [
       "Lavanda",
       "Madera ambarina",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 292,
@@ -7947,7 +8238,8 @@ export const products = [
       "Maderas ambarinas",
       "Almizcle",
       "Musgo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 293,
@@ -7967,7 +8259,8 @@ export const products = [
       "Malvavisco",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 294,
@@ -7985,7 +8278,8 @@ export const products = [
       "Elemi",
       "Madera de guayaco",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 295,
@@ -8013,7 +8307,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 296,
@@ -8033,7 +8328,8 @@ export const products = [
       "Flor de azahar del naranjo",
       "Cardamomo",
       "Cachemira"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 297,
@@ -8050,7 +8346,8 @@ export const products = [
       "Sándalo",
       "Salvia",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 298,
@@ -8071,7 +8368,8 @@ export const products = [
       "Sal",
       "Haba tonka",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 299,
@@ -8092,7 +8390,8 @@ export const products = [
       "Cedro",
       "Ámbar",
       "Tabaco"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 300,
@@ -8111,7 +8410,8 @@ export const products = [
       "Enebro de Virginia",
       "Almizcle",
       "Amberwood"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 301,
@@ -8129,7 +8429,8 @@ export const products = [
       "Ciclamen",
       "Madera de cachemira",
       "Cuero"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 302,
@@ -8148,7 +8449,8 @@ export const products = [
       "Humo",
       "Vetiver",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 303,
@@ -8167,7 +8469,8 @@ export const products = [
       "Pachulí",
       "Vainilla",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 304,
@@ -8186,7 +8489,8 @@ export const products = [
       "Haba tonka",
       "Ámbar",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 305,
@@ -8207,7 +8511,8 @@ export const products = [
       "Cuero",
       "Sándalo",
       "Vetiver de Madagascar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 306,
@@ -8223,7 +8528,8 @@ export const products = [
       "Polygonum",
       "Narciso",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 307,
@@ -8246,7 +8552,8 @@ export const products = [
       "Ambroxan",
       "Madera",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 308,
@@ -8272,7 +8579,8 @@ export const products = [
       "Almizcle",
       "Sándalo",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 309,
@@ -8288,7 +8596,8 @@ export const products = [
       "Fresia",
       "Osmanto",
       "Cacao"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 310,
@@ -8306,7 +8615,8 @@ export const products = [
       "Lavanda",
       "Vainilla negra",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 311,
@@ -8327,7 +8637,8 @@ export const products = [
       "Pachulí",
       "Ámbar",
       "Maderas blancas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 312,
@@ -8346,7 +8657,8 @@ export const products = [
       "Cuero",
       "Maderas",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 313,
@@ -8366,7 +8678,8 @@ export const products = [
       "Vainilla",
       "Sándalo",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 314,
@@ -8387,7 +8700,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 315,
@@ -8403,7 +8717,8 @@ export const products = [
       "Coco",
       "Haba tonka",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 316,
@@ -8425,7 +8740,8 @@ export const products = [
       "Almizcle",
       "Musgo de roble",
       "Incienso"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 317,
@@ -8447,7 +8763,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Almizcle blanco"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 318,
@@ -8471,7 +8788,8 @@ export const products = [
       "Pachulí",
       "Palisandro",
       "Árbol de ébano"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 319,
@@ -8492,7 +8810,8 @@ export const products = [
       "Notas marinas",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "nicho"
   },
   {
     "id": 320,
@@ -8523,7 +8842,8 @@ export const products = [
       "Almizcle",
       "Haba tonka",
       "Evernyl"
-    ]
+    ],
+    "categoria": "nicho"
   },
   {
     "id": 321,
@@ -8541,7 +8861,8 @@ export const products = [
       "Geranio",
       "Cuero",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 322,
@@ -8578,7 +8899,8 @@ export const products = [
       "Almizcle",
       "Ámbar",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 323,
@@ -8600,7 +8922,8 @@ export const products = [
       "Cedro de Virginia",
       "Iso E Super",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 324,
@@ -8620,7 +8943,8 @@ export const products = [
       "Gamuza",
       "Notas amaderadas",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 325,
@@ -8635,7 +8959,8 @@ export const products = [
       "Bergamota de Calabria",
       "Durazno",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 326,
@@ -8656,7 +8981,8 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Madera de massoia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 327,
@@ -8679,7 +9005,8 @@ export const products = [
       "Haba tonka",
       "Amberwood",
       "Notas amaderadas oscuras"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 328,
@@ -8699,7 +9026,8 @@ export const products = [
       "Almizcle blanco",
       "Sándalo",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 329,
@@ -8721,7 +9049,8 @@ export const products = [
       "Vainilla",
       "Almizcle",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 330,
@@ -8736,7 +9065,8 @@ export const products = [
       "Jazmín sambac",
       "Madera de cachemira",
       "Ámbar blanco"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 331,
@@ -8764,7 +9094,8 @@ export const products = [
       "Vetiver",
       "Sándalo",
       "Palo de Rosa"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 332,
@@ -8786,7 +9117,8 @@ export const products = [
       "Maderas blancas",
       "Madera de cachemira",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 333,
@@ -8801,7 +9133,8 @@ export const products = [
       "Bayas de enebro",
       "Salvia",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 334,
@@ -8823,7 +9156,8 @@ export const products = [
       "Tabaco",
       "Cuero",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 335,
@@ -8847,7 +9181,8 @@ export const products = [
       "Musgo",
       "Pachulí",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 336,
@@ -8869,7 +9204,8 @@ export const products = [
       "Sándalo",
       "Madera de gaiac",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 337,
@@ -8890,7 +9226,8 @@ export const products = [
       "Haba tonka",
       "Madera de sándalo",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 338,
@@ -8914,7 +9251,8 @@ export const products = [
       "Almizcle",
       "Sándalo",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 339,
@@ -8938,7 +9276,8 @@ export const products = [
       "Vetiver",
       "Pachulí",
       "Secuoya roja brasileña"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 340,
@@ -8959,7 +9298,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Sándalo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 341,
@@ -8981,7 +9321,8 @@ export const products = [
       "Rosa",
       "Almizcle",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 342,
@@ -9004,7 +9345,8 @@ export const products = [
       "Cedro",
       "Sándalo",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 343,
@@ -9026,7 +9368,8 @@ export const products = [
       "Almizcle",
       "Maderas",
       "Especias suaves"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 344,
@@ -9048,7 +9391,8 @@ export const products = [
       "Sándalo",
       "Cedro",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 345,
@@ -9069,7 +9413,8 @@ export const products = [
       "Haba tonka",
       "Vainilla",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 346,
@@ -9090,7 +9435,8 @@ export const products = [
       "Cuero",
       "Cedro",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 347,
@@ -9110,7 +9456,8 @@ export const products = [
       "Sándalo",
       "Madera de guayaco",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 348,
@@ -9132,7 +9479,8 @@ export const products = [
       "Resina de abeto",
       "Nuez moscada",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 349,
@@ -9150,7 +9498,8 @@ export const products = [
       "Cedro",
       "Caoba",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 350,
@@ -9168,7 +9517,8 @@ export const products = [
       "Cedro",
       "Ambroxán",
       "Musgo"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 351,
@@ -9195,7 +9545,8 @@ export const products = [
       "Cedro",
       "Vetiver",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 352,
@@ -9217,7 +9568,8 @@ export const products = [
       "Cedro",
       "Almizcle",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 353,
@@ -9238,7 +9590,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 354,
@@ -9258,7 +9611,8 @@ export const products = [
       "Ládano",
       "Notas amaderadas",
       "Verbena de limón"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 355,
@@ -9279,7 +9633,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Cedro de Virginia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 356,
@@ -9312,7 +9667,8 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 357,
@@ -9337,7 +9693,8 @@ export const products = [
       "Vainilla negra",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 358,
@@ -9358,7 +9715,8 @@ export const products = [
       "Cuero",
       "Musgo de roble",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 359,
@@ -9380,7 +9738,8 @@ export const products = [
       "Ládano",
       "Pachulí",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 360,
@@ -9401,7 +9760,8 @@ export const products = [
       "Almizcle",
       "Vainilla",
       "Madera de cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 361,
@@ -9424,7 +9784,8 @@ export const products = [
       "Haba tonka",
       "Incienso",
       "Madera de tamboti"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 362,
@@ -9445,7 +9806,8 @@ export const products = [
       "Akigalawood",
       "Hojas de pachulí de Indonesia",
       "Vaina de cacao"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 363,
@@ -9463,7 +9825,8 @@ export const products = [
       "Ládano",
       "Cuero",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 364,
@@ -9489,7 +9852,8 @@ export const products = [
       "Ámbar gris",
       "Benjuí",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 365,
@@ -9510,7 +9874,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Cedro"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 366,
@@ -9531,7 +9896,8 @@ export const products = [
       "Cedro",
       "Vetiver",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 367,
@@ -9552,7 +9918,8 @@ export const products = [
       "Cuero",
       "Vetiver",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 368,
@@ -9572,7 +9939,8 @@ export const products = [
       "Madera de cedro",
       "Musgo de roble",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 369,
@@ -9594,7 +9962,8 @@ export const products = [
       "Almizcle",
       "Vainilla",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 370,
@@ -9611,7 +9980,8 @@ export const products = [
       "Salvia esclarea",
       "Cedro",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 371,
@@ -9629,7 +9999,8 @@ export const products = [
       "Cuero",
       "Ámbar",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 372,
@@ -9652,7 +10023,8 @@ export const products = [
       "Vainilla",
       "Sándalo",
       "Maderas oscuras"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 373,
@@ -9673,7 +10045,8 @@ export const products = [
       "Vetiver",
       "Cedro",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 374,
@@ -9700,7 +10073,8 @@ export const products = [
       "Cedro",
       "Pachulí",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 375,
@@ -9721,7 +10095,8 @@ export const products = [
       "Ámbar",
       "Almizcle",
       "Cedro de Virginia"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 376,
@@ -9740,7 +10115,8 @@ export const products = [
       "Haba tonka",
       "Madera de cedro",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 377,
@@ -9760,7 +10136,8 @@ export const products = [
       "Almizcle",
       "Cedro",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 378,
@@ -9779,7 +10156,8 @@ export const products = [
       "Cuero",
       "Almizcle",
       "Notas amaderadas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 379,
@@ -9800,7 +10178,8 @@ export const products = [
       "Cedro",
       "Pachiulí",
       "Abeto"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 380,
@@ -9833,7 +10212,8 @@ export const products = [
       "Vetiver",
       "Incienso",
       "Benjuí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 381,
@@ -9854,7 +10234,8 @@ export const products = [
       "Pachulí",
       "Hojas de pachulí de Indonesia",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 382,
@@ -9874,7 +10255,8 @@ export const products = [
       "Cilantro",
       "Vetiver de Haití",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 383,
@@ -9894,7 +10276,8 @@ export const products = [
       "Cedro",
       "Musgo de roble",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 384,
@@ -9923,7 +10306,8 @@ export const products = [
       "Pachulí",
       "Musgo de roble",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 385,
@@ -9943,7 +10327,8 @@ export const products = [
       "Fava tonka",
       "Notas amaderadas",
       "Maderas preciosas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 386,
@@ -9967,7 +10352,8 @@ export const products = [
       "Almizcle blanco",
       "Ámbar",
       "Madera de teca"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 387,
@@ -9985,7 +10371,8 @@ export const products = [
       "Cilantro",
       "Haba tonka",
       "Ládano"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 388,
@@ -10018,7 +10405,8 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 389,
@@ -10045,7 +10433,8 @@ export const products = [
       "Vetiver",
       "Cedro",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 390,
@@ -10069,7 +10458,8 @@ export const products = [
       "Ámbar",
       "Cuero",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 391,
@@ -10094,7 +10484,8 @@ export const products = [
       "Maderas",
       "Almizcle",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 392,
@@ -10117,7 +10508,8 @@ export const products = [
       "Vainilla",
       "Ámbar",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 393,
@@ -10139,7 +10531,8 @@ export const products = [
       "Sándalo",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 394,
@@ -10158,7 +10551,8 @@ export const products = [
       "Menta",
       "Pachulí",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 395,
@@ -10179,7 +10573,8 @@ export const products = [
       "Haba tonka",
       "Sándalo",
       "Madera de cachemira"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 396,
@@ -10198,7 +10593,8 @@ export const products = [
       "Bergamota",
       "Notas marinas",
       "Almizcle"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 397,
@@ -10220,7 +10616,8 @@ export const products = [
       "Cedro",
       "Almizcle",
       "Haba tonka"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 398,
@@ -10238,7 +10635,8 @@ export const products = [
       "Magnolia",
       "Musgo de roble",
       "Cuero"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 399,
@@ -10271,7 +10669,8 @@ export const products = [
       "Almizcle",
       "Musgo de roble",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 400,
@@ -10292,7 +10691,8 @@ export const products = [
       "Musgo",
       "Almizcle",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 401,
@@ -10315,7 +10715,8 @@ export const products = [
       "Haba tonka",
       "Ámbar",
       "Sándalo"
-    ]
+    ],
+    "categoria": "arabes"
   },
   {
     "id": 402,
@@ -10334,7 +10735,8 @@ export const products = [
       "Almizcle",
       "Ámbar gris",
       "Nuez moscada"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 403,
@@ -10356,7 +10758,8 @@ export const products = [
       "Haba tonka",
       "Incienso",
       "Ámbar gris"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 404,
@@ -10381,7 +10784,8 @@ export const products = [
       "Haba tonka",
       "Sándalo",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 405,
@@ -10403,7 +10807,8 @@ export const products = [
       "Ámbar",
       "Sándalo",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 406,
@@ -10425,7 +10830,8 @@ export const products = [
       "Almizcle",
       "Vetiver",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 407,
@@ -10444,7 +10850,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Maderas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 408,
@@ -10472,7 +10879,8 @@ export const products = [
       "Madera de teca",
       "Cuero",
       "Vainilla"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 409,
@@ -10492,7 +10900,8 @@ export const products = [
       "Cedro",
       "Vetiver",
       "Musgo de roble"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 410,
@@ -10514,7 +10923,8 @@ export const products = [
       "Haba tonka",
       "Ámbar",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 411,
@@ -10535,7 +10945,8 @@ export const products = [
       "Almizcle blanco",
       "Vetiver",
       "Pachulí"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 412,
@@ -10557,7 +10968,8 @@ export const products = [
       "Pachulí",
       "Ládano",
       "Vetiver"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 413,
@@ -10577,7 +10989,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 414,
@@ -10597,7 +11010,8 @@ export const products = [
       "Lavanda",
       "Limón",
       "Maderas"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 415,
@@ -10617,7 +11031,8 @@ export const products = [
       "Sándalo",
       "Almizcle",
       "Ámbar"
-    ]
+    ],
+    "categoria": "disenador"
   },
   {
     "id": 416,
@@ -10645,6 +11060,7 @@ export const products = [
       "Vainilla",
       "Pachulí",
       "Cedro"
-    ]
+    ],
+    "categoria": "disenador"
   }
 ];

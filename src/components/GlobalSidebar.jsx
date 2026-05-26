@@ -25,55 +25,111 @@ const KidsIcon = () => (
     <circle cx="12" cy="7" r="3"/><path d="M5 21c0-3 3-5 7-5s7 2 7 5"/>
   </svg>
 )
+const ArabeIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+    <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+  </svg>
+)
+const DisenadorIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </svg>
+)
+const NichoIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+    <path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z"/>
+  </svg>
+)
 
-const NAV_ITEMS = [
-  { key: null,        label: 'Todas las fragancias', icon: <AllIcon />    },
-  { key: 'Masculino', label: 'Hombre',               icon: <MenIcon />   },
-  { key: 'Femenino',  label: 'Mujer',                icon: <WomenIcon /> },
-  { key: 'Unisex',    label: 'Unisex',               icon: <UnisexIcon />},
-  { key: 'Niño',      label: 'Kids',                 icon: <KidsIcon />  },
+const GENERO_ITEMS = [
+  { key: 'Masculino', label: 'Hombre',  icon: <MenIcon />    },
+  { key: 'Femenino',  label: 'Mujer',   icon: <WomenIcon />  },
+  { key: 'Unisex',    label: 'Unisex',  icon: <UnisexIcon /> },
+  { key: 'Niño',      label: 'Kids',    icon: <KidsIcon />   },
+]
+
+const TIPO_ITEMS = [
+  { key: 'arabe',     label: 'Árabes',    icon: <ArabeIcon />    },
+  { key: 'disenador', label: 'Diseñador', icon: <DisenadorIcon /> },
+  { key: 'nicho',     label: 'Nicho',     icon: <NichoIcon />    },
 ]
 
 export default function GlobalSidebar() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Only show on /tienda (exact) — not on landing or product detail
   if (location.pathname !== '/tienda') return null
 
-  // Detect active item from URL search params
   const params = new URLSearchParams(location.search)
   const activeGenero = params.get('genero') || null
+  const activeTipo   = params.get('tipo')   || null
 
-  function handleNav(key) {
-    if (key === null) {
-      navigate('/tienda')
-    } else {
-      navigate(`/tienda?genero=${key}`)
-    }
+  function handleGenero(key) {
+    navigate(key ? `/tienda?genero=${key}` : '/tienda')
   }
 
-  const onTienda = true
+  function handleTipo(key) {
+    navigate(`/tienda?tipo=${key}`)
+  }
+
+  function handleAll() {
+    navigate('/tienda')
+  }
+
+  const isAll = !activeGenero && !activeTipo
 
   return (
     <aside className="global-sidebar">
       <div className="global-sidebar-inner">
+
+        {/* Colección */}
         <span className="global-sidebar-label">Colección</span>
-        <nav>
-          {NAV_ITEMS.map(item => {
-            const isActive = onTienda && item.key === activeGenero
-            return (
-              <button
-                key={item.label}
-                onClick={() => handleNav(item.key)}
-                className={`global-sidebar-link${isActive ? ' active' : ''}`}
-              >
-                <span className="global-sidebar-icon">{item.icon}</span>
-                <span className="global-sidebar-text">{item.label}</span>
-              </button>
-            )
-          })}
+        <nav style={{ marginBottom: 0 }}>
+          <button
+            onClick={handleAll}
+            className={`global-sidebar-link${isAll ? ' active' : ''}`}
+          >
+            <span className="global-sidebar-icon"><AllIcon /></span>
+            <span className="global-sidebar-text">Todas las fragancias</span>
+          </button>
         </nav>
+
+        {/* Divider */}
+        <div className="global-sidebar-divider" />
+
+        {/* Género */}
+        <span className="global-sidebar-label">Género</span>
+        <nav style={{ marginBottom: 0 }}>
+          {GENERO_ITEMS.map(item => (
+            <button
+              key={item.key}
+              onClick={() => handleGenero(item.key)}
+              className={`global-sidebar-link${activeGenero === item.key ? ' active' : ''}`}
+            >
+              <span className="global-sidebar-icon">{item.icon}</span>
+              <span className="global-sidebar-text">{item.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Divider */}
+        <div className="global-sidebar-divider" />
+
+        {/* Tipo */}
+        <span className="global-sidebar-label">Tipo</span>
+        <nav>
+          {TIPO_ITEMS.map(item => (
+            <button
+              key={item.key}
+              onClick={() => handleTipo(item.key)}
+              className={`global-sidebar-link${activeTipo === item.key ? ' active' : ''}`}
+            >
+              <span className="global-sidebar-icon">{item.icon}</span>
+              <span className="global-sidebar-text">{item.label}</span>
+            </button>
+          ))}
+        </nav>
+
       </div>
     </aside>
   )

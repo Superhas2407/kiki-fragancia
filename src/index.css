@@ -186,6 +186,14 @@
 .global-sidebar-text {
   line-height: 1;
 }
+.global-sidebar-divider {
+  border: none;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  margin: 20px 0;
+}
+.global-sidebar-label + nav {
+  margin-bottom: 0;
+}
 
 /* Tienda padding horizontal */
 

@@ -208,8 +208,8 @@ export default function Tienda() {
   const topRef = useRef(null)
   const mountRef = useRef(true)
 
-  // Leer ?genero= de la URL (viene del GlobalSidebar)
   const urlGenero = searchParams.get('genero') || null
+  const urlTipo   = searchParams.get('tipo')   || null
 
   // Sincronizar searchQuery con ?q= de la URL (cuando cambia desde otro componente)
   useEffect(() => {
@@ -217,12 +217,11 @@ export default function Tienda() {
     setCurrentPage(1)
   }, [searchParams.get('q')])
 
-  // Cuando cambia la URL, resetear filtros adicionales
   useEffect(() => {
     setSelectedMarcas([])
     setSelectedTipos([])
     setCurrentPage(1)
-  }, [urlGenero])
+  }, [urlGenero, urlTipo])
 
   const toggleMarca = v => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleTipo  = v => setSelectedTipos(p  => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
@@ -233,9 +232,11 @@ export default function Tienda() {
 
   // Pool base: filtrado por la selección del sidebar global
   const basePool = useMemo(() => {
-    if (!urlGenero) return products
-    return products.filter(p => p.genero === urlGenero)
-  }, [urlGenero])
+    let pool = products
+    if (urlGenero) pool = pool.filter(p => p.genero === urlGenero)
+    if (urlTipo)   pool = pool.filter(p => p.categoria === urlTipo)
+    return pool
+  }, [urlGenero, urlTipo])
 
   const filtered = useMemo(() => {
     let result = [...basePool]
@@ -270,8 +271,11 @@ export default function Tienda() {
   }
 
   // Label del título según selección del sidebar
-  const LABEL_MAP = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
-  const sectionTitle = urlGenero ? (LABEL_MAP[urlGenero] || urlGenero) : 'Fragancias'
+  const LABEL_MAP   = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
+  const TIPO_MAP    = { arabe: 'Árabes', disenador: 'Diseñador', nicho: 'Nicho' }
+  const sectionTitle = urlGenero ? (LABEL_MAP[urlGenero] || urlGenero)
+    : urlTipo ? (TIPO_MAP[urlTipo] || urlTipo)
+    : 'Fragancias'
 
   const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool }
 
