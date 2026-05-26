@@ -13,7 +13,22 @@ export const products = [
     "notasFondo": "almizcle, musgo, cedro, pachulí",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia elegante y luminosa **para la mujer**, con un perfil floral-frutal fresco y sofisticado que resulta ideal para el día a día. Inspirada en el estilo de perfumes femeninos modernos de diseñador, combina un carácter vibrante con un acabado limpio y refinado.",
+    "notes": [
+      "Limón",
+      "mandarina",
+      "cardamomo",
+      "pimienta rosa",
+      "lavanda",
+      "manzana verde",
+      "flor de azahar del naranjo",
+      "rosa",
+      "almizcle",
+      "musgo",
+      "cedro",
+      "pachulí"
+    ]
   },
   {
     "id": 2,
@@ -29,7 +44,21 @@ export const products = [
     "notasFondo": "Sándalo, Pachulí, Jazmín",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Afnan 9 AM Dive es una fragancia **unisex** de estilo aromático acuático, fresca y vibrante, ideal para quienes buscan una presencia limpia, moderna y versátil. Su perfil recuerda a un perfume de diseñador en la línea de los cítricos marinos contemporáneos, con un toque especiado y elegante que aporta personalidad durante todo el día.",
+    "notes": [
+      "Limón",
+      "Menta",
+      "Grosella negra",
+      "Pimienta rosa",
+      "Manzana",
+      "Incienso",
+      "Cedro",
+      "Jengibre",
+      "Sándalo",
+      "Pachulí",
+      "Jazmín"
+    ]
   },
   {
     "id": 3,
@@ -45,7 +74,20 @@ export const products = [
     "notasFondo": "Haba tonka, Ámbar, Pachulí",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Un perfume **para el hombre** de perfil oriental vainilla, moderno y muy seductor, con un equilibrio entre frescura frutal y una estela cálida y dulce. Afnan 9 PM se inspira claramente en el estilo de **Ultra Male** de Jean Paul Gaultier, ofreciendo una propuesta juvenil, intensa y muy agradable para la noche.",
+    "notes": [
+      "Bergamota",
+      "Manzana",
+      "Canela",
+      "Lavandín",
+      "Lirio de los valles",
+      "Flor de azahar del naranjo",
+      "Vainilla",
+      "Haba tonka",
+      "Ámbar",
+      "Pachulí"
+    ]
   },
   {
     "id": 4,
@@ -61,7 +103,20 @@ export const products = [
     "notasFondo": "Ámbar gris, Musgo de roble, Almizcle",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Fragancia **para el hombre** de carácter chipre frutal, moderna y sofisticada, con una salida fresca y vibrante que aporta presencia inmediata. Su estilo se inspira claramente en el perfil elegante y magnético de perfumes de diseñador como *Aventus*, ofreciendo una estela refinada y muy versátil para uso diario o nocturno.",
+    "notes": [
+      "Piña",
+      "Bergamota",
+      "Manzana",
+      "Flores blancas",
+      "Abedul",
+      "Flor de azahar del naranjo",
+      "Ámbar",
+      "Ámbar gris",
+      "Musgo de roble",
+      "Almizcle"
+    ]
   },
   {
     "id": 5,
@@ -77,7 +132,17 @@ export const products = [
     "notasFondo": "Pachulí, Especias frescas",
     "ml": 90,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para el hombre** de perfil fresco, elegante y moderno, con un carácter aromático acuático que proyecta limpieza y sofisticación. Turathi Blue de Afnan destaca por su aire cítrico y amaderado, y suele compararse con el estilo de fragancias masculinas de diseñador de corte deportivo y refinado.",
+    "notes": [
+      "Bergamota",
+      "Mandarina",
+      "Ámbar",
+      "Notas amaderadas",
+      "Almizcle",
+      "Pachulí",
+      "Especias frescas"
+    ]
   },
   {
     "id": 6,
@@ -93,7 +158,20 @@ export const products = [
     "notasFondo": "Vetiver, Musgo, Cedro",
     "ml": 60,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Una fragancia **unisex** de estilo amaderado aromático, fresca, limpia y elegante, ideal para quienes buscan un perfil sofisticado con carácter moderno. Se inspira claramente en **Terre d’Hermès**, ofreciendo un acorde mineral y seco con una salida aromática muy refinada.",
+    "notes": [
+      "Lavanda",
+      "Bergamota",
+      "Romero",
+      "Notas marinas",
+      "Geranio",
+      "Salvia",
+      "Ámbar",
+      "Vetiver",
+      "Musgo",
+      "Cedro"
+    ]
   },
   {
     "id": 7,
@@ -109,7 +187,20 @@ export const products = [
     "notasFondo": "Ámbar, Almizcle blanco, Musgo de roble",
     "ml": 75,
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "description": "Unisex y sofisticado, **Amber Oud Dubai Night** de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
+    "notes": [
+      "Azafrán",
+      "Bergamota",
+      "Resina de elemí",
+      "Rosa búlgara",
+      "Oud",
+      "Lirio de los valles",
+      "Haba tonka",
+      "Ámbar",
+      "Almizcle blanco",
+      "Musgo de roble"
+    ]
   },
   {
     "id": 8,
@@ -125,7 +216,19 @@ export const products = [
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
     "ml": 120,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Unisex, sofisticado y envolvente, **Amber Oud Gold Edition** de Al Haramain destaca por su faceta dulce-ámbar con un acabado afrutado y cremoso, ideal para quienes buscan una firma elegante y moderna. Se inspira en el estilo de fragancias de lujo tipo niche con aire adictivo, y en muchas descripciones se asocia a un perfil similar al de composiciones frutales-ambaradas de diseñador.",
+    "notes": [
+      "Bergamota",
+      "Notas verdes",
+      "Melón",
+      "Piña",
+      "Notas dulces",
+      "Ámbar",
+      "Almizcle",
+      "Vainilla",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 9,
@@ -141,7 +244,19 @@ export const products = [
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
     "ml": 200,
     "precioUSD": 95,
-    "precioBS": 61750
+    "precioBS": 61750,
+    "description": "Una fragancia **unisex** luminosa, dulce y sofisticada, con un perfil ámbar-vainilla de gran presencia y un toque afrutado que la hace muy versátil. Al Haramain Amber Oud Gold Edition se inspira en el estilo de los perfumes de diseñador de aire opulento y moderno, con una estela cremosa y elegante ideal para quienes buscan lujo accesible.",
+    "notes": [
+      "Bergamota",
+      "Notas verdes",
+      "Melón",
+      "Piña",
+      "Notas dulces",
+      "Ámbar",
+      "Almizcle",
+      "Vainilla",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 10,
@@ -157,7 +272,19 @@ export const products = [
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
     "ml": 60,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Una fragancia **unisex** opulenta y luminosa, con un perfil oriental-vainilla de aire goloso y elegante que envuelve con sensación de lujo. Amber Oud Gold Edition de Al Haramain se inspira en el estilo de fragancias nicho modernas de gran difusión, con un carácter que puede recordar a creaciones dulces y afrutadas de diseñador.",
+    "notes": [
+      "Bergamota",
+      "Notas verdes",
+      "Melón",
+      "Piña",
+      "Notas dulces",
+      "Ámbar",
+      "Almizcle",
+      "Vainilla",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 11,
@@ -173,7 +300,21 @@ export const products = [
     "notasFondo": "Almizcle, Sándalo, Cedro",
     "ml": 75,
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "description": "Una fragancia **para la mujer** de estilo oriental floral, elegante y envolvente, donde la rosa se combina con matices empolvados y un fondo cálido y aterciopelado. Junoon Rose de Al Haramain transmite una feminidad sofisticada y romántica, con un aire refinado que puede recordar al universo de perfumería de diseñador en clave árabe y lujosa.",
+    "notes": [
+      "Bergamota",
+      "Flor de cerezo",
+      "Amaretto",
+      "Rosa",
+      "Heliotropo",
+      "Gamuza",
+      "Haba tonka",
+      "Ámbar",
+      "Almizcle",
+      "Sándalo",
+      "Cedro"
+    ]
   },
   {
     "id": 12,
@@ -182,14 +323,28 @@ export const products = [
     "image": "antonio-banderas-blue-seduction-200ml-f.jpg",
     "familia": "Cítrico",
     "tipo": "Eau de Parfum",
-    "genero": "Femenino",
+    "genero": "Masculino",
     "descripcion": "Una fragancia fresca y seductora para el hombre, con un carácter acuático-frutal que aporta sensación de limpieza, energía y magnetismo. Blue Seduction de Antonio Banderas se inspira en un estilo moderno, casual y atractivo, muy en la línea de un perfume de diseñador para el día a día.",
     "notasSalida": "Melón, Bergamota, Menta, Grosella negra",
     "notasCorazon": "Agua de mar, Manzana verde, Capuchino, Cardamomo",
     "notasFondo": "Nuez moscada, Ámbar, Notas amaderadas",
     "ml": 100,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Una fragancia **fresca y seductora para el hombre**, con un carácter acuático-frutal que aporta sensación de limpieza, energía y magnetismo. Blue Seduction de Antonio Banderas se inspira en un estilo moderno, casual y atractivo, muy en la línea de un perfume de diseñador para el día a día.",
+    "notes": [
+      "Melón",
+      "Bergamota",
+      "Menta",
+      "Grosella negra",
+      "Agua de mar",
+      "Manzana verde",
+      "Capuchino",
+      "Cardamomo",
+      "Nuez moscada",
+      "Ámbar",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 13,
@@ -205,7 +360,22 @@ export const products = [
     "notasFondo": "Cedro, Vainilla, Haba tonka, Almizcle",
     "ml": 80,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Una fragancia **para la mujer** sensual y envolvente, de estilo oriental floral con un toque frutal elegante y muy seductor. *Her Golden Secret* de Antonio Banderas destaca por su carácter misterioso y femenino, con una firma olfativa que recuerda a un perfume de diseñador por su mezcla de gardenia, vainilla y maderas cálidas.",
+    "notes": [
+      "Bergamota",
+      "Mandarina",
+      "Manzana",
+      "Melocotón",
+      "Grosella negra",
+      "Gardenia",
+      "Flor de azahar del naranjo",
+      "Pachulí",
+      "Cedro",
+      "Vainilla",
+      "Haba tonka",
+      "Almizcle"
+    ]
   },
   {
     "id": 14,
@@ -221,7 +391,19 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle, Pachulí",
     "ml": 80,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Una fragancia sofisticada y sensual para la mujer, con un carácter envolvente y femenino que combina dulzura, elegancia y un halo nocturno. Her Secret Absolu de Antonio Banderas se presenta como un perfume de estilo oriental-gourmand, pensado para quienes buscan una estela moderna y seductora, con inspiración en el universo de perfumes comerciales femeninos de diseñador.",
+    "notes": [
+      "Ciruela",
+      "Naranja amarga",
+      "Jengibre",
+      "Rosa",
+      "Jazmín",
+      "Tuberosa",
+      "Vainilla",
+      "Almizcle",
+      "Pachulí"
+    ]
   },
   {
     "id": 15,
@@ -237,7 +419,19 @@ export const products = [
     "notasFondo": "Vainilla, Sándalo, Abeto balsámico",
     "ml": 80,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Un **eau de toilette para la mujer** de carácter floral frutal con un toque oriental, pensado para una feminidad seductora, dulce y moderna. Su estilo evocador recuerda a una fragancia de diseñador de inspiración gourmand-floral, con un aura íntima y elegante para el día a día o para la noche.",
+    "notes": [
+      "Frambuesa",
+      "Bergamota",
+      "Violeta",
+      "Raíz de lirio",
+      "Jazmín de la India",
+      "Néroli",
+      "Vainilla",
+      "Sándalo",
+      "Abeto balsámico"
+    ]
   },
   {
     "id": 16,
@@ -253,7 +447,19 @@ export const products = [
     "notasFondo": "pachulí, azúcar, almizcle",
     "ml": 80,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Una fragancia **para la mujer** que envuelve con una sensualidad elegante y un carácter seductor, pensada para dejar una estela dulce, floral y sofisticada. Se inspira en la faceta más femenina y atractiva de la línea Secret de Antonio Banderas, con un aire de tentación moderna y nocturna.",
+    "notes": [
+      "Pimienta rosa",
+      "neroli",
+      "rosa",
+      "iris",
+      "jazmín",
+      "ámbar",
+      "pachulí",
+      "azúcar",
+      "almizcle"
+    ]
   },
   {
     "id": 17,
@@ -269,7 +475,23 @@ export const products = [
     "notasFondo": "Vetiver, Sándalo, Almizcle, Ámbar",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **para el hombre** fresca, especiada y elegante, pensada para destacar con un carácter moderno y versátil. Su estilo olfativo combina cítricos vibrantes, acordes aromáticos y una base amaderada cálida; a menudo se compara con perfumes masculinos de diseñador de perfil fresco y refinado.",
+    "notes": [
+      "Bergamota",
+      "Cítricos",
+      "Cardamomo",
+      "Manzana",
+      "Lirio",
+      "Violeta",
+      "Pimienta",
+      "Lavanda",
+      "Geranio",
+      "Vetiver",
+      "Sándalo",
+      "Almizcle",
+      "Ámbar"
+    ]
   },
   {
     "id": 18,
@@ -285,7 +507,16 @@ export const products = [
     "notasFondo": "Sándalo, Notas empolvadas",
     "ml": 100,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Armaf Checkmate Queen es una fragancia **oriental floral** para la mujer, con un carácter elegante, moderno y sensual. Se inspira en un estilo sofisticado tipo diseñador, con un aire refinado y envolvente pensado para destacar con presencia y confianza.",
+    "notes": [
+      "Nardo",
+      "Notas verdes",
+      "Higo",
+      "Especias",
+      "Sándalo",
+      "Notas empolvadas"
+    ]
   },
   {
     "id": 19,
@@ -301,7 +532,24 @@ export const products = [
     "notasFondo": "Cedro, Sándalo, Pachulí, Ámbar",
     "ml": 105,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Armaf Club de Nuit Blue Iconic es una fragancia masculina audaz y sofisticada, inspirada en el icónico Bleu de Chanel. Un aroma fresco y amaderado que irradia confianza y deja una estela inolvidable.",
+    "notes": [
+      "Pomelo",
+      "Limón",
+      "Menta",
+      "Pimienta Rosa",
+      "Jengibre",
+      "Nuez Moscada",
+      "Jazmín",
+      "Iso E Super",
+      "Incienso",
+      "Vetiver",
+      "Cedro",
+      "Sándalo",
+      "Pachulí",
+      "Ámbar"
+    ]
   },
   {
     "id": 20,
@@ -317,7 +565,19 @@ export const products = [
     "notasFondo": "Amaderada, Vainilla, Musgo de roble",
     "ml": 105,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Club de Nuit Intense es un perfume seductor diseñado para el hombre moderno que busca destacar con un aroma intenso y sofisticado. Inspirado en el legendario Aventus de Creed, este fragancia combina notas audaces y elegantes que transmiten poder y confianza masculina. Un perfume perfecto para ocasiones formales y eventos nocturnos.",
+    "notes": [
+      "Limón",
+      "Piña",
+      "Jazmín",
+      "Birch",
+      "Pachulí",
+      "Almizcle",
+      "Amaderada",
+      "Vainilla",
+      "Musgo de roble"
+    ]
   },
   {
     "id": 21,
@@ -333,7 +593,17 @@ export const products = [
     "notasFondo": "Sándalo, Praliné",
     "ml": 105,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Una fragancia **para la mujer** de estilo floral afrutado, luminosa y sofisticada, con un aire moderno y seductor. Se inspira en el universo de los perfumes de diseñador de perfil elegante y contemporáneo, aportando una presencia refinada con un toque dulce, misterioso y envolvente.",
+    "notes": [
+      "Bergamota",
+      "Lichi",
+      "Pimienta rosa",
+      "Raíz de iris",
+      "Ambroxan",
+      "Sándalo",
+      "Praliné"
+    ]
   },
   {
     "id": 22,
@@ -349,7 +619,22 @@ export const products = [
     "notasFondo": "Pachulí, Ámbar gris, Vainilla, Almizcle",
     "ml": 105,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Club de Nuit Man es una fragancia masculina audaz y seductora que irradia confianza y sofisticación. Inspirada en el legendario Creed Aventus, esta creación ofrece una experiencia olfativa cítrica y amaderada inolvidable, perfecta para el hombre moderno y ambicioso.",
+    "notes": [
+      "Limón",
+      "Grosellas negras",
+      "Manzana",
+      "Bergamota",
+      "Piña",
+      "Jazmín",
+      "Abedul",
+      "Rosa",
+      "Pachulí",
+      "Ámbar gris",
+      "Vainilla",
+      "Almizcle"
+    ]
   },
   {
     "id": 23,
@@ -365,7 +650,19 @@ export const products = [
     "notasFondo": "Almizcle, Ambroxan, Vetiver",
     "ml": 105,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Una fragancia **unisex** de aura elegante y contemporánea, con un estilo fresco, almizclado y amaderado que transmite sofisticación discreta. Está inspirada en el perfil de lujo acuático y limpio de **Creed Millésime Imperial**, ideal para quienes buscan una estela refinada y versátil. ",
+    "notes": [
+      "Notas marinas",
+      "Frutas rojas",
+      "Bergamota",
+      "Violeta",
+      "Maderas blancas",
+      "Sándalo",
+      "Almizcle",
+      "Ambroxan",
+      "Vetiver"
+    ]
   },
   {
     "id": 24,
@@ -381,7 +678,29 @@ export const products = [
     "notasFondo": "Vainilla, Ámbar, Almizcle blanco, Cuero, Pachulí, Cedro",
     "ml": 55,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Unisex y sofisticado, este extrait de parfum envuelve con un estilo oriental amaderado de gran presencia, pensado para quienes buscan una estela elegante y moderna. Club de Nuit Precieux I de Armaf se inspira en el universo de lujo contemporáneo y recuerda el carácter vibrante y adictivo de fragancias tipo Aventus, con un giro más cálido y cremoso.",
+    "notes": [
+      "Bergamota",
+      "Caramelo",
+      "Limón",
+      "Pera",
+      "Pimienta negra",
+      "Pimienta rosa",
+      "Piña",
+      "Musgo de roble",
+      "Madera blanca",
+      "Anís",
+      "Jazmín",
+      "Lirio de los valles",
+      "Ambroxan",
+      "Vainilla",
+      "Ámbar",
+      "Almizcle blanco",
+      "Cuero",
+      "Pachulí",
+      "Cedro"
+    ]
   },
   {
     "id": 25,
@@ -413,7 +732,24 @@ export const products = [
     "notasFondo": "Ámbar, Pachulí, Cedro, Ládano",
     "ml": 105,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Un perfume **para el hombre** intenso y moderno, con un perfil ámbar especiado-aromático de gran presencia y elegancia urbana. Se inspira claramente en el estilo de **Yves Saint Laurent Y EDP**, ofreciendo una estela magnética, fresca al inicio y profunda en el secado.",
+    "notes": [
+      "Bergamota",
+      "Pimienta rosa",
+      "Jazmín",
+      "Flor de azahar",
+      "Lavanda",
+      "Geranio",
+      "Elemí",
+      "Vetiver",
+      "Azafrán",
+      "Ambroxan",
+      "Ámbar",
+      "Pachulí",
+      "Cedro",
+      "Ládano"
+    ]
   },
   {
     "id": 27,
@@ -429,7 +765,21 @@ export const products = [
     "notasFondo": "Haba tonka, Pachulí, Cedro",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Un perfume **para el hombre** con un carácter elegante, fresco y sofisticado, ideal para quienes buscan presencia con un toque moderno. Su perfil oriental floral combina una salida vibrante y aromática con un fondo amaderado e incienso, evocando el estilo de un diseñador contemporáneo con guiños a fragancias masculinas refinadas y versátiles.",
+    "notes": [
+      "Aldehídos",
+      "Manzana verde",
+      "Pomelo",
+      "Jengibre",
+      "Geranio",
+      "Lavanda",
+      "Salvia",
+      "Incienso de olíbano",
+      "Haba tonka",
+      "Pachulí",
+      "Cedro"
+    ]
   },
   {
     "id": 28,
@@ -445,7 +795,21 @@ export const products = [
     "notasFondo": "benjuí, ámbar, haba tonka",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un perfume **para la mujer** que combina frescura cítrica, florales elegantes y un fondo cálido y envolvente. **Connoisseur Women** de Armaf se inspira en el estilo de **Prada Paradoxe**, ofreciendo una estela sofisticada, moderna y muy femenina.",
+    "notes": [
+      "Mandarina",
+      "bergamota",
+      "pera",
+      "flor de azahar del naranjo",
+      "jazmín sambac",
+      "neroli",
+      "almizcle blanco",
+      "vainilla",
+      "benjuí",
+      "ámbar",
+      "haba tonka"
+    ]
   },
   {
     "id": 29,
@@ -461,7 +825,21 @@ export const products = [
     "notasFondo": "Almizcle, Vainilla, Cedro",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia **para el hombre** de estilo cítrico aromático, fresca y elegante, pensada para un perfil moderno y versátil. Su carácter recuerda al ADN de **Invictus** por su combinación de frescura frutal, matices acuáticos y un fondo cálido y amaderado.",
+    "notes": [
+      "Melón",
+      "Manzana",
+      "Bergamota",
+      "Limón",
+      "Lavanda",
+      "Violeta",
+      "Ciprés",
+      "Ámbar",
+      "Almizcle",
+      "Vainilla",
+      "Cedro"
+    ]
   },
   {
     "id": 30,
@@ -477,7 +855,20 @@ export const products = [
     "notasFondo": "Cedro, Sándalo, Vetiver",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia **para el hombre** de carácter fresco, aromático y amaderado, con un perfil elegante que combina energía cítrica con un fondo cálido y refinado. **Armaf Hunter Men** se inspira en el estilo de los grandes perfumes masculinos de diseñador, con un aire sofisticado y versátil para el día a día.",
+    "notes": [
+      "Pomelo",
+      "Agujas de cedro",
+      "Romero",
+      "Cardamomo",
+      "Ylang-ylang",
+      "Nardos",
+      "Incienso",
+      "Cedro",
+      "Sándalo",
+      "Vetiver"
+    ]
   },
   {
     "id": 31,
@@ -493,7 +884,20 @@ export const products = [
     "notasFondo": "Geranio, Pimienta negra, Cardamomo",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **para el hombre** de carácter fresco, aromático y amaderado, creada para transmitir energía, presencia y elegancia moderna. Armaf Hunter Intense se inspira en el estilo vibrante de perfumes deportivos de diseñador, con un perfil que recuerda a combinaciones como **Invictus Aqua** y **Dior Sauvage** por su equilibrio entre frescura cítrica y fondo especiado.",
+    "notes": [
+      "Bergamota",
+      "Limón",
+      "Mandarina",
+      "Pomelo",
+      "Lavanda",
+      "Ylang-ylang",
+      "Nardos",
+      "Geranio",
+      "Pimienta negra",
+      "Cardamomo"
+    ]
   },
   {
     "id": 32,
@@ -509,7 +913,23 @@ export const products = [
     "notasFondo": "Haba tonka, Vainilla, Ámbar, Almizcle",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Una fragancia **para la mujer** de estilo floral-frutal gourmand, luminosa y tropical, con un aire dulce y cremoso que transmite frescura y sofisticación. Se inspira en el universo de perfumes femeninos veraniegos y evoca una sensación similar a propuestas de diseñador con coco, flores blancas y vainilla.",
+    "notes": [
+      "Bayas silvestres",
+      "Notas verdes",
+      "Bergamota",
+      "Naranja",
+      "Cereza",
+      "Flor de azahar",
+      "Lirio de agua",
+      "Coco",
+      "Flores blancas",
+      "Haba tonka",
+      "Vainilla",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 33,
@@ -525,7 +945,24 @@ export const products = [
     "notasFondo": "Praliné, Pachulí, Haba tonka, Vetiver",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Un perfume **para la mujer** elegante y romántica, de perfil floral-frutal con un fondo dulce y cremoso que aporta sofisticación y calidez. Se inspira en el estilo de los grandes florales modernos de diseñador, con un aura femenina, luminosa y envolvente.",
+    "notes": [
+      "Pera",
+      "Grosellas negras",
+      "Pimienta rosa",
+      "Bergamota",
+      "Flor de azahar del naranjo",
+      "Nardos",
+      "Jazmín",
+      "Mimosa",
+      "Ylang-ylang",
+      "Avellana",
+      "Praliné",
+      "Pachulí",
+      "Haba tonka",
+      "Vetiver"
+    ]
   },
   {
     "id": 34,
@@ -541,7 +978,18 @@ export const products = [
     "notasFondo": "Almizcle, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia intensa y elegante para el hombre, de carácter amaderado especiado con un acorde protagonista de oud oscuro y sofisticado. Su estilo evoca la riqueza de ciertos perfumes de diseñador de oud moderno, con un acabado cálido, sensual y muy masculino.",
+    "notes": [
+      "Lavanda",
+      "Nuez moscada",
+      "Azafrán",
+      "Oud",
+      "Notas amaderadas",
+      "Ambroxan",
+      "Almizcle",
+      "Pachulí"
+    ]
   },
   {
     "id": 35,
@@ -557,7 +1005,17 @@ export const products = [
     "notasFondo": "Ámbar, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Odyssey Artisto es un perfume de carácter versátil y sofisticado, diseñado para aquellos que buscan una fragancia moderna y provocativa. Su aroma audaz transita entre lo clásico y lo contemporáneo, recordando sutilmente las elegantes creaciones de fragancias de nicho internacional. Un perfume que desafía los límites de género y se adapta a personalidades únicas.",
+    "notes": [
+      "Bergamota",
+      "Pimienta rosa",
+      "Jengibre",
+      "Madera de cedro",
+      "Vetiver",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 36,
@@ -573,7 +1031,17 @@ export const products = [
     "notasFondo": "Pimienta rosa, Cedro",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Odyssey BA HA MAS es un perfume contemporáneo y versátil que desafía los límites de género tradicionales. Su composición audaz y sofisticada captura la esencia de un viaje sensorial que se adapta a personalidades modernas y cosmopolitas, inspirándose en la elegancia de fragancias de alta gama como Acqua di Gio de Giorgio Armani.",
+    "notes": [
+      "Bergamota",
+      "Lavanda",
+      "Madera de sándalo",
+      "Vetiver",
+      "Almizcle",
+      "Pimienta rosa",
+      "Cedro"
+    ]
   },
   {
     "id": 37,
@@ -589,7 +1057,23 @@ export const products = [
     "notasFondo": "Vainilla, Praliné, Almizcle, Notas amaderadas",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Fragancia **unisex** de estilo oriental vainilla, cálida y golosa, con una faceta oscura y elegante que la hace perfecta para quienes buscan un perfume envolvente y sofisticado. Se inspira en el espíritu de la Selva Negra y evoca el perfil de un postre gourmand de cereza, caramelo y vainilla, con un aire adictivo y moderno.",
+    "notes": [
+      "Caramelo",
+      "Cereza",
+      "Canela",
+      "Lactonas",
+      "Flores blancas",
+      "Dátiles",
+      "Miel",
+      "Nuez moscada",
+      "Haba tonka",
+      "Vainilla",
+      "Praliné",
+      "Almizcle",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 38,
@@ -605,7 +1089,21 @@ export const products = [
     "notasFondo": "Almizcle, Pachulí, Ámbar",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **para la mujer** de estilo dulce, afrutado y gourmand, con un carácter moderno, alegre y muy envolvente. Odyssey Candee de Armaf destaca por su faceta jugosa y adictiva, con un perfil que recuerda a los perfumes femeninos de diseñador de tendencia frutal-gourmand.",
+    "notes": [
+      "Fresa",
+      "Frambuesa",
+      "Melocotón",
+      "Bergamota",
+      "Geranio",
+      "Jazmín",
+      "Caramelo",
+      "Maracuyá",
+      "Almizcle",
+      "Pachulí",
+      "Ámbar"
+    ]
   },
   {
     "id": 39,
@@ -621,7 +1119,15 @@ export const products = [
     "notasFondo": "Caramelo",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Odyssey Dubai Chocolat es un perfume unisex que seduce con su aroma decadente y sofisticado, evocando la riqueza de los chocolates árabes de lujo. Su composición audaz y seductora es perfecta para amantes de fragancias gourmands que buscan una experiencia olfativa verdaderamente única y memorable.",
+    "notes": [
+      "Chocolate",
+      "Vainilla",
+      "Almendra",
+      "Cacao",
+      "Caramelo"
+    ]
   },
   {
     "id": 40,
@@ -637,7 +1143,18 @@ export const products = [
     "notasFondo": "sándalo, almizcle",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Odyssey Eau de Montagne de Armaf es una fragancia **unisex** de estilo oriental vainilla, con un perfil elegante, cremoso y envolvente. Su carácter refinado combina calidez especiada y una base amaderada-almizclada, con una inspiración claramente cercana a creaciones gourmand de diseñador.",
+    "notes": [
+      "Almendra",
+      "especias",
+      "lactonas",
+      "flores blancas",
+      "vainilla",
+      "cacao",
+      "sándalo",
+      "almizcle"
+    ]
   },
   {
     "id": 41,
@@ -653,7 +1170,22 @@ export const products = [
     "notasFondo": "azafrán, cacao, haba tonka, almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **oriental floral** para la mujer, elegante y seductora, con una estela cálida y sofisticada ideal para ocasiones especiales. Odyssey Femme de Armaf evoca un estilo femenino de inspiración nicho, con un carácter que puede recordar a perfumes florales gourmand de diseñador por su mezcla de flores blancas, miel y cacao.",
+    "notes": [
+      "Ciruela",
+      "miel",
+      "bergamota",
+      "gardenia",
+      "nardos",
+      "lirio de los valles",
+      "jazmín",
+      "rosa",
+      "azafrán",
+      "cacao",
+      "haba tonka",
+      "almizcle"
+    ]
   },
   {
     "id": 42,
@@ -669,7 +1201,21 @@ export const products = [
     "notasFondo": "Madera, Crema, Vainilla",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Odyssey Go Mango de Armaf es una fragancia **unisex** de estilo afrutado, tropical y gourmand, pensada para quienes buscan un aroma luminoso, moderno y adictivo. Su perfil jugoso y exótico evoca el espíritu de los perfumes de nicho tropicales, con una vibra contemporánea que puede atraer a amantes de fragancias inspiradas en el mango y los dulces cremosos.",
+    "notes": [
+      "Pimienta rosa",
+      "Jengibre",
+      "Limón",
+      "Flores blancas",
+      "Mango",
+      "Acorde dulce gourmand",
+      "Flor tropical",
+      "Almizcle",
+      "Madera",
+      "Crema",
+      "Vainilla"
+    ]
   },
   {
     "id": 43,
@@ -685,7 +1231,22 @@ export const products = [
     "notasFondo": "Lavanda, Vetiver, Pachulí, Cedro",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Armaf Odyssey Homme es una fragancia **para el hombre** de carácter cálido, sofisticado y seductor, con un perfil ambarado, especiado y amaderado. Su estilo envolvente recuerda a una inspiración moderna de aromas de diseñador con un toque elegante y nocturno, ideal para quien busca presencia y distinción.",
+    "notes": [
+      "Vainilla",
+      "Ámbar",
+      "Especias",
+      "Iris",
+      "Cuero",
+      "Jazmín",
+      "Sándalo",
+      "Bergamota",
+      "Lavanda",
+      "Vetiver",
+      "Pachulí",
+      "Cedro"
+    ]
   },
   {
     "id": 44,
@@ -701,7 +1262,18 @@ export const products = [
     "notasFondo": "Amberwood, Madera de gaiac",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Odyssey Homme White Edition es una fragancia **para el hombre** moderno que busca un aroma fresco, elegante y con presencia. Su perfil **ámbar fougère** combina un inicio cítrico y especiado con un fondo cálido y amaderado, evocando un estilo sofisticado inspirado en perfumes de diseñador de corte masculino contemporáneo.",
+    "notes": [
+      "Pimienta rosa",
+      "Pomelo",
+      "Yuzu",
+      "Hojas de violeta",
+      "Notas marinas",
+      "Ámbar",
+      "Amberwood",
+      "Madera de gaiac"
+    ]
   },
   {
     "id": 45,
@@ -717,7 +1289,17 @@ export const products = [
     "notasFondo": "Madera blanca, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Odyssey Limoni Fresh es una fragancia refrescante y versátil que invita a una aventura sensorial para hombres y mujeres. Con un perfil fresco y luminoso, este aroma despierta la energía y la vitalidad, inspirándose en los códigos de frescura de fragancias mediterráneas de alta gama.",
+    "notes": [
+      "Limón",
+      "Bergamota",
+      "Mandarina",
+      "Jengibre",
+      "Pimienta rosa",
+      "Madera blanca",
+      "Almizcle"
+    ]
   },
   {
     "id": 46,
@@ -733,7 +1315,20 @@ export const products = [
     "notasFondo": "Ambroxan, Vetiver, Cedro",
     "ml": 100,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Una fragancia **para el hombre** de estilo cítrico-gourmand, vibrante y cálida, ideal para quien busca un aroma moderno con presencia y facilidad de uso. Odyssey Mandarin Sky de Armaf se inspira en el perfil dulce y luminoso de los diseños masculinos contemporáneos, con un aire elegante y versátil para el día a día.",
+    "notes": [
+      "Mandarina",
+      "Naranja",
+      "Azafrán",
+      "Salvia",
+      "Caramelo",
+      "Haba tonka",
+      "Cempasúchil",
+      "Ambroxan",
+      "Vetiver",
+      "Cedro"
+    ]
   },
   {
     "id": 47,
@@ -749,7 +1344,22 @@ export const products = [
     "notasFondo": "Pachulí, Incienso, Vainilla, Vetiver",
     "ml": 100,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Una fragancia **unisex** vibrante y sofisticada, de perfil oriental amaderado con un giro dulce y especiado que resulta moderno y adictivo. Su apertura cítrica y aromática recuerda a una interpretación luminosa y gourmand, con un aire que puede gustar a quienes disfrutan de perfumes de diseñador de estilo contemporáneo.",
+    "notes": [
+      "Mandarina",
+      "Naranja",
+      "Bergamota",
+      "Lavanda",
+      "Cardamomo",
+      "Pimienta negra",
+      "Caramelo",
+      "Haba tonka",
+      "Pachulí",
+      "Incienso",
+      "Vainilla",
+      "Vetiver"
+    ]
   },
   {
     "id": 48,
@@ -765,7 +1375,23 @@ export const products = [
     "notasFondo": "Haba tonka, Almizcle, Cedro, Vetiver",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia **amaderada aromática para el hombre**, moderna y enérgica, pensada para proyectar frescura, carácter y sofisticación en el día a día. Su perfil recuerda el estilo de un diseñador deportivo y elegante, con un aire vibrante que puede evocar propuestas tipo Bleu de Chanel por su frescura limpia y masculina.",
+    "notes": [
+      "Naranja",
+      "Jengibre",
+      "Bergamota",
+      "Limón",
+      "Menta",
+      "Piña",
+      "Enebro de Virginia",
+      "Geranio",
+      "Salvia",
+      "Haba tonka",
+      "Almizcle",
+      "Cedro",
+      "Vetiver"
+    ]
   },
   {
     "id": 49,
@@ -781,7 +1407,18 @@ export const products = [
     "notasFondo": "haba tonka, pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Fragancia **para el hombre** de estilo moderno, dulce y sofisticado, con una presencia intensa pensada para destacar en salidas y ocasiones especiales. Su perfil recuerda a un perfume de diseñador contemporáneo por su mezcla frutal-gourmand con fondo amaderado y especiado.",
+    "notes": [
+      "Piña",
+      "naranja",
+      "ciruela",
+      "chocolate",
+      "vainilla",
+      "cardamomo",
+      "haba tonka",
+      "pachulí"
+    ]
   },
   {
     "id": 50,
@@ -797,7 +1434,21 @@ export const products = [
     "notasFondo": "Tabaco, Vainilla, Ámbar",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Armaf Odyssey Spectra es una fragancia **unisex** de estilo oriental especiado, con un carácter moderno, cálido y envolvente. Su perfil combina frescura frutal y especias con un fondo dulce y ambarado, ideal para quien busca una estela elegante y seductora; se inspira en el universo de los perfumes intensos y nocturnos de diseñador.",
+    "notes": [
+      "Bergamota",
+      "Canela",
+      "Manzana",
+      "Flor de azahar",
+      "Lavanda",
+      "Lirio del valle",
+      "Haba tonka",
+      "Pachulí",
+      "Tabaco",
+      "Vainilla",
+      "Ámbar"
+    ]
   },
   {
     "id": 51,
@@ -813,7 +1464,17 @@ export const products = [
     "notasFondo": "Ámbar, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Odyssey Tyrant es un perfume audaz y sofisticado diseñado para el hombre contemporáneo que busca destacar con un aroma poderoso y seductor. Con un carácter intenso y elegante, este perfume evoca la energía y la determinación de un conquistador moderno, inspirándose en fragancias de alta gama como las de diseñadores de lujo europeos.",
+    "notes": [
+      "Bergamota",
+      "Pimienta negra",
+      "Lavanda",
+      "Cedro",
+      "Sándalo",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 52,
@@ -829,7 +1490,22 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle, Caramelo, Ládano",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un perfume **para la mujer** de carácter floral ámbar, luminoso y envolvente, ideal para quienes buscan una elegancia moderna con un toque adictivo. Se inspira en el estilo de fragancias femeninas tipo diseñador, con un perfil cítrico-floral cremoso que recuerda a composiciones sofisticadas y muy llevables a diario.",
+    "notes": [
+      "Bergamota",
+      "Neroli",
+      "Pimienta rosa",
+      "Flor de azahar del naranjo",
+      "Jazmín",
+      "Madreselva",
+      "Rosa",
+      "Iris",
+      "Vainilla",
+      "Almizcle",
+      "Caramelo",
+      "Ládano"
+    ]
   },
   {
     "id": 53,
@@ -845,7 +1521,22 @@ export const products = [
     "notasFondo": "Vetiver, Sándalo, Pachulí, Cedro",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para el hombre** moderna y sofisticada, de carácter cítrico especiado con un fondo amaderado elegante y seguro. Armaf Tag-Him se inspira claramente en el estilo de **Bleu de Chanel**, ofreciendo una alternativa fresca, masculina y versátil para el día a día o la noche.",
+    "notes": [
+      "Toronja",
+      "Limón",
+      "Pimienta rosa",
+      "Bergamota",
+      "Jengibre",
+      "Menta",
+      "Lavanda",
+      "Nuez moscada",
+      "Vetiver",
+      "Sándalo",
+      "Pachulí",
+      "Cedro"
+    ]
   },
   {
     "id": 54,
@@ -861,7 +1552,18 @@ export const products = [
     "notasFondo": "Cacao, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para la mujer** elegante y seductora, de estilo floral oriental con un toque gourmand que aporta calidez y personalidad. Se inspira en el ADN olfativo de **Carolina Herrera Good Girl**, combinando brillo floral con un fondo cremoso, oscuro y adictivo.",
+    "notes": [
+      "Flor de azahar del naranjo",
+      "Mandarina",
+      "Jazmín",
+      "Café",
+      "Almendra",
+      "Haba tonka",
+      "Cacao",
+      "Pachulí"
+    ]
   },
   {
     "id": 55,
@@ -877,7 +1579,20 @@ export const products = [
     "notasFondo": "Cedro, Pachulí, Vainilla",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **floral amaderada** para la mujer, fresca y elegante, con un carácter limpio y sofisticado ideal para el día a día. **Tres Jour Armaf pour femme** se inspira en el estilo de los perfumes femeninos clásicos de aire refinado y luminoso, evocando una sensación delicada y moderna.",
+    "notes": [
+      "Té verde",
+      "Limón",
+      "Neroli",
+      "Flores blancas",
+      "Jazmín",
+      "Nardo",
+      "Almizcle",
+      "Cedro",
+      "Pachulí",
+      "Vainilla"
+    ]
   },
   {
     "id": 56,
@@ -893,7 +1608,17 @@ export const products = [
     "notasFondo": "Ámbar gris, Sándalo",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para el hombre** de carácter fresco, especiado y elegante, ideal para quienes buscan un aroma limpio con presencia. **Armaf Tres Nuit** se inspira en el estilo de **Green Irish Tweed** de Creed, aportando un perfil aromático-verde, refinado y versátil para el día a día o ocasiones especiales.",
+    "notes": [
+      "Limón",
+      "Verbena",
+      "Iris",
+      "Lavanda",
+      "Violeta",
+      "Ámbar gris",
+      "Sándalo"
+    ]
   },
   {
     "id": 57,
@@ -909,7 +1634,20 @@ export const products = [
     "notasFondo": "Vetiver, Ámbar, Almizcle",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un Eau de Parfum **para el hombre** contemporáneo, con un perfil aromático-amaderado fresco, elegante y versátil. Armaf Ventana Pour Homme se inspira en el estilo vibrante de los grandes cítricos masculinos de diseñador, con una estela limpia y moderna ideal para el día a día.",
+    "notes": [
+      "Toronja",
+      "Limón",
+      "Mandarina",
+      "Lavanda",
+      "Geranio",
+      "Pachulí",
+      "Cedro",
+      "Vetiver",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 58,
@@ -925,7 +1663,19 @@ export const products = [
     "notasFondo": "Sándalo, Almizcle, Ámbar",
     "ml": 100,
     "precioUSD": 15,
-    "precioBS": 9750
+    "precioBS": 9750,
+    "description": "Hot Gold Benetton es una fragancia para la mujer de estilo floral frutal con un brillo cálido y elegante, pensada para quienes buscan un perfume luminoso y refinado. Su carácter recuerda a un femenino dorado de aire moderno, con una sensualidad suave que evoca el estilo de algunos florales frutales de diseñador.",
+    "notes": [
+      "Durazno",
+      "Bergamota",
+      "Manzana roja",
+      "Rosa",
+      "Carambola",
+      "Mimosa",
+      "Sándalo",
+      "Almizcle",
+      "Ámbar"
+    ]
   },
   {
     "id": 59,
@@ -941,7 +1691,16 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle",
     "ml": 80,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Sisterland Green Jasmine de Benetton es una fragancia floral frutal **para la mujer**, fresca, luminosa y fácil de llevar. Su aroma jugoso de mandarina y pera se funde con un corazón de jazmín y azahar, con un fondo suave de vainilla y almizcle que le da un acabado delicado y elegante.",
+    "notes": [
+      "Mandarina",
+      "Pera",
+      "Jazmín",
+      "Azahar",
+      "Vainilla",
+      "Almizcle"
+    ]
   },
   {
     "id": 60,
@@ -957,7 +1716,23 @@ export const products = [
     "notasFondo": "Vainilla, Sándalo, Almizcle, Vetiver",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "**Champagne Pink** de Bharara es un perfume **para la mujer** de estilo oriental vainilla, dulce, cálido y con un brillo elegante que lo hace ideal para ocasiones especiales. Su carácter floral y gourmand evoca una sofisticación moderna, con una vibra refinada que recuerda a las fragancias femeninas más seductoras y envolventes del mercado.",
+    "notes": [
+      "Jazmín",
+      "Rosa",
+      "Caramelo",
+      "Nuez moscada",
+      "Nardos",
+      "Lirio de los valles",
+      "Acordes marinos",
+      "Ámbar",
+      "Haba tonka",
+      "Vainilla",
+      "Sándalo",
+      "Almizcle",
+      "Vetiver"
+    ]
   },
   {
     "id": 61,
@@ -973,7 +1748,17 @@ export const products = [
     "notasFondo": "Almizcle blanco, Ámbar",
     "ml": 100,
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "description": "Bharara King Eau de Parfum es una fragancia **para el hombre** de carácter cítrico-frutal, fresca y luminosa al inicio, con un fondo dulce y envolvente que aporta presencia y sofisticación. Su perfil olfativo recuerda a un estilo moderno y magnético, ideal para quien busca una firma masculina llamativa con aire de lujo contemporáneo.",
+    "notes": [
+      "Naranja",
+      "Bergamota",
+      "Limón",
+      "Notas afrutadas",
+      "Vainilla",
+      "Almizcle blanco",
+      "Ámbar"
+    ]
   },
   {
     "id": 62,
@@ -989,7 +1774,17 @@ export const products = [
     "notasFondo": "Almizcle blanco, Ámbar",
     "ml": 100,
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "description": "Una fragancia **para el hombre** de estilo aromático, cítrico y afrutado, con un acabado dulce y amaderado que transmite presencia y elegancia. Bharara King Parfum Men se inspira en un perfil masculino moderno, versátil y llamativo, ideal para quien busca un aroma sofisticado con gran estela y carácter.",
+    "notes": [
+      "Naranja",
+      "Bergamota",
+      "Limón",
+      "Notas afrutadas",
+      "Vainilla",
+      "Almizcle blanco",
+      "Ámbar"
+    ]
   },
   {
     "id": 63,
@@ -1005,7 +1800,25 @@ export const products = [
     "notasFondo": "Rosa, Ámbar, Haba tonka, Sándalo, Vainilla",
     "ml": 100,
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "description": "Bharara Onyx es una fragancia **unisex** de carácter elegante y contemporáneo, con una salida cítrica luminosa y un corazón aromático, floral y especiado. Se inspira en **Lafayette Street de Bond No. 9**, ofreciendo un perfil sofisticado, versátil y con un fondo cálido de ámbar, vainilla y sándalo. ",
+    "notes": [
+      "Bergamota",
+      "Limón",
+      "Manzana",
+      "Cardamomo",
+      "Davana",
+      "Cilantro",
+      "Lavanda",
+      "Lavandín",
+      "Flor de azahar",
+      "Jazmín",
+      "Rosa",
+      "Ámbar",
+      "Haba tonka",
+      "Sándalo",
+      "Vainilla"
+    ]
   },
   {
     "id": 64,
@@ -1021,7 +1834,19 @@ export const products = [
     "notasFondo": "rosa, almizcle, vainilla",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para la mujer** de estilo oriental floral, dulce, elegante y moderna, con una presencia sofisticada que combina sensualidad y carácter. Se inspira en el universo de los grandes florales ambarados de diseñador, con un aura envolvente y femenina ideal para destacar con lujo discreto.",
+    "notes": [
+      "Grosella negra",
+      "jazmín",
+      "vainilla Bourbon",
+      "frutos rojos",
+      "cítricos suaves",
+      "flores blancas",
+      "rosa",
+      "almizcle",
+      "vainilla"
+    ]
   },
   {
     "id": 65,
@@ -1037,7 +1862,16 @@ export const products = [
     "notasFondo": "Cedro, Vetiver",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Fragancia **para el hombre** de carácter fresco, especiado y amaderado, ideal para una presencia elegante y segura. Se inspira en el estilo moderno y sofisticado de **Valentino Uomo Born in Roma**, con un perfil aromático refinado y versátil para uso diario o noche.",
+    "notes": [
+      "Geranio",
+      "Rosa",
+      "Salvia",
+      "Jengibre",
+      "Cedro",
+      "Vetiver"
+    ]
   },
   {
     "id": 66,
@@ -1053,7 +1887,20 @@ export const products = [
     "notasFondo": "Almizcle, Violeta, Notas amaderadas",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** de estilo floral frutal dulce, con un aire juvenil, divertido y encantador. Circus Fantasy de Britney Spears destaca por su faceta golosa y vibrante, ideal para quien busca un perfume femenino con personalidad y un toque de fantasía; no está inspirada en un diseñador concreto, sino en el universo propio de la línea Fantasy.",
+    "notes": [
+      "Frambuesa",
+      "Azúcar",
+      "Flor de albaricoquero",
+      "Orquídea",
+      "Peonía",
+      "Nenúfar",
+      "Vainilla",
+      "Almizcle",
+      "Violeta",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 67,
@@ -1069,7 +1916,20 @@ export const products = [
     "notasFondo": "Vainilla, Maderas blancas, Sándalo",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un **floral luminoso y femenino** para la mujer, fresco y elegante, con un aura limpia y sensual que combina delicadeza y carácter. **Curious** de Britney Spears se inspira en el estilo de un floral blanco de diseñador, con un toque moderno y juvenil que recuerda a composiciones clásicas de lujo. ",
+    "notes": [
+      "Magnolia",
+      "Pera",
+      "Flor de loto",
+      "Jazmín",
+      "Nardos",
+      "Ciclamen",
+      "Almizcle",
+      "Vainilla",
+      "Maderas blancas",
+      "Sándalo"
+    ]
   },
   {
     "id": 68,
@@ -1085,7 +1945,20 @@ export const products = [
     "notasFondo": "Almizcle, Raíz de lirio, Notas amaderadas",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un perfume **para la mujer** de estilo floral frutal gourmand, alegre y seductor, ideal para quienes buscan una firma dulce con carácter glamuroso. Britney Spears Fantasy es una creación icónica que se inspira en el universo de los perfumes de diseñador, con un toque juguetón y femenino que lo ha convertido en un clásico moderno.",
+    "notes": [
+      "Kiwi",
+      "Lichi rojo",
+      "Membrillo",
+      "Chocolate blanco",
+      "Orquídea",
+      "Jazmín",
+      "Quequito",
+      "Almizcle",
+      "Raíz de lirio",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 69,
@@ -1101,7 +1974,20 @@ export const products = [
     "notasFondo": "Sándalo, Ámbar, Vainilla",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** de carácter floral frutal y goloso, luminosa y con un toque especiado muy seductor. Hidden Fantasy de Britney Spears evoca un estilo divertido y femenino, con un perfil dulce que la hace perfecta para quienes buscan un aroma encantador y envolvente.",
+    "notes": [
+      "Naranja",
+      "Mandarina",
+      "Verbena limonera",
+      "Clavo de olor",
+      "Gardenia",
+      "Lirio Stargazer",
+      "Jazmín",
+      "Sándalo",
+      "Ámbar",
+      "Vainilla"
+    ]
   },
   {
     "id": 70,
@@ -1117,7 +2003,19 @@ export const products = [
     "notasFondo": "Vainilla, Ámbar, Almizcle",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia floral frutal para la mujer, intensa y envolvente, con un aire nocturno y seductor que combina dulzura jugosa con un fondo cremoso y cálido. Midnight Fantasy de Britney Spears ofrece una vibra glamourosa y fantasiosa, ideal para quienes buscan un perfume femenino con presencia y un toque juvenil de lujo accesible.",
+    "notes": [
+      "Ciruela",
+      "Cereza ácida",
+      "Frambuesa",
+      "Orquídea",
+      "Iris",
+      "Fresia",
+      "Vainilla",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 71,
@@ -1133,7 +2031,19 @@ export const products = [
     "notasFondo": "Romero, Cedro de Virginia, Ámbar",
     "ml": 100,
     "precioUSD": 155,
-    "precioBS": 100750
+    "precioBS": 100750,
+    "description": "Una fragancia **aromática acuática para el hombre** que transmite frescura marina, limpieza elegante y un carácter sofisticado ideal para climas cálidos. **Aqva Pour Homme Marine** de Bvlgari se inspira en una estética masculina moderna y refrescante, con un perfil que evoca el mar y recuerda al estilo de un diseñador contemporáneo de lujo.[1][3]",
+    "notes": [
+      "Toronja (pomelo)",
+      "Neroli",
+      "Mandarina",
+      "Petit grain",
+      "Notas acuáticas",
+      "Algas marinas",
+      "Romero",
+      "Cedro de Virginia",
+      "Ámbar"
+    ]
   },
   {
     "id": 72,
@@ -1149,7 +2059,19 @@ export const products = [
     "notasFondo": "Haba tonka, Madera de gaiac, Benjuí",
     "ml": 100,
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "description": "Para el hombre, Bvlgari Man In Black es una fragancia intensa, oscura y seductora, de estilo ambarado especiado con un marcado acorde de cuero. Se inspira en el universo de un perfume de diseñador moderno y sofisticado, con un carácter cálido y magnético ideal para la noche.",
+    "notes": [
+      "Especias",
+      "Ron",
+      "Tabaco",
+      "Cuero",
+      "Iris",
+      "Nardo",
+      "Haba tonka",
+      "Madera de gaiac",
+      "Benjuí"
+    ]
   },
   {
     "id": 73,
@@ -1163,7 +2085,22 @@ export const products = [
     "notasSalida": "Jacinto, Madreselva, Azucena, Lirio del valle",
     "notasCorazon": "Jazmín, Ylang-ylang, Rosa, Musgo",
     "notasFondo": "Almizcle, Vetiver, Sándalo, Grosella negra",
-    "ml": 50
+    "ml": 50,
+    "description": "Una fragancia **floral** y delicada para la mujer, con una estela clásica, romántica y elegante que envuelve con suavidad. **Anais Anais L’Original** de Cacharel es un perfume atemporal de inspiración femenina, ideal para quienes buscan un estilo refinado y luminoso.",
+    "notes": [
+      "Jacinto",
+      "Madreselva",
+      "Azucena",
+      "Lirio del valle",
+      "Jazmín",
+      "Ylang-ylang",
+      "Rosa",
+      "Musgo",
+      "Almizcle",
+      "Vetiver",
+      "Sándalo",
+      "Grosella negra"
+    ]
   },
   {
     "id": 74,
@@ -1179,7 +2116,18 @@ export const products = [
     "notasFondo": "Cedro, Ámbar",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** de estilo oriental floral, fresca y juvenil, con un carácter moderno y desenfadado. CK IN2U for Her de Calvin Klein se inspira en la energía urbana contemporánea y ofrece un aire similar al de un perfume de diseñador casual, luminoso y adictivo.",
+    "notes": [
+      "Toronja rosa",
+      "Bergamota",
+      "Grosella negra",
+      "Orquídea",
+      "Cactus",
+      "Vainilla",
+      "Cedro",
+      "Ámbar"
+    ]
   },
   {
     "id": 75,
@@ -1195,7 +2143,21 @@ export const products = [
     "notasFondo": "Almizcle, Ámbar, Pachulí",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "CK One Shock For Her de Calvin Klein es una fragancia **para la mujer** de estilo oriental especiado, intensa y adictiva, que combina dulzura, misterio y un toque provocador. Inspirada en el ADN juvenil y urbano de Calvin Klein, ofrece un carácter moderno con un fondo cremoso y sensual ideal para destacar con personalidad.",
+    "notes": [
+      "Flor de la pasión",
+      "Amapola roja",
+      "Peonía",
+      "Chocolate mexicano",
+      "Zarzamora",
+      "Narciso",
+      "Jazmín",
+      "Vainilla",
+      "Almizcle",
+      "Ámbar",
+      "Pachulí"
+    ]
   },
   {
     "id": 76,
@@ -1211,7 +2173,20 @@ export const products = [
     "notasFondo": "sándalo, ámbar, almizcle",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un clásico **floral** para la mujer, elegante y atemporal, que transmite pureza, romanticismo y sofisticación. Inspirado en el estilo de un gran floral de diseñador, se siente luminoso, limpio y muy refinado, ideal para un uso diario distinguido.",
+    "notes": [
+      "Mandarina",
+      "fresia",
+      "salvia",
+      "lirio de los valles",
+      "rosa",
+      "jazmín",
+      "narciso",
+      "sándalo",
+      "ámbar",
+      "almizcle"
+    ]
   },
   {
     "id": 77,
@@ -1227,7 +2202,22 @@ export const products = [
     "notasFondo": "Violeta, Almizcle, Pachulí, Vainilla",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** misteriosa, elegante y seductora, de estilo **oriental floral** con un toque frutal jugoso. Calvin Klein Euphoria se inspira en una perfumería de diseño sofisticada y adictiva, ideal para quien busca una estela envolvente y femenina.",
+    "notes": [
+      "Granada",
+      "Caqui",
+      "Acordes verdes",
+      "Orquídea negra",
+      "Flor de loto",
+      "Champaca",
+      "Caoba",
+      "Ámbar",
+      "Violeta",
+      "Almizcle",
+      "Pachulí",
+      "Vainilla"
+    ]
   },
   {
     "id": 78,
@@ -1243,7 +2233,20 @@ export const products = [
     "notasFondo": "Maderas, Almizcle, Algalia",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia opulenta **para la mujer**, de estilo ámbar especiado con un aura cálida, sensual y envolvente. **Obsession** de Calvin Klein es un clásico de diseñador que se reconoce por su intensidad y su carácter adictivo, ideal para quien busca un perfume sofisticado con presencia.",
+    "notes": [
+      "Bergamota",
+      "Mandarina",
+      "Notas verdes",
+      "Albahaca",
+      "Vainilla",
+      "Ámbar",
+      "Especias",
+      "Maderas",
+      "Almizcle",
+      "Algalia"
+    ]
   },
   {
     "id": 79,
@@ -1259,7 +2262,25 @@ export const products = [
     "notasFondo": "Zarzamora, Flor del árbol de la seda, Ámbar, Almizcle, Vainilla",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** de carácter **oriental amaderado**, elegante y natural, que envuelve la piel con una frescura serena y un fondo cálido y sensual. Truth de Calvin Klein se inspira en el estilo limpio y sofisticado de la perfumería de diseñador, con un perfil moderno y atemporal.",
+    "notes": [
+      "Vetiver",
+      "Pachulí",
+      "Bambú",
+      "Bergamota",
+      "Limón",
+      "Trébol blanco",
+      "Sándalo",
+      "Peonía",
+      "Azucena",
+      "Mimosa",
+      "Zarzamora",
+      "Flor del árbol de la seda",
+      "Ámbar",
+      "Almizcle",
+      "Vainilla"
+    ]
   },
   {
     "id": 80,
@@ -1275,7 +2296,27 @@ export const products = [
     "notasFondo": "Ámbar, Vetiver, Sándalo, Musgo de roble, Algalia",
     "ml": 100,
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "description": "Una fragancia floral sofisticada para la mujer, elegante y con un aire clásico de lujo atemporal. Su carácter luminosa y refinado evoca el estilo de los grandes perfumes florales de diseñador, con una estela sensual y femenina.",
+    "notes": [
+      "Bergamota",
+      "Flor de azahar",
+      "Rosa",
+      "Notas verdes",
+      "Chabacano",
+      "Jazmín",
+      "Nardo",
+      "Madreselva",
+      "Lirio",
+      "Ylang ylang",
+      "Cedro",
+      "Almizcle",
+      "Ámbar",
+      "Vetiver",
+      "Sándalo",
+      "Musgo de roble",
+      "Algalia"
+    ]
   },
   {
     "id": 81,
@@ -1289,7 +2330,13 @@ export const products = [
     "notasSalida": "Mandarina",
     "notasCorazon": "Jacinto de agua",
     "notasFondo": "Madera blanca",
-    "ml": 50
+    "ml": 50,
+    "description": "Clinique Happy Heart 2012 es una fragancia luminosa y elegante para la mujer, de perfil floral frutal con un aire fresco, limpio y delicadamente acuático. Su estilo femenino y refinado evoca la frescura de la mandarina y las notas verdes, con un carácter que se inspira en la estética fresca y optimista de Clinique Happy.",
+    "notes": [
+      "Mandarina",
+      "Jacinto de agua",
+      "Madera blanca"
+    ]
   },
   {
     "id": 82,
@@ -1305,7 +2352,31 @@ export const products = [
     "notasFondo": "Frambuesa, Almizcle, Melocotón, Sándalo, Vainilla, Violeta, Vetiver",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Una fragancia **floral acuática** para la mujer, fresca, luminosa y atemporal, ideal para quienes buscan una estela limpia con un toque elegante. **Cool Water Woman** de Davidoff se inspira en el estilo icónico de los perfumes acuáticos de diseñador, con una sensación revitalizante y femenina.",
+    "notes": [
+      "Piña",
+      "Lirio",
+      "Loto",
+      "Melón",
+      "Membrillo",
+      "Grosella negra",
+      "Frutas cítricas",
+      "Miel",
+      "Jazmín",
+      "Rosa",
+      "Nenúfar",
+      "Espino blanco",
+      "Muguete",
+      "Mora",
+      "Frambuesa",
+      "Almizcle",
+      "Melocotón",
+      "Sándalo",
+      "Vainilla",
+      "Violeta",
+      "Vetiver"
+    ]
   },
   {
     "id": 83,
@@ -1321,7 +2392,31 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle, Nuez moscada, Sándalo, Raíz de lirio, Ámbar, Cedro de Virginia",
     "ml": 75,
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "description": "Un perfume **para la mujer** de estilo oriental floral, dulce y lactónico, con un carácter cremoso y juvenil que combina frutas jugosas con un fondo cálido y envolvente. Diesel Plus Plus Feminine destaca por su faceta gourmand de coco y vainilla, y se inspira en un estilo de perfumería femenina noventera, alegre y original.",
+    "notes": [
+      "Piña",
+      "Naranja amarga",
+      "Casis",
+      "Notas afrutadas",
+      "Lirio de los valles",
+      "Leche",
+      "Coco",
+      "Azucena",
+      "Cereza",
+      "Fresa",
+      "Manzana roja",
+      "Orquídea",
+      "Jazmín",
+      "Magnolia",
+      "Vainilla",
+      "Almizcle",
+      "Nuez moscada",
+      "Sándalo",
+      "Raíz de lirio",
+      "Ámbar",
+      "Cedro de Virginia"
+    ]
   },
   {
     "id": 84,
@@ -1337,7 +2432,25 @@ export const products = [
     "notasFondo": "Heliotropo, Sándalo, Coco, Vainilla, Cedro",
     "ml": 100,
     "precioUSD": 220,
-    "precioBS": 143000
+    "precioBS": 143000,
+    "description": "Una fragancia **para la mujer** con un carácter frutal-floral y un fondo cálido, elegante y ligeramente especiado. Dolce Vita de Dior evoca una feminidad luminosa y optimista, con un aire clásico de lujo inspirado en el universo olfativo de Dior.",
+    "notes": [
+      "Flor de naranjo",
+      "Melocotón",
+      "Bergamota",
+      "Rosa",
+      "Cardamomo",
+      "Pomelo",
+      "Albaricoque",
+      "Magnolia",
+      "Azucena",
+      "Canela",
+      "Heliotropo",
+      "Sándalo",
+      "Coco",
+      "Vainilla",
+      "Cedro"
+    ]
   },
   {
     "id": 85,
@@ -1353,7 +2466,19 @@ export const products = [
     "notasFondo": "Iso E Super, Vetiver de Haití, Almizcle blanco",
     "ml": 100,
     "precioUSD": 220,
-    "precioBS": 143000
+    "precioBS": 143000,
+    "description": "Una fragancia **para el hombre** de estilo amaderado limpio y moderno, con una salida fresca y especiada que transmite elegancia discreta. Inspirada en la línea **Dior Homme**, ofrece un perfil sofisticado, sobrio y contemporáneo, ideal para uso diario y ocasiones formales.",
+    "notes": [
+      "Bergamota",
+      "Pimienta rosa",
+      "Elemí",
+      "Cedro del Atlas",
+      "Madera de cachemira",
+      "Pachulí",
+      "Iso E Super",
+      "Vetiver de Haití",
+      "Almizcle blanco"
+    ]
   },
   {
     "id": 86,
@@ -1369,7 +2494,16 @@ export const products = [
     "notasFondo": "Vetiver, Cedro de Virginia",
     "ml": 100,
     "precioUSD": 220,
-    "precioBS": 143000
+    "precioBS": 143000,
+    "description": "Dior Homme Intense 2025 es una fragancia sofisticada y envolvente para el hombre, con un iris aterciopelado y elegante que aporta una firma refinada y muy moderna. Su estilo olfativo es amaderado floral almizclado, con un aire inspirado en la elegancia característica de Dior Homme Intense, ideal para quien busca presencia, distinción y un toque seductor.",
+    "notes": [
+      "Lavanda",
+      "Iris",
+      "Almizcle ambreta",
+      "Pera",
+      "Vetiver",
+      "Cedro de Virginia"
+    ]
   },
   {
     "id": 87,
@@ -1385,7 +2519,21 @@ export const products = [
     "notasFondo": "Heliotropo, Bálsamo de Tolú, Vainilla",
     "ml": 100,
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "description": "Poison Girl Eau de Toilette de Dior es una fragancia **para la mujer** joven, sensual y con carácter, de estilo oriental floral gourmand. Se inspira en el universo seductor y rebelde de la línea Poison Girl de Dior, con un aire moderno y adictivo ideal para destacar día y noche.",
+    "notes": [
+      "Naranja amarga",
+      "Limón",
+      "Rosa de Grasse",
+      "Rosa de Damasco",
+      "Flor de azahar del naranjo",
+      "Haba tonka",
+      "Sándalo",
+      "Almendra",
+      "Heliotropo",
+      "Bálsamo de Tolú",
+      "Vainilla"
+    ]
   },
   {
     "id": 88,
@@ -1401,7 +2549,19 @@ export const products = [
     "notasFondo": "Ambroxan, Cedro, Ládano",
     "ml": 100,
     "precioUSD": 250,
-    "precioBS": 162500
+    "precioBS": 162500,
+    "description": "Una fragancia **para el hombre** de carácter aromático y amaderado, creada para proyectar frescura, fuerza y elegancia contemporánea. Inspirada en el icónico Sauvage de Dior, combina un inicio vibrante con un fondo sensual y magnético, ideal para un estilo sofisticado y versátil.",
+    "notes": [
+      "Bergamota de Calabria",
+      "Pimienta",
+      "Lavanda",
+      "Pimienta de Sichuan",
+      "Anís estrellado",
+      "Nuez moscada",
+      "Ambroxan",
+      "Cedro",
+      "Ládano"
+    ]
   },
   {
     "id": 89,
@@ -1415,7 +2575,20 @@ export const products = [
     "notasSalida": "Nuez moscada, Canela, Cardamomo, Toronja",
     "notasCorazon": "Lavanda, Regaliz, Sándalo",
     "notasFondo": "Ámbar, Pachulí, Vetiver de Haití",
-    "ml": 60
+    "ml": 60,
+    "description": "Sauvage Elixir de Dior es una fragancia **para el hombre** intensa, sofisticada y de carácter magnético, con un perfil aromático-especiado y amaderado de gran presencia. Se inspira en la estela inconfundible de *Sauvage* de Dior, llevándola a una versión más oscura, densa y lujosa, pensada para destacar con elegancia.[1][2][8]",
+    "notes": [
+      "Nuez moscada",
+      "Canela",
+      "Cardamomo",
+      "Toronja",
+      "Lavanda",
+      "Regaliz",
+      "Sándalo",
+      "Ámbar",
+      "Pachulí",
+      "Vetiver de Haití"
+    ]
   },
   {
     "id": 90,
@@ -1431,7 +2604,16 @@ export const products = [
     "notasFondo": "especias, haba tonka",
     "ml": 100,
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "description": "Perfume de lujo para el hombre, con un perfil **oriental especiado y fougère** que combina elegancia moderna con una presencia cálida y sofisticada. Devotion Pour Homme de Dolce&Gabbana está pensado para quien busca un aroma masculino, envolvente y refinado, con un carácter contemporáneo inspirado en la alta perfumería italiana.[2][4]",
+    "notes": [
+      "Limón",
+      "café",
+      "pachulí",
+      "lavanda",
+      "especias",
+      "haba tonka"
+    ]
   },
   {
     "id": 91,
@@ -1447,7 +2629,20 @@ export const products = [
     "notasFondo": "Miel, Ambroxán, Pachulí",
     "ml": 75,
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "description": "Una fragancia **floral frutal gourmand** para la mujer, luminosa y femenina, que combina frescura chispeante con un fondo dulce y seductor. Dolce Peony de Dolce&Gabbana se inspira en el universo elegante y delicado de la línea **Dolce**, con un carácter sofisticado y moderno.",
+    "notes": [
+      "Bergamota",
+      "Pera",
+      "Pimienta rosa",
+      "Violeta",
+      "Peonía",
+      "Rosa búlgara",
+      "Fresia",
+      "Miel",
+      "Ambroxán",
+      "Pachulí"
+    ]
   },
   {
     "id": 92,
@@ -1461,7 +2656,21 @@ export const products = [
     "notasSalida": "Pepino, Pomelo, Magnolia, Manzana verde",
     "notasCorazon": "Lirio de los valles, Nardos, Violeta, Rosa",
     "notasFondo": "Sándalo, Ámbar, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "description": "Un perfume **para la mujer** de estilo floral frutal, fresco y vibrante, con una salida jugosa y luminosa que aporta una sensación limpia y moderna. DKNY Be Delicious de Donna Karan se inspira en el espíritu urbano y desenfadado de un clásico de diseñador, con un aire icónico y muy reconocible.",
+    "notes": [
+      "Pepino",
+      "Pomelo",
+      "Magnolia",
+      "Manzana verde",
+      "Lirio de los valles",
+      "Nardos",
+      "Violeta",
+      "Rosa",
+      "Sándalo",
+      "Ámbar",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 93,
@@ -1477,7 +2686,23 @@ export const products = [
     "notasFondo": "Rosa, Almizcle, Ámbar, Vainilla",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Nitro Black es una fragancia para el hombre, de perfil aromático fresco, frutal y especiado, con un carácter elegante y moderno. Está inspirada en el estilo de Creed Aventus, aportando una estela sofisticada, versátil y masculina ideal para uso diario o ocasiones especiales.",
+    "notes": [
+      "Bergamota",
+      "Piña",
+      "Grosellas negras",
+      "Manzana",
+      "Abedul",
+      "Pachulí",
+      "Pimienta",
+      "Lavanda",
+      "Jazmín",
+      "Rosa",
+      "Almizcle",
+      "Ámbar",
+      "Vainilla"
+    ]
   },
   {
     "id": 94,
@@ -1493,7 +2718,21 @@ export const products = [
     "notasFondo": "notas amaderadas, pachulí, ámbar negro",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Nitro Blue de Dumont es una fragancia **oriental amaderada** para el hombre, intensa y sofisticada, con un perfil dulce-especiado que deja una estela cálida y envolvente. Su carácter recuerda a un gourmand moderno con aire de lujo, ideal para quienes buscan un aroma llamativo, elegante y duradero.",
+    "notes": [
+      "Canela",
+      "salvia",
+      "limón",
+      "flor de azahar del naranjo",
+      "albahaca",
+      "cardamomo",
+      "chocolate",
+      "praliné",
+      "notas amaderadas",
+      "pachulí",
+      "ámbar negro"
+    ]
   },
   {
     "id": 95,
@@ -1509,7 +2748,25 @@ export const products = [
     "notasFondo": "Vainilla, Maderas preciosas, Musgo, Almizcle, Madera de guayaco",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un Eau de Parfum sofisticado **para el hombre**, con un perfil fresco, amaderado y elegante que proyecta presencia moderna. Su carácter versátil y envolvente lo convierte en una opción ideal para quienes buscan una fragancia masculina con aire refinado y un toque de inspiración en perfumes de diseñador contemporáneos.",
+    "notes": [
+      "Bergamota",
+      "Manzana",
+      "Grosella negra",
+      "Naranjo",
+      "Pimienta rosa",
+      "Ámbar",
+      "Caramelo",
+      "Lirio del valle",
+      "Azafrán",
+      "Madera seca",
+      "Vainilla",
+      "Maderas preciosas",
+      "Musgo",
+      "Almizcle",
+      "Madera de guayaco"
+    ]
   },
   {
     "id": 96,
@@ -1525,7 +2782,19 @@ export const products = [
     "notasFondo": "Ámbar, Sándalo, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Fragancia **para el hombre** de estilo aromático frutal, fresca y moderna, con un perfil limpio y atractivo que combina energía y carácter. Se inspira en el estilo de los perfumes masculinos actuales de diseñador, con una vibra luminosa y versátil ideal para uso diario.",
+    "notes": [
+      "Manzana",
+      "Lavanda",
+      "Bergamota",
+      "Sandía",
+      "Cedro",
+      "Cálamo aromático",
+      "Ámbar",
+      "Sándalo",
+      "Pachulí"
+    ]
   },
   {
     "id": 97,
@@ -1541,7 +2810,21 @@ export const products = [
     "notasFondo": "pachulí, ámbar, musgo",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para el hombre** moderna y seductora, de perfil **afrutado, acuático y amaderado**, con una salida vibrante y un fondo cálido de gran presencia. Se inspira en el estilo de los perfumes masculinos frescos y adictivos de diseñador, con una vibra que recuerda a composiciones juveniles y magnéticas de gran proyección.",
+    "notes": [
+      "Bergamota",
+      "manzana roja",
+      "melocotón",
+      "sandía",
+      "lavanda",
+      "cedro",
+      "acorde marino",
+      "sándalo",
+      "pachulí",
+      "ámbar",
+      "musgo"
+    ]
   },
   {
     "id": 98,
@@ -1557,7 +2840,20 @@ export const products = [
     "notasFondo": "ámbar, almizcle, cuero",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Fragancia de **cuero** intensa y sofisticada, pensada **para el hombre** que busca una estela elegante, moderna y con carácter. Nitro White de Dumont se mueve entre un perfil cálido de miel y ámbar con un fondo cremoso de vainilla, cuero y almizcle, evocando un estilo masculino refinado con aire inspirado en la perfumería de diseñador contemporánea.",
+    "notes": [
+      "Bayas de enebro",
+      "iris",
+      "ciprés",
+      "mirra",
+      "pachulí",
+      "miel",
+      "vainilla",
+      "ámbar",
+      "almizcle",
+      "cuero"
+    ]
   },
   {
     "id": 99,
@@ -1573,7 +2869,24 @@ export const products = [
     "notasFondo": "Té verde, Semillas de apio, Alcaravea, Clavo",
     "ml": 100,
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "description": "Una fragancia **cítrica aromática** para la mujer, fresca, luminosa y fácil de llevar en el día a día. Su perfil limpio y revitalizante, dominado por el té verde y los cítricos, le da un aire clásico y natural; no se presenta como inspiración directa de un perfume de diseñador, sino como una creación propia de Elizabeth Arden.",
+    "notes": [
+      "Limón",
+      "Bergamota",
+      "Menta",
+      "Ruibarbo",
+      "Cáscara de naranja",
+      "Jazmín",
+      "Hinojo",
+      "Almizcle",
+      "Ámbar",
+      "Musgo de roble",
+      "Té verde",
+      "Semillas de apio",
+      "Alcaravea",
+      "Clavo"
+    ]
   },
   {
     "id": 100,
@@ -1589,7 +2902,27 @@ export const products = [
     "notasFondo": "Sándalo, Ámbar, Almizcle, Musgo de roble, Cedro",
     "ml": 100,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Una fragancia luminosa y alegre para la mujer, con un estilo floral-frutal fresco, jugoso y delicadamente cálido. Sunflowers de Elizabeth Arden evoca la esencia de un clásico femenino atemporal, inspirado en la vitalidad del verano y el encanto de las fragancias florales de diseñador.",
+    "notes": [
+      "Flor de azahar del naranjo",
+      "Melón",
+      "Mandarina",
+      "Melocotón",
+      "Bergamota",
+      "Limón",
+      "Palo de rosa de Brasil",
+      "Ciclamen",
+      "Osmanto",
+      "Raíz de lirio",
+      "Jazmín",
+      "Rosa",
+      "Sándalo",
+      "Ámbar",
+      "Almizcle",
+      "Musgo de roble",
+      "Cedro"
+    ]
   },
   {
     "id": 101,
@@ -1605,7 +2938,18 @@ export const products = [
     "notasFondo": "Benjuí, Sándalo",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Emper Ilang 62 es una fragancia **unisex** con un carácter floral amaderado sofisticado y elegante, ideal para quienes buscan un aroma distintivo y moderno. Inspirada en **Ylang 49 de Le Labo**, ofrece una estela refinada con un aire de lujo contemporáneo.",
+    "notes": [
+      "Pachulí",
+      "Ylang-ylang",
+      "Musgo de roble",
+      "Gardenia de Tahití",
+      "Jazmín",
+      "Vetiver",
+      "Benjuí",
+      "Sándalo"
+    ]
   },
   {
     "id": 102,
@@ -1621,7 +2965,16 @@ export const products = [
     "notasFondo": "sándalo, almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Un perfume **unisex** de carácter sofisticado, con un perfil amaderado, especiado y floral que proyecta elegancia y presencia. Se inspira en el estilo de **Santal 33 de Le Labo**, reinterpretado con un aire más cálido y envolvente para uso diario o de noche.",
+    "notes": [
+      "Cardamomo",
+      "notas especiadas",
+      "notas florales",
+      "maderas",
+      "sándalo",
+      "almizcle"
+    ]
   },
   {
     "id": 103,
@@ -1637,7 +2990,18 @@ export const products = [
     "notasFondo": "Tabaco, Heno",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Unisex y sofisticado, este perfume se mueve entre lo amaderado aromático y un matiz especiado-afrutado con carácter elegante. Emper The Black 92 se inspira claramente en el estilo de **The Noir 29** de Le Labo, ofreciendo una firma moderna, envolvente y de lujo para quienes buscan una fragancia distintiva y versátil.",
+    "notes": [
+      "Higo",
+      "Hoja de laurel",
+      "Bergamota",
+      "Cedro",
+      "Vetiver",
+      "Almizcle",
+      "Tabaco",
+      "Heno"
+    ]
   },
   {
     "id": 104,
@@ -1653,7 +3017,15 @@ export const products = [
     "notasFondo": "cedro",
     "ml": 75,
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "description": "Una fragancia **para el hombre** de estilo oriental amaderado, elegante y seductor, con una estela moderna y sofisticada. Armani Code Eau de Toilette de Giorgio Armani destaca por su carácter sensual y refinado, ideal para quienes buscan un aroma nocturno con aire de diseñador.",
+    "notes": [
+      "Mandarina verde",
+      "bergamota",
+      "lavanda",
+      "haba tonka",
+      "cedro"
+    ]
   },
   {
     "id": 105,
@@ -1669,7 +3041,18 @@ export const products = [
     "notasFondo": "Vainilla, Sándalo",
     "ml": 75,
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "description": "Una fragancia **floral oriental** para la mujer, elegante y seductora, con un aura luminosa de azahar, jazmín y cítricos. Inspirada en el estilo refinado de **Armani Code for Women**, combina sensualidad moderna con un fondo cremoso de vainilla, miel y sándalo.",
+    "notes": [
+      "Jazmín",
+      "Naranja italiana",
+      "Naranja amarga",
+      "Flor de azahar del naranjo",
+      "Jengibre",
+      "Miel",
+      "Vainilla",
+      "Sándalo"
+    ]
   },
   {
     "id": 106,
@@ -1685,7 +3068,15 @@ export const products = [
     "notasFondo": "Castaña",
     "ml": 100,
     "precioUSD": 195,
-    "precioBS": 126750
+    "precioBS": 126750,
+    "description": "Un perfume **para el hombre** con un carácter cálido, elegante y adictivo, que combina una sensualidad moderna con un estilo oriental fougère sofisticado. Se inspira en la firma de **Stronger With You** de Giorgio Armani, ofreciendo una estela envolvente y masculina ideal para quienes buscan presencia y refinamiento.",
+    "notes": [
+      "Pimienta rosa",
+      "Lavanda",
+      "Salvia",
+      "Vainilla",
+      "Castaña"
+    ]
   },
   {
     "id": 107,
@@ -1699,7 +3090,16 @@ export const products = [
     "notasSalida": "Jazmín, Nardo",
     "notasCorazon": "Capullos de jazmín, Madreselva",
     "notasFondo": "Raíz de lirio, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "description": "Un perfume floral de lujo para la mujer, con un carácter cremoso, intenso y delicadamente sofisticado que evoca un jardín en plena floración. Gucci Bloom se inspira en el estilo de un gran floral blanco de diseñador, destacando por su elegancia natural y su feminidad contemporánea.",
+    "notes": [
+      "Jazmín",
+      "Nardo",
+      "Capullos de jazmín",
+      "Madreselva",
+      "Raíz de lirio",
+      "Sándalo"
+    ]
   },
   {
     "id": 108,
@@ -1713,7 +3113,16 @@ export const products = [
     "notasSalida": "Neroli, Jazmín",
     "notasCorazon": "Tuberosa, Azahar",
     "notasFondo": "Sándalo, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "description": "Un floral luminoso y sofisticado para la mujer, inspirado en la feminidad contemporánea y en la línea icónica Gucci Bloom. Su carácter fresco y delicado combina un aire elegante de jardín blanco con un acabado suave y sensual, ideal para quien busca una firma refinada y moderna.",
+    "notes": [
+      "Neroli",
+      "Jazmín",
+      "Tuberosa",
+      "Azahar",
+      "Sándalo",
+      "Almizcle"
+    ]
   },
   {
     "id": 109,
@@ -1729,7 +3138,19 @@ export const products = [
     "notasFondo": "pachulí, vainilla, vetiver",
     "ml": 75,
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "description": "Un clásico **para la mujer** con un carácter floral-frutal, sensual y muy magnético, ideal para quienes buscan una firma olfativa intensa y sofisticada. Gucci Rush se inspira en el icónico estilo de Gucci de finales de los 90, con un aura audaz, adictiva y memorable.",
+    "notes": [
+      "Durazno",
+      "gardenia",
+      "fresia africana",
+      "cilantro",
+      "rosa de Damasco",
+      "jazmín",
+      "pachulí",
+      "vainilla",
+      "vetiver"
+    ]
   },
   {
     "id": 110,
@@ -1745,7 +3166,26 @@ export const products = [
     "notasFondo": "Ylang-ylang, Almizcle, Cedro, Ámbar, Musgo de roble",
     "ml": 75,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia floral frutal **para la mujer**, fresca, luminosa y coqueta, con un estilo juvenil y elegante que resulta fácil de llevar a diario. Se inspira en el universo de los florales frutales de diseñador, con un aire limpio y femenino que recuerda a un clásico comercial moderno.",
+    "notes": [
+      "Manzana verde",
+      "Fresa",
+      "Naranja tangerina",
+      "Bergamota",
+      "Magnolia",
+      "Peonía",
+      "Fresia",
+      "Lirio de los valles",
+      "Bayas rojas",
+      "Jazmín",
+      "Durazno",
+      "Ylang-ylang",
+      "Almizcle",
+      "Cedro",
+      "Ámbar",
+      "Musgo de roble"
+    ]
   },
   {
     "id": 111,
@@ -1761,7 +3201,19 @@ export const products = [
     "notasFondo": "Vainilla, Madera de cachemira, Incienso de olíbano",
     "ml": 75,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Guess Seductive es una fragancia para la mujer, de estilo floral frutal con un aura sensual y sofisticada. Su composición recuerda a un perfume de diseñador moderno, con una salida jugosa y un fondo suave y cremoso que la hace ideal para el día o la noche.",
+    "notes": [
+      "Pera",
+      "Bergamota",
+      "Grosella negra",
+      "Jazmín",
+      "Flor de naranjo africano",
+      "Raíz de lirio",
+      "Vainilla",
+      "Madera de cachemira",
+      "Incienso de olíbano"
+    ]
   },
   {
     "id": 112,
@@ -1777,7 +3229,22 @@ export const products = [
     "notasFondo": "incienso, sándalo, vainilla de Madagascar, mirra",
     "ml": 100,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Un perfume **para la mujer** de estilo floral ámbar con un aura misteriosa, elegante y ligeramente sensual. Halloween for Woman es una fragancia icónica que evoca el universo de los perfumes de diseñador con un carácter propio, reconocible por su mezcla de frescura, flores y un fondo cálido y envolvente.",
+    "notes": [
+      "Violeta",
+      "notas marinas",
+      "hoja de plátano",
+      "petit grain",
+      "magnolia",
+      "lirio de los valles",
+      "nardos",
+      "pimienta",
+      "incienso",
+      "sándalo",
+      "vainilla de Madagascar",
+      "mirra"
+    ]
   },
   {
     "id": 113,
@@ -1793,7 +3260,16 @@ export const products = [
     "notasFondo": "olivo, vainilla",
     "ml": 75,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Una fragancia floral y moderna para la mujer, con un carácter cálido, delicado y luminoso. Boss Orange de Hugo Boss destaca por su estilo casual-chic y femenino, ideal para el día a día, con una inspiración suave y contemporánea en perfumes de diseñador.",
+    "notes": [
+      "Manzana roja",
+      "flores blancas",
+      "flor de azahar africano",
+      "sándalo",
+      "olivo",
+      "vainilla"
+    ]
   },
   {
     "id": 114,
@@ -1809,7 +3285,23 @@ export const products = [
     "notasFondo": "Sándalo, Cedro, Almizcle, Vainilla",
     "ml": 90,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un perfume **para la mujer** de carácter floral frutal, sensual y vibrante, con una salida jugosa y luminosa que evoluciona hacia un corazón especiado y elegante. **Deep Red Hugo Boss** es una fragancia femenina icónica, ideal si buscas un aroma seductor con un aire sofisticado y moderno, sin inspiración declarada en otro perfume de diseñador.",
+    "notes": [
+      "Clementina",
+      "Grosella negra",
+      "Mandarina",
+      "Naranja sanguina",
+      "Pera",
+      "Fresia",
+      "Flor de jengibre",
+      "Hibisco",
+      "Tuberosa",
+      "Sándalo",
+      "Cedro",
+      "Almizcle",
+      "Vainilla"
+    ]
   },
   {
     "id": 115,
@@ -1825,7 +3317,18 @@ export const products = [
     "notasFondo": "Almizcle, Sándalo",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** de estilo floral frutal, elegante y moderna, con un inicio jugoso y luminoso que evoluciona hacia un corazón femenino y delicado. Hugo XX de Hugo Boss se inspira en un perfil contemporáneo y sofisticado, ideal para uso diario o para ocasiones especiales.",
+    "notes": [
+      "Lichi",
+      "Brotes de grosella negra",
+      "Mandarina",
+      "Rosa",
+      "Jazmín",
+      "Ámbar",
+      "Almizcle",
+      "Sándalo"
+    ]
   },
   {
     "id": 116,
@@ -1841,7 +3344,17 @@ export const products = [
     "notasFondo": "Vainilla, Sándalo",
     "ml": 90,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "A Drop d'Issey de Issey Miyake es una fragancia **para la mujer** de carácter floral, luminoso y contemporáneo, con una estela limpia y elegante. Su estilo etéreo y moderno la convierte en una opción sofisticada para quienes buscan un perfume delicado, inspirado en la estética fresca y acuática propia de la casa Issey Miyake.",
+    "notes": [
+      "Lila",
+      "Almizcle",
+      "Almendra",
+      "Rosa damascena",
+      "Flor de azahar",
+      "Vainilla",
+      "Sándalo"
+    ]
   },
   {
     "id": 117,
@@ -1857,7 +3370,17 @@ export const products = [
     "notasFondo": "Cedro, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia floral y almizclada para la mujer, luminosa y delicadamente moderna, con un aire fresco y elegante que realza la feminidad sin exceso. Pleats Please L'Eau se inspira en el universo creativo y sofisticado de Issey Miyake, con una estela limpia, rosada y suave que resulta ideal para el día a día.",
+    "notes": [
+      "Rosa silvestre",
+      "Rosa búlgara",
+      "Pimienta rosa",
+      "Néroli",
+      "Almizcle blanco",
+      "Cedro",
+      "Pachulí"
+    ]
   },
   {
     "id": 118,
@@ -1871,7 +3394,15 @@ export const products = [
     "notasSalida": "Vainilla, Rosa blanca",
     "notasCorazon": "Flores blancas, Almizcle",
     "notasFondo": "Acuerdo polvoroso",
-    "ml": 100
+    "ml": 100,
+    "description": "Un Eau de Parfum **para la mujer** de estilo suave, polvoriento y floral, con un aire clásico y elegante. Se inspira en la feminidad romántica de los grandes florales orientales, evocando un perfil cercano a perfumes de diseñador de carácter envolvente y atemporal.",
+    "notes": [
+      "Vainilla",
+      "Rosa blanca",
+      "Flores blancas",
+      "Almizcle",
+      "Acuerdo polvoroso"
+    ]
   },
   {
     "id": 119,
@@ -1887,7 +3418,20 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle, Madera",
     "ml": 100,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Flash by Jimmy Choo es una fragancia floral y luminosa para la mujer moderna, con un carácter sofisticado, sensual y lleno de energía. Su estilo vibrante recuerda a una creación de diseñador pensada para destacar en ocasiones especiales, con una estela femenina y elegante.",
+    "notes": [
+      "Fresa",
+      "Pimienta rosa",
+      "Naranja",
+      "Tuberosa",
+      "Jazmín",
+      "Lirio",
+      "Heliotropo",
+      "Vainilla",
+      "Almizcle",
+      "Madera"
+    ]
   },
   {
     "id": 120,
@@ -1903,7 +3447,20 @@ export const products = [
     "notasFondo": "Ambroxan, Madera de gaiac, Incienso",
     "ml": 100,
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "description": "Una fragancia **unisex** sofisticada y vibrante, con un perfil cítrico-especiado que transmite frescura moderna y elegancia nocturna. Se inspira en el estilo de nicho con un carácter muy cercano al universo de diseñador, ideal para quien busca presencia, versatilidad y un acabado distintivo.",
+    "notes": [
+      "Cidra",
+      "Bergamota de Calabria",
+      "Naranja siciliana",
+      "Jengibre",
+      "Neroli de Túnez",
+      "Canela de Ceilán",
+      "Té negro",
+      "Ambroxan",
+      "Madera de gaiac",
+      "Incienso"
+    ]
   },
   {
     "id": 121,
@@ -1919,7 +3476,18 @@ export const products = [
     "notasFondo": "Dulce, Notas amaderadas",
     "ml": 90,
     "precioUSD": 120,
-    "precioBS": 78000
+    "precioBS": 78000,
+    "description": "Game of Spades Gold de Jo Milano Paris es una fragancia **unisex** de perfil oriental amaderado, elegante y envolvente, ideal para quienes buscan un aroma sofisticado con presencia. Su estilo lujoso y cálido recuerda a perfumes nicho de carácter ámbar y amaderado, con un aire inspirado en propuestas modernas de diseñador de alta gama.",
+    "notes": [
+      "Ámbar",
+      "Brandy",
+      "Madera de gaiac",
+      "Pachulí",
+      "Notas afrutadas",
+      "Almizcle",
+      "Dulce",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 122,
@@ -1935,7 +3503,16 @@ export const products = [
     "notasFondo": "Resina, Almizcle",
     "ml": 100,
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "description": "Game of Spades Rouge de Jo Milano Paris es un perfume **unisex** de estilo sofisticado y envolvente, creado para quienes buscan una presencia elegante y moderna. Su perfil olfativo opulento recuerda a una inspiración de lujo contemporáneo, con un carácter similar al universo de *Baccarat Rouge 540* de Maison Francis Kurkdjian.",
+    "notes": [
+      "Azafrán",
+      "Jazmín",
+      "Ámbar gris",
+      "Madera de cedro",
+      "Resina",
+      "Almizcle"
+    ]
   },
   {
     "id": 123,
@@ -1951,7 +3528,20 @@ export const products = [
     "notasFondo": "Coco, Almizcle, Sándalo",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** de estilo floral frutal gourmand, dulce y juguetón, con un aire juvenil y adictivo. Katy Perry's Mad Love evoca el carácter divertido de un perfume de diseñador contemporáneo, con una estela cremosa y femenina ideal para el día a día.",
+    "notes": [
+      "Sorbete",
+      "Fresa",
+      "Manzana",
+      "Pomelo rosado",
+      "Notas florales",
+      "Peonía",
+      "Jazmín",
+      "Coco",
+      "Almizcle",
+      "Sándalo"
+    ]
   },
   {
     "id": 124,
@@ -1967,7 +3557,19 @@ export const products = [
     "notasFondo": "Praliné, Cachemira, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un perfume **para la mujer** de estilo floral frutal gourmand, vibrante y seductor, con un aire dulce y sofisticado. Se inspira en la estética de grandes florales gourmand de diseñador, evocando ese carácter intenso y adictivo que recuerda a fragancias como La Vie Est Belle o Flowerbomb, sin ser un dupe directo.",
+    "notes": [
+      "Ciruela",
+      "Frutos del bosque",
+      "Bergamota",
+      "Celosía",
+      "Jazmín Sambac",
+      "Frangipani",
+      "Praliné",
+      "Cachemira",
+      "Pachulí"
+    ]
   },
   {
     "id": 125,
@@ -1983,7 +3585,21 @@ export const products = [
     "notasFondo": "Ámbar, Almizcle, Sándalo",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un perfume **para la mujer** de estilo floral frutal, dulce y coqueto, ideal para quienes buscan una firma olfativa juvenil y adictiva. Meow de Katy Perry destaca por su aire gourmand suave y su carácter femenino, con un perfil que recuerda a perfumes comerciales de diseñador por su mezcla de frutas luminosas, flores blancas y una base cremosa de vainilla.",
+    "notes": [
+      "Pera",
+      "Naranja tangerina",
+      "Jazmín",
+      "Gardenia",
+      "Madreselva",
+      "Flor del naranjo africano",
+      "Lirio de los valles",
+      "Vainilla",
+      "Ámbar",
+      "Almizcle",
+      "Sándalo"
+    ]
   },
   {
     "id": 126,
@@ -1999,7 +3615,23 @@ export const products = [
     "notasFondo": "Ámbar, Vainilla, Coco, Orquídea",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un perfume **para la mujer** de estilo floral afrutado, dulce y juvenil, con un carácter coqueto y femenino muy fácil de llevar a diario. Su perfil recuerda al encanto de los perfumes de celebridad con un aire romántico y cremoso, ideal si buscas una fragancia alegre y sensual.",
+    "notes": [
+      "Gardenia",
+      "Bambú",
+      "Durazno",
+      "Manzana roja",
+      "Jazmín",
+      "Fresia",
+      "Rosa",
+      "Almizcle",
+      "Sándalo",
+      "Ámbar",
+      "Vainilla",
+      "Coco",
+      "Orquídea"
+    ]
   },
   {
     "id": 127,
@@ -2015,7 +3647,19 @@ export const products = [
     "notasFondo": "Orquídea de vainilla, Almizcle, Cuero",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para la mujer** de estilo floral afrutado, luminosa y seductora, con un carácter juvenil y sofisticado. Su perfil evoca una estética de lujo contemporáneo con un toque dulce y envolvente, inspirada en la feminidad moderna y, por su combinación de frutas rojas, flores y cuero, recuerda el estilo de un perfume de diseñador con aire glamuroso.",
+    "notes": [
+      "Granada",
+      "Fresia rosa",
+      "Flor de azahar del naranjo",
+      "Jazmín",
+      "Sándalo",
+      "Endrino",
+      "Orquídea de vainilla",
+      "Almizcle",
+      "Cuero"
+    ]
   },
   {
     "id": 128,
@@ -2031,7 +3675,19 @@ export const products = [
     "notasFondo": "Almizcle, Incienso, Notas amaderadas",
     "ml": 100,
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "description": "Un perfume **para la mujer** sensual y delicada, con un aura floral amaderada y almizclada que envuelve con suavidad y calidez. Kenzo Amour se inspira en un viaje de amor y recuerda a un estilo elegante y romántico, con matices que evocan el universo olfativo de fragancias de diseñador sofisticadas.",
+    "notes": [
+      "Arroz",
+      "Té blanco",
+      "Frangipani",
+      "Flor del cerezo",
+      "Heliotropo",
+      "Vainilla",
+      "Almizcle",
+      "Incienso",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 129,
@@ -2045,7 +3701,20 @@ export const products = [
     "notasSalida": "Notas marinas, Algas, Bergamota, Menta",
     "notasCorazon": "Pino, Nuez moscada, Sándalo",
     "notasFondo": "Cedro, Vetiver, Almizcle",
-    "ml": 110
+    "ml": 110,
+    "description": "Kenzo Homme Eau de Toilette es una fragancia **para el hombre** de carácter **amaderado marino**, fresca y elegante, con una vibra moderna y natural. Su perfil recuerda al estilo de los grandes perfumes masculinos de diseñador de corte acuático y aromático, con una estela limpia, sofisticada y muy versátil para el día a día.",
+    "notes": [
+      "Notas marinas",
+      "Algas",
+      "Bergamota",
+      "Menta",
+      "Pino",
+      "Nuez moscada",
+      "Sándalo",
+      "Cedro",
+      "Vetiver",
+      "Almizcle"
+    ]
   },
   {
     "id": 130,
@@ -2061,7 +3730,13 @@ export const products = [
     "notasFondo": "Haba tonka",
     "ml": 75,
     "precioUSD": 95,
-    "precioBS": 61750
+    "precioBS": 61750,
+    "description": "Kenzo World Power es una fragancia **para la mujer** de carácter sensual y moderno, con un perfil oriental amaderado que juega entre la sal y la suavidad cremosa. Su estilo olfativo elegante y envolvente recuerda a una lectura más audaz y minimalista de perfumes femeninos de diseñador, ideal para quien busca una firma sofisticada y distintiva.",
+    "notes": [
+      "Ciprés",
+      "Sal de mar",
+      "Haba tonka"
+    ]
   },
   {
     "id": 131,
@@ -2077,7 +3752,19 @@ export const products = [
     "notasFondo": "Almizcle, Sándalo, Vainilla",
     "ml": 90,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Una fragancia **para la mujer** vibrante y juvenil, de estilo floral afrutado con un toque fresco y luminoso. Touch of Pink de Lacoste se inspira en una feminidad espontánea y moderna, con un carácter que recuerda a un perfume de diseñador fácil de llevar en el día a día.",
+    "notes": [
+      "Naranja sanguina",
+      "Cardamomo",
+      "Durazno",
+      "Jazmín",
+      "Hojas de violeta",
+      "Semillas de zanahoria",
+      "Almizcle",
+      "Sándalo",
+      "Vainilla"
+    ]
   },
   {
     "id": 132,
@@ -2093,7 +3780,22 @@ export const products = [
     "notasFondo": "Sándalo, Praliné, Ámbar, Pachulí",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Afeef de Lattafa es una fragancia **unisex** de carácter floral, frutal y ambarado, elegante y moderna, pensada para quienes buscan un aroma envolvente con presencia y sofisticación. Su estela equilibrada recuerda el estilo de un perfume de diseñador con aire refinado y sensual, ideal para destacar en cualquier ocasión.",
+    "notes": [
+      "Durazno",
+      "Pimienta rosa",
+      "Bergamota",
+      "Lavanda",
+      "Rosa",
+      "Nardo",
+      "Flor de azahar del naranjo",
+      "Jazmín",
+      "Sándalo",
+      "Praliné",
+      "Ámbar",
+      "Pachulí"
+    ]
   },
   {
     "id": 133,
@@ -2109,7 +3811,21 @@ export const products = [
     "notasFondo": "Ámbar, Cedro, Sándalo",
     "ml": 60,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Ajwad de Lattafa es una fragancia **unisex** de estilo dulce, afrutado y floral, con un fondo cálido y elegante de maderas y almizcle. Su perfil envolvente y sofisticado recuerda a un perfume de diseñador en clave oriental, ideal para quienes buscan un aroma opulento y versátil.",
+    "notes": [
+      "Notas afrutadas",
+      "Bergamota",
+      "Lichi",
+      "Rosa",
+      "Jazmín",
+      "Canela",
+      "Almizcle",
+      "Vainilla",
+      "Ámbar",
+      "Cedro",
+      "Sándalo"
+    ]
   },
   {
     "id": 134,
@@ -2125,7 +3841,22 @@ export const products = [
     "notasFondo": "Vainilla, Cuero, Almizcle, Musgo",
     "ml": 60,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Ajwad Pink to Pink de Lattafa es una fragancia **unisex** luminosa, moderna y elegante, con un perfil floral-afrutado de aire sofisticado. Su estilo recuerda a una composición de nicho contemporánea, con un toque envolvente y sensual que la hace ideal para quienes buscan una firma versátil y refinada.",
+    "notes": [
+      "Guayaba",
+      "Pomelo rosado",
+      "Lichi",
+      "Pimienta rosa",
+      "Magnolia",
+      "Peonía",
+      "Rosa",
+      "Ámbar",
+      "Vainilla",
+      "Cuero",
+      "Almizcle",
+      "Musgo"
+    ]
   },
   {
     "id": 135,
@@ -2141,7 +3872,21 @@ export const products = [
     "notasFondo": "Vainilla, Sándalo, Almizcle",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Unisex de carácter elegante y magnético, con una faceta aromática, amaderada y de cuero que deja una estela sofisticada y contundente. Se inspira en el estilo de fragancias nicho intensas y oscuras, con un aire que recuerda a perfumes de diseñador de cuero y tabaco.",
+    "notes": [
+      "Lavanda",
+      "Manzana",
+      "Cardamomo",
+      "Tabaco",
+      "Madera de oud",
+      "Ciprés",
+      "Jazmín",
+      "Cuero",
+      "Vainilla",
+      "Sándalo",
+      "Almizcle"
+    ]
   },
   {
     "id": 136,
@@ -2157,7 +3902,16 @@ export const products = [
     "notasFondo": "Almizcle, Ámbar",
     "ml": 60,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Lattafa Ana Abiyedh es un perfume **unisex** de estilo dulce, afrutado y almizclado, con un carácter limpio y envolvente que resulta muy versátil para el día a día. Su perfil recuerda a una creación moderna de nicho con aire gourmand, ideal para quienes buscan una fragancia elegante y adictiva sin una dirección claramente masculina o femenina.",
+    "notes": [
+      "Bergamota",
+      "Naranja",
+      "Vainilla",
+      "Pera",
+      "Almizcle",
+      "Ámbar"
+    ]
   },
   {
     "id": 137,
@@ -2173,7 +3927,18 @@ export const products = [
     "notasFondo": "Almizcle, Musgo de roble",
     "ml": 60,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Unisex y sofisticado, este perfume envuelve con un acorde dulce-ambarado de gran presencia, ideal para quienes buscan una estela moderna y elegante. Inspirado en el icónico Baccarat Rouge 540, ofrece un perfil cálido, luminoso y adictivo con un aire de lujo contemporáneo.",
+    "notes": [
+      "Pera Nashi",
+      "Kumquat",
+      "Bergamota",
+      "Caramelo",
+      "Geranio",
+      "Ámbar gris",
+      "Almizcle",
+      "Musgo de roble"
+    ]
   },
   {
     "id": 138,
@@ -2189,7 +3954,20 @@ export const products = [
     "notasFondo": "pachulí, caramelo, vainilla",
     "ml": 60,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un perfume floral frutal gourmand para la mujer, vibrante y adictivo, con un equilibrio seductor entre dulzura, flores y calidez especiada. Se inspira en un estilo moderno de perfumería de diseñador, con un carácter sofisticado y muy femenino.",
+    "notes": [
+      "Pimienta rosa",
+      "cereza negra",
+      "rosa blanca",
+      "peonía",
+      "haba tonka",
+      "nuez moscada",
+      "azúcar",
+      "pachulí",
+      "caramelo",
+      "vainilla"
+    ]
   },
   {
     "id": 139,
@@ -2205,7 +3983,17 @@ export const products = [
     "notasFondo": "Vainilla, Ámbar",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Angham de Lattafa es un perfume **unisex** de estilo oriental vainilla, elegante y envolvente, con un toque dulce, especiado y moderno. Se inspira en el universo de **Burberry Goddess**, ofreciendo una interpretación más cálida y accesible para quienes buscan una firma sofisticada y versátil.",
+    "notes": [
+      "Jengibre",
+      "Clementina",
+      "Pimienta rosa",
+      "Lavanda",
+      "Praliné",
+      "Vainilla",
+      "Ámbar"
+    ]
   },
   {
     "id": 140,
@@ -2221,7 +4009,20 @@ export const products = [
     "notasFondo": "Ámbar, Almizcle, Notas amaderadas",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Una fragancia **unisex** de estilo cítrico aromático, fresca, luminosa y moderna, ideal para quienes buscan un aroma elegante y versátil para el día a día. Se inspira en el perfil sofisticado de **Blue Talisman de Ex Nihilo**, con un carácter vibrante y limpio que deja una estela contemporánea y refinada.",
+    "notes": [
+      "Bergamota",
+      "Mandarina",
+      "Jengibre",
+      "Menta",
+      "Pera",
+      "Flor de naranja",
+      "Jengibre",
+      "Ámbar",
+      "Almizcle",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 141,
@@ -2237,7 +4038,21 @@ export const products = [
     "notasFondo": "Madera seca, Benjuí, Ládano",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para el hombre** intensa, oriental y seductora, con un perfil especiado y amaderado que deja una estela cálida y sofisticada. Se inspira en el estilo de perfumes masculinos modernos de gran presencia, con un aire que recuerda a composiciones densas y elegantes de diseñador.",
+    "notes": [
+      "Pimienta negra",
+      "Tabaco",
+      "Piña",
+      "Pachulí",
+      "Café",
+      "Iris",
+      "Vainilla",
+      "Ámbar",
+      "Madera seca",
+      "Benjuí",
+      "Ládano"
+    ]
   },
   {
     "id": 142,
@@ -2253,7 +4068,19 @@ export const products = [
     "notasFondo": "Vainilla Bourbon, Ámbar, Vetiver",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Asad Bourbon de Lattafa es un perfume **para el hombre** con una estela cálida, especiada y gourmand, pensado para transmitir presencia y sofisticación. Su carácter se inspira en el estilo de fragancias masculinas intensas y seductoras, con un aire que recuerda a creaciones modernas de diseñador como Valentino Born in Roma Intense o Stronger With You Intensely.",
+    "notes": [
+      "Lavanda",
+      "Ciruela Mirabel",
+      "Pimienta rosa",
+      "Nuez moscada",
+      "Davana",
+      "Cacao",
+      "Vainilla Bourbon",
+      "Ámbar",
+      "Vetiver"
+    ]
   },
   {
     "id": 143,
@@ -2269,7 +4096,20 @@ export const products = [
     "notasFondo": "Incienso, Madera de cachemira, Ámbar seco",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Perfume **para el hombre** de carácter oriental, intenso y elegante, con una estela cálida y moderna. Inspirado en el estilo de fragancias masculinas especiadas y amaderadas, recuerda a un perfil sofisticado con guiños al ADN de Asad y al universo de perfumes tipo diseñador de corte avainillado y tabacoso.",
+    "notes": [
+      "Pimienta rosa",
+      "Azafrán",
+      "Pomelo",
+      "Tabaco",
+      "Cedro",
+      "Vainilla",
+      "Pachulí",
+      "Incienso",
+      "Madera de cachemira",
+      "Ámbar seco"
+    ]
   },
   {
     "id": 144,
@@ -2285,7 +4125,17 @@ export const products = [
     "notasFondo": "Vainilla, Incienso",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para el hombre** fresca, seductora y con un giro gourmand, ideal para destacar con una elegancia moderna y versátil. Su carácter tropical y aromático la convierte en una opción atractiva para el día a día, con un aire inspirado en la sofisticación de perfumes de diseñador contemporáneos.",
+    "notes": [
+      "Lavanda",
+      "Pimienta negra",
+      "Agua de coco",
+      "Iris",
+      "Sal",
+      "Vainilla",
+      "Incienso"
+    ]
   },
   {
     "id": 145,
@@ -2301,7 +4151,16 @@ export const products = [
     "notasFondo": "Vainilla, Amberwood",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Una fragancia **para la mujer** de estilo floral oriental gourmand, luminosa y delicadamente dulce, pensada para transmitir elegancia y suavidad moderna. Atheeri de Lattafa se inspira en el universo de los perfumes florales sofisticados, con un carácter femenino y envolvente ideal para quienes buscan un aroma refinado y actual.",
+    "notes": [
+      "Flor de pasionaria",
+      "Gota del rocío",
+      "Orquídea",
+      "Jazmín",
+      "Vainilla",
+      "Amberwood"
+    ]
   },
   {
     "id": 146,
@@ -2317,7 +4176,18 @@ export const products = [
     "notasFondo": "Musgo de roble, Sándalo",
     "ml": 55,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Atlas de Lattafa es un perfume **unisex** de carácter acuático y marino, fresco pero con un fondo cálido y sofisticado que le da presencia. Su estilo olfativo evoca una brisa salina moderna con un matiz amaderado, y se mueve en una línea nicho que recuerda a fragancias marinas de diseñador contemporáneo.",
+    "notes": [
+      "Notas marinas",
+      "Sal",
+      "Limón",
+      "Davana",
+      "Iris",
+      "Ámbar gris",
+      "Musgo de roble",
+      "Sándalo"
+    ]
   },
   {
     "id": 147,
@@ -2333,7 +4203,18 @@ export const products = [
     "notasFondo": "Ámbar, Vainilla",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Unisex, con un perfil ámbar-vainilla de carácter floral y opulento, **Bade'e Al Oud Amethyst** combina un aura elegante de rosas con un fondo cálido y seductor de oud, ámbar y vainilla. Se inspira en el estilo de fragancias orientales de lujo con un toque muy sofisticado y envolvente, ideal para quienes buscan presencia y distinción.",
+    "notes": [
+      "Pimienta rosa",
+      "Bergamota",
+      "Rosa turca",
+      "Rosa búlgara",
+      "Jazmín",
+      "Madera de oud",
+      "Ámbar",
+      "Vainilla"
+    ]
   },
   {
     "id": 148,
@@ -2349,7 +4230,20 @@ export const products = [
     "notasFondo": "sándalo, cachemira, musgo",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **unisex** de estilo dulce, oriental y gourmand, creada para quienes buscan un perfume envolvente y sofisticado. Bade'e Al Oud Honor & Glory de Lattafa destaca por su carácter exótico y moderno, con un perfil que recuerda a un postre cremoso y especiado, muy en la línea de las fragancias árabes contemporáneas.",
+    "notes": [
+      "Piña",
+      "crème brûlée",
+      "canela",
+      "benjuí",
+      "cúrcuma",
+      "pimienta negra",
+      "vainilla",
+      "sándalo",
+      "cachemira",
+      "musgo"
+    ]
   },
   {
     "id": 149,
@@ -2365,7 +4259,16 @@ export const products = [
     "notasFondo": "Sándalo, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Un perfume para la mujer, delicado y sofisticado, que envuelve la piel con un aura floral gourmand cremosa y elegante. Badee Al Oud Noble Blush destaca por su carácter romántico y aterciopelado, con un estilo refinado que recuerda a las propuestas femeninas más dulces y lujosas del universo nicho.",
+    "notes": [
+      "Leche de rosa",
+      "Merengue",
+      "Almendra",
+      "Vainilla",
+      "Sándalo",
+      "Almizcle"
+    ]
   },
   {
     "id": 150,
@@ -2381,7 +4284,16 @@ export const products = [
     "notasFondo": "Pachulí, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Unisex de carácter intenso y sofisticado, con un perfil ámbar amaderado oscuro, envolvente y misterioso. Se inspira claramente en el estilo de oud de lujo popularizado por **Initio Oud for Greatness**, ofreciendo una presencia poderosa y elegante para quien busca una firma olfativa memorable.",
+    "notes": [
+      "Azafrán",
+      "Nuez moscada",
+      "Lavanda",
+      "Madera de oud",
+      "Pachulí",
+      "Almizcle"
+    ]
   },
   {
     "id": 151,
@@ -2397,7 +4309,18 @@ export const products = [
     "notasFondo": "Musgo, Pachulí",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **unisex** de estilo afrutado-amaderado, luminosa y elegante, con un carácter moderno que equilibra dulzura y sofisticación. Bade'e Al Oud Sublime de Lattafa se inspira en el perfil popular de fragancias nicho contemporáneas, con una salida fresca y jugosa y un fondo cremoso y envolvente.",
+    "notes": [
+      "Manzana",
+      "Lichi",
+      "Rosa",
+      "Ciruela",
+      "Jazmín",
+      "Vainilla",
+      "Musgo",
+      "Pachulí"
+    ]
   },
   {
     "id": 152,
@@ -2413,7 +4336,17 @@ export const products = [
     "notasFondo": "vainilla, almizcle",
     "ml": 75,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Berry On Top de Lattafa es una fragancia **para la mujer** dulce, cremosa y adictiva, con un perfil floral-frutal gourmand que recuerda a un postre de fresa con nata y vainilla. Su estilo juvenil y goloso la convierte en una opción encantadora para quienes buscan un aroma femenino inspirado en el universo de los perfumes gourmand de diseño.",
+    "notes": [
+      "Fresa",
+      "nata montada",
+      "mermelada de fresa",
+      "azúcar",
+      "flores blancas",
+      "vainilla",
+      "almizcle"
+    ]
   },
   {
     "id": 153,
@@ -2429,7 +4362,16 @@ export const products = [
     "notasFondo": "Benjuí, Caramelo",
     "ml": 75,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Choco Overdose de Lattafa es un perfume **unisex** de carácter gourmand y oriental-vainilla, ideal para quienes buscan una estela dulce, envolvente y adictiva. Su perfil olfativo se inspira en el estilo goloso de fragancias como *Ari by Ariana Grande* o *Chocolate Greedy*, con un efecto cálido y cremoso de lujo contemporáneo.",
+    "notes": [
+      "Chocolate",
+      "Fudge de chocolate",
+      "Cacao",
+      "Vainilla",
+      "Benjuí",
+      "Caramelo"
+    ]
   },
   {
     "id": 154,
@@ -2445,7 +4387,22 @@ export const products = [
     "notasFondo": "Ámbar, Ládano, Musgo, Almizcle",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **amaderada aromática** para el hombre, elegante y moderna, con una apertura fresca y especiada que transmite sofisticación inmediata. Se inspira en el estilo de perfumes masculinos de diseñador con aire limpio, marino e incienso, ideal para quien busca presencia y refinamiento sin excesos.",
+    "notes": [
+      "Bergamota",
+      "Cítricos",
+      "Ciprés",
+      "Pimienta negra",
+      "Té negro",
+      "Incienso",
+      "Notas marinas",
+      "Notas amaderadas",
+      "Ámbar",
+      "Ládano",
+      "Musgo",
+      "Almizcle"
+    ]
   },
   {
     "id": 155,
@@ -2461,7 +4418,17 @@ export const products = [
     "notasFondo": "Mantequilla, Azúcar",
     "ml": 75,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Una fragancia **gourmand oriental** para la mujer, diseñada para envolver con una sensación dulce, cremosa y absolutamente adictiva. Cookie Crave de Lattafa evoca el aroma de galletas recién horneadas con cacao, vainilla y un acorde lácteo, en una estela cálida y reconfortante que recuerda al estilo de un perfume de diseñador gourmand.",
+    "notes": [
+      "Galleta",
+      "Cacao",
+      "Vainilla",
+      "Crema batida",
+      "Notas lácteas",
+      "Mantequilla",
+      "Azúcar"
+    ]
   },
   {
     "id": 156,
@@ -2477,7 +4444,18 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Un perfume **para la mujer** de estilo gourmand, cremoso y adictivo, con una estela dulce y envolvente que recuerda a un postre de leche, caramelo y vainilla. Se inspira en el universo de los perfumes nicho gourmand y en el perfil olfativo de fragancias femeninas modernas, elegantes y muy sensuales.",
+    "notes": [
+      "Caramelo",
+      "Leche",
+      "Azúcar",
+      "Miel",
+      "Flores blancas",
+      "Praliné",
+      "Vainilla",
+      "Almizcle"
+    ]
   },
   {
     "id": 157,
@@ -2493,7 +4471,17 @@ export const products = [
     "notasFondo": "bizcocho, almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Unisex, **Lattafa Eclaire Banoffi** es una fragancia gourmand, cremosa y muy adictiva, inspirada en un postre de plátano, crema y dulce de leche. Su perfil dulce y envolvente la hace ideal para quienes buscan un perfume cálido y goloso, con un estilo que recuerda a una creación de nicho de carácter gourmand.",
+    "notes": [
+      "Plátano",
+      "dulce de leche",
+      "crema batida",
+      "vainilla",
+      "praliné",
+      "bizcocho",
+      "almizcle"
+    ]
   },
   {
     "id": 158,
@@ -2509,7 +4497,18 @@ export const products = [
     "notasFondo": "leche, almizcle",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Una fragancia **unisex** para quienes buscan un gourmand sofisticado, cremoso y adictivo, con un perfil oriental-vainilla muy envolvente. Eclaire Pistache de Lattafa se inspira en el universo de los postres de alta pastelería y en el estilo de fragancias gourmand de diseñador, ofreciendo una estela cálida y elegante.",
+    "notes": [
+      "Pistacho",
+      "crema de pistacho",
+      "crema batida",
+      "cacao",
+      "coco",
+      "vainilla",
+      "leche",
+      "almizcle"
+    ]
   },
   {
     "id": 159,
@@ -2525,7 +4524,25 @@ export const products = [
     "notasFondo": "Notas amaderadas, Ámbar, Cedro, Musgo de roble, Vetiver",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **unisex** de perfil ámbar-fresco, elegante y versátil, perfecta para quienes buscan un aroma limpio con presencia moderna. Se inspira en el estilo de los grandes cítricos aromáticos de diseñador, con una vibra sofisticada y muy llevadera para el día a día.",
+    "notes": [
+      "Cítricos",
+      "Lavanda",
+      "Mirto",
+      "Cardamomo",
+      "Naranja",
+      "Pimienta",
+      "Pachulí",
+      "Lirio de los valles",
+      "Hoja de canela",
+      "Ambroxan",
+      "Notas amaderadas",
+      "Ámbar",
+      "Cedro",
+      "Musgo de roble",
+      "Vetiver"
+    ]
   },
   {
     "id": 160,
@@ -2541,7 +4558,20 @@ export const products = [
     "notasFondo": "Ládano, Haba tonka, Madera de oud",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Eternal Oud de Lattafa es una fragancia **unisex** de estilo oriental ambarado y amaderado, intensa, cálida y con un oud elegante que aporta profundidad y sofisticación. Se inspira en el universo de los perfumes árabes de lujo, con un perfil envolvente que recuerda a composiciones de diseñador opulentas y seductoras.",
+    "notes": [
+      "Ciruela",
+      "Pomelo",
+      "Heliotropo",
+      "Orquídea",
+      "Ámbar",
+      "Benjuí",
+      "Vainilla",
+      "Ládano",
+      "Haba tonka",
+      "Madera de oud"
+    ]
   },
   {
     "id": 161,
@@ -2557,7 +4587,21 @@ export const products = [
     "notasFondo": "Amberwood, Cedro, Vetiver",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Un perfume **para el hombre** moderno que busca una firma elegante, fresca y magnética. Su estilo aromático-ámbar con matices especiados y amaderados recuerda al carácter de **Y Eau de Parfum de Yves Saint Laurent**, ofreciendo una presencia sofisticada y versátil para el día o la noche.",
+    "notes": [
+      "Manzana",
+      "Bergamota",
+      "Jengibre",
+      "Lavanda",
+      "Salvia",
+      "Bayas de enebro",
+      "Geranio",
+      "Haba tonka",
+      "Amberwood",
+      "Cedro",
+      "Vetiver"
+    ]
   },
   {
     "id": 162,
@@ -2573,7 +4617,19 @@ export const products = [
     "notasFondo": "Cuero, Cistus, Ámbar",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fakhar Extrait de Lattafa es una fragancia de carácter elegante y envolvente, con un perfil floral amaderado ámbar que aporta sofisticación y presencia. Aunque muchas tiendas lo presentan como femenino o masculino según el mercado, esta versión se comercializa también como **unisex** y suele gustar a quienes buscan un aroma intenso, moderno y con aire de diseñador, a menudo comparado con propuestas de lujo de gran proyección.",
+    "notes": [
+      "Toronja",
+      "Cardamomo",
+      "Pimienta rosa",
+      "Notas solares",
+      "Tuberosa",
+      "Cachemira",
+      "Cuero",
+      "Cistus",
+      "Ámbar"
+    ]
   },
   {
     "id": 163,
@@ -2589,7 +4645,16 @@ export const products = [
     "notasFondo": "Incienso, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fakhar Platin de Lattafa es una fragancia **para el hombre** de perfil aromático fougère, fresca y moderna, con un carácter especiado y ligeramente ahumado. Su estilo elegante y contemporáneo recuerda a un perfume de diseñador de corte limpio y sofisticado, ideal para quien busca presencia y distinción.",
+    "notes": [
+      "Bergamota",
+      "Jengibre",
+      "Guayaba",
+      "Palo santo",
+      "Incienso",
+      "Almizcle"
+    ]
   },
   {
     "id": 164,
@@ -2605,7 +4670,25 @@ export const products = [
     "notasFondo": "Peonía, Vainilla, Almizcle blanco, Ambroxan, Sándalo",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **floral elegante y moderna para la mujer**, con una salida luminosa y jugosa que se funde en un corazón opulento de flores blancas y rosa. Inspirada en el estilo de los perfumes femeninos de diseñador, transmite sofisticación, feminidad y un halo limpio y seductor.",
+    "notes": [
+      "Frutas",
+      "Azucena",
+      "Granada",
+      "Aldehídos",
+      "Tuberosa",
+      "Jazmín",
+      "Gardenia",
+      "Madreselva",
+      "Ylang-ylang",
+      "Rosa",
+      "Peonía",
+      "Vainilla",
+      "Almizcle blanco",
+      "Ambroxan",
+      "Sándalo"
+    ]
   },
   {
     "id": 165,
@@ -2621,7 +4704,21 @@ export const products = [
     "notasFondo": "Castañas, Sándalo, Ámbar",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** de estilo oriental floral, luminosa y seductora, con un aire moderno y elegante. Se inspira en el universo de los perfumes femeninos de diseñador con un toque chispeante y cremoso que la hace ideal para el día y la noche.",
+    "notes": [
+      "Naranja roja",
+      "Mandarina",
+      "Fresa",
+      "Champán",
+      "Rosa",
+      "Jazmín",
+      "Orquídea de vainilla",
+      "Gardenia",
+      "Castañas",
+      "Sándalo",
+      "Ámbar"
+    ]
   },
   {
     "id": 166,
@@ -2637,7 +4734,16 @@ export const products = [
     "notasFondo": "Almizcle, Vainilla",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para el hombre** de carácter amaderado y aromático, con un perfil moderno, limpio y versátil que transmite confianza sin perder elegancia. Se inspira en el estilo de fragancias masculinas contemporáneas con un toque afrutado-especiado, ideal para quien busca una presencia sofisticada y fácil de llevar en el día a día.",
+    "notes": [
+      "Manzana",
+      "Bergamota",
+      "Canela",
+      "Notas amaderadas",
+      "Almizcle",
+      "Vainilla"
+    ]
   },
   {
     "id": 167,
@@ -2653,7 +4759,23 @@ export const products = [
     "notasFondo": "incienso, almizcle, ámbar gris, ámbar",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Fragancia **unisex** de carácter oriental especiado, elegante y envolvente, ideal para quienes buscan un aroma moderno con presencia y sofisticación. Su perfil recuerda al estilo de diseñadores como *Phantom* de Paco Rabanne, con un acabado amaderado-ambarado muy atractivo para uso diario o nocturno.",
+    "notes": [
+      "Nuez moscada",
+      "pimienta rosa",
+      "bergamota",
+      "jengibre",
+      "lavanda",
+      "salvia esclarea",
+      "cedro",
+      "notas amaderadas",
+      "ládano",
+      "incienso",
+      "almizcle",
+      "ámbar gris",
+      "ámbar"
+    ]
   },
   {
     "id": 168,
@@ -2669,7 +4791,17 @@ export const products = [
     "notasFondo": "Sándalo, Caramelo",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Un perfume **unisex** para quienes buscan una firma sofisticada, moderna y envolvente. Su perfil olfativo combina matices frutales, florales y almizclados con un fondo cálido y seductor, inspirado en el estilo elegante de fragancias de diseñador contemporáneas.",
+    "notes": [
+      "Uva",
+      "Piña",
+      "Lima",
+      "Notas florales",
+      "Almizcle",
+      "Sándalo",
+      "Caramelo"
+    ]
   },
   {
     "id": 169,
@@ -2685,7 +4817,23 @@ export const products = [
     "notasFondo": "Incienso, Ámbar, Cedro, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "His Confession de Lattafa es una fragancia **para el hombre** moderna y seductora, de carácter oriental amaderado, con una apertura especiada y luminosa que evoluciona hacia un corazón elegante y resinouso. Su estela cálida, envolvente y sofisticada lo convierte en una opción ideal para quienes buscan un perfume masculino con inspiración en el lujo contemporáneo.",
+    "notes": [
+      "Canela",
+      "Lavanda",
+      "Mandarina",
+      "Iris",
+      "Benjuí",
+      "Ciprés",
+      "Mahonial",
+      "Vainilla",
+      "Haba tonka",
+      "Incienso",
+      "Ámbar",
+      "Cedro",
+      "Pachulí"
+    ]
   },
   {
     "id": 170,
@@ -2701,7 +4849,17 @@ export const products = [
     "notasFondo": "Vainilla, Oud",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Unisex, este perfume destaca por su carácter ámbar-dulce y gourmand, con un aire intenso, elegante y seductor. Su estilo oriental moderno evoca una composición de lujo con matices cálidos y envolventes, a menudo asociada a un perfil inspirado en creaciones de diseñador de corte opulento.",
+    "notes": [
+      "Azafrán",
+      "Cuero",
+      "Ámbar",
+      "Caramelo",
+      "Haba tonka",
+      "Vainilla",
+      "Oud"
+    ]
   },
   {
     "id": 171,
@@ -2717,7 +4875,18 @@ export const products = [
     "notasFondo": "Pachulí, Vainilla",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **unisex** de carácter oriental y moderno, luminosa y adictiva, con un inicio cítrico fresco que evoluciona hacia un corazón afrutado-especiado muy elegante. Se inspira en el estilo de **fragrancias tipo diseñador gourmand-aromáticas**, con un aire que puede recordar a propuestas masculinas sofisticadas por su fondo amaderado y vainillado.",
+    "notes": [
+      "Bergamota",
+      "Limón",
+      "Pimienta negra",
+      "Piña",
+      "Ámbar",
+      "Cedro",
+      "Pachulí",
+      "Vainilla"
+    ]
   },
   {
     "id": 172,
@@ -2733,7 +4902,22 @@ export const products = [
     "notasFondo": "Vainilla, Benjuí, Ámbar, Madera de Akigala",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Lattafa Khamrah es un perfume unisex de perfil oriental especiado, cálido y envolvente, con un carácter dulce y sofisticado que destaca por su aire opulento. Su estela recuerda a fragancias de diseñador de estilo gourmand, con una vibra que evoca a Angel's Share de Kilian, pero con una lectura más árabe y avainillada.",
+    "notes": [
+      "Bergamota",
+      "Nuez moscada",
+      "Canela",
+      "Dátiles",
+      "Praliné",
+      "Tuberosa",
+      "Mirra",
+      "Haba tonka tostada",
+      "Vainilla",
+      "Benjuí",
+      "Ámbar",
+      "Madera de Akigala"
+    ]
   },
   {
     "id": 173,
@@ -2749,7 +4933,22 @@ export const products = [
     "notasFondo": "Praliné, Ámbar, Haba tonka, Benjuí",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **unisex** de carácter oriental, intensa y seductora, con un perfil ahumado, especiado y dulcemente adictivo. Inspirada en la tradición del *dukhan* y con una vibra elegante de perfumería de nicho, recuerda al universo olfativo de los grandes ámbar-tabaco de diseñador, pero con una firma árabe más envolvente.",
+    "notes": [
+      "Especias",
+      "Pimiento morrón",
+      "Mandarina",
+      "Incienso",
+      "Ládano",
+      "Flor de azahar del naranjo",
+      "Pachulí",
+      "Tabaco",
+      "Praliné",
+      "Ámbar",
+      "Haba tonka",
+      "Benjuí"
+    ]
   },
   {
     "id": 174,
@@ -2765,7 +4964,21 @@ export const products = [
     "notasFondo": "Haba tonka, Benjuí, Almizcle",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Un perfume **unisex** para quienes buscan una estela opulenta, cálida y envolvente, con un carácter gourmand oriental de gran presencia. Khamrah Qahwa se inspira en la riqueza de la perfumería árabe y ofrece un perfil adictivo con aire sofisticado, perfecto para amantes de fragancias intensas y elegantes.",
+    "notes": [
+      "Canela",
+      "Cardamomo",
+      "Jengibre",
+      "Praliné",
+      "Frutas confitadas",
+      "Flores blancas",
+      "Café",
+      "Vainilla",
+      "Haba tonka",
+      "Benjuí",
+      "Almizcle"
+    ]
   },
   {
     "id": 175,
@@ -2781,7 +4994,22 @@ export const products = [
     "notasFondo": "Almizcle, Sándalo, Ámbar, Caramelo",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Un perfume **unisex** de carácter opulento y envolvente, con un perfil ámbar-floral que combina dulzor, especias y un fondo cálido muy elegante. Su estilo sensual y refinado lo convierte en una propuesta ideal para quienes buscan una fragancia de presencia, con un aire oriental que recuerda a perfumes nicho de corte lujoso, sin una inspiración de diseñador claramente confirmada.",
+    "notes": [
+      "Notas afrutadas",
+      "Cítricos",
+      "Canela",
+      "Jazmín",
+      "Rosa",
+      "Gardenia",
+      "Orquídea",
+      "Miel",
+      "Almizcle",
+      "Sándalo",
+      "Ámbar",
+      "Caramelo"
+    ]
   },
   {
     "id": 176,
@@ -2797,7 +5025,18 @@ export const products = [
     "notasFondo": "Caramelo, Pachulí",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Unisex y sofisticado, **Mashrabya** de Lattafa envuelve con un carácter oriental vainilla, dulce y especiado, ideal para quienes buscan una estela moderna con personalidad. Su perfil se inspira en la vibra intensa de fragancias tipo *Smoking Hot* de By Kilian, aportando un aire cálido, adictivo y lujoso.",
+    "notes": [
+      "Acorde de manzana y shisha",
+      "Pimienta rosa",
+      "Canela",
+      "Dátiles",
+      "Flor del tabaco",
+      "Vainilla",
+      "Caramelo",
+      "Pachulí"
+    ]
   },
   {
     "id": 177,
@@ -2813,7 +5052,17 @@ export const products = [
     "notasFondo": "Pachulí, Ámbar",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Mayar Cherry Intense de Lattafa es una fragancia **unisex** de vainilla oriental, jugosa y envolvente, ideal para quienes buscan un aroma dulce con un toque sofisticado. Su carácter gourmand y elegante recuerda al estilo de perfumes nicho frutales-ambarados, con una vibra que puede gustar a quienes disfrutan de composiciones intensas y modernas.",
+    "notes": [
+      "Fresa",
+      "Bergamota",
+      "Mermelada de cereza",
+      "Cacao",
+      "Vainilla",
+      "Pachulí",
+      "Ámbar"
+    ]
   },
   {
     "id": 178,
@@ -2829,7 +5078,21 @@ export const products = [
     "notasFondo": "Sándalo, Almizcle, Vainilla",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** fresca, luminosa y elegante, con un perfil **frutal, floral y acuático** ideal para climas cálidos. Su carácter recuerda al estilo de **Acqua di Gioia**, con un aire moderno, limpio y delicadamente sensual.",
+    "notes": [
+      "Higo",
+      "Melón",
+      "Mandarina verde",
+      "Agua de coco",
+      "Flor de loto",
+      "Nenúfar",
+      "Jazmín",
+      "Ambroxan",
+      "Sándalo",
+      "Almizcle",
+      "Vainilla"
+    ]
   },
   {
     "id": 179,
@@ -2845,7 +5108,16 @@ export const products = [
     "notasFondo": "Ámbar, Cistus",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **unisex** de carácter sofisticado, con un perfil amaderado-cuero y un aire elegante que combina frescura especiada con matices florales. Lattafa Musamam se presenta como una propuesta refinada y moderna, ideal para quienes buscan una estela lujosa con inspiración contemporánea y un toque oriental. [1][3]",
+    "notes": [
+      "Azafrán",
+      "Lavanda",
+      "Mandarina italiana",
+      "Cedro de Virginia",
+      "Ámbar",
+      "Cistus"
+    ]
   },
   {
     "id": 180,
@@ -2861,7 +5133,20 @@ export const products = [
     "notasFondo": "almizcle, cedro, madera de oud",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Un perfume **unisex** de carácter fresco, dulce y ligeramente especiado, ideal para el uso diario y con una estela agradable y versátil. Najdia de Lattafa se inspira en el estilo de los perfumes deportivos y aromáticos de diseñador, con un aire limpio, juvenil y muy fácil de llevar.",
+    "notes": [
+      "Bergamota",
+      "limón",
+      "manzana",
+      "romero",
+      "lavanda",
+      "cardamomo",
+      "ámbar",
+      "almizcle",
+      "cedro",
+      "madera de oud"
+    ]
   },
   {
     "id": 181,
@@ -2877,7 +5162,21 @@ export const products = [
     "notasFondo": "Sándalo, Haba tonka, Almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **para el hombre** fresca, vibrante y sofisticada, ideal para quienes buscan un aroma versátil con carácter moderno. Lattafa Najdia Intense combina una salida frutal y especiada con un corazón limpio y acuático, y se apoya en un fondo cálido y amaderado que le da profundidad; algunas descripciones lo sitúan en la línea de perfumes deportivos frescos de diseñador.",
+    "notes": [
+      "Piña",
+      "Menta",
+      "Jengibre",
+      "Manzana",
+      "Notas marinas",
+      "Lavanda",
+      "Geranio",
+      "Pachulí",
+      "Sándalo",
+      "Haba tonka",
+      "Almizcle"
+    ]
   },
   {
     "id": 182,
@@ -2893,7 +5192,19 @@ export const products = [
     "notasFondo": "Haba tonka, Ámbar, Almizcle",
     "ml": 100,
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "description": "Nebras de Lattafa es un perfume **unisex** de perfil gourmand, cálido y adictivo, con una dulzura envolvente que recuerda a una nube de vainilla y cacao. Se inspira en el estilo de fragancias golosas tipo *Eilish*, ideal para quienes buscan una estela moderna, sensual y sofisticada.",
+    "notes": [
+      "Bayas rojas",
+      "Mandarina",
+      "Vainilla",
+      "Cacao",
+      "Rosa",
+      "Azúcar",
+      "Haba tonka",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 183,
@@ -2909,7 +5220,17 @@ export const products = [
     "notasFondo": "Praliné, Almizcle",
     "ml": 100,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Fragancia **unisex** de carácter floral-frutal gourmand, sofisticada y envolvente, con una dulzura adictiva que deja una estela cálida y seductora. Petra de Lattafa se presenta como una propuesta moderna con un aire de perfume nicho, inspirada en un estilo elegante y sensual de la perfumería de diseñador.",
+    "notes": [
+      "Ron",
+      "Ciruela",
+      "Coco",
+      "Nardos",
+      "Vainilla",
+      "Praliné",
+      "Almizcle"
+    ]
   },
   {
     "id": 184,
@@ -2925,7 +5246,17 @@ export const products = [
     "notasFondo": "cedro, madera de oud",
     "ml": 90,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Perfume **para el hombre** de carácter moderno, intenso y sofisticado, con un perfil aromático-amaderado que destaca por su apertura frutal y su fondo cálido y elegante. Se inspira en el estilo de fragancias orientales masculinas con un aire cercano a Aventus de Creed, especialmente por su protagonismo de piña y su acabado ahumado y amaderado.",
+    "notes": [
+      "Piña",
+      "azafrán",
+      "jazmín",
+      "abeto balsámico",
+      "ámbar",
+      "cedro",
+      "madera de oud"
+    ]
   },
   {
     "id": 185,
@@ -2941,7 +5272,19 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle, Sándalo",
     "ml": 90,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **unisex** vibrante y exótica, con un perfil tropical cremoso y dulce que resulta moderno y muy versátil. Lattafa Qaed Al Fursan Unlimited se inspira en el placer de un oasis tropical, ideal para quienes buscan una estela luminosa, suave y envolvente con aire de perfumería de diseñador.",
+    "notes": [
+      "Coco",
+      "Cítricos",
+      "Piña",
+      "Ylang-ylang",
+      "Jazmín",
+      "Frangipani",
+      "Vainilla",
+      "Almizcle",
+      "Sándalo"
+    ]
   },
   {
     "id": 186,
@@ -2957,7 +5300,20 @@ export const products = [
     "notasFondo": "Notas amaderadas, Ámbar, Almizcle",
     "ml": 90,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia **unisex** de carácter intenso, especiado y amaderado, con un aire moderno y seductor que combina calidez, dulzor y un fondo resinoso elegante. Se percibe como una propuesta oriental sofisticada, con un perfil que algunos distribuidores comparan con el estilo de ciertos perfumes de diseñador por su mezcla de especias, caramelo y maderas.",
+    "notes": [
+      "Canela",
+      "Mandarina",
+      "Nuez moscada",
+      "Cardamomo",
+      "Lavanda",
+      "Incienso",
+      "Caramelo",
+      "Notas amaderadas",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 187,
@@ -2973,7 +5329,17 @@ export const products = [
     "notasFondo": "Pachulí, Vetiver",
     "ml": 100,
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "description": "Una fragancia **para el hombre** de carácter **amaderado aromático** con un perfil elegante, fresco y refinado. Inspirada en el estilo de **Prada L’Homme**, combina una presencia limpia y sofisticada con un fondo cálido y masculino ideal para el día a día o la oficina.",
+    "notes": [
+      "Madera de oud",
+      "Cedro",
+      "Lavanda",
+      "Salvia",
+      "Romero",
+      "Pachulí",
+      "Vetiver"
+    ]
   },
   {
     "id": 188,
@@ -2989,7 +5355,21 @@ export const products = [
     "notasFondo": "Praliné, Vainilla, Almizcle",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Sakeena de Lattafa es una fragancia **para la mujer** de perfil floral, frutal y gourmand, luminosa y envolvente, con un toque moderno y seductor. Su faceta golosa y elegante la hace ideal para quienes buscan una estela femenina inspirada en la sofisticación de perfumes de diseñador con acorde dulce y refinado.",
+    "notes": [
+      "Maracuyá",
+      "Mandarina",
+      "Acorde ozónico",
+      "Frambuesa",
+      "Rosa",
+      "Flor de naranjo",
+      "Sal marina",
+      "Toffee",
+      "Praliné",
+      "Vainilla",
+      "Almizcle"
+    ]
   },
   {
     "id": 189,
@@ -3005,7 +5385,19 @@ export const products = [
     "notasFondo": "Sándalo, Cachemira, Almizcle",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Lattafa Sehr es una fragancia **unisex** de carácter oriental-floral, sofisticada y envolvente, pensada para quienes buscan un aroma moderno con profundidad sensual. Su perfil olfativo se inspira en la elegancia de los perfumes nicho de lujo, con un aire refinado y magnético que la hace ideal para destacar con distinción.",
+    "notes": [
+      "Almendra amarga",
+      "Frambuesa",
+      "Rosa",
+      "Peonía",
+      "Jazmín",
+      "Vainilla",
+      "Sándalo",
+      "Cachemira",
+      "Almizcle"
+    ]
   },
   {
     "id": 190,
@@ -3021,7 +5413,17 @@ export const products = [
     "notasFondo": "haba tonka, pachulí",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Shaheen Gold de Lattafa es una fragancia **unisex** sofisticada y luminosa, con un inicio fresco y afrutado que evoluciona hacia un corazón elegante y envolvente. Su estilo oriental moderno combina una vibra cremosa y cálida, inspirada en la perfumería de diseñador de lujo para quienes buscan presencia y distinción.",
+    "notes": [
+      "Piña",
+      "pomelo",
+      "higo",
+      "lavanda",
+      "vainilla",
+      "haba tonka",
+      "pachulí"
+    ]
   },
   {
     "id": 191,
@@ -3037,7 +5439,19 @@ export const products = [
     "notasFondo": "Vainilla, Ámbar, Ambroxan",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Unisex con un carácter oriental ámbar especiado, sofisticado y envolvente, ideal para quien busca una estela dulce, cálida y con presencia. Se inspira en el estilo de fragancias opulentas de nicho árabe, con un perfil que puede recordar a un gourmand elegante de sello moderno.",
+    "notes": [
+      "Rosa",
+      "Canela",
+      "Azafrán",
+      "Caramelo",
+      "Pachulí",
+      "Notas amaderadas",
+      "Vainilla",
+      "Ámbar",
+      "Ambroxan"
+    ]
   },
   {
     "id": 192,
@@ -3053,7 +5467,20 @@ export const products = [
     "notasFondo": "Cuero, Vetiver, Pachulí",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Un perfume **unisex** de carácter moderno y elegante, con un inicio especiado y cítrico que evoluciona hacia un corazón aromático refinado. Su estela combina matices de lujo contemporáneo con un aire oscuro y sofisticado, y se inspira en el estilo de fragancias frescas-amaderadas de diseñador.",
+    "notes": [
+      "Bergamota",
+      "Jengibre",
+      "Enebro de Virginia",
+      "Nuez moscada",
+      "Flor de azahar del naranjo",
+      "Lavanda",
+      "Ambroxan",
+      "Cuero",
+      "Vetiver",
+      "Pachulí"
+    ]
   },
   {
     "id": 193,
@@ -3069,7 +5496,23 @@ export const products = [
     "notasFondo": "Benjuí, Lábdano, Almizcle, Cuero",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Lattafa Teriaq es un perfume **unisex** con un perfil goloso, especiado y sensual, ideal para quienes buscan una fragancia con carácter y presencia. Su estilo olfativo combina un dulzor adictivo con matices cálidos y envolventes, y se inspira en el universo de los perfumes nicho gourmand modernos, con una personalidad propia y muy sofisticada.",
+    "notes": [
+      "Caramelo",
+      "Albaricoque",
+      "Pimienta rosa",
+      "Almendra amarga",
+      "Ruibarbo",
+      "Flores blancas",
+      "Rosa",
+      "Miel",
+      "Vainilla",
+      "Benjuí",
+      "Lábdano",
+      "Almizcle",
+      "Cuero"
+    ]
   },
   {
     "id": 194,
@@ -3085,7 +5528,17 @@ export const products = [
     "notasFondo": "Haba tonka, Benjuí",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Teriaq Intense de Lattafa es una fragancia **unisex** de estilo oriental especiado, intensa y envolvente, pensada para quienes buscan una estela cálida, moderna y sofisticada. Su carácter opulento y sensual recuerda a la elegancia de un perfume de nicho, con una inspiración claramente contemporánea en perfumes de diseñador de perfil ámbar-especiado.",
+    "notes": [
+      "Azafrán",
+      "Bergamota",
+      "Licor de ciruela",
+      "Canela",
+      "Ámbar",
+      "Haba tonka",
+      "Benjuí"
+    ]
   },
   {
     "id": 195,
@@ -3101,7 +5554,19 @@ export const products = [
     "notasFondo": "Benjuí, Haba tonka, Ládano",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Lattafa The Kingdom For Men es un perfume **para el hombre** que combina frescura aromática y un fondo cálido gourmand con un toque elegante y moderno. Su estela recuerda el estilo de fragancias masculinas sofisticadas, con una inspiración cercana al universo de Jean Paul Gaultier Le Male Elixir por su mezcla de lavanda, menta, vainilla y tabaco.",
+    "notes": [
+      "Salvia",
+      "Lavanda",
+      "Menta",
+      "Tabaco",
+      "Vainilla",
+      "Flor de azahar",
+      "Benjuí",
+      "Haba tonka",
+      "Ládano"
+    ]
   },
   {
     "id": 196,
@@ -3117,7 +5582,20 @@ export const products = [
     "notasFondo": "Vainilla, Sándalo, Ámbar",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Un perfume **para la mujer** de carácter dulce y sofisticado, con un perfil floral-frutal gourmand que envuelve la piel con elegancia y calidez. **Lattafa The Kingdom For Women** se inspira en un estilo moderno y lujoso, con un aire afrutado y cremoso que recuerda a fragancias femeninas de diseño contemporáneo.",
+    "notes": [
+      "Pera",
+      "Grosellero negro",
+      "Peonía",
+      "Praliné",
+      "Haba tonka",
+      "Jazmín",
+      "Almizcle",
+      "Vainilla",
+      "Sándalo",
+      "Ámbar"
+    ]
   },
   {
     "id": 197,
@@ -3133,7 +5611,16 @@ export const products = [
     "notasFondo": "Ámbar, Vetiver",
     "ml": 80,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Unisex de carácter floral-afrutado con un aire elegante y moderno, ideal para quien busca una fragancia luminosa pero con profundidad. Combina una salida fresca de bergamota y lichi con un corazón romántico de rosa e incienso, y un fondo cálido de ámbar y vetiver; se percibe como una creación contemporánea, sin una inspiración de diseñador claramente establecida en las fuentes consultadas.",
+    "notes": [
+      "Bergamota",
+      "Lichi",
+      "Rosa",
+      "Incienso",
+      "Ámbar",
+      "Vetiver"
+    ]
   },
   {
     "id": 198,
@@ -3149,7 +5636,18 @@ export const products = [
     "notasFondo": "Ámbar, Oud",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **unisex** sofisticada, de estilo oriental amaderado, que combina una estela moderna con un aire elegante y contemplativo. **Vintage Radio** de Lattafa Pride se inspira en la icónica **Paragon de Initio**, ofreciendo un carácter cálido, refinado y distintivo para quienes buscan una firma olfativa de lujo.",
+    "notes": [
+      "Lavanda",
+      "Salvia esclarea",
+      "Bergamota",
+      "Ciruela",
+      "Palo de rosa",
+      "Sándalo",
+      "Ámbar",
+      "Oud"
+    ]
   },
   {
     "id": 199,
@@ -3165,7 +5663,16 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Winners Trophy Gold de Lattafa es una fragancia **unisex** de carácter elegante y sofisticado, pensada para quienes buscan un aura moderna y refinada. Su estilo floral amaderado con toques almizclados y dulces evoca el lujo contemporáneo, con una personalidad versátil que recuerda a creaciones de diseñador de corte floral oriental.[1][2][4]",
+    "notes": [
+      "Pimienta rosa",
+      "Jazmín",
+      "Rosa",
+      "Pachulí",
+      "Vainilla",
+      "Almizcle"
+    ]
   },
   {
     "id": 200,
@@ -3181,7 +5688,18 @@ export const products = [
     "notasFondo": "Sándalo, Almizcle",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Un perfume **para la mujer** dulce, chispeante y juvenil, ideal para quienes buscan una estela divertida y gourmand con un toque sofisticado. **Yara Candy** de Lattafa se inspira en el estilo de los perfumes frutales azucarados de diseñador, con un carácter moderno y adictivo que destaca por su equilibrio entre frescura y cremosidad.[1][2][5]",
+    "notes": [
+      "Grosellas negras",
+      "Mandarina verde",
+      "Caramelo de fresa",
+      "Gardenia",
+      "Vainilla",
+      "Ámbar",
+      "Sándalo",
+      "Almizcle"
+    ]
   },
   {
     "id": 201,
@@ -3197,7 +5715,18 @@ export const products = [
     "notasFondo": "ámbar, almizcle",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **para la mujer** de estilo oriental-vainilla, intensa, dulce y seductora, pensada para dejar una estela cremosa y adictiva. Yara Elixir se percibe como un perfume gourmand femenino con un toque afrutado y floral, inspirado en el universo de los perfumes dulces de diseñador, aunque con identidad propia.[1][2]",
+    "notes": [
+      "Fresa",
+      "grosellas negras",
+      "jazmín",
+      "flor de azahar del naranjo",
+      "caramelo",
+      "vainilla",
+      "ámbar",
+      "almizcle"
+    ]
   },
   {
     "id": 202,
@@ -3213,7 +5742,18 @@ export const products = [
     "notasFondo": "Almizcle, Sándalo",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** de estilo ámbar vainilla, cremosa y envolvente, con un aire dulce y sofisticado que resulta muy fácil de llevar en el día a día. Yara de Lattafa se inspira en el gusto por los perfumes gourmand modernos, con un perfil sensual y femenino que recuerda a las creaciones orientales más suaves.[3][1]",
+    "notes": [
+      "Orquídea",
+      "Heliotropo",
+      "Mandarina",
+      "Acuerdo goloso",
+      "Frutas tropicales",
+      "Vainilla",
+      "Almizcle",
+      "Sándalo"
+    ]
   },
   {
     "id": 203,
@@ -3229,7 +5769,16 @@ export const products = [
     "notasFondo": "Pachulí, Sándalo",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Una fragancia **para la mujer** de estilo ámbar floral oriental, sofisticada y envolvente, con un perfil dulce y elegante. Yara Moi de Lattafa destaca por su carácter sensual y cálido, inspirado en la estética de un perfume femenino de diseño contemporáneo, con una estela cremosa y seductora.",
+    "notes": [
+      "Jazmín",
+      "Melocotón",
+      "Ámbar",
+      "Caramelo",
+      "Pachulí",
+      "Sándalo"
+    ]
   },
   {
     "id": 204,
@@ -3245,7 +5794,19 @@ export const products = [
     "notasFondo": "Vainilla, Cachemira, Almizcle",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** moderna que envuelve con un aire tropical, dulce y sofisticado. Yara Tous de Lattafa destaca por su carácter jugoso y cremoso, con una estela femenina y luminosa que evoca el estilo de un perfume nicho veraniego, sin inspirarse de forma declarada en un diseñador concreto.",
+    "notes": [
+      "Mango",
+      "Coco",
+      "Maracuyá",
+      "Jazmín",
+      "Heliotropo",
+      "Flor de azahar del naranjo",
+      "Vainilla",
+      "Cachemira",
+      "Almizcle"
+    ]
   },
   {
     "id": 205,
@@ -3261,7 +5822,22 @@ export const products = [
     "notasFondo": "Pachulí, Ámbar, Vainilla, Miel",
     "ml": 100,
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "description": "Una fragancia **para la mujer** de estilo floral-frutal con un fondo cálido y envolvente, pensada para transmitir feminidad luminosa y sofisticación. AB Spirit Millionaire Women de Lomani se inspira en el universo elegante y adictivo de los perfumes florales modernos, con un aire cercano a propuestas de diseñador de carácter dulce y sensual.",
+    "notes": [
+      "Lima",
+      "Naranja",
+      "Flor de azahar del naranjo",
+      "Manzana",
+      "Jazmín egipcio",
+      "Frambuesa",
+      "Rosa",
+      "Almizcle",
+      "Pachulí",
+      "Ámbar",
+      "Vainilla",
+      "Miel"
+    ]
   },
   {
     "id": 206,
@@ -3277,7 +5853,18 @@ export const products = [
     "notasFondo": "Vainilla, Pachulí",
     "ml": 100,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Infini Elixir de Maison Alhambra es una fragancia **unisex** de carácter oriental amaderado, intensa, cálida y envolvente. Su perfil olfativo se inspira en **Side Effect de Initio Parfums Privés**, aportando un aire sofisticado, especiado y adictivo, ideal para quienes buscan una estela elegante y memorable.",
+    "notes": [
+      "Canela",
+      "Nuez moscada",
+      "Ron",
+      "Tabaco",
+      "Azafrán",
+      "Sándalo",
+      "Vainilla",
+      "Pachulí"
+    ]
   },
   {
     "id": 207,
@@ -3293,7 +5880,17 @@ export const products = [
     "notasFondo": "Ámbar, Cedro",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** de estilo **floral blanco y frutal**, elegante y sofisticado, con una estela cálida y cremosa. Se inspira en el carácter clásico y envolvente de perfumes florales de diseñador, con un aire afrutado y ambarado muy refinado.",
+    "notes": [
+      "Chabacano",
+      "Rosa",
+      "Jazmín",
+      "Nardo",
+      "Narciso",
+      "Ámbar",
+      "Cedro"
+    ]
   },
   {
     "id": 208,
@@ -3309,7 +5906,19 @@ export const products = [
     "notasFondo": "Vainilla, Ámbar, Almizcle",
     "ml": 75,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia **oriental floral** para la mujer, sofisticada y con carácter, que combina un aire sensual con un fondo cálido y elegante. Montblanc Femme Individuelle, creada por Michel Almairac, se inspira en el estilo de un perfume de diseñador femenino con un toque gourmand y ambarado muy refinado.",
+    "notes": [
+      "Pimienta rosa",
+      "Grosella roja",
+      "Hoja de laurel",
+      "Rosa",
+      "Flor de loto",
+      "Pachulí",
+      "Vainilla",
+      "Ámbar",
+      "Almizcle"
+    ]
   },
   {
     "id": 209,
@@ -3325,7 +5934,19 @@ export const products = [
     "notasFondo": "Palo de rosa, Frambuesa, Almizcle",
     "ml": 75,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Lady Emblem de Montblanc es una fragancia sofisticada para la mujer, de estilo chipre frutal, elegante y sensual, con un perfil luminoso y refinado. Se inspira en la feminidad clásica y en la elegancia de un perfume de diseñador contemporáneo, ideal para quien busca una estela distinguida y envolvente.",
+    "notes": [
+      "Rosa",
+      "Mermelada de rosa",
+      "Grosella roja",
+      "Durazno",
+      "Sándalo",
+      "Pachulí",
+      "Palo de rosa",
+      "Frambuesa",
+      "Almizcle"
+    ]
   },
   {
     "id": 210,
@@ -3341,7 +5962,20 @@ export const products = [
     "notasFondo": "Vainilla, Pachulí, Sándalo",
     "ml": 75,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Lady Emblem Elixir de Montblanc es un perfume **para la mujer** elegante, seductor y muy sofisticado, con un perfil chipre floral de carácter luminoso y refinado. Se inspira en la feminidad clásica de un floral opulento, con un aire de lujo contemporáneo y una estela que recuerda a la perfumería de diseñador más distinguida.",
+    "notes": [
+      "Lichi",
+      "Pimienta",
+      "Mandarina",
+      "Rosa de Damasco",
+      "Iris",
+      "Jazmín",
+      "Flor de azahar del naranjo",
+      "Vainilla",
+      "Pachulí",
+      "Sándalo"
+    ]
   },
   {
     "id": 211,
@@ -3357,7 +5991,19 @@ export const products = [
     "notasFondo": "Sándalo, Almizcle, Madera de ámbar",
     "ml": 100,
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "description": "Toy 2 de Moschino es una fragancia **unisex** luminosa y sofisticada, de estilo floral amaderado almizclado, con una salida fresca y afrutada que evoluciona hacia un corazón limpio y elegante. Su carácter juguetón y moderno la convierte en una opción versátil, con una inspiración claramente contemporánea dentro del universo de diseñador de Moschino.",
+    "notes": [
+      "Magnolia",
+      "Manzana Granny Smith",
+      "Mandarina",
+      "Grosella blanca",
+      "Peonía",
+      "Pétalos de jazmín",
+      "Sándalo",
+      "Almizcle",
+      "Madera de ámbar"
+    ]
   },
   {
     "id": 212,
@@ -3373,7 +6019,22 @@ export const products = [
     "notasFondo": "Jengibre, Cedro, Almizcle, Ambroxán",
     "ml": 100,
     "precioUSD": 75,
-    "precioBS": 48750
+    "precioBS": 48750,
+    "description": "Una fragancia **para la mujer** alegre, juguetona y deliciosamente adictiva, con un perfil floral-frutal de aire dulce y chispeante. Se inspira en el universo creativo y pop de **Moschino Toy 2**, llevando el concepto a un acorde de chicle sofisticado con un toque moderno y luminoso.",
+    "notes": [
+      "Frutas confitadas",
+      "Limón",
+      "Naranja amarga",
+      "Chicle",
+      "Rosa de Bulgaria",
+      "Arándano",
+      "Melocotón",
+      "Canela",
+      "Jengibre",
+      "Cedro",
+      "Almizcle",
+      "Ambroxán"
+    ]
   },
   {
     "id": 213,
@@ -3389,7 +6050,19 @@ export const products = [
     "notasFondo": "Vetiver, Ciprés, Almizcle",
     "ml": 100,
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "description": "Una fragancia **unisex** de estilo luminoso, fresco y elegante, perfecta para quienes buscan un aroma vibrante con personalidad moderna. Moschino Toy 2 Pearl se inspira en el universo cítrico, floral y almizclado, con un aire que algunos distribuidores describen como versátil y con guiños a un estilo de diseñador contemporáneo, cercano al espíritu de fragancias tipo Light Blue.[2][3][4][5]",
+    "notes": [
+      "Limón",
+      "Orégano",
+      "Sorbete de jazmín",
+      "Arena",
+      "Fresia",
+      "Jazmín",
+      "Vetiver",
+      "Ciprés",
+      "Almizcle"
+    ]
   },
   {
     "id": 214,
@@ -3405,7 +6078,16 @@ export const products = [
     "notasFondo": "Cítricos, Bergamota",
     "ml": 100,
     "precioUSD": 125,
-    "precioBS": 81250
+    "precioBS": 81250,
+    "description": "Unisex de carácter lujoso y envolvente, con un perfil ambarado, afrutado y cremoso que destaca por su sensualidad elegante. Inspirado en la idea de un oriental moderno, recuerda al estilo de fragancias de diseñador con ámbar, vainilla y un toque frutal luminoso.",
+    "notes": [
+      "Ámbar",
+      "Vainilla",
+      "Pera",
+      "Manzana",
+      "Cítricos",
+      "Bergamota"
+    ]
   },
   {
     "id": 215,
@@ -3421,7 +6103,24 @@ export const products = [
     "notasFondo": "Sándalo, Madera de gaiac, Pachulí, Almizcle",
     "ml": 80,
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "description": "Unisex, **Royal Bleu Orientica Premium** es una fragancia elegante y moderna, de perfil **amaderado especiado** con salida fresca y un fondo cremoso y sensual. Se inspira claramente en el estilo de **Parfums de Marly Layton**, ofreciendo una estela refinada y versátil para quien busca distinción con un toque oriental de lujo.",
+    "notes": [
+      "Manzana verde",
+      "Lavanda",
+      "Mandarina",
+      "Bergamota",
+      "Pimienta",
+      "Cardamomo",
+      "Violeta",
+      "Geranio",
+      "Jazmín",
+      "Vainilla",
+      "Sándalo",
+      "Madera de gaiac",
+      "Pachulí",
+      "Almizcle"
+    ]
   },
   {
     "id": 216,
@@ -3437,7 +6136,19 @@ export const products = [
     "notasFondo": "Madera de cachemira, Trufa, Vainilla",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia luminosa y femenina para la mujer, de estilo floral frutal gourmand con un fondo cálido y elegante. Paris Hilton Gold Rush se inspira en la estética de los grandes perfumes de diseñador con un toque moderno, combinando dulzura, sensualidad y un acabado sofisticado ideal para el día o la noche.",
+    "notes": [
+      "Bergamota",
+      "Limón",
+      "Nectarina",
+      "Orquídea",
+      "Pétalos de rosa",
+      "Violeta",
+      "Madera de cachemira",
+      "Trufa",
+      "Vainilla"
+    ]
   },
   {
     "id": 217,
@@ -3453,7 +6164,19 @@ export const products = [
     "notasFondo": "Almizcle, Vainilla de Tahití, Notas amaderadas",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Just Me Paris Hilton es una fragancia **para la mujer** de estilo floral afrutado, fresca y femenina, con un aire moderno y luminoso. Su carácter delicado y elegante recuerda a una propuesta de diseñador juvenil y sofisticada, pensada para destacar con suavidad y encanto.",
+    "notes": [
+      "Iris",
+      "Fresia",
+      "Rosa blanca",
+      "Ylang-ylang",
+      "Lirio de los valles",
+      "Sándalo",
+      "Almizcle",
+      "Vainilla de Tahití",
+      "Notas amaderadas"
+    ]
   },
   {
     "id": 218,
@@ -3469,7 +6192,17 @@ export const products = [
     "notasFondo": "Roble, Sándalo",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia floral frutal para la mujer, luminosa y seductora, con un aire juvenil y glamuroso que refleja el estilo icónico de Paris Hilton. Su carácter recuerda a un perfume de diseñador fresco y femenino, ideal para quienes buscan elegancia moderna con un toque divertido.",
+    "notes": [
+      "Durazno",
+      "Manzana",
+      "Fresia",
+      "Jazmín",
+      "Ylang-ylang",
+      "Roble",
+      "Sándalo"
+    ]
   },
   {
     "id": 219,
@@ -3485,7 +6218,21 @@ export const products = [
     "notasFondo": "Ámbar, Almizcle blanco, Cedro",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Una fragancia para la mujer, luminosa y sofisticada, con un carácter floral-frutal que aporta frescura, feminidad y un acabado limpio y elegante. Pink Rush de Paris Hilton evoca el estilo de un perfume moderno de diseñador, con un aire romántico y delicado ideal para el día a día.",
+    "notes": [
+      "Bergamota",
+      "Lycium",
+      "Membrillo",
+      "Pera nashi",
+      "Hibisco",
+      "Osmanto",
+      "Peonía rosa",
+      "Rosa de mayo",
+      "Ámbar",
+      "Almizcle blanco",
+      "Cedro"
+    ]
   },
   {
     "id": 220,
@@ -3501,7 +6248,19 @@ export const products = [
     "notasFondo": "Almizcle blanco, Ámbar, Cedro",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Rosé Rush de Paris Hilton es un perfume **para la mujer** de estilo floral frutal, pensado para quienes buscan una estela romántica, luminosa y sofisticada. Su aroma se inspira en la feminidad moderna y en el universo de los perfumes de diseñador con un toque dulce y elegante, ideal para el día a día o para ocasiones especiales.",
+    "notes": [
+      "Pétalos de rosa",
+      "Lichi",
+      "Neroli",
+      "Rosa de mayo",
+      "Peonía",
+      "Papaya",
+      "Almizcle blanco",
+      "Ámbar",
+      "Cedro"
+    ]
   },
   {
     "id": 221,
@@ -3517,7 +6276,19 @@ export const products = [
     "notasFondo": "Vainilla, Almizcle, Sándalo",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Ruby Rush de Paris Hilton es un perfume **para la mujer** con un carácter floral frutal, dulce y seductor, ideal para quienes buscan una estela moderna y juvenil. Su estilo gourmand y vibrante recuerda al universo de fragancias femeninas inspiradas en perfumes de diseñador como *Pink Sugar* por su faceta golosa y coqueta, aunque con una firma más afrutada y cremosa.",
+    "notes": [
+      "Cereza",
+      "Hibisco",
+      "Crema batida",
+      "Flor de frambueso",
+      "Dalia",
+      "Nenúfar",
+      "Vainilla",
+      "Almizcle",
+      "Sándalo"
+    ]
   },
   {
     "id": 222,
@@ -3533,7 +6304,24 @@ export const products = [
     "notasFondo": "Ámbar, Vetiver, Sándalo, Almizcle",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia floral fresca para la mujer, luminosa y elegante, con un aire limpio y romántico que la hace muy fácil de llevar a diario. Perry Ellis 360° se inspira en el espíritu de aventura y amor, con un perfil clásico de los 90 que recuerda a los florales frescos de diseñador.",
+    "notes": [
+      "Rosa",
+      "Azucena",
+      "Mandarina",
+      "Osmanto",
+      "Melón",
+      "Lirio de los Valles",
+      "Nenúfar",
+      "Lavanda",
+      "Salvia",
+      "Vainilla",
+      "Ámbar",
+      "Vetiver",
+      "Sándalo",
+      "Almizcle"
+    ]
   },
   {
     "id": 223,
@@ -3549,7 +6337,19 @@ export const products = [
     "notasFondo": "jazmín, ámbar, almizcle",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Un perfume **para la mujer** de estilo floral-frutal, elegante y luminoso, con una salida fresca y un corazón blanco muy refinado. **360° Red Perry Ellis Women** se inspira en la feminidad romántica y sofisticada de un floral de diseñador, con un aire que recuerda a las composiciones clásicas de perfumería americana de principios de los 2000.",
+    "notes": [
+      "Ciclamen",
+      "hojas de naranjo",
+      "ciruela",
+      "flor de azahar del naranjo",
+      "orquídea",
+      "mimosa",
+      "jazmín",
+      "ámbar",
+      "almizcle"
+    ]
   },
   {
     "id": 224,
@@ -3563,7 +6363,18 @@ export const products = [
     "notasSalida": "Bergamota de Italia, Pimienta, Lavanda",
     "notasCorazon": "Notas acuosas, Tierra, Carbón",
     "notasFondo": "Pachulí, Ambroxan",
-    "ml": 100
+    "ml": 100,
+    "description": "Fragancia **para el hombre** de carácter fougère aromático, fresca y moderna, con una estela limpia, mineral y elegante. Luna Rossa Carbon de Prada se inspira en el estilo contemporáneo de un perfume de diseñador con un perfil versátil y sofisticado, ideal para uso diario y para quien busca una masculinidad refinada.",
+    "notes": [
+      "Bergamota de Italia",
+      "Pimienta",
+      "Lavanda",
+      "Notas acuosas",
+      "Tierra",
+      "Carbón",
+      "Pachulí",
+      "Ambroxan"
+    ]
   },
   {
     "id": 225,
@@ -3579,7 +6390,13 @@ export const products = [
     "notasFondo": "notas florales",
     "ml": 100,
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "description": "Una fragancia **para la mujer** vibrante y moderna, de estilo floral frutal con un aire joven, alegre y seductor. Inspirada en el universo deportivo y elegante de Ralph Lauren, destaca por un carácter dulce y sofisticado con un toque muy femenino.",
+    "notes": [
+      "Arándano rojo",
+      "haba tonka",
+      "notas florales"
+    ]
   },
   {
     "id": 226,
@@ -3595,7 +6412,19 @@ export const products = [
     "notasFondo": "Sándalo, Vetiver, Almizcle",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Rasasi Daarej Pour Femme es un perfume **para la mujer** de estilo floral frutal gourmand, con un carácter cálido, dulce y envolvente que aporta una presencia sofisticada y femenina.[1][2][3] Su perfil recuerda a una fragancia de inspiración oriental con matices de diseñador, ideal para quien busca un aroma sensual y elegante para el día a día o para ocasiones especiales.[1][3]",
+    "notes": [
+      "Durazno",
+      "Naranja",
+      "Notas verdes",
+      "Caramelo",
+      "Heliotropo",
+      "Pachulí",
+      "Sándalo",
+      "Vetiver",
+      "Almizcle"
+    ]
   },
   {
     "id": 227,
@@ -3611,7 +6440,20 @@ export const products = [
     "notasFondo": "Almizcle, Pachulí, Madera de sándalo",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **para la mujer** sofisticada y elegante, con un estilo floral amaderado almizclado que equilibra frescura, suavidad y carácter. Rasasi Egra Women evoca una estela refinada y moderna, con una inspiración claramente ligada a los perfumes florales de diseñador de corte clásico contemporáneo.",
+    "notes": [
+      "Bergamota",
+      "Nenúfar",
+      "Fresia",
+      "Pimienta",
+      "Flor de azahar del naranjo",
+      "Jazmín",
+      "Ciruela",
+      "Almizcle",
+      "Pachulí",
+      "Madera de sándalo"
+    ]
   },
   {
     "id": 228,
@@ -3627,7 +6469,25 @@ export const products = [
     "notasFondo": "haba tonka, tabaco, cedro, almizcle, sándalo",
     "ml": 100,
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "description": "Hawas Elixir de Rasasi es un **unisex** de carácter oriental vainilla, con un perfil moderno, intenso y seductor que equilibra frescura especiada y un fondo cálido y envolvente. Su estilo sofisticado recuerda a propuestas de diseñador de corte ambarado-aromático, con una vibra elegante y magnética para quien busca destacar con presencia.",
+    "notes": [
+      "Pomelo",
+      "menta",
+      "lavanda",
+      "bergamota",
+      "abrótano",
+      "cardamomo",
+      "canela",
+      "vainilla",
+      "benjuí",
+      "miel",
+      "haba tonka",
+      "tabaco",
+      "cedro",
+      "almizcle",
+      "sándalo"
+    ]
   },
   {
     "id": 229,
@@ -3643,7 +6503,19 @@ export const products = [
     "notasFondo": "Pachulí, Vetiver, Praliné",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Hawas For Her de Rasasi es una fragancia **para la mujer** de estilo floral afrutado con un toque gourmand, pensada para dejar una estela elegante y moderna. Se inspira en una feminidad sofisticada y seductora, con un aire contemporáneo que encaja perfectamente en una colección de lujo.",
+    "notes": [
+      "Granada",
+      "Manzana",
+      "Pomelo",
+      "Jazmín sambac",
+      "Iris",
+      "Cítricos",
+      "Pachulí",
+      "Vetiver",
+      "Praliné"
+    ]
   },
   {
     "id": 230,
@@ -3659,7 +6531,17 @@ export const products = [
     "notasFondo": "ámbar, almizcle",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Una fragancia **para la mujer** de carácter floral oriental, luminosa y sensual, creada para envolver con una estela elegante y moderna.[1][2] Rasasi Hawas For Her Éclat destaca por un estilo femenino sofisticado, con un aire seductor que se mueve entre lo frutal, lo cremoso y lo ambarado; algunas tiendas la presentan con una inspiración de estilo similar a perfumes de diseñador, aunque no siempre especifican una equivalencia exacta.[1][6]",
+    "notes": [
+      "Flor de azahar del naranjo",
+      "rosa",
+      "jazmín",
+      "frutas tropicales",
+      "vainilla",
+      "ámbar",
+      "almizcle"
+    ]
   },
   {
     "id": 231,
@@ -3675,7 +6557,22 @@ export const products = [
     "notasFondo": "Almizcle, Ámbar gris, Pachulí, Madera a la deriva",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia **para el hombre** de estilo aromático acuático, fresca y seductora, pensada para proyectar presencia con un aire moderno y elegante. Se inspira en el ADN de los grandes perfumes frescos masculinos, con una vibra contemporánea y muy versátil para el día a día o la noche.",
+    "notes": [
+      "Manzana",
+      "Bergamota",
+      "Limón",
+      "Canela",
+      "Notas acuosas",
+      "Ciruela",
+      "Cardamomo",
+      "Flor de azahar del naranjo",
+      "Almizcle",
+      "Ámbar gris",
+      "Pachulí",
+      "Madera a la deriva"
+    ]
   },
   {
     "id": 232,
@@ -3691,7 +6588,19 @@ export const products = [
     "notasFondo": "Almizcle, Notas amaderadas, Ámbar",
     "ml": 100,
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "description": "Una fragancia **para el hombre** de perfil oriental amaderado y especiado, creada para proyectar presencia, elegancia e intensidad. Hawas Kobra de Rasasi se inspira en el estilo moderno de los perfumes masculinos de lujo, con una apertura fresca y vibrante que evoluciona hacia un fondo cálido, sensual y sofisticado.",
+    "notes": [
+      "Jengibre",
+      "Bergamota",
+      "Mandarina",
+      "Canela",
+      "Neroli",
+      "Té verde",
+      "Almizcle",
+      "Notas amaderadas",
+      "Ámbar"
+    ]
   },
   {
     "id": 233,
@@ -3707,7 +6616,19 @@ export const products = [
     "notasFondo": "Almizcle, Ámbar, Vainilla",
     "ml": 100,
     "precioUSD": 75,
-    "precioBS": 48750
+    "precioBS": 48750,
+    "description": "Unisex de carácter oriental amaderado, con un perfil sofisticado que combina frescura frutal y un fondo cálido y sensual. Su aroma recuerda a una creación de diseñador contemporánea, con un aire elegante y misterioso inspirado en fragancias especiadas y modernas.",
+    "notes": [
+      "Pimienta rosa",
+      "Azafrán",
+      "Pera",
+      "Incienso",
+      "Rosa",
+      "Flores blancas",
+      "Almizcle",
+      "Ámbar",
+      "Vainilla"
+    ]
   },
   {
     "id": 234,
@@ -3723,7 +6644,20 @@ export const products = [
     "notasFondo": "Almizcle, Pachulí, Madera de cachemira",
     "ml": 100,
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "description": "**Rasasi Hawas Malibu** es una fragancia fresca, luminosa y moderna **para el hombre**, con un perfil aromático afrutado y ambarado que transmite energía y elegancia casual. Se inspira en el estilo vibrante de las fragancias masculinas contemporáneas, con un carácter que puede recordar a un *designer scent* veraniego y pulido, pensado para destacar con una estela limpia y sensual.",
+    "notes": [
+      "Piña",
+      "Naranja",
+      "Pomelo",
+      "Raíz de lirio",
+      "Ámbar",
+      "Lavanda",
+      "Haba tonka",
+      "Almizcle",
+      "Pachulí",
+      "Madera de cachemira"
+    ]
   },
   {
     "id": 235,
@@ -3739,7 +6673,18 @@ export const products = [
     "notasFondo": "Rosa, Vainilla",
     "ml": 75,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Una fragancia **oriental floral** para la mujer, con un carácter elegante, sensual y moderno. Rasasi La Yuqawam Orchid Prairie se asocia a un estilo sofisticado y lujoso, con un perfil que puede recordar a propuestas femeninas intensas y seductoras del mundo nicho y de diseñador.",
+    "notes": [
+      "Almizcle",
+      "Ámbar",
+      "Cashmeran",
+      "Cumarina",
+      "Geranio",
+      "Oud",
+      "Rosa",
+      "Vainilla"
+    ]
   },
   {
     "id": 236,
@@ -3755,7 +6700,17 @@ export const products = [
     "notasFondo": "Ámbar, Cachemira",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "RAVE Now White es una fragancia **unisex** fresca, luminosa y elegante, ideal para quienes buscan un aroma limpio con un toque moderno y sofisticado. Se inspira en un estilo cítrico-amaderado con matices frutales, recordando el perfil versátil de perfumes de diseñador contemporáneos de uso diario.",
+    "notes": [
+      "Toronja (pomelo)",
+      "Bergamota",
+      "Manzana verde",
+      "Pachulí",
+      "Almizcle",
+      "Ámbar",
+      "Cachemira"
+    ]
   },
   {
     "id": 237,
@@ -3771,7 +6726,18 @@ export const products = [
     "notasFondo": "Almizcle, Musgo",
     "ml": 100,
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "description": "Fragancia **para la mujer** de estilo dulce, afrutado y cremoso, con un aire juvenil y muy femenino. Se inspira en el universo olfativo de **Burberry Her Elixir**, con una estela moderna y envolvente ideal para quienes buscan un perfume delicado pero llamativo.",
+    "notes": [
+      "Frutos rojos",
+      "Naranja",
+      "Malvavisco",
+      "Lirio de los valles",
+      "Jazmín",
+      "Vainilla",
+      "Almizcle",
+      "Musgo"
+    ]
   },
   {
     "id": 238,
@@ -3787,7 +6753,16 @@ export const products = [
     "notasFondo": "Haba tonka, Vainilla",
     "ml": 100,
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "description": "Rayhaan Elixir es un perfume unisex de carácter oriental amaderado, elegante y envolvente, ideal para quienes buscan una estela moderna con presencia y sofisticación. Se inspira claramente en el estilo de **Le Male Elixir** de Jean Paul Gaultier, reinterpretado con un toque más versátil y lujoso para el día o la noche.",
+    "notes": [
+      "Benjuí",
+      "Bergamota",
+      "Lavanda",
+      "Menta",
+      "Haba tonka",
+      "Vainilla"
+    ]
   },
   {
     "id": 239,
@@ -3803,7 +6778,25 @@ export const products = [
     "notasFondo": "Incienso, Cuero, Vainilla, Almizcle, Cedro",
     "ml": 68,
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "description": "Un clásico oriental y sensual **para la mujer**, con un carácter elegante, cálido y de aire vintage. Su estela mezcla frutos rojos, flores blancas y un fondo profundo de incienso, cuero y vainilla, evocando el estilo sofisticado de las grandes fragancias femeninas de los años 70.",
+    "notes": [
+      "Frambuesa",
+      "Neroli",
+      "Bergamota",
+      "Limón",
+      "Palo de rosa de Brasil",
+      "Ylang-ylang",
+      "Raíz de lirio",
+      "Jazmín",
+      "Palmarosa",
+      "Opopónaco",
+      "Incienso",
+      "Cuero",
+      "Vainilla",
+      "Almizcle",
+      "Cedro"
+    ]
   },
   {
     "id": 240,
@@ -3819,7 +6812,18 @@ export const products = [
     "notasFondo": "Panacotta, Pachulí",
     "ml": 100,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Un perfume **para la mujer** de estilo floral afrutado, delicado y elegante, con un aire juvenil y sofisticado. Signorina Eau de Toilette de Salvatore Ferragamo se inspira en el encanto femenino contemporáneo y evoca la estética refinada de la casa italiana.",
+    "notes": [
+      "Pimienta rosa",
+      "Grosella roja",
+      "Jazmín",
+      "Rosa",
+      "Peonía",
+      "Almizcle",
+      "Panacotta",
+      "Pachulí"
+    ]
   },
   {
     "id": 241,
@@ -3835,7 +6839,16 @@ export const products = [
     "notasFondo": "Pachulí, Vainilla",
     "ml": 100,
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "description": "Un perfume **para la mujer** con un carácter oriental floral sofisticado, elegante y sensual. Signorina Leather Edition de Salvatore Ferragamo se inspira en el universo refinado de la línea Signorina, con un toque de cuero que aporta más profundidad y un aire más intenso y moderno, ideal para una presencia distinguida.",
+    "notes": [
+      "Cassis",
+      "Rosa",
+      "Osmanto",
+      "Cuero",
+      "Pachulí",
+      "Vainilla"
+    ]
   },
   {
     "id": 242,
@@ -3849,7 +6862,19 @@ export const products = [
     "notasSalida": "Grosella negra, Bergamota, Pimienta rosa",
     "notasCorazon": "Jazmín, Jazmín sambac, Té de jazmín",
     "notasFondo": "Vainilla Bourbon, Cachemira, Madera de gaiac",
-    "ml": 100
+    "ml": 100,
+    "description": "Una fragancia **para la mujer** moderna y sofisticada, de estilo floriental y sensual, con un aura elegante y femenina. Valentino Donna Born In Roma se inspira en la alta costura italiana y destaca por su equilibrio entre flores luminosas, frutas jugosas y un fondo cremoso y envolvente.",
+    "notes": [
+      "Grosella negra",
+      "Bergamota",
+      "Pimienta rosa",
+      "Jazmín",
+      "Jazmín sambac",
+      "Té de jazmín",
+      "Vainilla Bourbon",
+      "Cachemira",
+      "Madera de gaiac"
+    ]
   },
   {
     "id": 243,
@@ -3863,7 +6888,13 @@ export const products = [
     "notasSalida": "Té Lapsang Souchong",
     "notasCorazon": "Jazmín",
     "notasFondo": "Vainilla",
-    "ml": 100
+    "ml": 100,
+    "description": "Una fragancia **para la mujer** floral ámbar amaderada, con un carácter elegante, moderno y ligeramente ahumado que envuelve con sofisticación. Su estilo olfativo combina la frescura del té lapsang souchong con un corazón floral luminoso y una base cremosa de vainilla, evocando el universo refinado y sensual de la línea Valentino Born in Roma.",
+    "notes": [
+      "Té Lapsang Souchong",
+      "Jazmín",
+      "Vainilla"
+    ]
   },
   {
     "id": 244,
@@ -3877,7 +6908,14 @@ export const products = [
     "notasSalida": "Vainilla Bourbon, Ámbar",
     "notasCorazon": "Jazmín",
     "notasFondo": "Benjuí",
-    "ml": 100
+    "ml": 100,
+    "description": "Un perfume **para la mujer** con carácter sensual y sofisticado, de estela **ámbar floral** y una vainilla intensa que envuelve la piel con elegancia. Valentino Donna Born In Roma Intense se inspira en el universo olfativo de la línea Born in Roma, con un perfil que recuerda a la feminidad moderna de un diseñador de lujo.",
+    "notes": [
+      "Vainilla Bourbon",
+      "Ámbar",
+      "Jazmín",
+      "Benjuí"
+    ]
   },
   {
     "id": 245,
@@ -3891,7 +6929,16 @@ export const products = [
     "notasSalida": "Fresa, Bergamota",
     "notasCorazon": "Jazmín sambac, Pachulí",
     "notasFondo": "Vainilla, Cedro",
-    "ml": 50
+    "ml": 50,
+    "description": "Valentina 2025 de Valentino es una fragancia floral frutal para la mujer, sofisticada y luminosa, con un aire romántico y moderno. Su estilo elegante recuerda a la feminidad contemporánea de Valentino, con una estela cremosa y seductora que encaja muy bien en cualquier ocasión.",
+    "notes": [
+      "Fresa",
+      "Bergamota",
+      "Jazmín sambac",
+      "Pachulí",
+      "Vainilla",
+      "Cedro"
+    ]
   },
   {
     "id": 246,
@@ -3907,7 +6954,22 @@ export const products = [
     "notasFondo": "Rosa, Sándalo, Almizcle, Vainilla",
     "ml": 75,
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "description": "Versace Red Jeans es un perfume **para la mujer** de estilo floral frutal, alegre y juvenil, con un aire clásico de los años 90. Su carácter vibrante y femenino lo convierte en una fragancia fácil de llevar, inspirada en la frescura de un diseñador italiano icónico.[1][2][3]",
+    "notes": [
+      "Chabacano",
+      "Fresia",
+      "Melocotón",
+      "Grosella negra",
+      "Violeta",
+      "Nenúfar",
+      "Ylang-ylang",
+      "Lirio de los valles",
+      "Rosa",
+      "Sándalo",
+      "Almizcle",
+      "Vainilla"
+    ]
   },
   {
     "id": 247,
@@ -3923,7 +6985,16 @@ export const products = [
     "notasFondo": "Vetiver, Alcaravea",
     "ml": 100,
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "description": "Un perfume **para el hombre** elegante y seductor, de estilo amaderado especiado con un aura nocturna sofisticada. Su carácter recuerda al ADN de un gran diseñador, con una salida vibrante de cardamomo y un fondo cálido y masculino que lo ha convertido en un clásico moderno.",
+    "notes": [
+      "Cardamomo",
+      "Lavanda",
+      "Cedro de Virginia",
+      "Bergamota",
+      "Vetiver",
+      "Alcaravea"
+    ]
   },
   {
     "id": 248,
@@ -3939,6 +7010,14 @@ export const products = [
     "notasFondo": "Whisky",
     "ml": 100,
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "description": "Tiramisu Caramel de Zimaya es una fragancia **unisex** gourmand y envolvente, con un perfil dulce, cremoso y cálido que resulta irresistible para quienes aman los aromas opulentos. Su carácter recuerda a un postre de lujo, con una estela moderna e intensa inspirada en la faceta más golosa de la perfumería nicho y oriental.[1][2][5][7]",
+    "notes": [
+      "Caramelo",
+      "Vainilla",
+      "Almizcle",
+      "Miel",
+      "Whisky"
+    ]
   }
 ];
