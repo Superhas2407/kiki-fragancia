@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Gotham';
-  src: url('/fonts/GothamThin.otf') format('opentype');
-  font-weight: 100 900;
+  src: url('/fonts/GothamThin.otf') format('opentype'), url('/fonts/GothamThin.otf') format('truetype');
+  font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
