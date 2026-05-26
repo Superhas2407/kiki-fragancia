@@ -101,7 +101,7 @@ export default function CartDrawer() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span
-              style={{ fontFamily: "'Gotham', sans-serif", fontSize: '22px', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 400 }}
+              style={{ fontFamily: "'Gotham', sans-serif", fontSize: '22px', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 100 }}
             >
               Mi Carrito
             </span>
@@ -112,7 +112,7 @@ export default function CartDrawer() {
                   color: '#1A1208',
                   fontSize: '10px',
                   fontFamily: "'Gotham', sans-serif",
-                  fontWeight: 600,
+                  fontWeight: 100,
                   padding: '2px 7px',
                   letterSpacing: '0.05em',
                 }}
@@ -168,7 +168,7 @@ export default function CartDrawer() {
                       <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '9px', color: 'rgba(250,250,248,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                         {item.house}
                       </p>
-                      <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '17px', color: '#FAFAF8', fontWeight: 400 }}>
+                      <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '17px', color: '#FAFAF8', fontWeight: 100 }}>
                         {item.name}
                       </p>
                       {unit > 0 && (
@@ -220,7 +220,7 @@ export default function CartDrawer() {
                 <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                   Subtotal
                 </span>
-                <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 400 }}>
+                <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 100 }}>
                   ${totalPrice}
                 </span>
               </div>
@@ -233,7 +233,7 @@ export default function CartDrawer() {
                 color: '#0A0A0A',
                 fontFamily: "'Gotham', sans-serif",
                 fontSize: '11px',
-                fontWeight: 500,
+                fontWeight: 100,
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
                 padding: '16px',
@@ -264,7 +264,7 @@ export default function CartDrawer() {
           color: '#fff',
           fontFamily: "'Gotham', sans-serif",
           fontSize: '13px',
-          fontWeight: 500,
+          fontWeight: 100,
           letterSpacing: '0.04em',
           padding: '12px 24px',
           zIndex: 200,

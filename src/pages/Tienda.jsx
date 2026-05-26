@@ -119,7 +119,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24 }}>
         <h2 style={{
           fontFamily: "'Gotham', sans-serif", fontSize: 22,
-          fontWeight: 400, color: '#FAFAF8', fontStyle: 'italic', margin: 0,
+          fontWeight: 100, color: '#FAFAF8', fontStyle: 'italic', margin: 0,
         }}>
           Filtrar
         </h2>
@@ -263,7 +263,7 @@ export default function Tienda() {
               <h1 style={{
                 fontFamily: "'Gotham', sans-serif",
                 fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-                fontWeight: 400, color: '#FAFAF8',
+                fontWeight: 100, color: '#FAFAF8',
                 letterSpacing: '-0.02em', lineHeight: 1.08,
                 fontStyle: 'italic', margin: 0,
               }}>
@@ -346,7 +346,7 @@ export default function Tienda() {
                 onFocus={() => setSearchFocused(true)}
                 onBlur={() => setSearchFocused(false)}
                 style={{
-                  flex: 1, fontFamily: "'Gotham', sans-serif", fontSize: 13, fontWeight: 300,
+                  flex: 1, fontFamily: "'Gotham', sans-serif", fontSize: 13, fontWeight: 100,
                   color: '#FAFAF8', background: 'none', border: 'none', outline: 'none',
                   padding: '12px 0', letterSpacing: '0.02em',
                 }}
@@ -449,7 +449,7 @@ export default function Tienda() {
               padding: '0 20px', height: 60,
               borderBottom: '1px solid rgba(250,250,248,0.07)', flexShrink: 0,
             }}>
-              <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: '#FAFAF8', fontWeight: 400 }}>
+              <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: '#FAFAF8', fontWeight: 100 }}>
                 Filtros
               </span>
               <button
@@ -471,7 +471,7 @@ export default function Tienda() {
                   width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
                   padding: 14, fontFamily: "'Gotham', sans-serif",
                   fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
-                  fontWeight: 500, cursor: 'pointer',
+                  fontWeight: 100, cursor: 'pointer',
                 }}
               >
                 Ver resultados

@@ -366,7 +366,7 @@ export default function Header() {
                 style={{
                   flex: 1, background: 'none', border: 'none', outline: 'none',
                   fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                  fontWeight: 300, fontStyle: 'italic',
+                  fontWeight: 100, fontStyle: 'italic',
                   color: '#FAFAF8', letterSpacing: '-0.01em',
                 }}
               />

@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Gotham';
-  src: url('/fonts/GothamThin.otf') format('opentype'), url('/fonts/GothamThin.otf') format('truetype');
-  font-weight: 100;
+  src: url('/fonts/GothamThin.otf') format('opentype');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -46,7 +46,7 @@
 
   body {
     font-family: 'Gotham', sans-serif;
-    font-weight: 300;
+    font-weight: 100;
     background: var(--ivory);
     color: var(--carbon);
     -webkit-font-smoothing: antialiased;
@@ -162,7 +162,7 @@
   margin-bottom: 3px;
   font-family: 'Gotham', sans-serif;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 100;
   color: rgba(250,250,248,0.5);
   letter-spacing: 0.04em;
   text-align: left;
@@ -176,7 +176,7 @@
   color: #C9A84C;
   background: rgba(201,168,76,0.08);
   border-color: rgba(201,168,76,0.25);
-  font-weight: 400;
+  font-weight: 100;
 }
 .global-sidebar-icon {
   display: flex;
@@ -225,7 +225,7 @@
   font-family: 'Gotham', sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
-  font-weight: 400;
+  font-weight: 100;
   padding: 7px 16px;
   border: 1px solid rgba(201,168,76,0.3);
   background: transparent;
@@ -480,10 +480,10 @@
 .kiki-section-title {
   font-family: var(--font-d);
   font-size: clamp(28px, 4.5vw, 52px);
-  font-weight: 400; letter-spacing: -0.02em; line-height: 1.1;
+  font-weight: 100; letter-spacing: -0.02em; line-height: 1.1;
 }
 .kiki-section-subtitle {
-  font-family: var(--font-d); font-weight: 300; font-style: italic;
+  font-family: var(--font-d); font-weight: 100; font-style: italic;
   font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; margin-top: 16px;
 }
 .title-light { color: var(--ivory); }
@@ -586,7 +586,7 @@
   align-items: flex-start; gap: 0; padding: 8px 0;
 }
 .mobile-nav-link {
-  font-family: var(--font-s); font-size: 12px; font-weight: 300;
+  font-family: var(--font-s); font-size: 12px; font-weight: 100;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(250,250,248,0.65); text-decoration: none;
   width: 100%; padding: 14px 24px;
@@ -659,24 +659,24 @@
 }
 .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
 .eyebrow-text {
-  font-family: var(--font-s); font-size: 10px; font-weight: 300;
+  font-family: var(--font-s); font-size: 10px; font-weight: 100;
   color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase;
 }
 .hero-main-title {
   font-family: var(--font-d);
   font-size: clamp(38px, 5.5vw, 80px);
-  font-weight: 400; font-style: italic; color: #FAFAF8;
+  font-weight: 100; font-style: italic; color: #FAFAF8;
   letter-spacing: -0.025em; line-height: 1.03; margin: 0 0 28px;
 }
 .hero-tagline {
-  font-family: var(--font-s); font-size: 11px; font-weight: 300;
+  font-family: var(--font-s); font-size: 11px; font-weight: 100;
   color: rgba(250,250,248,.4); letter-spacing: 0.22em; line-height: 2.2;
   text-transform: uppercase; margin: 0 0 32px;
 }
 .hero-quote {
   font-family: var(--font-d);
   font-size: clamp(16px, 1.7vw, 22px);
-  font-weight: 300; font-style: italic;
+  font-weight: 100; font-style: italic;
   color: rgba(250,250,248,.65); line-height: 1.6; margin: 0 0 48px;
 }
 .hero-instagram { display: flex; align-items: center; gap: 10px; margin-top: 44px; }
@@ -718,7 +718,7 @@
 /* ── BUTTONS ── */
 .btn-cta {
   display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--font-s); font-size: 10px; font-weight: 400;
+  font-family: var(--font-s); font-size: 10px; font-weight: 100;
   letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
   color: #FAFAF8; background: transparent;
   border: 1px solid rgba(201,168,76,.55); padding: 15px 40px;
@@ -789,11 +789,11 @@
 .pillar-title {
   font-family: var(--font-d);
   font-size: clamp(17px, 1.4vw, 22px);
-  font-weight: 400; color: var(--ivory);
+  font-weight: 100; color: var(--ivory);
   letter-spacing: -0.01em; line-height: 1.2;
 }
 .pillar-desc {
-  font-family: var(--font-s); font-size: 14px; font-weight: 300;
+  font-family: var(--font-s); font-size: 14px; font-weight: 100;
   color: rgba(247,242,234,.5); line-height: 1.78;
 }
 
@@ -876,7 +876,7 @@
 .card-name {
   font-family: var(--font-d);
   font-size: clamp(15px, 1.3vw, 19px);
-  font-style: italic; font-weight: 400; color: #FAFAF8;
+  font-style: italic; font-weight: 100; color: #FAFAF8;
   letter-spacing: -0.01em; line-height: 1.2; margin: 0;
   display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
 }
@@ -919,16 +919,16 @@
 @media (min-width: 1024px) { .familia-card { width: 240px; } }
 .familia-card:hover { transform: translateY(-5px); }
 .familia-count {
-  font-family: var(--font-d); font-size: 52px; font-weight: 300;
+  font-family: var(--font-d); font-size: 52px; font-weight: 100;
   line-height: 1; margin-bottom: 4px;
 }
 .familia-name {
   font-family: var(--font-d); font-size: 22px; font-style: italic;
-  color: #FAFAF8; font-weight: 400; margin-bottom: 12px;
+  color: #FAFAF8; font-weight: 100; margin-bottom: 12px;
 }
 .familia-divider { height: 1px; width: 32px; margin-bottom: 12px; }
 .familia-desc {
-  font-family: var(--font-s); font-size: 12px; font-weight: 300;
+  font-family: var(--font-s); font-size: 12px; font-weight: 100;
   color: rgba(247,242,234,.42); line-height: 1.65;
 }
 .familia-bg-circle {
@@ -969,7 +969,7 @@
   border: 1px solid rgba(201,168,76,.3);
   font-family: var(--font-s);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 100;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(247,242,234,.6);
@@ -997,7 +997,7 @@
 .brand-story-quote {
   font-family: var(--font-d);
   font-size: clamp(26px, 4.5vw, 56px);
-  font-weight: 300; font-style: italic; color: var(--ivory);
+  font-weight: 100; font-style: italic; color: var(--ivory);
   letter-spacing: -0.025em; line-height: 1.12;
   position: relative; margin-bottom: 32px;
 }
@@ -1007,11 +1007,11 @@
   pointer-events: none; user-select: none;
 }
 .brand-story-text {
-  font-family: var(--font-s); font-size: 15px; font-weight: 300;
+  font-family: var(--font-s); font-size: 15px; font-weight: 100;
   color: rgba(247,242,234,.55); line-height: 1.85; max-width: 460px;
 }
 .brand-story-attr {
-  font-family: var(--font-d); font-size: 17px; font-weight: 300;
+  font-family: var(--font-d); font-size: 17px; font-weight: 100;
   font-style: italic; color: var(--gold); opacity: 1;
   margin-top: 24px; margin-bottom: 40px;
 }
@@ -1026,7 +1026,7 @@
 }
 .stat-value {
   font-family: var(--font-d); font-size: clamp(26px, 3vw, 40px);
-  font-weight: 400; color: var(--gold); line-height: 1; margin-bottom: 6px;
+  font-weight: 100; color: var(--gold); line-height: 1; margin-bottom: 6px;
 }
 .stat-label {
   font-family: var(--font-s); font-size: 9px; letter-spacing: 0.2em;
@@ -1123,18 +1123,18 @@
 .pd-title {
   font-family: var(--font-d);
   font-size: clamp(32px, 4.5vw, 56px);
-  font-weight: 400; font-style: italic; color: #FAFAF8;
+  font-weight: 100; font-style: italic; color: #FAFAF8;
   letter-spacing: -0.03em; line-height: 1.04; margin: 0 0 14px;
 }
 .pd-meta {
-  font-family: var(--font-s); font-size: 12px; font-weight: 300;
+  font-family: var(--font-s); font-size: 12px; font-weight: 100;
   color: rgba(250,250,248,.55); letter-spacing: .06em; margin: 0 0 22px;
 }
 .pd-divider { height: 1px; background: rgba(201,168,76,.18); margin: 0 0 26px; }
 
 .pd-desc-wrap { margin-bottom: 28px; }
 .pd-desc {
-  font-family: var(--font-s); font-size: 14px; font-weight: 300;
+  font-family: var(--font-s); font-size: 14px; font-weight: 100;
   color: rgba(250,250,248,.76); line-height: 1.72; margin: 0;
 }
 .pd-desc-fade {
@@ -1158,7 +1158,7 @@
 }
 .pd-notes-chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .pd-note-chip {
-  font-family: var(--font-s); font-size: 11px; font-weight: 300;
+  font-family: var(--font-s); font-size: 11px; font-weight: 100;
   color: #FAFAF8; background: rgba(250,250,248,.07);
   border: 1px solid rgba(250,250,248,.14);
   padding: 5px 12px; display: flex; align-items: center; gap: 5px;
@@ -1173,7 +1173,7 @@
 
 .pd-price { margin-bottom: 24px; }
 .pd-price-amount {
-  font-family: var(--font-s); font-size: 22px; font-weight: 400;
+  font-family: var(--font-s); font-size: 22px; font-weight: 100;
   letter-spacing: 0.04em; color: #C9A84C;
 }
 
@@ -1186,7 +1186,7 @@
   transition: background .25s ease, color .25s ease, transform .25s ease;
 }
 .pd-trust {
-  font-family: var(--font-s); font-size: 10px; font-weight: 300;
+  font-family: var(--font-s); font-size: 10px; font-weight: 100;
   color: rgba(250,250,248,.28); letter-spacing: .03em; margin: 4px 0 0;
 }
 
@@ -1202,7 +1202,7 @@
 }
 .pd-section-title {
   font-family: var(--font-d); font-size: clamp(22px, 3vw, 34px);
-  font-weight: 400; font-style: italic; color: var(--ivory); margin: 0;
+  font-weight: 100; font-style: italic; color: var(--ivory); margin: 0;
 }
 .pd-sep { height: 1px; background: rgba(201,168,76,.1); margin: 56px 0; }
 
@@ -1224,7 +1224,7 @@
 }
 .pd-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .pd-chip {
-  font-family: var(--font-s); font-size: 12px; font-weight: 300;
+  font-family: var(--font-s); font-size: 12px; font-weight: 100;
   color: rgba(247,242,234,.7); border: 1px solid rgba(201,168,76,.22);
   padding: 7px 14px; display: flex; align-items: center; gap: 7px;
   transition: border-color .2s ease;
@@ -1234,7 +1234,7 @@
 .pd-acordes { display: flex; flex-direction: column; gap: 18px; }
 .pd-acorde-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .pd-acorde-name {
-  font-family: var(--font-s); font-size: 11px; font-weight: 300;
+  font-family: var(--font-s); font-size: 11px; font-weight: 100;
   color: rgba(247,242,234,.52); letter-spacing: .06em; text-transform: capitalize;
 }
 .pd-acorde-pct {
@@ -1320,12 +1320,12 @@
   display: block;
 }
 .footer-tagline {
-  font-family: var(--font-d); font-size: 15px; font-weight: 300;
+  font-family: var(--font-d); font-size: 15px; font-weight: 100;
   font-style: italic; color: rgba(247,242,234,.42); line-height: 1.65;
   max-width: 240px; margin: 0 0 14px;
 }
 .footer-sub {
-  font-family: var(--font-s); font-size: 12px; font-weight: 300;
+  font-family: var(--font-s); font-size: 12px; font-weight: 100;
   color: rgba(247,242,234,.24); line-height: 1.8; max-width: 240px; margin: 0 0 18px;
 }
 .footer-badge {
@@ -1343,16 +1343,16 @@
 }
 .footer-nav { display: flex; flex-direction: column; gap: 13px; }
 .footer-nav-link {
-  font-family: var(--font-s); font-size: 13px; font-weight: 300;
+  font-family: var(--font-s); font-size: 13px; font-weight: 100;
   color: rgba(247,242,234,.4); text-decoration: none; transition: color .2s ease;
 }
 .footer-nav-link:hover { color: var(--gold); }
 .footer-contact-desc {
-  font-family: var(--font-s); font-size: 13px; font-weight: 300;
+  font-family: var(--font-s); font-size: 13px; font-weight: 100;
   color: rgba(247,242,234,.35); line-height: 1.8; margin: 0 0 18px;
 }
 .footer-insta {
-  font-family: var(--font-s); font-size: 11px; font-weight: 300;
+  font-family: var(--font-s); font-size: 11px; font-weight: 100;
   color: rgba(247,242,234,.3); text-decoration: none;
   transition: color .2s ease; display: inline-flex; align-items: center;
   min-height: 44px; padding: 4px 0;
@@ -1364,7 +1364,7 @@
   justify-content: space-between; gap: 12px;
 }
 .footer-copy {
-  font-family: var(--font-s); font-size: 10px; font-weight: 300;
+  font-family: var(--font-s); font-size: 10px; font-weight: 100;
   color: rgba(247,242,234,.16); letter-spacing: 0.06em;
 }
 .footer-craft {
@@ -1565,7 +1565,7 @@
 .vitrina-num > span:first-child {
   font-family: 'Gotham', sans-serif;
   font-size: 9.5px;
-  font-weight: 500;
+  font-weight: 100;
   letter-spacing: 0.34em;
   color: var(--gold);
   text-transform: uppercase;
@@ -1583,7 +1583,7 @@
   display: none;
   font-family: 'Gotham', sans-serif;
   font-size: 8.5px;
-  font-weight: 500;
+  font-weight: 100;
   letter-spacing: 0.30em;
   color: rgba(247,242,234,0.72);
   text-transform: uppercase;
@@ -1657,7 +1657,7 @@
   gap: 9px;
   font-family: 'Gotham', sans-serif;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 100;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
@@ -1672,7 +1672,7 @@
 .vitrina-meta {
   font-family: 'Gotham', sans-serif;
   font-size: 10px;
-  font-weight: 400;
+  font-weight: 100;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(247,242,234,0.5);
@@ -1680,7 +1680,7 @@
 .vitrina-name {
   font-family: 'Gotham', sans-serif;
   font-size: clamp(20px, 2.4vw, 36px);
-  font-weight: 300;
+  font-weight: 100;
   font-style: italic;
   color: #FAFAF8;
   letter-spacing: -0.02em;
@@ -1726,7 +1726,7 @@
   font-family: 'Gotham', sans-serif;
   font-size: 14px;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 100;
   color: rgba(247,242,234,0.62);
 }
 .vitrina-note + .vitrina-note::before {
@@ -1746,14 +1746,14 @@
 .vitrina-price-usd {
   font-family: 'Gotham', sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 100;
   color: #C9A84C;
   letter-spacing: -0.01em;
 }
 .vitrina-price-bs {
   font-family: 'Gotham', sans-serif;
   font-size: 11px;
-  font-weight: 300;
+  font-weight: 100;
   color: rgba(250,250,248,0.35);
   letter-spacing: 0.02em;
 }

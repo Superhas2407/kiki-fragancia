@@ -58,7 +58,7 @@ export default function CartFab() {
             width: '20px',
             height: '20px',
             fontSize: '11px',
-            fontWeight: 600,
+            fontWeight: 100,
             fontFamily: "'Gotham', sans-serif",
             display: 'flex',
             alignItems: 'center',

@@ -84,13 +84,13 @@ export default function InstagramFeed() {
             <div>
               <p
                 className="font-sans"
-                style={{ fontSize: '14px', fontWeight: 400, letterSpacing: '0.01em', color: 'var(--ivory)' }}
+                style={{ fontSize: '14px', fontWeight: 100, letterSpacing: '0.01em', color: 'var(--ivory)' }}
               >
                 @kiki_fragancia
               </p>
               <p
                 className="font-sans"
-                style={{ fontSize: '12px', fontWeight: 300, color: 'rgba(247,242,234,0.4)' }}
+                style={{ fontSize: '12px', fontWeight: 100, color: 'rgba(247,242,234,0.4)' }}
               >
                 Fragancias verificadas · Venezuela
               </p>

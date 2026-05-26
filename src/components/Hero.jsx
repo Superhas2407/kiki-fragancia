@@ -211,7 +211,7 @@ export default function Hero() {
                 style={{
                   background: '#C9A84C', color: '#0A0A0A', border: 'none', cursor: 'pointer',
                   padding: '7px 16px', fontFamily: 'var(--font-s)', fontSize: 9,
-                  letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 500,
+                  letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 100,
                   flexShrink: 0,
                 }}
               >
