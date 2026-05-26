@@ -273,9 +273,10 @@ export default function Tienda() {
   // Label del título según selección del sidebar
   const LABEL_MAP   = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
   const TIPO_MAP    = { arabes: 'Árabes', disenador: 'Diseñador', nicho: 'Nicho' }
-  const sectionTitle = urlGenero ? (LABEL_MAP[urlGenero] || urlGenero)
-    : urlTipo ? (TIPO_MAP[urlTipo] || urlTipo)
-    : 'Fragancias'
+  const sectionTitle = [
+    urlTipo   ? TIPO_MAP[urlTipo]     : null,
+    urlGenero ? LABEL_MAP[urlGenero]  : null,
+  ].filter(Boolean).join(' · ') || 'Fragancias'
 
   const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool }
 
