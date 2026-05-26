@@ -267,10 +267,10 @@ export default function Header() {
 
         <nav className="kiki-mobile-nav">
 
-          {/* Sección: Fragancias por género */}
+          {/* Sección: Género */}
           <div style={{ padding: '20px 24px 8px', width: '100%' }}>
             <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
-              Fragancias
+              Género
             </span>
           </div>
           {[
@@ -280,12 +280,26 @@ export default function Header() {
             { to: '/tienda?genero=Unisex',      label: 'Unisex' },
             { to: '/tienda?genero=Niño',        label: 'Kids' },
           ].map((l, i) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="mobile-nav-link"
-              style={{ transitionDelay: `${i * 40 + 60}ms` }}
-            >
+            <Link key={l.to} to={l.to} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 60}ms` }}>
+              {l.label}
+            </Link>
+          ))}
+
+          {/* Divisor */}
+          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'rgba(201,168,76,0.08)', flexShrink: 0 }} />
+
+          {/* Sección: Tipo */}
+          <div style={{ padding: '8px 24px 8px', width: '100%' }}>
+            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
+              Tipo
+            </span>
+          </div>
+          {[
+            { to: '/tienda?tipo=arabes',    label: 'Árabes'    },
+            { to: '/tienda?tipo=disenador', label: 'Diseñador' },
+            { to: '/tienda?tipo=nicho',     label: 'Nicho'     },
+          ].map((l, i) => (
+            <Link key={l.to} to={l.to} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 280}ms` }}>
               {l.label}
             </Link>
           ))}
@@ -300,7 +314,7 @@ export default function Header() {
             </span>
           </div>
           {NAV_LINKS.map((link, i) => {
-            const delay = i * 40 + 280
+            const delay = i * 40 + 440
             const linkProps = { className: 'mobile-nav-link', style: { transitionDelay: `${delay}ms` } }
             if (link.type === 'route')
               return <Link key={link.label} to={link.to} {...linkProps}>{link.label}</Link>
