@@ -59,13 +59,6 @@ export default function VitrinaCard({ product }) {
   const [hover, setHover] = useState(false)
   const [added, setAdded] = useState(false)
 
-  // Prefer notas de corazón (la "personalidad"); fallback a salida.
-  const heartNotes = (product.notasCorazon || '').split(',').map(s => s.trim()).filter(Boolean)
-  const topNotes   = (product.notasSalida   || '').split(',').map(s => s.trim()).filter(Boolean)
-  const usingHeart = heartNotes.length > 0
-  const notas = (usingHeart ? heartNotes : topNotes).slice(0, 3)
-  const notesLabel = usingHeart ? 'Corazón' : 'Salida'
-
   const imgSrc = product.image ? `/products/${product.image}` : null
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
@@ -153,15 +146,6 @@ export default function VitrinaCard({ product }) {
           </span>
         </div>
         <h3 className="vitrina-name">{product.name}</h3>
-        <div className="vitrina-rule" />
-        {notas.length > 0 && (
-          <div className="vitrina-notes-block">
-            <span className="vitrina-notes-label">— {notesLabel}</span>
-            <div className="vitrina-notes">
-              {notas.map((n, i) => <span key={i} className="vitrina-note">{n}</span>)}
-            </div>
-          </div>
-        )}
         {product.precioUSD > 0 && (
           <div className="vitrina-price">
             <span className="vitrina-price-usd">${product.precioUSD}</span>

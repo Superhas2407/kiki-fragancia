@@ -21,18 +21,20 @@ export default function BrandStory() {
       <div className="kiki-container">
         <div className="brand-story-inner">
 
-          {/* Left: text */}
-          <div>
+          {/* Left: título grande */}
+          <div className="brand-story-left">
             <div ref={eyebrowRef} className="brand-story-eyebrow">
               <div className="gold-line"></div>
               <span className="eyebrow-gold" style={{ marginBottom: 0 }}>Nuestra historia</span>
             </div>
 
             <div ref={quoteRef} className="brand-story-quote">
-              <span className="quote-mark">"</span>
               No vendemos perfumes.<br />Vendemos la fragancia<br />que te representa.
             </div>
+          </div>
 
+          {/* Right: texto, firma y estadísticas */}
+          <div className="brand-story-right">
             <p ref={textRef} className="brand-story-text">
               KiKi Fragancia nació del amor por las fragancias originales y la convicción
               de que cada persona merece encontrar su firma olfativa. Con más de 228 referencias
@@ -46,8 +48,6 @@ export default function BrandStory() {
               <StatCounter target={110} suffix="k" label="Seguidores" />
             </div>
           </div>
-
-          {/* Right: image — hidden until real lifestyle photo is available (PLAN.md T1) */}
 
         </div>
       </div>

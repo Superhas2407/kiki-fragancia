@@ -39,7 +39,9 @@ export default function Footer() {
 
           {/* Col 1 — Brand */}
           <div>
-            <Link to="/" className="footer-logo">KiKi Fragancia</Link>
+            <Link to="/" className="footer-logo">
+              <img src="/logo-transparent.png" alt="KiKi Fragancia" className="footer-logo-img" />
+            </Link>
             <p className="footer-tagline">
               La fragancia que te define,<br />verificada y original.
             </p>

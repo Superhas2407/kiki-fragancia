@@ -3,12 +3,12 @@ import { products } from '../data/products-enriched'
 
 const BRANDS = [...new Set(products.map(p => p.house))].sort()
 
-export default function BrandsMarquee() {
+export default function BrandsMarquee({ reverse = false }) {
   const doubled = [...BRANDS, ...BRANDS]
   return (
     <section className="marquee-section">
       <div className="marquee-track">
-        <div className="marquee-inner">
+        <div className={`marquee-inner${reverse ? ' marquee-inner--reverse' : ''}`}>
           {doubled.map((brand, i) => (
             <Link
               key={i}

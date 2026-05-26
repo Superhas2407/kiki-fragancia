@@ -28,3 +28,16 @@ dist-ssr
 CONTEXT.md
 kiki-para-claude-design.txt
 .gstack/
+
+# Herramienta renombrador (app interna, no parte del sitio)
+tools/
+public/tools/
+
+# Fuente comercial — licencia local, no distribuir públicamente
+public/fonts/
+
+# Logo original con fondo blanco (reemplazado por SVG y PNG transparente)
+public/logo-vector.png
+
+# Scripts internos de desarrollo (catálogo ya generado)
+scripts/

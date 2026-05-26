@@ -40,6 +40,16 @@ export default function Hero() {
     return () => clearTimeout(t)
   }, [])
 
+  // Precarga todas las imágenes del carrusel al montar para evitar lag en transiciones
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 767
+    SLIDES.forEach(slide => {
+      if (slide.type !== 'image') return
+      const img = new Image()
+      img.src = isMobile ? slide.mobile : slide.desktop
+    })
+  }, [])
+
   function advance(from) {
     const next = (from + 1) % SLIDES.length
     currentRef.current = next
@@ -82,8 +92,6 @@ export default function Hero() {
       animation: isEntering ? `heroFadeIn ${FADE_MS}ms cubic-bezier(0.4,0,0.2,1) forwards` : 'none',
     }
     const mediaStyle = { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }
-    const isEager = index <= 1
-
     if (slide.type === 'video') {
       return (
         <div style={wrapStyle}>
@@ -102,7 +110,7 @@ export default function Hero() {
             alt=""
             aria-hidden="true"
             style={mediaStyle}
-            loading={isEager ? 'eager' : 'lazy'}
+            loading="eager"
             fetchPriority={index === 0 ? 'high' : 'auto'}
           />
         </picture>
@@ -161,13 +169,8 @@ export default function Hero() {
             El arte de<br />la fragancia
           </h1>
 
-          <p className="hero-tagline" style={rv(240)}>
-            228 referencias · Originales verificados · Envío a todo el país
-          </p>
-
-          <p className="hero-quote" style={rv(320)}>
-            «Un perfume es la memoria de quien lo usa,<br />
-            la firma que permanece cuando ya te fuiste.»
+          <p className="hero-quote" style={rv(240)}>
+            Oler bien deja gratos recuerdos y con KiKi Fragancia nunca te olvidarán
           </p>
 
           {/* Buscador global — oculto en mobile (usa lupa del header) */}

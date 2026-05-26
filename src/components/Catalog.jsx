@@ -3,7 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { products } from '../data/products-enriched'
 import ProductCard from './ProductCard'
 
-const FEATURED_IDS = [20, 47, 159, 160, 169, 181]
+const FEATURED_IDS = [84, 107, 104, 105, 242, 247]
 
 export default function Catalog({ theme = 'dark' }) {
   const headRef = useScrollReveal({ threshold: 0.15 })

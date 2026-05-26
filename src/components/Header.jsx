@@ -182,7 +182,9 @@ export default function Header() {
     <>
       <header className={`kiki-header${scrolled ? ' scrolled' : ''}`}>
         <div className="header-inner">
-          <Link to="/" className="kiki-logo">KiKi Fragancia</Link>
+          <Link to="/" className="kiki-logo">
+            <img src="/logo vector letras.svg" alt="KiKi Fragancia" className="kiki-logo-img" />
+          </Link>
 
           <nav className="kiki-desktop-nav">
             <div className="nav-pill">
@@ -248,9 +250,7 @@ export default function Header() {
       {/* Sidebar deslizante */}
       <div className={`kiki-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-header">
-          <span style={{ fontFamily: 'var(--font-d)', fontSize: 20, fontWeight: 500, fontStyle: 'italic', color: 'var(--gold)', letterSpacing: '-0.02em' }}>
-            KiKi Fragancia
-          </span>
+          <img src="/logo vector letras.svg" alt="KiKi Fragancia" className="kiki-logo-img" />
           <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.45)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
             <CloseIcon />
           </button>

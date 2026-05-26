@@ -56,7 +56,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
         )}
       </span>
       <span style={{
-        fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: checked ? 400 : 300,
+        fontFamily: "'Gotham', sans-serif", fontSize: 12, fontWeight: checked ? 400 : 300,
         color: checked ? '#FAFAF8' : 'rgba(250,250,248,0.5)',
         letterSpacing: '0.03em', flex: 1, transition: 'color 0.18s',
       }}>
@@ -64,7 +64,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       </span>
       {count !== undefined && (
         <span style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 10,
+          fontFamily: "'Gotham', sans-serif", fontSize: 10,
           color: checked ? '#C9A84C' : 'rgba(250,250,248,0.22)', transition: 'color 0.18s',
         }}>
           {count}
@@ -105,7 +105,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
           {active && <span style={{ width: 6, height: 6, background: '#C9A84C' }}/>}
         </span>
         <span style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300,
+          fontFamily: "'Gotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300,
           color: active ? '#FAFAF8' : 'rgba(250,250,248,0.5)', transition: 'color 0.18s',
         }}>
           {label}
@@ -118,14 +118,14 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
     <div>
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24 }}>
         <h2 style={{
-          fontFamily: "'Cormorant Garamond', serif", fontSize: 22,
+          fontFamily: "'Gotham', sans-serif", fontSize: 22,
           fontWeight: 400, color: '#FAFAF8', fontStyle: 'italic', margin: 0,
         }}>
           Filtrar
         </h2>
         {hasFilters && (
           <button onClick={clearFilters} style={{
-            fontFamily: "'DM Sans', sans-serif", fontSize: 9,
+            fontFamily: "'Gotham', sans-serif", fontSize: 9,
             letterSpacing: '0.15em', textTransform: 'uppercase',
             color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer', padding: 0,
           }}>
@@ -137,7 +137,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
             Ordenar
           </span>
         </div>
@@ -147,7 +147,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, hasFilter
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid rgba(250,250,248,0.07)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
             Marca
           </span>
         </div>
@@ -255,7 +255,7 @@ export default function Tienda() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               <h1 style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "'Gotham', sans-serif",
                 fontSize: 'clamp(2rem, 4vw, 3.5rem)',
                 fontWeight: 400, color: '#FAFAF8',
                 letterSpacing: '-0.02em', lineHeight: 1.08,
@@ -263,7 +263,7 @@ export default function Tienda() {
               }}>
                 {sectionTitle}
               </h1>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: '#C9A84C', marginTop: 6, letterSpacing: '0.05em' }}>
+              <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: 12, color: '#C9A84C', marginTop: 6, letterSpacing: '0.05em' }}>
                 {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
               </p>
             </motion.div>
@@ -273,7 +273,7 @@ export default function Tienda() {
               onClick={() => setDrawerOpen(true)}
               style={{
                 display: 'flex', alignItems: 'center', gap: 8,
-                fontFamily: "'DM Sans', sans-serif", fontSize: 11,
+                fontFamily: "'Gotham', sans-serif", fontSize: 11,
                 letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'transparent', color: '#C9A84C',
                 border: '1px solid #C9A84C', cursor: 'pointer', padding: '11px 16px',
@@ -340,7 +340,7 @@ export default function Tienda() {
                 onFocus={() => setSearchFocused(true)}
                 onBlur={() => setSearchFocused(false)}
                 style={{
-                  flex: 1, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 300,
+                  flex: 1, fontFamily: "'Gotham', sans-serif", fontSize: 13, fontWeight: 300,
                   color: '#FAFAF8', background: 'none', border: 'none', outline: 'none',
                   padding: '12px 0', letterSpacing: '0.02em',
                 }}
@@ -361,16 +361,16 @@ export default function Tienda() {
           <div className="tienda-pad" style={{ paddingBottom: 80 }}>
             {filtered.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-                <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, color: 'rgba(250,250,248,0.45)', fontStyle: 'italic', marginBottom: 8 }}>
+                <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: 26, color: 'rgba(250,250,248,0.45)', fontStyle: 'italic', marginBottom: 8 }}>
                   No encontramos esa fragancia
                 </p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'rgba(250,250,248,0.25)', marginBottom: 28 }}>
+                <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: 13, color: 'rgba(250,250,248,0.25)', marginBottom: 28 }}>
                   Intenta con otros filtros
                 </p>
                 <button
                   onClick={clearFilters}
                   style={{
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 11,
+                    fontFamily: "'Gotham', sans-serif", fontSize: 11,
                     letterSpacing: '0.15em', textTransform: 'uppercase',
                     color: '#C9A84C', background: 'none',
                     border: '1px solid rgba(201,168,76,0.35)', padding: '10px 20px', cursor: 'pointer',
@@ -443,7 +443,7 @@ export default function Tienda() {
               padding: '0 20px', height: 60,
               borderBottom: '1px solid rgba(250,250,248,0.07)', flexShrink: 0,
             }}>
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontStyle: 'italic', color: '#FAFAF8', fontWeight: 400 }}>
+              <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: '#FAFAF8', fontWeight: 400 }}>
                 Filtros
               </span>
               <button
@@ -463,7 +463,7 @@ export default function Tienda() {
                 onClick={() => setDrawerOpen(false)}
                 style={{
                   width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
-                  padding: 14, fontFamily: "'DM Sans', sans-serif",
+                  padding: 14, fontFamily: "'Gotham', sans-serif",
                   fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
                   fontWeight: 500, cursor: 'pointer',
                 }}
