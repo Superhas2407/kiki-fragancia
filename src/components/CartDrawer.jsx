@@ -101,7 +101,7 @@ export default function CartDrawer() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span
-              style={{ fontFamily: "'Gotham', sans-serif", fontSize: '22px', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 100 }}
+              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '22px', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 100 }}
             >
               Mi Carrito
             </span>
@@ -111,7 +111,7 @@ export default function CartDrawer() {
                   background: '#C4781A',
                   color: '#1A1208',
                   fontSize: '10px',
-                  fontFamily: "'Gotham', sans-serif",
+                  fontFamily: "'KikiGotham', sans-serif",
                   fontWeight: 100,
                   padding: '2px 7px',
                   letterSpacing: '0.05em',
@@ -134,10 +134,10 @@ export default function CartDrawer() {
         <div style={{ flex: 1, overflowY: 'auto', padding: '16px 24px' }}>
           {items.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '12px' }}>
-              <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '20px', color: 'rgba(250,250,248,0.3)', fontStyle: 'italic' }}>
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '20px', color: 'rgba(250,250,248,0.3)', fontStyle: 'italic' }}>
                 El carrito está vacío
               </p>
-              <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '12px', color: 'rgba(250,250,248,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '12px', color: 'rgba(250,250,248,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 Agrega fragancias desde la tienda
               </p>
             </div>
@@ -165,14 +165,14 @@ export default function CartDrawer() {
 
                     {/* Info */}
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '9px', color: 'rgba(250,250,248,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '9px', color: 'rgba(250,250,248,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                         {item.house}
                       </p>
-                      <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '17px', color: '#FAFAF8', fontWeight: 100 }}>
+                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '17px', color: '#FAFAF8', fontWeight: 100 }}>
                         {item.name}
                       </p>
                       {unit > 0 && (
-                        <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '16px', color: '#C4781A' }}>
+                        <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '16px', color: '#C4781A' }}>
                           ${lineTotal}
                         </p>
                       )}
@@ -186,7 +186,7 @@ export default function CartDrawer() {
                           >
                             −
                           </button>
-                          <span style={{ width: '32px', textAlign: 'center', fontFamily: "'Gotham', sans-serif", fontSize: '13px', color: '#FAFAF8', borderLeft: '1px solid rgba(232,228,220,0.15)', borderRight: '1px solid rgba(232,228,220,0.15)', lineHeight: '28px' }}>
+                          <span style={{ width: '32px', textAlign: 'center', fontFamily: "'KikiGotham', sans-serif", fontSize: '13px', color: '#FAFAF8', borderLeft: '1px solid rgba(232,228,220,0.15)', borderRight: '1px solid rgba(232,228,220,0.15)', lineHeight: '28px' }}>
                             {item.quantity}
                           </span>
                           <button
@@ -217,10 +217,10 @@ export default function CartDrawer() {
           <div style={{ padding: '20px 24px', borderTop: '1px solid rgba(232,228,220,0.1)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {totalPrice > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                   Subtotal
                 </span>
-                <span style={{ fontFamily: "'Gotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 100 }}>
+                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 100 }}>
                   ${totalPrice}
                 </span>
               </div>
@@ -231,7 +231,7 @@ export default function CartDrawer() {
                 background: 'var(--gold)',
                 border: 'none',
                 color: '#0A0A0A',
-                fontFamily: "'Gotham', sans-serif",
+                fontFamily: "'KikiGotham', sans-serif",
                 fontSize: '11px',
                 fontWeight: 100,
                 letterSpacing: '0.2em',
@@ -246,7 +246,7 @@ export default function CartDrawer() {
             >
               Consultar por WhatsApp →
             </button>
-            <p style={{ fontFamily: "'Gotham', sans-serif", fontSize: '10px', color: 'rgba(250,250,248,0.2)', textAlign: 'center', letterSpacing: '0.05em' }}>
+            <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: 'rgba(250,250,248,0.2)', textAlign: 'center', letterSpacing: '0.05em' }}>
               Te responderemos para confirmar disponibilidad y precios
             </p>
           </div>
@@ -262,7 +262,7 @@ export default function CartDrawer() {
           transform: 'translateX(-50%)',
           background: '#25D366',
           color: '#fff',
-          fontFamily: "'Gotham', sans-serif",
+          fontFamily: "'KikiGotham', sans-serif",
           fontSize: '13px',
           fontWeight: 100,
           letterSpacing: '0.04em',

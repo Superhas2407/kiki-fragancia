@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Gotham';
+  font-family: 'KikiGotham';
   src: url('/fonts/GothamThin.otf') format('opentype');
   font-weight: 100 900;
   font-style: normal;
@@ -18,8 +18,8 @@
   --color-warm-dark: #251A0E;
   --color-border:    #D9CDBA;
 
-  --font-display: 'Gotham', sans-serif;
-  --font-sans:    'Gotham', sans-serif;
+  --font-display: 'KikiGotham', sans-serif;
+  --font-sans:    'KikiGotham', sans-serif;
 }
 
 :root {
@@ -34,8 +34,8 @@
   --dark:     #0A0A0A;
   --dark-2:   #111111;
   --warm:     #1C1408;
-  --font-d:   'Gotham', sans-serif;
-  --font-s:   'Gotham', sans-serif;
+  --font-d:   'KikiGotham', sans-serif;
+  --font-s:   'KikiGotham', sans-serif;
   --reveal-dur: 0.9s;
 }
 
@@ -45,7 +45,7 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Gotham', sans-serif;
+    font-family: 'KikiGotham', sans-serif;
     font-weight: 100;
     background: var(--ivory);
     color: var(--carbon);
@@ -60,7 +60,7 @@
     outline-offset: 3px;
   }
 
-  .font-display { font-family: 'Gotham', sans-serif; font-weight: 100; }
+  .font-display { font-family: 'KikiGotham', sans-serif; font-weight: 100; }
 }
 
 /* Hero — shimmer CTA */
@@ -142,7 +142,7 @@
   padding: 32px 20px;
 }
 .global-sidebar-label {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 9px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -160,7 +160,7 @@
   cursor: pointer;
   padding: 9px 12px;
   margin-bottom: 3px;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 12px;
   font-weight: 100;
   color: rgba(250,250,248,0.5);
@@ -222,7 +222,7 @@
 }
 .tienda-genero-chip {
   flex-shrink: 0;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
   font-weight: 100;
@@ -1563,7 +1563,7 @@
   gap: 6px;
 }
 .vitrina-num > span:first-child {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 9.5px;
   font-weight: 100;
   letter-spacing: 0.34em;
@@ -1581,7 +1581,7 @@
 
 .vitrina-familia {
   display: none;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 8.5px;
   font-weight: 100;
   letter-spacing: 0.30em;
@@ -1603,7 +1603,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 9.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1655,7 +1655,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
   font-weight: 100;
   letter-spacing: 0.3em;
@@ -1670,7 +1670,7 @@
   box-shadow: 0 0 0 1px rgba(0,0,0,0.4);
 }
 .vitrina-meta {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 10px;
   font-weight: 100;
   letter-spacing: 0.18em;
@@ -1678,7 +1678,7 @@
   color: rgba(247,242,234,0.5);
 }
 .vitrina-name {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: clamp(20px, 2.4vw, 36px);
   font-weight: 100;
   font-style: italic;
@@ -1710,7 +1710,7 @@
   flex-wrap: wrap;
 }
 .vitrina-notes-label {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 9px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
@@ -1723,7 +1723,7 @@
   gap: 6px 10px;
 }
 .vitrina-note {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 14px;
   font-style: italic;
   font-weight: 100;
@@ -1744,14 +1744,14 @@
   margin-top: 4px;
 }
 .vitrina-price-usd {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 20px;
   font-weight: 100;
   color: #C9A84C;
   letter-spacing: -0.01em;
 }
 .vitrina-price-bs {
-  font-family: 'Gotham', sans-serif;
+  font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
   font-weight: 100;
   color: rgba(250,250,248,0.35);
