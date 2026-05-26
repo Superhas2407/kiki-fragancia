@@ -4,11 +4,11 @@ import VaporCanvas from './VaporCanvas'
 
 const SLIDES = [
   { type: 'video', src: '/hero.webm' },
-  { type: 'image', desktop: '/hero/gucci-bloom-desktop.jpg',  mobile: '/hero/gucci-bloom-mobile.jpg'  },
-  { type: 'image', desktop: '/hero/mandarin-sky-desktop.jpg', mobile: '/hero/mandarin-sky-mobile.jpg' },
-  { type: 'image', desktop: '/hero/nitro-red-desktop.jpg',    mobile: '/hero/nitro-red-mobile.jpg'    },
-  { type: 'image', desktop: '/hero/yara-desktop.jpg',         mobile: '/hero/yara-mobile.jpg'         },
-  { type: 'image', desktop: '/hero/ysl-desktop.jpg',          mobile: '/hero/ysl-mobile.jpg'          },
+  { type: 'image', desktop: '/hero/gucci-bloom-desktop.webp',  mobile: '/hero/gucci-bloom-mobile.webp'  },
+  { type: 'image', desktop: '/hero/mandarin-sky-desktop.webp', mobile: '/hero/mandarin-sky-mobile.webp' },
+  { type: 'image', desktop: '/hero/nitro-red-desktop.webp',    mobile: '/hero/nitro-red-mobile.webp'    },
+  { type: 'image', desktop: '/hero/yara-desktop.webp',         mobile: '/hero/yara-mobile.webp'         },
+  { type: 'image', desktop: '/hero/ysl-desktop.webp',          mobile: '/hero/ysl-mobile.webp'          },
 ]
 
 const FADE_MS = 1600
@@ -104,7 +104,8 @@ export default function Hero() {
     return (
       <div style={wrapStyle}>
         <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
-          <source media="(max-width: 767px)" srcSet={slide.mobile} />
+          <source media="(max-width: 767px)" srcSet={slide.mobile} type="image/webp" />
+          <source srcSet={slide.desktop} type="image/webp" />
           <img
             src={slide.desktop}
             alt=""
