@@ -196,6 +196,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
+    setDescExpanded(false)
     const t1 = setTimeout(() => setMounted(true), 60)
     const t2 = setTimeout(() => setBarsReady(true), 500)
     return () => { clearTimeout(t1); clearTimeout(t2) }

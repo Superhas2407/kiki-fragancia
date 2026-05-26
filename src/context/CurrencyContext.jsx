@@ -35,7 +35,7 @@ export function CurrencyProvider({ children }) {
     fetch('https://ve.dolarapi.com/v1/euros/oficial')
       .then(r => r.json())
       .then(data => {
-        const fetched = data?.promedio ?? FALLBACK_RATE
+        const fetched = data?.promedio || FALLBACK_RATE
         setRate(fetched)
         setCache(fetched)
       })

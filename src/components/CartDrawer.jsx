@@ -21,12 +21,12 @@ const TrashIcon = () => (
 
 function buildMessage(items) {
   const lines = items.map(item => {
-    const unit = parseFloat((item.price || '$0').replace('$', '')) || 0
+    const unit = item.precioUSD || 0
     const lineTotal = unit > 0 ? ` — $${unit * item.quantity}` : ''
     return `- ${item.house} ${item.name} x${item.quantity}${lineTotal}`
   })
-  const hasPrice = items.some(item => parseFloat((item.price || '$0').replace('$', '')) > 0)
-  const totalLine = hasPrice ? `\nTotal: $${items.reduce((acc, item) => acc + (parseFloat((item.price || '$0').replace('$', '')) || 0) * item.quantity, 0)}\n` : ''
+  const hasPrice = items.some(item => item.precioUSD > 0)
+  const totalLine = hasPrice ? `\nTotal: $${items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)}\n` : ''
   return (
     `Hola KiKi Fragancia, me interesa consultar las siguientes fragancias:\n\n` +
     `${lines.join('\n')}\n` +
@@ -144,7 +144,7 @@ export default function CartDrawer() {
           ) : (
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', listStyle: 'none', padding: 0, margin: 0 }}>
               {items.map(item => {
-                const unit = parseFloat((item.price || '$0').replace('$', '')) || 0
+                const unit = item.precioUSD || 0
                 const lineTotal = unit * item.quantity
                 return (
                   <li
@@ -157,11 +157,17 @@ export default function CartDrawer() {
                     }}
                   >
                     {/* Imagen */}
-                    <img
-                      src={`/products/${item.image}`}
-                      alt={item.name}
-                      style={{ width: '64px', height: '80px', objectFit: 'cover', flexShrink: 0 }}
-                    />
+                    {item.image ? (
+                      <img
+                        src={`/products/${item.image}`}
+                        alt={item.name}
+                        style={{ width: '64px', height: '80px', objectFit: 'cover', flexShrink: 0 }}
+                      />
+                    ) : (
+                      <div style={{ width: '64px', height: '80px', flexShrink: 0, background: '#1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <span style={{ fontSize: 9, color: 'rgba(250,250,248,0.2)', textAlign: 'center', padding: 4 }}>{item.house}</span>
+                      </div>
+                    )}
 
                     {/* Info */}
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>

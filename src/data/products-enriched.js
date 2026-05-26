@@ -137,7 +137,7 @@ export const products = [
     "notasSalida": "Bergamota, Notas verdes, Melón",
     "notasCorazon": "Piña, Notas dulces, Ámbar",
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
-    "ml": 120
+    "ml": 60
   },
   {
     "id": 11,
@@ -160,7 +160,7 @@ export const products = [
     "image": "antonio-banderas-blue-seduction-200ml-f.jpg",
     "familia": "Cítrico",
     "tipo": "Eau de Parfum",
-    "genero": "Masculino",
+    "genero": "Femenino",
     "descripcion": "Una fragancia fresca y seductora para el hombre, con un carácter acuático-frutal que aporta sensación de limpieza, energía y magnetismo. Blue Seduction de Antonio Banderas se inspira en un estilo moderno, casual y atractivo, muy en la línea de un perfume de diseñador para el día a día.",
     "notasSalida": "Melón, Bergamota, Menta, Grosella negra",
     "notasCorazon": "Agua de mar, Manzana verde, Capuchino, Cardamomo",

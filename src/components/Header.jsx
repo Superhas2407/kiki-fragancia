@@ -116,7 +116,7 @@ function CurrencyToggle() {
 
 function CartButton() {
   const { items, setDrawerOpen } = useCartContext()
-  const count = items.reduce((s, i) => s + i.qty, 0)
+  const count = items.reduce((s, i) => s + i.quantity, 0)
 
   return (
     <button
