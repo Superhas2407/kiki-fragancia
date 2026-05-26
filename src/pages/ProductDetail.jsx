@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { allProducts as products } from '../data/all-products'
@@ -185,6 +185,7 @@ const WhatsAppIcon = ({ size = 15 }) => (
 
 export default function ProductDetail() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { addItem } = useCartContext()
   const { formatPrice } = useCurrency()
   const [mounted,      setMounted]      = useState(false)
@@ -227,10 +228,17 @@ export default function ProductDetail() {
   const waMsg = encodeURIComponent(`Hola, me interesa *${product.house} ${product.name}*. ¿Podrías darme más información?`)
   const waUrl = `https://wa.me/584149112002?text=${waMsg}`
 
-  const notas = {
+  const descripcion = product.descripcion || (product.description ? product.description.replace(/\*\*/g, '') : null)
+
+  const hasStructuredNotes = product.notasSalida || product.notasCorazon || product.notasFondo
+  const notas = hasStructuredNotes ? {
     salida:  parseNotes(product.notasSalida),
     corazon: parseNotes(product.notasCorazon),
     fondo:   parseNotes(product.notasFondo),
+  } : {
+    salida:  Array.isArray(product.notes) ? product.notes.slice(0, 4) : [],
+    corazon: Array.isArray(product.notes) ? product.notes.slice(4, 8) : [],
+    fondo:   Array.isArray(product.notes) ? product.notes.slice(8) : [],
   }
   const acordes = ACORDES_POR_FAMILIA[product.familia] || ACORDES_POR_FAMILIA['Oriental']
   const cuando  = CUANDO_POR_FAMILIA[product.familia] || DEFAULT_CUANDO
@@ -305,7 +313,7 @@ export default function ProductDetail() {
                 </p>
                 <div className="pd-divider" style={rv(300)}></div>
 
-                {product.descripcion && (
+                {descripcion && (
                   <div className="pd-desc-wrap" style={rv(340)}>
                     <div className="pd-desc-text" style={{
                       maxHeight: descExpanded ? '400px' : '72px',
@@ -313,7 +321,7 @@ export default function ProductDetail() {
                       transition: 'max-height .45s cubic-bezier(.22,1,.36,1)',
                       position: 'relative',
                     }}>
-                      <p className="pd-desc">{product.descripcion}</p>
+                      <p className="pd-desc">{descripcion}</p>
                       {!descExpanded && <div className="pd-desc-fade"></div>}
                     </div>
                     <button className="pd-expand-btn" onClick={() => setDescExpanded(v => !v)}>
@@ -337,6 +345,29 @@ export default function ProductDetail() {
                     </div>
                   </div>
                 )}
+
+                {product.variantIds && (() => {
+                  const variantGroup = products
+                    .filter(p => product.variantIds.includes(p.id))
+                    .sort((a, b) => a.ml - b.ml)
+                  return variantGroup.length > 1 ? (
+                    <div className="pd-size-selector" style={rv(415)}>
+                      <span className="pd-size-label">Tamaño</span>
+                      <div className="pd-size-btns">
+                        {variantGroup.map(v => (
+                          <button
+                            key={v.id}
+                            type="button"
+                            className={`pd-size-btn${v.id === product.id ? ' active' : ''}`}
+                            onClick={() => navigate(`/tienda/${v.id}`)}
+                          >
+                            {v.ml} ml
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null
+                })()}
 
                 {product.precioUSD > 0 && (
                   <div className="pd-price" style={rv(430)}>

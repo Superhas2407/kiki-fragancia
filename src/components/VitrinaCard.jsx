@@ -1,7 +1,8 @@
 import { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
+import { allProducts } from '../data/all-products'
 
 // ============================================================
 // VitrinaCard v2 — Museum gallery treatment of a product
@@ -56,9 +57,20 @@ const CheckIcon = () => (
 export default function VitrinaCard({ product }) {
   const { addItem } = useCartContext()
   const { formatPrice } = useCurrency()
+  const navigate = useNavigate()
   const cardRef = useRef(null)
   const [hover, setHover] = useState(false)
   const [added, setAdded] = useState(false)
+
+  const variants = product.variantIds
+    ? allProducts.filter(p => product.variantIds.includes(p.id)).sort((a, b) => a.ml - b.ml)
+    : []
+
+  function handleVariant(e, variantId) {
+    e.preventDefault()
+    e.stopPropagation()
+    navigate(`/tienda/${variantId}`)
+  }
 
   const imgSrc = product.image ? `/products/${product.image}` : null
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
@@ -148,6 +160,20 @@ export default function VitrinaCard({ product }) {
           </span>
         </div>
         <h3 className="vitrina-name">{product.name}</h3>
+        {variants.length > 1 && (
+          <div className="vitrina-variants">
+            {variants.map(v => (
+              <button
+                key={v.id}
+                type="button"
+                className={`vitrina-variant-btn${v.id === product.id ? ' active' : ''}`}
+                onClick={(e) => handleVariant(e, v.id)}
+              >
+                {v.ml}ml
+              </button>
+            ))}
+          </div>
+        )}
         {product.precioUSD > 0 && formatPrice(product.precioUSD) && (
           <div className="vitrina-price">
             <span className="vitrina-price-usd">{formatPrice(product.precioUSD)}</span>

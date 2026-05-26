@@ -236,7 +236,12 @@ export const products = [
       "Vainilla",
       "Notas amaderadas"
     ],
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "variantIds": [
+      10,
+      8,
+      9
+    ]
   },
   {
     "id": 9,
@@ -265,7 +270,12 @@ export const products = [
       "Vainilla",
       "Notas amaderadas"
     ],
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "variantIds": [
+      10,
+      8,
+      9
+    ]
   },
   {
     "id": 10,
@@ -294,7 +304,12 @@ export const products = [
       "Vainilla",
       "Notas amaderadas"
     ],
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "variantIds": [
+      10,
+      8,
+      9
+    ]
   },
   {
     "id": 11,
@@ -9488,7 +9503,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "variantIds": [
+      342,
+      341
+    ]
   },
   {
     "id": 342,
@@ -9514,7 +9533,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "variantIds": [
+      342,
+      341
+    ]
   },
   {
     "id": 343,
@@ -9539,7 +9562,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "variantIds": [
+      343,
+      344
+    ]
   },
   {
     "id": 344,
@@ -9564,7 +9591,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "variantIds": [
+      343,
+      344
+    ]
   },
   {
     "id": 345,
@@ -9732,7 +9763,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "variantIds": [
+      351,
+      352
+    ]
   },
   {
     "id": 352,
@@ -9757,7 +9792,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "variantIds": [
+      351,
+      352
+    ]
   },
   {
     "id": 353,
@@ -9828,7 +9867,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "variantIds": [
+      375,
+      355
+    ]
   },
   {
     "id": 356,
@@ -9864,7 +9907,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "variantIds": [
+      388,
+      356
+    ]
   },
   {
     "id": 357,
@@ -10160,7 +10207,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "variantIds": [
+      383,
+      368
+    ]
   },
   {
     "id": 369,
@@ -10330,7 +10381,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "variantIds": [
+      375,
+      355
+    ]
   },
   {
     "id": 376,
@@ -10375,7 +10430,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "variantIds": [
+      377,
+      378
+    ]
   },
   {
     "id": 378,
@@ -10397,7 +10456,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "variantIds": [
+      377,
+      378
+    ]
   },
   {
     "id": 379,
@@ -10525,7 +10588,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "variantIds": [
+      383,
+      368
+    ]
   },
   {
     "id": 384,
@@ -10664,7 +10731,11 @@ export const products = [
     ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "variantIds": [
+      388,
+      356
+    ]
   },
   {
     "id": 389,
