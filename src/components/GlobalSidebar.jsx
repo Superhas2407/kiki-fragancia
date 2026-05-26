@@ -65,11 +65,17 @@ export default function GlobalSidebar() {
   const activeTipo   = params.get('tipo')   || null
 
   function handleGenero(key) {
-    navigate(key ? `/tienda?genero=${key}` : '/tienda')
+    const p = new URLSearchParams()
+    if (activeTipo) p.set('tipo', activeTipo)
+    if (key) p.set('genero', key)
+    navigate(p.toString() ? `/tienda?${p}` : '/tienda')
   }
 
   function handleTipo(key) {
-    navigate(`/tienda?tipo=${key}`)
+    const p = new URLSearchParams()
+    if (activeGenero) p.set('genero', activeGenero)
+    p.set('tipo', key)
+    navigate(`/tienda?${p}`)
   }
 
   function handleAll() {

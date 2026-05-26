@@ -180,6 +180,24 @@ export default function Header() {
     return () => document.removeEventListener('keydown', onKey)
   }, [searchOpen])
 
+  const mobileParams = new URLSearchParams(location.search)
+  const mActiveTipo   = mobileParams.get('tipo')
+  const mActiveGenero = mobileParams.get('genero')
+
+  function generoTo(key) {
+    const p = new URLSearchParams()
+    if (mActiveTipo) p.set('tipo', mActiveTipo)
+    if (key) p.set('genero', key)
+    return p.toString() ? `/tienda?${p}` : '/tienda'
+  }
+
+  function tipoTo(key) {
+    const p = new URLSearchParams()
+    if (mActiveGenero) p.set('genero', mActiveGenero)
+    p.set('tipo', key)
+    return `/tienda?${p}`
+  }
+
   function handleSearch(e) {
     e.preventDefault()
     if (searchQuery.trim()) {
@@ -274,13 +292,13 @@ export default function Header() {
             </span>
           </div>
           {[
-            { to: '/tienda',                    label: 'Todas' },
-            { to: '/tienda?genero=Masculino',   label: 'Hombre' },
-            { to: '/tienda?genero=Femenino',    label: 'Mujer' },
-            { to: '/tienda?genero=Unisex',      label: 'Unisex' },
-            { to: '/tienda?genero=Niño',        label: 'Kids' },
+            { key: null,        label: 'Todas'  },
+            { key: 'Masculino', label: 'Hombre' },
+            { key: 'Femenino',  label: 'Mujer'  },
+            { key: 'Unisex',    label: 'Unisex' },
+            { key: 'Niño',      label: 'Kids'   },
           ].map((l, i) => (
-            <Link key={l.to} to={l.to} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 60}ms` }}>
+            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 60}ms` }}>
               {l.label}
             </Link>
           ))}
@@ -295,11 +313,11 @@ export default function Header() {
             </span>
           </div>
           {[
-            { to: '/tienda?tipo=arabes',    label: 'Árabes'    },
-            { to: '/tienda?tipo=disenador', label: 'Diseñador' },
-            { to: '/tienda?tipo=nicho',     label: 'Nicho'     },
+            { key: 'arabes',    label: 'Árabes'    },
+            { key: 'disenador', label: 'Diseñador' },
+            { key: 'nicho',     label: 'Nicho'     },
           ].map((l, i) => (
-            <Link key={l.to} to={l.to} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 280}ms` }}>
+            <Link key={l.key} to={tipoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 280}ms` }}>
               {l.label}
             </Link>
           ))}
