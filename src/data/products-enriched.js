@@ -339,9 +339,9 @@ export const products = [
     "notasSalida": "Melón, Bergamota, Menta, Grosella negra",
     "notasCorazon": "Agua de mar, Manzana verde, Capuchino, Cardamomo",
     "notasFondo": "Nuez moscada, Ámbar, Notas amaderadas",
-    "ml": 100,
-    "precioUSD": 25,
-    "precioBS": 16250,
+    "ml": 200,
+    "precioUSD": 35,
+    "precioBS": 22750,
     "description": "Una fragancia **fresca y seductora para el hombre**, con un carácter acuático-frutal que aporta sensación de limpieza, energía y magnetismo. Blue Seduction de Antonio Banderas se inspira en un estilo moderno, casual y atractivo, muy en la línea de un perfume de diseñador para el día a día.",
     "notes": [
       "Melón",
@@ -9367,7 +9367,7 @@ export const products = [
     "id": 337,
     "house": "CUBA",
     "name": "Cuba Paris Cuba Green",
-    "ml": 35,
+    "ml": 100,
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "image": "cuba-paris-cuba-green-100ml-m.jpeg",
@@ -9383,7 +9383,9 @@ export const products = [
       "Madera de sándalo",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 15,
+    "precioBS": 9750
   },
   {
     "id": 338,
@@ -9467,7 +9469,7 @@ export const products = [
     "id": 341,
     "house": "CALVIN",
     "name": "Calvin Klein CK One",
-    "ml": 2,
+    "ml": 200,
     "tipo": "Eau de Toilette",
     "genero": "Unisex",
     "image": "calvin-klein-ck-one-200ml-u.jpeg",
@@ -9484,7 +9486,9 @@ export const products = [
       "Almizcle",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 342,
@@ -9806,7 +9810,7 @@ export const products = [
     "id": 355,
     "house": "ANTONIO BANDERAS",
     "name": "Antonio Banderas Black Seduction",
-    "ml": 100,
+    "ml": 200,
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "image": "antonio-banderas-black-seduction-200ml-m.jpeg",
@@ -9823,14 +9827,14 @@ export const products = [
       "Cedro de Virginia"
     ],
     "categoria": "disenador",
-    "precioUSD": 25,
-    "precioBS": 16250
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 356,
     "house": "CALVIN",
     "name": "Calvin Klein Obsession for Men",
-    "ml": 125,
+    "ml": 200,
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "image": "calvin-klein-obsession-for-men-200ml-m.jpeg",
@@ -9859,8 +9863,8 @@ export const products = [
       "Almizcle"
     ],
     "categoria": "disenador",
-    "precioUSD": 35,
-    "precioBS": 22750
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 357,
