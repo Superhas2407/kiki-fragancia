@@ -350,7 +350,12 @@ export default function Tienda() {
               return (
                 <button
                   key={label}
-                  onClick={() => key === null ? navigate('/tienda') : navigate(`/tienda?genero=${key}`)}
+                  onClick={() => {
+                    const p = new URLSearchParams()
+                    if (urlTipo) p.set('tipo', urlTipo)
+                    if (key) p.set('genero', key)
+                    navigate(p.toString() ? `/tienda?${p}` : '/tienda')
+                  }}
                   className={`tienda-genero-chip${isActive ? ' active' : ''}`}
                 >
                   {label}
