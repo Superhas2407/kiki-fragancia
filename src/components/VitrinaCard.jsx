@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 
 // ============================================================
@@ -53,7 +53,6 @@ const CheckIcon = () => (
 )
 
 export default function VitrinaCard({ product }) {
-  const navigate = useNavigate()
   const { addItem } = useCartContext()
   const cardRef = useRef(null)
   const [hover, setHover] = useState(false)
@@ -64,17 +63,18 @@ export default function VitrinaCard({ product }) {
 
   function handleAdd(e) {
     e.stopPropagation()
+    e.preventDefault()
     addItem(product)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
   }
 
   return (
-    <article
+    <Link
       ref={cardRef}
+      to={`/tienda/${product.id}`}
       className="vitrina-card"
       style={famStyle(product.familia)}
-      onClick={() => navigate(`/tienda/${product.id}`)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       aria-label={`${product.house} ${product.name}`}
@@ -155,6 +155,6 @@ export default function VitrinaCard({ product }) {
           </div>
         )}
       </div>
-    </article>
+    </Link>
   )
 }
