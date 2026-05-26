@@ -272,7 +272,7 @@ export default function Tienda() {
 
   // Label del título según selección del sidebar
   const LABEL_MAP   = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
-  const TIPO_MAP    = { arabe: 'Árabes', disenador: 'Diseñador', nicho: 'Nicho' }
+  const TIPO_MAP    = { arabes: 'Árabes', disenador: 'Diseñador', nicho: 'Nicho' }
   const sectionTitle = urlGenero ? (LABEL_MAP[urlGenero] || urlGenero)
     : urlTipo ? (TIPO_MAP[urlTipo] || urlTipo)
     : 'Fragancias'

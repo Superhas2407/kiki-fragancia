@@ -49,9 +49,9 @@ const GENERO_ITEMS = [
 ]
 
 const TIPO_ITEMS = [
-  { key: 'arabe',     label: 'Árabes',    icon: <ArabeIcon />    },
+  { key: 'arabes',    label: 'Árabes',    icon: <ArabeIcon />     },
   { key: 'disenador', label: 'Diseñador', icon: <DisenadorIcon /> },
-  { key: 'nicho',     label: 'Nicho',     icon: <NichoIcon />    },
+  { key: 'nicho',     label: 'Nicho',     icon: <NichoIcon />     },
 ]
 
 export default function GlobalSidebar() {
