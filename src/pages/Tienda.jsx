@@ -180,6 +180,12 @@ export default function Tienda() {
   // Leer ?genero= de la URL (viene del GlobalSidebar)
   const urlGenero = searchParams.get('genero') || null
 
+  // Sincronizar searchQuery con ?q= de la URL (cuando cambia desde otro componente)
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q') || '')
+    setCurrentPage(1)
+  }, [searchParams.get('q')])
+
   // Cuando cambia la URL, resetear filtros adicionales
   useEffect(() => {
     setSelectedMarcas([])

@@ -28,11 +28,15 @@ export default function Hero() {
   const [mounted, setMounted]       = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
-  const [current, setCurrent]       = useState(0)
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 767
+  // En mobile saltamos el video (slide 0) para evitar el botón de play nativo
+  const SLIDES_ACTIVE = isMobile ? SLIDES.filter(s => s.type !== 'video') : SLIDES
+  const initialSlide = 0
+  const [current, setCurrent]       = useState(initialSlide)
   const [prev, setPrev]             = useState(null)
   const [entering, setEntering]     = useState(false)
   const timerRef = useRef(null)
-  const currentRef = useRef(0)
+  const currentRef = useRef(initialSlide)
   const touchStartX = useRef(null)
 
   useEffect(() => {
@@ -42,27 +46,26 @@ export default function Hero() {
 
   // Precarga todas las imágenes del carrusel al montar para evitar lag en transiciones
   useEffect(() => {
-    const isMobile = window.innerWidth <= 767
-    SLIDES.forEach(slide => {
+    const mobile = window.innerWidth <= 767
+    SLIDES_ACTIVE.forEach(slide => {
       if (slide.type !== 'image') return
       const img = new Image()
-      img.src = isMobile ? slide.mobile : slide.desktop
+      img.src = mobile ? slide.mobile : slide.desktop
     })
   }, [])
 
   function advance(from) {
-    const next = (from + 1) % SLIDES.length
+    const next = (from + 1) % SLIDES_ACTIVE.length
     currentRef.current = next
     setPrev(from)
     setEntering(true)
     setCurrent(next)
     setTimeout(() => { setPrev(null); setEntering(false) }, FADE_MS + 200)
-    // Programa el siguiente después de la duración del nuevo slide
-    timerRef.current = setTimeout(() => advance(next), getSlideDuration(next))
+    timerRef.current = setTimeout(() => advance(next), getSlideDuration(SLIDES_ACTIVE[next].type === 'video' ? 0 : 1))
   }
 
   useEffect(() => {
-    timerRef.current = setTimeout(() => advance(0), getSlideDuration(0))
+    timerRef.current = setTimeout(() => advance(0), getSlideDuration(SLIDES_ACTIVE[0].type === 'video' ? 0 : 1))
     return () => clearTimeout(timerRef.current)
   }, [])
 
@@ -128,7 +131,7 @@ export default function Hero() {
     const delta = touchStartX.current - e.changedTouches[0].clientX
     touchStartX.current = null
     if (Math.abs(delta) < 50) return
-    const total = SLIDES.length
+    const total = SLIDES_ACTIVE.length
     const next = delta > 0
       ? (currentRef.current + 1) % total
       : (currentRef.current - 1 + total) % total
@@ -145,10 +148,10 @@ export default function Hero() {
       <div className="hero-bg" style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
         {/* Slide anterior — se queda estático atrás mientras el nuevo entra */}
         {prev !== null && (
-          <SlideMedia slide={SLIDES[prev]} z={1} isPrev index={prev} />
+          <SlideMedia slide={SLIDES_ACTIVE[prev]} z={1} isPrev index={prev} />
         )}
         {/* Slide actual — entra en fade-in cuando entering=true */}
-        <SlideMedia slide={SLIDES[current]} z={2} isEntering={entering} index={current} />
+        <SlideMedia slide={SLIDES_ACTIVE[current]} z={2} isEntering={entering} index={current} />
 
         <div className="hero-bg-gradient" style={{ zIndex: 3 }}></div>
         <div className="hero-bg-pattern" style={{ zIndex: 3 }}></div>
@@ -254,7 +257,7 @@ export default function Hero() {
         position: 'absolute', bottom: 'clamp(20px, 5vh, 80px)', left: '50%', transform: 'translateX(-50%)',
         display: 'flex', gap: 8, zIndex: 10,
       }}>
-        {SLIDES.map((_, i) => (
+        {SLIDES_ACTIVE.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
