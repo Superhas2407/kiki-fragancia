@@ -3843,7 +3843,9 @@ export const products = [
       "Vetiver",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 130,
@@ -7287,7 +7289,9 @@ export const products = [
       "Almizcle",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 250,
@@ -7313,7 +7317,9 @@ export const products = [
       "Ambroxan",
       "Cedro"
     ],
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "precioUSD": 580,
+    "precioBS": 377000
   },
   {
     "id": 251,
@@ -7338,7 +7344,9 @@ export const products = [
       "Ámbar",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 252,
@@ -7385,7 +7393,9 @@ export const products = [
       "Pachulí",
       "Madera de ciprés"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 254,
@@ -7407,7 +7417,9 @@ export const products = [
       "Salvia esclarea",
       "Lavanda"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 255,
@@ -7432,7 +7444,9 @@ export const products = [
       "Vainilla",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 120,
+    "precioBS": 78000
   },
   {
     "id": 256,
@@ -7458,7 +7472,9 @@ export const products = [
       "Cuero",
       "Naranja amarga"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 120,
+    "precioBS": 78000
   },
   {
     "id": 257,
@@ -7501,7 +7517,9 @@ export const products = [
       "Musgo de roble",
       "Caña de azúcar"
     ],
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "precioUSD": 180,
+    "precioBS": 117000
   },
   {
     "id": 259,
@@ -7520,7 +7538,9 @@ export const products = [
       "Cedro de Virginia",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 220,
+    "precioBS": 143000
   },
   {
     "id": 260,
@@ -7542,7 +7562,9 @@ export const products = [
       "Almizcle",
       "Notas amaderadas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 261,
@@ -7566,7 +7588,9 @@ export const products = [
       "Almizcle",
       "Notas amaderadas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 75,
+    "precioBS": 48750
   },
   {
     "id": 262,
@@ -7585,7 +7609,9 @@ export const products = [
       "Macarrones dulces",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 263,
@@ -7606,7 +7632,9 @@ export const products = [
       "Sándalo",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 264,
@@ -7627,7 +7655,9 @@ export const products = [
       "Vetiver",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 95,
+    "precioBS": 61750
   },
   {
     "id": 265,
@@ -7645,7 +7675,9 @@ export const products = [
       "Musgo de roble",
       "Pepino"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 266,
@@ -7663,7 +7695,9 @@ export const products = [
       "Haba tonka",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 267,
@@ -7685,7 +7719,9 @@ export const products = [
       "Almizcle",
       "Notas amaderadas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 268,
@@ -7707,7 +7743,9 @@ export const products = [
       "Almizcle blanco",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 160,
+    "precioBS": 104000
   },
   {
     "id": 269,
@@ -7748,7 +7786,9 @@ export const products = [
       "Benjuí",
       "Sándalo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 200,
+    "precioBS": 130000
   },
   {
     "id": 271,
@@ -7770,7 +7810,9 @@ export const products = [
       "Sándalo",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 272,
@@ -7792,7 +7834,9 @@ export const products = [
       "Cedro",
       "Musgo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 140,
+    "precioBS": 91000
   },
   {
     "id": 273,
@@ -7812,7 +7856,9 @@ export const products = [
       "Incienso",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 274,
@@ -7834,7 +7880,9 @@ export const products = [
       "Maderas blancas",
       "Vainilla"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 275,
@@ -7858,7 +7906,9 @@ export const products = [
       "Vainilla",
       "Madera de cachemira"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 276,
@@ -7881,7 +7931,9 @@ export const products = [
       "Vainilla",
       "Ciste"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 277,
@@ -7904,7 +7956,9 @@ export const products = [
       "Benjuí",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 155,
+    "precioBS": 100750
   },
   {
     "id": 278,
@@ -7927,7 +7981,9 @@ export const products = [
       "Palo de rosa de Brasil",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 120,
+    "precioBS": 78000
   },
   {
     "id": 279,
@@ -7946,7 +8002,9 @@ export const products = [
       "Enebro",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 175,
+    "precioBS": 113750
   },
   {
     "id": 280,
@@ -7970,7 +8028,9 @@ export const products = [
       "Cypriol",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 281,
@@ -7992,7 +8052,9 @@ export const products = [
       "Vainilla",
       "Almizcle blanco"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 282,
@@ -8014,7 +8076,9 @@ export const products = [
       "Pachulí",
       "Maderas secas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 283,
@@ -8053,7 +8117,9 @@ export const products = [
       "Cuero",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 285,
@@ -8080,7 +8146,9 @@ export const products = [
       "Pachulí",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 286,
@@ -8126,7 +8194,9 @@ export const products = [
       "Pachulí",
       "Mirra"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 288,
@@ -8147,7 +8217,9 @@ export const products = [
       "Pachulí",
       "Madera de palisandro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 289,
@@ -8167,7 +8239,9 @@ export const products = [
       "Vainilla de Madagascar",
       "Ámbar"
     ],
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "precioUSD": 320,
+    "precioBS": 208000
   },
   {
     "id": 290,
@@ -8216,7 +8290,9 @@ export const products = [
       "Madera ambarina",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 292,
@@ -8239,7 +8315,9 @@ export const products = [
       "Almizcle",
       "Musgo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 75,
+    "precioBS": 48750
   },
   {
     "id": 293,
@@ -8260,7 +8338,9 @@ export const products = [
       "Almizcle",
       "Sándalo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 75,
+    "precioBS": 48750
   },
   {
     "id": 294,
@@ -8279,7 +8359,9 @@ export const products = [
       "Madera de guayaco",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 295,
@@ -8308,7 +8390,9 @@ export const products = [
       "Almizcle",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 296,
@@ -8329,7 +8413,9 @@ export const products = [
       "Cardamomo",
       "Cachemira"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 297,
@@ -8347,7 +8433,9 @@ export const products = [
       "Salvia",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 298,
@@ -8369,7 +8457,9 @@ export const products = [
       "Haba tonka",
       "Sándalo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 185,
+    "precioBS": 120250
   },
   {
     "id": 299,
@@ -8391,7 +8481,9 @@ export const products = [
       "Ámbar",
       "Tabaco"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 300,
@@ -8411,7 +8503,9 @@ export const products = [
       "Almizcle",
       "Amberwood"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 301,
@@ -8430,7 +8524,9 @@ export const products = [
       "Madera de cachemira",
       "Cuero"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 302,
@@ -8450,7 +8546,9 @@ export const products = [
       "Vetiver",
       "Vainilla"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 140,
+    "precioBS": 91000
   },
   {
     "id": 303,
@@ -8470,7 +8568,9 @@ export const products = [
       "Vainilla",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 304,
@@ -8490,7 +8590,9 @@ export const products = [
       "Ámbar",
       "Vainilla"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 305,
@@ -8512,7 +8614,9 @@ export const products = [
       "Sándalo",
       "Vetiver de Madagascar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 306,
@@ -8529,7 +8633,9 @@ export const products = [
       "Narciso",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 307,
@@ -8553,7 +8659,9 @@ export const products = [
       "Madera",
       "Sándalo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 75,
+    "precioBS": 48750
   },
   {
     "id": 308,
@@ -8580,7 +8688,9 @@ export const products = [
       "Sándalo",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 309,
@@ -8597,7 +8707,9 @@ export const products = [
       "Osmanto",
       "Cacao"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 310,
@@ -8616,7 +8728,9 @@ export const products = [
       "Vainilla negra",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 175,
+    "precioBS": 113750
   },
   {
     "id": 311,
@@ -8638,7 +8752,9 @@ export const products = [
       "Ámbar",
       "Maderas blancas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 312,
@@ -8658,7 +8774,9 @@ export const products = [
       "Maderas",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 115,
+    "precioBS": 74750
   },
   {
     "id": 313,
@@ -8679,7 +8797,9 @@ export const products = [
       "Sándalo",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 314,
@@ -8701,7 +8821,9 @@ export const products = [
       "Almizcle",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 200,
+    "precioBS": 130000
   },
   {
     "id": 315,
@@ -8789,7 +8911,9 @@ export const products = [
       "Palisandro",
       "Árbol de ébano"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 319,
@@ -8811,7 +8935,9 @@ export const products = [
       "Almizcle",
       "Notas amaderadas"
     ],
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "precioUSD": 400,
+    "precioBS": 260000
   },
   {
     "id": 320,
@@ -8862,7 +8988,9 @@ export const products = [
       "Cuero",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 322,
@@ -8900,7 +9028,9 @@ export const products = [
       "Ámbar",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 323,
@@ -8923,7 +9053,9 @@ export const products = [
       "Iso E Super",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 324,
@@ -8944,7 +9076,9 @@ export const products = [
       "Notas amaderadas",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 95,
+    "precioBS": 61750
   },
   {
     "id": 325,
@@ -8960,7 +9094,9 @@ export const products = [
       "Durazno",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 326,
@@ -8982,7 +9118,9 @@ export const products = [
       "Pachulí",
       "Madera de massoia"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 327,
@@ -9006,7 +9144,9 @@ export const products = [
       "Amberwood",
       "Notas amaderadas oscuras"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 328,
@@ -9027,7 +9167,9 @@ export const products = [
       "Sándalo",
       "Vainilla"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 329,
@@ -9050,7 +9192,9 @@ export const products = [
       "Almizcle",
       "Sándalo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 330,
@@ -9066,7 +9210,9 @@ export const products = [
       "Madera de cachemira",
       "Ámbar blanco"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 115,
+    "precioBS": 74750
   },
   {
     "id": 331,
@@ -9095,7 +9241,9 @@ export const products = [
       "Sándalo",
       "Palo de Rosa"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 332,
@@ -9118,7 +9266,9 @@ export const products = [
       "Madera de cachemira",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 333,
@@ -9134,7 +9284,9 @@ export const products = [
       "Salvia",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 334,
@@ -9157,7 +9309,9 @@ export const products = [
       "Cuero",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 335,
@@ -9182,7 +9336,9 @@ export const products = [
       "Pachulí",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 336,
@@ -9252,7 +9408,9 @@ export const products = [
       "Sándalo",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 339,
@@ -9277,7 +9435,9 @@ export const products = [
       "Pachulí",
       "Secuoya roja brasileña"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 340,
@@ -9299,7 +9459,9 @@ export const products = [
       "Ámbar",
       "Sándalo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 341,
@@ -9346,7 +9508,9 @@ export const products = [
       "Sándalo",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 343,
@@ -9369,7 +9533,9 @@ export const products = [
       "Maderas",
       "Especias suaves"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 344,
@@ -9392,7 +9558,9 @@ export const products = [
       "Cedro",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 345,
@@ -9414,7 +9582,9 @@ export const products = [
       "Vainilla",
       "Sándalo"
     ],
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 346,
@@ -9436,7 +9606,9 @@ export const products = [
       "Cedro",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 347,
@@ -9457,7 +9629,9 @@ export const products = [
       "Madera de guayaco",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 348,
@@ -9480,7 +9654,9 @@ export const products = [
       "Nuez moscada",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 349,
@@ -9499,7 +9675,9 @@ export const products = [
       "Caoba",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 350,
@@ -9518,7 +9696,9 @@ export const products = [
       "Ambroxán",
       "Musgo"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 351,
@@ -9546,7 +9726,9 @@ export const products = [
       "Vetiver",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 352,
@@ -9569,7 +9751,9 @@ export const products = [
       "Almizcle",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 353,
@@ -9591,7 +9775,9 @@ export const products = [
       "Ámbar",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 354,
@@ -9612,7 +9798,9 @@ export const products = [
       "Notas amaderadas",
       "Verbena de limón"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 355,
@@ -9634,7 +9822,9 @@ export const products = [
       "Almizcle",
       "Cedro de Virginia"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 356,
@@ -9668,7 +9858,9 @@ export const products = [
       "Pachulí",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 357,
@@ -9694,7 +9886,9 @@ export const products = [
       "Pachulí",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 358,
@@ -9716,7 +9910,9 @@ export const products = [
       "Musgo de roble",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 359,
@@ -9739,7 +9935,9 @@ export const products = [
       "Pachulí",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 360,
@@ -9761,7 +9959,9 @@ export const products = [
       "Vainilla",
       "Madera de cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 15,
+    "precioBS": 9750
   },
   {
     "id": 361,
@@ -9785,7 +9985,9 @@ export const products = [
       "Incienso",
       "Madera de tamboti"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 15,
+    "precioBS": 9750
   },
   {
     "id": 362,
@@ -9807,7 +10009,9 @@ export const products = [
       "Hojas de pachulí de Indonesia",
       "Vaina de cacao"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 363,
@@ -9826,7 +10030,9 @@ export const products = [
       "Cuero",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 364,
@@ -9853,7 +10059,9 @@ export const products = [
       "Benjuí",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 365,
@@ -9875,7 +10083,9 @@ export const products = [
       "Ámbar",
       "Cedro"
     ],
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 366,
@@ -9897,7 +10107,9 @@ export const products = [
       "Vetiver",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 367,
@@ -9919,7 +10131,9 @@ export const products = [
       "Vetiver",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 368,
@@ -9940,7 +10154,9 @@ export const products = [
       "Musgo de roble",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 369,
@@ -9963,7 +10179,9 @@ export const products = [
       "Vainilla",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 15,
+    "precioBS": 9750
   },
   {
     "id": 370,
@@ -9981,7 +10199,9 @@ export const products = [
       "Cedro",
       "Notas amaderadas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 371,
@@ -10000,7 +10220,9 @@ export const products = [
       "Ámbar",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 372,
@@ -10024,7 +10246,9 @@ export const products = [
       "Sándalo",
       "Maderas oscuras"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 373,
@@ -10046,7 +10270,9 @@ export const products = [
       "Cedro",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 374,
@@ -10074,7 +10300,9 @@ export const products = [
       "Pachulí",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 375,
@@ -10096,7 +10324,9 @@ export const products = [
       "Almizcle",
       "Cedro de Virginia"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 376,
@@ -10116,7 +10346,9 @@ export const products = [
       "Madera de cedro",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 377,
@@ -10137,7 +10369,9 @@ export const products = [
       "Cedro",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 378,
@@ -10157,7 +10391,9 @@ export const products = [
       "Almizcle",
       "Notas amaderadas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 379,
@@ -10213,7 +10449,9 @@ export const products = [
       "Incienso",
       "Benjuí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 381,
@@ -10235,7 +10473,9 @@ export const products = [
       "Hojas de pachulí de Indonesia",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 382,
@@ -10256,7 +10496,9 @@ export const products = [
       "Vetiver de Haití",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 383,
@@ -10277,7 +10519,9 @@ export const products = [
       "Musgo de roble",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 384,
@@ -10307,7 +10551,9 @@ export const products = [
       "Musgo de roble",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 385,
@@ -10328,7 +10574,9 @@ export const products = [
       "Notas amaderadas",
       "Maderas preciosas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 386,
@@ -10353,7 +10601,9 @@ export const products = [
       "Ámbar",
       "Madera de teca"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 387,
@@ -10372,7 +10622,9 @@ export const products = [
       "Haba tonka",
       "Ládano"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 388,
@@ -10406,7 +10658,9 @@ export const products = [
       "Pachulí",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 389,
@@ -10434,7 +10688,9 @@ export const products = [
       "Cedro",
       "Vainilla"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 390,
@@ -10459,7 +10715,9 @@ export const products = [
       "Cuero",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 391,
@@ -10485,7 +10743,9 @@ export const products = [
       "Almizcle",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 392,
@@ -10509,7 +10769,9 @@ export const products = [
       "Ámbar",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 393,
@@ -10532,7 +10794,9 @@ export const products = [
       "Pachulí",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 394,
@@ -10552,7 +10816,9 @@ export const products = [
       "Pachulí",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 395,
@@ -10574,7 +10840,9 @@ export const products = [
       "Sándalo",
       "Madera de cachemira"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 396,
@@ -10594,7 +10862,9 @@ export const products = [
       "Notas marinas",
       "Almizcle"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 397,
@@ -10617,7 +10887,9 @@ export const products = [
       "Almizcle",
       "Haba tonka"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 398,
@@ -10636,7 +10908,9 @@ export const products = [
       "Musgo de roble",
       "Cuero"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 399,
@@ -10670,7 +10944,9 @@ export const products = [
       "Musgo de roble",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 400,
@@ -10692,7 +10968,9 @@ export const products = [
       "Almizcle",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 401,
@@ -10716,7 +10994,9 @@ export const products = [
       "Ámbar",
       "Sándalo"
     ],
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 402,
@@ -10736,7 +11016,9 @@ export const products = [
       "Ámbar gris",
       "Nuez moscada"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 403,
@@ -10759,7 +11041,9 @@ export const products = [
       "Incienso",
       "Ámbar gris"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 404,
@@ -10785,7 +11069,9 @@ export const products = [
       "Sándalo",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 405,
@@ -10808,7 +11094,9 @@ export const products = [
       "Sándalo",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 406,
@@ -10831,7 +11119,9 @@ export const products = [
       "Vetiver",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 407,
@@ -10851,7 +11141,9 @@ export const products = [
       "Almizcle",
       "Maderas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 408,
@@ -10880,7 +11172,9 @@ export const products = [
       "Cuero",
       "Vainilla"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 409,
@@ -10901,7 +11195,9 @@ export const products = [
       "Vetiver",
       "Musgo de roble"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 410,
@@ -10924,7 +11220,9 @@ export const products = [
       "Ámbar",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 411,
@@ -10946,7 +11244,9 @@ export const products = [
       "Vetiver",
       "Pachulí"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 412,
@@ -10969,7 +11269,9 @@ export const products = [
       "Ládano",
       "Vetiver"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 413,
@@ -10990,7 +11292,9 @@ export const products = [
       "Almizcle",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 414,
@@ -11011,7 +11315,9 @@ export const products = [
       "Limón",
       "Maderas"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 15,
+    "precioBS": 9750
   },
   {
     "id": 415,
@@ -11032,7 +11338,9 @@ export const products = [
       "Almizcle",
       "Ámbar"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 416,
@@ -11061,6 +11369,8 @@ export const products = [
       "Pachulí",
       "Cedro"
     ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "precioUSD": 40,
+    "precioBS": 26000
   }
 ];
