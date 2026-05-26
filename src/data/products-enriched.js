@@ -11,7 +11,9 @@ export const products = [
     "notasSalida": "Limón, mandarina, cardamomo, pimienta rosa",
     "notasCorazon": "lavanda, manzana verde, flor de azahar del naranjo, rosa",
     "notasFondo": "almizcle, musgo, cedro, pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 2,
@@ -25,7 +27,9 @@ export const products = [
     "notasSalida": "Limón, Menta, Grosella negra, Pimienta rosa",
     "notasCorazon": "Manzana, Incienso, Cedro, Jengibre",
     "notasFondo": "Sándalo, Pachulí, Jazmín",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 3,
@@ -39,7 +43,9 @@ export const products = [
     "notasSalida": "Bergamota, Manzana, Canela, Lavandín",
     "notasCorazon": "Lirio de los valles, Flor de azahar del naranjo, Vainilla",
     "notasFondo": "Haba tonka, Ámbar, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 4,
@@ -53,7 +59,9 @@ export const products = [
     "notasSalida": "Piña, Bergamota, Manzana, Flores blancas",
     "notasCorazon": "Abedul, Flor de azahar del naranjo, Ámbar",
     "notasFondo": "Ámbar gris, Musgo de roble, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 5,
@@ -67,7 +75,9 @@ export const products = [
     "notasSalida": "Bergamota, Mandarina, Ámbar",
     "notasCorazon": "Notas amaderadas, Almizcle",
     "notasFondo": "Pachulí, Especias frescas",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 6,
@@ -81,7 +91,9 @@ export const products = [
     "notasSalida": "Lavanda, Bergamota, Romero, Notas marinas",
     "notasCorazon": "Geranio, Salvia, Ámbar",
     "notasFondo": "Vetiver, Musgo, Cedro",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 7,
@@ -95,7 +107,9 @@ export const products = [
     "notasSalida": "Azafrán, Bergamota, Resina de elemí, Rosa búlgara",
     "notasCorazon": "Oud, Lirio de los valles, Haba tonka",
     "notasFondo": "Ámbar, Almizcle blanco, Musgo de roble",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 8,
@@ -109,7 +123,9 @@ export const products = [
     "notasSalida": "Bergamota, Notas verdes, Melón",
     "notasCorazon": "Piña, Notas dulces, Ámbar",
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
-    "ml": 120
+    "ml": 120,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 9,
@@ -123,7 +139,9 @@ export const products = [
     "notasSalida": "Bergamota, Notas verdes, Melón",
     "notasCorazon": "Piña, Notas dulces, Ámbar",
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
-    "ml": 200
+    "ml": 200,
+    "precioUSD": 95,
+    "precioBS": 61750
   },
   {
     "id": 10,
@@ -137,7 +155,9 @@ export const products = [
     "notasSalida": "Bergamota, Notas verdes, Melón",
     "notasCorazon": "Piña, Notas dulces, Ámbar",
     "notasFondo": "Almizcle, Vainilla, Notas amaderadas",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 11,
@@ -151,7 +171,9 @@ export const products = [
     "notasSalida": "Bergamota, Flor de cerezo, Amaretto, Rosa",
     "notasCorazon": "Heliotropo, Gamuza, Haba tonka, Ámbar",
     "notasFondo": "Almizcle, Sándalo, Cedro",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 12,
@@ -165,7 +187,9 @@ export const products = [
     "notasSalida": "Melón, Bergamota, Menta, Grosella negra",
     "notasCorazon": "Agua de mar, Manzana verde, Capuchino, Cardamomo",
     "notasFondo": "Nuez moscada, Ámbar, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 13,
@@ -179,7 +203,9 @@ export const products = [
     "notasSalida": "Bergamota, Mandarina, Manzana, Melocotón",
     "notasCorazon": "Grosella negra, Gardenia, Flor de azahar del naranjo, Pachulí",
     "notasFondo": "Cedro, Vainilla, Haba tonka, Almizcle",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 14,
@@ -193,7 +219,9 @@ export const products = [
     "notasSalida": "Ciruela, Naranja amarga, Jengibre",
     "notasCorazon": "Rosa, Jazmín, Tuberosa",
     "notasFondo": "Vainilla, Almizcle, Pachulí",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 15,
@@ -207,7 +235,9 @@ export const products = [
     "notasSalida": "Frambuesa, Bergamota, Violeta",
     "notasCorazon": "Raíz de lirio, Jazmín de la India, Néroli",
     "notasFondo": "Vainilla, Sándalo, Abeto balsámico",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 16,
@@ -221,7 +251,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, neroli, rosa",
     "notasCorazon": "iris, jazmín, ámbar",
     "notasFondo": "pachulí, azúcar, almizcle",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 17,
@@ -235,7 +267,9 @@ export const products = [
     "notasSalida": "Bergamota, Cítricos, Cardamomo, Manzana, Lirio",
     "notasCorazon": "Violeta, Pimienta, Lavanda, Geranio",
     "notasFondo": "Vetiver, Sándalo, Almizcle, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 18,
@@ -249,7 +283,9 @@ export const products = [
     "notasSalida": "Nardo, Notas verdes",
     "notasCorazon": "Higo, Especias",
     "notasFondo": "Sándalo, Notas empolvadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 19,
@@ -263,7 +299,9 @@ export const products = [
     "notasSalida": "Pomelo, Limón, Menta, Pimienta Rosa, Jengibre",
     "notasCorazon": "Nuez Moscada, Jazmín, Iso E Super, Incienso, Vetiver",
     "notasFondo": "Cedro, Sándalo, Pachulí, Ámbar",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 20,
@@ -277,7 +315,9 @@ export const products = [
     "notasSalida": "Limón, Piña, Jazmín",
     "notasCorazon": "Birch, Pachulí, Almizcle",
     "notasFondo": "Amaderada, Vainilla, Musgo de roble",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 21,
@@ -291,7 +331,9 @@ export const products = [
     "notasSalida": "Bergamota, Lichi, Pimienta rosa",
     "notasCorazon": "Raíz de iris, Ambroxan",
     "notasFondo": "Sándalo, Praliné",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 22,
@@ -305,7 +347,9 @@ export const products = [
     "notasSalida": "Limón, Grosellas negras, Manzana, Bergamota",
     "notasCorazon": "Piña, Jazmín, Abedul, Rosa",
     "notasFondo": "Pachulí, Ámbar gris, Vainilla, Almizcle",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 23,
@@ -319,7 +363,9 @@ export const products = [
     "notasSalida": "Notas marinas, Frutas rojas, Bergamota",
     "notasCorazon": "Violeta, Maderas blancas, Sándalo",
     "notasFondo": "Almizcle, Ambroxan, Vetiver",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 24,
@@ -333,7 +379,9 @@ export const products = [
     "notasSalida": "Bergamota, Caramelo, Limón, Pera, Pimienta negra, Pimienta rosa, Piña",
     "notasCorazon": "Musgo de roble, Madera blanca, Anís, Jazmín, Lirio de los valles, Ambroxan",
     "notasFondo": "Vainilla, Ámbar, Almizcle blanco, Cuero, Pachulí, Cedro",
-    "ml": 55
+    "ml": 55,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 25,
@@ -347,7 +395,9 @@ export const products = [
     "notasSalida": "Bergamota, Grosella negra, Limón, Lima, Jengibre",
     "notasCorazon": "Hojas de violeta, Rosa, Iris, Jazmín",
     "notasFondo": "Ambroxan, Almizcle, Sándalo, Cedro",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 26,
@@ -361,7 +411,9 @@ export const products = [
     "notasSalida": "Bergamota, Pimienta rosa, Jazmín, Flor de azahar, Lavanda",
     "notasCorazon": "Geranio, Elemí, Vetiver, Azafrán, Ambroxan",
     "notasFondo": "Ámbar, Pachulí, Cedro, Ládano",
-    "ml": 105
+    "ml": 105,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 27,
@@ -375,7 +427,9 @@ export const products = [
     "notasSalida": "Aldehídos, Manzana verde, Pomelo, Jengibre",
     "notasCorazon": "Geranio, Lavanda, Salvia, Incienso de olíbano",
     "notasFondo": "Haba tonka, Pachulí, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 28,
@@ -389,7 +443,9 @@ export const products = [
     "notasSalida": "Mandarina, bergamota, pera, flor de azahar del naranjo",
     "notasCorazon": "jazmín sambac, neroli, almizcle blanco, vainilla",
     "notasFondo": "benjuí, ámbar, haba tonka",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 29,
@@ -403,7 +459,9 @@ export const products = [
     "notasSalida": "Melón, Manzana, Bergamota, Limón",
     "notasCorazon": "Lavanda, Violeta, Ciprés, Ámbar",
     "notasFondo": "Almizcle, Vainilla, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 30,
@@ -417,7 +475,9 @@ export const products = [
     "notasSalida": "Pomelo, Agujas de cedro, Romero, Cardamomo",
     "notasCorazon": "Ylang-ylang, Nardos, Incienso",
     "notasFondo": "Cedro, Sándalo, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 31,
@@ -431,7 +491,9 @@ export const products = [
     "notasSalida": "Bergamota, Limón, Mandarina, Pomelo",
     "notasCorazon": "Lavanda, Ylang-ylang, Nardos",
     "notasFondo": "Geranio, Pimienta negra, Cardamomo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 32,
@@ -445,7 +507,9 @@ export const products = [
     "notasSalida": "Bayas silvestres, Notas verdes, Bergamota, Naranja, Cereza",
     "notasCorazon": "Flor de azahar, Lirio de agua, Coco, Flores blancas",
     "notasFondo": "Haba tonka, Vainilla, Ámbar, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 33,
@@ -459,7 +523,9 @@ export const products = [
     "notasSalida": "Pera, Grosellas negras, Pimienta rosa, Bergamota, Flor de azahar del naranjo",
     "notasCorazon": "Nardos, Jazmín, Mimosa, Ylang-ylang, Avellana",
     "notasFondo": "Praliné, Pachulí, Haba tonka, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 34,
@@ -473,7 +539,9 @@ export const products = [
     "notasSalida": "Lavanda, Nuez moscada, Azafrán",
     "notasCorazon": "Oud, Notas amaderadas, Ambroxan",
     "notasFondo": "Almizcle, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 35,
@@ -487,7 +555,9 @@ export const products = [
     "notasSalida": "Bergamota, Pimienta rosa, Jengibre",
     "notasCorazon": "Madera de cedro, Vetiver",
     "notasFondo": "Ámbar, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 36,
@@ -501,7 +571,9 @@ export const products = [
     "notasSalida": "Bergamota, Lavanda, Madera de sándalo",
     "notasCorazon": "Vetiver, Almizcle",
     "notasFondo": "Pimienta rosa, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 37,
@@ -515,7 +587,9 @@ export const products = [
     "notasSalida": "Caramelo, Cereza, Canela, Lactonas, Flores blancas",
     "notasCorazon": "Dátiles, Miel, Nuez moscada, Haba tonka",
     "notasFondo": "Vainilla, Praliné, Almizcle, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 38,
@@ -529,7 +603,9 @@ export const products = [
     "notasSalida": "Fresa, Frambuesa, Melocotón, Bergamota",
     "notasCorazon": "Geranio, Jazmín, Caramelo, Maracuyá",
     "notasFondo": "Almizcle, Pachulí, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 39,
@@ -543,7 +619,9 @@ export const products = [
     "notasSalida": "Chocolate, Vainilla",
     "notasCorazon": "Almendra, Cacao",
     "notasFondo": "Caramelo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 40,
@@ -557,7 +635,9 @@ export const products = [
     "notasSalida": "Almendra, especias, lactonas",
     "notasCorazon": "flores blancas, vainilla, cacao",
     "notasFondo": "sándalo, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 41,
@@ -571,7 +651,9 @@ export const products = [
     "notasSalida": "Ciruela, miel, bergamota, gardenia",
     "notasCorazon": "nardos, lirio de los valles, jazmín, rosa",
     "notasFondo": "azafrán, cacao, haba tonka, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 42,
@@ -585,7 +667,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Jengibre, Limón, Flores blancas",
     "notasCorazon": "Mango, Acorde dulce gourmand, Flor tropical, Almizcle",
     "notasFondo": "Madera, Crema, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 43,
@@ -599,7 +683,9 @@ export const products = [
     "notasSalida": "Vainilla, Ámbar, Especias, Iris",
     "notasCorazon": "Cuero, Jazmín, Sándalo, Bergamota",
     "notasFondo": "Lavanda, Vetiver, Pachulí, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 44,
@@ -613,7 +699,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Pomelo, Yuzu",
     "notasCorazon": "Hojas de violeta, Notas marinas, Ámbar",
     "notasFondo": "Amberwood, Madera de gaiac",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 45,
@@ -627,7 +715,9 @@ export const products = [
     "notasSalida": "Limón, Bergamota, Mandarina",
     "notasCorazon": "Jengibre, Pimienta rosa",
     "notasFondo": "Madera blanca, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 46,
@@ -641,7 +731,9 @@ export const products = [
     "notasSalida": "Mandarina, Naranja, Azafrán, Salvia",
     "notasCorazon": "Caramelo, Haba tonka, Cempasúchil",
     "notasFondo": "Ambroxan, Vetiver, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 47,
@@ -655,7 +747,9 @@ export const products = [
     "notasSalida": "Mandarina, Naranja, Bergamota, Lavanda",
     "notasCorazon": "Cardamomo, Pimienta negra, Caramelo, Haba tonka",
     "notasFondo": "Pachulí, Incienso, Vainilla, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 48,
@@ -669,7 +763,9 @@ export const products = [
     "notasSalida": "Naranja, Jengibre, Bergamota, Limón, Menta",
     "notasCorazon": "Piña, Enebro de Virginia, Geranio, Salvia",
     "notasFondo": "Haba tonka, Almizcle, Cedro, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 49,
@@ -683,7 +779,9 @@ export const products = [
     "notasSalida": "Piña, naranja, ciruela",
     "notasCorazon": "chocolate, vainilla, cardamomo",
     "notasFondo": "haba tonka, pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 50,
@@ -697,7 +795,9 @@ export const products = [
     "notasSalida": "Bergamota, Canela, Manzana, Flor de azahar",
     "notasCorazon": "Lavanda, Lirio del valle, Haba tonka, Pachulí",
     "notasFondo": "Tabaco, Vainilla, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 51,
@@ -711,7 +811,9 @@ export const products = [
     "notasSalida": "Bergamota, Pimienta negra, Lavanda",
     "notasCorazon": "Cedro, Sándalo",
     "notasFondo": "Ámbar, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 52,
@@ -725,7 +827,9 @@ export const products = [
     "notasSalida": "Bergamota, Neroli, Pimienta rosa, Flor de azahar del naranjo",
     "notasCorazon": "Jazmín, Madreselva, Rosa, Iris",
     "notasFondo": "Vainilla, Almizcle, Caramelo, Ládano",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 53,
@@ -739,7 +843,9 @@ export const products = [
     "notasSalida": "Toronja, Limón, Pimienta rosa, Bergamota",
     "notasCorazon": "Jengibre, Menta, Lavanda, Nuez moscada",
     "notasFondo": "Vetiver, Sándalo, Pachulí, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 54,
@@ -753,7 +859,9 @@ export const products = [
     "notasSalida": "Flor de azahar del naranjo, Mandarina, Jazmín",
     "notasCorazon": "Café, Almendra, Haba tonka",
     "notasFondo": "Cacao, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 55,
@@ -767,7 +875,9 @@ export const products = [
     "notasSalida": "Té verde, Limón, Neroli, Flores blancas",
     "notasCorazon": "Jazmín, Nardo, Almizcle",
     "notasFondo": "Cedro, Pachulí, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 56,
@@ -781,7 +891,9 @@ export const products = [
     "notasSalida": "Limón, Verbena, Iris",
     "notasCorazon": "Lavanda, Violeta",
     "notasFondo": "Ámbar gris, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 57,
@@ -795,7 +907,9 @@ export const products = [
     "notasSalida": "Toronja, Limón, Mandarina, Lavanda",
     "notasCorazon": "Geranio, Pachulí, Cedro",
     "notasFondo": "Vetiver, Ámbar, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 58,
@@ -809,7 +923,9 @@ export const products = [
     "notasSalida": "Durazno, Bergamota, Manzana roja",
     "notasCorazon": "Rosa, Carambola, Mimosa",
     "notasFondo": "Sándalo, Almizcle, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 15,
+    "precioBS": 9750
   },
   {
     "id": 59,
@@ -823,7 +939,9 @@ export const products = [
     "notasSalida": "Mandarina, Pera",
     "notasCorazon": "Jazmín, Azahar",
     "notasFondo": "Vainilla, Almizcle",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 60,
@@ -837,7 +955,9 @@ export const products = [
     "notasSalida": "Jazmín, Rosa, Caramelo, Nuez moscada, Nardos",
     "notasCorazon": "Lirio de los valles, Acordes marinos, Ámbar, Haba tonka",
     "notasFondo": "Vainilla, Sándalo, Almizcle, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 61,
@@ -851,7 +971,9 @@ export const products = [
     "notasSalida": "Naranja, Bergamota, Limón",
     "notasCorazon": "Notas afrutadas, Vainilla",
     "notasFondo": "Almizcle blanco, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 62,
@@ -865,7 +987,9 @@ export const products = [
     "notasSalida": "Naranja, Bergamota, Limón",
     "notasCorazon": "Notas afrutadas, Vainilla",
     "notasFondo": "Almizcle blanco, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 63,
@@ -879,7 +1003,9 @@ export const products = [
     "notasSalida": "Bergamota, Limón, Manzana, Cardamomo, Davana",
     "notasCorazon": "Cilantro, Lavanda, Lavandín, Flor de azahar, Jazmín",
     "notasFondo": "Rosa, Ámbar, Haba tonka, Sándalo, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 64,
@@ -893,7 +1019,9 @@ export const products = [
     "notasSalida": "Grosella negra, jazmín, vainilla Bourbon",
     "notasCorazon": "frutos rojos, cítricos suaves, flores blancas",
     "notasFondo": "rosa, almizcle, vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 65,
@@ -907,7 +1035,9 @@ export const products = [
     "notasSalida": "Geranio, Rosa",
     "notasCorazon": "Salvia, Jengibre",
     "notasFondo": "Cedro, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 66,
@@ -921,7 +1051,9 @@ export const products = [
     "notasSalida": "Frambuesa, Azúcar, Flor de albaricoquero, Orquídea",
     "notasCorazon": "Peonía, Nenúfar, Vainilla",
     "notasFondo": "Almizcle, Violeta, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 67,
@@ -935,7 +1067,9 @@ export const products = [
     "notasSalida": "Magnolia, Pera, Flor de loto, Jazmín",
     "notasCorazon": "Nardos, Ciclamen, Almizcle",
     "notasFondo": "Vainilla, Maderas blancas, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 68,
@@ -949,7 +1083,9 @@ export const products = [
     "notasSalida": "Kiwi, Lichi rojo, Membrillo, Chocolate blanco",
     "notasCorazon": "Orquídea, Jazmín, Quequito",
     "notasFondo": "Almizcle, Raíz de lirio, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 69,
@@ -963,7 +1099,9 @@ export const products = [
     "notasSalida": "Naranja, Mandarina, Verbena limonera, Clavo de olor",
     "notasCorazon": "Gardenia, Lirio Stargazer, Jazmín",
     "notasFondo": "Sándalo, Ámbar, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 70,
@@ -977,7 +1115,9 @@ export const products = [
     "notasSalida": "Ciruela, Cereza ácida, Frambuesa",
     "notasCorazon": "Orquídea, Iris, Fresia",
     "notasFondo": "Vainilla, Ámbar, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 71,
@@ -991,7 +1131,9 @@ export const products = [
     "notasSalida": "Toronja (pomelo), Neroli, Mandarina",
     "notasCorazon": "Petit grain, Notas acuáticas, Algas marinas",
     "notasFondo": "Romero, Cedro de Virginia, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 155,
+    "precioBS": 100750
   },
   {
     "id": 72,
@@ -1005,7 +1147,9 @@ export const products = [
     "notasSalida": "Especias, Ron, Tabaco",
     "notasCorazon": "Cuero, Iris, Nardo",
     "notasFondo": "Haba tonka, Madera de gaiac, Benjuí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 73,
@@ -1033,7 +1177,9 @@ export const products = [
     "notasSalida": "Toronja rosa, Bergamota, Grosella negra",
     "notasCorazon": "Orquídea, Cactus, Vainilla",
     "notasFondo": "Cedro, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 75,
@@ -1047,7 +1193,9 @@ export const products = [
     "notasSalida": "Flor de la pasión, Amapola roja, Peonía, Chocolate mexicano",
     "notasCorazon": "Zarzamora, Narciso, Jazmín, Vainilla",
     "notasFondo": "Almizcle, Ámbar, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 76,
@@ -1061,7 +1209,9 @@ export const products = [
     "notasSalida": "Mandarina, fresia, salvia, lirio de los valles",
     "notasCorazon": "rosa, jazmín, narciso",
     "notasFondo": "sándalo, ámbar, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 77,
@@ -1075,7 +1225,9 @@ export const products = [
     "notasSalida": "Granada, Caqui, Acordes verdes, Orquídea negra",
     "notasCorazon": "Flor de loto, Champaca, Caoba, Ámbar",
     "notasFondo": "Violeta, Almizcle, Pachulí, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 78,
@@ -1089,7 +1241,9 @@ export const products = [
     "notasSalida": "Bergamota, Mandarina, Notas verdes, Albahaca",
     "notasCorazon": "Vainilla, Ámbar, Especias",
     "notasFondo": "Maderas, Almizcle, Algalia",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 79,
@@ -1103,7 +1257,9 @@ export const products = [
     "notasSalida": "Vetiver, Pachulí, Bambú, Bergamota, Limón",
     "notasCorazon": "Trébol blanco, Sándalo, Peonía, Azucena, Mimosa",
     "notasFondo": "Zarzamora, Flor del árbol de la seda, Ámbar, Almizcle, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 80,
@@ -1117,7 +1273,9 @@ export const products = [
     "notasSalida": "Bergamota, Flor de azahar, Rosa, Notas verdes, Chabacano, Jazmín",
     "notasCorazon": "Nardo, Madreselva, Lirio, Ylang ylang, Cedro, Almizcle",
     "notasFondo": "Ámbar, Vetiver, Sándalo, Musgo de roble, Algalia",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 81,
@@ -1145,7 +1303,9 @@ export const products = [
     "notasSalida": "Piña, Lirio, Loto, Melón, Membrillo, Grosella negra, Frutas cítricas",
     "notasCorazon": "Miel, Jazmín, Rosa, Nenúfar, Espino blanco, Muguete, Mora",
     "notasFondo": "Frambuesa, Almizcle, Melocotón, Sándalo, Vainilla, Violeta, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 83,
@@ -1159,7 +1319,9 @@ export const products = [
     "notasSalida": "Piña, Naranja amarga, Casis, Notas afrutadas, Lirio de los valles, Leche, Coco",
     "notasCorazon": "Azucena, Cereza, Fresa, Manzana roja, Orquídea, Jazmín, Magnolia",
     "notasFondo": "Vainilla, Almizcle, Nuez moscada, Sándalo, Raíz de lirio, Ámbar, Cedro de Virginia",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 84,
@@ -1173,7 +1335,9 @@ export const products = [
     "notasSalida": "Flor de naranjo, Melocotón, Bergamota, Rosa, Cardamomo",
     "notasCorazon": "Pomelo, Albaricoque, Magnolia, Azucena, Canela",
     "notasFondo": "Heliotropo, Sándalo, Coco, Vainilla, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 220,
+    "precioBS": 143000
   },
   {
     "id": 85,
@@ -1187,7 +1351,9 @@ export const products = [
     "notasSalida": "Bergamota, Pimienta rosa, Elemí",
     "notasCorazon": "Cedro del Atlas, Madera de cachemira, Pachulí",
     "notasFondo": "Iso E Super, Vetiver de Haití, Almizcle blanco",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 220,
+    "precioBS": 143000
   },
   {
     "id": 86,
@@ -1201,7 +1367,9 @@ export const products = [
     "notasSalida": "Lavanda, Iris",
     "notasCorazon": "Almizcle ambreta, Pera",
     "notasFondo": "Vetiver, Cedro de Virginia",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 220,
+    "precioBS": 143000
   },
   {
     "id": 87,
@@ -1215,7 +1383,9 @@ export const products = [
     "notasSalida": "Naranja amarga, Limón, Rosa de Grasse, Rosa de Damasco",
     "notasCorazon": "Flor de azahar del naranjo, Haba tonka, Sándalo, Almendra",
     "notasFondo": "Heliotropo, Bálsamo de Tolú, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 88,
@@ -1229,7 +1399,9 @@ export const products = [
     "notasSalida": "Bergamota de Calabria, Pimienta, Lavanda",
     "notasCorazon": "Pimienta de Sichuan, Anís estrellado, Nuez moscada",
     "notasFondo": "Ambroxan, Cedro, Ládano",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 250,
+    "precioBS": 162500
   },
   {
     "id": 89,
@@ -1257,7 +1429,9 @@ export const products = [
     "notasSalida": "Limón, café",
     "notasCorazon": "pachulí, lavanda",
     "notasFondo": "especias, haba tonka",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 91,
@@ -1271,7 +1445,9 @@ export const products = [
     "notasSalida": "Bergamota, Pera, Pimienta rosa, Violeta",
     "notasCorazon": "Peonía, Rosa búlgara, Fresia",
     "notasFondo": "Miel, Ambroxán, Pachulí",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 92,
@@ -1299,7 +1475,9 @@ export const products = [
     "notasSalida": "Bergamota, Piña, Grosellas negras, Manzana, Abedul",
     "notasCorazon": "Pachulí, Pimienta, Lavanda, Jazmín",
     "notasFondo": "Rosa, Almizcle, Ámbar, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 94,
@@ -1313,7 +1491,9 @@ export const products = [
     "notasSalida": "Canela, salvia, limón, flor de azahar del naranjo",
     "notasCorazon": "albahaca, cardamomo, chocolate, praliné",
     "notasFondo": "notas amaderadas, pachulí, ámbar negro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 95,
@@ -1327,7 +1507,9 @@ export const products = [
     "notasSalida": "Bergamota, Manzana, Grosella negra, Naranjo, Pimienta rosa",
     "notasCorazon": "Ámbar, Caramelo, Lirio del valle, Azafrán, Madera seca",
     "notasFondo": "Vainilla, Maderas preciosas, Musgo, Almizcle, Madera de guayaco",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 96,
@@ -1341,7 +1523,9 @@ export const products = [
     "notasSalida": "Manzana, Lavanda, Bergamota",
     "notasCorazon": "Sandía, Cedro, Cálamo aromático",
     "notasFondo": "Ámbar, Sándalo, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 97,
@@ -1355,7 +1539,9 @@ export const products = [
     "notasSalida": "Bergamota, manzana roja, melocotón, sandía",
     "notasCorazon": "lavanda, cedro, acorde marino, sándalo",
     "notasFondo": "pachulí, ámbar, musgo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 98,
@@ -1369,7 +1555,9 @@ export const products = [
     "notasSalida": "Bayas de enebro, iris, ciprés, mirra",
     "notasCorazon": "pachulí, miel, vainilla",
     "notasFondo": "ámbar, almizcle, cuero",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 99,
@@ -1383,7 +1571,9 @@ export const products = [
     "notasSalida": "Limón, Bergamota, Menta, Ruibarbo, Cáscara de naranja",
     "notasCorazon": "Jazmín, Hinojo, Almizcle, Ámbar, Musgo de roble",
     "notasFondo": "Té verde, Semillas de apio, Alcaravea, Clavo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 100,
@@ -1397,7 +1587,9 @@ export const products = [
     "notasSalida": "Flor de azahar del naranjo, Melón, Mandarina, Melocotón, Bergamota, Limón",
     "notasCorazon": "Palo de rosa de Brasil, Ciclamen, Osmanto, Raíz de lirio, Jazmín, Rosa",
     "notasFondo": "Sándalo, Ámbar, Almizcle, Musgo de roble, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 101,
@@ -1411,7 +1603,9 @@ export const products = [
     "notasSalida": "Pachulí, Ylang-ylang, Musgo de roble",
     "notasCorazon": "Gardenia de Tahití, Jazmín, Vetiver",
     "notasFondo": "Benjuí, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 102,
@@ -1425,7 +1619,9 @@ export const products = [
     "notasSalida": "Cardamomo, notas especiadas",
     "notasCorazon": "notas florales, maderas",
     "notasFondo": "sándalo, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 103,
@@ -1439,7 +1635,9 @@ export const products = [
     "notasSalida": "Higo, Hoja de laurel, Bergamota",
     "notasCorazon": "Cedro, Vetiver, Almizcle",
     "notasFondo": "Tabaco, Heno",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 104,
@@ -1453,7 +1651,9 @@ export const products = [
     "notasSalida": "Mandarina verde, bergamota",
     "notasCorazon": "lavanda, haba tonka",
     "notasFondo": "cedro",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 105,
@@ -1467,7 +1667,9 @@ export const products = [
     "notasSalida": "Jazmín, Naranja italiana, Naranja amarga",
     "notasCorazon": "Flor de azahar del naranjo, Jengibre, Miel",
     "notasFondo": "Vainilla, Sándalo",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 130,
+    "precioBS": 84500
   },
   {
     "id": 106,
@@ -1481,7 +1683,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Lavanda",
     "notasCorazon": "Salvia, Vainilla",
     "notasFondo": "Castaña",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 195,
+    "precioBS": 126750
   },
   {
     "id": 107,
@@ -1523,7 +1727,9 @@ export const products = [
     "notasSalida": "Durazno, gardenia, fresia africana",
     "notasCorazon": "cilantro, rosa de Damasco, jazmín",
     "notasFondo": "pachulí, vainilla, vetiver",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 90,
+    "precioBS": 58500
   },
   {
     "id": 110,
@@ -1537,7 +1743,9 @@ export const products = [
     "notasSalida": "Manzana verde, Fresa, Naranja tangerina, Bergamota, Magnolia, Peonía",
     "notasCorazon": "Fresia, Lirio de los valles, Bayas rojas, Jazmín, Durazno",
     "notasFondo": "Ylang-ylang, Almizcle, Cedro, Ámbar, Musgo de roble",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 111,
@@ -1551,7 +1759,9 @@ export const products = [
     "notasSalida": "Pera, Bergamota, Grosella negra",
     "notasCorazon": "Jazmín, Flor de naranjo africano, Raíz de lirio",
     "notasFondo": "Vainilla, Madera de cachemira, Incienso de olíbano",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 112,
@@ -1565,7 +1775,9 @@ export const products = [
     "notasSalida": "Violeta, notas marinas, hoja de plátano, petit grain",
     "notasCorazon": "magnolia, lirio de los valles, nardos, pimienta",
     "notasFondo": "incienso, sándalo, vainilla de Madagascar, mirra",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 113,
@@ -1579,7 +1791,9 @@ export const products = [
     "notasSalida": "Manzana roja, flores blancas",
     "notasCorazon": "flor de azahar africano, sándalo",
     "notasFondo": "olivo, vainilla",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 114,
@@ -1593,7 +1807,9 @@ export const products = [
     "notasSalida": "Clementina, Grosella negra, Mandarina, Naranja sanguina, Pera",
     "notasCorazon": "Fresia, Flor de jengibre, Hibisco, Tuberosa",
     "notasFondo": "Sándalo, Cedro, Almizcle, Vainilla",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 115,
@@ -1607,7 +1823,9 @@ export const products = [
     "notasSalida": "Lichi, Brotes de grosella negra, Mandarina",
     "notasCorazon": "Rosa, Jazmín, Ámbar",
     "notasFondo": "Almizcle, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 116,
@@ -1621,7 +1839,9 @@ export const products = [
     "notasSalida": "Lila, Almizcle, Almendra",
     "notasCorazon": "Rosa damascena, Flor de azahar",
     "notasFondo": "Vainilla, Sándalo",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 117,
@@ -1635,7 +1855,9 @@ export const products = [
     "notasSalida": "Rosa silvestre, Rosa búlgara, Pimienta rosa",
     "notasCorazon": "Néroli, Almizcle blanco",
     "notasFondo": "Cedro, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 118,
@@ -1663,7 +1885,9 @@ export const products = [
     "notasSalida": "Fresa, Pimienta rosa, Naranja, Tuberosa",
     "notasCorazon": "Jazmín, Lirio, Heliotropo",
     "notasFondo": "Vainilla, Almizcle, Madera",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 120,
@@ -1677,7 +1901,9 @@ export const products = [
     "notasSalida": "Cidra, Bergamota de Calabria, Naranja siciliana, Jengibre",
     "notasCorazon": "Neroli de Túnez, Canela de Ceilán, Té negro",
     "notasFondo": "Ambroxan, Madera de gaiac, Incienso",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 121,
@@ -1691,7 +1917,9 @@ export const products = [
     "notasSalida": "Ámbar, Brandy, Madera de gaiac",
     "notasCorazon": "Pachulí, Notas afrutadas, Almizcle",
     "notasFondo": "Dulce, Notas amaderadas",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 120,
+    "precioBS": 78000
   },
   {
     "id": 122,
@@ -1705,7 +1933,9 @@ export const products = [
     "notasSalida": "Azafrán, Jazmín",
     "notasCorazon": "Ámbar gris, Madera de cedro",
     "notasFondo": "Resina, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 110,
+    "precioBS": 71500
   },
   {
     "id": 123,
@@ -1719,7 +1949,9 @@ export const products = [
     "notasSalida": "Sorbete, Fresa, Manzana, Pomelo rosado",
     "notasCorazon": "Notas florales, Peonía, Jazmín",
     "notasFondo": "Coco, Almizcle, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 124,
@@ -1733,7 +1965,9 @@ export const products = [
     "notasSalida": "Ciruela, Frutos del bosque, Bergamota",
     "notasCorazon": "Celosía, Jazmín Sambac, Frangipani",
     "notasFondo": "Praliné, Cachemira, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 125,
@@ -1747,7 +1981,9 @@ export const products = [
     "notasSalida": "Pera, Naranja tangerina, Jazmín, Gardenia",
     "notasCorazon": "Madreselva, Flor del naranjo africano, Lirio de los valles, Vainilla",
     "notasFondo": "Ámbar, Almizcle, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 126,
@@ -1761,7 +1997,9 @@ export const products = [
     "notasSalida": "Gardenia, Bambú, Durazno, Manzana roja, Jazmín",
     "notasCorazon": "Fresia, Rosa, Almizcle, Sándalo",
     "notasFondo": "Ámbar, Vainilla, Coco, Orquídea",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 127,
@@ -1775,7 +2013,9 @@ export const products = [
     "notasSalida": "Granada, Fresia rosa, Flor de azahar del naranjo",
     "notasCorazon": "Jazmín, Sándalo, Endrino",
     "notasFondo": "Orquídea de vainilla, Almizcle, Cuero",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 128,
@@ -1789,7 +2029,9 @@ export const products = [
     "notasSalida": "Arroz, Té blanco, Frangipani",
     "notasCorazon": "Flor del cerezo, Heliotropo, Vainilla",
     "notasFondo": "Almizcle, Incienso, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 85,
+    "precioBS": 55250
   },
   {
     "id": 129,
@@ -1817,7 +2059,9 @@ export const products = [
     "notasSalida": "Ciprés",
     "notasCorazon": "Sal de mar",
     "notasFondo": "Haba tonka",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 95,
+    "precioBS": 61750
   },
   {
     "id": 131,
@@ -1831,7 +2075,9 @@ export const products = [
     "notasSalida": "Naranja sanguina, Cardamomo, Durazno",
     "notasCorazon": "Jazmín, Hojas de violeta, Semillas de zanahoria",
     "notasFondo": "Almizcle, Sándalo, Vainilla",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 132,
@@ -1845,7 +2091,9 @@ export const products = [
     "notasSalida": "Durazno, Pimienta rosa, Bergamota, Lavanda",
     "notasCorazon": "Rosa, Nardo, Flor de azahar del naranjo, Jazmín",
     "notasFondo": "Sándalo, Praliné, Ámbar, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 133,
@@ -1859,7 +2107,9 @@ export const products = [
     "notasSalida": "Notas afrutadas, Bergamota, Lichi, Rosa",
     "notasCorazon": "Jazmín, Canela, Almizcle, Vainilla",
     "notasFondo": "Ámbar, Cedro, Sándalo",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 134,
@@ -1873,7 +2123,9 @@ export const products = [
     "notasSalida": "Guayaba, Pomelo rosado, Lichi, Pimienta rosa",
     "notasCorazon": "Magnolia, Peonía, Rosa, Ámbar",
     "notasFondo": "Vainilla, Cuero, Almizcle, Musgo",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 135,
@@ -1887,7 +2139,9 @@ export const products = [
     "notasSalida": "Lavanda, Manzana, Cardamomo, Tabaco",
     "notasCorazon": "Madera de oud, Ciprés, Jazmín, Cuero",
     "notasFondo": "Vainilla, Sándalo, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 136,
@@ -1901,7 +2155,9 @@ export const products = [
     "notasSalida": "Bergamota, Naranja",
     "notasCorazon": "Vainilla, Pera",
     "notasFondo": "Almizcle, Ámbar",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 137,
@@ -1915,7 +2171,9 @@ export const products = [
     "notasSalida": "Pera Nashi, Kumquat, Bergamota",
     "notasCorazon": "Caramelo, Geranio, Ámbar gris",
     "notasFondo": "Almizcle, Musgo de roble",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 138,
@@ -1929,7 +2187,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, cereza negra, rosa blanca, peonía",
     "notasCorazon": "haba tonka, nuez moscada, azúcar",
     "notasFondo": "pachulí, caramelo, vainilla",
-    "ml": 60
+    "ml": 60,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 139,
@@ -1943,7 +2203,9 @@ export const products = [
     "notasSalida": "Jengibre, Clementina, Pimienta rosa",
     "notasCorazon": "Lavanda, Praliné",
     "notasFondo": "Vainilla, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 140,
@@ -1957,7 +2219,9 @@ export const products = [
     "notasSalida": "Bergamota, Mandarina, Jengibre, Menta",
     "notasCorazon": "Pera, Flor de naranja, Jengibre",
     "notasFondo": "Ámbar, Almizcle, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 141,
@@ -1971,7 +2235,9 @@ export const products = [
     "notasSalida": "Pimienta negra, Tabaco, Piña, Pachulí",
     "notasCorazon": "Café, Iris, Vainilla, Ámbar",
     "notasFondo": "Madera seca, Benjuí, Ládano",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 142,
@@ -1985,7 +2251,9 @@ export const products = [
     "notasSalida": "Lavanda, Ciruela Mirabel, Pimienta rosa",
     "notasCorazon": "Nuez moscada, Davana, Cacao",
     "notasFondo": "Vainilla Bourbon, Ámbar, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 143,
@@ -1999,7 +2267,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Azafrán, Pomelo, Tabaco",
     "notasCorazon": "Cedro, Vainilla, Pachulí",
     "notasFondo": "Incienso, Madera de cachemira, Ámbar seco",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 144,
@@ -2013,7 +2283,9 @@ export const products = [
     "notasSalida": "Lavanda, Pimienta negra, Agua de coco",
     "notasCorazon": "Iris, Sal",
     "notasFondo": "Vainilla, Incienso",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 145,
@@ -2027,7 +2299,9 @@ export const products = [
     "notasSalida": "Flor de pasionaria, Gota del rocío",
     "notasCorazon": "Orquídea, Jazmín",
     "notasFondo": "Vainilla, Amberwood",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 146,
@@ -2041,7 +2315,9 @@ export const products = [
     "notasSalida": "Notas marinas, Sal, Limón",
     "notasCorazon": "Davana, Iris, Ámbar gris",
     "notasFondo": "Musgo de roble, Sándalo",
-    "ml": 55
+    "ml": 55,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 147,
@@ -2055,7 +2331,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Bergamota, Rosa turca",
     "notasCorazon": "Rosa búlgara, Jazmín, Madera de oud",
     "notasFondo": "Ámbar, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 148,
@@ -2069,7 +2347,9 @@ export const products = [
     "notasSalida": "Piña, crème brûlée, canela, benjuí",
     "notasCorazon": "cúrcuma, pimienta negra, vainilla",
     "notasFondo": "sándalo, cachemira, musgo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 149,
@@ -2083,7 +2363,9 @@ export const products = [
     "notasSalida": "Leche de rosa, Merengue",
     "notasCorazon": "Almendra, Vainilla",
     "notasFondo": "Sándalo, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 150,
@@ -2097,7 +2379,9 @@ export const products = [
     "notasSalida": "Azafrán, Nuez moscada",
     "notasCorazon": "Lavanda, Madera de oud",
     "notasFondo": "Pachulí, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 151,
@@ -2111,7 +2395,9 @@ export const products = [
     "notasSalida": "Manzana, Lichi, Rosa",
     "notasCorazon": "Ciruela, Jazmín, Vainilla",
     "notasFondo": "Musgo, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 152,
@@ -2125,7 +2411,9 @@ export const products = [
     "notasSalida": "Fresa, nata montada, mermelada de fresa",
     "notasCorazon": "azúcar, flores blancas",
     "notasFondo": "vainilla, almizcle",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 153,
@@ -2139,7 +2427,9 @@ export const products = [
     "notasSalida": "Chocolate, Fudge de chocolate",
     "notasCorazon": "Cacao, Vainilla",
     "notasFondo": "Benjuí, Caramelo",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 154,
@@ -2153,7 +2443,9 @@ export const products = [
     "notasSalida": "Bergamota, Cítricos, Ciprés, Pimienta negra",
     "notasCorazon": "Té negro, Incienso, Notas marinas, Notas amaderadas",
     "notasFondo": "Ámbar, Ládano, Musgo, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 155,
@@ -2167,7 +2459,9 @@ export const products = [
     "notasSalida": "Galleta, Cacao, Vainilla",
     "notasCorazon": "Crema batida, Notas lácteas",
     "notasFondo": "Mantequilla, Azúcar",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 156,
@@ -2181,7 +2475,9 @@ export const products = [
     "notasSalida": "Caramelo, Leche, Azúcar",
     "notasCorazon": "Miel, Flores blancas, Praliné",
     "notasFondo": "Vainilla, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 157,
@@ -2195,7 +2491,9 @@ export const products = [
     "notasSalida": "Plátano, dulce de leche, crema batida",
     "notasCorazon": "vainilla, praliné",
     "notasFondo": "bizcocho, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 158,
@@ -2209,7 +2507,9 @@ export const products = [
     "notasSalida": "Pistacho, crema de pistacho, crema batida",
     "notasCorazon": "cacao, coco, vainilla",
     "notasFondo": "leche, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 159,
@@ -2223,7 +2523,9 @@ export const products = [
     "notasSalida": "Cítricos, Lavanda, Mirto, Cardamomo, Naranja",
     "notasCorazon": "Pimienta, Pachulí, Lirio de los valles, Hoja de canela, Ambroxan",
     "notasFondo": "Notas amaderadas, Ámbar, Cedro, Musgo de roble, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 160,
@@ -2237,7 +2539,9 @@ export const products = [
     "notasSalida": "Ciruela, Pomelo, Heliotropo, Orquídea",
     "notasCorazon": "Ámbar, Benjuí, Vainilla",
     "notasFondo": "Ládano, Haba tonka, Madera de oud",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 161,
@@ -2251,7 +2555,9 @@ export const products = [
     "notasSalida": "Manzana, Bergamota, Jengibre, Lavanda",
     "notasCorazon": "Salvia, Bayas de enebro, Geranio, Haba tonka",
     "notasFondo": "Amberwood, Cedro, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 162,
@@ -2265,7 +2571,9 @@ export const products = [
     "notasSalida": "Toronja, Cardamomo, Pimienta rosa",
     "notasCorazon": "Notas solares, Tuberosa, Cachemira",
     "notasFondo": "Cuero, Cistus, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 163,
@@ -2279,7 +2587,9 @@ export const products = [
     "notasSalida": "Bergamota, Jengibre",
     "notasCorazon": "Guayaba, Palo santo",
     "notasFondo": "Incienso, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 164,
@@ -2293,7 +2603,9 @@ export const products = [
     "notasSalida": "Frutas, Azucena, Granada, Aldehídos, Tuberosa",
     "notasCorazon": "Jazmín, Gardenia, Madreselva, Ylang-ylang, Rosa",
     "notasFondo": "Peonía, Vainilla, Almizcle blanco, Ambroxan, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 165,
@@ -2307,7 +2619,9 @@ export const products = [
     "notasSalida": "Naranja roja, Mandarina, Fresa, Champán",
     "notasCorazon": "Rosa, Jazmín, Orquídea de vainilla, Gardenia",
     "notasFondo": "Castañas, Sándalo, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 166,
@@ -2321,7 +2635,9 @@ export const products = [
     "notasSalida": "Manzana, Bergamota",
     "notasCorazon": "Canela, Notas amaderadas",
     "notasFondo": "Almizcle, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 167,
@@ -2335,7 +2651,9 @@ export const products = [
     "notasSalida": "Nuez moscada, pimienta rosa, bergamota, jengibre, lavanda",
     "notasCorazon": "salvia esclarea, cedro, notas amaderadas, ládano",
     "notasFondo": "incienso, almizcle, ámbar gris, ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 168,
@@ -2349,7 +2667,9 @@ export const products = [
     "notasSalida": "Uva, Piña, Lima",
     "notasCorazon": "Notas florales, Almizcle",
     "notasFondo": "Sándalo, Caramelo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 169,
@@ -2363,7 +2683,9 @@ export const products = [
     "notasSalida": "Canela, Lavanda, Mandarina, Iris, Benjuí",
     "notasCorazon": "Ciprés, Mahonial, Vainilla, Haba tonka",
     "notasFondo": "Incienso, Ámbar, Cedro, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 170,
@@ -2377,7 +2699,9 @@ export const products = [
     "notasSalida": "Azafrán, Cuero, Ámbar",
     "notasCorazon": "Caramelo, Haba tonka",
     "notasFondo": "Vainilla, Oud",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 171,
@@ -2391,7 +2715,9 @@ export const products = [
     "notasSalida": "Bergamota, Limón, Pimienta negra",
     "notasCorazon": "Piña, Ámbar, Cedro",
     "notasFondo": "Pachulí, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 172,
@@ -2405,7 +2731,9 @@ export const products = [
     "notasSalida": "Bergamota, Nuez moscada, Canela, Dátiles",
     "notasCorazon": "Praliné, Tuberosa, Mirra, Haba tonka tostada",
     "notasFondo": "Vainilla, Benjuí, Ámbar, Madera de Akigala",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 173,
@@ -2419,7 +2747,9 @@ export const products = [
     "notasSalida": "Especias, Pimiento morrón, Mandarina, Incienso",
     "notasCorazon": "Ládano, Flor de azahar del naranjo, Pachulí, Tabaco",
     "notasFondo": "Praliné, Ámbar, Haba tonka, Benjuí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 174,
@@ -2433,7 +2763,9 @@ export const products = [
     "notasSalida": "Canela, Cardamomo, Jengibre, Praliné",
     "notasCorazon": "Frutas confitadas, Flores blancas, Café, Vainilla",
     "notasFondo": "Haba tonka, Benjuí, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 175,
@@ -2447,7 +2779,9 @@ export const products = [
     "notasSalida": "Notas afrutadas, Cítricos, Canela, Jazmín",
     "notasCorazon": "Rosa, Gardenia, Orquídea, Miel",
     "notasFondo": "Almizcle, Sándalo, Ámbar, Caramelo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 176,
@@ -2461,7 +2795,9 @@ export const products = [
     "notasSalida": "Acorde de manzana y shisha, Pimienta rosa, Canela",
     "notasCorazon": "Dátiles, Flor del tabaco, Vainilla",
     "notasFondo": "Caramelo, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 177,
@@ -2475,7 +2811,9 @@ export const products = [
     "notasSalida": "Fresa, Bergamota, Mermelada de cereza",
     "notasCorazon": "Cacao, Vainilla",
     "notasFondo": "Pachulí, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 178,
@@ -2489,7 +2827,9 @@ export const products = [
     "notasSalida": "Higo, Melón, Mandarina verde, Agua de coco",
     "notasCorazon": "Flor de loto, Nenúfar, Jazmín, Ambroxan",
     "notasFondo": "Sándalo, Almizcle, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 179,
@@ -2503,7 +2843,9 @@ export const products = [
     "notasSalida": "Azafrán, Lavanda",
     "notasCorazon": "Mandarina italiana, Cedro de Virginia",
     "notasFondo": "Ámbar, Cistus",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 180,
@@ -2517,7 +2859,9 @@ export const products = [
     "notasSalida": "Bergamota, limón, manzana, romero",
     "notasCorazon": "lavanda, cardamomo, ámbar",
     "notasFondo": "almizcle, cedro, madera de oud",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 181,
@@ -2531,7 +2875,9 @@ export const products = [
     "notasSalida": "Piña, Menta, Jengibre, Manzana",
     "notasCorazon": "Notas marinas, Lavanda, Geranio, Pachulí",
     "notasFondo": "Sándalo, Haba tonka, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 182,
@@ -2545,7 +2891,9 @@ export const products = [
     "notasSalida": "Bayas rojas, Mandarina, Vainilla",
     "notasCorazon": "Cacao, Rosa, Azúcar",
     "notasFondo": "Haba tonka, Ámbar, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 60,
+    "precioBS": 39000
   },
   {
     "id": 183,
@@ -2559,7 +2907,9 @@ export const products = [
     "notasSalida": "Ron, Ciruela, Coco",
     "notasCorazon": "Nardos, Vainilla",
     "notasFondo": "Praliné, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 184,
@@ -2573,7 +2923,9 @@ export const products = [
     "notasSalida": "Piña, azafrán, jazmín",
     "notasCorazon": "abeto balsámico, ámbar",
     "notasFondo": "cedro, madera de oud",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 185,
@@ -2587,7 +2939,9 @@ export const products = [
     "notasSalida": "Coco, Cítricos, Piña",
     "notasCorazon": "Ylang-ylang, Jazmín, Frangipani",
     "notasFondo": "Vainilla, Almizcle, Sándalo",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 186,
@@ -2601,7 +2955,9 @@ export const products = [
     "notasSalida": "Canela, Mandarina, Nuez moscada, Cardamomo",
     "notasCorazon": "Lavanda, Incienso, Caramelo",
     "notasFondo": "Notas amaderadas, Ámbar, Almizcle",
-    "ml": 90
+    "ml": 90,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 187,
@@ -2615,7 +2971,9 @@ export const products = [
     "notasSalida": "Madera de oud, Cedro, Lavanda",
     "notasCorazon": "Salvia, Romero",
     "notasFondo": "Pachulí, Vetiver",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 25,
+    "precioBS": 16250
   },
   {
     "id": 188,
@@ -2629,7 +2987,9 @@ export const products = [
     "notasSalida": "Maracuyá, Mandarina, Acorde ozónico, Frambuesa",
     "notasCorazon": "Rosa, Flor de naranjo, Sal marina, Toffee",
     "notasFondo": "Praliné, Vainilla, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 189,
@@ -2643,7 +3003,9 @@ export const products = [
     "notasSalida": "Almendra amarga, Frambuesa, Rosa",
     "notasCorazon": "Peonía, Jazmín, Vainilla",
     "notasFondo": "Sándalo, Cachemira, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 190,
@@ -2657,7 +3019,9 @@ export const products = [
     "notasSalida": "Piña, pomelo, higo",
     "notasCorazon": "lavanda, vainilla",
     "notasFondo": "haba tonka, pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 191,
@@ -2671,7 +3035,9 @@ export const products = [
     "notasSalida": "Rosa, Canela, Azafrán",
     "notasCorazon": "Caramelo, Pachulí, Notas amaderadas",
     "notasFondo": "Vainilla, Ámbar, Ambroxan",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 192,
@@ -2685,7 +3051,9 @@ export const products = [
     "notasSalida": "Bergamota, Jengibre, Enebro de Virginia, Nuez moscada",
     "notasCorazon": "Flor de azahar del naranjo, Lavanda, Ambroxan",
     "notasFondo": "Cuero, Vetiver, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 193,
@@ -2699,7 +3067,9 @@ export const products = [
     "notasSalida": "Caramelo, Albaricoque, Pimienta rosa, Almendra amarga, Ruibarbo",
     "notasCorazon": "Flores blancas, Rosa, Miel, Vainilla",
     "notasFondo": "Benjuí, Lábdano, Almizcle, Cuero",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 194,
@@ -2713,7 +3083,9 @@ export const products = [
     "notasSalida": "Azafrán, Bergamota, Licor de ciruela",
     "notasCorazon": "Canela, Ámbar",
     "notasFondo": "Haba tonka, Benjuí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 195,
@@ -2727,7 +3099,9 @@ export const products = [
     "notasSalida": "Salvia, Lavanda, Menta",
     "notasCorazon": "Tabaco, Vainilla, Flor de azahar",
     "notasFondo": "Benjuí, Haba tonka, Ládano",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 196,
@@ -2741,7 +3115,9 @@ export const products = [
     "notasSalida": "Pera, Grosellero negro, Peonía, Praliné",
     "notasCorazon": "Haba tonka, Jazmín, Almizcle",
     "notasFondo": "Vainilla, Sándalo, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 197,
@@ -2755,7 +3131,9 @@ export const products = [
     "notasSalida": "Bergamota, Lichi",
     "notasCorazon": "Rosa, Incienso",
     "notasFondo": "Ámbar, Vetiver",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 198,
@@ -2769,7 +3147,9 @@ export const products = [
     "notasSalida": "Lavanda, Salvia esclarea, Bergamota",
     "notasCorazon": "Ciruela, Palo de rosa, Sándalo",
     "notasFondo": "Ámbar, Oud",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 199,
@@ -2783,7 +3163,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Jazmín",
     "notasCorazon": "Rosa, Pachulí",
     "notasFondo": "Vainilla, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 200,
@@ -2797,7 +3179,9 @@ export const products = [
     "notasSalida": "Grosellas negras, Mandarina verde, Caramelo de fresa",
     "notasCorazon": "Gardenia, Vainilla, Ámbar",
     "notasFondo": "Sándalo, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 201,
@@ -2811,7 +3195,9 @@ export const products = [
     "notasSalida": "Fresa, grosellas negras, jazmín",
     "notasCorazon": "flor de azahar del naranjo, caramelo, vainilla",
     "notasFondo": "ámbar, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 202,
@@ -2825,7 +3211,9 @@ export const products = [
     "notasSalida": "Orquídea, Heliotropo, Mandarina",
     "notasCorazon": "Acuerdo goloso, Frutas tropicales, Vainilla",
     "notasFondo": "Almizcle, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 203,
@@ -2839,7 +3227,9 @@ export const products = [
     "notasSalida": "Jazmín, Melocotón",
     "notasCorazon": "Ámbar, Caramelo",
     "notasFondo": "Pachulí, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 204,
@@ -2853,7 +3243,9 @@ export const products = [
     "notasSalida": "Mango, Coco, Maracuyá",
     "notasCorazon": "Jazmín, Heliotropo, Flor de azahar del naranjo",
     "notasFondo": "Vainilla, Cachemira, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 205,
@@ -2867,7 +3259,9 @@ export const products = [
     "notasSalida": "Lima, Naranja, Flor de azahar del naranjo, Manzana",
     "notasCorazon": "Jazmín egipcio, Frambuesa, Rosa, Almizcle",
     "notasFondo": "Pachulí, Ámbar, Vainilla, Miel",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 206,
@@ -2881,7 +3275,9 @@ export const products = [
     "notasSalida": "Canela, Nuez moscada, Ron",
     "notasCorazon": "Tabaco, Azafrán, Sándalo",
     "notasFondo": "Vainilla, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 207,
@@ -2895,7 +3291,9 @@ export const products = [
     "notasSalida": "Chabacano, Rosa, Jazmín",
     "notasCorazon": "Nardo, Narciso",
     "notasFondo": "Ámbar, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 208,
@@ -2909,7 +3307,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Grosella roja, Hoja de laurel",
     "notasCorazon": "Rosa, Flor de loto, Pachulí",
     "notasFondo": "Vainilla, Ámbar, Almizcle",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 209,
@@ -2923,7 +3323,9 @@ export const products = [
     "notasSalida": "Rosa, Mermelada de rosa, Grosella roja",
     "notasCorazon": "Durazno, Sándalo, Pachulí",
     "notasFondo": "Palo de rosa, Frambuesa, Almizcle",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 210,
@@ -2937,7 +3339,9 @@ export const products = [
     "notasSalida": "Lichi, Pimienta, Mandarina, Rosa de Damasco",
     "notasCorazon": "Iris, Jazmín, Flor de azahar del naranjo",
     "notasFondo": "Vainilla, Pachulí, Sándalo",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 211,
@@ -2951,7 +3355,9 @@ export const products = [
     "notasSalida": "Magnolia, Manzana Granny Smith, Mandarina",
     "notasCorazon": "Grosella blanca, Peonía, Pétalos de jazmín",
     "notasFondo": "Sándalo, Almizcle, Madera de ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 212,
@@ -2965,7 +3371,9 @@ export const products = [
     "notasSalida": "Frutas confitadas, Limón, Naranja amarga, Chicle",
     "notasCorazon": "Rosa de Bulgaria, Arándano, Melocotón, Canela",
     "notasFondo": "Jengibre, Cedro, Almizcle, Ambroxán",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 75,
+    "precioBS": 48750
   },
   {
     "id": 213,
@@ -2979,7 +3387,9 @@ export const products = [
     "notasSalida": "Limón, Orégano, Sorbete de jazmín",
     "notasCorazon": "Arena, Fresia, Jazmín",
     "notasFondo": "Vetiver, Ciprés, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 80,
+    "precioBS": 52000
   },
   {
     "id": 214,
@@ -2993,7 +3403,9 @@ export const products = [
     "notasSalida": "Ámbar, Vainilla",
     "notasCorazon": "Pera, Manzana",
     "notasFondo": "Cítricos, Bergamota",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 125,
+    "precioBS": 81250
   },
   {
     "id": 215,
@@ -3007,7 +3419,9 @@ export const products = [
     "notasSalida": "Manzana verde, Lavanda, Mandarina, Bergamota, Pimienta",
     "notasCorazon": "Cardamomo, Violeta, Geranio, Jazmín, Vainilla",
     "notasFondo": "Sándalo, Madera de gaiac, Pachulí, Almizcle",
-    "ml": 80
+    "ml": 80,
+    "precioUSD": 100,
+    "precioBS": 65000
   },
   {
     "id": 216,
@@ -3021,7 +3435,9 @@ export const products = [
     "notasSalida": "Bergamota, Limón, Nectarina",
     "notasCorazon": "Orquídea, Pétalos de rosa, Violeta",
     "notasFondo": "Madera de cachemira, Trufa, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 217,
@@ -3035,7 +3451,9 @@ export const products = [
     "notasSalida": "Iris, Fresia, Rosa blanca",
     "notasCorazon": "Ylang-ylang, Lirio de los valles, Sándalo",
     "notasFondo": "Almizcle, Vainilla de Tahití, Notas amaderadas",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 218,
@@ -3049,7 +3467,9 @@ export const products = [
     "notasSalida": "Durazno, Manzana, Fresia",
     "notasCorazon": "Jazmín, Ylang-ylang",
     "notasFondo": "Roble, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 219,
@@ -3063,7 +3483,9 @@ export const products = [
     "notasSalida": "Bergamota, Lycium, Membrillo, Pera nashi",
     "notasCorazon": "Hibisco, Osmanto, Peonía rosa, Rosa de mayo",
     "notasFondo": "Ámbar, Almizcle blanco, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 220,
@@ -3077,7 +3499,9 @@ export const products = [
     "notasSalida": "Pétalos de rosa, Lichi, Neroli",
     "notasCorazon": "Rosa de mayo, Peonía, Papaya",
     "notasFondo": "Almizcle blanco, Ámbar, Cedro",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 221,
@@ -3091,7 +3515,9 @@ export const products = [
     "notasSalida": "Cereza, Hibisco, Crema batida",
     "notasCorazon": "Flor de frambueso, Dalia, Nenúfar",
     "notasFondo": "Vainilla, Almizcle, Sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 222,
@@ -3105,7 +3531,9 @@ export const products = [
     "notasSalida": "Rosa, Azucena, Mandarina, Osmanto, Melón",
     "notasCorazon": "Lirio de los Valles, Nenúfar, Lavanda, Salvia, Vainilla",
     "notasFondo": "Ámbar, Vetiver, Sándalo, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 223,
@@ -3119,7 +3547,9 @@ export const products = [
     "notasSalida": "Ciclamen, hojas de naranjo, ciruela",
     "notasCorazon": "flor de azahar del naranjo, orquídea, mimosa",
     "notasFondo": "jazmín, ámbar, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 224,
@@ -3147,7 +3577,9 @@ export const products = [
     "notasSalida": "Arándano rojo",
     "notasCorazon": "haba tonka",
     "notasFondo": "notas florales",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 40,
+    "precioBS": 26000
   },
   {
     "id": 226,
@@ -3161,7 +3593,9 @@ export const products = [
     "notasSalida": "Durazno, Naranja, Notas verdes",
     "notasCorazon": "Caramelo, Heliotropo, Pachulí",
     "notasFondo": "Sándalo, Vetiver, Almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   },
   {
     "id": 227,
@@ -3175,7 +3609,9 @@ export const products = [
     "notasSalida": "Bergamota, Nenúfar, Fresia, Pimienta",
     "notasCorazon": "Flor de azahar del naranjo, Jazmín, Ciruela",
     "notasFondo": "Almizcle, Pachulí, Madera de sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 228,
@@ -3189,7 +3625,9 @@ export const products = [
     "notasSalida": "Pomelo, menta, lavanda, bergamota, abrótano",
     "notasCorazon": "cardamomo, canela, vainilla, benjuí, miel",
     "notasFondo": "haba tonka, tabaco, cedro, almizcle, sándalo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 55,
+    "precioBS": 35750
   },
   {
     "id": 229,
@@ -3203,7 +3641,9 @@ export const products = [
     "notasSalida": "Granada, Manzana, Pomelo",
     "notasCorazon": "Jazmín sambac, Iris, Cítricos",
     "notasFondo": "Pachulí, Vetiver, Praliné",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 230,
@@ -3217,7 +3657,9 @@ export const products = [
     "notasSalida": "Flor de azahar del naranjo, rosa, jazmín",
     "notasCorazon": "frutas tropicales, vainilla",
     "notasFondo": "ámbar, almizcle",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 231,
@@ -3231,7 +3673,9 @@ export const products = [
     "notasSalida": "Manzana, Bergamota, Limón, Canela",
     "notasCorazon": "Notas acuosas, Ciruela, Cardamomo, Flor de azahar del naranjo",
     "notasFondo": "Almizcle, Ámbar gris, Pachulí, Madera a la deriva",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 232,
@@ -3245,7 +3689,9 @@ export const products = [
     "notasSalida": "Jengibre, Bergamota, Mandarina",
     "notasCorazon": "Canela, Neroli, Té verde",
     "notasFondo": "Almizcle, Notas amaderadas, Ámbar",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 233,
@@ -3259,7 +3705,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Azafrán, Pera",
     "notasCorazon": "Incienso, Rosa, Flores blancas",
     "notasFondo": "Almizcle, Ámbar, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 75,
+    "precioBS": 48750
   },
   {
     "id": 234,
@@ -3273,7 +3721,9 @@ export const products = [
     "notasSalida": "Piña, Naranja, Pomelo, Raíz de lirio",
     "notasCorazon": "Ámbar, Lavanda, Haba tonka",
     "notasFondo": "Almizcle, Pachulí, Madera de cachemira",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 65,
+    "precioBS": 42250
   },
   {
     "id": 235,
@@ -3287,7 +3737,9 @@ export const products = [
     "notasSalida": "Almizcle, Ámbar, Cashmeran",
     "notasCorazon": "Cumarina, Geranio, Oud",
     "notasFondo": "Rosa, Vainilla",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 236,
@@ -3301,7 +3753,9 @@ export const products = [
     "notasSalida": "Toronja (pomelo), Bergamota, Manzana verde",
     "notasCorazon": "Pachulí, Almizcle",
     "notasFondo": "Ámbar, Cachemira",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 237,
@@ -3315,7 +3769,9 @@ export const products = [
     "notasSalida": "Frutos rojos, Naranja, Malvavisco",
     "notasCorazon": "Lirio de los valles, Jazmín, Vainilla",
     "notasFondo": "Almizcle, Musgo",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 35,
+    "precioBS": 22750
   },
   {
     "id": 238,
@@ -3329,7 +3785,9 @@ export const products = [
     "notasSalida": "Benjuí, Bergamota",
     "notasCorazon": "Lavanda, Menta",
     "notasFondo": "Haba tonka, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 50,
+    "precioBS": 32500
   },
   {
     "id": 239,
@@ -3343,7 +3801,9 @@ export const products = [
     "notasSalida": "Frambuesa, Neroli, Bergamota, Limón, Palo de rosa de Brasil",
     "notasCorazon": "Ylang-ylang, Raíz de lirio, Jazmín, Palmarosa, Opopónaco",
     "notasFondo": "Incienso, Cuero, Vainilla, Almizcle, Cedro",
-    "ml": 68
+    "ml": 68,
+    "precioUSD": 20,
+    "precioBS": 13000
   },
   {
     "id": 240,
@@ -3357,7 +3817,9 @@ export const products = [
     "notasSalida": "Pimienta rosa, Grosella roja, Jazmín",
     "notasCorazon": "Rosa, Peonía, Almizcle",
     "notasFondo": "Panacotta, Pachulí",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 241,
@@ -3371,7 +3833,9 @@ export const products = [
     "notasSalida": "Cassis, Rosa",
     "notasCorazon": "Osmanto, Cuero",
     "notasFondo": "Pachulí, Vainilla",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 70,
+    "precioBS": 45500
   },
   {
     "id": 242,
@@ -3441,7 +3905,9 @@ export const products = [
     "notasSalida": "Chabacano, Fresia, Melocotón, Grosella negra",
     "notasCorazon": "Violeta, Nenúfar, Ylang-ylang, Lirio de los valles",
     "notasFondo": "Rosa, Sándalo, Almizcle, Vainilla",
-    "ml": 75
+    "ml": 75,
+    "precioUSD": 30,
+    "precioBS": 19500
   },
   {
     "id": 247,
@@ -3455,7 +3921,9 @@ export const products = [
     "notasSalida": "Cardamomo, Lavanda",
     "notasCorazon": "Cedro de Virginia, Bergamota",
     "notasFondo": "Vetiver, Alcaravea",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 150,
+    "precioBS": 97500
   },
   {
     "id": 248,
@@ -3469,6 +3937,8 @@ export const products = [
     "notasSalida": "Caramelo, Vainilla",
     "notasCorazon": "Almizcle, Miel",
     "notasFondo": "Whisky",
-    "ml": 100
+    "ml": 100,
+    "precioUSD": 45,
+    "precioBS": 29250
   }
 ];
