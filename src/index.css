@@ -870,7 +870,7 @@
 
 .card-info { padding: 14px 14px 6px; flex: 1; display: flex; flex-direction: column; }
 .card-house {
-  font-family: var(--font-s); font-size: 10px; letter-spacing: 0.15em;
+  font-family: var(--font-s); font-size: 11px; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--gold); margin: 0 0 5px;
 }
 .card-name {
@@ -1650,7 +1650,7 @@
   align-items: center;
   gap: 9px;
   font-family: 'Gotham', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -1665,7 +1665,7 @@
 }
 .vitrina-meta {
   font-family: 'Gotham', sans-serif;
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
