@@ -255,7 +255,7 @@ export default function Hero() {
       {/* Dots de navegación */}
       <div style={{
         position: 'absolute', bottom: 'clamp(20px, 5vh, 80px)', left: '50%', transform: 'translateX(-50%)',
-        display: 'flex', gap: 8, zIndex: 10,
+        display: 'flex', gap: 0, zIndex: 10,
       }}>
         {SLIDES_ACTIVE.map((_, i) => (
           <button
@@ -263,12 +263,19 @@ export default function Hero() {
             onClick={() => goTo(i)}
             aria-label={`Slide ${i + 1}`}
             style={{
+              height: 44, padding: '0 4px',
+              background: 'transparent',
+              border: 'none', cursor: 'pointer',
+              display: 'flex', alignItems: 'center',
+            }}
+          >
+            <span aria-hidden="true" style={{
+              display: 'block',
               width: i === current ? 28 : 8, height: 8,
               background: i === current ? '#C9A84C' : 'rgba(250,250,248,0.35)',
-              border: 'none', cursor: 'pointer', padding: 0,
               transition: 'width 0.4s ease, background 0.4s ease',
-            }}
-          />
+            }} />
+          </button>
         ))}
       </div>
 
