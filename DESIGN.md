@@ -116,6 +116,18 @@ Each olfactive family injects two CSS custom properties into the card:
 | D19 | Variantes de tamaño: productos con `variantIds` muestran selector de ml en ProductDetail | `src/pages/ProductDetail.jsx` |
 | D20 | Campaña Día del Padre 2026: ruta `/dia-del-padre`, 10 productos Antonio Banderas 100ml, teardown post-21-junio via redirect en vercel.json | `src/pages/DiaDeLPadrePage.jsx`, `src/data/dia-del-padre.js` |
 
+## Key Decisions Log (cont.)
+
+| ID | Decision | File |
+|----|----------|------|
+| D21 | Code splitting: `products-index.js` (115KB) para Tienda/Header, `products-enriched.js` (459KB) solo para ProductDetail | `src/data/all-products.js` |
+| D22 | SEO: HelmetProvider global + JSON-LD Product schema en ProductDetail + sitemap.xml 419 URLs autogenerado en build | `src/App.jsx`, `src/pages/ProductDetail.jsx`, `scripts/generate-sitemap.js` |
+| D23 | WhatsApp `?ref=` tracking en todos los links para analytics de conversión | todos los componentes con WA links |
+| D24 | WhatsAppFab context-aware: mensaje distinto para producto, DDP y general usando useLocation | `src/components/WhatsAppFab.jsx` |
+| D25 | Search autocomplete en Header: max 6 resultados de products-index, min 2 chars, arrow-key navigation | `src/components/Header.jsx` |
+| D26 | Pirámide olfativa rediseñada: layout flex con timeline dorada vertical (.pd-pyr), fotos reales 64px circulares | `src/index.css`, `src/pages/ProductDetail.jsx` |
+| D27 | DDP page rediseño editorial completo: 5 secciones (hero split, countdown, guía personas, editor's pick, grid) | `src/pages/DiaDeLPadrePage.jsx`, `src/index.css` |
+
 ## QA Status
 
 Verificado en browser (browse headless) el 2026-05-27:
@@ -123,7 +135,9 @@ Verificado en browser (browse headless) el 2026-05-27:
 - ProductDetail laptop 1366×768: precio y CTA fully above the fold ✓
 - AnnouncementBar: visible en desktop, popup solo en homepage ✓
 - Variantes de tamaño: selector visible antes del precio en ProductDetail ✓
-- Pirámide de notas: fotos de ingredientes circulares funcionando ✓
-- Día del Padre `/dia-del-padre`: grid de 10 productos, badge "Para papá" ✓
-- Mobile 390×844: layout correcto en home, tienda, detalle ✓
+- Pirámide `.pd-pyr`: fotos de ingredientes circulares, labels visibles, línea timeline dorada ✓
+- Día del Padre `/dia-del-padre`: hero editorial + countdown + 3 personas + editor's pick + grid ✓
+- WhatsAppFab: mensajes context-aware por página ✓
+- SEO: JSON-LD en ProductDetail, sitemap.xml 419 URLs, robots.txt ✓
+- Mobile 390×844: layout correcto en home, tienda, detalle, DDP ✓
 - 0 errores de consola

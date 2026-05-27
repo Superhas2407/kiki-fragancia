@@ -325,3 +325,50 @@ Agregar en `vercel.json` ANTES de `{ "handle": "filesystem" }`:
 - [ ] Notas y descripciones de ~46 productos sin actualizar (BHARARA, AFNAN, JO MILANO, Lattafa menores)
 - [ ] ~26 ingredientes sin imagen en `/public/notes/`
 - [ ] Foto lifestyle real para BrandStory (imagen oculta hasta tenerla)
+- [ ] Teardown campaña DDP post-21-junio: redirect `/dia-del-padre` → `/tienda?genero=Hombre` en `vercel.json`
+
+---
+
+## Fase 4 — SEO + Performance + DDP Redesign (2026-05-27)
+
+### Trabajo completado
+
+- [x] **TF4-1** — Code splitting: `products-index.js` (115KB ligero) para Tienda/VitrinaCard/Header, `products-enriched.js` (459KB) solo para ProductDetail
+  - `src/data/all-products.js` apunta a `products-index`
+  - ProductDetail importa `products-enriched` directamente
+
+- [x] **TF4-2** — SEO completo
+  - `react-helmet-async`: `HelmetProvider` en `App.jsx`
+  - `ProductDetail`: title dinámico, meta description, canonical, OG, JSON-LD `schema.org/Product`
+  - `DiaDeLPadrePage`: Helmet con meta/OG de campaña
+  - `scripts/generate-sitemap.js` → `public/sitemap.xml` 419 URLs (corre en cada build)
+  - `public/robots.txt` → apunta al sitemap
+
+- [x] **TF4-3** — WhatsApp `?ref=` tracking en todos los links WA
+  - ProductDetail: `ref=detalle_{id}`
+  - CartDrawer: `ref=carrito`
+  - WhatsAppFab: `ref=fab_general` / `ref=fab_detalle_{id}` / `ref=fab_dia_del_padre`
+  - DDP page: `ref=dia_del_padre`
+
+- [x] **TF4-4** — WhatsAppFab context-aware
+  - `useLocation()` determina el mensaje según la ruta
+  - En producto: menciona nombre y ml del producto
+  - En DDP: mensaje específico para la campaña del Día del Padre
+
+- [x] **TF4-5** — Search autocomplete en Header
+  - Dropdown con max 6 sugerencias, min 2 chars
+  - Filtra por name/house/familia desde `allProducts` (products-index)
+  - Arrow-key navigation + Enter para navegar al producto
+
+- [x] **TF4-6** — Pirámide olfativa rediseñada (`.pd-pyr`)
+  - Layout flex con timeline dorada vertical (`::before` pseudo)
+  - 3 filas (salida/corazón/fondo) con tiempo, fotos 64px circulares, label italic dorado
+  - Reemplaza `.pd-pyramid` grid que cortaba los labels en pantallas < 800px
+
+- [x] **TF4-7** — DDP page rediseño editorial completo
+  - Hero split: headline "El abrazo que dura en la piel." + panel editorial con cornerbrackets
+  - Countdown dinámico: días hasta 21-jun, fecha límite 18-jun
+  - Guía de regalo: 3 persona cards (El Clásico / El Aventurero / El Sibarita) con botellas reales
+  - Editor's Pick: featured card para producto 412 (Antonio Banderas The Icon) con precio y CTAs
+  - Grid VitrinaCard 10 fragancias
+  - CTA WhatsApp con mensaje pre-cargado
