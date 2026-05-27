@@ -226,7 +226,11 @@ export default function ProductDetail() {
     transition: `opacity .75s ease ${d}ms, transform .75s cubic-bezier(.22,1,.36,1) ${d}ms`,
   })
 
-  const waMsg = encodeURIComponent(`Hola, me interesa *${product.house} ${product.name}*. ¿Podrías darme más información?`)
+  const waPrecio = product.precioUSD > 0 ? ` — $${product.precioUSD} USD` : ''
+  const waMl = product.ml ? ` ${product.ml}ml` : ''
+  const waMsg = encodeURIComponent(
+    `Hola, me interesa *${product.house} ${product.name}*${waMl}${waPrecio}. ¿Está disponible?`
+  )
   const waUrl = `https://wa.me/584149112002?text=${waMsg}`
 
   const descripcion = product.descripcion || (product.description ? product.description.replace(/\*\*/g, '') : null)

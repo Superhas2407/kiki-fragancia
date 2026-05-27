@@ -178,11 +178,21 @@ export default function VitrinaCard({ product, badge = null }) {
             ))}
           </div>
         )}
-        {product.precioUSD > 0 && formatPrice(product.precioUSD) && (
-          <div className="vitrina-price">
-            <span className="vitrina-price-usd">{formatPrice(product.precioUSD)}</span>
-          </div>
-        )}
+        {(() => {
+          const allPrices = variants.length > 1
+            ? variants.map(v => v.precioUSD).filter(p => p > 0)
+            : product.precioUSD > 0 ? [product.precioUSD] : []
+          if (!allPrices.length) return null
+          const minPrice = Math.min(...allPrices)
+          const hasRange = variants.length > 1 && allPrices.length > 1
+          return (
+            <div className="vitrina-price">
+              <span className="vitrina-price-usd">
+                {hasRange ? 'Desde ' : ''}{formatPrice(minPrice)}
+              </span>
+            </div>
+          )
+        })()}
       </div>
     </Link>
   )

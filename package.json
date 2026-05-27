@@ -11,9 +11,12 @@
     "renamer:build": "pkg tools/renamer-server.cjs --targets node18-win-x64 --output tools/Renombrador.exe --assets tools/renamer.html"
   },
   "pkg": {
-    "assets": ["tools/renamer.html"]
+    "assets": [
+      "tools/renamer.html"
+    ]
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.38.0",
     "gstack": "github:garrytan/gstack",
     "react": "^19.2.6",
