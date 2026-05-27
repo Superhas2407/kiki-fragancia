@@ -53,7 +53,7 @@ const CornerBracket = ({ pos }) => {
   const isLeft = pos.includes('l')
   return (
     <span aria-hidden="true" style={{
-      position: 'absolute',
+      position: 'absolute', zIndex: 2,
       [isTop ? 'top' : 'bottom']: 16,
       [isLeft ? 'left' : 'right']: 16,
       width: 22, height: 22,
@@ -112,16 +112,15 @@ export default function DiaDeLPadrePage() {
         </div>
 
         <div className="ddp-hero-editorial">
+          <img src="/ddp-editorial.jpg" alt="" aria-hidden="true" className="ddp-editorial-photo" />
+          <div className="ddp-editorial-overlay" aria-hidden="true" />
           <CornerBracket pos="tl" />
           <CornerBracket pos="tr" />
           <CornerBracket pos="bl" />
           <CornerBracket pos="br" />
-          <div className="ddp-editorial-center">
-            <p className="ddp-editorial-tag">Lifestyle · Padre &amp; Hijo · Sesión Editorial</p>
-          </div>
-          <div className="ddp-editorial-foot">
-            <span>N° 01 / Editorial</span>
-            <span>21 · JUN · 2026</span>
+          <div className="ddp-editorial-caption">
+            <p className="ddp-editorial-caption-eyebrow">— Día del Padre · 2026</p>
+            <p className="ddp-editorial-caption-text">Un abrazo que<br />dura en la piel.</p>
           </div>
         </div>
       </section>

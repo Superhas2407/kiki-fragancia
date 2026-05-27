@@ -2264,35 +2264,46 @@
   position: relative;
   height: 540px;
   border: 1px solid rgba(201,168,76,0.2);
-  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, rgba(10,10,10,0) 60%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
+  overflow: hidden;
+}
+.ddp-editorial-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+}
+.ddp-editorial-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,6,2,0.1) 0%, rgba(10,6,2,0.72) 100%);
 }
 
-.ddp-editorial-center {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ddp-editorial-caption {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
 }
-
-.ddp-editorial-tag {
+.ddp-editorial-caption-eyebrow {
+  font-family: var(--font-s);
   font-size: 10px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(201,168,76,0.5);
-  text-align: center;
+  color: #C9A84C;
+  margin-bottom: 8px;
 }
-
-.ddp-editorial-foot {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(250,250,248,0.3);
+.ddp-editorial-caption-text {
+  font-size: 28px;
+  font-weight: 200;
+  font-style: italic;
+  color: rgba(250,250,248,0.96);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .ddp-countdown {
@@ -2692,17 +2703,22 @@
 @media (max-width: 1024px) {
   .ddp-hero {
     grid-template-columns: 1fr;
-    padding: 80px 32px 60px;
+    padding: 80px 32px 48px;
     min-height: auto;
   }
-  .ddp-hero-editorial { display: none; }
+  .ddp-hero-editorial {
+    height: 320px;
+    margin: 40px 0 0;
+    border: 1.5px solid rgba(201,168,76,0.45);
+  }
   .ddp-personas { grid-template-columns: 1fr; gap: 16px; }
   .ddp-featured-card { grid-template-columns: 1fr; gap: 40px; }
   .ddp-featured-img { height: 280px; }
 }
 
 @media (max-width: 768px) {
-  .ddp-hero { padding: 60px 20px 48px; }
+  .ddp-hero { padding: 60px 20px 40px; }
+  .ddp-hero-editorial { height: 280px; margin: 32px 0 0; }
   .ddp-countdown {
     flex-direction: column;
     gap: 24px;

@@ -67,7 +67,7 @@ function CurrencyToggle() {
           background: 'none', border: '1px solid rgba(201,168,76,0.3)',
           color: '#C9A84C', cursor: 'pointer',
           fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.15em',
-          padding: '6px 10px', minHeight: 44, transition: 'border-color .2s',
+          padding: '6px 10px', transition: 'border-color .2s',
         }}
         onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.7)'}
         onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)'}
@@ -127,7 +127,7 @@ function CartButton() {
         position: 'relative', background: 'none', border: 'none',
         cursor: 'pointer', color: 'rgba(250,250,248,0.75)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '12px', minWidth: 44, minHeight: 44,
+        padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
       onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
@@ -287,7 +287,7 @@ export default function Header() {
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
                 color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
-                padding: 4, minWidth: 44, minHeight: 44, justifyContent: 'center',
+                padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
                 transition: 'color .2s',
               }}
             >
