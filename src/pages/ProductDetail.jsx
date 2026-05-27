@@ -468,30 +468,32 @@ export default function ProductDetail() {
                   <div className="pd-section-eyebrow"><div className="gold-line" style={{ width: 24 }}></div><span>Composición</span></div>
                   <h2 className="pd-section-title">Pirámide del perfume</h2>
                 </div>
-                <div className="pd-pyramid">
-                  <div className="pd-pyramid-line"></div>
-                  <div className="pd-pyramid-layers">
-                    {[
-                      { label: 'Notas de Salida',  notes: notas.salida,  sub: '0–30 min',  bg: 'rgba(201,168,76,.15)' },
-                      { label: 'Notas de Corazón', notes: notas.corazon, sub: '30 min–3 h', bg: 'rgba(201,168,76,.09)' },
-                      { label: 'Notas de Fondo',   notes: notas.fondo,   sub: '3+ h',       bg: 'rgba(201,168,76,.04)' },
-                    ].filter(l => l.notes.length > 0).map(({ label, notes, sub, bg }) => (
-                      <div key={label} className="pd-pyramid-layer">
-                        <div className="pd-pyramid-layer-head">
-                          <span className="pd-pyramid-layer-title">{label}</span>
-                          <span className="pd-pyramid-layer-sub">{sub}</span>
-                        </div>
-                        <div className="pd-chips">
-                          {notes.map(n => (
-                            <span key={n} className="pd-chip" style={{ background: bg, padding: getNoteImage(n) ? '4px 14px 4px 4px' : undefined }}>
-                              <NoteIcon nota={n} size={40} />{n}
-                            </span>
-                          ))}
-                        </div>
+
+                <div className="pd-pyr">
+                  {[
+                    { label: 'Salida',  time: '0–30 min',   notes: notas.salida  },
+                    { label: 'Corazón', time: '30 min–3 h', notes: notas.corazon },
+                    { label: 'Fondo',   time: '3+ h',       notes: notas.fondo   },
+                  ].filter(l => l.notes.length > 0).map(({ label, time, notes }) => (
+                    <div key={label} className="pd-pyr-row">
+                      <span className="pd-pyr-time">{time}</span>
+                      <div className="pd-pyr-notes">
+                        {notes.map(n => (
+                          <div key={n} className="pd-pyr-note">
+                            <NoteIcon nota={n} size={64} />
+                            <span className="pd-pyr-note-name">{n}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                      <span className="pd-pyr-label">{label}</span>
+                    </div>
+                  ))}
+
+                  <p className="pd-pyr-footer">
+                    {product.house} · {product.name} · {product.familia}
+                  </p>
                 </div>
+
                 <div className="pd-sep"></div>
               </>
             ) : null}
