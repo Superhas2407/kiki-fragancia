@@ -516,7 +516,9 @@
 .announcement-bar-link {
   display: flex;
   align-items: center;
+  align-self: stretch;
   gap: 10px;
+  padding: 0 8px 0 0;
   text-decoration: none;
   color: #0A0A0A;
   font-family: 'KikiGotham', sans-serif;
@@ -1624,6 +1626,7 @@
 .footer-nav-link {
   font-family: var(--font-s); font-size: 13px; font-weight: 100;
   color: rgba(247,242,234,.4); text-decoration: none; transition: color .2s ease;
+  display: block; padding: 8px 0; margin: -8px 0;
 }
 .footer-nav-link:hover { color: var(--gold); }
 .footer-contact-desc {
