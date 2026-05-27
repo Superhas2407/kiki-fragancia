@@ -94,14 +94,14 @@ export default function CartDrawer() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0 24px',
-            height: '64px',
+            padding: '0 clamp(12px, 5vw, 24px)',
+            height: '60px',
             borderBottom: '1px solid rgba(232,228,220,0.1)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span
-              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '22px', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 100 }}
+              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(17px, 5vw, 22px)', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 100 }}
             >
               Mi Carrito
             </span>
@@ -131,7 +131,7 @@ export default function CartDrawer() {
         </div>
 
         {/* Lista de items */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '16px 24px' }}>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '16px clamp(12px, 5vw, 24px)' }}>
           {items.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '12px' }}>
               <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '20px', color: 'rgba(250,250,248,0.3)', fontStyle: 'italic' }}>
@@ -161,7 +161,7 @@ export default function CartDrawer() {
                       <img
                         src={`/products/${item.image}`}
                         alt={item.name}
-                        style={{ width: '64px', height: '80px', objectFit: 'cover', flexShrink: 0 }}
+                        style={{ width: 'clamp(52px, 14vw, 64px)', height: 'clamp(66px, 18vw, 80px)', objectFit: 'cover', flexShrink: 0 }}
                       />
                     ) : (
                       <div style={{ width: '64px', height: '80px', flexShrink: 0, background: '#1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -174,7 +174,7 @@ export default function CartDrawer() {
                       <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '9px', color: 'rgba(250,250,248,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                         {item.house}
                       </p>
-                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '17px', color: '#FAFAF8', fontWeight: 100 }}>
+                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(14px, 4vw, 17px)', color: '#FAFAF8', fontWeight: 100 }}>
                         {item.name}
                       </p>
                       {unit > 0 && (
@@ -220,7 +220,7 @@ export default function CartDrawer() {
 
         {/* Footer del drawer */}
         {items.length > 0 && (
-          <div style={{ padding: '20px 24px', borderTop: '1px solid rgba(232,228,220,0.1)', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ padding: '16px clamp(12px, 5vw, 24px)', borderTop: '1px solid rgba(232,228,220,0.1)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {totalPrice > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
@@ -239,10 +239,10 @@ export default function CartDrawer() {
                 color: '#0A0A0A',
                 fontFamily: "'KikiGotham', sans-serif",
                 fontSize: '11px',
-                fontWeight: 100,
-                letterSpacing: '0.2em',
+                fontWeight: 400,
+                letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                padding: '16px',
+                padding: '15px 16px',
                 cursor: 'pointer',
                 width: '100%',
                 transition: 'opacity 0.2s ease',

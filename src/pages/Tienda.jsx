@@ -301,7 +301,7 @@ export default function Tienda() {
             >
               <h1 style={{
                 fontFamily: "'KikiGotham', sans-serif",
-                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                fontSize: 'clamp(1.5rem, 6vw, 3.5rem)',
                 fontWeight: 100, color: '#FAFAF8',
                 letterSpacing: '-0.02em', lineHeight: 1.08,
                 fontStyle: 'italic', margin: 0,
