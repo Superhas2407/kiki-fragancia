@@ -2742,7 +2742,7 @@
 }
 
 /* ── Small screens (≤360px) ── */
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   /* Buttons — font-size and touch targets for 375-430px phones */
   .btn-cta { font-size: 11px; min-height: 46px; }
   .pd-btn-wa { font-size: 11px; min-height: 46px; padding: 13px 24px; }
