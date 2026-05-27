@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { products } from '../data/products-enriched'
@@ -254,8 +255,42 @@ export default function ProductDetail() {
     setTimeout(() => setAdded(false), 1800)
   }
 
+  const metaTitle = `${product.house} ${product.name} ${product.ml}ml — KiKi Fragancia`
+  const metaDesc = descripcion
+    ? descripcion.slice(0, 155).replace(/\s\S+$/, '…')
+    : `${product.house} ${product.name} ${product.ml}ml ${product.tipo}. Fragancia 100% original en Venezuela.`
+  const canonicalUrl = `https://kikifragancia.com/tienda/${product.id}`
+  const productImage = product.image ? `https://kikifragancia.com/products/${product.image}` : 'https://kikifragancia.com/khamrah-hero.jpg'
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: `${product.house} ${product.name}`,
+    image: productImage,
+    description: descripcion || metaDesc,
+    brand: { '@type': 'Brand', name: product.house },
+    offers: {
+      '@type': 'Offer',
+      url: canonicalUrl,
+      priceCurrency: 'USD',
+      price: product.precioUSD || undefined,
+      availability: 'https://schema.org/InStock',
+    },
+  }
+
   return (
     <>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDesc} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDesc} />
+        <meta property="og:image" content={productImage} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="product" />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      </Helmet>
+
       <Header />
 
       <div className="pd-page">

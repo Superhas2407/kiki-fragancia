@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/generate-sitemap.js && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "renamer:build": "pkg tools/renamer-server.cjs --targets node18-win-x64 --output tools/Renombrador.exe --assets tools/renamer.html"
@@ -21,6 +21,7 @@
     "gstack": "github:garrytan/gstack",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
+    "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.15.0",
     "vanilla-tilt": "^1.8.1"
   },

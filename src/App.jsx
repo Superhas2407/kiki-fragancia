@@ -1,5 +1,6 @@
 import { Component, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
 import { CurrencyProvider } from './context/CurrencyContext'
 import Landing from './pages/Landing'
@@ -80,14 +81,16 @@ function AppShell() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <CurrencyProvider>
-        <CartProvider>
-          <ErrorBoundary>
-            <AppShell />
-          </ErrorBoundary>
-        </CartProvider>
-      </CurrencyProvider>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <CurrencyProvider>
+          <CartProvider>
+            <ErrorBoundary>
+              <AppShell />
+            </ErrorBoundary>
+          </CartProvider>
+        </CurrencyProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   )
 }

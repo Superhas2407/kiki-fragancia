@@ -40,5 +40,6 @@ public/fonts/
 public/logo-vector.png
 
 # Scripts internos de desarrollo (catálogo ya generado)
-scripts/
+scripts/generate-catalog.js
+scripts/generate-prices.js
 design-audit-20260527/
