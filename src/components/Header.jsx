@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
+import { allProducts } from '../data/all-products'
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -152,9 +153,22 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [activeSuggestion, setActiveSuggestion] = useState(-1)
   const searchInputRef = useRef(null)
   const location = useLocation()
   const navigate = useNavigate()
+
+  const suggestions = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase()
+    if (q.length < 2) return []
+    return allProducts
+      .filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.house.toLowerCase().includes(q) ||
+        (p.familia && p.familia.toLowerCase().includes(q))
+      )
+      .slice(0, 6)
+  }, [searchQuery])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
@@ -175,10 +189,19 @@ export default function Header() {
   }, [searchOpen])
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') setSearchOpen(false) }
+    setActiveSuggestion(-1)
+  }, [searchQuery])
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === 'Escape') { setSearchOpen(false); return }
+      if (!suggestions.length) return
+      if (e.key === 'ArrowDown') { e.preventDefault(); setActiveSuggestion(i => Math.min(i + 1, suggestions.length - 1)) }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); setActiveSuggestion(i => Math.max(i - 1, -1)) }
+    }
     if (searchOpen) document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [searchOpen])
+  }, [searchOpen, suggestions])
 
   const mobileParams = new URLSearchParams(location.search)
   const mActiveTipo   = mobileParams.get('tipo')
@@ -200,10 +223,20 @@ export default function Header() {
 
   function handleSearch(e) {
     e.preventDefault()
+    if (activeSuggestion >= 0 && suggestions[activeSuggestion]) {
+      navigate(`/tienda/${suggestions[activeSuggestion].id}`)
+      setSearchOpen(false)
+      return
+    }
     if (searchQuery.trim()) {
       navigate(`/tienda?q=${encodeURIComponent(searchQuery.trim())}`)
       setSearchOpen(false)
     }
+  }
+
+  function handleSuggestionClick(product) {
+    navigate(`/tienda/${product.id}`)
+    setSearchOpen(false)
   }
 
   return (
@@ -412,12 +445,50 @@ export default function Header() {
                 </button>
               )}
             </div>
-            <p style={{
-              fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.08em',
-              color: 'rgba(250,250,248,0.25)', marginTop: 16, textAlign: 'center',
-            }}>
-              Presiona Enter para buscar · Esc para cerrar
-            </p>
+            {suggestions.length > 0 ? (
+              <ul style={{ listStyle: 'none', margin: '8px 0 0', padding: 0 }}>
+                {suggestions.map((p, i) => (
+                  <li
+                    key={p.id}
+                    onMouseDown={() => handleSuggestionClick(p)}
+                    onMouseEnter={() => setActiveSuggestion(i)}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 14,
+                      padding: '10px 12px', cursor: 'pointer', borderRadius: 4,
+                      background: i === activeSuggestion ? 'rgba(201,168,76,0.1)' : 'transparent',
+                      transition: 'background .15s',
+                    }}
+                  >
+                    {p.image && (
+                      <img
+                        src={`/products/${p.image}`}
+                        alt=""
+                        loading="lazy"
+                        style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0, opacity: 0.85 }}
+                      />
+                    )}
+                    <span style={{ flex: 1, minWidth: 0 }}>
+                      <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.7)', display: 'block' }}>
+                        {p.house}
+                      </span>
+                      <span style={{ fontFamily: 'var(--font-d)', fontSize: 15, fontStyle: 'italic', color: '#FAFAF8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
+                        {p.name}
+                      </span>
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.08em', color: 'rgba(250,250,248,0.3)', flexShrink: 0 }}>
+                      {p.ml}ml
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p style={{
+                fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.08em',
+                color: 'rgba(250,250,248,0.25)', marginTop: 16, textAlign: 'center',
+              }}>
+                Presiona Enter para buscar · Esc para cerrar
+              </p>
+            )}
           </form>
         </div>
       )}

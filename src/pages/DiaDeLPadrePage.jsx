@@ -8,7 +8,7 @@ const MSG = encodeURIComponent(
   'por el Día del Padre. ¿Me pueden ayudar a elegir?'
 )
 
-const WA_HREF = `https://wa.me/584149112002?text=${MSG}`
+const WA_HREF = `https://wa.me/584149112002?text=${MSG}&ref=dia_del_padre`
 
 export default function DiaDeLPadrePage() {
   const gridRef = useRef(null)

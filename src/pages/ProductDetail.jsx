@@ -232,7 +232,7 @@ export default function ProductDetail() {
   const waMsg = encodeURIComponent(
     `Hola, me interesa *${product.house} ${product.name}*${waMl}${waPrecio}. ¿Está disponible?`
   )
-  const waUrl = `https://wa.me/584149112002?text=${waMsg}`
+  const waUrl = `https://wa.me/584149112002?text=${waMsg}&ref=detalle_${product.id}`
 
   const descripcion = product.descripcion || (product.description ? product.description.replace(/\*\*/g, '') : null)
 

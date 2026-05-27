@@ -46,7 +46,7 @@ export default function CartDrawer() {
 
   function handleWhatsApp() {
     const message = buildMessage(items)
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}&ref=carrito`
     window.open(url, '_blank', 'noopener,noreferrer')
     setDrawerOpen(false)
     setShowToast(true)

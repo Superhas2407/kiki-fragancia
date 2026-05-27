@@ -1,6 +1,32 @@
+import { useLocation } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { allProducts } from '../data/all-products'
 
-const WA_URL = 'https://wa.me/584149112002?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20fragancias.'
+const WA_NUMBER = '584149112002'
+
+const MESSAGES = {
+  default: 'Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20fragancias.',
+  ddp: encodeURIComponent('Hola Kiki! Busco una fragancia de regalo para mi papá por el Día del Padre. ¿Me pueden ayudar a elegir?'),
+}
+
+function buildUrl(msg, ref) {
+  return `https://wa.me/${WA_NUMBER}?text=${msg}&ref=${ref}`
+}
+
+function useWaUrl() {
+  const { pathname } = useLocation()
+  const productMatch = pathname.match(/^\/tienda\/(\d+)$/)
+  if (productMatch) {
+    const id = Number(productMatch[1])
+    const p = allProducts.find(x => x.id === id)
+    if (p) {
+      const msg = encodeURIComponent(`Hola, estoy viendo *${p.house} ${p.name}* ${p.ml}ml. ¿Está disponible?`)
+      return buildUrl(msg, `fab_detalle_${id}`)
+    }
+  }
+  if (pathname === '/dia-del-padre') return buildUrl(MESSAGES.ddp, 'fab_dia_del_padre')
+  return buildUrl(MESSAGES.default, 'fab_general')
+}
 
 const WhatsAppIcon = () => (
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -10,11 +36,13 @@ const WhatsAppIcon = () => (
 
 export default function WhatsAppFab() {
   const { drawerOpen } = useCartContext()
+  const waUrl = useWaUrl()
+
   if (drawerOpen) return null
 
   return (
     <a
-      href={WA_URL}
+      href={waUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Consultar por WhatsApp"
