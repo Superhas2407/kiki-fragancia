@@ -381,6 +381,7 @@
     flex-direction: column !important;
     min-height: unset !important;
     height: auto !important;
+    padding-bottom: 64px !important;
   }
   .hero-mobile-image {
     display: block;
@@ -531,7 +532,7 @@
   font-weight: 600;
 }
 .announcement-bar-sep {
-  opacity: 0.5;
+  opacity: 0.75;
 }
 .announcement-bar-cta {
   opacity: 0.85;
@@ -629,14 +630,14 @@
 .ddp-popup-body {
   font-family: 'KikiGotham', sans-serif;
   font-size: 13px; font-weight: 100;
-  color: rgba(250,250,248,0.50);
+  color: rgba(250,250,248,0.70);
   letter-spacing: 0.03em; line-height: 1.65;
   margin-bottom: 28px;
 }
 .ddp-popup-btn {
   display: block; width: 100%;
   font-family: 'KikiGotham', sans-serif;
-  font-size: 11px; font-weight: 100;
+  font-size: 11px; font-weight: 400;
   letter-spacing: 0.2em; text-transform: uppercase;
   color: #0A0A0A; background: #C9A84C;
   border: none; padding: 16px;
@@ -803,11 +804,11 @@
 }
 .hero-content-wrap {
   position: relative; z-index: 3;
-  padding-top: 96px; padding-bottom: 96px;
+  padding-top: calc(var(--bar-h, 0px) + 96px); padding-bottom: 96px;
   display: flex; flex-direction: column; align-items: flex-start;
 }
 @media (max-width: 767px) {
-  .hero-content-wrap { padding-top: 110px; padding-bottom: 60px; }
+  .hero-content-wrap { padding-top: calc(var(--bar-h, 0px) + 110px); padding-bottom: 60px; }
   .hero-eyebrow { margin-bottom: 14px; }
   .hero-main-title { font-size: clamp(32px, 9vw, 48px); margin-bottom: 12px; }
   .hero-tagline { line-height: 1.6; margin-bottom: 14px; }
@@ -879,7 +880,7 @@
 /* â”€â”€ BUTTONS â”€â”€ */
 .btn-cta {
   display: inline-flex; align-items: center; gap: 12px;
-  font-family: var(--font-s); font-size: 10px; font-weight: 100;
+  font-family: var(--font-s); font-size: 10px; font-weight: 300;
   letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
   color: #FAFAF8; background: transparent;
   border: 1px solid rgba(201,168,76,.55); padding: 15px 40px;
@@ -911,7 +912,7 @@
 .marquee-inner {
   display: flex; align-items: center; flex-shrink: 0;
   white-space: nowrap;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 65s linear infinite;
 }
 .marquee-inner--reverse { animation-name: marqueeScrollReverse; }
 .marquee-inner:hover { animation-play-state: paused; }
@@ -1219,7 +1220,7 @@
 }
 
 /* â”€â”€ PRODUCT DETAIL â”€â”€ */
-.pd-page { background: #0A0A0A; min-height: 100vh; padding-top: 76px; }
+.pd-page { background: #0A0A0A; min-height: 100vh; padding-top: calc(var(--bar-h, 0px) + 76px); }
 .pd-main { padding: clamp(40px, 5vw, 72px) 0 clamp(56px, 7vw, 96px); }
 .pd-back {
   font-family: var(--font-s); font-size: 10px; letter-spacing: 0.18em;
@@ -2189,7 +2190,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: calc(100vh - 44px);
-  padding: 100px 48px 80px;
+  padding: calc(var(--bar-h, 0px) + 100px) 48px 80px;
   gap: 48px;
   align-items: center;
   background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.06) 0%, transparent 60%), #0A0A0A;

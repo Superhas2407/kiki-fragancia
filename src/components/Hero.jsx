@@ -211,7 +211,7 @@ export default function Hero() {
                 style={{
                   background: '#C9A84C', color: '#0A0A0A', border: 'none', cursor: 'pointer',
                   padding: '7px 16px', fontFamily: 'var(--font-s)', fontSize: 9,
-                  letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 100,
+                  letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 400,
                   flexShrink: 0,
                 }}
               >
@@ -231,13 +231,13 @@ export default function Hero() {
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.22em',
-                textTransform: 'uppercase', color: 'rgba(250,250,248,.45)',
-                border: '1px solid rgba(250,250,248,.15)', padding: '15px 32px',
+                textTransform: 'uppercase', color: 'rgba(250,250,248,.70)',
+                border: '1px solid rgba(250,250,248,.30)', padding: '15px 32px',
                 textDecoration: 'none',
                 transition: 'color .25s ease, border-color .25s ease',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = '#FAFAF8'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.4)' }}
-              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(250,250,248,.45)'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.15)' }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(250,250,248,.70)'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.30)' }}
             >
               Instagram
             </a>

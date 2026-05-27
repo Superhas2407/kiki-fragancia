@@ -282,7 +282,7 @@ export default function Tienda() {
 
   return (
     <>
-      <div style={{ background: '#0A0A0A', minHeight: '100dvh', paddingTop: 76 }}>
+      <div style={{ background: '#0A0A0A', minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + 76px)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
 
           {/* Barra superior */}
