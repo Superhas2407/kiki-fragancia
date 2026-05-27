@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 const BAR_H = 40
 
@@ -11,9 +11,10 @@ export default function AnnouncementBar() {
     () => sessionStorage.getItem('ddp-popup-closed') === '1'
   )
   const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   const barVisible = !barClosed
-  const popupVisible = !popupClosed
+  const popupVisible = !popupClosed && pathname === '/'
 
   useEffect(() => {
     const root = document.documentElement

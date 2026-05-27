@@ -197,10 +197,11 @@ export default function ProductDetail() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
+    setMounted(false)
     setDescExpanded(false)
-    const t1 = setTimeout(() => setMounted(true), 60)
+    const raf = requestAnimationFrame(() => setMounted(true))
     const t2 = setTimeout(() => setBarsReady(true), 500)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
+    return () => { cancelAnimationFrame(raf); clearTimeout(t2) }
   }, [id])
 
   const product = products.find(p => p.id === Number(id))
