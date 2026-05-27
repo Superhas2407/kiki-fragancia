@@ -178,7 +178,6 @@ export default function DiaDeLPadrePage() {
                       ) : null
                     })}
                   </div>
-                  <p className="ddp-persona-num">N°{num} — {label.toUpperCase()}</p>
                 </div>
                 <div className="ddp-persona-body">
                   <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>

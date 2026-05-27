@@ -2410,9 +2410,11 @@
 }
 
 .ddp-persona-bottle {
-  height: 160px;
-  width: auto;
-  object-fit: contain;
+  width: 88px;
+  height: 148px;
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6));
 }
 
@@ -2426,15 +2428,15 @@
 }
 
 .ddp-persona-body {
-  padding: 24px;
+  padding: 16px 20px 20px;
 }
 
 .ddp-persona-num-label {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(201,168,76,0.6);
-  margin-bottom: 8px;
+  color: #C9A84C;
+  margin-bottom: 4px;
 }
 
 .ddp-persona-headline {
@@ -2452,10 +2454,18 @@
 }
 
 .ddp-persona-link {
+  display: inline-block;
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #C9A84C;
+  border: 1px solid rgba(201,168,76,0.45);
+  padding: 9px 18px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ddp-persona-link:hover {
+  border-color: #C9A84C;
+  background: rgba(201,168,76,0.07);
 }
 
 .ddp-featured {
