@@ -4,12 +4,14 @@ import BrandsMarquee from '../components/BrandsMarquee'
 import BrandStory from '../components/BrandStory'
 import Guarantee from '../components/Guarantee'
 import Footer from '../components/Footer'
+import DiaDeLPadrePromo from '../components/DiaDeLPadrePromo'
 
 export default function Landing() {
   return (
     <>
       <main>
         <Hero />
+        <DiaDeLPadrePromo />
         <BrandsMarquee />
         <Catalog theme="dark" />
         <BrandsMarquee reverse />

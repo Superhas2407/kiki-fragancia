@@ -5,11 +5,13 @@ import { CurrencyProvider } from './context/CurrencyContext'
 import Landing from './pages/Landing'
 import Tienda from './pages/Tienda'
 import ProductDetail from './pages/ProductDetail'
+import DiaDeLPadrePage from './pages/DiaDeLPadrePage'
 import CartDrawer from './components/CartDrawer'
 import CursorTrail from './components/CursorTrail'
 import Header from './components/Header'
 import GlobalSidebar from './components/GlobalSidebar'
 import WhatsAppFab from './components/WhatsAppFab'
+import AnnouncementBar from './components/AnnouncementBar'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -42,6 +44,7 @@ function AppShell() {
     <>
       <CursorTrail />
       <ScrollToTop />
+      <AnnouncementBar />
       <Header />
       <div className="app-shell">
         <GlobalSidebar />
@@ -50,6 +53,7 @@ function AppShell() {
             <Route path="/" element={<Landing />} />
             <Route path="/tienda" element={<Tienda />} />
             <Route path="/tienda/:id" element={<ProductDetail />} />
+            <Route path="/dia-del-padre" element={<DiaDeLPadrePage />} />
           </Routes>
         </div>
       </div>

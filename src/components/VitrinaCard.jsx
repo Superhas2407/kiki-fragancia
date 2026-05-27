@@ -54,7 +54,7 @@ const CheckIcon = () => (
   </svg>
 )
 
-export default function VitrinaCard({ product }) {
+export default function VitrinaCard({ product, badge = null }) {
   const { addItem } = useCartContext()
   const { formatPrice } = useCurrency()
   const navigate = useNavigate()
@@ -127,6 +127,10 @@ export default function VitrinaCard({ product }) {
 
         <div className="vitrina-pedestal" />
         <div className="vitrina-vignette" aria-hidden="true" />
+
+        {badge && (
+          <span className="badge-regalo">{badge}</span>
+        )}
 
         {/* Quick-add CTA */}
         <button
