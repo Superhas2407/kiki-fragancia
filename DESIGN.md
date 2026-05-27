@@ -18,10 +18,11 @@
 
 | Role | Font | Weights |
 |------|------|---------|
-| Headings / quotes | Cormorant Garamond | 300, 400, 500 |
-| Body / UI | DM Sans | 300, 400, 500 |
+| All text (headings, body, UI) | KikiGotham | 100, 300, 400, 600 |
 
-Load order in `index.html`: Cormorant Garamond → DM Sans.
+**KikiGotham** is a custom font loaded via `@font-face` in `src/index.css` (local file — not Google Fonts).
+CSS variables: `--font-display` and `--font-sans` both resolve to `'KikiGotham', sans-serif`.
+There are **no external font dependencies** — Cormorant Garamond and DM Sans were replaced and removed.
 
 ## Theme Rules
 
