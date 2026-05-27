@@ -1360,7 +1360,7 @@
 
 .pd-actions { display: flex; flex-direction: column; gap: 10px; }
 .pd-btn-wa {
-  font-family: var(--font-s); font-size: 10px; letter-spacing: .2em;
+  font-family: var(--font-s); font-size: 10px; font-weight: 300; letter-spacing: .2em;
   text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold);
   padding: 15px 32px; text-decoration: none; display: flex; align-items: center;
   justify-content: center; gap: 10px; width: 100%;
@@ -1888,6 +1888,7 @@
   padding: 10px 14px;
   font-family: 'KikiGotham', sans-serif;
   font-size: 9.5px;
+  font-weight: 300;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   background: rgba(10,8,4,0.86);
@@ -2741,6 +2742,19 @@
 }
 
 /* ── Small screens (≤360px) ── */
+@media (max-width: 430px) {
+  /* Buttons — font-size and touch targets for 375-430px phones */
+  .btn-cta { font-size: 11px; min-height: 46px; }
+  .pd-btn-wa { font-size: 11px; min-height: 46px; padding: 13px 24px; }
+  .vitrina-quick-add { font-size: 10px; min-height: 40px; }
+
+  /* Hero CTA row — stack vertically on small phones */
+  .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 12px !important; }
+  .hero-cta-row a { width: 100%; justify-content: center; text-align: center; }
+
+  /* Cart drawer footer button already has fontWeight 400 */
+}
+
 @media (max-width: 360px) {
   /* Header */
   .kiki-mobile-controls { gap: 10px; }

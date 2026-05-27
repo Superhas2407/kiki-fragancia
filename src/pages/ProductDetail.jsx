@@ -386,7 +386,7 @@ export default function ProductDetail() {
                   <button
                     onClick={handleAdd}
                     style={{
-                      fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '.2em',
+                      fontFamily: 'var(--font-s)', fontSize: 10, fontWeight: 400, letterSpacing: '.2em',
                       textTransform: 'uppercase', padding: '16px 32px', width: '100%',
                       cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
                       border: added ? '1px solid #25D366' : '1px solid var(--gold)',

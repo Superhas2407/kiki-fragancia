@@ -112,7 +112,7 @@ export default function CartDrawer() {
                   color: '#1A1208',
                   fontSize: '10px',
                   fontFamily: "'KikiGotham', sans-serif",
-                  fontWeight: 100,
+                  fontWeight: 400,
                   padding: '2px 7px',
                   letterSpacing: '0.05em',
                 }}
@@ -270,7 +270,7 @@ export default function CartDrawer() {
           color: '#fff',
           fontFamily: "'KikiGotham', sans-serif",
           fontSize: '13px',
-          fontWeight: 100,
+          fontWeight: 300,
           letterSpacing: '0.04em',
           padding: '12px 24px',
           zIndex: 200,
