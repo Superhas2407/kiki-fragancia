@@ -26,7 +26,14 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(powershell *)",
-      "Skill(plan-eng-review)"
+      "Skill(plan-eng-review)",
+      "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse goto *)",
+      "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse wait *)",
+      "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse scroll *)",
+      "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse screenshot *)",
+      "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse viewport *)",
+      "Bash(rm pyr-result.png)",
+      "Bash($B js *)"
     ]
   }
 }
