@@ -275,3 +275,53 @@ Los dots del hero son clickeables en desktop. En mobile añadir swipe horizontal
 
 - **UNRESOLVED:** 1 (Instagram API — diferida intencionalmente)
 - **VERDICT:** Design Review 2 completo. T8–T14 pendientes de implementación. Eng Review sigue válido para el scope anterior; re-run recomendado después de T8 (cambio estructural de layout).
+
+---
+
+## Fase 3 — Catálogo completo + precios + campaña (2026-05 → 2026-05-27)
+
+### Trabajo completado
+
+- [x] **TC1** — Catálogo actualizado a 416+ productos en `products-enriched.js`
+  - Precios en `precioUSD` para todos los productos
+  - Concentraciones (tipo), géneros, categorías completadas
+  - Variantes de tamaño: `variantIds` para productos en múltiples ml (ej. 60/100/200ml)
+
+- [x] **TC2** — Fotos de productos: renombrador Electron en `tools/renamer-app/`
+  - App para renombrar fotos por lotes con backup HEIC automático
+  - Progreso guardado entre sesiones
+
+- [x] **TC3** — Notas olfativas con fotos reales
+  - 78 imágenes de ingredientes en `public/notes/`
+  - Mapeo nota → imagen en `src/data/notes-images.js`
+  - NoteIcon() en ProductDetail muestra foto circular si existe, SVG icon si no
+
+- [x] **TC4** — Selector de variantes en ProductDetail
+  - Productos con `variantIds` muestran botones de tamaño (ml)
+  - Navega a `/tienda/:id` del variante seleccionado
+
+- [x] **TC5** — Campaña Día del Padre 2026
+  - Ruta `/dia-del-padre` → `DiaDeLPadrePage.jsx`
+  - 10 productos Antonio Banderas 100ml (IDs: 359, 412, 375, 366, 391, 410, 367, 377, 346, 376)
+  - `DiaDeLPadrePromo.jsx` en homepage (después del Hero)
+  - `AnnouncementBar.jsx` — barra dorada fija + bottom sheet popup en móvil
+  - Badge `badge="Para papá"` en VitrinaCard, CSS `.badge-regalo`
+  - WhatsApp pre-cargado para la ocasión
+
+- [x] **TC6** — Bug fixes (investigación + design review 2026-05-27)
+  - Popup AnnouncementBar apareció en todas las páginas → restringido a `/` con `useLocation`
+  - ProductDetail: flash negro al navegar → `requestAnimationFrame` en lugar de `setTimeout(60)`
+  - ProductDetail: precio y CTA debajo del fold en laptops → reordenado antes de descripción/notas
+
+### Teardown campaña Día del Padre (post 21 de junio 2026)
+
+Agregar en `vercel.json` ANTES de `{ "handle": "filesystem" }`:
+```json
+{ "src": "/dia-del-padre", "dest": "/tienda?genero=Hombre", "status": 302 }
+```
+
+### Pendiente
+
+- [ ] Notas y descripciones de ~46 productos sin actualizar (BHARARA, AFNAN, JO MILANO, Lattafa menores)
+- [ ] ~26 ingredientes sin imagen en `/public/notes/`
+- [ ] Foto lifestyle real para BrandStory (imagen oculta hasta tenerla)

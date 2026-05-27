@@ -107,12 +107,23 @@ Each olfactive family injects two CSS custom properties into the card:
 | D9 | InstagramFeed Tailwind: known exception, do not migrate | `src/components/InstagramFeed.jsx` |
 | D10 | aria-hidden on video + two canvases | Hero, VaporCanvas, CursorTrail |
 | D11 | VitrinaCard replaces ProductCard in Tienda — museum gallery treatment, 2-col grid, 12/page | `src/components/VitrinaCard.jsx`, `src/pages/Tienda.jsx` |
+| D13 | GlobalSidebar scoped to /tienda only | `src/components/GlobalSidebar.jsx` |
+| D14 | Products have precioUSD — show price in ProductDetail, NOT in CartDrawer total | `src/pages/ProductDetail.jsx` |
+| D15 | Note images: 78 fotos reales de ingredientes en `public/notes/`, mapeo en `notes-images.js` | `src/data/notes-images.js` |
+| D16 | AnnouncementBar: barra dorada fija (z-index 41) + bottom sheet popup en móvil, ambos sessionStorage-gated | `src/components/AnnouncementBar.jsx` |
+| D17 | Popup de AnnouncementBar solo visible en `/` (homepage) — no en tienda ni detalle | `src/components/AnnouncementBar.jsx` |
+| D18 | ProductDetail: precio + CTA aparecen ANTES de la descripción y notas preview (above the fold) | `src/pages/ProductDetail.jsx` |
+| D19 | Variantes de tamaño: productos con `variantIds` muestran selector de ml en ProductDetail | `src/pages/ProductDetail.jsx` |
+| D20 | Campaña Día del Padre 2026: ruta `/dia-del-padre`, 10 productos Antonio Banderas 100ml, teardown post-21-junio via redirect en vercel.json | `src/pages/DiaDeLPadrePage.jsx`, `src/data/dia-del-padre.js` |
 
 ## QA Status
 
-Verificado en browser (Playwright headless) el 2026-05-19:
-- VitrinaCard: corner brackets, spotlight, N° editorial, eyebrow notas, quick-add — todos funcionando
-- Empty state: SVG + copy + 2 CTAs — funcionando
-- CartDrawer toast WA — funcionando
-- Mobile 375px — 1 columna, layout correcto
+Verificado en browser (browse headless) el 2026-05-27:
+- ProductDetail desktop 1440×900: precio y CTA fully above the fold ✓
+- ProductDetail laptop 1366×768: precio y CTA fully above the fold ✓
+- AnnouncementBar: visible en desktop, popup solo en homepage ✓
+- Variantes de tamaño: selector visible antes del precio en ProductDetail ✓
+- Pirámide de notas: fotos de ingredientes circulares funcionando ✓
+- Día del Padre `/dia-del-padre`: grid de 10 productos, badge "Para papá" ✓
+- Mobile 390×844: layout correcto en home, tienda, detalle ✓
 - 0 errores de consola
