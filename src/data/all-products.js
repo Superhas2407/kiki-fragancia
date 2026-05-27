@@ -1,2 +1,2 @@
-export { products as allProducts } from './products-enriched'
-export { products as default } from './products-enriched'
+export { products as allProducts } from './products-index'
+export { products as default } from './products-index'
