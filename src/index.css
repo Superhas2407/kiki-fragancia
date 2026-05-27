@@ -2741,47 +2741,100 @@
   .ddp-featured-img { height: 220px; }
 }
 
-/* ── Small screens (≤360px) ── */
-@media (max-width: 480px) {
-  /* Buttons — font-size and touch targets for 375-430px phones */
-  .btn-cta { font-size: 11px; min-height: 46px; }
-  .pd-btn-wa { font-size: 11px; min-height: 46px; padding: 13px 24px; }
-  .vitrina-quick-add { font-size: 10px; min-height: 40px; }
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE UNIVERSAL — escala fluida clamp() de 320px → 767px
+   Un solo bloque para todos los teléfonos sin parches por modelo
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
 
-  /* Hero CTA row — stack vertically on small phones */
-  .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 12px !important; }
-  .hero-cta-row a { width: 100%; justify-content: center; text-align: center; }
+  /* ── Layout: padding contenedor seguro ── */
+  .kiki-container {
+    padding-left: clamp(16px, 5vw, 24px);
+    padding-right: clamp(16px, 5vw, 24px);
+  }
 
-  /* Cart drawer footer button already has fontWeight 400 */
-}
+  /* ── Hero: título y CTA ── */
+  .hero-main-title { font-size: clamp(28px, 8.5vw, 48px) !important; }
 
-@media (max-width: 360px) {
-  /* Header */
-  .kiki-mobile-controls { gap: 10px; }
-  .announcement-bar { padding: 0 40px 0 10px; font-size: 10px; }
+  /* Hero CTA row: apilar verticalmente, ancho completo */
+  .hero-cta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .hero-cta-row > * {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
 
-  /* Layout */
-  .kiki-container { padding: 0 14px; }
+  /* ── Botón CTA principal (.btn-cta) ── */
+  .btn-cta {
+    font-size: clamp(11px, 3vw, 12px);
+    min-height: 46px;
+    padding: 13px clamp(20px, 6vw, 40px);
+    width: 100%;
+    justify-content: center;
+  }
 
-  /* Hero */
-  .hero-main-title { font-size: clamp(26px, 8vw, 48px) !important; }
-  .hero-content { padding: 32px 16px 40px !important; }
-  .btn-cta { padding: 13px 20px; width: 100%; justify-content: center; }
+  /* ── ProductDetail: Agregar + WhatsApp ── */
+  .pd-btn-wa {
+    font-size: clamp(11px, 3vw, 12px);
+    min-height: 46px;
+    padding: 13px clamp(16px, 5vw, 32px);
+  }
 
-  /* ProductDetail */
-  .pd-btn-wa { padding: 13px 20px; font-size: 9px; }
+  /* ── Vitrina: quick-add ── */
+  .vitrina-quick-add {
+    font-size: clamp(10px, 2.5vw, 11px);
+    min-height: 40px;
+  }
+
+  /* ── Día del Padre: CTAs ── */
+  .ddp-cta-primary,
+  .ddp-cta-outline {
+    font-size: clamp(12px, 3.2vw, 14px);
+    min-height: 46px;
+    padding: 13px clamp(16px, 5vw, 28px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  .ddp-btn-primary,
+  .ddp-btn-outline {
+    font-size: clamp(12px, 3.2vw, 14px);
+    min-height: 46px;
+    padding: 13px clamp(16px, 5vw, 28px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* ── Pirámide olfativa: simplificar en pantalla pequeña ── */
   .pd-pyr-time { display: none; }
   .pd-pyr-row::before { left: 0 !important; }
   .pd-pyr { padding-left: 12px; }
-  .pd-pyr-label { width: 44px; font-size: 10px; }
+  .pd-pyr-label { width: clamp(44px, 12vw, 68px); font-size: clamp(10px, 2.5vw, 12px); }
 
-  /* Tienda */
-  .vitrina-grid { grid-template-columns: 1fr !important; }
-
-  /* DDP */
-  .ddp-hero { padding: calc(var(--bar-h, 0px) + 80px) 16px 40px !important; }
-  .ddp-headline { font-size: clamp(28px, 9vw, 48px); }
+  /* ── DDP: hero y grids ── */
+  .ddp-hero { padding: calc(var(--bar-h, 0px) + 80px) clamp(16px, 5vw, 48px) 40px !important; }
+  .ddp-headline { font-size: clamp(28px, 9vw, 56px); }
   .ddp-personas { grid-template-columns: 1fr; gap: 12px; }
+  .diadel-padre-grid { grid-template-columns: 1fr 1fr; gap: clamp(8px, 2vw, 12px); }
+  .ddp-featured-card { gap: clamp(20px, 5vw, 40px); }
+}
+
+/* ── Pantallas ≤360px: ajustes de layout críticos ── */
+@media (max-width: 360px) {
+  .kiki-mobile-controls { gap: 10px; }
+  .announcement-bar { padding: 0 40px 0 10px; font-size: 10px; }
+  .vitrina-grid { grid-template-columns: 1fr !important; }
   .diadel-padre-grid { grid-template-columns: 1fr; }
-  .ddp-featured-card { gap: 24px; }
+  .ddp-personas { grid-template-columns: 1fr; }
 }

@@ -230,10 +230,10 @@ export default function Hero() {
               rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.22em',
+                fontFamily: 'var(--font-s)', fontSize: 'clamp(11px, 3vw, 12px)', fontWeight: 300, letterSpacing: '0.22em',
                 textTransform: 'uppercase', color: 'rgba(250,250,248,.70)',
-                border: '1px solid rgba(250,250,248,.30)', padding: '15px 32px',
-                textDecoration: 'none',
+                border: '1px solid rgba(250,250,248,.30)', padding: '13px clamp(20px, 5vw, 32px)',
+                textDecoration: 'none', minHeight: '46px', display: 'inline-flex', alignItems: 'center', boxSizing: 'border-box',
                 transition: 'color .25s ease, border-color .25s ease',
               }}
               onMouseEnter={e => { e.currentTarget.style.color = '#FAFAF8'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.4)' }}
