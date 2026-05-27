@@ -314,45 +314,12 @@ export default function ProductDetail() {
                 </p>
                 <div className="pd-divider" style={rv(300)}></div>
 
-                {descripcion && (
-                  <div className="pd-desc-wrap" style={rv(340)}>
-                    <div className="pd-desc-text" style={{
-                      maxHeight: descExpanded ? '400px' : '72px',
-                      overflow: 'hidden',
-                      transition: 'max-height .45s cubic-bezier(.22,1,.36,1)',
-                      position: 'relative',
-                    }}>
-                      <p className="pd-desc">{descripcion}</p>
-                      {!descExpanded && <div className="pd-desc-fade"></div>}
-                    </div>
-                    <button className="pd-expand-btn" onClick={() => setDescExpanded(v => !v)}>
-                      {descExpanded ? 'Leer menos ↑' : 'Leer más ↓'}
-                    </button>
-                  </div>
-                )}
-
-                {notas.salida.length > 0 && (
-                  <div className="pd-notes-preview" style={rv(400)}>
-                    <div className="pd-notes-label">
-                      <div className="gold-line" style={{ width: 24 }}></div>
-                      <span>Notas de salida</span>
-                    </div>
-                    <div className="pd-notes-chips">
-                      {notas.salida.slice(0, 4).map(n => (
-                        <span key={n} className="pd-note-chip">
-                          <NoteIcon nota={n} />{n}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 {product.variantIds && (() => {
                   const variantGroup = products
                     .filter(p => product.variantIds.includes(p.id))
                     .sort((a, b) => a.ml - b.ml)
                   return variantGroup.length > 1 ? (
-                    <div className="pd-size-selector" style={rv(415)}>
+                    <div className="pd-size-selector" style={rv(330)}>
                       <span className="pd-size-label">Tamaño</span>
                       <div className="pd-size-btns">
                         {variantGroup.map(v => (
@@ -371,12 +338,12 @@ export default function ProductDetail() {
                 })()}
 
                 {product.precioUSD > 0 && (
-                  <div className="pd-price" style={rv(430)}>
+                  <div className="pd-price" style={rv(350)}>
                     <span className="pd-price-amount">{formatPrice(product.precioUSD)}</span>
                   </div>
                 )}
 
-                <div className="pd-actions" style={rv(460)}>
+                <div className="pd-actions" style={rv(380)}>
                   <button
                     onClick={handleAdd}
                     style={{
@@ -413,6 +380,39 @@ export default function ProductDetail() {
 
                   <p className="pd-trust">Respondemos en menos de 2 horas · 100% original verificado</p>
                 </div>
+
+                {descripcion && (
+                  <div className="pd-desc-wrap" style={rv(440)}>
+                    <div className="pd-desc-text" style={{
+                      maxHeight: descExpanded ? '400px' : '72px',
+                      overflow: 'hidden',
+                      transition: 'max-height .45s cubic-bezier(.22,1,.36,1)',
+                      position: 'relative',
+                    }}>
+                      <p className="pd-desc">{descripcion}</p>
+                      {!descExpanded && <div className="pd-desc-fade"></div>}
+                    </div>
+                    <button className="pd-expand-btn" onClick={() => setDescExpanded(v => !v)}>
+                      {descExpanded ? 'Leer menos ↑' : 'Leer más ↓'}
+                    </button>
+                  </div>
+                )}
+
+                {notas.salida.length > 0 && (
+                  <div className="pd-notes-preview" style={rv(500)}>
+                    <div className="pd-notes-label">
+                      <div className="gold-line" style={{ width: 24 }}></div>
+                      <span>Notas de salida</span>
+                    </div>
+                    <div className="pd-notes-chips">
+                      {notas.salida.slice(0, 4).map(n => (
+                        <span key={n} className="pd-note-chip">
+                          <NoteIcon nota={n} />{n}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
