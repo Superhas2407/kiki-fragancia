@@ -2791,29 +2791,18 @@
     min-height: 40px;
   }
 
-  /* ── Día del Padre: CTAs ── */
+  /* ── Día del Padre: CTAs — solo tamaño, sin forzar layout ── */
   .ddp-cta-primary,
   .ddp-cta-outline {
     font-size: clamp(12px, 3.2vw, 14px);
     min-height: 46px;
     padding: 13px clamp(16px, 5vw, 28px);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
   }
   .ddp-btn-primary,
   .ddp-btn-outline {
     font-size: clamp(12px, 3.2vw, 14px);
     min-height: 46px;
     padding: 13px clamp(16px, 5vw, 28px);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    text-align: center;
   }
 
   /* ── Pirámide olfativa: simplificar en pantalla pequeña ── */
@@ -2822,12 +2811,8 @@
   .pd-pyr { padding-left: 12px; }
   .pd-pyr-label { width: clamp(44px, 12vw, 68px); font-size: clamp(10px, 2.5vw, 12px); }
 
-  /* ── DDP: hero y grids ── */
-  .ddp-hero { padding: calc(var(--bar-h, 0px) + 80px) clamp(16px, 5vw, 48px) 40px !important; }
+  /* ── DDP: headline fluid ── */
   .ddp-headline { font-size: clamp(28px, 9vw, 56px); }
-  .ddp-personas { grid-template-columns: 1fr; gap: 12px; }
-  .diadel-padre-grid { grid-template-columns: 1fr 1fr; gap: clamp(8px, 2vw, 12px); }
-  .ddp-featured-card { gap: clamp(20px, 5vw, 40px); }
 }
 
 /* ── Pantallas ≤360px: ajustes de layout críticos ── */
