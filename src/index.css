@@ -252,7 +252,9 @@
   color: #C9A84C;
 }
 
-/* Tienda â€” product grid responsive */
+
+
+/* Tienda — product grid responsive */
 .tienda-product-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1414,68 +1416,57 @@
 }
 .pd-chip:hover { border-color: rgba(201,168,76,.5); }
 
-/* â”€â”€ Pyramid v2 â”€â”€ */
+/* ── Pyramid v3 ── */
 .pd-pyr {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  max-width: 660px;
-  padding-right: 12px;
-}
-.pd-pyr::before {
-  content: '';
-  position: absolute;
-  left: 80px;
-  top: 20px;
-  bottom: 44px;
-  width: 1px;
-  background: linear-gradient(to bottom, rgba(201,168,76,.55) 0%, rgba(201,168,76,.18) 70%, transparent 100%);
-  pointer-events: none;
-}
-.pd-pyr-row {
-  display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 0;
+  max-width: 660px;
+  width: 100%;
+}
+.pd-pyr-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0 0;
   position: relative;
 }
-.pd-pyr-row::before {
+.pd-pyr-tier::after {
   content: '';
-  position: absolute;
-  left: 80px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(201,168,76,.5);
-  border: 1px solid rgba(201,168,76,.8);
-  flex-shrink: 0;
-  z-index: 1;
+  display: block;
+  height: 1px;
+  margin-top: 20px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,.2), transparent);
+  width: 100%;
 }
-.pd-pyr-time {
-  width: 80px;
-  flex-shrink: 0;
-  font-family: var(--font-s);
-  font-size: 9px;
-  letter-spacing: .12em;
+.pd-pyr-tier:last-of-type::after { display: none; }
+/* Tier widths create the pyramid shape — Salida narrowest, Fondo widest */
+.pd-pyr-tier-0 { max-width: 280px; }
+.pd-pyr-tier-1 { max-width: 460px; }
+.pd-pyr-tier-2 { max-width: 660px; }
+.pd-pyr-tier-label {
+  font-family: var(--font-d);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 100;
+  letter-spacing: .15em;
   text-transform: uppercase;
-  color: rgba(247,242,234,.22);
-  text-align: right;
-  line-height: 1.5;
+  color: rgba(201,168,76,.5);
+  margin-bottom: 14px;
 }
 .pd-pyr-notes {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px 24px;
-  padding: 4px 0;
-  flex: 1;
+  justify-content: center;
+  gap: 18px 18px;
 }
 .pd-pyr-note {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
 }
 .pd-pyr-note-name {
   font-family: var(--font-s);
@@ -1486,16 +1477,6 @@
   white-space: nowrap;
   text-align: center;
 }
-.pd-pyr-label {
-  width: 68px;
-  flex-shrink: 0;
-  font-family: var(--font-d);
-  font-size: 13px;
-  font-style: italic;
-  font-weight: 100;
-  color: rgba(201,168,76,.55);
-  text-align: right;
-}
 .pd-pyr-footer {
   font-family: var(--font-s);
   font-size: 9px;
@@ -1503,15 +1484,13 @@
   text-transform: uppercase;
   color: rgba(247,242,234,.18);
   text-align: center;
-  margin-top: 8px;
-  padding-left: 80px;
+  margin-top: 24px;
 }
 @media (max-width: 600px) {
-  .pd-pyr::before { display: none; }
-  .pd-pyr-row::before { left: 56px; }
-  .pd-pyr-time { width: 56px; font-size: 8px; }
-  .pd-pyr-label { width: 52px; font-size: 11px; }
-  .pd-pyr-notes { gap: 14px 18px; }
+  .pd-pyr-tier-0 { max-width: 200px; }
+  .pd-pyr-tier-1 { max-width: 340px; }
+  .pd-pyr-tier-2 { max-width: 100%; }
+  .pd-pyr-notes { gap: 14px 14px; }
   .pd-pyr-note-name { font-size: 9px; }
 }
 
@@ -2834,9 +2813,6 @@
 /* ── 3. Aplicar variables a todos los elementos interactivos en móvil ── */
 @media (max-width: 767px) {
 
-  /* Header: ocultar CurrencyToggle (div) del header — va al menú móvil */
-  .kiki-mobile-controls > div { display: none; }
-  /* Reducir gap: logo 200px + 3 botones ya caben */
   .kiki-mobile-controls { gap: 14px; }
   .header-inner {
     padding-left: clamp(14px, 4vw, 24px);
@@ -2898,12 +2874,6 @@
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
-
-  /* Pirámide olfativa: ocultar timeline en pantalla pequeña */
-  .pd-pyr-time { display: none; }
-  .pd-pyr-row::before { left: 0 !important; }
-  .pd-pyr { padding-left: 12px; }
-  .pd-pyr-label { width: clamp(44px, 12vw, 68px); font-size: clamp(10px, 2.5vw, 12px); }
 
   /* DDP headline */
   .ddp-headline { font-size: clamp(28px, 9vw, 56px); }

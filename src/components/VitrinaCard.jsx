@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
-import { useCurrency } from '../context/CurrencyContext'
 import { allProducts } from '../data/all-products'
 
 // ============================================================
@@ -56,7 +55,6 @@ const CheckIcon = () => (
 
 export default function VitrinaCard({ product, badge = null }) {
   const { addItem } = useCartContext()
-  const { formatPrice } = useCurrency()
   const navigate = useNavigate()
   const cardRef = useRef(null)
   const [hover, setHover] = useState(false)
@@ -188,7 +186,7 @@ export default function VitrinaCard({ product, badge = null }) {
           return (
             <div className="vitrina-price">
               <span className="vitrina-price-usd">
-                {hasRange ? 'Desde ' : ''}{formatPrice(minPrice)}
+                {hasRange ? 'Desde ' : ''}${minPrice}
               </span>
             </div>
           )

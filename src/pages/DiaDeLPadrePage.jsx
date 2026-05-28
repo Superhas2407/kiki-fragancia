@@ -5,7 +5,6 @@ import { allProducts } from '../data/all-products'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
-import { useCurrency } from '../context/CurrencyContext'
 
 const WA_NUMBER = '584149112002'
 const WA_MSG = encodeURIComponent(
@@ -69,7 +68,6 @@ export default function DiaDeLPadrePage() {
   const gridRef  = useRef(null)
   const guideRef = useRef(null)
   const { addItem } = useCartContext()
-  const { formatPrice } = useCurrency()
   const navigate = useNavigate()
 
   const productos = diaDeLPadreIds
@@ -218,7 +216,7 @@ export default function DiaDeLPadrePage() {
                 </p>
                 {featured.precioUSD > 0 && (
                   <p className="ddp-featured-price">
-                    <span className="ddp-featured-price-num">{formatPrice(featured.precioUSD)}</span>
+                    <span className="ddp-featured-price-num">${featured.precioUSD}</span>
                     <span className="ddp-featured-price-meta">EDP · 100 ML</span>
                   </p>
                 )}

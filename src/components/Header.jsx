@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
-import { useCurrency } from '../context/CurrencyContext'
 import { allProducts } from '../data/all-products'
 
 const NAV_LINKS = [
@@ -39,81 +38,6 @@ const SearchIcon = () => (
     <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
   </svg>
 )
-
-function CurrencyToggle() {
-  const { currency, toggleCurrency, rate, loading } = useCurrency()
-  const [open, setOpen] = useState(false)
-  const ref = useRef(null)
-
-  useEffect(() => {
-    function handleClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false)
-    }
-    document.addEventListener('mousedown', handleClick)
-    return () => document.removeEventListener('mousedown', handleClick)
-  }, [])
-
-  function select(c) {
-    if (c !== currency) toggleCurrency()
-    setOpen(false)
-  }
-
-  return (
-    <div ref={ref} style={{ position: 'relative' }}>
-      <button
-        onClick={() => setOpen(v => !v)}
-        style={{
-          display: 'flex', alignItems: 'center', gap: 4,
-          background: 'none', border: '1px solid rgba(201,168,76,0.3)',
-          color: '#C9A84C', cursor: 'pointer',
-          fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.15em',
-          padding: '6px 10px', transition: 'border-color .2s',
-        }}
-        onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.7)'}
-        onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.3)'}
-        aria-label="Cambiar moneda"
-      >
-        {currency}
-        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </button>
-      {open && (
-        <div style={{
-          position: 'absolute', top: 'calc(100% + 6px)', right: 0,
-          background: '#141414', border: '1px solid rgba(201,168,76,0.2)',
-          minWidth: 160, zIndex: 200,
-        }}>
-          {['USD', 'BS'].map(c => (
-            <button
-              key={c}
-              onClick={() => select(c)}
-              style={{
-                display: 'block', width: '100%', padding: '10px 14px',
-                background: c === currency ? 'rgba(201,168,76,0.08)' : 'none',
-                border: 'none', cursor: 'pointer', textAlign: 'left',
-                fontFamily: 'var(--font-s)', letterSpacing: '0.12em',
-                color: c === currency ? '#C9A84C' : 'rgba(250,250,248,0.55)',
-              }}
-            >
-              <span style={{ display: 'block', fontSize: 10 }}>
-                {c === 'USD' ? 'USD — Dólares' : 'Bs. — Bolívares'}
-              </span>
-              {c === 'BS' && (
-                <span style={{
-                  display: 'block', fontSize: 9, marginTop: 3, letterSpacing: '0.08em',
-                  color: c === currency ? 'rgba(201,168,76,0.65)' : 'rgba(250,250,248,0.3)',
-                }}>
-                  {loading ? '…' : `1€ = Bs. ${Math.round(rate)}`}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
 
 function CartButton() {
   const { items, setDrawerOpen } = useCartContext()
@@ -275,7 +199,6 @@ export default function Header() {
               >
                 <SearchIcon />
               </button>
-              <CurrencyToggle />
               <CartButton />
             </div>
           </nav>
@@ -293,7 +216,6 @@ export default function Header() {
             >
               <SearchIcon />
             </button>
-            <CurrencyToggle />
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -379,13 +301,6 @@ export default function Header() {
         </nav>
 
         {/* Moneda en menú móvil */}
-        <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(201,168,76,0.08)' }}>
-          <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)', display: 'block', marginBottom: 10 }}>
-            Moneda
-          </span>
-          <CurrencyToggle />
-        </div>
-
         <p className="mobile-footer-label">KiKi Fragancia · Venezuela</p>
       </div>
 

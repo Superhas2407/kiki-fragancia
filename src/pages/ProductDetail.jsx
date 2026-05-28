@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
-import { useCurrency } from '../context/CurrencyContext'
 import { products } from '../data/products-enriched'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
@@ -111,7 +110,19 @@ function NoteIcon({ nota, size = 22 }) {
       </span>
     )
   }
-  return <span className="pd-note-emoji">{getNoteIcon(nota)}</span>
+  const svgSize = Math.round(size * 0.45)
+  return (
+    <span style={{
+      display: 'inline-flex', width: size, height: size,
+      borderRadius: '50%', flexShrink: 0,
+      background: 'rgba(201,168,76,0.08)',
+      border: '1px solid rgba(201,168,76,0.2)',
+      alignItems: 'center', justifyContent: 'center',
+      color: 'rgba(201,168,76,0.6)',
+    }}>
+      {React.cloneElement(getNoteIcon(nota), { width: svgSize, height: svgSize })}
+    </span>
+  )
 }
 function parseNotes(str) {
   if (!str) return []
@@ -188,7 +199,6 @@ export default function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { addItem } = useCartContext()
-  const { formatPrice } = useCurrency()
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -378,7 +388,7 @@ export default function ProductDetail() {
 
                 {product.precioUSD > 0 && (
                   <div className="pd-price" style={rv(350)}>
-                    <span className="pd-price-amount">{formatPrice(product.precioUSD)}</span>
+                    <span className="pd-price-amount">${product.precioUSD}</span>
                   </div>
                 )}
 
@@ -417,7 +427,7 @@ export default function ProductDetail() {
                     Consultar por WhatsApp
                   </a>
 
-                  <p className="pd-trust">Respondemos en menos de 2 horas · 100% original verificado</p>
+                  <p className="pd-trust">100% original verificado</p>
                 </div>
 
                 {descripcion && (
@@ -471,24 +481,22 @@ export default function ProductDetail() {
 
                 <div className="pd-pyr">
                   {[
-                    { label: 'Salida',  time: '0–30 min',   notes: notas.salida  },
-                    { label: 'Corazón', time: '30 min–3 h', notes: notas.corazon },
-                    { label: 'Fondo',   time: '3+ h',       notes: notas.fondo   },
-                  ].filter(l => l.notes.length > 0).map(({ label, time, notes }) => (
-                    <div key={label} className="pd-pyr-row">
-                      <span className="pd-pyr-time">{time}</span>
+                    { label: 'Salida',  notes: notas.salida,  tier: 0 },
+                    { label: 'Corazón', notes: notas.corazon, tier: 1 },
+                    { label: 'Fondo',   notes: notas.fondo,   tier: 2 },
+                  ].filter(l => l.notes.length > 0).map(({ label, notes, tier }) => (
+                    <div key={label} className={`pd-pyr-tier pd-pyr-tier-${tier}`}>
+                      <span className="pd-pyr-tier-label">{label}</span>
                       <div className="pd-pyr-notes">
                         {notes.map(n => (
                           <div key={n} className="pd-pyr-note">
-                            <NoteIcon nota={n} size={64} />
+                            <NoteIcon nota={n} size={56} />
                             <span className="pd-pyr-note-name">{n}</span>
                           </div>
                         ))}
                       </div>
-                      <span className="pd-pyr-label">{label}</span>
                     </div>
                   ))}
-
                   <p className="pd-pyr-footer">
                     {product.house} · {product.name} · {product.familia}
                   </p>
