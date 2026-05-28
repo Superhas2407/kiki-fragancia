@@ -33,7 +33,8 @@
       "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse screenshot *)",
       "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse viewport *)",
       "Bash(rm pyr-result.png)",
-      "Bash($B js *)"
+      "Bash($B js *)",
+      "WebSearch"
     ]
   }
 }
