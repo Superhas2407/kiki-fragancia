@@ -2741,22 +2741,107 @@
   .ddp-featured-img { height: 220px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE UNIVERSAL — escala fluida clamp() de 320px → 767px
-   Un solo bloque para todos los teléfonos sin parches por modelo
-   ═══════════════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE POR MODELOS — rangos de CSS viewport width reales
+   ════════════════════════════════════════════════════════════════════
+
+   APPLE
+   320px    iPhone SE 1.ª gen
+   375px    iPhone 6/7/8, X, XS, 11 Pro, SE 2.ª/3.ª, 12 mini, 13 mini
+   390px    iPhone 12, 12 Pro, 13, 13 Pro, 14, 15
+   393px    iPhone 14 Pro, 15 Pro, 16
+   402px    iPhone 16 Pro
+   414px    iPhone 6+/7+/8+, XR, XS Max, 11, 11 Pro Max
+   428px    iPhone 12 Pro Max, 13 Pro Max
+   430px    iPhone 14 Plus, 14 Pro Max, 15 Plus, 15 Pro Max, 16 Plus
+   440px    iPhone 16 Pro Max
+
+   SAMSUNG
+   360px    Galaxy A05, A15, A25, A35, S23, S24, S25
+   393px    Galaxy S23+, S24+, S25+, A55
+   412px    Galaxy S23/S24/S25 Ultra, Note series
+
+   XIAOMI / REDMI / POCO
+   360px    Redmi A3, A5, 9A, 10A
+   393px    Redmi Note 12, Note 13, Redmi 12, Poco X5/X6/M6 Pro
+   412px    Xiaomi 13, 13 Pro, Poco F5/F6
+   432px    Xiaomi 14, 14 Pro
+
+   MOTOROLA
+   360px    Moto G13, G14, G15, G23
+   384px    Moto G52, G54, G62, G84
+   393px    Moto G Power 5G, Edge 40
+
+   HONOR / TRANSSION (Tecno, Infinix, Itel)
+   360px    Honor X6/X7/X8 · Tecno Spark/Camon · Infinix Hot
+   393px    Honor 90 Lite, Magic5 Lite
+   412px    Honor 90, Magic6
+
+   VIVO / OPPO / REALME / GOOGLE
+   393px    Vivo V29/V30, Realme 12
+   412px    Vivo X90, OPPO Find X6, Pixel 7a/8/8a/9/9 Pro
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Variables base — aplican a TODO móvil ≤767px ── */
+@media (max-width: 767px) {
+  :root {
+    --m-fz:  11px;   /* font-size botones */
+    --m-pv:  13px;   /* padding vertical botones */
+    --m-ph:  20px;   /* padding horizontal botones */
+    --m-h:   44px;   /* min-height botones */
+    --m-px:  16px;   /* padding lateral contenedor */
+  }
+}
+
+/* ── 2. Override por rango de dispositivo ── */
+
+/* ≤320px — iPhone SE 1.ª gen, teléfonos muy pequeños */
+@media (max-width: 320px) {
+  :root { --m-fz: 10px; --m-pv: 11px; --m-ph: 14px; --m-h: 42px; --m-px: 12px; }
+}
+
+/* 321-360px — Samsung A05/A15/A25/A35, Galaxy S-series, Redmi A-series,
+               Moto G13/G14/G15, Honor X6/X8, Tecno Spark, Infinix Hot */
+@media (min-width: 321px) and (max-width: 360px) {
+  :root { --m-fz: 11px; --m-pv: 12px; --m-ph: 16px; --m-h: 44px; --m-px: 14px; }
+}
+
+/* 361-375px — iPhone SE 2.ª/3.ª gen, iPhone 12/13 mini, Moto G84 */
+@media (min-width: 361px) and (max-width: 375px) {
+  :root { --m-fz: 11px; --m-pv: 13px; --m-ph: 18px; --m-h: 44px; --m-px: 16px; }
+}
+
+/* 376-393px — iPhone 12/13/14/15/16, Samsung S23+/S24+/S25+/A55,
+               Redmi Note 12/13, Moto G Power/Edge 40, Honor 90 Lite,
+               Vivo V29/V30, Realme 12 */
+@media (min-width: 376px) and (max-width: 393px) {
+  :root { --m-fz: 12px; --m-pv: 13px; --m-ph: 22px; --m-h: 46px; --m-px: 18px; }
+}
+
+/* 394-414px — iPhone 16 Pro, Samsung Ultra, Moto Edge, Pixel 7a/8/9,
+               Honor 90, Vivo X90, OPPO, Xiaomi 13 Pro, Poco F5 */
+@media (min-width: 394px) and (max-width: 414px) {
+  :root { --m-fz: 12px; --m-pv: 14px; --m-ph: 24px; --m-h: 46px; --m-px: 20px; }
+}
+
+/* 415-440px — iPhone Pro Max, Plus, Xiaomi 14/14 Pro */
+@media (min-width: 415px) and (max-width: 440px) {
+  :root { --m-fz: 13px; --m-pv: 14px; --m-ph: 28px; --m-h: 48px; --m-px: 22px; }
+}
+
+/* ── 3. Aplicar variables a todos los elementos interactivos en móvil ── */
 @media (max-width: 767px) {
 
-  /* ── Layout: padding contenedor seguro ── */
+  /* Contenedor lateral */
   .kiki-container {
-    padding-left: clamp(16px, 5vw, 24px);
-    padding-right: clamp(16px, 5vw, 24px);
+    padding-left: var(--m-px);
+    padding-right: var(--m-px);
   }
 
-  /* ── Hero: título y CTA ── */
+  /* Hero: título */
   .hero-main-title { font-size: clamp(28px, 8.5vw, 48px) !important; }
 
-  /* Hero CTA row: apilar verticalmente, ancho completo */
+  /* Hero CTA row: columna vertical, ancho completo */
   .hero-cta-row {
     flex-direction: column !important;
     align-items: stretch !important;
@@ -2769,53 +2854,51 @@
     box-sizing: border-box !important;
   }
 
-  /* ── Botón CTA principal (.btn-cta) ── */
+  /* Botón CTA principal (Hero "Explorar colección") */
   .btn-cta {
-    font-size: clamp(11px, 3vw, 12px);
-    min-height: 46px;
-    padding: 13px clamp(20px, 6vw, 40px);
+    font-size: var(--m-fz);
+    min-height: var(--m-h);
+    padding: var(--m-pv) var(--m-ph);
     width: 100%;
     justify-content: center;
   }
 
-  /* ── ProductDetail: Agregar + WhatsApp ── */
+  /* ProductDetail: "Consultar por WhatsApp" */
   .pd-btn-wa {
-    font-size: clamp(11px, 3vw, 12px);
-    min-height: 46px;
-    padding: 13px clamp(16px, 5vw, 32px);
+    font-size: var(--m-fz);
+    min-height: var(--m-h);
+    padding: var(--m-pv) var(--m-ph);
   }
 
-  /* ── Vitrina: quick-add ── */
-  .vitrina-quick-add {
-    font-size: clamp(10px, 2.5vw, 11px);
-    min-height: 40px;
-  }
-
-  /* ── Día del Padre: CTAs — solo tamaño, sin forzar layout ── */
+  /* Día del Padre: botones en Hero y Featured — solo tamaño, layout intacto */
   .ddp-cta-primary,
-  .ddp-cta-outline {
-    font-size: clamp(12px, 3.2vw, 14px);
-    min-height: 46px;
-    padding: 13px clamp(16px, 5vw, 28px);
-  }
+  .ddp-cta-outline,
   .ddp-btn-primary,
   .ddp-btn-outline {
-    font-size: clamp(12px, 3.2vw, 14px);
-    min-height: 46px;
-    padding: 13px clamp(16px, 5vw, 28px);
+    font-size: calc(var(--m-fz) + 1px);
+    min-height: var(--m-h);
+    padding: var(--m-pv) var(--m-ph);
   }
 
-  /* ── Pirámide olfativa: simplificar en pantalla pequeña ── */
+  /* Vitrina: quick-add siempre visible en touch */
+  .vitrina-quick-add {
+    font-size: calc(var(--m-fz) - 1px);
+    min-height: 40px;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Pirámide olfativa: ocultar timeline en pantalla pequeña */
   .pd-pyr-time { display: none; }
   .pd-pyr-row::before { left: 0 !important; }
   .pd-pyr { padding-left: 12px; }
   .pd-pyr-label { width: clamp(44px, 12vw, 68px); font-size: clamp(10px, 2.5vw, 12px); }
 
-  /* ── DDP: headline fluid ── */
+  /* DDP headline */
   .ddp-headline { font-size: clamp(28px, 9vw, 56px); }
 }
 
-/* ── Pantallas ≤360px: ajustes de layout críticos ── */
+/* ── 4. ≤360px: grids de 1 columna para pantallas muy pequeñas ── */
 @media (max-width: 360px) {
   .kiki-mobile-controls { gap: 10px; }
   .announcement-bar { padding: 0 40px 0 10px; font-size: 10px; }
