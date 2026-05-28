@@ -2628,7 +2628,7 @@
 
 .diadel-padre-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
 
@@ -2886,6 +2886,6 @@
   .header-inner { padding-left: 12px; padding-right: 12px; }
   .kiki-logo-img { height: 13px; }
   .announcement-bar { padding: 0 40px 0 10px; font-size: 10px; }
-  .diadel-padre-grid { grid-template-columns: 1fr; }
+  .diadel-padre-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .ddp-personas { grid-template-columns: 1fr; }
 }
