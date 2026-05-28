@@ -92,7 +92,6 @@ export default function Footer() {
           <div>
             <span className="footer-col-label">Contacto</span>
             <p className="footer-contact-desc">
-              Respondemos en menos de 2 horas.<br />
               Asesoría personalizada sin costo.
             </p>
 

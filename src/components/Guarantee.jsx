@@ -7,7 +7,7 @@ const PILLARS = [
   },
   {
     title: 'Atención Personalizada',
-    desc: 'Te asesoramos para encontrar la fragancia perfecta. Contáctanos por WhatsApp y responderemos en menos de 2 horas.',
+    desc: 'Te asesoramos para encontrar la fragancia perfecta. Contáctanos por WhatsApp para una asesoría personalizada sin costo.',
   },
   {
     title: 'Asesoría Olfativa',
