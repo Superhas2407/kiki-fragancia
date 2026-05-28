@@ -39,15 +39,23 @@ for (const dir of DIRS) {
     const src = path.join(dir, file)
     const dest = path.join(dir, path.basename(file, path.extname(file)) + '.webp')
 
+    const safeUnlink = (p) => {
+      if (!fs.existsSync(p)) return
+      try { fs.chmodSync(p, 0o666) } catch {}
+      fs.unlinkSync(p)
+    }
+
     if (fs.existsSync(dest)) {
-      fs.unlinkSync(src)
+      safeUnlink(src)
       skipped++
       continue
     }
 
+    if (!fs.existsSync(src)) { skipped++; continue }
+
     try {
-      await sharp(src).webp({ quality: 82, effort: 4 }).toFile(dest)
-      fs.unlinkSync(src)
+      await sharp(src).rotate().webp({ quality: 82, effort: 4 }).toFile(dest)
+      safeUnlink(src)
       converted++
       process.stdout.write(`\r  ✅ ${converted + skipped}/${files.length}`)
     } catch (e) {
