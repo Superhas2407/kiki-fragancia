@@ -749,7 +749,7 @@ export const products = [
     "familia": "Floral Amaderado",
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
-    "descripcion": "Unisex, Club de Nuit Sillage de Armaf ofrece una salida cítrica y luminosa con un aire elegante y moderno, ideal para quienes buscan una firma limpia y sofisticada. Su perfil floral-amaderado con almizcles y ambroxan se inspira en el estilo refinado de Silver Mountain Water de Creed, aportando una presencia fresca, pulida y muy actual.",
+    "description": "Unisex, Club de Nuit Sillage de Armaf ofrece una salida cítrica y luminosa con un aire elegante y moderno, ideal para quienes buscan una firma limpia y sofisticada. Su perfil floral-amaderado con almizcles y ambroxan se inspira en el estilo refinado de Silver Mountain Water de Creed, aportando una presencia fresca, pulida y muy actual.",
     "notasSalida": "Bergamota, Grosella negra, Limón, Lima, Jengibre",
     "notasCorazon": "Hojas de violeta, Rosa, Iris, Jazmín",
     "notasFondo": "Ambroxan, Almizcle, Sándalo, Cedro",
