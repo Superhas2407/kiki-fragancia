@@ -2834,11 +2834,13 @@
 /* ── 3. Aplicar variables a todos los elementos interactivos en móvil ── */
 @media (max-width: 767px) {
 
-  /* Header: reducir gap y padding para que el hamburger no quede fuera */
-  .kiki-mobile-controls { gap: 12px; }
+  /* Header: ocultar CurrencyToggle (div) del header — va al menú móvil */
+  .kiki-mobile-controls > div { display: none; }
+  /* Reducir gap: logo 200px + 3 botones ya caben */
+  .kiki-mobile-controls { gap: 14px; }
   .header-inner {
-    padding-left: clamp(12px, 3.2vw, 20px);
-    padding-right: clamp(12px, 3.2vw, 20px);
+    padding-left: clamp(14px, 4vw, 24px);
+    padding-right: clamp(14px, 4vw, 24px);
   }
 
   /* Contenedor lateral */
@@ -2907,10 +2909,10 @@
   .ddp-headline { font-size: clamp(28px, 9vw, 56px); }
 }
 
-/* ── 4. ≤360px: gap más ajustado para Samsung A-series, Tecno, Redmi A ── */
+/* ── 4. ≤360px: Samsung A-series, Tecno, Redmi A, Honor X ── */
 @media (max-width: 360px) {
-  .kiki-mobile-controls { gap: 8px; }
-  .header-inner { padding-left: 10px; padding-right: 10px; }
+  .kiki-mobile-controls { gap: 10px; }
+  .header-inner { padding-left: 12px; padding-right: 12px; }
   .kiki-logo-img { height: 13px; }
   .announcement-bar { padding: 0 40px 0 10px; font-size: 10px; }
   .vitrina-grid { grid-template-columns: 1fr !important; }

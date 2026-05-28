@@ -378,6 +378,14 @@ export default function Header() {
 
         </nav>
 
+        {/* Moneda en menú móvil */}
+        <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(201,168,76,0.08)' }}>
+          <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)', display: 'block', marginBottom: 10 }}>
+            Moneda
+          </span>
+          <CurrencyToggle />
+        </div>
+
         <p className="mobile-footer-label">KiKi Fragancia · Venezuela</p>
       </div>
 
