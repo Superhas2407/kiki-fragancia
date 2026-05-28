@@ -7294,19 +7294,12 @@ export const products = [
     "genero": "Masculino",
     "image": "paco-rabanne-paco-100ml-m.webp",
     "description": "Fragancia para el hombre de estilo cítrico aromático, fresca, limpia y elegante, con un carácter moderno y versátil. Paco Rabanne se presenta como una propuesta con aire de diseñador, inspirada en la audacia y la libertad que definen la maison Rabanne.",
-    "notes": [
-      "Mandarina",
-      "Lavanda",
-      "Menta",
-      "Cilantro",
-      "Rosa",
-      "Pachulí",
-      "Almizcle",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Mandarina, Lima, Bergamota",
+    "notasCorazon": "Lavanda, Cilantro, Rosa, Geranio",
+    "notasFondo": "Pachulí, Almizcle, Musgo de roble, Cedro"
   },
   {
     "id": 250,
@@ -7317,24 +7310,12 @@ export const products = [
     "genero": "Masculino",
     "image": "creed-aventus-creed-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo chipre frutal y amaderado, creada para proyectar presencia, elegancia y carácter. Aventus Creed se inspira en el perfume de diseñador de la propia casa Creed y destaca por su aura moderna, sofisticada y distintiva.",
-    "notes": [
-      "Bergamota",
-      "Grosella negra",
-      "Manzana",
-      "Limón",
-      "Pimienta rosa",
-      "Piña",
-      "Pachulí",
-      "Jazmín de Marruecos",
-      "Abedul",
-      "Almizcle",
-      "Musgo de roble",
-      "Ambroxan",
-      "Cedro"
-    ],
     "categoria": "nicho",
     "precioUSD": 580,
-    "precioBS": 377000
+    "precioBS": 377000,
+    "notasSalida": "Piña, Bergamota, Manzana verde, Grosella negra",
+    "notasCorazon": "Abedul, Jazmín, Rosa, Pachulí",
+    "notasFondo": "Almizcle, Ámbar, Musgo de roble, Vetiver"
   },
   {
     "id": 251,
@@ -7345,23 +7326,12 @@ export const products = [
     "genero": "Masculino",
     "image": "moschino-toy-boy-100ml-m.webp",
     "description": "Una fragancia para el hombre intensa y provocadora, de estilo especiado-amaderado con un carácter moderno y elegante. Toy Boy de Moschino se inspira en el juego de contrastes entre la frescura frutal, las flores y un fondo sensual de vetiver y almizcle, con una firma distintiva que recuerda a la perfumería de diseñador contemporánea.",
-    "notes": [
-      "Bergamota",
-      "Pera verde",
-      "Pimienta rosa",
-      "Nuez moscada",
-      "Elemí",
-      "Magnolia",
-      "Rosa",
-      "Flor de lino",
-      "Clavel",
-      "Vetiver",
-      "Ámbar",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "notasSalida": "Cardamomo, Bergamota, Pomelo",
+    "notasCorazon": "Rosa, Davana, Iris",
+    "notasFondo": "Cachemira, Almizcle blanco, Ámbar"
   },
   {
     "id": 252,
@@ -7372,18 +7342,10 @@ export const products = [
     "genero": "Masculino",
     "image": "dolcegabbana-the-one-gold-eau-de-parfum-intense-spray-50ml-m.webp",
     "description": "Fragancia para el hombre elegante y carismática, con un estilo cítrico-amaderado-especiado que combina frescura luminosa y una base cálida y refinada. Se inspira en la sofisticación de Dolce & Gabbana The One for Men Gold, ideal para quien busca una presencia moderna, intensa y distinguida.",
-    "notes": [
-      "Naranja sanguina",
-      "Jengibre",
-      "Bergamota de Sicilia",
-      "Esclarea",
-      "Cardamomo",
-      "Geranio",
-      "Amberwood",
-      "Vetiver de Haití",
-      "Pachulí"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Pomelo, Albahaca",
+    "notasCorazon": "Cardamomo, Jengibre, Iris",
+    "notasFondo": "Tabaco, Ámbar, Cedro, Vetiver"
   },
   {
     "id": 253,
@@ -7394,23 +7356,12 @@ export const products = [
     "genero": "Masculino",
     "image": "dolce--gabbana-k-by-dolce--gabbana-for-men-100ml-m.webp",
     "description": "Una fragancia para el hombre con un perfil amaderado aromático, fresco y elegante, que transmite carácter y sofisticación. Se inspira en el estilo de los grandes masculinos de diseñador, con una salida cítrica vibrante y un fondo cálido y distintivo.",
-    "notes": [
-      "Limón",
-      "Naranja sanguina",
-      "Bayas de enebro",
-      "Pimiento",
-      "Lavanda",
-      "Geranio",
-      "Salvia esclarea",
-      "Higo",
-      "Cedro",
-      "Vetiver",
-      "Pachulí",
-      "Madera de ciprés"
-    ],
     "categoria": "disenador",
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "notasSalida": "Cardamomo, Lavanda, Bergamota",
+    "notasCorazon": "Vetiver, Geranio, Iris",
+    "notasFondo": "Sándalo, Almizcle, Ámbar gris"
   },
   {
     "id": 254,
@@ -7421,20 +7372,12 @@ export const products = [
     "genero": "Masculino",
     "image": "dolce--gabbana-k-by-dolce--gabbana-for-men-eau-de-parfum-100ml-m.webp",
     "description": "Una fragancia para el hombre con un carácter fresco, aromático y elegante, que combina vitalidad mediterránea con un fondo amaderado muy sofisticado. K by Dolce & Gabbana se inspira en el estilo de los grandes perfumes masculinos contemporáneos de diseñador, con una firma limpia, magnética y refinada.",
-    "notes": [
-      "Limón siciliano",
-      "Naranja sanguina",
-      "Bayas de enebro",
-      "Cardamomo",
-      "Higo",
-      "Pimienta de chile",
-      "Geranio",
-      "Salvia esclarea",
-      "Lavanda"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Cardamomo, Lavanda, Bergamota",
+    "notasCorazon": "Vetiver, Geranio, Iris",
+    "notasFondo": "Oud, Sándalo, Ámbar"
   },
   {
     "id": 255,
@@ -7445,23 +7388,12 @@ export const products = [
     "genero": "Masculino",
     "image": "versace-eros-parfum-100ml-m.webp",
     "description": "Una fragancia para el hombre intensa y seductora, con un carácter ámbar fougère moderno y elegante. Versace Eros Parfum se inspira en el universo más poderoso y sensual de la firma, con una estela cálida y refinada que recuerda el estilo de los grandes perfumes masculinos de diseñador.",
-    "notes": [
-      "Limón italiano",
-      "Mandarina italiana",
-      "Litsea cubeba",
-      "Elemi",
-      "Pimienta negra",
-      "Geranio",
-      "Lavanda",
-      "Salvia esclarea",
-      "Benjuí",
-      "Pachulí",
-      "Vainilla",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 120,
-    "precioBS": 78000
+    "precioBS": 78000,
+    "notasSalida": "Menta, Manzana verde, Limón",
+    "notasCorazon": "Flor de acacia, Cardamomo",
+    "notasFondo": "Vetiver, Ámbar, Cedro, Almizcle"
   },
   {
     "id": 256,
@@ -7472,24 +7404,12 @@ export const products = [
     "genero": "Masculino",
     "image": "versace-eros-eau-de-parfum-100ml-m.webp",
     "description": "Eros Eau de Parfum de Versace es una fragancia para el hombre audaz, sensual y magnética, con un estilo olfativo fresco, amaderado y oriental. Se inspira en el universo seductor de la línea Eros y mantiene el ADN masculino y provocador de Versace, ideal para quien busca una presencia intensa y sofisticada.",
-    "notes": [
-      "Menta",
-      "Limón",
-      "Mandarina",
-      "Manzana confitada",
-      "Geranio",
-      "Salvia",
-      "Ambroxan",
-      "Vainilla",
-      "Cedro",
-      "Sándalo",
-      "Pachulí",
-      "Cuero",
-      "Naranja amarga"
-    ],
     "categoria": "disenador",
     "precioUSD": 120,
-    "precioBS": 78000
+    "precioBS": 78000,
+    "notasSalida": "Menta, Manzana verde, Limón",
+    "notasCorazon": "Flor de acacia, Geranio, Cardamomo",
+    "notasFondo": "Vetiver, Haba tonka, Ámbar, Almizcle"
   },
   {
     "id": 257,
@@ -7500,17 +7420,10 @@ export const products = [
     "genero": "Femenino",
     "image": "prada-paradoxe-intense-90ml-f.webp",
     "description": "Prada Paradoxe Intense es un perfume para la mujer que destaca por su carácter floral ambarado con un fondo cremoso y elegante. Su estela intensa y sofisticada lo convierte en una propuesta de lujo, inspirada en el universo olfativo moderno de Prada Paradoxe y pensada para una feminidad sensual y envolvente.",
-    "notes": [
-      "Bergamota",
-      "Neroli",
-      "Pera",
-      "Jazmín",
-      "Musgo",
-      "Ámbar",
-      "Vainilla",
-      "Almizcle blanco"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Neroli, Ámbar gris",
+    "notasCorazon": "Jazmín sambac, Pachulí, Ylang ylang",
+    "notasFondo": "Almizcle blanco, Sándalo, Vainilla"
   },
   {
     "id": 258,
@@ -7521,20 +7434,12 @@ export const products = [
     "genero": "Unisex",
     "image": "montale-paris-arabians-tonka-100ml-u.webp",
     "description": "Arabians Tonka de Montale es un perfume unisex de estilo oriental amaderado, intenso y sofisticado, con un carácter cálido, especiado y adictivo. Se inspira en el universo olfativo de Arabians de Montale, evocando un homenaje al caballo árabe con un giro más dulce, ambarado y sensual.",
-    "notes": [
-      "Bergamota",
-      "Azafrán",
-      "Rosa de Bulgaria",
-      "Madera de oud",
-      "Haba tonka",
-      "Ámbar",
-      "Almizcle blanco",
-      "Musgo de roble",
-      "Caña de azúcar"
-    ],
     "categoria": "nicho",
     "precioUSD": 180,
-    "precioBS": 117000
+    "precioBS": 117000,
+    "notasSalida": "Bergamota, Canela",
+    "notasCorazon": "Rosa turca, Neroli, Haba tonka",
+    "notasFondo": "Oud, Sándalo, Almizcle blanco"
   },
   {
     "id": 259,
@@ -7545,17 +7450,12 @@ export const products = [
     "genero": "Masculino",
     "image": "christian-dior-homme-intense-eau-de-parfum-100ml-m.webp",
     "description": "Una fragancia sofisticada para el hombre, de estilo amaderado floral almizclado, elegante y envolvente. Dior Homme Intense destaca por su carácter irisado y sensual, con una firma refinada que evoca el lujo moderno y el estilo distintivo de Dior.",
-    "notes": [
-      "Lavanda",
-      "Iris",
-      "Almizcle ambreta",
-      "Pera",
-      "Cedro de Virginia",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 220,
-    "precioBS": 143000
+    "precioBS": 143000,
+    "notasSalida": "Lavanda, Iris, Bergamota",
+    "notasCorazon": "Iris, Cedro, Cuero",
+    "notasFondo": "Vetiver, Ámbar, Almizcle"
   },
   {
     "id": 260,
@@ -7566,20 +7466,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-cloud-ariana-grande-100ml-f.webp",
     "description": "Un perfume para la mujer de estilo floral frutal gourmand, luminoso y adictivo, con una estela cremosa y elegante. Cloud de Ariana Grande evoca una dulzura moderna con un aire sofisticado, ideal para quienes buscan un aroma inspirado en el universo de la perfumería de diseñador con un toque juvenil y envolvente.",
-    "notes": [
-      "Lavanda",
-      "Pera",
-      "Bergamota",
-      "Crema batida",
-      "Coco",
-      "Praliné",
-      "Orquídea de vainilla",
-      "Almizcle",
-      "Notas amaderadas"
-    ],
     "categoria": "disenador",
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "notasSalida": "Lavanda, Bergamota, Coco",
+    "notasCorazon": "Jazmín, Orquídea, Musgo",
+    "notasFondo": "Almizcle, Vainilla, Cachemira"
   },
   {
     "id": 261,
@@ -7590,22 +7482,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-cloud-intense-ariana-grande-100ml-f.webp",
     "description": "Fragancia para la mujer de estilo gourmand y ámbar vainilla, dulce, cremosa y envolvente, con un aire moderno y sofisticado. Cloud Intense de Ariana Grande se inspira en el perfil adictivo de perfumes de diseñador de corte nicho-gourmand, con una estela cálida y muy femenina.",
-    "notes": [
-      "Lavanda",
-      "Bergamota",
-      "Pera",
-      "Crema batida",
-      "Praliné",
-      "Coco",
-      "Orquídea de vainilla",
-      "Cachemira",
-      "Ambroxan",
-      "Almizcle",
-      "Notas amaderadas"
-    ],
     "categoria": "disenador",
     "precioUSD": 75,
-    "precioBS": 48750
+    "precioBS": 48750,
+    "notasSalida": "Bergamota, Pera",
+    "notasCorazon": "Iris, Jazmín, Orquídea",
+    "notasFondo": "Almizcle, Vainilla, Sándalo"
   },
   {
     "id": 262,
@@ -7616,17 +7498,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-thank-u-next-ariana-grande-100ml-f.webp",
     "description": "Una fragancia para la mujer de estilo floral frutal gourmand, jugosa y cremosa, con un aire coqueto y moderno. Se inspira en el universo dulce y adictivo de la perfumería de diseñador, con un perfil que recuerda a creaciones juveniles y sensuales de alta popularidad.",
-    "notes": [
-      "Frambuesa",
-      "Pera",
-      "Coco",
-      "Rosa rosada",
-      "Macarrones dulces",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "notasSalida": "Pera, Frambuesa",
+    "notasCorazon": "Rosa, Jazmín",
+    "notasFondo": "Almizcle blanco, Coco, Vainilla"
   },
   {
     "id": 263,
@@ -7637,19 +7514,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-polo-black-ralph-lauren-125ml-m.webp",
     "description": "Polo Black de Ralph Lauren es una fragancia para el hombre elegante y magnética, con un perfil aromático amaderado que equilibra frescura frutal y profundidad oscura. Su estilo moderno y sofisticado lo convierte en una opción ideal para la noche, y suele asociarse con un aire seductor inspirado en la perfumería masculina de diseñador.",
-    "notes": [
-      "Mandarina",
-      "Mango",
-      "Limón",
-      "Salvia",
-      "Artemisa",
-      "Haba tonka",
-      "Sándalo",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Mango, Osmanto, Limón",
+    "notasCorazon": "Pachulí, Artemisa, Abedul",
+    "notasFondo": "Ámbar, Almizcle, Madera de teca"
   },
   {
     "id": 264,
@@ -7660,19 +7530,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-polo-67-ralph-lauren-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo cítrico amaderado, fresca y vibrante, con un carácter elegante y deportivo. Polo 67 de Ralph Lauren se inspira en una masculinidad moderna y activa, con un perfil que recuerda a propuestas de diseñador contemporáneas de aire luminoso y sofisticado.",
-    "notes": [
-      "Bergamota",
-      "Piña",
-      "Limón",
-      "Geranio",
-      "Salvia",
-      "Enebro de Virginia",
-      "Vetiver",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 95,
-    "precioBS": 61750
+    "precioBS": 61750,
+    "notasSalida": "Bergamota, Neroli, Limón",
+    "notasCorazon": "Lavanda, Rosa, Geranio",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 265,
@@ -7683,16 +7546,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-big-pony-1-ralph-lauren-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca, luminosa y de estilo deportivo, con un perfil cítrico y amaderado que transmite limpieza y energía. Big Pony 1 de Ralph Lauren se inspira en el clásico Blue de la colección Big Pony, ideal para un uso diario elegante y desenfadado.",
-    "notes": [
-      "Limón",
-      "Lima",
-      "Pomelo",
-      "Musgo de roble",
-      "Pepino"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Bergamota, Pomelo, Lavanda",
+    "notasCorazon": "Geranio, Rosa, Cedro",
+    "notasFondo": "Almizcle, Ámbar, Cuero"
   },
   {
     "id": 266,
@@ -7703,16 +7562,12 @@ export const products = [
     "genero": "Masculino",
     "image": "jean-paul-gaultier-scandal-pour-homme-100ml-m.webp",
     "description": "Una fragancia para el hombre con carácter goloso y elegante, donde la dulzura del caramelo se equilibra con un fondo amaderado y sofisticado. Inspirada en el ADN atrevido de Jean Paul Gaultier, combina un estilo sensual y moderno ideal para destacar de noche o en climas frescos.",
-    "notes": [
-      "Mandarina",
-      "Salvia esclarea",
-      "Caramelo",
-      "Haba tonka",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "notasSalida": "Bergamota, Naranja sanguina, Pimienta",
+    "notasCorazon": "Salvia, Neroli",
+    "notasFondo": "Vetiver, Styrax, Tabaco"
   },
   {
     "id": 267,
@@ -7723,20 +7578,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-ari-ariana-grande-100ml-f.webp",
     "description": "Un perfume para la mujer de estilo floral frutal gourmand, dulce y sofisticado, con una salida jugosa y luminosa que se vuelve cremosa y envolvente en el secado. Se inspira en el universo de fragancias femeninas modernas de diseñador, con un aire seductor y delicado que recuerda a un gourmand elegante.[2][3]",
-    "notes": [
-      "Frambuesa",
-      "Pera",
-      "Toronja",
-      "Orquídea de vainilla",
-      "Rosa",
-      "Lirio de los valles",
-      "Malvavisco",
-      "Almizcle",
-      "Notas amaderadas"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Pera, Pomelo, Cereza",
+    "notasCorazon": "Lila, Jazmín, Nectarina",
+    "notasFondo": "Almizcle, Madera, Vainilla"
   },
   {
     "id": 268,
@@ -7747,20 +7594,12 @@ export const products = [
     "genero": "Femenino",
     "image": "giorgio-armani-my-way-ylang-90ml-f.webp",
     "description": "Una fragancia para la mujer vibrante, luminosa y sofisticada, con un perfil floral frutal tropical que resulta moderno y seductor. Se inspira en el universo elegante de My Way de Giorgio Armani, aportando un giro más jugoso y exótico con un acabado cremoso y refinado.",
-    "notes": [
-      "Mango",
-      "Coco",
-      "Flor de naranjo",
-      "Bergamota",
-      "Ylang-ylang",
-      "Tuberosa",
-      "Vainilla",
-      "Almizcle blanco",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 160,
-    "precioBS": 104000
+    "precioBS": 104000,
+    "notasSalida": "Bergamota, Ylang ylang, Neroli",
+    "notasCorazon": "Ylang ylang, Rosa, Jazmín",
+    "notasFondo": "Cedro blanco, Vainilla, Almizcle"
   },
   {
     "id": 269,
@@ -7771,16 +7610,10 @@ export const products = [
     "genero": "Femenino",
     "image": "valentino-donna-born-in-roma-coral-fantasy-100ml-f.webp",
     "description": "Fragancia floral afrutada para la mujer, luminosa y moderna, con un carácter elegante y veraniego que aporta frescura sin perder sofisticación. Se inspira en el ADN de Valentino Born In Roma, con un giro más jugoso y vibrante que la hace ideal para un estilo femenino contemporáneo.",
-    "notes": [
-      "Kiwi",
-      "Naranja",
-      "Rosa",
-      "Jazmín grandiflorum",
-      "Semillas de ambreta",
-      "Almizcle blanco",
-      "Cedro"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Neroli, Maracuyá",
+    "notasCorazon": "Rosa, Iris, Flor de naranjo",
+    "notasFondo": "Vainilla, Ámbar, Sándalo"
   },
   {
     "id": 270,
@@ -7791,19 +7624,12 @@ export const products = [
     "genero": "Femenino",
     "image": "rabanne-fame-parfum-rabanne-80ml-f.webp",
     "description": "Una creación para la mujer de carácter luminoso y sofisticado, con un estilo floral frutal gourmand que combina sensualidad moderna y un toque envolvente de misterio. Su perfil recuerda al universo de un perfume de diseñador contemporáneo, con una salida jugosa de mango y bergamota que se funde en un fondo cálido y elegante.",
-    "notes": [
-      "Mango",
-      "Pimienta rosa",
-      "Bergamota",
-      "Jazmín",
-      "Incienso",
-      "Pachulí",
-      "Benjuí",
-      "Sándalo"
-    ],
     "categoria": "disenador",
     "precioUSD": 200,
-    "precioBS": 130000
+    "precioBS": 130000,
+    "notasSalida": "Bergamota, Mandarina, Jazmín",
+    "notasCorazon": "Jazmín, Rosa, Orquídea",
+    "notasFondo": "Almizcle, Vetiver, Cedro"
   },
   {
     "id": 271,
@@ -7814,20 +7640,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-ch-men-sport-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático especiado y fresco, creada para transmitir energía, elegancia relajada y espíritu deportivo. CH Men Sport de Carolina Herrera se inspira en el carácter moderno de la línea CH y en la frescura vibrante de un perfume de diseñador masculino contemporáneo.",
-    "notes": [
-      "Pomelo",
-      "Bergamota",
-      "Notas acuáticas",
-      "Salvia",
-      "Enebro de Virginia",
-      "Pimienta de Sichuan",
-      "Vetiver",
-      "Sándalo",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "notasSalida": "Bergamota, Pomelo, Jengibre",
+    "notasCorazon": "Lavanda, Cedro, Salvia",
+    "notasFondo": "Ámbar, Almizcle, Madera"
   },
   {
     "id": 272,
@@ -7838,20 +7656,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-phantom-intense-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter oriental fougère, intensa y moderna, con un equilibrio entre frescura aromática y calidez adictiva. Se inspira en el estilo de un gran perfume de diseñador, con un aura elegante y futurista que recuerda a la línea Phantom de Rabanne.",
-    "notes": [
-      "Flor de azahar",
-      "Limón",
-      "Cardamomo",
-      "Lavanda",
-      "Salvia esclarea",
-      "Ron",
-      "Vainilla",
-      "Cedro",
-      "Musgo"
-    ],
     "categoria": "disenador",
     "precioUSD": 140,
-    "precioBS": 91000
+    "precioBS": 91000,
+    "notasSalida": "Limón, Lavanda, Bergamota",
+    "notasCorazon": "Salvia, Lavanda, Roble",
+    "notasFondo": "Vainilla, Vetiver, Almizcle"
   },
   {
     "id": 273,
@@ -7862,18 +7672,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-invictus-victory-absolu-100ml-m.webp",
     "description": "Fragancia para el hombre de carácter intenso, amaderado, especiado y ambarado, con una presencia moderna y magnética. Invictus Victory Absolu de Rabanne transmite fuerza, seducción y energía heroica, con una inspiración olfativa claramente alineada con la línea Invictus de diseñador.",
-    "notes": [
-      "Pimienta negra",
-      "Ámbar",
-      "Ambra gris",
-      "Notas amaderadas",
-      "Sándalo",
-      "Incienso",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "notasSalida": "Pomelo, Mandarina",
+    "notasCorazon": "Laurel, Jazmín",
+    "notasFondo": "Madera de guayaco, Pachulí, Ámbar"
   },
   {
     "id": 274,
@@ -7884,20 +7688,12 @@ export const products = [
     "genero": "Femenino",
     "image": "marc-jacobs-daisy-marc-jacobs-100ml-f.webp",
     "description": "Una fragancia para la mujer fresca, luminosa y delicadamente floral, con un aire juvenil y sofisticado. Su estilo olfativo almizcle floral amaderado evoca la elegancia de un perfume de diseñador moderno, ideal para quienes buscan un aroma limpio, femenino y con encanto natural.",
-    "notes": [
-      "Hojas de violeta",
-      "Toronja sanguina",
-      "Fresa",
-      "Violeta",
-      "Gardenia",
-      "Jazmín",
-      "Almizcle",
-      "Maderas blancas",
-      "Vainilla"
-    ],
     "categoria": "disenador",
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "notasSalida": "Fresa, Violeta, Pomelo",
+    "notasCorazon": "Gardenia, Jazmín, Violeta",
+    "notasFondo": "Almizcle, Vainilla, Madera blanca"
   },
   {
     "id": 275,
@@ -7908,22 +7704,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-sweet-like-candy-100ml-f.webp",
     "description": "Un eau de parfum para la mujer de estilo floral frutal gourmand, alegre y deliciosamente adictivo. Su carácter dulce y juvenil lo convierte en una opción ideal si buscas una fragancia femenina con un aire travieso y envolvente, inspirada en el universo perfumístico gourmand más comercial de diseñador.",
-    "notes": [
-      "Zarzamora",
-      "Pera",
-      "Bergamota",
-      "Crema batida",
-      "Malvavisco",
-      "Grosellas negras",
-      "Frangipani",
-      "Jazmín",
-      "Madreselva",
-      "Vainilla",
-      "Madera de cachemira"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Pera, Frambuesa, Bergamota",
+    "notasCorazon": "Algodón de azúcar, Flor de saúco",
+    "notasFondo": "Vainilla, Almizcle, Madera"
   },
   {
     "id": 276,
@@ -7934,21 +7720,12 @@ export const products = [
     "genero": "Masculino",
     "image": "viktorrolf-spicebomb-extreme-90ml-m.webp",
     "description": "Un perfume para el hombre de carácter cálido, intenso y adictivo, con un perfil ámbar especiado que combina sensualidad y profundidad. Spicebomb Extreme de Viktor&Rolf se inspira en el universo de las fragancias masculinas gourmand y puede recordar a un diseño de lujo moderno con guiños a la perfumería oriental contemporánea.",
-    "notes": [
-      "Bergamota",
-      "Canela",
-      "Pimienta",
-      "Lavanda",
-      "Comino",
-      "Elemí",
-      "Iris",
-      "Tabaco",
-      "Vainilla",
-      "Ciste"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Pomelo, Lavanda",
+    "notasCorazon": "Tabaco, Vainilla, Vetiver",
+    "notasFondo": "Sándalo, Almizcle, Incienso"
   },
   {
     "id": 277,
@@ -7959,21 +7736,12 @@ export const products = [
     "genero": "Femenino",
     "image": "viktorrolf-flowerbomb-nectar-90ml-f.webp",
     "description": "Flowerbomb Nectar de Viktor&Rolf es una fragancia intensa y sofisticada para la mujer, de estilo oriental floral, con un carácter dulce, sensual y envolvente. Se inspira en el universo de Flowerbomb y aporta una interpretación más profunda y misteriosa, ideal para quien busca un perfume de lujo con presencia y carácter.",
-    "notes": [
-      "Bergamota",
-      "Grosella negra",
-      "Pólvora",
-      "Jazmín sambac",
-      "Flor de azahar del naranjo",
-      "Osmanto",
-      "Vainilla",
-      "Pachulí",
-      "Benjuí",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 155,
-    "precioBS": 100750
+    "precioBS": 100750,
+    "notasSalida": "Jazmín, Rosa, Bergamota",
+    "notasCorazon": "Rosa centifolia, Jazmín, Orquídea",
+    "notasFondo": "Pachulí, Almizcle, Ámbar"
   },
   {
     "id": 278,
@@ -7984,21 +7752,12 @@ export const products = [
     "genero": "Femenino",
     "image": "givenchy-ange-ou-demon-100ml-f.webp",
     "description": "Una fragancia para la mujer de carácter oriental floral, intensa y sofisticada, que combina una sensualidad luminosa con un halo misterioso. Se inspira en el universo elegante y seductor de Givenchy, con un perfil olfativo envolvente ideal para quienes buscan distinción y presencia.",
-    "notes": [
-      "Mandarina",
-      "Azafrán",
-      "Tomillo",
-      "Azucena",
-      "Orquídea",
-      "Ylang-ylang",
-      "Haba tonka",
-      "Vainilla",
-      "Palo de rosa de Brasil",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 120,
-    "precioBS": 78000
+    "precioBS": 78000,
+    "notasSalida": "Mandarina, Bergamota, Flor de lirio",
+    "notasCorazon": "Iris, Ylang ylang, Magnolia",
+    "notasFondo": "Vetiver, Sándalo, Ámbar"
   },
   {
     "id": 279,
@@ -8009,17 +7768,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-212-vip-black-elixir-100ml-m.webp",
     "description": "Una fragancia para el hombre intensa, carismática y sofisticada, con un perfil ámbar aromático gourmand ideal para la noche. Se inspira en el universo seductor de 212 VIP Black, elevando su carácter con un acorde más oscuro, moderno y adictivo.",
-    "notes": [
-      "Lavanda negra",
-      "Regaliz negro",
-      "Vainilla negra",
-      "Pomelo",
-      "Enebro",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 175,
-    "precioBS": 113750
+    "precioBS": 113750,
+    "notasSalida": "Pera, Bergamota, Cardamomo",
+    "notasCorazon": "Vainilla negra, Ámbar, Pachulí",
+    "notasFondo": "Sándalo, Almizcle, Cedro"
   },
   {
     "id": 280,
@@ -8030,22 +7784,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-million-gold-elixir-100ml-m.webp",
     "description": "Una fragancia para el hombre que transmite opulencia, carácter y una elegancia magnética. Su estilo olfativo amaderado especiado, con un toque ámbar, se inspira en la perfumería de nicho y evoca una sofisticación intensa y contemporánea.",
-    "notes": [
-      "Mandarina amarilla",
-      "Bergamota",
-      "Hojas de violeta",
-      "Cardamomo",
-      "Vainilla",
-      "Cedro",
-      "Benzoína",
-      "Labdano",
-      "Sándalo",
-      "Cypriol",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "notasSalida": "Mandarina sanguina, Pomelo, Menta",
+    "notasCorazon": "Rosa, Canela, Cuero",
+    "notasFondo": "Pachulí, Ámbar dorado, Madera"
   },
   {
     "id": 281,
@@ -8056,20 +7800,12 @@ export const products = [
     "genero": "Femenino",
     "image": "carolina-herrera-chic-carolina-herrera-100ml-f.webp",
     "description": "Un perfume floral elegante y femenino para la mujer, con un carácter refinado y luminoso que envuelve la piel con delicadeza y presencia. Chic de Carolina Herrera es una fragancia de estilo clásico contemporáneo, ideal para quienes buscan un aroma sofisticado y seductor inspirado en el universo floral de diseñador.",
-    "notes": [
-      "Nardos",
-      "Rosa de Bulgaria",
-      "Fresia roja",
-      "Flor de azahar del naranjo",
-      "Lirio de los valles",
-      "Flor del mandarino",
-      "Sándalo",
-      "Vainilla",
-      "Almizcle blanco"
-    ],
     "categoria": "disenador",
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "notasSalida": "Pomelo, Bergamota, Durazno",
+    "notasCorazon": "Rosa, Jazmín, Magnolia",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 282,
@@ -8080,20 +7816,12 @@ export const products = [
     "genero": "Femenino",
     "image": "rabanne-black-xs-for-her-80ml-f.webp",
     "description": "Una fragancia para la mujer con un carácter floral amaderado oscuro, sensual y moderno, ideal para destacar con elegancia y personalidad. Black XS for Her de Rabanne se inspira en el universo de un perfume de diseñador con un toque más juvenil y atrevido, combinando dulzura, especias y fondo cremoso.",
-    "notes": [
-      "Arándano",
-      "Pimienta rosa",
-      "Tamarindo",
-      "Violeta negra",
-      "Cacao",
-      "Rosa",
-      "Vainilla",
-      "Pachulí",
-      "Maderas secas"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Anís estrellado, Jazmín",
+    "notasCorazon": "Rosa negra, Orquídea",
+    "notasFondo": "Pachulí, Cuero, Almizcle"
   },
   {
     "id": 283,
@@ -8104,13 +7832,10 @@ export const products = [
     "genero": "Femenino",
     "image": "yves-saint-laurent-libre-leau-nue-50ml-f.webp",
     "description": "Una fragancia para la mujer luminosa y sofisticada, de carácter cítrico-aromático con un acabado limpio y sensual sobre la piel. Libre L’Eau Nue de Yves Saint Laurent se inspira en el universo elegante de Libre, reinterpretando su firma con un estilo más fresco, delicado y veraniego.",
-    "notes": [
-      "Mandarina verde",
-      "Bergamota",
-      "Flor de azahar",
-      "Lavanda"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Naranja amarga, Lavanda",
+    "notasCorazon": "Flor de naranjo, Jazmín, Iris",
+    "notasFondo": "Almizcle blanco, Cedro, Ámbar"
   },
   {
     "id": 284,
@@ -8121,20 +7846,12 @@ export const products = [
     "genero": "Masculino",
     "image": "lacoste-fragrances-eau-de-lacoste-l1212-white-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca y elegante, con un estilo amaderado aromático que transmite limpieza, energía y sofisticación deportiva. Eau de Lacoste L.12.12. White Lacoste Fragrances se inspira en el perfil masculino contemporáneo de Lacoste, con un carácter versátil y refinado ideal para el día a día.",
-    "notes": [
-      "Toronja",
-      "Romero",
-      "Cardamomo",
-      "Ylang-ylang",
-      "Nardo",
-      "Gamuza",
-      "Cedro de Virginia",
-      "Cuero",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "notasSalida": "Bergamota, Naranja, Limón",
+    "notasCorazon": "Cardamomo, Geranio, Cedro",
+    "notasFondo": "Almizcle blanco, Ámbar, Madera"
   },
   {
     "id": 285,
@@ -8145,25 +7862,12 @@ export const products = [
     "genero": "Masculino",
     "image": "versace-eros-flame-100ml-m.webp",
     "description": "Versace Eros Flame es un perfume intenso y seductor para el hombre, con un carácter amaderado especiado que mezcla frescura cítrica, picante y un fondo cálido y envolvente. Inspirado en el estilo audaz de un diseñador masculino, proyecta una presencia apasionada, moderna y muy versátil.",
-    "notes": [
-      "Mandarina",
-      "Pimienta de Madagascar",
-      "Limón",
-      "Chinotto",
-      "Romero",
-      "Geranio",
-      "Rosa",
-      "Pepperwood",
-      "Vainilla",
-      "Haba tonka",
-      "Sándalo",
-      "Cedro de Texas",
-      "Pachulí",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Mandarina, Pomelo, Pimienta negra",
+    "notasCorazon": "Salvia, Geranio, Pimienta rosa",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 286,
@@ -8174,17 +7878,10 @@ export const products = [
     "genero": "Unisex",
     "image": "le-labo-santal-33-50ml-u.webp",
     "description": "Una fragancia unisex de culto, sofisticada y magnética, que envuelve la piel con un aura amaderada, seca y cremosa. Santal 33 de Le Labo se inspira en el lenguaje moderno de los perfumes de diseñador, con un carácter icónico y minimalista que transmite elegancia contemporánea para quien busca distinción sin esfuerzo.",
-    "notes": [
-      "Sándalo",
-      "Papiro de Egipto",
-      "Cedro de Virginia",
-      "Cardamomo",
-      "Violeta",
-      "Iris",
-      "Cuero",
-      "Ámbar"
-    ],
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "notasSalida": "Cardamomo, Iris, Violeta",
+    "notasCorazon": "Sándalo, Ámbar gris, Cedro",
+    "notasFondo": "Cuero, Almizcle, Papiro"
   },
   {
     "id": 287,
@@ -8195,23 +7892,12 @@ export const products = [
     "genero": "Masculino",
     "image": "paco-rabanne-paco-xs-100ml-m.webp",
     "description": "Una fragancia intensa y seductora para el hombre, de estilo amaderado aromático con un carácter especiado y sensual. Paco XS de Paco Rabanne evoca el perfil de un perfume masculino moderno, con un aire atrevido inspirado en la línea XS / Pure XS de la firma.",
-    "notes": [
-      "Jengibre",
-      "Bergamota",
-      "Pomelo",
-      "Tomillo",
-      "Canela",
-      "Cuero",
-      "Vainilla",
-      "Manzana",
-      "Licor",
-      "Cedro",
-      "Pachulí",
-      "Mirra"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Bergamota, Lavanda, Menta",
+    "notasCorazon": "Geranio, Rosa, Lirio",
+    "notasFondo": "Almizcle, Cedro, Vetiver"
   },
   {
     "id": 288,
@@ -8222,19 +7908,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-black-xs-100ml-m.webp",
     "description": "Black XS de Rabanne es una fragancia para el hombre con un perfil oriental amaderado, sensual y carismático, ideal para quienes buscan una firma moderna y con carácter. Se inspira en el estilo de los perfumes de diseñador masculinos con un toque gourmand y especiado, evocando una masculinidad nocturna y seductora.",
-    "notes": [
-      "Limón de Calabria",
-      "Salvia",
-      "Cardamomo",
-      "Praliné",
-      "Canela",
-      "Ámbar negro",
-      "Pachulí",
-      "Madera de palisandro"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Anís estrellado, Bergamota, Pimienta",
+    "notasCorazon": "Cuero, Pachulí, Roble",
+    "notasFondo": "Ámbar, Almizcle, Madera"
   },
   {
     "id": 289,
@@ -8245,18 +7924,12 @@ export const products = [
     "genero": "Unisex",
     "image": "xerjoff-erba-pura-100ml-u.webp",
     "description": "Erba Pura de Xerjoff es una fragancia unisex vibrante, luminosa y sofisticada, con un perfil afrutado-cítrico de gran presencia. Su carácter elegante y adictivo recuerda el estilo de un nicho contemporáneo con inspiración en el universo de los perfumes de diseñador más opulentos.",
-    "notes": [
-      "Naranja siciliana",
-      "Bergamota de Calabria",
-      "Limón siciliano",
-      "Notas afrutadas",
-      "Almizcle blanco",
-      "Vainilla de Madagascar",
-      "Ámbar"
-    ],
     "categoria": "nicho",
     "precioUSD": 320,
-    "precioBS": 208000
+    "precioBS": 208000,
+    "notasSalida": "Naranja siciliana, Pomelo, Bergamota",
+    "notasCorazon": "Jazmín, Rosa, Aldehídos",
+    "notasFondo": "Almizcle blanco, Cedro, Ámbar"
   },
   {
     "id": 290,
@@ -8267,25 +7940,10 @@ export const products = [
     "genero": "Femenino",
     "image": "tom-ford-velvet-orchid-50ml-f.webp",
     "description": "Velvet Orchid de Tom Ford es una fragancia para la mujer de carácter floral ámbar, lujosa, cálida y refinada. Se inspira en la estela glamourosa de Black Orchid, pero con un perfil más suave, luminoso y marcadamente femenino, ideal para quien busca una presencia elegante y seductora.",
-    "notes": [
-      "Bergamota italiana",
-      "Mandarina italiana",
-      "Ron",
-      "Miel",
-      "Orquídea negra",
-      "Rosa",
-      "Heliotropo",
-      "Magnolia",
-      "Narciso",
-      "Flor de azahar del naranjo",
-      "Vainilla",
-      "Mirra",
-      "Sándalo",
-      "Gamuza",
-      "Ládano",
-      "Bálsamo del Perú"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Aldehídos, Flor de naranjo",
+    "notasCorazon": "Orquídea, Rosa, Jazmín",
+    "notasFondo": "Ámbar, Almizcle, Oud"
   },
   {
     "id": 291,
@@ -8296,18 +7954,12 @@ export const products = [
     "genero": "Masculino",
     "image": "azzaro-the-most-wanted-intense-100ml-m.webp",
     "description": "Una fragancia para el hombre intensa y seductora, con un perfil amaderado, oriental y fougère que combina frescura especiada con un fondo cálido y envolvente. Inspirada en el estilo de la línea Azzaro Wanted, ofrece un carácter moderno, magnético y sofisticado ideal para la noche o para destacar con elegancia.[1][3][4]",
-    "notes": [
-      "Cardamomo",
-      "Mandarina",
-      "Canela",
-      "Caramelo",
-      "Lavanda",
-      "Madera ambarina",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Cardamomo, Lavanda, Bergamota",
+    "notasCorazon": "Tabaco, Haba tonka, Pimienta negra",
+    "notasFondo": "Cedro, Ámbar, Vainilla"
   },
   {
     "id": 292,
@@ -8318,21 +7970,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-cloud-pink-100ml-f.webp",
     "description": "Una fragancia para la mujer de estilo dulce, afrutado y envolvente, con un aire moderno y femenino que destaca por su sensualidad luminosa. Cloud Pink de Ariana Grande se inspira en el universo gourmand de la línea Cloud, con un carácter más frutal y veraniego, ideal para quienes buscan una estela suave, adictiva y elegante.",
-    "notes": [
-      "Pitahaya",
-      "Bayas silvestres",
-      "Piña",
-      "Coco",
-      "Orquídea de vainilla",
-      "Ambrette",
-      "Praliné",
-      "Maderas ambarinas",
-      "Almizcle",
-      "Musgo"
-    ],
     "categoria": "disenador",
     "precioUSD": 75,
-    "precioBS": 48750
+    "precioBS": 48750,
+    "notasSalida": "Fresa, Mandarina, Flor de cerezo",
+    "notasCorazon": "Orquídea, Rosa, Jazmín",
+    "notasFondo": "Almizcle, Vainilla, Cachemira"
   },
   {
     "id": 293,
@@ -8343,19 +7986,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-thank-u-next-20-100ml-f.webp",
     "description": "Un perfume para la mujer de estilo floral frutal gourmand, alegre y coqueta, con un dulzor suave y moderno que deja una estela limpia y envolvente. Se inspira en el universo juvenil y adictivo de Ariana Grande, con un perfil que gustará a quienes disfrutan de fragancias femeninas, dulces y luminosas.",
-    "notes": [
-      "Fresa salvaje",
-      "Jugo de manzana",
-      "Granada",
-      "Orquídea blanca",
-      "Jazmín",
-      "Malvavisco",
-      "Almizcle",
-      "Sándalo"
-    ],
     "categoria": "disenador",
     "precioUSD": 75,
-    "precioBS": 48750
+    "precioBS": 48750,
+    "notasSalida": "Pera, Frambuesa, Bergamota",
+    "notasCorazon": "Rosa, Jazmín, Orquídea",
+    "notasFondo": "Almizcle blanco, Vainilla, Cachemira"
   },
   {
     "id": 294,
@@ -8366,17 +8002,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-polo-red-eau-de-parfum-125ml-m.webp",
     "description": "Fragancia para el hombre de estilo amaderado especiado y vibrante, con una apertura cítrica y energética que evoluciona hacia un fondo cálido y elegante. Polo Red Eau de Parfum se inspira en el carácter masculino y seductor de la línea Polo Red de Ralph Lauren, con un perfil moderno ideal para quien busca presencia y sofisticación.",
-    "notes": [
-      "Pomelo",
-      "Jengibre",
-      "Esclarea",
-      "Elemi",
-      "Madera de guayaco",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "notasSalida": "Mandarina, Pomelo, Canela",
+    "notasCorazon": "Salvia, Geranio, Rosa",
+    "notasFondo": "Cedro, Ámbar, Sándalo"
   },
   {
     "id": 295,
@@ -8387,27 +8018,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-polo-sport-125ml-m.webp",
     "description": "Una fragancia aromática verde para el hombre, fresca, dinámica y de espíritu deportivo, ideal para quienes buscan un aroma limpio y energizante. Polo Sport Ralph Lauren recuerda al estilo clásico de las colonias masculinas noventeras, con un perfil cítrico, marino y herbal de gran versatilidad.",
-    "notes": [
-      "Abrótano",
-      "Lavanda",
-      "Mandarina",
-      "Menta",
-      "Neroli",
-      "Bergamota",
-      "Limón",
-      "Aldehídos",
-      "Hierba marina",
-      "Geranio",
-      "Jengibre",
-      "Jazmín",
-      "Sándalo",
-      "Ámbar",
-      "Almizcle",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Bergamota, Pomelo, Menta",
+    "notasCorazon": "Lavanda, Geranio, Cedro",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 296,
@@ -8418,19 +8034,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-ralphs-club-100ml-m.webp",
     "description": "Fragancia para el hombre de estilo amaderado aromático, elegante y moderno, con un perfil sensual y sofisticado ideal para la noche o para dejar una presencia distinguida. Se inspira en el carácter refinado de los grandes perfumes de diseñador masculinos, con una vibra limpia, seductora y de club privado.",
-    "notes": [
-      "Lavanda",
-      "Salvia esclarea",
-      "Cedro",
-      "Vetiver",
-      "Pachulí",
-      "Flor de azahar del naranjo",
-      "Cardamomo",
-      "Cachemira"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Bergamota, Limón, Cardamomo",
+    "notasCorazon": "Iris, Rosa, Vetiver",
+    "notasFondo": "Oud, Ámbar, Almizcle"
   },
   {
     "id": 297,
@@ -8441,16 +8050,12 @@ export const products = [
     "genero": "Masculino",
     "image": "jean-paul-gaultier-scandal-pour-homme-intense-100ml-m.webp",
     "description": "Perfume para el hombre de carácter adictivo y sensual, con un estilo amaderado oriental ámbar que combina intensidad y elegancia. Se inspira en el universo provocador de Scandal Pour Homme de Jean Paul Gaultier, llevando su firma más intensa y envolvente.",
-    "notes": [
-      "Geranio",
-      "Caramelo salado",
-      "Sándalo",
-      "Salvia",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "notasSalida": "Naranja sanguina, Bergamota, Pimienta",
+    "notasCorazon": "Salvia, Neroli, Labdano",
+    "notasFondo": "Vetiver, Styrax, Tabaco"
   },
   {
     "id": 298,
@@ -8461,20 +8066,12 @@ export const products = [
     "genero": "Masculino",
     "image": "jean-paul-gaultier-le-beau-paradise-garden-125ml-m.webp",
     "description": "Una fragancia para el hombre fresca, tropical y sofisticada, con un carácter sensual que combina modernidad y exotismo. Le Beau Paradise Garden se inspira en el universo olfativo de Le Beau de Jean Paul Gaultier, aportando un giro más verde, acuático y cremoso, ideal para quien busca una estela elegante y magnética.",
-    "notes": [
-      "Notas verdes",
-      "Notas acuosas",
-      "Menta",
-      "Jengibre",
-      "Coco",
-      "Higo",
-      "Sal",
-      "Haba tonka",
-      "Sándalo"
-    ],
     "categoria": "disenador",
     "precioUSD": 185,
-    "precioBS": 120250
+    "precioBS": 120250,
+    "notasSalida": "Pera, Kiwi, Pomelo",
+    "notasCorazon": "Flor de coco, Nenúfar",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 299,
@@ -8485,20 +8082,12 @@ export const products = [
     "genero": "Masculino",
     "image": "dolcegabbana-the-one-pour-homme-eau-de-parfum-100ml-m.webp",
     "description": "Fragancia para el hombre con un perfil amaderado ámbar elegante, cálido y sofisticado. The One Pour Homme Eau de Parfum de Dolce&Gabbana se inspira en el carácter seductor del clásico The One for Men, con un toque más intenso y envolvente, ideal para noches y ocasiones especiales.",
-    "notes": [
-      "Toronja",
-      "Albahaca",
-      "Cilantro",
-      "Jengibre",
-      "Flor de Azahar",
-      "Cardamomo",
-      "Cedro",
-      "Ámbar",
-      "Tabaco"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Cardamomo, Bergamota, Pomelo",
+    "notasCorazon": "Jengibre, Albahaca, Geranio",
+    "notasFondo": "Tabaco, Cedro, Ámbar, Almizcle"
   },
   {
     "id": 300,
@@ -8509,18 +8098,12 @@ export const products = [
     "genero": "Masculino",
     "image": "dolcegabbana-light-blue-eau-intense-pour-homme-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca, moderna y sofisticada, con un perfil amaderado acuático de gran luminosidad. Inspirada en la línea masculina Light Blue Pour Homme de Dolce&Gabbana, ofrece un carácter limpio, mediterráneo y elegante ideal para el día a día o climas cálidos.",
-    "notes": [
-      "Limón siciliano",
-      "Pomelo",
-      "Mandarina",
-      "Agua de mar",
-      "Enebro de Virginia",
-      "Almizcle",
-      "Amberwood"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Manzana de Sicilia, Mandarina, Bergamota",
+    "notasCorazon": "Enebro, Romero, Cachemira",
+    "notasFondo": "Almizcle, Ámbar, Cedro"
   },
   {
     "id": 301,
@@ -8531,17 +8114,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-ch-men-100ml-m.webp",
     "description": "Una fragancia para el hombre sofisticado y actual, con un estilo oriental especiado y amaderado que combina elegancia, carácter y un punto seductor. CH Men de Carolina Herrera evoca el espíritu del caballero moderno con un perfil que puede recordar a un diseñador clásico de corte cálido y refinado, ideal para uso diario o nocturno.",
-    "notes": [
-      "Pomelo",
-      "Lavanda",
-      "Azafrán",
-      "Ciclamen",
-      "Madera de cachemira",
-      "Cuero"
-    ],
     "categoria": "disenador",
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "notasSalida": "Bergamota, Lavanda, Limón",
+    "notasCorazon": "Cedro, Sándalo, Cuero",
+    "notasFondo": "Vetiver, Almizcle, Ámbar"
   },
   {
     "id": 302,
@@ -8552,18 +8130,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-phantom-rabanne-100ml-m.webp",
     "description": "Fragancia para el hombre de estilo aromático, amaderado y ligeramente dulce, con una salida fresca y moderna que evoluciona hacia un fondo cremoso y elegante. Phantom Rabanne se inspira en el carácter juvenil y magnético de un diseñador contemporáneo, con un perfil versátil y llamativo ideal para destacar con sofisticación.",
-    "notes": [
-      "Limón de Amalfi",
-      "Lavanda",
-      "Manzana",
-      "Pachulí",
-      "Humo",
-      "Vetiver",
-      "Vainilla"
-    ],
     "categoria": "disenador",
     "precioUSD": 140,
-    "precioBS": 91000
+    "precioBS": 91000,
+    "notasSalida": "Limón, Lavanda, Bergamota",
+    "notasCorazon": "Salvia, Lavanda, Roble",
+    "notasFondo": "Vainilla, Vetiver, Almizcle"
   },
   {
     "id": 303,
@@ -8574,18 +8146,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-invictus-victory-elixir-100ml-m.webp",
     "description": "Un perfume intenso para el hombre con una estela ámbar amaderada y especiada, oscura y envolvente, ideal para destacar en la noche. Se inspira en el carácter seductor y poderoso de la línea Invictus, con un perfil más profundo y adictivo que recuerda al estilo de los perfumes de diseñador orientados a la intensidad masculina.",
-    "notes": [
-      "Lavandín",
-      "Cardamomo",
-      "Pimienta negra",
-      "Incienso",
-      "Pachulí",
-      "Vainilla",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "notasSalida": "Pomelo, Mandarina",
+    "notasCorazon": "Laurel, Jazmín, Incienso",
+    "notasFondo": "Madera de guayaco, Pachulí, Ámbar intenso"
   },
   {
     "id": 304,
@@ -8596,18 +8162,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-invictus-victory-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter ámbar oriental, intensa y seductora, con un contraste entre frescura cítrica y un fondo cálido y dulce. Invictus Victory de Rabanne se inspira en el universo Invictus de la casa y ofrece una estela moderna, potente y sofisticada, ideal para quien busca presencia y magnetismo.",
-    "notes": [
-      "Limón",
-      "Pimienta rosa",
-      "Incienso",
-      "Lavanda",
-      "Haba tonka",
-      "Ámbar",
-      "Vainilla"
-    ],
     "categoria": "disenador",
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "notasSalida": "Pomelo, Mandarina",
+    "notasCorazon": "Laurel, Neroli",
+    "notasFondo": "Madera de guayaco, Almizcle, Ámbar"
   },
   {
     "id": 305,
@@ -8618,20 +8178,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-ch-men-hot-hot-hot-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo dulce amaderado y elegante, con un perfil moderno y seductor que combina frescura especiada con una base cálida y sofisticada. Esta edición limitada de Carolina Herrera se inspira en el carácter audaz de la línea CH Men, con un aire contemporáneo y muy masculino.",
-    "notes": [
-      "Pomelo",
-      "Ruibarbo",
-      "Salvia",
-      "Pimienta de Sichuan",
-      "Hojas de violeta",
-      "Caramelo",
-      "Cuero",
-      "Sándalo",
-      "Vetiver de Madagascar"
-    ],
     "categoria": "disenador",
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "notasSalida": "Pimienta, Naranja, Limón",
+    "notasCorazon": "Salvia, Cardamomo, Cedro",
+    "notasFondo": "Ámbar, Almizcle, Cuero"
   },
   {
     "id": 306,
@@ -8642,15 +8194,12 @@ export const products = [
     "genero": "Femenino",
     "image": "marc-jacobs-perfect-eau-de-toilette-100ml-f.webp",
     "description": "Una fragancia floral y luminosa para la mujer, con un aire moderno, delicado y elegante que transmite frescura con un toque sofisticado. Perfect Eau de Toilette de Marc Jacobs se inspira en una feminidad alegre y contemporánea, con un perfil olfativo suave y distintivo de diseñador.",
-    "notes": [
-      "Pimienta rosa",
-      "Polygonum",
-      "Narciso",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Almendra, Bergamota, Iris",
+    "notasCorazon": "Guisante de olor, Rosa, Iris",
+    "notasFondo": "Sándalo, Almizcle, Cedro"
   },
   {
     "id": 307,
@@ -8661,22 +8210,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-mod-blush-100ml-f.webp",
     "description": "Una fragancia para la mujer de estilo frutal-floral, fresca y elegante, con un toque moderno y sensual. Se inspira en un perfil sofisticado de diseñador, evocando la luminosidad de composiciones femeninas contemporáneas con un fondo almizclado y amaderado muy pulido.",
-    "notes": [
-      "Frambuesa",
-      "Maracuyá",
-      "Pimienta rosa",
-      "Bergamota",
-      "Rosa",
-      "Pera",
-      "Magnolia",
-      "Almizcle",
-      "Ambroxan",
-      "Madera",
-      "Sándalo"
-    ],
     "categoria": "disenador",
     "precioUSD": 75,
-    "precioBS": 48750
+    "precioBS": 48750,
+    "notasSalida": "Ruibarbo, Pera, Frambuesa",
+    "notasCorazon": "Flor de cerezo, Rosa, Jazmín",
+    "notasFondo": "Almizcle blanco, Vainilla, Madera"
   },
   {
     "id": 308,
@@ -8687,25 +8226,12 @@ export const products = [
     "genero": "Femenino",
     "image": "giorgio-armani-acqua-di-gio-eau-de-toilette-for-women-100ml-f.webp",
     "description": "Una fragancia para la mujer fresca, luminosa y elegantemente acuática, con un carácter floral-frutal muy refinado. Se inspira en el estilo icónico de Giorgio Armani, evocando una feminidad natural, limpia y sofisticada, ideal para el uso diario con un aire de lujo discreto.",
-    "notes": [
-      "Piña",
-      "Peonía",
-      "Melocotón",
-      "Violeta",
-      "Limón",
-      "Jazmín",
-      "Lirio de los valles",
-      "Jacinto",
-      "Fresia",
-      "Ylang-ylang",
-      "Ámbar",
-      "Almizcle",
-      "Sándalo",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "notasSalida": "Mandarina, Bergamota, Jazmín",
+    "notasCorazon": "Rosa, Ciclamen, Narciso",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 309,
@@ -8716,15 +8242,12 @@ export const products = [
     "genero": "Femenino",
     "image": "hugo-boss-boss-the-scent-for-her-100ml-f.webp",
     "description": "Una fragancia para la mujer de carácter floral frutal gourmand, sensual y elegante, creada para dejar una estela cálida y seductora. Boss The Scent For Her de Hugo Boss se inspira en el estilo sofisticado de los perfumes de diseñador con un toque adictivo y moderno.",
-    "notes": [
-      "Durazno",
-      "Fresia",
-      "Osmanto",
-      "Cacao"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Melocotón, Osmanto",
+    "notasCorazon": "Orquídea, Jazmín",
+    "notasFondo": "Almizcle, Vainilla, Madera"
   },
   {
     "id": 310,
@@ -8735,17 +8258,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-212-vip-black-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático fougère, intensa y moderna, con un carácter nocturno y seductor. 212 VIP Black de Carolina Herrera se inspira en una masculinidad sofisticada y festiva, con un perfil olfativo que recuerda a los perfumes de diseñador más magnéticos y adictivos.",
-    "notes": [
-      "Absenta",
-      "Anís",
-      "Hinojo",
-      "Lavanda",
-      "Vainilla negra",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 175,
-    "precioBS": 113750
+    "precioBS": 113750,
+    "notasSalida": "Pera, Bergamota, Cardamomo",
+    "notasCorazon": "Pachulí, Vainilla negra, Ámbar",
+    "notasFondo": "Sándalo, Almizcle, Cedro"
   },
   {
     "id": 311,
@@ -8756,20 +8274,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-1-million-100ml-m.webp",
     "description": "Un perfume para el hombre con un carácter magnético, lujoso y seductor, de estilo amaderado especiado. 1 Million de Rabanne se inspira en el universo de un designer icono y destaca por su estela cálida, elegante y muy reconocible, ideal para quien busca presencia y sofisticación.",
-    "notes": [
-      "Mandarina sanguina",
-      "Pomelo",
-      "Menta",
-      "Rosa",
-      "Canela",
-      "Cuero",
-      "Pachulí",
-      "Ámbar",
-      "Maderas blancas"
-    ],
     "categoria": "disenador",
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "notasSalida": "Mandarina sanguina, Pomelo, Menta",
+    "notasCorazon": "Rosa, Canela, Cuero",
+    "notasFondo": "Pachulí, Ámbar, Maderas blancas"
   },
   {
     "id": 312,
@@ -8780,18 +8290,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-212-heroes-100ml-m.webp",
     "description": "Una fragancia para el hombre joven, fresca y moderna, con un carácter aromático-frutal y amaderado que transmite libertad y autenticidad. Se inspira en la energía contemporánea de los grandes fougères masculinos, con un aire de diseñador muy actual y desenfadado.",
-    "notes": [
-      "Pera",
-      "Jengibre",
-      "Cannabis Lemon Haze",
-      "Geranio de Madagascar",
-      "Cuero",
-      "Maderas",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 115,
-    "precioBS": 74750
+    "precioBS": 74750,
+    "notasSalida": "Bergamota, Pomelo, Romero",
+    "notasCorazon": "Lavanda, Salvia, Pimienta",
+    "notasFondo": "Cedro, Vetiver, Almizcle"
   },
   {
     "id": 313,
@@ -8802,19 +8306,12 @@ export const products = [
     "genero": "Femenino",
     "image": "rabanne-lady-million-royal-80ml-f.webp",
     "description": "Lady Million Royal de Rabanne es un perfume para la mujer audaz, sofisticada y magnética, con un carácter floral afrutado y sensual. Evoca el estilo glamuroso de la línea Lady Million, con una inspiración clara en el universo de los grandes florales de diseñador, pero con un giro más moderno y jugoso.",
-    "notes": [
-      "Granada",
-      "Mandarina",
-      "Nardos",
-      "Flor de azahar del naranjo",
-      "Heliotropo",
-      "Vainilla",
-      "Sándalo",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Bergamota, Albaricoque, Rosa",
+    "notasCorazon": "Rosa turca, Jazmín, Naranja amarga",
+    "notasFondo": "Pachulí, Almizcle, Madera"
   },
   {
     "id": 314,
@@ -8825,20 +8322,12 @@ export const products = [
     "genero": "Femenino",
     "image": "rabanne-fame-intense-80ml-f.webp",
     "description": "Fame Intense de Rabanne es un perfume para la mujer resplandeciente, sensual y sofisticado, con un carácter floral amaderado especiado que envuelve con elegancia. Se inspira en el universo glamuroso de la firma y en la línea Fame, ofreciendo una versión más intensa y cálida de la fragancia original.",
-    "notes": [
-      "Agua de coco",
-      "Bergamota",
-      "Pimienta rosa",
-      "Incienso",
-      "Ylang-ylang",
-      "Jazmín",
-      "Sándalo",
-      "Almizcle",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 200,
-    "precioBS": 130000
+    "precioBS": 130000,
+    "notasSalida": "Bergamota, Mandarina",
+    "notasCorazon": "Jazmín, Rosa, Flor de azahar",
+    "notasFondo": "Vetiver, Almizcle, Ámbar"
   },
   {
     "id": 315,
@@ -8849,13 +8338,10 @@ export const products = [
     "genero": "Masculino",
     "image": "jean-paul-gaultier-le-beau-jean-paul-gaultier-75ml-m.webp",
     "description": "Un perfume para el hombre de estilo amaderado aromático, fresco y sensual, con un perfil tropical y cremoso que destaca por su carácter seductor. Se inspira en el ADN de Jean Paul Gaultier, con una estela moderna y ultra masculina que recuerda a un diseñador de lujo pensado para atraer.[2][6]",
-    "notes": [
-      "Bergamota",
-      "Coco",
-      "Haba tonka",
-      "Sándalo"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Coco, Pomelo",
+    "notasCorazon": "Flor de coco, Nenúfar, Ciclamen",
+    "notasFondo": "Cedro, Almizcle, Vainilla"
   },
   {
     "id": 316,
@@ -8866,19 +8352,10 @@ export const products = [
     "genero": "Masculino",
     "image": "dolcegabbana-light-blue-pour-homme-125ml-m.webp",
     "description": "Una fragancia para el hombre fresca, vibrante y sofisticada, inspirada en el estilo mediterráneo y pensada para transmitir energía y elegancia casual. Se asocia con el perfil cítrico aromático de un clásico de diseñador, evocando el espíritu de Light Blue pour Homme de Dolce&Gabbana.",
-    "notes": [
-      "Mandarina siciliana",
-      "Enebro de Virginia",
-      "Toronja",
-      "Bergamota",
-      "Romero",
-      "Palo de rosa de Brasil",
-      "Pimienta",
-      "Almizcle",
-      "Musgo de roble",
-      "Incienso"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Manzana de Sicilia, Bergamota, Mandarina",
+    "notasCorazon": "Enebro, Pimienta rosa, Romero",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 317,
@@ -8889,19 +8366,10 @@ export const products = [
     "genero": "Femenino",
     "image": "prada-prada-paradoxe-90ml-f.webp",
     "description": "Una fragancia para la mujer moderna que combina frescura floral y elegancia sensual con un acabado limpio y sofisticado. Su estilo olfativo ámbar floral recuerda a la refinada firma de diseñador de Prada, con una estela luminosa y femenina perfecta para el día y la noche.",
-    "notes": [
-      "Pera",
-      "Bergamota",
-      "Mandarina",
-      "Azahar",
-      "Neroli",
-      "Jazmín",
-      "Flor de azahar",
-      "Vainilla",
-      "Ámbar",
-      "Almizcle blanco"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Bergamota, Neroli, Ámbar gris",
+    "notasCorazon": "Jazmín sambac, Magnolia",
+    "notasFondo": "Almizcle blanco, Sándalo, Musgo"
   },
   {
     "id": 318,
@@ -8912,23 +8380,12 @@ export const products = [
     "genero": "Masculino",
     "image": "rabanne-xs-2018-100ml-m.webp",
     "description": "Fragancia para el hombre de carácter amaderado aromático, con un perfil moderno y seductor que combina frescura especiada y un fondo cálido y envolvente. XS (2018) Rabanne se inspira en el espíritu de Black XS de la casa Rabanne, aportando una firma más pulida y elegante para el día y la noche.",
-    "notes": [
-      "Limón",
-      "Salvia",
-      "Cempasúchil",
-      "Cítricos",
-      "Praliné",
-      "Canela",
-      "Cardamomo negro",
-      "Bálsamo de Tolú",
-      "Ámbar negro",
-      "Pachulí",
-      "Palisandro",
-      "Árbol de ébano"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Pomelo, Menta, Pimienta rosa",
+    "notasCorazon": "Cardamomo, Vetiver, Flores",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 319,
@@ -8939,20 +8396,12 @@ export const products = [
     "genero": "Unisex",
     "image": "creed-millsime-imprial-100ml-u.webp",
     "description": "Unisex, sofisticado y luminoso, Millésime Impérial de Creed combina una frescura marina con un acorde afrutado elegante que evoca lujo discreto y verano mediterráneo. Su carácter refinado, limpio y envolvente lo convierte en una fragancia versátil inspirada en la elegancia clásica de la alta perfumería niche.",
-    "notes": [
-      "Sal de mar",
-      "Notas afrutadas",
-      "Limón siciliano",
-      "Bergamota",
-      "Iris",
-      "Mandarina",
-      "Notas marinas",
-      "Almizcle",
-      "Notas amaderadas"
-    ],
     "categoria": "nicho",
     "precioUSD": 400,
-    "precioBS": 260000
+    "precioBS": 260000,
+    "notasSalida": "Bergamota, Mandarina, Limón",
+    "notasCorazon": "Iris, Algas marinas, Jazmín",
+    "notasFondo": "Almizcle blanco, Ámbar gris, Musgo de roble"
   },
   {
     "id": 320,
@@ -8963,28 +8412,10 @@ export const products = [
     "genero": "Masculino",
     "image": "creed-absolu-aventus-2023-75ml-m.webp",
     "description": "Fragancia de lujo para el hombre, intensa y sofisticada, con un perfil cítrico, especiado y amaderado que aporta presencia y elegancia. Absolu Aventus 2023 de Creed es una reinterpretación más profunda y madura del estilo Aventus, inspirada en el ADN de Aventus y pensada para una estela refinada y versátil.",
-    "notes": [
-      "Pomelo",
-      "Bergamota",
-      "Grosella negra",
-      "Piña",
-      "Pimienta rosa",
-      "Nuez moscada",
-      "Clavo",
-      "Jengibre",
-      "Canela",
-      "Cardamomo",
-      "Rosa",
-      "Pachulí",
-      "Vetiver",
-      "Musgo de roble",
-      "Ambroxan",
-      "Sándalo",
-      "Almizcle",
-      "Haba tonka",
-      "Evernyl"
-    ],
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "notasSalida": "Piña, Bergamota, Manzana verde",
+    "notasCorazon": "Abedul, Jazmín, Rosa",
+    "notasFondo": "Almizcle, Ámbar, Vetiver, Musgo de roble"
   },
   {
     "id": 321,
@@ -8995,17 +8426,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-bad-boy-le-parfum-100ml-m.webp",
     "description": "Fragancia para el hombre de carácter audaz y sofisticado, con un perfil aromático amaderado de cuero que transmite modernidad y magnetismo. Su estilo oscuro y rebelde recuerda al universo de la línea Bad Boy de Carolina Herrera, con una faceta más intensa y sensual pensada para destacar con elegancia.",
-    "notes": [
-      "Marihuana",
-      "Pomelo",
-      "Pimienta negra",
-      "Geranio",
-      "Cuero",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 150,
-    "precioBS": 97500
+    "precioBS": 97500,
+    "notasSalida": "Bergamota, Pimienta rosa, Pomelo",
+    "notasCorazon": "Cedro, Salvia, Geranio",
+    "notasFondo": "Almizcle negro, Cuero, Ámbar"
   },
   {
     "id": 322,
@@ -9016,36 +8442,12 @@ export const products = [
     "genero": "Femenino",
     "image": "escada-escada-magnetism-75ml-f.webp",
     "description": "Escada Magnetism es un perfume para la mujer de carácter oriental vainilla, dulce y envolvente, con un perfil frutal-floral muy sensual y sofisticado. Se inspira en el estilo exuberante de los grandes perfumes de diseñador de los 90, con una estela adictiva y femenina que combina frescura jugosa y fondo cremoso.",
-    "notes": [
-      "Bayas rojas",
-      "Grosellas negras",
-      "Casia",
-      "Lichi",
-      "Piña",
-      "Melón",
-      "Hojas verdes",
-      "Albahaca",
-      "Flor del almendro",
-      "Iris",
-      "Fresia",
-      "Heliotropo",
-      "Jazmín",
-      "Magnolia",
-      "Rosa",
-      "Alcaravea",
-      "Muguete",
-      "Caramelo",
-      "Vainilla",
-      "Pachulí",
-      "Benjuí",
-      "Sándalo",
-      "Almizcle",
-      "Ámbar",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Mandarina, Bergamota, Durazno",
+    "notasCorazon": "Rosa, Jazmín, Magnolia",
+    "notasFondo": "Almizcle, Sándalo, Vainilla"
   },
   {
     "id": 323,
@@ -9056,21 +8458,12 @@ export const products = [
     "genero": "Femenino",
     "image": "versace-pour-femme-dylan-purple-100ml-f.webp",
     "description": "Versace Pour Femme Dylan Purple es una fragancia para la mujer brillante, elegante y vibrante, con un estilo floral afrutado muy luminoso. Se inspira en la faceta más moderna y femenina de la perfumería de diseñador, con un aire mediterráneo sofisticado y contemporáneo.",
-    "notes": [
-      "Pera",
-      "Bergamota",
-      "Naranja amarga",
-      "Fresia",
-      "Pomarose",
-      "Mahonial",
-      "Ambroxan",
-      "Cedro de Virginia",
-      "Iso E Super",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Bergamota, Zarzamora, Rosa",
+    "notasCorazon": "Violeta, Jazmín, Iris",
+    "notasFondo": "Almizcle, Sándalo, Pachulí"
   },
   {
     "id": 324,
@@ -9081,19 +8474,12 @@ export const products = [
     "genero": "Masculino",
     "image": "ralph-lauren-polo-blue-travel-set-125ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático acuático, fresca, limpia y elegante, ideal para un porte sofisticado y relajado a la vez. Polo Blue de Ralph Lauren es un clásico moderno que transmite masculinidad pulida y un aire deportivo de lujo, con inspiración claramente asociada al universo Polo Blue de diseñador.",
-    "notes": [
-      "Mandarina",
-      "Melón",
-      "Pepino",
-      "Albahaca",
-      "Geranio",
-      "Gamuza",
-      "Notas amaderadas",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 95,
-    "precioBS": 61750
+    "precioBS": 61750,
+    "notasSalida": "Melón, Pepino, Mandarina",
+    "notasCorazon": "Salvia, Geranio, Cedro",
+    "notasFondo": "Almizcle, Suede, Ámbar"
   },
   {
     "id": 325,
@@ -9104,14 +8490,12 @@ export const products = [
     "genero": "Femenino",
     "image": "dolcegabbana-light-blue-summer-vibes-100ml-f.webp",
     "description": "Fragancia para la mujer de carácter luminoso y veraniego, con un perfil fresco, frutal y amaderado que transmite elegancia mediterránea. Inspirada en el universo icónico de Light Blue de Dolce&Gabbana, ofrece una interpretación más soleada y sofisticada para el día a día.",
-    "notes": [
-      "Bergamota de Calabria",
-      "Durazno",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Mandarina, Durazno, Bergamota",
+    "notasCorazon": "Rosa, Ciclamen, Orquídea",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 326,
@@ -9122,20 +8506,12 @@ export const products = [
     "genero": "Femenino",
     "image": "rabanne-black-xs-for-her-eau-de-parfum-80ml-f.webp",
     "description": "Una fragancia para la mujer con carácter sensual y juvenil, de estilo floral amaderado con un toque dulce y oscuro. Black XS for Her Eau de Parfum de Rabanne se inspira en el espíritu provocador y rockero de un perfume de diseñador moderno, ideal para una presencia magnética y sofisticada.",
-    "notes": [
-      "Arándano",
-      "Pimienta rosa",
-      "Tamarindo",
-      "Cacao",
-      "Rosa",
-      "Violeta negra",
-      "Vainilla",
-      "Pachulí",
-      "Madera de massoia"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Anís estrellado, Jazmín",
+    "notasCorazon": "Rosa, Orquídea negra",
+    "notasFondo": "Pachulí, Almizcle, Ámbar"
   },
   {
     "id": 327,
@@ -9146,22 +8522,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-ch-pasin-for-him-100ml-m.webp",
     "description": "Una fragancia amaderada oriental para el hombre, elegante y magnética, que combina la intensidad del incienso con una suavidad cálida de vainilla y maderas oscuras. Inspirada en el estilo sofisticado de un perfume de diseñador contemporáneo, CH Pasión for Him de Carolina Herrera transmite presencia, carácter y lujo moderno.",
-    "notes": [
-      "Incienso de olíbano",
-      "Neroli de Túnez",
-      "Pimienta rosa",
-      "Iris",
-      "Mirra",
-      "Cedro de Texas",
-      "Sándalo australiano",
-      "Vainilla Bourbon",
-      "Haba tonka",
-      "Amberwood",
-      "Notas amaderadas oscuras"
-    ],
     "categoria": "disenador",
     "precioUSD": 130,
-    "precioBS": 84500
+    "precioBS": 84500,
+    "notasSalida": "Bergamota, Pomelo, Pimienta",
+    "notasCorazon": "Vetiver, Cedro, Cuero",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 328,
@@ -9172,19 +8538,12 @@ export const products = [
     "genero": "Masculino",
     "image": "carolina-herrera-212-sexy-men-100ml-m.webp",
     "description": "Una fragancia oriental especiada para el hombre, seductora y envolvente, ideal para quienes buscan un aroma cálido con un toque moderno. 212 Sexy Men de Carolina Herrera destaca por su estela elegante y urbana, con un carácter que combina sensualidad y sofisticación en la línea de un perfume de diseñador contemporáneo.",
-    "notes": [
-      "Mandarina",
-      "Bergamota",
-      "Pimienta rosa",
-      "Pétalos de flores",
-      "Cardamomo",
-      "Almizcle blanco",
-      "Sándalo",
-      "Vainilla"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Cardamomo, Laurel, Pomelo",
+    "notasCorazon": "Cuero, Árbol de caucho, Musgo",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 329,
@@ -9195,21 +8554,12 @@ export const products = [
     "genero": "Femenino",
     "image": "ariana-grande-moonlight-100ml-f.webp",
     "description": "Una fragancia para la mujer de estilo floral frutal, dulce y envolvente, con un aura luminosa y sofisticada. Moonlight de Ariana Grande evoca una feminidad moderna y sensual, con un perfil que recuerda a la elegancia de un perfume de diseñador en clave juvenil y accesible.",
-    "notes": [
-      "Ciruela",
-      "Grosella negra",
-      "Bergamota",
-      "Peonía",
-      "Datura",
-      "Fruta del dragón",
-      "Praliné",
-      "Vainilla",
-      "Almizcle",
-      "Sándalo"
-    ],
     "categoria": "disenador",
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "notasSalida": "Grosella negra, Pera, Vainilla",
+    "notasCorazon": "Orquídea negra, Flor de cerezo, Jazmín",
+    "notasFondo": "Almizcle, Sándalo, Ámbar"
   },
   {
     "id": 330,
@@ -9220,14 +8570,12 @@ export const products = [
     "genero": "Femenino",
     "image": "mugler-alien-mugler-90ml-f.webp",
     "description": "Alien de Mugler es una fragancia para la mujer de estela magnética, misteriosa y profundamente sensual. Su acorde floral ambarado, inspirado en la intensidad de un perfume de diseñador icónico, envuelve con una presencia luminosa y sofisticada que deja una huella inolvidable.",
-    "notes": [
-      "Jazmín sambac",
-      "Madera de cachemira",
-      "Ámbar blanco"
-    ],
     "categoria": "disenador",
     "precioUSD": 115,
-    "precioBS": 74750
+    "precioBS": 74750,
+    "notasSalida": "Jazmín",
+    "notasCorazon": "Cachemira, Sol",
+    "notasFondo": "Ámbar blanco, Almizcle"
   },
   {
     "id": 331,
@@ -9238,27 +8586,12 @@ export const products = [
     "genero": "Masculino",
     "image": "calvin-klein-eternity-for-men-100ml-m.webp",
     "description": "Una fragancia para el hombre elegante y atemporal, de estilo aromático fougère con un carácter fresco, limpio y sofisticado. Inspirada en el clásico masculino de Calvin Klein, es ideal para quien busca una estela refinada y versátil, con un aire de perfume de diseñador icónico.",
-    "notes": [
-      "Mandarina",
-      "Limón",
-      "Bergamota",
-      "Lavanda",
-      "Jazmín",
-      "Albahaca",
-      "Cilantro",
-      "Lirio",
-      "Flor de Azahar",
-      "Geranio",
-      "Salvia",
-      "Almizcle",
-      "Ámbar",
-      "Vetiver",
-      "Sándalo",
-      "Palo de Rosa"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Mandarina, Lavanda, Menta",
+    "notasCorazon": "Geranio, Cedro, Vetiver",
+    "notasFondo": "Almizcle, Sándalo, Ámbar"
   },
   {
     "id": 332,
@@ -9269,21 +8602,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-legend-spirit-100ml-m.webp",
     "description": "Una fragancia amaderada aromática para el hombre, fresca y sofisticada, pensada para un estilo limpio, moderno y versátil. Su carácter recuerda a la elegancia deportiva de los perfumes de diseñador masculinos, con un perfil luminoso y acuático que la hace muy fácil de llevar a diario.",
-    "notes": [
-      "Pomelo",
-      "Bergamota",
-      "Pimienta rosa",
-      "Notas acuáticas",
-      "Lavanda",
-      "Cardamomo",
-      "Almizcle blanco",
-      "Maderas blancas",
-      "Madera de cachemira",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "notasSalida": "Bergamota, Pomelo, Menta acuática",
+    "notasCorazon": "Lavanda, Geranio, Cedro",
+    "notasFondo": "Almizcle blanco, Cedro, Ámbar"
   },
   {
     "id": 333,
@@ -9294,14 +8618,12 @@ export const products = [
     "genero": "Masculino",
     "image": "azzaro-wanted-eau-de-parfum-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter moderno y seductor, con un perfil amaderado, aromático y especiado. Azzaro Wanted Eau de Parfum evoca un estilo elegante y atrevido, con una construcción fresca y viril inspirada en el universo de la perfumería de diseñador masculina.",
-    "notes": [
-      "Bayas de enebro",
-      "Salvia",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 110,
-    "precioBS": 71500
+    "precioBS": 71500,
+    "notasSalida": "Cardamomo, Lavanda, Bergamota",
+    "notasCorazon": "Salvia, Tabaco, Pimienta",
+    "notasFondo": "Vetiver, Cedro, Ámbar"
   },
   {
     "id": 334,
@@ -9312,21 +8634,12 @@ export const products = [
     "genero": "Masculino",
     "image": "viktorrolf-spicebomb-90ml-m.webp",
     "description": "Para el hombre, Spicebomb de Viktor&Rolf es una fragancia especiada y amaderada de carácter explosivo, cálido y seductor. Su estilo olfativo combina frescura cítrica con un corazón intenso de especias y un fondo oscuro y masculino, inspirándose en el ADN provocador de la perfumería de diseñador de Viktor&Rolf.",
-    "notes": [
-      "Pimienta rosa",
-      "Elemí",
-      "Bergamota",
-      "Pomelo",
-      "Canela",
-      "Azafrán",
-      "Pimentón dulce",
-      "Tabaco",
-      "Cuero",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
-    "precioBS": 58500
+    "precioBS": 58500,
+    "notasSalida": "Pomelo, Bergamota",
+    "notasCorazon": "Canela, Pimienta roja, Tabaco",
+    "notasFondo": "Cuero, Vetiver, Almizcle"
   },
   {
     "id": 335,
@@ -9337,23 +8650,12 @@ export const products = [
     "genero": "Masculino",
     "image": "giorgio-armani-acqua-di-gi-profondo-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático acuático y elegante, con una frescura profunda y moderna que transmite sofisticación en clave marina. Se inspira en el universo icónico de Acqua di Giò de Giorgio Armani, reinterpretándolo con un carácter más intenso, mineral y envolvente.",
-    "notes": [
-      "Notas marinas",
-      "Aquozone",
-      "Bergamota",
-      "Mandarina verde",
-      "Romero",
-      "Lavanda",
-      "Ciprés",
-      "Lentisco",
-      "Notas minerales",
-      "Musgo",
-      "Pachulí",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 100,
-    "precioBS": 65000
+    "precioBS": 65000,
+    "notasSalida": "Bergamota, Mandarina, Incienso marino",
+    "notasCorazon": "Romero, Ciprés, Pachulí",
+    "notasFondo": "Madera de guayaco, Almizcle, Ámbar"
   },
   {
     "id": 336,
@@ -9364,19 +8666,10 @@ export const products = [
     "genero": "Femenino",
     "image": "viktorrolf-bonbon-50ml-f.webp",
     "description": "Una fragancia para la mujer de estilo floral frutal gourmand, dulce y envolvente, creada para destacar con una estela adictiva y sofisticada. Bonbon de Viktor&Rolf se inspira en la idea de un bombón exquisito y es una opción ideal si buscas un perfume femenino con carácter de diseñador, cálido y muy elegante.",
-    "notes": [
-      "Durazno",
-      "Mandarina",
-      "Naranja",
-      "Caramelo",
-      "Flor de azahar del naranjo",
-      "Jazmín",
-      "Ámbar",
-      "Sándalo",
-      "Madera de gaiac",
-      "Cedro"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Mandarina, Naranja, Caramelo",
+    "notasCorazon": "Peonía, Rosa, Caramelo",
+    "notasFondo": "Almizcle blanco, Pachulí, Cachemira"
   },
   {
     "id": 337,
@@ -9387,20 +8680,12 @@ export const products = [
     "genero": "Masculino",
     "image": "cuba-paris-cuba-green-100ml-m.webp",
     "description": "Cuba Green de Cuba Paris es una fragancia para el hombre de estilo amaderado chipre, fresca y vibrante, con un carácter clásico y fácil de llevar. Se inspira en el perfil aromático de los grandes masculinos verdes y elegantes, con una salida cítrica y herbal que evoluciona hacia un fondo cálido y viril.",
-    "notes": [
-      "Naranja",
-      "Notas verdes",
-      "Limón",
-      "Albahaca",
-      "Lavanda",
-      "Salvia",
-      "Haba tonka",
-      "Madera de sándalo",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 15,
-    "precioBS": 9750
+    "precioBS": 9750,
+    "notasSalida": "Bergamota, Lavanda, Menta",
+    "notasCorazon": "Geranio, Cedro, Rosa",
+    "notasFondo": "Almizcle, Ámbar, Vetiver"
   },
   {
     "id": 338,
@@ -9411,23 +8696,12 @@ export const products = [
     "genero": "Masculino",
     "image": "benetton-paradiso-inferno-blue-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo cítrico aromático, fresca y dinámica, con un perfil limpio y elegante ideal para el día. Benetton Paradiso Inferno Blue se distingue por su carácter vibrante y masculino, con una energía clásica que recuerda a la perfumería deportiva y versátil de diseñador.",
-    "notes": [
-      "Notas marinas",
-      "Limón",
-      "Geranio",
-      "Jengibre",
-      "Ciclamen",
-      "Jazmín",
-      "Nuez moscada",
-      "Cedro",
-      "Ámbar",
-      "Almizcle",
-      "Sándalo",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "notasSalida": "Bergamota, Limón, Menta",
+    "notasCorazon": "Lavanda, Geranio, Rosa",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 339,
@@ -9438,23 +8712,12 @@ export const products = [
     "genero": "Masculino",
     "image": "nautica-nautica-voyage-sport-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca y energética, con un perfil aromático-acuático ideal para el uso diario. Nautica Voyage Sport se inspira en el estilo limpio y deportivo de los perfumes marinos de diseñador, ofreciendo una sensación vibrante, moderna y muy versátil.",
-    "notes": [
-      "Notas marinas",
-      "Cítricos",
-      "Sal marina",
-      "Cilantro",
-      "Manzana",
-      "Geranio",
-      "Hojas de palmera",
-      "Pimiento verde",
-      "Almizcle",
-      "Vetiver",
-      "Pachulí",
-      "Secuoya roja brasileña"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Manzana verde, Lima, Pomelo",
+    "notasCorazon": "Cedro, Algas marinas, Cardamomo",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 340,
@@ -9465,20 +8728,12 @@ export const products = [
     "genero": "Masculino",
     "image": "guess-seductive-red-homme-100ml-m.webp",
     "description": "Seductive Red Homme de Guess es una fragancia para el hombre de estilo ámbar vainilla, con un perfil cálido, especiado y ligeramente afrutado. Su carácter seductor y moderno recuerda al universo de los perfumes de diseñador masculinos con faceta oriental, ideal para quien busca una firma elegante y envolvente.",
-    "notes": [
-      "Canela",
-      "Higo",
-      "Limón",
-      "Kumquat",
-      "Flor de azahar del naranjo",
-      "Geranio",
-      "Vainilla",
-      "Ámbar",
-      "Sándalo"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Naranja, Limón, Lavanda",
+    "notasCorazon": "Salvia, Cedro, Vetiver",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 341,
@@ -9489,25 +8744,16 @@ export const products = [
     "genero": "Unisex",
     "image": "calvin-klein-ck-one-200ml-u.webp",
     "description": "CK One de Calvin Klein es un perfume unisex fresco, limpio y luminosa mente moderno, ideal para quienes buscan una firma olfativa cítrica y transparente. Se inspira en el estilo minimalista de la perfumería de diseñador de los años 90, con un carácter atemporal y fácil de llevar para el día a día.",
-    "notes": [
-      "Bergamota",
-      "Limón",
-      "Mandarina",
-      "Té verde",
-      "Papaya",
-      "Nuez moscada",
-      "Violeta",
-      "Rosa",
-      "Almizcle",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 50,
     "precioBS": 32500,
     "variantIds": [
       342,
       341
-    ]
+    ],
+    "notasSalida": "Bergamota, Cardamomo, Piña",
+    "notasCorazon": "Violeta, Rosa, Jazmín, Lirio",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 342,
@@ -9518,26 +8764,16 @@ export const products = [
     "genero": "Unisex",
     "image": "calvin-klein-ck-one-100ml-u.webp",
     "description": "CK One de Calvin Klein es un clásico unisex de estilo cítrico-aromático, fresco, limpio y moderno, ideal para quienes buscan una fragancia versátil y atemporal. Su carácter minimalista e icono de los 90 lo convierte en una elección elegante para el día a día, con una sensación luminosa que recuerda al espíritu de la perfumería de diseñador de Calvin Klein.",
-    "notes": [
-      "Bergamota",
-      "Limón",
-      "Mandarina",
-      "Té verde",
-      "Papaya",
-      "Rosa",
-      "Jazmín",
-      "Almizcle",
-      "Cedro",
-      "Sándalo",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
     "precioBS": 22750,
     "variantIds": [
       342,
       341
-    ]
+    ],
+    "notasSalida": "Bergamota, Cardamomo, Piña",
+    "notasCorazon": "Violeta, Rosa, Jazmín, Lirio",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 343,
@@ -9548,25 +8784,16 @@ export const products = [
     "genero": "Unisex",
     "image": "calvin-klein-ck-be-100ml-u.webp",
     "description": "CK Be de Calvin Klein es una fragancia unisex de carácter limpio, fresco y minimalista, ideal para quienes buscan un aroma discreto pero con personalidad. Su perfil almizclado floral amaderado recuerda al estilo relajado y moderno de un diseñador clásico, con una sensación de piel limpia y naturalidad contemporánea.",
-    "notes": [
-      "Bergamota",
-      "Enebro",
-      "Mandarina",
-      "Menta",
-      "Lavanda",
-      "Magnolia",
-      "Hierbas",
-      "Almizcle",
-      "Maderas",
-      "Especias suaves"
-    ],
     "categoria": "disenador",
     "precioUSD": 30,
     "precioBS": 19500,
     "variantIds": [
       343,
       344
-    ]
+    ],
+    "notasSalida": "Bergamota, Mandarina, Lavanda",
+    "notasCorazon": "Iris, Muguete, Rosa, Cedro",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 344,
@@ -9577,25 +8804,16 @@ export const products = [
     "genero": "Unisex",
     "image": "calvin-klein-ck-be-200ml-u.webp",
     "description": "CK Be de Calvin Klein es una fragancia unisex fresca, limpia y minimalista, perfecta para quienes buscan un aroma discreto pero con personalidad. Su estilo floral amaderado con almizcle aromático la convierte en una opción moderna y versátil, inspirada en la estética casual y atemporal de Calvin Klein.",
-    "notes": [
-      "Bergamota",
-      "Enebro",
-      "Mandarina",
-      "Menta",
-      "Lavanda",
-      "Magnolia",
-      "Especias suaves",
-      "Sándalo",
-      "Cedro",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
     "precioBS": 29250,
     "variantIds": [
       343,
       344
-    ]
+    ],
+    "notasSalida": "Bergamota, Mandarina, Lavanda",
+    "notasCorazon": "Iris, Muguete, Rosa, Cedro",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 345,
@@ -9606,20 +8824,12 @@ export const products = [
     "genero": "Masculino",
     "image": "armaf-the-pride-of-armaf-for-men-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter ámbar especiado, elegante y versátil, con un inicio cítrico brillante y un fondo cálido y envolvente. Su perfil recuerda al estilo clásico de diseñador con un aire sofisticado y seductor, ideal para quienes buscan presencia y distinción.",
-    "notes": [
-      "Limón",
-      "Cedrón",
-      "Bergamota",
-      "Nuez moscada",
-      "Musgo de roble",
-      "Canela",
-      "Haba tonka",
-      "Vainilla",
-      "Sándalo"
-    ],
     "categoria": "arabes",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Bergamota, Cardamomo, Pimienta",
+    "notasCorazon": "Cuero, Oud, Rosa",
+    "notasFondo": "Almizcle, Ámbar, Cedro"
   },
   {
     "id": 346,
@@ -9630,20 +8840,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-the-golden-secret-100ml-m.webp",
     "description": "Eau de toilette para el hombre con un perfil aromático especiado, fresco al inicio y con un fondo cálido de cuero y maderas. The Golden Secret de Antonio Banderas se inspira en una seducción masculina intensa y recuerda el estilo de un perfume de diseñador elegante y provocador.",
-    "notes": [
-      "Manzana",
-      "Menta",
-      "Notas verdes",
-      "Nuez moscada",
-      "Pimienta",
-      "Comino",
-      "Cuero",
-      "Cedro",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Pomelo, Limón, Cardamomo",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 347,
@@ -9654,19 +8856,12 @@ export const products = [
     "genero": "Masculino",
     "image": "nautica-nautica-voyage-heritage-100ml-m.webp",
     "description": "Fragancia para el hombre con un carácter fresco, aromático y amaderado, ideal para un estilo moderno, limpio y aventurero. Nautica Voyage Heritage se distingue por su energía vibrante y su fondo elegante, evocando una estela masculina sofisticada con inspiración en el ADN clásico de la línea Voyage.",
-    "notes": [
-      "Menta",
-      "Romero",
-      "Bergamota",
-      "Jengibre",
-      "Lavanda",
-      "Sándalo",
-      "Madera de guayaco",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Pomelo, Menta",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Vetiver"
   },
   {
     "id": 348,
@@ -9677,21 +8872,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-starwalker-75ml-m.webp",
     "description": "Un amaderado especiado para el hombre, fresco, limpio y elegante, con un carácter moderno y versátil. Montblanc Starwalker destaca por un estilo masculino de líneas suaves, con un aire parecido a una colonia de diseñador fresca y discreta, ideal para el día a día.",
-    "notes": [
-      "Bambú",
-      "Bergamota",
-      "Mandarina",
-      "Sándalo",
-      "Almizcle blanco",
-      "Cedro",
-      "Jengibre",
-      "Resina de abeto",
-      "Nuez moscada",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Bergamota, Menta, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Vetiver, Almizcle, Ámbar"
   },
   {
     "id": 349,
@@ -9702,17 +8888,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-legend-red-100ml-m.webp",
     "description": "Un eau de parfum para el hombre con un carácter vibrante, amaderado-afrutado y un frescor magnético que transmite energía y seguridad. Montblanc Legend Red destaca por su estilo moderno y atrevido, con una estela elegante que recuerda al universo de los perfumes masculinos de diseñador contemporáneos.",
-    "notes": [
-      "Naranja sanguina",
-      "Toronja",
-      "Cardamomo",
-      "Cedro",
-      "Caoba",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "notasSalida": "Pomelo, Bergamota, Pimienta roja",
+    "notasCorazon": "Salvia, Geranio, Lavanda",
+    "notasFondo": "Almizcle, Cedro, Ámbar rojo"
   },
   {
     "id": 350,
@@ -9723,17 +8904,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-legend-blue-100ml-m.webp",
     "description": "Un perfume para el hombre de estilo amaderado aromático, fresco y elegante, pensado para transmitir limpieza, modernidad y carácter. Legend Blue de Montblanc se inspira en el ADN masculino de la línea Legend, con un perfil más azul y contemporáneo que recuerda a un diseñador sofisticado y versátil.",
-    "notes": [
-      "Lavanda",
-      "Menta",
-      "Sándalo",
-      "Cedro",
-      "Ambroxán",
-      "Musgo"
-    ],
     "categoria": "disenador",
     "precioUSD": 85,
-    "precioBS": 55250
+    "precioBS": 55250,
+    "notasSalida": "Bergamota, Pomelo, Cardamomo",
+    "notasCorazon": "Lavanda, Cedro, Iris",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 351,
@@ -9744,30 +8920,16 @@ export const products = [
     "genero": "Masculino",
     "image": "issey-miyake-leau-dissey-pour-homme-125ml-m.webp",
     "description": "Una fragancia para el hombre fresca, elegante y atemporal, con un carácter hespéride, especiado y amaderado que combina energía moderna con sobriedad refinada. Inspirada en el espíritu masculino contemporáneo de Issey Miyake, destaca por su estela limpia, vibrante y sofisticada, ideal para uso diario o de oficina.",
-    "notes": [
-      "Yuzu",
-      "Bergamota",
-      "Limón",
-      "Mandarina",
-      "Verbena",
-      "Cilantro",
-      "Salvia",
-      "Estragón",
-      "Ciprés",
-      "Nuez moscada",
-      "Canela",
-      "Sándalo",
-      "Cedro",
-      "Vetiver",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
     "precioBS": 58500,
     "variantIds": [
       351,
       352
-    ]
+    ],
+    "notasSalida": "Yuzu, Bergamota, Mandarina",
+    "notasCorazon": "Cactus, Nuez moscada, Ciclamen",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 352,
@@ -9778,25 +8940,16 @@ export const products = [
     "genero": "Masculino",
     "image": "issey-miyake-leau-dissey-pour-homme-200ml-m.webp",
     "description": "Una fragancia para el hombre fresca, elegante y atemporal, con un perfil acuático amaderado de gran limpieza y carácter moderno. Se inspira en un clásico de diseñador de Issey Miyake, reconocido por su salida cítrica vibrante y su fondo amaderado sofisticado, ideal para uso diario con un toque refinado.",
-    "notes": [
-      "Yuzu",
-      "Bergamota",
-      "Mandarina",
-      "Limón",
-      "Nuez moscada",
-      "Canela",
-      "Sándalo",
-      "Cedro",
-      "Almizcle",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 90,
     "precioBS": 58500,
     "variantIds": [
       351,
       352
-    ]
+    ],
+    "notasSalida": "Yuzu, Bergamota, Mandarina",
+    "notasCorazon": "Cactus, Nuez moscada, Ciclamen",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 353,
@@ -9807,20 +8960,12 @@ export const products = [
     "genero": "Masculino",
     "image": "paris-hilton-gold-rush-man-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo ámbar fougère, elegante y seductor, con una salida fresca y especiada que evoluciona hacia un corazón aromático sofisticado. Gold Rush Man de Paris Hilton transmite un aire moderno y pulido, con un perfil que recuerda a los masculinos comerciales de diseñador por su equilibrio entre frescura, lavanda y fondo ambarado dulce.",
-    "notes": [
-      "Mandarina",
-      "Cardamomo",
-      "Bergamota",
-      "Lavanda",
-      "Geranio",
-      "Salvia",
-      "Vainilla",
-      "Ámbar",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Bergamota, Limón, Pomelo",
+    "notasCorazon": "Cardamomo, Cedro, Iris",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 354,
@@ -9831,19 +8976,12 @@ export const products = [
     "genero": "Masculino",
     "image": "perry-ellis-aqua-extreme-100ml-m.webp",
     "description": "Aqua Extreme de Perry Ellis es una fragancia para el hombre con un perfil aromático acuático, fresco y dinámico, ideal para el uso diario y climas cálidos. Su estilo limpio y deportivo recuerda a propuestas de diseñador como Dior Homme Cologne o Versace Dylan Blue, con un carácter más ligero y versátil.",
-    "notes": [
-      "Bergamota",
-      "Enebro",
-      "Geranio",
-      "Hojas de tabaco",
-      "Lavanda azul",
-      "Ládano",
-      "Notas amaderadas",
-      "Verbena de limón"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Lima, Menta, Bergamota",
+    "notasCorazon": "Jazmín acuático, Ciclamen, Lavanda",
+    "notasFondo": "Cedro, Almizcle, Ámbar"
   },
   {
     "id": 355,
@@ -9854,24 +8992,16 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-black-seduction-200ml-m.webp",
     "description": "Un perfume para el hombre elegante y seductor, con un estilo ámbar especiado de carácter moderno y versátil. Se inspira en la línea de seducción masculina de Antonio Banderas y recuerda a un diseñador contemporáneo por su combinación de frescura, calidez y presencia refinada.",
-    "notes": [
-      "Grosella negra",
-      "Bergamota",
-      "Nuez moscada",
-      "Cardamomo",
-      "Cilantro",
-      "Haba tonka",
-      "Ámbar",
-      "Almizcle",
-      "Cedro de Virginia"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
     "precioBS": 22750,
     "variantIds": [
       375,
       355
-    ]
+    ],
+    "notasSalida": "Bergamota, Pomelo, Pimienta",
+    "notasCorazon": "Lavanda, Cedro, Jazmín",
+    "notasFondo": "Almizcle, Ámbar, Cuero"
   },
   {
     "id": 356,
@@ -9882,36 +9012,16 @@ export const products = [
     "genero": "Masculino",
     "image": "calvin-klein-obsession-for-men-200ml-m.webp",
     "description": "Fragancia para el hombre de carácter oriental amaderado, intensa y sensual, con un perfil especiado que transmite seguridad y magnetismo. Obsession for Men de Calvin Klein, lanzado en 1986, es un clásico de diseñador con un aura provocativa y envolvente, ideal para quien busca una presencia cálida y sofisticada.",
-    "notes": [
-      "Bergamota",
-      "Canela",
-      "Mandarina",
-      "Lavanda",
-      "Cilantro",
-      "Pomelo",
-      "Lima",
-      "Salvia",
-      "Clavel",
-      "Jazmín",
-      "Nuez moscada",
-      "Mirra",
-      "Palo de rosa",
-      "Pino",
-      "Bayas rojas",
-      "Sándalo",
-      "Ámbar",
-      "Vetiver",
-      "Vainilla",
-      "Pachulí",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 50,
     "precioBS": 32500,
     "variantIds": [
       388,
       356
-    ]
+    ],
+    "notasSalida": "Mandarina, Bergamota, Lavanda",
+    "notasCorazon": "Cedro, Sándalo, Vetiver",
+    "notasFondo": "Almizcle, Ámbar, Vainilla"
   },
   {
     "id": 357,
@@ -9922,24 +9032,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-legend-night-100ml-m.webp",
     "description": "Un perfume para el hombre con un perfil amaderado aromático, elegante y seductor, pensado para la noche y para destacar con carácter. Se inspira en el estilo sofisticado de la línea Montblanc Legend, con una vibra moderna que recuerda a un diseñador masculino refinado y carismático.",
-    "notes": [
-      "Bergamota",
-      "Menta",
-      "Cardamomo",
-      "Salvia esclarea",
-      "Cedro",
-      "Lavanda",
-      "Violeta",
-      "Manzana",
-      "Abeto",
-      "Vetiver",
-      "Vainilla negra",
-      "Pachulí",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Cardamomo, Lavanda, Bergamota",
+    "notasCorazon": "Oud, Cedro, Lirio",
+    "notasFondo": "Vetiver, Ámbar, Almizcle"
   },
   {
     "id": 358,
@@ -9950,20 +9048,12 @@ export const products = [
     "genero": "Masculino",
     "image": "animale-animale-for-men-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter ámbar especiado y amaderado, intensa y seductora, con un aire clásico de los años 90. Se inspira en el estilo de los grandes perfumes masculinos de diseñador de esa época, con un perfil viril y elegante. [2][4]",
-    "notes": [
-      "Limón",
-      "Neroli",
-      "Fresia",
-      "Lavanda",
-      "Bayas de enebro",
-      "Geranio",
-      "Cuero",
-      "Musgo de roble",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "notasSalida": "Bergamota, Mandarina, Limón",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 359,
@@ -9974,21 +9064,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-the-icon-100ml-m.webp",
     "description": "Una fragancia para el hombre moderna, elegante y con carácter, de estilo ámbar fougère y perfil cítrico-especiado. Su evolución limpia y sofisticada recuerda el ADN de un designer fragrance masculino contemporáneo, con una vibra que puede evocar a Dior Sauvage en su faceta fresca y aromática.",
-    "notes": [
-      "Pimienta negra",
-      "Toronja (pomelo)",
-      "Enebro de Virginia",
-      "Lavanda",
-      "Gamuza",
-      "Ciprés",
-      "Benjuí",
-      "Ládano",
-      "Pachulí",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "notasSalida": "Bergamota, Mandarina, Pimienta rosa",
+    "notasCorazon": "Salvia, Cedro, Cachemira",
+    "notasFondo": "Pachulí, Ámbar, Almizcle"
   },
   {
     "id": 360,
@@ -9999,20 +9080,12 @@ export const products = [
     "genero": "Masculino",
     "image": "adidas-victory-league-eau-de-toilette-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo oriental amaderado, con un inicio fresco y especiado que evoluciona hacia un fondo cálido y elegante. Su carácter vibrante y versátil recuerda a un perfume masculino de corte deportivo refinado, inspirado en la idea de un aroma limpio, moderno y con toques clásicos de diseñador.",
-    "notes": [
-      "Albahaca",
-      "Bergamota",
-      "Hierba recién cortada",
-      "Lavanda",
-      "Melocotón",
-      "Canela",
-      "Almizcle",
-      "Vainilla",
-      "Madera de cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 15,
-    "precioBS": 9750
+    "precioBS": 9750,
+    "notasSalida": "Bergamota, Lavanda, Menta",
+    "notasCorazon": "Geranio, Cedro, Rosa",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 361,
@@ -10023,22 +9096,12 @@ export const products = [
     "genero": "Masculino",
     "image": "adidas-pure-game-eau-de-toilette-100ml-m.webp",
     "description": "Una fragancia amaderada aromática para el hombre, fresca y dinámica, con un perfil deportivo y versátil ideal para el día a día. Su carácter recuerda al estilo de los perfumes masculinos modernos de diseñador, con una salida cítrica especiada y un fondo cálido y elegante.",
-    "notes": [
-      "Mandarina",
-      "Pomelo",
-      "Albahaca",
-      "Pimienta",
-      "Lavanda",
-      "Ciprés",
-      "Madera de guayacán",
-      "Pachulí",
-      "Haba tonka",
-      "Incienso",
-      "Madera de tamboti"
-    ],
     "categoria": "disenador",
     "precioUSD": 15,
-    "precioBS": 9750
+    "precioBS": 9750,
+    "notasSalida": "Bergamota, Lima, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Menta",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 362,
@@ -10049,20 +9112,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-explorer-100ml-m.webp",
     "description": "Una fragancia amaderada aromática para el hombre, elegante y versátil, con un carácter aventurero y moderno. Se inspira en el estilo de los grandes masculinos de diseñador, con una salida cítrica fresca y un fondo sofisticado de maderas, cuero y vetiver.",
-    "notes": [
-      "Bergamota",
-      "Pimienta rosa",
-      "Esclarea",
-      "Vetiver de Haití",
-      "Cuero",
-      "Ambroxan",
-      "Akigalawood",
-      "Hojas de pachulí de Indonesia",
-      "Vaina de cacao"
-    ],
     "categoria": "disenador",
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "notasSalida": "Bergamota, Vetiver, Cardamomo",
+    "notasCorazon": "Vetiver, Cuero, Cardamomo",
+    "notasFondo": "Ámbar, Almizcle, Pachulí"
   },
   {
     "id": 363,
@@ -10073,17 +9128,12 @@ export const products = [
     "genero": "Masculino",
     "image": "salvatore-ferragamo-f-by-ferragamo-pour-homme-100ml-m.webp",
     "description": "Un perfume para el hombre de carácter elegante y urbano, con un perfil amaderado oriental que combina frescura inicial y una estela cálida y sofisticada. Se inspira en el estilo clásico de un diseñador masculino contemporáneo, con un aire seductor y refinado ideal para el día a día o la noche.",
-    "notes": [
-      "Lavanda",
-      "Manzana",
-      "Pimienta negra",
-      "Ládano",
-      "Cuero",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Bergamota, Mandarina, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 364,
@@ -10094,25 +9144,12 @@ export const products = [
     "genero": "Masculino",
     "image": "issey-miyake-leau-dissey-pour-homme-intense-75ml-m.webp",
     "description": "Una fragancia para el hombre de carácter amaderado y especiado, intensa y elegante, que combina frescura cítrica con un fondo cálido y profundo. Está inspirada en el estilo refinado y acuático de Issey Miyake, con un perfil masculino clásico y sofisticado.",
-    "notes": [
-      "Yuzu",
-      "Bergamota",
-      "Naranja dulce",
-      "Mandarina",
-      "Flor de loto",
-      "Nuez moscada",
-      "Canela",
-      "Cardamomo",
-      "Azafrán",
-      "Incienso",
-      "Papiro de Egipto",
-      "Ámbar gris",
-      "Benjuí",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Yuzu, Jengibre, Bergamota",
+    "notasCorazon": "Nuez moscada, Cedro, Ciprés",
+    "notasFondo": "Oud, Vetiver, Almizcle"
   },
   {
     "id": 365,
@@ -10123,20 +9160,12 @@ export const products = [
     "genero": "Masculino",
     "image": "maison-alhambra-glacier-ultra-100ml-m.webp",
     "description": "Glacier Ultra de Maison Alhambra es un Eau de Parfum para el hombre de perfil moderno, fresco y elegante, con un carácter aromático amaderado y un toque especiado muy versátil. Se inspira claramente en Ultra Male de Jean Paul Gaultier, ofreciendo una salida vibrante y dulce con un fondo cálido y sofisticado, ideal para destacar en la noche o en climas frescos.",
-    "notes": [
-      "Pimienta",
-      "Canela",
-      "Limón",
-      "Lavanda",
-      "Esclarea",
-      "Pachulí",
-      "Vainilla",
-      "Ámbar",
-      "Cedro"
-    ],
     "categoria": "arabes",
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "notasSalida": "Bergamota, Pomelo, Limón",
+    "notasCorazon": "Lavanda, Cedro, Notas acuáticas",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 366,
@@ -10147,20 +9176,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-king-of-seduction-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca, moderna y seductora, con un perfil aromático-amaderado ideal para el día a día. King of Seduction de Antonio Banderas destaca por su estilo contemporáneo y puede recordar en espíritu a un perfume de diseñador deportivo y elegante, con un carácter limpio y masculino.",
-    "notes": [
-      "Pomelo",
-      "Agua marina",
-      "Cardamomo",
-      "Piña",
-      "Melón",
-      "Lavanda",
-      "Cedro",
-      "Vetiver",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Lima, Mandarina",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 367,
@@ -10171,20 +9192,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-king-of-seduction-absolute-100ml-m.webp",
     "description": "Fragancia para el hombre de estilo amaderado aromático, fresca y seductora, con un perfil elegante que combina energía cítrica con matices marinos y un fondo más oscuro y masculino. Se inspira en una estética de diseñador muy versátil y moderna, ideal para quien busca un aroma distinguido con carácter.",
-    "notes": [
-      "Pomelo",
-      "Ajenjo (absenta)",
-      "Almendra verde",
-      "Notas marinas",
-      "Lavanda",
-      "Cardamomo",
-      "Cuero",
-      "Vetiver",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Mandarina, Pimienta",
+    "notasCorazon": "Lavanda, Cedro, Sándalo",
+    "notasFondo": "Almizcle, Ámbar intenso, Madera"
   },
   {
     "id": 368,
@@ -10195,23 +9208,16 @@ export const products = [
     "genero": "Masculino",
     "image": "nautica-nautica-voyage-200ml-m.webp",
     "description": "Nautica Voyage es una fragancia fresca y acuática para el hombre, ideal para el día a día por su carácter limpio, dinámico y versátil. Su estilo olfativo amaderado-aromático evoca una sensación marina moderna, con un aire deportivo que recuerda a un perfume de diseñador atemporal y muy fácil de llevar.",
-    "notes": [
-      "Hojas verdes",
-      "Manzana verde",
-      "Flor de loto",
-      "Mimosa",
-      "Almizcle",
-      "Madera de cedro",
-      "Musgo de roble",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 40,
     "precioBS": 26000,
     "variantIds": [
       383,
       368
-    ]
+    ],
+    "notasSalida": "Verde hoja, Manzana verde, Agua de mar",
+    "notasCorazon": "Mimosa, Loto, Cedro",
+    "notasFondo": "Almizcle, Musgo de roble, Ámbar"
   },
   {
     "id": 369,
@@ -10222,21 +9228,12 @@ export const products = [
     "genero": "Masculino",
     "image": "adidas-ice-dive-eau-de-toilette-100ml-m.webp",
     "description": "Adidas Ice Dive Eau de Toilette es una fragancia para el hombre fresca, vibrante y deportiva, ideal para quienes buscan un aroma limpio y energizante para el día a día. Su perfil aromático especiado combina una salida cítrica y mentolada con un fondo amaderado y almizclado, evocando el estilo de un clásico masculino de corte deportivo, sin una inspiración claramente declarada en un perfume de diseñador.[2][3][4]",
-    "notes": [
-      "Menta",
-      "Bergamota",
-      "Pomelo",
-      "Lavanda",
-      "Geranio",
-      "Sándalo",
-      "Pachulí",
-      "Almizcle",
-      "Vainilla",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 15,
-    "precioBS": 9750
+    "precioBS": 9750,
+    "notasSalida": "Lima, Menta, Bergamota",
+    "notasCorazon": "Lavanda, Geranio, Cedro",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 370,
@@ -10247,16 +9244,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-explorer-platinum-100ml-m.webp",
     "description": "Explorer Platinum de Montblanc es una fragancia para el hombre moderna y sofisticada, de perfil amaderado aromático con un aire elegante y aventurero. Se inspira en el universo de las fragancias masculinas de diseñador con un carácter fresco, vibrante y refinado, ideal para un hombre seguro de sí mismo.",
-    "notes": [
-      "Toronja",
-      "Hojas de violeta",
-      "Salvia esclarea",
-      "Cedro",
-      "Notas amaderadas"
-    ],
     "categoria": "disenador",
     "precioUSD": 80,
-    "precioBS": 52000
+    "precioBS": 52000,
+    "notasSalida": "Bergamota, Madera, Cardamomo",
+    "notasCorazon": "Vetiver, Cedro, Cuero platino",
+    "notasFondo": "Ámbar frío, Almizcle, Madera"
   },
   {
     "id": 371,
@@ -10267,17 +9260,12 @@ export const products = [
     "genero": "Masculino",
     "image": "salvatore-ferragamo-ferragamo-100ml-m.webp",
     "description": "Perfume para el hombre con un estilo clásico, elegante y sobrio, ideal para quienes buscan una firma olfativa distinguida de carácter atemporal. Se asocia con una construcción amaderada y aromática, con un aire refinado inspirado en la perfumería masculina de diseñador.",
-    "notes": [
-      "Lavanda",
-      "Manzana",
-      "Pimienta negra",
-      "Cuero",
-      "Ámbar",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Bergamota, Mandarina, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Geranio, Iris",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 372,
@@ -10288,22 +9276,12 @@ export const products = [
     "genero": "Masculino",
     "image": "issey-miyake-nuit-dissey-125ml-m.webp",
     "description": "Una fragancia amaderada especiada para el hombre, intensa y nocturna, con un carácter elegante y magnético. Nuit d’Issey de Issey Miyake destaca por su perfil oscuro de cuero y maderas, con un aire moderno y sofisticado que recuerda al estilo de un diseñador contemporáneo como L’Eau d’Issey Pour Homme. ",
-    "notes": [
-      "Bergamota",
-      "Pomelo",
-      "Pimienta negra",
-      "Cuero",
-      "Vetiver",
-      "Pachulí",
-      "Haba tonka",
-      "Incienso",
-      "Vainilla",
-      "Sándalo",
-      "Maderas oscuras"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Bergamota, Mandarina, Pimienta",
+    "notasCorazon": "Cedro, Vetiver, Cuero",
+    "notasFondo": "Almizcle, Ámbar, Incienso"
   },
   {
     "id": 373,
@@ -10314,20 +9292,12 @@ export const products = [
     "genero": "Masculino",
     "image": "lacoste-fragrances-lacoste-booster-125ml-m.webp",
     "description": "Una fragancia para el hombre fresca, vibrante y enérgica, ideal para un estilo deportivo y dinámico. Lacoste Booster destaca por su carácter cítrico-aromático y su perfil limpio y masculino, con una frescura que evoca un clásico moderno de diseñador.",
-    "notes": [
-      "Eucalipto",
-      "Pomelo",
-      "Menta",
-      "Lavanda",
-      "Geranio",
-      "Albahaca",
-      "Vetiver",
-      "Cedro",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 70,
-    "precioBS": 45500
+    "precioBS": 45500,
+    "notasSalida": "Menta, Bergamota, Lavanda",
+    "notasCorazon": "Geranio, Cedro, Rosa",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 374,
@@ -10338,26 +9308,12 @@ export const products = [
     "genero": "Masculino",
     "image": "perry-ellis-360-red-for-men-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter especiado y aromático, vibrante desde el inicio y con un fondo cálido, elegante y muy versátil para el día a día. Perry Ellis 360° Red for Men se mueve en un perfil clásico masculino, con un estilo que recuerda a los aromas deportivos y frescos de diseñador de la década de los 2000.",
-    "notes": [
-      "Lima",
-      "Bergamota",
-      "Canela",
-      "Naranja",
-      "Mandarina",
-      "Clavo de olor",
-      "Nuez moscada",
-      "Lavanda",
-      "Cilantro",
-      "Almizcle",
-      "Sándalo",
-      "Vetiver",
-      "Cedro",
-      "Pachulí",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "notasSalida": "Limón, Bergamota, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Jengibre",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 375,
@@ -10368,24 +9324,16 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-black-seduction-100ml-m.webp",
     "description": "Black Seduction de Antonio Banderas es una fragancia para el hombre de estilo ámbar especiado, elegante y seductor, pensada para un uso versátil de día o noche. Su carácter recuerda al perfil sofisticado de un diseñador contemporáneo con un aire oscuro y moderno, ideal para quien busca presencia sin excesos.",
-    "notes": [
-      "Grosella negra",
-      "Bergamota",
-      "Nuez moscada",
-      "Cardamomo",
-      "Cilantro",
-      "Haba tonka",
-      "Ámbar",
-      "Almizcle",
-      "Cedro de Virginia"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
     "precioBS": 16250,
     "variantIds": [
       375,
       355
-    ]
+    ],
+    "notasSalida": "Bergamota, Pomelo, Pimienta",
+    "notasCorazon": "Lavanda, Cedro, Jazmín",
+    "notasFondo": "Almizcle, Ámbar, Cuero"
   },
   {
     "id": 376,
@@ -10396,18 +9344,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-the-secret-absolu-100ml-m.webp",
     "description": "Una fragancia oriental y seductora para el hombre, con un aura elegante, intensa y moderna. The Secret Absolu de Antonio Banderas se percibe como un perfume de estilo nocturno y sofisticado, con un carácter que puede recordar a un oriental especiado de diseñador por su faceta cálida y magnética.",
-    "notes": [
-      "Canela",
-      "Cardamomo",
-      "Lavanda",
-      "Pimienta negra",
-      "Haba tonka",
-      "Madera de cedro",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Mandarina, Bergamota, Pimienta",
+    "notasCorazon": "Cuero, Cedro, Sándalo",
+    "notasFondo": "Ámbar, Almizcle, Vainilla"
   },
   {
     "id": 377,
@@ -10418,23 +9360,16 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-the-secret-100ml-m.webp",
     "description": "Un perfume para el hombre, misterioso y magnético, pensado para proyectar seducción con una salida fresca y aromática que evoluciona hacia un corazón especiado y un fondo cálido de cuero y maderas. Su estilo recuerda a un oriental especiado masculino con un aire seductor muy comercial, en la línea de fragancias de diseñador modernas orientadas al atractivo nocturno.",
-    "notes": [
-      "Menta",
-      "Pomelo blanco",
-      "Bergamota",
-      "Canela",
-      "Cuero",
-      "Almizcle",
-      "Cedro",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
     "precioBS": 16250,
     "variantIds": [
       377,
       378
-    ]
+    ],
+    "notasSalida": "Pomelo, Mandarina, Bergamota",
+    "notasCorazon": "Lavanda, Cedro, Cuero",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 378,
@@ -10445,22 +9380,16 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-the-secret-200ml-m.webp",
     "description": "Una fragancia para el hombre misteriosa y magnética, pensada para proyectar una seducción elegante y segura. Su estilo aromático especiado con un fondo de cuero y maderas recuerda a un perfume de diseñador moderno, con una frescura inicial muy marcada por la menta y los cítricos.",
-    "notes": [
-      "Menta",
-      "Pomelo blanco",
-      "Bergamota",
-      "Canela",
-      "Cuero",
-      "Almizcle",
-      "Notas amaderadas"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
     "precioBS": 22750,
     "variantIds": [
       377,
       378
-    ]
+    ],
+    "notasSalida": "Pomelo, Mandarina, Bergamota",
+    "notasCorazon": "Lavanda, Cedro, Cuero",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 379,
@@ -10471,18 +9400,10 @@ export const products = [
     "genero": "Masculino",
     "image": "hugo-boss-hugo-man-125ml-m.webp",
     "description": "Hugo Man de Hugo Boss es una fragancia para el hombre, fresca y aromática, con un estilo moderno y limpio que combina energía urbana con elegancia casual. Su perfil olfativo recuerda a un clásico diseñador masculino, con una salida frutal y herbal sobre un fondo amaderado y ligeramente resinoso.",
-    "notes": [
-      "Manzana verde",
-      "Pomelo",
-      "Albahaca",
-      "Lavanda",
-      "Salvia",
-      "Jazmín",
-      "Cedro",
-      "Pachiulí",
-      "Abeto"
-    ],
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "notasSalida": "Menta, Albahaca, Hierba verde",
+    "notasCorazon": "Geranio, Cedro, Jazmín",
+    "notasFondo": "Almizcle, Cedro, Ámbar"
   },
   {
     "id": 380,
@@ -10493,32 +9414,12 @@ export const products = [
     "genero": "Masculino",
     "image": "boucheron-pour-homme-collector-eau-de-parfum-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo amaderado aromático, elegante y atemporal, con un equilibrio refinado entre frescura cítrica, faceta floral clásica y fondo cálido y sofisticado. Se inspira en el ADN de un gran perfume de diseñador francés, evocando el carácter distinguido y versátil de Boucheron Pour Homme en una versión Collector más intensa y pulida.",
-    "notes": [
-      "Naranja",
-      "Lavanda",
-      "Mandarina",
-      "Albahaca",
-      "Verbena limonera",
-      "Bergamota",
-      "Limón",
-      "Clavel",
-      "Raíz de iris",
-      "Jazmín",
-      "Muguete",
-      "Rosa",
-      "Ylang-ylang",
-      "Sándalo",
-      "Haba tonka",
-      "Ámbar",
-      "Almizcle",
-      "Musgo de roble",
-      "Vetiver",
-      "Incienso",
-      "Benjuí"
-    ],
     "categoria": "disenador",
     "precioUSD": 50,
-    "precioBS": 32500
+    "precioBS": 32500,
+    "notasSalida": "Bergamota, Limón, Cardamomo",
+    "notasCorazon": "Iris, Cedro, Cuero",
+    "notasFondo": "Ámbar, Almizcle, Sándalo"
   },
   {
     "id": 381,
@@ -10529,20 +9430,12 @@ export const products = [
     "genero": "Masculino",
     "image": "halloween-halloween-man-mystery-125ml-m.webp",
     "description": "Perfume para el hombre de estilo amaderado aromático y afrutado, con un aire moderno, juvenil y magnético. Destaca por su carácter especiado y elegante, y recuerda a una fragancia de diseñador versátil con una vibra nocturna muy atractiva.",
-    "notes": [
-      "Mandarina",
-      "Lavanda",
-      "Pimienta negra",
-      "Notas afrutadas",
-      "Geranio",
-      "Avellana",
-      "Pachulí",
-      "Hojas de pachulí de Indonesia",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Pomelo, Bergamota, Pimienta",
+    "notasCorazon": "Cardamomo, Cedro, Incienso",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 382,
@@ -10553,19 +9446,12 @@ export const products = [
     "genero": "Masculino",
     "image": "benetton-colors-de-benetton-man-blue-100ml-m.webp",
     "description": "Un perfume para el hombre con un carácter fresco, acuático y amaderado, ideal para un uso diario sofisticado. Colors Man Blue de Benetton se inspira en el estilo limpio y juvenil de la perfumería masculina de diseñador, con una sensación vibrante y moderna. ",
-    "notes": [
-      "Limón",
-      "Tequila",
-      "Abedul",
-      "Melón",
-      "Enebro",
-      "Cilantro",
-      "Vetiver de Haití",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Pomelo, Limón",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 383,
@@ -10576,23 +9462,16 @@ export const products = [
     "genero": "Masculino",
     "image": "nautica-nautica-voyage-100ml-m.webp",
     "description": "Fragancia para el hombre fresca, acuática y vibrante, ideal para el día a día con un estilo limpio y deportivo. Nautica Voyage se inspira en un perfil aromático muy popular de diseñador, con una sensación moderna y masculina que recuerda a un clásico fresco de uso casual.",
-    "notes": [
-      "Hojas verdes",
-      "Manzana verde",
-      "Loto",
-      "Mimosa",
-      "Almizcle",
-      "Cedro",
-      "Musgo de roble",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
     "precioBS": 16250,
     "variantIds": [
       383,
       368
-    ]
+    ],
+    "notasSalida": "Verde hoja, Manzana verde, Agua de mar",
+    "notasCorazon": "Mimosa, Loto, Cedro",
+    "notasFondo": "Almizcle, Musgo de roble, Ámbar"
   },
   {
     "id": 384,
@@ -10603,28 +9482,12 @@ export const products = [
     "genero": "Masculino",
     "image": "calvin-klein-escape-for-men-100ml-m.webp",
     "description": "Escape for Men de Calvin Klein es una fragancia para el hombre de estilo aromático fresco, verde y ligeramente amaderado, con un carácter limpio y elegante. Inspirada en el ADN clásico de la perfumería masculina de diseñador de los años 90, destaca por su frescura natural y su estela sofisticada para el día a día.",
-    "notes": [
-      "Eucalipto",
-      "Melón",
-      "Enebro de Virginia",
-      "Pomelo",
-      "Mango",
-      "Bergamota",
-      "Romero",
-      "Ciprés",
-      "Abeto",
-      "Salvia",
-      "Abedul",
-      "Calone",
-      "Sándalo",
-      "Ámbar",
-      "Pachulí",
-      "Musgo de roble",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Bergamota, Menta, Pimienta",
+    "notasCorazon": "Cedro, Lavanda, Nuez moscada",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 385,
@@ -10635,19 +9498,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-emblem-100ml-m.webp",
     "description": "Una fragancia para el hombre elegante y segura de sí misma, con un perfil amaderado aromático y especiado que transmite sofisticación moderna. Se inspira en el estilo de un clásico contemporáneo de diseñador, con una apertura fresca y vibrante y un fondo cálido, refinado y masculino.",
-    "notes": [
-      "Toronja",
-      "Salvia esclarea",
-      "Cardamomo",
-      "Hoja de violeta",
-      "Canela",
-      "Fava tonka",
-      "Notas amaderadas",
-      "Maderas preciosas"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Bergamota, Limón, Jengibre",
+    "notasCorazon": "Lavanda, Cedro, Salvia",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 386,
@@ -10658,23 +9514,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-presence-75ml-m.webp",
     "description": "Perfume para el hombre de estilo ámbar especiado, elegante y ligeramente dulce, con una presencia clásica y cálida. Se inspira en el carácter sofisticado de un perfume de diseñador masculino, ideal para quien busca un aroma distintivo y versátil con un toque refinado.",
-    "notes": [
-      "Canela",
-      "Cardamomo",
-      "Jengibre",
-      "Bergamota",
-      "Manzana",
-      "Salvia",
-      "Heliotropo",
-      "Haba tonka",
-      "Sándalo",
-      "Almizcle blanco",
-      "Ámbar",
-      "Madera de teca"
-    ],
     "categoria": "disenador",
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "notasSalida": "Bergamota, Lavanda, Limón",
+    "notasCorazon": "Geranio, Cedro, Rosa",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 387,
@@ -10685,17 +9530,12 @@ export const products = [
     "genero": "Masculino",
     "image": "salvatore-ferragamo-f-by-ferragamo-black-100ml-m.webp",
     "description": "Fragancia aromática especiada para el hombre, elegante y sobria, con un perfil moderno que combina frescura y un fondo cálido y sensual. F by Ferragamo Black se inspira en el estilo de un perfume de diseñador clásico, con un carácter refinado y versátil ideal para el día o la noche.",
-    "notes": [
-      "Lavanda",
-      "Manzana",
-      "Pimienta negra",
-      "Cilantro",
-      "Haba tonka",
-      "Ládano"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Bergamota, Lavanda, Cardamomo",
+    "notasCorazon": "Cedro, Vetiver, Pachulí",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 388,
@@ -10706,36 +9546,16 @@ export const products = [
     "genero": "Masculino",
     "image": "calvin-klein-obsession-for-men-125ml-m.webp",
     "description": "Una fragancia para el hombre intensa, sensual y carismática, con un perfil oriental amaderado que combina especias cálidas, cítricos vibrantes y maderas profundas. Obsession for Men de Calvin Klein se inspira en el espíritu provocador de la perfumería de diseñador de los años 80 y es un clásico masculino de gran personalidad.",
-    "notes": [
-      "Bergamota",
-      "Canela",
-      "Mandarina",
-      "Lavanda",
-      "Cilantro",
-      "Pomelo",
-      "Lima",
-      "Salvia",
-      "Clavel",
-      "Jazmín",
-      "Nuez moscada",
-      "Mirra",
-      "Palo de rosa",
-      "Pino",
-      "Bayas rojas",
-      "Sándalo",
-      "Ámbar",
-      "Vetiver",
-      "Vainilla",
-      "Pachulí",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
     "precioBS": 22750,
     "variantIds": [
       388,
       356
-    ]
+    ],
+    "notasSalida": "Mandarina, Bergamota, Lavanda",
+    "notasCorazon": "Cedro, Sándalo, Vetiver",
+    "notasFondo": "Almizcle, Ámbar, Vainilla"
   },
   {
     "id": 389,
@@ -10746,26 +9566,12 @@ export const products = [
     "genero": "Masculino",
     "image": "hugo-boss-hugo-dark-blue-75ml-m.webp",
     "description": "Una fragancia oriental especiada para el hombre, con un carácter elegante, vibrante y ligeramente seductor. Hugo Dark Blue de Hugo Boss se inspira en el estilo de un perfume de diseñador clásico, ideal para quien busca una firma masculina con frescura cítrica, especias cálidas y un fondo amaderado envolvente.",
-    "notes": [
-      "Naranja",
-      "Jengibre",
-      "Pomelo",
-      "Limón",
-      "Lima",
-      "Caoba",
-      "Ciprés",
-      "Salvia",
-      "Geranio",
-      "Cardamomo",
-      "Pachulí",
-      "Benjuí",
-      "Vetiver",
-      "Cedro",
-      "Vainilla"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Bergamota, Lima, Menta",
+    "notasCorazon": "Lavanda, Cedro, Salvia",
+    "notasFondo": "Almizcle, Ámbar, Vetiver"
   },
   {
     "id": 390,
@@ -10776,23 +9582,12 @@ export const products = [
     "genero": "Masculino",
     "image": "halloween-halloween-man-125ml-m.webp",
     "description": "Una fragancia para el hombre joven y moderno, con un carácter magnético y nocturno que combina frescura especiada con un fondo cálido y seductor. Su estilo olfativo ámbar amaderado, con guiños al universo de los perfumes de diseñador, la convierte en una opción distintiva para quienes buscan personalidad y presencia.",
-    "notes": [
-      "Martini",
-      "Hojas de violeta",
-      "Mandarina",
-      "Albahaca",
-      "Jengibre",
-      "Canela",
-      "Lavanda",
-      "Flor de azahar del naranjo",
-      "Vainilla",
-      "Ámbar",
-      "Cuero",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Bergamota, Pomelo, Lavanda",
+    "notasCorazon": "Cedro, Iris, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 391,
@@ -10803,24 +9598,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-blue-seduction-100ml-m.webp",
     "description": "Blue Seduction de Antonio Banderas es una fragancia para el hombre fresca, acuática y seductora, ideal para un estilo casual y moderno. Su perfil olfativo vibrante combina matices frutales y marinos con un fondo cálido y ligeramente adictivo, inspirado en el espíritu de seducción natural de la firma Banderas.",
-    "notes": [
-      "Bergamota",
-      "Cassis",
-      "Menta",
-      "Melón",
-      "Agua de mar",
-      "Manzana verde",
-      "Cardamomo",
-      "Nuez moscada",
-      "Capuchino",
-      "Ámbar",
-      "Maderas",
-      "Almizcle",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Mandarina, Pomelo, Bergamota",
+    "notasCorazon": "Lavanda, Cedro, Iris",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 392,
@@ -10831,22 +9614,12 @@ export const products = [
     "genero": "Masculino",
     "image": "benetton-colors-man-black-100ml-m.webp",
     "description": "Colors Man Black de Benetton es una fragancia intensa y sofisticada para el hombre, con un carácter amaderado-oriental lleno de especias, cuero y matices elegantes. Se inspira en el estilo de un perfume de diseñador moderno y magnético, ideal para quienes buscan una estela masculina, actual y con personalidad.",
-    "notes": [
-      "Bergamota",
-      "Nuez moscada",
-      "Pimienta negra",
-      "Lavanda",
-      "Pachulí",
-      "Cuero",
-      "Vetiver",
-      "Madera de oud",
-      "Vainilla",
-      "Ámbar",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Pomelo, Pimienta",
+    "notasCorazon": "Cuero, Cedro, Vetiver",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 393,
@@ -10857,21 +9630,12 @@ export const products = [
     "genero": "Masculino",
     "image": "guess-guess-seductive-homme-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo amaderado oriental, elegante y seductor, con un equilibrio entre frescura especiada y un fondo cálido y envolvente. Guess Seductive Homme se inspira en el perfil de un perfume masculino moderno y sofisticado, con un aire afín a las propuestas amaderadas-ámbar de diseñador.",
-    "notes": [
-      "Pimienta rosa",
-      "Mandarina",
-      "Cardamomo",
-      "Orquídea",
-      "Hojas de violeta",
-      "Vetiver",
-      "Ámbar",
-      "Sándalo",
-      "Pachulí",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Pomelo, Bergamota, Limón",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 394,
@@ -10882,18 +9646,12 @@ export const products = [
     "genero": "Masculino",
     "image": "hugo-boss-hugo-xy-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático amaderado, fresca, moderna y con un toque sofisticado. Hugo XY de Hugo Boss se inspira en una masculinidad limpia y contemporánea, ideal para quien busca una firma olfativa versátil y elegante.",
-    "notes": [
-      "Hojas de pera",
-      "Bergamota",
-      "Cedro",
-      "Albahaca",
-      "Menta",
-      "Pachulí",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Bergamota, Cardamomo, Pimienta",
+    "notasCorazon": "Lavanda, Cedro, Cuero",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 395,
@@ -10904,20 +9662,12 @@ export const products = [
     "genero": "Masculino",
     "image": "salvatore-ferragamo-uomo-salvatore-ferragamo-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo elegante, cálido y ligeramente gourmand, con un carácter moderno y seductor. Uomo Salvatore Ferragamo se inspira en el perfil masculino italiano de diseñador, combinando frescura especiada con un fondo cremoso y adictivo.",
-    "notes": [
-      "Cardamomo",
-      "Pimienta negra",
-      "Bergamota",
-      "Flor de naranjo",
-      "Café",
-      "Ambroxan",
-      "Haba tonka",
-      "Sándalo",
-      "Madera de cachemira"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Bergamota, Mandarina, Laurel",
+    "notasCorazon": "Iris florentino, Lavanda, Vetiver",
+    "notasFondo": "Sándalo, Almizcle, Ámbar"
   },
   {
     "id": 396,
@@ -10928,18 +9678,12 @@ export const products = [
     "genero": "Masculino",
     "image": "nautica-nautica-100ml-m.webp",
     "description": "Una fragancia fresca y dinámica para el hombre, de estilo acuático-aromático con un carácter limpio y juvenil. Nautica se inspira en el espíritu clásico de las colonias marinas de diseñador, evocando una sensación deportiva y elegante ideal para el día a día.",
-    "notes": [
-      "Acuáticas",
-      "Cítricos",
-      "Manzana verde",
-      "Piña",
-      "Bergamota",
-      "Notas marinas",
-      "Almizcle"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Pomelo, Menta acuática",
+    "notasCorazon": "Lavanda, Cedro, Algas marinas",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 397,
@@ -10950,21 +9694,12 @@ export const products = [
     "genero": "Masculino",
     "image": "davidoff-cool-water-125ml-m.webp",
     "description": "Cool Water de Davidoff es una fragancia para el hombre de estilo aromático acuático, fresca, limpia y vibrante. Inspirada en el espíritu clásico de los perfumes de diseñador masculinos de los años 80, aporta una sensación marina y deportiva ideal para el uso diario.",
-    "notes": [
-      "Menta",
-      "Lavanda",
-      "Coriandro",
-      "Romero",
-      "Geranio",
-      "Neroli",
-      "Sándalo",
-      "Cedro",
-      "Almizcle",
-      "Haba tonka"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Menta de agua, Romero, Lavanda",
+    "notasCorazon": "Geranio, Jazmín, Menta",
+    "notasFondo": "Cedro, Almizcle, Tabaco"
   },
   {
     "id": 398,
@@ -10975,17 +9710,12 @@ export const products = [
     "genero": "Masculino",
     "image": "montblanc-legend-eau-de-parfum-100ml-m.webp",
     "description": "Una fragancia para el hombre que combina elegancia moderna con una presencia intensa y sofisticada. Su estilo olfativo aromático amaderado-cuero evoca una masculinidad pulida y refinada, con un aire inspirado en el universo clásico de las fragancias de diseñador de Montblanc.",
-    "notes": [
-      "Bergamota",
-      "Hojas de violeta",
-      "Jazmín",
-      "Magnolia",
-      "Musgo de roble",
-      "Cuero"
-    ],
     "categoria": "disenador",
     "precioUSD": 60,
-    "precioBS": 39000
+    "precioBS": 39000,
+    "notasSalida": "Bergamota, Cardamomo, Lavanda",
+    "notasCorazon": "Oud, Salvia, Cedro",
+    "notasFondo": "Vetiver, Almizcle, Ámbar"
   },
   {
     "id": 399,
@@ -10996,32 +9726,12 @@ export const products = [
     "genero": "Masculino",
     "image": "aramis-new-west-for-him-100ml-m.webp",
     "description": "Una fragancia aromática acuática para el hombre, fresca, limpia y con un carácter clásico muy distinguido. New West for Him de Aramis evoca el estilo de un perfume de diseñador de finales de los 80, con una personalidad masculina, marina y ligeramente amaderada que transmite elegancia atemporal.",
-    "notes": [
-      "Aldehídos",
-      "Artemisia",
-      "Lavanda",
-      "Notas marinas",
-      "Menta",
-      "Alcaravea",
-      "Bergamota",
-      "Pino",
-      "Cilantro",
-      "Bayas de enebro",
-      "Laurel",
-      "Jazmín",
-      "Sandía",
-      "Geranio",
-      "Cuero",
-      "Sándalo",
-      "Ámbar",
-      "Pachulí",
-      "Almizcle",
-      "Musgo de roble",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Bergamota, Lavanda, Menta",
+    "notasCorazon": "Geranio, Cedro, Musgo marino",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 400,
@@ -11032,20 +9742,12 @@ export const products = [
     "genero": "Masculino",
     "image": "benetton-cold-silver-100ml-m.webp",
     "description": "Fragancia para el hombre de estilo amaderado aromático, fresca y vibrante, con un carácter limpio y moderno ideal para el día a día. Benetton Cold Silver se inspira en una masculinidad dinámica y chispeante, evocando el estilo de un diseñador deportivo y contemporáneo.",
-    "notes": [
-      "Yuzu",
-      "Cilantro",
-      "Jengibre",
-      "Cardamomo",
-      "Salvia",
-      "Madera de balsa",
-      "Musgo",
-      "Almizcle",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "notasSalida": "Bergamota, Pomelo, Menta",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 401,
@@ -11056,22 +9758,12 @@ export const products = [
     "genero": "Masculino",
     "image": "maison-alhambra-glacier-pour-homme-100ml-m.webp",
     "description": "Fragancia para el hombre de carácter fresco, aromático y elegante, ideal para quien busca una presencia limpia pero con personalidad. Glacier Pour Homme de Maison Alhambra se inspira en el estilo de perfumes masculinos modernos y frescos, con un perfil vibrante y ligeramente especiado de aire refinado.",
-    "notes": [
-      "Lavanda",
-      "Menta",
-      "Cardamomo",
-      "Bergamota",
-      "Canela",
-      "Flor de azahar del naranjo",
-      "Alcaravea",
-      "Vainilla",
-      "Haba tonka",
-      "Ámbar",
-      "Sándalo"
-    ],
     "categoria": "arabes",
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "notasSalida": "Bergamota, Lima, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Notas acuáticas",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 402,
@@ -11082,18 +9774,12 @@ export const products = [
     "genero": "Masculino",
     "image": "cofinluxe-taxi-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo fresco, limpio y especiado, ideal para un perfil moderno y seguro. Taxi de Cofinluxe evoca un aire urbano y varonil con un carácter aromático que recuerda a las fragancias clásicas de diseñador de los años 2000, con un fondo cálido y elegante.",
-    "notes": [
-      "Lavanda",
-      "Bergamota",
-      "Anís estrellado",
-      "Sándalo",
-      "Almizcle",
-      "Ámbar gris",
-      "Nuez moscada"
-    ],
     "categoria": "disenador",
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "notasSalida": "Bergamota, Limón, Menta",
+    "notasCorazon": "Lavanda, Geranio, Cedro",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 403,
@@ -11104,21 +9790,12 @@ export const products = [
     "genero": "Masculino",
     "image": "halloween-halloween-man-x-125ml-m.webp",
     "description": "Una fragancia para el hombre de carácter oriental amaderado, intensa y moderna, con un contraste muy seductor entre frescura especiada y un fondo cálido y envolvente. Su perfil recuerda al estilo nocturno y adictivo de un perfume de diseñador con guiños al café, el whisky y el cuero, ideal para quien busca una presencia distintiva y sofisticada.",
-    "notes": [
-      "Limón",
-      "Cardamomo",
-      "Lavanda",
-      "Café",
-      "Whisky",
-      "Canela",
-      "Cuero",
-      "Haba tonka",
-      "Incienso",
-      "Ámbar gris"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Bergamota, Pomelo, Menta",
+    "notasCorazon": "Cedro, Salvia, Incienso",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 404,
@@ -11129,24 +9806,12 @@ export const products = [
     "genero": "Masculino",
     "image": "joop-joop-homme-125ml-m.webp",
     "description": "Una fragancia para el hombre intensa, dulce y muy carismática, con un estilo oriental fougère que deja una estela inolvidable. JOOP! Homme se inspira en el espíritu de los grandes perfumes masculinos de los 80, con un perfil audaz, sensual y claramente reconocible.",
-    "notes": [
-      "Flor de azahar del naranjo",
-      "Mandarina",
-      "Bergamota",
-      "Limón de Amalfi",
-      "Canela",
-      "Heliotropo",
-      "Jazmín",
-      "Cardamomo",
-      "Lirio de los valles",
-      "Vainilla",
-      "Haba tonka",
-      "Sándalo",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Naranja, Bergamota, Lavanda",
+    "notasCorazon": "Canela, Jazmín, Heliotropo",
+    "notasFondo": "Sándalo, Almizcle, Vainilla"
   },
   {
     "id": 405,
@@ -11157,21 +9822,12 @@ export const products = [
     "genero": "Masculino",
     "image": "guess-guess-1981-los-angeles-men-100ml-m.webp",
     "description": "Una fragancia oriental fougère para el hombre, moderna y seductora, con un carácter juvenil y elegante inspirado en el estilo urbano de Los Ángeles. Su perfil recuerda a un perfume de diseñador contemporáneo por su mezcla fresca-especiada y su fondo amaderado-ambarado lleno de personalidad.",
-    "notes": [
-      "Bergamota",
-      "Pimienta negra",
-      "Ciruela",
-      "Menta",
-      "Jengibre",
-      "Geranio",
-      "Tabaco",
-      "Ámbar",
-      "Sándalo",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Bergamota, Limón, Pimienta",
+    "notasCorazon": "Lavanda, Cedro, Salvia",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 406,
@@ -11182,21 +9838,12 @@ export const products = [
     "genero": "Masculino",
     "image": "hugo-boss-boss-selection-100ml-m.webp",
     "description": "Una fragancia para el hombre elegante y segura, con un perfil fresco, especiado y fougère que transmite sofisticación discreta. Boss Selection de Hugo Boss se inspira en la clásica perfumería masculina de diseñador, con un estilo limpio y carismático ideal para el día a día o la oficina.",
-    "notes": [
-      "Bergamota",
-      "Mandarina",
-      "Pimienta rosa",
-      "Pomelo",
-      "Geranio",
-      "Anís estrellado",
-      "Madera de cedro",
-      "Almizcle",
-      "Vetiver",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "notasSalida": "Bergamota, Naranja, Cardamomo",
+    "notasCorazon": "Salvia, Cedro, Sándalo",
+    "notasFondo": "Vetiver, Almizcle, Ámbar"
   },
   {
     "id": 407,
@@ -11207,18 +9854,12 @@ export const products = [
     "genero": "Masculino",
     "image": "hugo-boss-hugo-boss-unlimited-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático fougère, fresca y vibrante, ideal para un perfil moderno y seguro. Hugo Boss Bottled Unlimited se inspira en el ADN elegante y versátil de Boss Bottled, aportando un carácter más energizante y deportivo.",
-    "notes": [
-      "Menta",
-      "Limón",
-      "Piña",
-      "Notas verdes",
-      "Sándalo",
-      "Almizcle",
-      "Maderas"
-    ],
     "categoria": "disenador",
     "precioUSD": 65,
-    "precioBS": 42250
+    "precioBS": 42250,
+    "notasSalida": "Limón, Bergamota, Mandarina",
+    "notasCorazon": "Lavanda, Cedro, Madera",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 408,
@@ -11229,27 +9870,12 @@ export const products = [
     "genero": "Masculino",
     "image": "hugo-boss-hugo-energise-eau-de-toilette-75ml-m.webp",
     "description": "Una fragancia para el hombre de estilo aromático amaderado, fresca y vibrante, pensada para transmitir energía y carácter urbano. Hugo Energise de Hugo Boss se presenta como una opción moderna y dinámica, con un perfil olfativo que recuerda al estilo deportivo y juvenil de los perfumes masculinos de diseñador.",
-    "notes": [
-      "Pimienta rosa",
-      "Limón",
-      "Kumquat",
-      "Hojas de piña",
-      "Menta",
-      "Mandarina",
-      "Cardamomo",
-      "Fresia",
-      "Nuez moscada",
-      "Cilantro",
-      "Enebro de Virginia",
-      "Esclarea",
-      "Jazmín",
-      "Madera de teca",
-      "Cuero",
-      "Vainilla"
-    ],
     "categoria": "disenador",
     "precioUSD": 55,
-    "precioBS": 35750
+    "precioBS": 35750,
+    "notasSalida": "Bergamota, Lima, Menta",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 409,
@@ -11260,19 +9886,12 @@ export const products = [
     "genero": "Masculino",
     "image": "sean-john-i-am-king-100ml-m.webp",
     "description": "Una fragancia para el hombre de estilo fresco, acuático y amaderado, diseñada para transmitir confianza y presencia con un aire moderno y distinguido. Se inspira en el carácter de un perfume de diseñador masculino con un arranque cítrico vibrante y un fondo elegante y sensual.",
-    "notes": [
-      "Arándano",
-      "Mandarina",
-      "Naranja",
-      "Acorde marino",
-      "Sándalo",
-      "Cedro",
-      "Vetiver",
-      "Musgo de roble"
-    ],
     "categoria": "disenador",
     "precioUSD": 45,
-    "precioBS": 29250
+    "precioBS": 29250,
+    "notasSalida": "Menta, Bergamota, Lavanda",
+    "notasCorazon": "Cedro, Geranio, Sándalo",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 410,
@@ -11283,21 +9902,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-power-of-seduction-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca, aromática y amaderada, con un carácter seductor y muy versátil para el día a día. Su estilo olfativo recuerda a un fougère moderno con matiz frutal, evocando el perfil de un perfume de diseñador deportivo y elegante.",
-    "notes": [
-      "Manzana",
-      "Bergamota",
-      "Lavanda",
-      "Abrótano",
-      "Esclarea",
-      "Notas amaderadas",
-      "Musgo",
-      "Haba tonka",
-      "Ámbar",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Pomelo, Cardamomo",
+    "notasCorazon": "Lavanda, Cedro, Salvia",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 411,
@@ -11308,20 +9918,12 @@ export const products = [
     "genero": "Masculino",
     "image": "benetton-benetton-cold-100ml-m.webp",
     "description": "Benetton Cold es una fragancia para el hombre de estilo cítrico aromático, fresca, limpia y con un carácter clásico muy versátil. Su perfil recuerda al estilo de los perfumes de diseñador masculinos de los años 90, con un acabado elegante, seco y ligeramente especiado, ideal para quienes buscan una presencia discreta pero distinguida.",
-    "notes": [
-      "Bergamota",
-      "Aldehídos",
-      "Alcaravea",
-      "Lavanda",
-      "Geranio",
-      "Cilantro",
-      "Almizcle blanco",
-      "Vetiver",
-      "Pachulí"
-    ],
     "categoria": "disenador",
     "precioUSD": 20,
-    "precioBS": 13000
+    "precioBS": 13000,
+    "notasSalida": "Bergamota, Pomelo, Menta",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 412,
@@ -11332,21 +9934,12 @@ export const products = [
     "genero": "Masculino",
     "image": "antonio-banderas-the-icon-eau-de-parfum-100ml-m.webp",
     "description": "Una fragancia para el hombre de carácter ámbar fougère, intensa y elegante, con un perfil fresco-especiado que evoluciona hacia un fondo cálido y sofisticado. Se inspira en el estilo de los perfumes masculinos de diseñador modernos, con un aire seductor y pulido que recuerda a una firma contemporánea de lujo.",
-    "notes": [
-      "Toronja (pomelo)",
-      "Pimienta negra",
-      "Enebro de Virginia",
-      "Lavanda",
-      "Gamuza",
-      "Ciprés",
-      "Benjuí",
-      "Pachulí",
-      "Ládano",
-      "Vetiver"
-    ],
     "categoria": "disenador",
     "precioUSD": 30,
-    "precioBS": 19500
+    "precioBS": 19500,
+    "notasSalida": "Bergamota, Mandarina, Pimienta rosa",
+    "notasCorazon": "Salvia, Cedro, Cuero",
+    "notasFondo": "Pachulí, Ámbar, Almizcle"
   },
   {
     "id": 413,
@@ -11357,19 +9950,12 @@ export const products = [
     "genero": "Masculino",
     "image": "nautica-nautica-blue-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca y acuática, con un perfil limpio y juvenil que combina energía marina con un toque afrutado. Nautica Blue se inspira en el estilo de un clásico masculino fácil de llevar, ideal si buscas un aroma luminoso y versátil para el día a día.",
-    "notes": [
-      "Piña",
-      "Bergamota",
-      "Durazno",
-      "Nenúfar",
-      "Jazmín",
-      "Sándalo",
-      "Almizcle",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 25,
-    "precioBS": 16250
+    "precioBS": 16250,
+    "notasSalida": "Bergamota, Lima, Pomelo",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 414,
@@ -11380,19 +9966,12 @@ export const products = [
     "genero": "Masculino",
     "image": "adidas-dynamic-pulse-eau-de-toilette-100ml-m.webp",
     "description": "Una fragancia para el hombre fresca, deportiva y vibrante, ideal para un estilo diario y desenfadado. Su carácter aromático-cítrico con matices amaderados le da un aire juvenil y activo, inspirado en el perfil dinámico de las fragancias masculinas de diseñador más casuales.",
-    "notes": [
-      "Mandarina",
-      "Menta",
-      "Manzana",
-      "Violeta",
-      "Cardamomo",
-      "Lavanda",
-      "Limón",
-      "Maderas"
-    ],
     "categoria": "disenador",
     "precioUSD": 15,
-    "precioBS": 9750
+    "precioBS": 9750,
+    "notasSalida": "Bergamota, Lima, Menta",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera"
   },
   {
     "id": 415,
@@ -11403,19 +9982,12 @@ export const products = [
     "genero": "Masculino",
     "image": "guess-guess-man-gold-75ml-m.webp",
     "description": "Una fragancia para el hombre fresca, limpia y con un carácter cálido y especiado, ideal para un estilo moderno y versátil. Su perfil aromático cítrico-fougère evoca una sensación elegante y luminosa, con un aire que recuerda a las fragancias masculinas de diseñador contemporáneo.",
-    "notes": [
-      "Ajenjo",
-      "Notas verdes",
-      "Piña",
-      "Lavanda",
-      "Jengibre",
-      "Sándalo",
-      "Almizcle",
-      "Ámbar"
-    ],
     "categoria": "disenador",
     "precioUSD": 35,
-    "precioBS": 22750
+    "precioBS": 22750,
+    "notasSalida": "Bergamota, Lima, Cardamomo",
+    "notasCorazon": "Lavanda, Cedro, Iris",
+    "notasFondo": "Almizcle, Ámbar, Sándalo"
   },
   {
     "id": 416,
@@ -11426,26 +9998,11 @@ export const products = [
     "genero": "Masculino",
     "image": "este-lauder-lauder-for-men-100ml-m.webp",
     "description": "Una colonia refinada para el hombre, de estilo aromático fougère fresco y elegante, ideal para quienes buscan una presencia limpia, clásica y sofisticada. Lauder for Men transmite un aire atemporal y puede recordar al estilo de las grandes colonias masculinas de diseñador de corte verde y herbal.",
-    "notes": [
-      "Enebro",
-      "Hojas verdes",
-      "Gálbano",
-      "Salvia esclarea",
-      "Anís",
-      "Clavel",
-      "Jazmín",
-      "Lirio de los valles",
-      "Rosa",
-      "Sándalo",
-      "Ámbar",
-      "Almizcle",
-      "Musgo de roble",
-      "Vainilla",
-      "Pachulí",
-      "Cedro"
-    ],
     "categoria": "disenador",
     "precioUSD": 40,
-    "precioBS": 26000
+    "precioBS": 26000,
+    "notasSalida": "Bergamota, Lavanda, Cedro",
+    "notasCorazon": "Geranio, Roble, Iris",
+    "notasFondo": "Almizcle, Vetiver, Ámbar"
   }
-];
+]
