@@ -89,6 +89,7 @@ export default function Hero() {
 
   // isEntering: el slide está entrando (fade 0→1). isPrev: el slide queda atrás estático.
   function SlideMedia({ slide, z, isEntering, isPrev, index }) {
+    if (!slide) return null
     const wrapStyle = {
       position: 'absolute', inset: 0, zIndex: z,
       opacity: isPrev ? 1 : 1,
