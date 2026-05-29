@@ -9,6 +9,7 @@ import Header from './components/Header'
 import GlobalSidebar from './components/GlobalSidebar'
 import WhatsAppFab from './components/WhatsAppFab'
 import AnnouncementBar from './components/AnnouncementBar'
+import ComingSoon from './pages/ComingSoon'
 
 const Tienda        = lazy(() => import('./pages/Tienda'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))

@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
-import { diaDeLPadreIds } from '../data/dia-del-padre'
+import { diaDeLPadreIds, antoniobanderasIds, armafOdysseyIds } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
 
@@ -73,6 +73,8 @@ export default function DiaDeLPadrePage() {
   const productos = diaDeLPadreIds
     .map(id => allProducts.find(p => p.id === id))
     .filter(Boolean)
+  const productosAB = productos.filter(p => antoniobanderasIds.includes(p.id))
+  const productosArmaf = productos.filter(p => armafOdysseyIds.includes(p.id))
 
   const featured = allProducts.find(p => p.id === EDITOR_PICK_ID)
 
@@ -248,12 +250,25 @@ export default function DiaDeLPadrePage() {
             <p className="ddp-grid-meta">$25 — $30 · 100 ml</p>
           </div>
           <div className="diadel-padre-grid">
-            {productos.map((p, i) => (
+            {productosAB.map((p, i) => (
               <VitrinaCard
                 key={p.id}
                 product={p}
                 ribbon="Día del Padre"
                 badge={i === 0 ? 'Más vendido' : i === 1 ? 'Editor\'s pick' : null}
+              />
+            ))} 
+          </div>
+
+          <div className="ddp-brand-divider">
+            <span>Armaf Odyssey</span>
+          </div>
+          <div className="diadel-padre-grid">
+            {productosArmaf.map(p => (
+              <VitrinaCard
+                key={p.id}
+                product={p}
+                ribbon="Día del Padre"
               />
             ))}
           </div>

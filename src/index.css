@@ -2661,7 +2661,25 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+
 }
+.ddp-brand-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 40px 0 32px;
+    color: #C9A84C;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .ddp-brand-divider::before,
+  .ddp-brand-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.3);
+  }
 
 .ddp-wa-section {
   padding: 80px 0;
@@ -2925,3 +2943,56 @@
   .diadel-padre-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .ddp-personas { grid-template-columns: 1fr; }
 }
+.cs-backdrop {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  filter: blur(4px);
+  pointer-events: none;
+}
+.cs-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  background: rgba(10,10,10,0.75);
+  text-align: center;
+}
+  .cs-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: #C9A84C;
+    text-transform: uppercase;
+  }
+  .cs-title {
+    font-size: clamp(36px, 8vw, 96px);
+    font-style: italic;
+    color: #F7F2EA;
+    margin: 0;
+  }
+  .cs-countdown {
+    display: flex;
+    gap: 40px;
+  }
+  .cs-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .cs-num {
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 300;
+    color: #F7F2EA;
+    font-variant-numeric: tabular-nums;
+  }
+  .cs-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(247,242,234,0.4);
+    text-transform: uppercase;
+  }
