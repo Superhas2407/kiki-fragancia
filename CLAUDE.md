@@ -118,6 +118,9 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 | `scripts/check-missing-notes.mjs` | Reporta notas sin imagen |
 | `scripts/enrich-designer-notes.mjs` | Aplicó notas estructuradas a IDs 249–416 |
 | `scripts/generate-sitemap.js` | Corre automáticamente en cada `npm run build` |
+| `scripts/sync-prices.mjs` | Sincroniza precios desde `C:/Users/Azael/Downloads/LISTA DE PRECIOS PDF ABRIL 2.md` → products-enriched.js + products-index.js. Parsea formato BS+USD concatenado (ratio 650). Filtra TESTER, BODY SPRAY y SET. |
+| `scripts/export-prices.mjs` | Exporta todos los productos con precios a `precios.csv` para edición manual en Excel |
+| `scripts/import-prices.mjs` | Reimporta `precios.csv` editado → products-enriched.js + products-index.js |
 
 ## Pendiente
 - Foto lifestyle real para BrandStory (columna derecha oculta hasta tenerla)
