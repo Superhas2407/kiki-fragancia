@@ -88,9 +88,11 @@ export default function Header() {
     if (q.length < 2) return []
     return allProducts
       .filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.house.toLowerCase().includes(q) ||
-        (p.familia && p.familia.toLowerCase().includes(q))
+        p.ml !== 200 && (
+          p.name.toLowerCase().includes(q) ||
+          p.house.toLowerCase().includes(q) ||
+          (p.familia && p.familia.toLowerCase().includes(q))
+        )
       )
       .slice(0, 6)
   }, [searchQuery])

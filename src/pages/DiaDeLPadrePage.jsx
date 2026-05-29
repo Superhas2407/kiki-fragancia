@@ -252,6 +252,7 @@ export default function DiaDeLPadrePage() {
               <VitrinaCard
                 key={p.id}
                 product={p}
+                ribbon="Día del Padre"
                 badge={i === 0 ? 'Más vendido' : i === 1 ? 'Editor\'s pick' : null}
               />
             ))}

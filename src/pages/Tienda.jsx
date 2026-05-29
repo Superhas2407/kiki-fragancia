@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '../components/Footer'
 import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
+import { diaDeLPadreIds } from '../data/dia-del-padre'
 import WheelPagination from '../components/ui/WheelPagination'
 
 const ITEMS_PER_PAGE = 20
@@ -257,9 +258,11 @@ export default function Tienda() {
   const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]) }
   const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0)
 
-  // Pool base: filtrado por la selección del sidebar global
+  // Pool base: filtrado por la selección del sidebar global.
+  // Los 200ml se excluyen del catálogo porque siempre tienen una variante 100ml
+  // accessible desde el detalle del producto — mostrarlos duplicaría entradas.
   const basePool = useMemo(() => {
-    let pool = products
+    let pool = products.filter(p => p.ml !== 200)
     if (urlGenero) pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)   pool = pool.filter(p => p.categoria === urlTipo)
     return pool
@@ -469,7 +472,10 @@ export default function Tienda() {
                         exit={{ opacity: 0, scale: 0.96 }}
                         transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.3), ease: [0.22, 1, 0.36, 1] }}
                       >
-                        <VitrinaCard product={product} />
+                        <VitrinaCard
+                          product={product}
+                          ribbon={diaDeLPadreIds.includes(product.id) ? 'Día del Padre' : null}
+                        />
                       </motion.div>
                     ))}
                   </AnimatePresence>

@@ -53,7 +53,7 @@ const CheckIcon = () => (
   </svg>
 )
 
-export default function VitrinaCard({ product, badge = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null }) {
   const { addItem } = useCartContext()
   const navigate = useNavigate()
   const cardRef = useRef(null)
@@ -103,7 +103,7 @@ export default function VitrinaCard({ product, badge = null }) {
             <span>N°&nbsp;{String(product.id).padStart(3, '0')}</span>
             <span className="vitrina-num-line" aria-hidden="true" />
           </div>
-          <span className="vitrina-familia">{product.familia}</span>
+          {!ribbon && <span className="vitrina-familia">{product.familia}</span>}
         </div>
 
         <div
@@ -128,6 +128,12 @@ export default function VitrinaCard({ product, badge = null }) {
 
         {badge && (
           <span className="badge-regalo">{badge}</span>
+        )}
+
+        {ribbon && (
+          <div className="vitrina-ribbon" aria-hidden="true">
+            <span>{ribbon}</span>
+          </div>
         )}
 
         {/* Quick-add CTA */}

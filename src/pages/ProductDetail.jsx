@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { products } from '../data/products-enriched'
 import { NOTES_IMAGES } from '../data/notes-images'
+import { diaDeLPadreIds } from '../data/dia-del-padre'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -341,6 +342,12 @@ export default function ProductDetail() {
                     </svg>
                     <span className="pd-img-badge-text">Original Verificado</span>
                   </div>
+
+                  {diaDeLPadreIds.includes(product.id) && (
+                    <div className="vitrina-ribbon" aria-hidden="true">
+                      <span>Día del Padre</span>
+                    </div>
+                  )}
 
                   <div className="pd-img-familia" style={{
                     opacity: imgHover ? 1 : 0,

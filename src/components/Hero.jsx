@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import VaporCanvas from './VaporCanvas'
 
+const SearchIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+  </svg>
+)
+
 const SLIDES = [
   { type: 'video', src: '/hero.webm' },
   { type: 'image', desktop: '/hero/gucci-bloom-desktop.webp',  mobile: '/hero/gucci-bloom-mobile.webp'  },
@@ -18,11 +24,6 @@ function getSlideDuration(idx) {
   return idx === 0 ? 14000 : 7000
 }
 
-const SearchIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-  </svg>
-)
 
 export default function Hero() {
   const [mounted, setMounted]       = useState(false)
@@ -178,113 +179,63 @@ export default function Hero() {
             Oler bien deja gratos recuerdos y con KiKi Fragancia nunca te olvidarán
           </p>
 
-          {/* Buscador global — oculto en mobile (usa lupa del header) */}
-          <div className="hero-search-desktop" style={{ width: '100%', maxWidth: 480, ...rv(380) }}>
-            <form
-              onSubmit={e => { e.preventDefault(); if (searchQuery.trim()) navigate(`/tienda?q=${encodeURIComponent(searchQuery.trim())}`) }}
-              style={{
-                display: 'flex', alignItems: 'center',
-                background: 'rgba(250,250,248,0.06)',
-                border: '1px solid rgba(250,250,248,0.18)',
-                backdropFilter: 'blur(8px)',
-                padding: '0 16px', gap: 10,
-                transition: 'border-color 0.2s',
-              }}
-              onFocus={e => e.currentTarget.style.borderColor = 'rgba(201,168,76,0.6)'}
-              onBlur={e => e.currentTarget.style.borderColor = 'rgba(250,250,248,0.18)'}
-            >
-              <span style={{ color: 'rgba(250,250,248,0.45)', display: 'flex', flexShrink: 0 }}>
-                <SearchIcon />
-              </span>
-              <input
-                type="text"
-                placeholder="Buscar fragancia o marca..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                style={{
-                  flex: 1, background: 'none', border: 'none', outline: 'none',
-                  fontFamily: 'var(--font-s)', fontSize: 12, letterSpacing: '0.05em',
-                  color: '#FAFAF8', padding: '14px 0',
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  background: '#C9A84C', color: '#0A0A0A', border: 'none', cursor: 'pointer',
-                  padding: '7px 16px', fontFamily: 'var(--font-s)', fontSize: 9,
-                  letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 400,
-                  flexShrink: 0,
-                }}
-              >
-                Buscar
-              </button>
-            </form>
-          </div>
-
-          <div className="hero-cta-row" style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 28, ...rv(420) }}>
+          <div className="hero-cta-row" style={{ display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap', ...rv(360) }}>
             <Link to="/tienda" className="btn-cta btn-shimmer-kiki">
               Explorar colección <span className="btn-arrow">→</span>
             </Link>
-            <a
-              href="https://instagram.com/kiki_fragancia"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                fontFamily: 'var(--font-s)', fontSize: 'clamp(11px, 3vw, 12px)', fontWeight: 300, letterSpacing: '0.22em',
-                textTransform: 'uppercase', color: 'rgba(250,250,248,.70)',
-                border: '1px solid rgba(250,250,248,.30)', padding: '13px clamp(20px, 5vw, 32px)',
-                textDecoration: 'none', minHeight: '46px', display: 'inline-flex', alignItems: 'center', boxSizing: 'border-box',
-                transition: 'color .25s ease, border-color .25s ease',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#FAFAF8'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.4)' }}
-              onMouseLeave={e => { e.currentTarget.style.color = 'rgba(250,250,248,.70)'; e.currentTarget.style.borderColor = 'rgba(250,250,248,.30)' }}
+            <Link
+              to="/tienda"
+              className="hero-search-link"
             >
-              Instagram
-            </a>
-          </div>
-
-          <div className="hero-instagram" style={rv(520)}>
-            <div className="gold-line" style={{ width: 20 }}></div>
-            <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="instagram-link">
-              @kiki_fragancia
-            </a>
+              <SearchIcon />
+              Buscar fragancia
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Dots de navegación */}
-      <div style={{
-        position: 'absolute', bottom: 'clamp(20px, 5vh, 80px)', left: '50%', transform: 'translateX(-50%)',
-        display: 'flex', gap: 0, zIndex: 10,
-      }}>
-        {SLIDES_ACTIVE.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            aria-label={`Slide ${i + 1}`}
-            style={{
-              height: 44, padding: '0 4px',
-              background: 'transparent',
-              border: 'none', cursor: 'pointer',
-              display: 'flex', alignItems: 'center',
-            }}
-          >
-            <span aria-hidden="true" style={{
-              display: 'block',
-              width: i === current ? 28 : 8, height: 8,
-              background: i === current ? '#C9A84C' : 'rgba(250,250,248,0.35)',
-              transition: 'width 0.4s ease, background 0.4s ease',
-            }} />
-          </button>
-        ))}
-      </div>
+      {/* Bottom bar — @handle · dots · scroll */}
+      <div className="hero-bottom-bar" style={{ zIndex: 10 }}>
+        <a
+          href="https://instagram.com/kiki_fragancia"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero-bottom-handle"
+          style={rv(480)}
+        >
+          @kiki_fragancia · Instagram
+        </a>
 
-      {/* Scroll indicator */}
-      <div className="kiki-scroll-indicator">
-        <span className="scroll-text">Scroll</span>
-        <div className="scroll-line-wrap">
-          <div className="scroll-line-drop"></div>
+        {/* Dots de navegación */}
+        <div style={{ display: 'flex', gap: 0, alignItems: 'center' }}>
+          {SLIDES_ACTIVE.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Slide ${i + 1}`}
+              style={{
+                height: 44, padding: '0 4px',
+                background: 'transparent',
+                border: 'none', cursor: 'pointer',
+                display: 'flex', alignItems: 'center',
+              }}
+            >
+              <span aria-hidden="true" style={{
+                display: 'block',
+                width: i === current ? 28 : 8, height: 8,
+                background: i === current ? '#C9A84C' : 'rgba(250,250,248,0.35)',
+                transition: 'width 0.4s ease, background 0.4s ease',
+              }} />
+            </button>
+          ))}
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="kiki-scroll-indicator" style={{ position: 'static', bottom: 'auto', left: 'auto' }}>
+          <span className="scroll-text">Scroll</span>
+          <div className="scroll-line-wrap">
+            <div className="scroll-line-drop"></div>
+          </div>
         </div>
       </div>
     </section>
