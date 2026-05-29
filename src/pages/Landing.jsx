@@ -5,6 +5,7 @@ import BrandStory from '../components/BrandStory'
 import Guarantee from '../components/Guarantee'
 import Footer from '../components/Footer'
 import DiaDeLPadrePromo from '../components/DiaDeLPadrePromo'
+import Testimonials from '../components/Testimonials'
 
 export default function Landing() {
   return (
@@ -16,6 +17,7 @@ export default function Landing() {
         <Catalog theme="dark" />
         <BrandsMarquee reverse />
         <BrandStory />
+        <Testimonials />
         <Guarantee />
       </main>
       <Footer />
