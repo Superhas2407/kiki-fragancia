@@ -74,14 +74,17 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 - `.pd-pyr-tier-label` — texto dorado italic uppercase
 - `.pd-pyr-footer` — pie con casa · nombre · familia
 
-## Hero carrusel
+## Hero carrusel (Opción A — 2026-05-29)
 - Video: 14s, fotos: 7s por slide (`getSlideDuration(idx)`)
 - Crossfade real: slide anterior en z=1, nuevo entra con `heroFadeIn` CSS animation en z=2
-- Buscador global → navega a `/tienda?q=...`
+- **Layout Opción A:** título `clamp(40px,6vw,88px)` italic, eyebrow margin-bottom 40px, quote margin-bottom 44px
+- CTA "Explorar colección" + link "Buscar fragancia" con ícono lupa (en lugar de barra de búsqueda en hero)
+- **Barra inferior unificada** (`.hero-bottom-bar`): `@kiki_fragancia · Instagram` | dots carrusel | scroll indicator — en una sola fila con `backdrop-filter: blur(8px)`. Oculta en ≤767px.
+- Sin viñetas radiales en `hero-bg-gradient` (solo `linear-gradient` para legibilidad del texto)
 
 ## Search Autocomplete (Header)
 - `useMemo` sobre `allProducts` (products-index) con min 2 chars, max 6 resultados
-- Filtra por `name`, `house`, `familia`
+- Filtra por `name`, `house`, `familia` — **excluye productos 200ml** (`p.ml !== 200`)
 - Lista debajo del input: imagen circular 36px, casa uppercase, nombre italic
 - ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado
 - Click en sugerencia → navega a `/tienda/:id`
@@ -96,18 +99,26 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 - URL params: `?genero=Masculino|Femenino|Unisex|Niño` y `?tipo=arabes|disenador|nicho`
 - Drawer "Filtrar": marcas + Categoría (Árabes/Nicho/Diseñador)
 - GlobalSidebar (≥1024px): género + tipo
+- **Productos 200ml excluidos del grid** (`p.ml !== 200` en `basePool`) — accesibles como variante desde la card 100ml
+
+## VitrinaCard
+- Prop `ribbon` — cinta diagonal dorada en esquina superior derecha (`.vitrina-ribbon`). Cuando hay ribbon, la familia olfativa se oculta (evita solapamiento).
+- Prop `badge` — etiqueta en esquina inferior-izquierda (`bottom: 54px; left: 16px`). **Oculta en ≤768px** (`.badge-regalo { display:none }`) — las cards de 2 columnas son demasiado pequeñas.
+- "Original Verificado" en ProductDetail: movido a `bottom: 16px; left: 16px` con fondo `rgba(8,5,2,0.78)` — visible sobre cualquier fondo de foto.
 
 ## Campaña Día del Padre 2026
 - **Ruta:** `/dia-del-padre` — `src/pages/DiaDeLPadrePage.jsx`
-- **Productos:** 10 fragancias masculinas Antonio Banderas 100ml (IDs: 359, 412, 375, 366, 391, 410, 367, 377, 346, 376)
+- **Productos:** 10 fragancias masculinas Antonio Banderas 100ml (IDs: 359, 412, 375, 366, 391, 410, 367, 377, 346, 376) — definidos en `src/data/dia-del-padre.js`
 - **Entrada homepage:** `DiaDeLPadrePromo.jsx` — sección editorial después del Hero en `Landing.jsx`
 - **AnnouncementBar:** barra dorada en desktop + bottom sheet pop-up en móvil
-- **Badge:** prop `badge="Para papá"` en VitrinaCard, CSS `.badge-regalo` con `z-index: 9`
+- **Ribbon:** `ribbon="Día del Padre"` en VitrinaCard. Se pasa automáticamente en Tienda (por `diaDeLPadreIds`) y en DiaDeLPadrePage. También aparece en la imagen de ProductDetail para esos IDs.
+- **Badge:** `badge="Más vendido"` / `"Editor's pick"` solo en los 2 primeros productos de la página DDP. Oculto en mobile.
+- **Imagen featured (mobile):** `.ddp-featured-img` usa `width:100%; height:auto` en ≤480px (antes `height:220px` la hacía angosta).
 - **WhatsApp:** mensaje pre-cargado específico + `ref=dia_del_padre`, número `584149112002`
 - **Grid mobile:** siempre 2 columnas (`.diadel-padre-grid { grid-template-columns: repeat(4, 1fr) }` → override a 2 cols en ≤768px)
 - **Teardown post-campaña (después del 21 de junio):** agregar en `vercel.json` antes de `{ "handle": "filesystem" }`:
   ```json
-  { "src": "/dia-del-padre", "dest": "/tienda?genero=Hombre", "status": 302 }
+  { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
   ```
 
 ## Scripts útiles
