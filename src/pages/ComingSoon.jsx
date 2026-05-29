@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Landing from './Landing'
+import { ShaderAnimation } from '../components/ShaderAnimation'
 
 function calcTimeLeft() {
   const diff = new Date('2026-06-01T00:00:00') - new Date()
@@ -23,7 +23,7 @@ export default function ComingSoon() {
   return (
     <>
       <div className="cs-backdrop">
-        <Landing />
+        <ShaderAnimation />
       </div>
       <div className="cs-overlay">
         <p className="cs-eyebrow">— Algo se acerca</p>
