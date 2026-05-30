@@ -1,22 +1,22 @@
 import { ThreeDMarquee } from './ui/ThreeDMarquee'
 
 const IMAGES = [
-  '/products/gucci-bloom-100ml-f.webp',
-  '/products/lattafa-khamrah-qahwa-100ml-u.webp',
-  '/products/armaf-odyssey-aoud-100ml-m.webp',
-  '/products/prada-paradoxe-intense-90ml-f.webp',
-  '/products/versace-eros-flame-100ml-m.webp',
-  '/products/carolina-herrera-ch-men-hot-hot-hot-100ml-m.webp',
-  '/products/ariana-grande-sweet-like-candy-100ml-f.webp',
-  '/products/jean-paul-gaultier-scandal-pour-homme-100ml-m.webp',
-  '/products/ralph-lauren-polo-67-ralph-lauren-100ml-m.webp',
-  '/products/lattafa-winners-trophy-gold-100ml-u.webp',
-  '/products/montblanc-explorer-100ml-m.webp',
-  '/products/lattafa-petra-100ml-u.webp',
-  '/products/hugo-boss-hugo-man-125ml-m.webp',
-  '/products/armaf-the-pride-of-armaf-for-women-100ml-f.webp',
-  '/products/elizabeth-arden-sunflowers-100ml-f.webp',
-  '/products/boucheron-pour-homme-collector-eau-de-parfum-100ml-m.webp',
+  '/products-thumb/gucci-bloom-100ml-f.webp',
+  '/products-thumb/lattafa-khamrah-qahwa-100ml-u.webp',
+  '/products-thumb/armaf-odyssey-aoud-100ml-m.webp',
+  '/products-thumb/prada-paradoxe-intense-90ml-f.webp',
+  '/products-thumb/versace-eros-flame-100ml-m.webp',
+  '/products-thumb/carolina-herrera-ch-men-hot-hot-hot-100ml-m.webp',
+  '/products-thumb/ariana-grande-sweet-like-candy-100ml-f.webp',
+  '/products-thumb/jean-paul-gaultier-scandal-pour-homme-100ml-m.webp',
+  '/products-thumb/ralph-lauren-polo-67-ralph-lauren-100ml-m.webp',
+  '/products-thumb/lattafa-winners-trophy-gold-100ml-u.webp',
+  '/products-thumb/montblanc-explorer-100ml-m.webp',
+  '/products-thumb/lattafa-petra-100ml-u.webp',
+  '/products-thumb/hugo-boss-hugo-man-125ml-m.webp',
+  '/products-thumb/armaf-the-pride-of-armaf-for-women-100ml-f.webp',
+  '/products-thumb/elizabeth-arden-sunflowers-100ml-f.webp',
+  '/products-thumb/boucheron-pour-homme-collector-eau-de-parfum-100ml-m.webp',
 ]
 
 export default function ProductWall() {
