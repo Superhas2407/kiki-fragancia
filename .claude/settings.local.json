@@ -34,7 +34,8 @@
       "Bash(/c/Users/Azael/.claude/skills/gstack/browse/dist/browse viewport *)",
       "Bash(rm pyr-result.png)",
       "Bash($B js *)",
-      "WebSearch"
+      "WebSearch",
+      "Skill(update-config)"
     ]
   }
 }

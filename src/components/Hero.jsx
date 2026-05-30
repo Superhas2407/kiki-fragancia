@@ -183,10 +183,7 @@ export default function Hero() {
             <Link to="/tienda" className="btn-cta btn-shimmer-kiki">
               Explorar colección <span className="btn-arrow">→</span>
             </Link>
-            <Link
-              to="/tienda"
-              className="hero-search-link"
-            >
+            <Link to="/tienda" className="hero-search-link">
               <SearchIcon />
               Buscar fragancia
             </Link>

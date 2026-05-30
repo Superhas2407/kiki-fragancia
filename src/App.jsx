@@ -87,7 +87,7 @@ export default function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/coming-soon" element={<ComingSoon />} />
-              <Route path="*" element={<AppShell />} />
+<Route path="*" element={<AppShell />} />
             </Routes>
           </ErrorBoundary>
         </CartProvider>
