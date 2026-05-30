@@ -3,10 +3,12 @@ import { motion } from 'framer-motion'
 const cn = (...classes) => classes.filter(Boolean).join(' ')
 
 export function ThreeDMarquee({ images, className }) {
-  const chunkSize = Math.ceil(images.length / 4)
+  // Duplicar para evitar huecos en la animación (sin descargar más imágenes)
+  const filled = [...images, ...images]
+  const chunkSize = Math.ceil(filled.length / 4)
   const chunks = Array.from({ length: 4 }, (_, colIndex) => {
     const start = colIndex * chunkSize
-    return images.slice(start, start + chunkSize)
+    return filled.slice(start, start + chunkSize)
   })
 
   return (
@@ -45,6 +47,7 @@ export function ThreeDMarquee({ images, className }) {
                       width={970}
                       height={700}
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 ))}
