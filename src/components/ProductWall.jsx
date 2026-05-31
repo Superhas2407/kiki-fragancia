@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 import { ThreeDMarquee } from './ui/ThreeDMarquee'
 
 const IMAGES = [
@@ -19,24 +21,21 @@ const IMAGES = [
   '/products-thumb/boucheron-pour-homme-collector-eau-de-parfum-100ml-m.webp',
 ]
 
+
 export default function ProductWall() {
+  const eyebrowRef = useScrollReveal({ threshold: 0.2, delay: 0 })
+  const numberRef  = useScrollReveal({ threshold: 0.2, delay: 100 })
+  const titleRef   = useScrollReveal({ threshold: 0.2, delay: 200 })
+  const ctaRef     = useScrollReveal({ threshold: 0.1, delay: 0 })
+
   return (
     <section style={{ background: '#0A0A0A', padding: '80px 0 60px' }}>
+
       {/* Heading centrado */}
       <div style={{ textAlign: 'center', marginBottom: 56, padding: '0 24px' }}>
-        <span style={{
-          display: 'inline-block',
-          fontSize: 11,
-          letterSpacing: '0.2em',
-          textTransform: 'uppercase',
-          color: '#C9A84C',
-          fontWeight: 500,
-          marginBottom: 20,
-        }}>
-          Colección
-        </span>
+        <span ref={eyebrowRef} className="eyebrow-gold">Colección</span>
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 32, marginBottom: 20 }}>
+        <div ref={numberRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 32, marginBottom: 20 }}>
           <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to right, transparent, #C9A84C)' }} />
           <span style={{
             fontSize: 'clamp(64px, 10vw, 120px)',
@@ -50,7 +49,7 @@ export default function ProductWall() {
           <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to left, transparent, #C9A84C)' }} />
         </div>
 
-        <h2 style={{
+        <h2 ref={titleRef} style={{
           fontSize: 'clamp(20px, 3vw, 32px)',
           fontWeight: 300,
           color: '#F7F2EA',
@@ -64,6 +63,13 @@ export default function ProductWall() {
       </div>
 
       <ThreeDMarquee images={IMAGES} />
+
+      {/* CTA */}
+      <div ref={ctaRef} style={{ textAlign: 'center', marginTop: 48 }}>
+        <Link to="/tienda" className="btn-cta btn-shimmer-kiki">
+          Explorar colección <span className="btn-arrow">→</span>
+        </Link>
+      </div>
     </section>
   )
 }

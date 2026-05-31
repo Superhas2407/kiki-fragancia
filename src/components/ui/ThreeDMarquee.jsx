@@ -22,6 +22,14 @@ export function ThreeDMarquee({ images, className }) {
             }}
             className="relative top-96 right-[50%] grid size-full origin-top-left grid-cols-4 gap-8"
           >
+            {/* Separadores dorados entre columnas */}
+            {['24.5%', '50%', '75.5%'].map(left => (
+              <div key={left} style={{
+                position: 'absolute', left, top: 0, bottom: 0, width: 2,
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(201,168,76,0.6) 10%, rgba(201,168,76,0.6) 90%, transparent 100%)',
+                pointerEvents: 'none', zIndex: 20,
+              }} />
+            ))}
             {chunks.map((subarray, colIndex) => (
               <motion.div
                 animate={{ y: colIndex % 2 === 0 ? 100 : -100 }}
