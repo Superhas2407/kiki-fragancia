@@ -15,15 +15,14 @@ npm run build  # build de producción
 - `Header.jsx` — logo, CartButton, search autocomplete, menú móvil (sidebar deslizante 290px desde la izquierda). Usa `top: var(--bar-h, 0px)` para ceder espacio al AnnouncementBar.
 - `Hero.jsx` — carrusel: 1 video (`/hero.webm`) + 5 imágenes, crossfade CSS, `<picture>` desktop/mobile
 - `Tienda.jsx` — grid de productos, lee `?genero=` y `?q=` de URL, filtros por marca y categoría en drawer
-- `ProductDetail.jsx` — detalle de producto con pirámide de notas olfativas con imágenes
+- `ProductDetail.jsx` — detalle de producto con pirámide de notas olfativas, acordes y cuando usar
 
 ## Datos de productos
 | Archivo | Descripción |
 |---|---|
-| `src/data/products-enriched.js` | 416 productos completos: imagen, notas, descripción, precioUSD, variantIds (fuente de verdad) |
-| `src/data/products-index.js` | 416 productos ligeros — solo campos de catálogo, sin descripción/notas largas |
+| `src/data/products-enriched.js` | 442 productos completos: imagen, notas, descripción, precioUSD, variantIds (fuente de verdad) |
+| `src/data/products-index.js` | 442 productos ligeros — solo campos de catálogo, sin descripción/notas largas |
 | `src/data/all-products.js` | Re-exporta `products-index` como `allProducts` — usado por Tienda, VitrinaCard, Header autocomplete |
-| `src/data/catalog.js` | Catálogo del PDF de precios sin imágenes (no usado por la app) |
 | `src/data/notes-images.js` | Mapeo nota → ruta imagen (390 entradas, todas WebP) |
 | `src/data/dia-del-padre.js` | IDs numéricos de los 10 productos de la campaña Día del Padre 2026 |
 
@@ -38,7 +37,7 @@ npm run build  # build de producción
 |---|---|
 | `public/hero/` | Imágenes del carrusel: `{nombre}-desktop.webp` y `{nombre}-mobile.webp` |
 | `public/notes/` | 245 WebP de ingredientes/notas olfativas |
-| `public/products/` | 644 WebP de productos |
+| `public/products/` | 669 WebP de productos |
 
 **Todas las imágenes son WebP.** Convertidas con `scripts/convert-to-webp.mjs` (sharp + `.rotate()` para corregir EXIF).
 
@@ -46,7 +45,7 @@ npm run build  # build de producción
 - `react-helmet-async` — `HelmetProvider` en `App.jsx` envuelve toda la app
 - `ProductDetail` tiene `<Helmet>` con `<title>`, `<meta description>`, canonical, OG tags, y JSON-LD `schema.org/Product`
 - `DiaDeLPadrePage` tiene `<Helmet>` con meta/OG propios de campaña
-- `scripts/generate-sitemap.js` — genera `public/sitemap.xml` con 419 URLs en cada `npm run build`
+- `scripts/generate-sitemap.js` — genera `public/sitemap.xml` con ~445 URLs en cada `npm run build`
 - `public/robots.txt` → `Sitemap: https://kikifragancia.com/sitemap.xml`
 - WhatsApp `?ref=` tracking en todos los links WA: `ref=detalle_{id}`, `ref=carrito`, `ref=fab_general`, `ref=fab_detalle_{id}`, `ref=fab_dia_del_padre`, `ref=dia_del_padre`
 
@@ -59,6 +58,15 @@ npm run build  # build de producción
 - En `/tienda/:id` → mensaje con el nombre del producto + `ref=fab_detalle_{id}`
 - En `/dia-del-padre` → mensaje específico de la campaña + `ref=fab_dia_del_padre`
 - En cualquier otra página → mensaje genérico + `ref=fab_general`
+
+## Acordes y Cuando usar (ProductDetail)
+Datos por producto (no por familia) definidos directamente en `ProductDetail.jsx`:
+- `ACORDES_POR_PRODUCTO` — objeto keyed por `product.id`, valor: array de 4 `[label, pct]` ordenados de mayor a menor
+- `CUANDO_POR_PRODUCTO` — objeto keyed por `product.id`, valor: `{ clima: [[...],[...]], momentos: [[...],[...]] }`
+- `ACORDES_POR_PRODUTO_FALLBACK` y `DEFAULT_CUANDO` — fallbacks si el ID no existe
+- Lookup: `const acordes = ACORDES_POR_PRODUCTO[product.id] || ACORDES_POR_PRODUTO_FALLBACK`
+- Labels de acordes válidos: dulce, cálido especiado, avainillado, ámbar, amaderado, terroso, seco, floral, frutal, cítrico, fresco, verde, gourmand, caramelo, aromático, powder, especiado, acuático, ahumado, cuero, resinoso, chipre, oud, oriental, amoscado, herbal, marino
+- Para agregar/editar datos de un producto, editar directamente los objetos en `ProductDetail.jsx` (líneas ~136 y ~581)
 
 ## Notas olfativas en ProductDetail
 - `src/data/notes-images.js` — mapeo nota→imagen (WebP)
@@ -75,7 +83,7 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 - `.pd-pyr-footer` — pie con casa · nombre · familia
 
 ## ProductWall (`src/components/ProductWall.jsx`)
-Sección "Colección" en la landing. Muestra el número 416 + heading + marquee 3D + CTA.
+Sección "Colección" en la landing. Muestra el número 442 + heading + marquee 3D + CTA.
 - **Scroll reveal:** eyebrow → número → título en cascada (0 / 100 / 200ms) via `useScrollReveal`
 - **CTA:** `<Link to="/tienda" className="btn-cta btn-shimmer-kiki">` debajo del marquee
 - **Imágenes:** 16 WebP hardcodeadas de `public/products-thumb/`
@@ -138,7 +146,7 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 | `scripts/convert-to-webp.mjs` | Convierte jpg/png → webp con `.rotate()` EXIF, actualiza data files. Requiere `sharp`. |
 | `scripts/download-notes.mjs` | Descarga imágenes de notas desde Pexels API |
 | `scripts/check-missing-notes.mjs` | Reporta notas sin imagen |
-| `scripts/enrich-designer-notes.mjs` | Aplicó notas estructuradas a IDs 249–416 |
+| `scripts/add-new-products.mjs` | Agrega nuevos perfumes al catálogo (copia fotos + appends a products-enriched.js y products-index.js) |
 | `scripts/generate-sitemap.js` | Corre automáticamente en cada `npm run build` |
 | `scripts/sync-prices.mjs` | Sincroniza precios desde `C:/Users/Azael/Downloads/LISTA DE PRECIOS PDF ABRIL 2.md` → products-enriched.js + products-index.js. Parsea formato BS+USD concatenado (ratio 650). Filtra TESTER, BODY SPRAY y SET. |
 | `scripts/export-prices.mjs` | Exporta todos los productos con precios a `precios.csv` para edición manual en Excel |
@@ -146,7 +154,11 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Pendiente
 - Foto lifestyle real para BrandStory (columna derecha oculta hasta tenerla)
-- Teardown DDP post-21-junio (redirect en vercel.json)
+- Teardown DDP post-21-junio (redirect en vercel.json):
+  ```json
+  { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
+  ```
+  Agregar en `vercel.json` antes de `{ "handle": "filesystem" }` después del 21 de junio 2026.
 
 ---
 
