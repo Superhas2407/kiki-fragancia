@@ -74,6 +74,17 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 - `.pd-pyr-tier-label` — texto dorado italic uppercase
 - `.pd-pyr-footer` — pie con casa · nombre · familia
 
+## ProductWall (`src/components/ProductWall.jsx`)
+Sección "Colección" en la landing. Muestra el número 416 + heading + marquee 3D + CTA.
+- **Scroll reveal:** eyebrow → número → título en cascada (0 / 100 / 200ms) via `useScrollReveal`
+- **CTA:** `<Link to="/tienda" className="btn-cta btn-shimmer-kiki">` debajo del marquee
+- **Imágenes:** 16 WebP hardcodeadas de `public/products-thumb/`
+
+## ThreeDMarquee (`src/components/ui/ThreeDMarquee.jsx`)
+Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas animan en Y alterna.
+- **Separadores dorados:** 3 líneas de 2px en `24.5% / 50% / 75.5%` del contenedor (centros de los gaps), `rgba(201,168,76,0.6)` con fade en extremos, `zIndex: 20`, **fijas** (no animadas — están en el grid container, no en los `motion.div` de columnas).
+- Las `GridLineHorizontal` / `GridLineVertical` internas (dotted, `zIndex: 30`) son decoración adicional sobre las fotos.
+
 ## Hero carrusel (Opción A — 2026-05-29)
 - Video: 14s, fotos: 7s por slide (`getSlideDuration(idx)`)
 - Crossfade real: slide anterior en z=1, nuevo entra con `heroFadeIn` CSS animation en z=2
