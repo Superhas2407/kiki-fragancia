@@ -3678,7 +3678,7 @@
 .ddp-content-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
 .ddp-profiles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .ddp-profile-card { border: 1px solid var(--line); background: var(--bg2); }
-.ddp-profile-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+.ddp-profile-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
 .ddp-profile-info { padding: 12px 12px 14px; }
 .ddp-star-card { position: relative; border: 1px solid var(--gold); background: linear-gradient(160deg, #1a1206, #0A0A0A); padding: 20px; display: flex; flex-direction: column; }
 .ddp-star-badge { position: absolute; top: 0; right: 0; background: var(--gold); color: var(--gold-fill-ink); font-family: 'KikiGotham', sans-serif; font-size: 8.5px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 5px 12px; }
@@ -3693,7 +3693,7 @@
   .ddp-campaign { padding: 32px 0 0; }
 }
 @media (max-width: 480px) {
-  .ddp-profiles-grid { grid-template-columns: 1fr; }
+  .ddp-profiles-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 [data-theme='warm'] .ddp-campaign { background: var(--bg); }

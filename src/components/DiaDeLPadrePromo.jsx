@@ -109,6 +109,27 @@ export default function DiaDeLPadrePromo() {
                 </Link>
               ))}
             </div>
+
+            <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid var(--line)' }}>
+              <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', lineHeight: 1.7, marginBottom: 14 }}>
+                10 fragancias masculinas · Antonio Banderas<br />
+                Envoltura sin costo · Envíos a todo Venezuela
+              </p>
+              <Link
+                to="/dia-del-padre"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontFamily: 'KikiGotham, sans-serif', fontSize: 10,
+                  letterSpacing: '0.18em', textTransform: 'uppercase',
+                  color: 'var(--gold-ink)', textDecoration: 'none',
+                  borderBottom: '1px solid rgba(201,168,76,0.35)',
+                  paddingBottom: 3,
+                  transition: 'color .2s, border-color .2s',
+                }}
+              >
+                Ver la campaña completa →
+              </Link>
+            </div>
           </div>
 
           {/* Derecha — Producto estrella */}
