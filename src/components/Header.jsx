@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useTheme } from '../context/ThemeContext'
 import { allProducts } from '../data/all-products'
 
 const NAV_LINKS = [
@@ -47,15 +48,15 @@ function CartButton() {
     <button
       onClick={() => setDrawerOpen(true)}
       aria-label={`Carrito (${count} items)`}
+      className="header-icon-btn"
       style={{
         position: 'relative', background: 'none', border: 'none',
-        cursor: 'pointer', color: 'rgba(250,250,248,0.75)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '4px', minHeight: 44,
+        cursor: 'pointer', display: 'flex', alignItems: 'center',
+        justifyContent: 'center', padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
       onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-      onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.75)'}
+      onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <CartIcon size={20} />
       {count > 0 && (
@@ -74,6 +75,7 @@ function CartButton() {
 }
 
 export default function Header() {
+  const { theme, toggle } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -171,7 +173,7 @@ export default function Header() {
       <header className={`kiki-header${scrolled ? ' scrolled' : ''}`}>
         <div className="header-inner">
           <Link to="/" className="kiki-logo">
-            <img src="/logo vector letras.svg" alt="KiKi Fragancia" className="kiki-logo-img" />
+            <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
           </Link>
 
           <nav className="kiki-desktop-nav">
@@ -190,16 +192,25 @@ export default function Header() {
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Buscar"
+                className="header-icon-btn"
                 style={{
                   background: 'none', border: 'none', cursor: 'pointer',
-                  color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                  display: 'flex', alignItems: 'center',
                   justifyContent: 'center', padding: 12, minWidth: 44, minHeight: 44,
                   transition: 'color .2s',
                 }}
                 onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.6)'}
+                onMouseLeave={e => e.currentTarget.style.color = ''}
               >
                 <SearchIcon />
+              </button>
+              <button
+                onClick={toggle}
+                className="theme-toggle-btn"
+                aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+                title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+              >
+                {theme === 'dark' ? '☀' : '☾'}
               </button>
               <CartButton />
             </div>
@@ -209,14 +220,23 @@ export default function Header() {
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Buscar"
+              className="header-icon-btn"
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                display: 'flex', alignItems: 'center',
                 padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
                 transition: 'color .2s',
               }}
             >
               <SearchIcon />
+            </button>
+            <button
+              onClick={toggle}
+              className="theme-toggle-btn"
+              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+            >
+              {theme === 'dark' ? '☀' : '☾'}
             </button>
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
@@ -236,7 +256,7 @@ export default function Header() {
       {/* Sidebar deslizante */}
       <div className={`kiki-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-header">
-          <img src="/logo vector letras.svg" alt="KiKi Fragancia" className="kiki-logo-img" />
+          <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
           <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.45)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
             <CloseIcon />
           </button>

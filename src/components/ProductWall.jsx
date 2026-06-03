@@ -29,35 +29,35 @@ export default function ProductWall() {
   const ctaRef     = useScrollReveal({ threshold: 0.1, delay: 0 })
 
   return (
-    <section style={{ background: '#0A0A0A', padding: '80px 0 60px' }}>
+    <section className="product-wall-section" style={{ padding: '80px 0 60px' }}>
 
       {/* Heading centrado */}
       <div style={{ textAlign: 'center', marginBottom: 56, padding: '0 24px' }}>
         <span ref={eyebrowRef} className="eyebrow-gold">Colección</span>
 
         <div ref={numberRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 32, marginBottom: 20 }}>
-          <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to right, transparent, #C9A84C)' }} />
+          <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to right, transparent, var(--gold))' }} />
           <span style={{
             fontSize: 'clamp(64px, 10vw, 120px)',
             fontWeight: 200,
-            color: '#C9A84C',
+            color: 'var(--gold)',
             lineHeight: 1,
             letterSpacing: '-0.02em',
           }}>
             416
           </span>
-          <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to left, transparent, #C9A84C)' }} />
+          <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to left, transparent, var(--gold))' }} />
         </div>
 
         <h2 ref={titleRef} style={{
           fontSize: 'clamp(20px, 3vw, 32px)',
           fontWeight: 300,
-          color: '#F7F2EA',
+          color: 'var(--ink)',
           lineHeight: 1.4,
           margin: 0,
           letterSpacing: '0.01em',
         }}>
-          fragancias <em style={{ fontStyle: 'italic', color: 'rgba(247,242,234,0.5)' }}>100% originales</em>
+          fragancias <em style={{ fontStyle: 'italic', color: 'var(--ink-mute)' }}>100% originales</em>
           <br />disponibles para ti
         </h2>
       </div>

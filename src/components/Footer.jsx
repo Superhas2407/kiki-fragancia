@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 const WhatsAppIcon = ({ size = 17 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -29,6 +30,7 @@ const ShieldIcon = () => (
 )
 
 export default function Footer() {
+  const { theme } = useTheme()
   return (
     <footer id="contacto" className="kiki-footer">
       <div className="footer-top-line"></div>
@@ -40,7 +42,7 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div>
             <Link to="/" className="footer-logo">
-              <img src="/logo-transparent.png" alt="KiKi Fragancia" className="footer-logo-img" />
+              <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo-transparent.png'} alt="KiKi Fragancia" className="footer-logo-img" />
             </Link>
             <p className="footer-tagline">
               La fragancia que te define,<br />verificada y original.

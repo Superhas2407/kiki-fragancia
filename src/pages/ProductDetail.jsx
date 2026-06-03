@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
+import { useTheme } from '../context/ThemeContext'
 import { products } from '../data/products-enriched'
 import { NOTES_IMAGES } from '../data/notes-images'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
@@ -1064,6 +1065,7 @@ export default function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { addItem } = useCartContext()
+  const { theme } = useTheme()
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -1183,7 +1185,9 @@ export default function ProductDetail() {
               {/* Image */}
               <div style={rv(80)} onMouseEnter={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)}>
                 <div className="pd-img-wrap" style={{
-                  boxShadow: imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)',
+                  boxShadow: theme === 'warm'
+                    ? (imgHover ? '0 32px 64px rgba(80,60,20,.22)' : '0 8px 32px rgba(80,60,20,.12)')
+                    : (imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)'),
                   transition: 'box-shadow .5s ease',
                 }}>
                   {product.image ? (
@@ -1257,11 +1261,32 @@ export default function ProductDetail() {
                   ) : null
                 })()}
 
-                {product.precioUSD > 0 && (
-                  <div className="pd-price" style={rv(350)}>
-                    <span className="pd-price-amount">${product.precioUSD}</span>
-                  </div>
-                )}
+                {product.precioUSD > 0 && (() => {
+                  const isDDP = diaDeLPadreIds.includes(product.id)
+                  const discPrice = isDDP ? Math.round(product.precioUSD * 0.9) : null
+                  return (
+                    <div className="pd-price" style={rv(350)}>
+                      {isDDP && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, fontWeight: 600, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#1A1208', background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)', padding: '4px 10px' }}>
+                            -10% Día del Padre
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 14, fontWeight: 100, color: 'var(--ink-faint)', textDecoration: 'line-through' }}>
+                            ${product.precioUSD}
+                          </span>
+                        </div>
+                      )}
+                      <span className="pd-price-amount" style={isDDP ? { fontSize: 28 } : {}}>
+                        ${isDDP ? discPrice : product.precioUSD}
+                      </span>
+                      {isDDP && (
+                        <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 4 }}>
+                          USD · Precio Día del Padre
+                        </span>
+                      )}
+                    </div>
+                  )
+                })()}
 
                 <div className="pd-actions" style={rv(380)}>
                   <button
@@ -1422,13 +1447,13 @@ export default function ProductDetail() {
                       return (
                         <div key={nombre} className="pd-cuando-item">
                           <span className="pd-cuando-icon" style={{
-                            opacity: activo ? 1 : 0.18,
-                            color: activo ? 'var(--gold)' : 'rgba(247,242,234,.4)',
+                            opacity: activo ? 1 : 0.22,
+                            color: activo ? 'var(--gold)' : (theme === 'warm' ? 'rgba(35,26,13,0.30)' : 'rgba(247,242,234,.4)'),
                             boxShadow: activo ? '0 0 22px rgba(201,168,76,.25)' : 'none',
                           }}>
                             {Icon && <Icon />}
                           </span>
-                          <span className="pd-cuando-text" style={{ color: activo ? 'var(--gold)' : 'rgba(247,242,234,.2)' }}>
+                          <span className="pd-cuando-text" style={{ color: activo ? 'var(--gold)' : (theme === 'warm' ? 'rgba(35,26,13,0.25)' : 'rgba(247,242,234,.2)') }}>
                             {nombre}
                           </span>
                         </div>

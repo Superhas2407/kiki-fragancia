@@ -2,6 +2,7 @@ import { Component, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
+import { ThemeProvider } from './context/ThemeContext'
 import Landing from './pages/Landing'
 import CartDrawer from './components/CartDrawer'
 import CursorTrail from './components/CursorTrail'
@@ -86,7 +87,7 @@ export default function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/coming-soon" element={<ComingSoon />} />
-<Route path="*" element={<AppShell />} />
+<Route path="*" element={<ThemeProvider><AppShell /></ThemeProvider>} />
             </Routes>
           </ErrorBoundary>
         </CartProvider>

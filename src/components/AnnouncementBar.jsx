@@ -3,6 +3,16 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 const BAR_H = 40
 
+function getCountdown() {
+  const target = new Date('2026-06-18T23:59:00')
+  const diff = target - new Date()
+  if (diff <= 0) return null
+  const d = Math.floor(diff / 86400000)
+  const h = Math.floor((diff % 86400000) / 3600000)
+  const m = Math.floor((diff % 3600000) / 60000)
+  return { d, h, m }
+}
+
 export default function AnnouncementBar() {
   const [barClosed, setBarClosed] = useState(
     () => sessionStorage.getItem('ddp-bar-closed') === '1'
@@ -10,11 +20,17 @@ export default function AnnouncementBar() {
   const [popupClosed, setPopupClosed] = useState(
     () => sessionStorage.getItem('ddp-popup-closed') === '1'
   )
+  const [timeLeft, setTimeLeft] = useState(getCountdown)
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
   const barVisible = !barClosed
   const popupVisible = !popupClosed && pathname === '/'
+
+  useEffect(() => {
+    const id = setInterval(() => setTimeLeft(getCountdown()), 60000)
+    return () => clearInterval(id)
+  }, [])
 
   useEffect(() => {
     const root = document.documentElement
@@ -43,10 +59,20 @@ export default function AnnouncementBar() {
       {barVisible && (
         <div className="announcement-bar" role="banner">
           <Link to="/dia-del-padre" className="announcement-bar-link">
-            <span className="announcement-bar-label">Día del Padre 2026</span>
-            <span className="announcement-bar-sep" aria-hidden="true">·</span>
-            <span className="announcement-bar-cta-long">Ver la colección de fragancias para papá →</span>
-            <span className="announcement-bar-cta-short">Ver colección →</span>
+            <span className="ann-segment ann-label">Día del Padre</span>
+            <span className="ann-sep" />
+            {timeLeft && (
+              <>
+                <span className="ann-segment ann-timer--full">
+                  ⏳ {timeLeft.d}d : {String(timeLeft.h).padStart(2, '0')}h : {String(timeLeft.m).padStart(2, '0')}m
+                </span>
+                <span className="ann-segment ann-timer--short">⏳ {timeLeft.d}d</span>
+                <span className="ann-sep ann-sep--hide" />
+              </>
+            )}
+            <span className="ann-segment ann-cta ann-cta--desktop">
+              Pide antes del 18 jun para entrega a tiempo →
+            </span>
           </Link>
           <button className="announcement-bar-close" onClick={closeBar} aria-label="Cerrar">×</button>
         </div>
@@ -60,7 +86,7 @@ export default function AnnouncementBar() {
             <p className="ddp-popup-eyebrow">Día del Padre · 21 de junio</p>
             <h2 className="ddp-popup-headline">El regalo que no olvidará</h2>
             <div className="ddp-popup-rule" aria-hidden="true" />
-            <p className="ddp-popup-body">Fragancias de lujo seleccionadas para papá. Colección curada para el Día del Padre 2026.</p>
+            <p className="ddp-popup-body">10% de descuento en promoción ciertos perfumes de caballero en divisa</p>
             <button className="ddp-popup-btn" onClick={goToLanding}>
               Ver la colección
             </button>

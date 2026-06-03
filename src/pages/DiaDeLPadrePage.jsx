@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
-import { diaDeLPadreIds, antoniobanderasIds, armafOdysseyIds } from '../data/dia-del-padre'
+import { diaDeLPadreIds } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
 
@@ -37,6 +37,27 @@ const PERSONAS = [
     desc: 'Tabaco, oud y noches largas. Para el padre que sabe lo que pide.',
     ids: [412, 377, 367],
   },
+  {
+    num: '04',
+    label: 'El Fresco',
+    headline: 'Cítrico, limpio, vital',
+    desc: 'Energía desde la primera hora. Aromas que acompañan todo el día sin cansar.',
+    ids: [4, 5, 61],
+  },
+  {
+    num: '05',
+    label: 'El Elegante',
+    headline: 'Floral amaderado, refinado',
+    desc: 'Presencia sin esfuerzo. El tipo que huele bien en cualquier reunión.',
+    ids: [19, 26, 43],
+  },
+  {
+    num: '06',
+    label: 'El Misterioso',
+    headline: 'Oriental, profundo, seductor',
+    desc: 'Ámbar, especias y algo que no puedes definir. Fragancias que se recuerdan.',
+    ids: [27, 30, 88],
+  },
 ]
 
 function daysUntil(dateStr) {
@@ -70,11 +91,9 @@ export default function DiaDeLPadrePage() {
   const { addItem } = useCartContext()
   const navigate = useNavigate()
 
-  const productos = diaDeLPadreIds
+  const todosLosMasculinos = diaDeLPadreIds
     .map(id => allProducts.find(p => p.id === id))
     .filter(Boolean)
-  const productosAB = productos.filter(p => antoniobanderasIds.includes(p.id))
-  const productosArmaf = productos.filter(p => armafOdysseyIds.includes(p.id))
 
   const featured = allProducts.find(p => p.id === EDITOR_PICK_ID)
 
@@ -154,38 +173,31 @@ export default function DiaDeLPadrePage() {
             </p>
           </div>
           <div className="ddp-personas">
-            {PERSONAS.map(({ num, label, headline, desc, ids }) => (
-              <div
-                key={num}
-                className="ddp-persona-card"
-                onClick={scrollToGrid}
-                role="button"
-                tabIndex={0}
-                onKeyDown={e => e.key === 'Enter' && scrollToGrid()}
-              >
-                <div className="ddp-persona-img">
-                  <div className="ddp-persona-img-inner">
-                    {ids.slice(0, 2).map(id => {
-                      const p = allProducts.find(x => x.id === id)
-                      return p?.image ? (
-                        <img
-                          key={id}
-                          src={`/products/${p.image}`}
-                          alt={p.name}
-                          className="ddp-persona-bottle"
-                        />
-                      ) : null
-                    })}
+            {PERSONAS.map(({ num, label, headline, desc, ids }) => {
+              const coverProduct = allProducts.find(x => x.id === ids[0])
+              return (
+                <Link
+                  key={num}
+                  to={`/tienda/${ids[0]}`}
+                  className="ddp-persona-card"
+                  style={{ textDecoration: 'none', display: 'block' }}
+                >
+                  {coverProduct?.image && (
+                    <img
+                      src={`/products/${coverProduct.image}`}
+                      alt={coverProduct.name}
+                      className="ddp-persona-cover-img"
+                    />
+                  )}
+                  <div className="ddp-persona-body">
+                    <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>
+                    <h3 className="ddp-persona-headline">{headline}</h3>
+                    <p className="ddp-persona-desc">{desc}</p>
+                    <span className="ddp-persona-link">Ver fragancia →</span>
                   </div>
-                </div>
-                <div className="ddp-persona-body">
-                  <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>
-                  <h3 className="ddp-persona-headline">{headline}</h3>
-                  <p className="ddp-persona-desc">{desc}</p>
-                  <span className="ddp-persona-link">Ver fragancias →</span>
-                </div>
-              </div>
-            ))}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -245,30 +257,18 @@ export default function DiaDeLPadrePage() {
           <div className="ddp-grid-header">
             <div>
               <p className="ddp-section-eyebrow">Colección Completa</p>
-              <h2 className="ddp-grid-title">10 fragancias para él</h2>
+              <h2 className="ddp-grid-title">{todosLosMasculinos.length} fragancias para él</h2>
             </div>
             <p className="ddp-grid-meta">$25 — $30 · 100 ml</p>
           </div>
           <div className="diadel-padre-grid">
-            {productosAB.map((p, i) => (
+            {todosLosMasculinos.map((p, i) => (
               <VitrinaCard
                 key={p.id}
                 product={p}
                 ribbon="Día del Padre"
-                badge={i === 0 ? 'Más vendido' : i === 1 ? 'Editor\'s pick' : null}
-              />
-            ))} 
-          </div>
-
-          <div className="ddp-brand-divider">
-            <span>Armaf Odyssey</span>
-          </div>
-          <div className="diadel-padre-grid">
-            {productosArmaf.map(p => (
-              <VitrinaCard
-                key={p.id}
-                product={p}
-                ribbon="Día del Padre"
+                discount={10}
+                badge={p.id === EDITOR_PICK_ID ? 'Editor\'s pick' : (i === 0 ? 'Más vendido' : null)}
               />
             ))}
           </div>
