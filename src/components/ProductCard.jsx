@@ -6,8 +6,10 @@ const GENDER_BADGE = {
   Hombre:    { bg: 'rgba(201,168,76,0.15)', color: '#C9A84C',  border: 'rgba(201,168,76,0.3)' },
   Femenino:  { bg: 'rgba(255,182,193,0.15)', color: '#E8A0B4', border: 'rgba(232,160,180,0.3)' },
   Mujer:     { bg: 'rgba(255,182,193,0.15)', color: '#E8A0B4', border: 'rgba(232,160,180,0.3)' },
-  Unisex:    { bg: 'rgba(250,250,248,0.1)',  color: '#FAFAF8', border: 'rgba(250,250,248,0.2)' },
 }
+
+const UNISEX_BADGE_DARK  = { bg: 'rgba(250,250,248,0.1)',  color: '#FAFAF8',  border: 'rgba(250,250,248,0.2)' }
+const UNISEX_BADGE_WARM  = { bg: 'rgba(35,26,13,0.08)',    color: '#1A1208',  border: 'rgba(35,26,13,0.25)'   }
 
 export default function ProductCard({ product, theme = 'dark' }) {
   const navigate = useNavigate()
@@ -42,7 +44,9 @@ export default function ProductCard({ product, theme = 'dark' }) {
     card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg) scale(1)'
   }
 
-  const badge = GENDER_BADGE[product.genero] || GENDER_BADGE.Unisex
+  const badge = product.genero === 'Unisex'
+    ? (isDark ? UNISEX_BADGE_DARK : UNISEX_BADGE_WARM)
+    : (GENDER_BADGE[product.genero] || (isDark ? UNISEX_BADGE_DARK : UNISEX_BADGE_WARM))
 
   const imgSrc = product.image
     ? `/products/${product.image}`

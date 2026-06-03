@@ -43,8 +43,8 @@ export default function CartDrawer() {
   const toastTimerRef = useRef(null)
 
   const isWarm = theme === 'warm'
-  const ink = (op) => isWarm ? `rgba(35,26,13,${op})` : `rgba(250,250,248,${op})`
-  const bord = (op) => isWarm ? `rgba(35,26,13,${op})` : `rgba(232,228,220,${op})`
+  const ink = (op) => isWarm ? `rgba(35,26,13,${Math.min(op + 0.30, 0.95)})` : `rgba(250,250,248,${op})`
+  const bord = (op) => isWarm ? `rgba(35,26,13,${Math.min(op + 0.20, 0.85)})` : `rgba(232,228,220,${op})`
 
   useEffect(() => {
     return () => { if (toastTimerRef.current) clearTimeout(toastTimerRef.current) }
