@@ -3689,11 +3689,8 @@
 @media (max-width: 767px) {
   .ddp-urgency-row { grid-template-columns: 1fr; gap: 24px; }
   .ddp-content-row { grid-template-columns: 1fr; }
-  .ddp-profiles-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ddp-profiles-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .ddp-campaign { padding: 32px 0 0; }
-}
-@media (max-width: 480px) {
-  .ddp-profiles-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 [data-theme='warm'] .ddp-campaign { background: var(--bg); }

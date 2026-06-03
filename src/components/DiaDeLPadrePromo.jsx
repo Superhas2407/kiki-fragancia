@@ -37,6 +37,33 @@ const PROFILES = [
     precio: 25,
     tipo: 'EDT',
   },
+  {
+    id: 412,
+    image: 'antonio-banderas-the-icon-eau-de-parfum-100ml-m.webp',
+    badge: 'El Sibarita',
+    name: 'The Icon EDP',
+    familia: 'Ámbar Intenso',
+    precio: 30,
+    tipo: 'EDP',
+  },
+  {
+    id: 391,
+    image: 'antonio-banderas-blue-seduction-100ml-m.webp',
+    badge: 'El Fresco',
+    name: 'Blue Seduction',
+    familia: 'Acuático Marino',
+    precio: 35,
+    tipo: 'EDT',
+  },
+  {
+    id: 346,
+    image: 'antonio-banderas-the-golden-secret-100ml-m.webp',
+    badge: 'El Elegante',
+    name: 'The Golden Secret',
+    familia: 'Amaderado Dorado',
+    precio: 25,
+    tipo: 'EDT',
+  },
 ]
 
 const STAR_PRODUCT = PROFILES[0]
