@@ -79,7 +79,7 @@ export default function CartDrawer() {
           bottom: 0,
           width: '100%',
           maxWidth: '420px',
-          background: '#1A1208',
+          background: 'var(--bg2)',
           borderLeft: '1px solid rgba(196,120,26,0.2)',
           zIndex: 80,
           display: 'flex',
@@ -164,7 +164,7 @@ export default function CartDrawer() {
                         style={{ width: 'clamp(52px, 14vw, 64px)', height: 'clamp(66px, 18vw, 80px)', objectFit: 'cover', flexShrink: 0 }}
                       />
                     ) : (
-                      <div style={{ width: '64px', height: '80px', flexShrink: 0, background: '#1a1a1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: '64px', height: '80px', flexShrink: 0, background: 'var(--raised)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <span style={{ fontSize: 9, color: 'rgba(250,250,248,0.2)', textAlign: 'center', padding: 4 }}>{item.house}</span>
                       </div>
                     )}

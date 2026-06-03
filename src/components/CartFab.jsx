@@ -33,7 +33,7 @@ export default function CartFab() {
         zIndex: 60,
         width: '54px',
         height: '54px',
-        background: '#1A1208',
+        background: 'var(--bg2)',
         border: '1px solid rgba(196,120,26,0.35)',
         display: 'flex',
         alignItems: 'center',

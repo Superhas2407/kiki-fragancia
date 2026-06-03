@@ -34,6 +34,14 @@
     }
     </script>
   <style>html,body{background:#0A0A0A;color:#F7F2EA}</style>
+  <script>
+    try {
+      var t = localStorage.getItem('kiki-theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'warm' : 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      if (t === 'warm') { document.documentElement.style.background = '#F3EAD9'; document.documentElement.style.color = '#231A0D'; }
+    } catch(e) {}
+  </script>
   </head>
   <body>
     <div id="root"></div>

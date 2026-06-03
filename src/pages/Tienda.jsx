@@ -6,6 +6,7 @@ import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
 import WheelPagination from '../components/ui/WheelPagination'
+import { useTheme } from '../context/ThemeContext'
 
 const ITEMS_PER_PAGE = 20
 
@@ -45,7 +46,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
     >
       <span style={{
         width: 15, height: 15, flexShrink: 0,
-        border: checked ? '1px solid #C9A84C' : '1px solid rgba(250,250,248,0.2)',
+        border: checked ? '1px solid #C9A84C' : '1px solid var(--line)',
         background: checked ? '#C9A84C' : 'transparent',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.18s, border-color 0.18s',
@@ -58,7 +59,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       </span>
       <span style={{
         fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: checked ? 400 : 300,
-        color: checked ? '#FAFAF8' : 'rgba(250,250,248,0.5)',
+        color: checked ? 'var(--ink)' : 'var(--ink-mute)',
         letterSpacing: '0.03em', flex: 1, transition: 'color 0.18s',
       }}>
         {label}
@@ -66,7 +67,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       {count !== undefined && (
         <span style={{
           fontFamily: "'KikiGotham', sans-serif", fontSize: 10,
-          color: checked ? '#C9A84C' : 'rgba(250,250,248,0.22)', transition: 'color 0.18s',
+          color: checked ? '#C9A84C' : 'var(--ink-faint)', transition: 'color 0.18s',
         }}>
           {count}
         </span>
@@ -111,7 +112,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
       >
         <span style={{
           width: 15, height: 15, flexShrink: 0,
-          border: active ? '1px solid #C9A84C' : '1px solid rgba(250,250,248,0.2)',
+          border: active ? '1px solid #C9A84C' : '1px solid var(--line)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'border-color 0.18s',
         }}>
@@ -119,7 +120,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         </span>
         <span style={{
           fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300,
-          color: active ? '#FAFAF8' : 'rgba(250,250,248,0.5)', transition: 'color 0.18s',
+          color: active ? 'var(--ink)' : 'var(--ink-mute)', transition: 'color 0.18s',
         }}>
           {label}
         </span>
@@ -132,7 +133,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24 }}>
         <h2 style={{
           fontFamily: "'KikiGotham', sans-serif", fontSize: 22,
-          fontWeight: 100, color: '#FAFAF8', fontStyle: 'italic', margin: 0,
+          fontWeight: 100, color: 'var(--ink)', fontStyle: 'italic', margin: 0,
         }}>
           Filtrar
         </h2>
@@ -157,7 +158,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         {SORT_OPTIONS.map(opt => <RadioItem key={opt.key} label={opt.label} value={opt.key}/>)}
       </div>
 
-      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid rgba(250,250,248,0.07)' }}>
+      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
           <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
@@ -184,7 +185,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         ))}
       </div>
 
-      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid rgba(250,250,248,0.07)' }}>
+      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
           <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
@@ -202,7 +203,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         ))}
       </div>
 
-      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid rgba(250,250,248,0.07)' }}>
+      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
           <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
@@ -224,6 +225,20 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 }
 
 export default function Tienda() {
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
+  const C = {
+    bg:       isDark ? '#0A0A0A'               : '#F3EAD9',
+    bg2:      isDark ? '#0E0C08'               : '#FBF5EA',
+    ink:      isDark ? '#F7F2EA'               : '#231A0D',
+    inkMute:  isDark ? 'rgba(247,242,234,0.5)' : 'rgba(35,26,13,0.60)',
+    inkFaint: isDark ? 'rgba(247,242,234,0.3)' : 'rgba(35,26,13,0.38)',
+    line:     isDark ? 'rgba(201,168,76,0.18)' : 'rgba(150,118,52,0.30)',
+    line2:    isDark ? 'rgba(247,242,234,0.07)': 'rgba(35,26,13,0.10)',
+    gold:     '#C9A84C',
+    goldInk:  isDark ? '#E8C96A'               : '#8A6818',
+    chip:     isDark ? 'rgba(247,242,234,0.05)': 'rgba(35,26,13,0.04)',
+  }
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const [sortBy, setSortBy]           = useState('featured')
@@ -312,7 +327,7 @@ export default function Tienda() {
 
   return (
     <>
-      <div style={{ background: '#0A0A0A', minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + 76px)' }}>
+      <div style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + 76px)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
 
           {/* Barra superior */}
@@ -332,7 +347,7 @@ export default function Tienda() {
               <h1 style={{
                 fontFamily: "'KikiGotham', sans-serif",
                 fontSize: 'clamp(1.5rem, 6vw, 3.5rem)',
-                fontWeight: 100, color: '#FAFAF8',
+                fontWeight: 100, color: 'var(--ink)',
                 letterSpacing: '-0.02em', lineHeight: 1.08,
                 fontStyle: 'italic', margin: 0,
               }}>
@@ -406,10 +421,10 @@ export default function Tienda() {
             <div style={{
               display: 'flex', alignItems: 'center',
               border: `1px solid ${searchFocused ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
-              background: '#1a1a1a', padding: '0 16px', gap: 12,
+              background: 'var(--raised)', padding: '0 16px', gap: 12,
               transition: 'border-color 0.2s',
             }}>
-              <span style={{ color: searchFocused ? '#C9A84C' : 'rgba(250,250,248,0.3)', display: 'flex', flexShrink: 0, transition: 'color 0.2s' }}>
+              <span style={{ color: searchFocused ? '#C9A84C' : 'var(--ink-faint)', display: 'flex', flexShrink: 0, transition: 'color 0.2s' }}>
                 <SearchIcon />
               </span>
               <input
@@ -421,14 +436,14 @@ export default function Tienda() {
                 onBlur={() => setSearchFocused(false)}
                 style={{
                   flex: 1, fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: 100,
-                  color: '#FAFAF8', background: 'none', border: 'none', outline: 'none',
+                  color: 'var(--ink)', background: 'none', border: 'none', outline: 'none',
                   padding: '12px 0', letterSpacing: '0.02em',
                 }}
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(250,250,248,0.35)', display: 'flex', padding: 4 }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-faint)', display: 'flex', padding: 4 }}
                   aria-label="Limpiar búsqueda"
                 >
                   <CloseIcon />
@@ -441,10 +456,10 @@ export default function Tienda() {
           <div className="tienda-pad" style={{ paddingBottom: 80 }}>
             {filtered.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-                <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'rgba(250,250,248,0.45)', fontStyle: 'italic', marginBottom: 8 }}>
+                <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'var(--ink-mute)', fontStyle: 'italic', marginBottom: 8 }}>
                   No encontramos esa fragancia
                 </p>
-                <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, color: 'rgba(250,250,248,0.25)', marginBottom: 28 }}>
+                <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, color: 'var(--ink-faint)', marginBottom: 28 }}>
                   Intenta con otros filtros
                 </p>
                 <button
@@ -517,21 +532,21 @@ export default function Tienda() {
             style={{
               position: 'fixed', top: 0, left: 0, bottom: 0,
               width: 300, maxWidth: '88vw',
-              background: '#0A0A0A', zIndex: 100,
+              background: C.bg, zIndex: 100,
               display: 'flex', flexDirection: 'column',
             }}
           >
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               padding: '0 20px', height: 60,
-              borderBottom: '1px solid rgba(250,250,248,0.07)', flexShrink: 0,
+              borderBottom: '1px solid var(--line2)', flexShrink: 0,
             }}>
-              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: '#FAFAF8', fontWeight: 100 }}>
+              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: 'var(--ink)', fontWeight: 100 }}>
                 Filtros
               </span>
               <button
                 onClick={() => setDrawerOpen(false)}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(250,250,248,0.45)', padding: 4, display: 'flex' }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-mute)', padding: 4, display: 'flex' }}
               >
                 <CloseIcon />
               </button>
@@ -541,7 +556,7 @@ export default function Tienda() {
               <FilterPanel {...filterProps} />
             </div>
 
-            <div style={{ padding: '16px 20px', borderTop: '1px solid rgba(250,250,248,0.07)', flexShrink: 0 }}>
+            <div style={{ padding: '16px 20px', borderTop: '1px solid var(--line2)', flexShrink: 0 }}>
               <button
                 onClick={() => setDrawerOpen(false)}
                 style={{

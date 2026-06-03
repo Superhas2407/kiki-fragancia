@@ -66,7 +66,7 @@ export default function InstagramFeed() {
   const headRef = useScrollReveal({ threshold: 0.2 })
 
   return (
-    <section style={{ background: '#0A0A0A', padding: '96px 0', borderTop: '1px solid rgba(201,168,76,0.1)' }}>
+    <section style={{ background: 'var(--bg)', padding: '96px 0', borderTop: '1px solid rgba(201,168,76,0.1)' }}>
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}

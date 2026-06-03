@@ -72,7 +72,7 @@ function GridLineHorizontal({ className, offset = '200px' }) {
   return (
     <div
       style={{
-        '--background': '#0A0A0A',
+        '--background': 'var(--bg)',
         '--color': 'rgba(201,168,76,0.15)',
         '--height': '1px',
         '--width': '5px',
@@ -98,7 +98,7 @@ function GridLineVertical({ className, offset = '150px' }) {
   return (
     <div
       style={{
-        '--background': '#0A0A0A',
+        '--background': 'var(--bg)',
         '--color': 'rgba(201,168,76,0.15)',
         '--height': '5px',
         '--width': '1px',
