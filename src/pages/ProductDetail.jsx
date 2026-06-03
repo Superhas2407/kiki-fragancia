@@ -1185,7 +1185,9 @@ export default function ProductDetail() {
               {/* Image */}
               <div style={rv(80)} onMouseEnter={() => setImgHover(true)} onMouseLeave={() => setImgHover(false)}>
                 <div className="pd-img-wrap" style={{
-                  boxShadow: imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)',
+                  boxShadow: theme === 'warm'
+                    ? (imgHover ? '0 32px 64px rgba(80,60,20,.22)' : '0 8px 32px rgba(80,60,20,.12)')
+                    : (imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)'),
                   transition: 'box-shadow .5s ease',
                 }}>
                   {product.image ? (

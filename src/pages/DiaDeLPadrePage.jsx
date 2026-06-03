@@ -37,6 +37,27 @@ const PERSONAS = [
     desc: 'Tabaco, oud y noches largas. Para el padre que sabe lo que pide.',
     ids: [412, 377, 367],
   },
+  {
+    num: '04',
+    label: 'El Fresco',
+    headline: 'Cítrico, limpio, vital',
+    desc: 'Energía desde la primera hora. Aromas que acompañan todo el día sin cansar.',
+    ids: [4, 5, 61],
+  },
+  {
+    num: '05',
+    label: 'El Elegante',
+    headline: 'Floral amaderado, refinado',
+    desc: 'Presencia sin esfuerzo. El tipo que huele bien en cualquier reunión.',
+    ids: [19, 26, 43],
+  },
+  {
+    num: '06',
+    label: 'El Misterioso',
+    headline: 'Oriental, profundo, seductor',
+    desc: 'Ámbar, especias y algo que no puedes definir. Fragancias que se recuerdan.',
+    ids: [27, 30, 88],
+  },
 ]
 
 function daysUntil(dateStr) {

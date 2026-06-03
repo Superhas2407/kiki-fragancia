@@ -3542,10 +3542,6 @@
 [data-theme='warm'] .vitrina-card:hover .vitrina-img {
   filter: drop-shadow(0 28px 40px rgba(80,60,20,0.28)) !important;
 }
-[data-theme='warm'] .vitrina-ribbon {
-  background: var(--gold) !important;
-  color: #1A1208 !important;
-}
 [data-theme='warm'] .vitrina-ribbon span {
   box-shadow: 0 2px 10px rgba(80,60,10,0.40) !important;
 }
@@ -3654,6 +3650,9 @@
   background: var(--raised) !important;
   border-color: var(--line) !important;
 }
+[data-theme='warm'] .ddp-persona-img {
+  background: linear-gradient(135deg, rgba(201,168,76,0.18), rgba(220,200,160,0.35)) !important;
+}
 [data-theme='warm'] .ddp-persona-headline { color: var(--ink) !important; }
 [data-theme='warm'] .ddp-persona-desc { color: var(--ink-mute) !important; }
 [data-theme='warm'] .ddp-featured { background: var(--bg2) !important; }
@@ -3761,8 +3760,6 @@
 /* Acordes */
 [data-theme='warm'] .pd-acorde-label { color: var(--ink-mute) !important; }
 [data-theme='warm'] .pd-acorde-pct { color: var(--ink-faint) !important; }
-[data-theme='warm'] .pd-acorde-bar { background: rgba(150,118,52,0.12) !important; }
-[data-theme='warm'] .pd-acorde-fill { background: var(--gold-ink) !important; }
 
 /* Cuando usar */
 [data-theme='warm'] .pd-cuando-label { color: var(--ink-mute) !important; }
