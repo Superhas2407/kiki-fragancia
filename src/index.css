@@ -3202,7 +3202,7 @@
     margin: 40px 0 0;
     border: 1.5px solid rgba(201,168,76,0.45);
   }
-  .ddp-personas { grid-template-columns: 1fr; gap: 16px; }
+  .ddp-personas { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .ddp-featured-card { grid-template-columns: 1fr; gap: 40px; }
   .ddp-featured-img { height: 280px; }
 }
@@ -3224,7 +3224,7 @@
   .ddp-grid-section { padding: 36px 0 48px !important; }
   .ddp-wa-section { padding: 36px 0 !important; }
   .ddp-countdown { padding: 20px 24px !important; }
-  .ddp-personas { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .ddp-personas { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
   .ddp-persona-card { padding: 20px 16px !important; }
   .ddp-featured-card { grid-template-columns: 1fr !important; gap: 24px !important; }
   .ddp-featured-img { height: 220px !important; }
