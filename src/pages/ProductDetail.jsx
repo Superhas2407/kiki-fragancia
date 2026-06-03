@@ -1088,7 +1088,7 @@ export default function ProductDetail() {
     return (
       <>
         <div className="pd-page" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 24 }}>
-          <p style={{ fontFamily: 'var(--font-d)', fontSize: 36, fontStyle: 'italic', color: 'rgba(250,250,248,.25)' }}>
+          <p style={{ fontFamily: 'var(--font-d)', fontSize: 36, fontStyle: 'italic', color: 'var(--ink-faint)' }}>
             Fragancia no encontrada
           </p>
           <Link to="/tienda" className="pd-back-link">← Volver al catálogo</Link>

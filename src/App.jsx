@@ -38,7 +38,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', gap: 20 }}>
-        <p style={{ fontFamily: 'var(--font-d)', fontSize: 28, fontStyle: 'italic', color: 'rgba(250,250,248,.3)' }}>
+        <p style={{ fontFamily: 'var(--font-d)', fontSize: 28, fontStyle: 'italic', color: 'var(--ink-faint)' }}>
           Algo salió mal
         </p>
         <button
