@@ -2901,10 +2901,11 @@
   flex-shrink: 0;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6));
 }
-.ddp-persona-bottle-cover {
-  width: auto;
-  height: 196px;
-  object-fit: contain;
+.ddp-persona-cover-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
 }
 
 .ddp-persona-num {
@@ -3238,7 +3239,7 @@
 @media (max-width: 480px) {
   .ddp-persona-img { height: 150px !important; }
   .ddp-persona-bottle { width: 58px !important; height: 96px !important; }
-  .ddp-persona-bottle-cover { width: auto !important; height: 134px !important; }
+  .ddp-persona-cover-img { aspect-ratio: 4/3 !important; }
   .ddp-persona-body { padding: 10px 12px 14px !important; }
   .ddp-persona-headline { font-size: 13px !important; margin-bottom: 6px !important; }
   .ddp-persona-desc { font-size: 11px !important; margin-bottom: 10px !important; }
@@ -3650,7 +3651,7 @@
 /* ── DDP Page ── */
 [data-theme='warm'] .ddp-page { background: var(--bg) !important; color: var(--ink); }
 [data-theme='warm'] .ddp-hero { background: var(--bg) !important; }
-[data-theme='warm'] .ddp-editorial-overlay { background: linear-gradient(to bottom, rgba(10,6,2,0.05) 0%, rgba(10,6,2,0.55) 100%) !important; }
+[data-theme='warm'] .ddp-editorial-overlay { background: linear-gradient(to bottom, rgba(10,6,2,0) 0%, rgba(10,6,2,0.22) 100%) !important; }
 [data-theme='warm'] .ddp-headline,
 [data-theme='warm'] .ddp-section-title,
 [data-theme='warm'] .ddp-grid-title,

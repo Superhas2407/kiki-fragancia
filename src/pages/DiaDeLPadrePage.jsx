@@ -173,37 +173,31 @@ export default function DiaDeLPadrePage() {
             </p>
           </div>
           <div className="ddp-personas">
-            {PERSONAS.map(({ num, label, headline, desc, ids }) => (
-              <div
-                key={num}
-                className="ddp-persona-card"
-                onClick={scrollToGrid}
-                role="button"
-                tabIndex={0}
-                onKeyDown={e => e.key === 'Enter' && scrollToGrid()}
-              >
-                <div className="ddp-persona-img">
-                  <div className="ddp-persona-img-inner">
-                    {(() => {
-                      const p = allProducts.find(x => x.id === ids[0])
-                      return p?.image ? (
-                        <img
-                          src={`/products/${p.image}`}
-                          alt={p.name}
-                          className="ddp-persona-bottle ddp-persona-bottle-cover"
-                        />
-                      ) : null
-                    })()}
+            {PERSONAS.map(({ num, label, headline, desc, ids }) => {
+              const coverProduct = allProducts.find(x => x.id === ids[0])
+              return (
+                <Link
+                  key={num}
+                  to={`/tienda/${ids[0]}`}
+                  className="ddp-persona-card"
+                  style={{ textDecoration: 'none', display: 'block' }}
+                >
+                  {coverProduct?.image && (
+                    <img
+                      src={`/products/${coverProduct.image}`}
+                      alt={coverProduct.name}
+                      className="ddp-persona-cover-img"
+                    />
+                  )}
+                  <div className="ddp-persona-body">
+                    <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>
+                    <h3 className="ddp-persona-headline">{headline}</h3>
+                    <p className="ddp-persona-desc">{desc}</p>
+                    <span className="ddp-persona-link">Ver fragancia →</span>
                   </div>
-                </div>
-                <div className="ddp-persona-body">
-                  <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>
-                  <h3 className="ddp-persona-headline">{headline}</h3>
-                  <p className="ddp-persona-desc">{desc}</p>
-                  <span className="ddp-persona-link">Ver fragancias →</span>
-                </div>
-              </div>
-            ))}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </section>

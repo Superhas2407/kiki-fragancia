@@ -129,9 +129,12 @@ export default function DiaDeLPadrePromo() {
                     <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, color: 'var(--ink-faint)', marginBottom: 6 }}>
                       {p.familia}
                     </p>
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 15, color: 'var(--gold-ink)', fontWeight: 100 }}>
+                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 15, color: 'var(--gold-ink)', fontWeight: 100, marginBottom: 8 }}>
                       ${p.precio} <span style={{ fontSize: 10, color: 'var(--ink-faint)' }}>{p.tipo}</span>
                     </p>
+                    <span style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold-ink)', opacity: 0.7 }}>
+                      Ver →
+                    </span>
                   </div>
                 </Link>
               ))}
