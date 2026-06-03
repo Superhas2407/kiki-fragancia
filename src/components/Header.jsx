@@ -48,15 +48,15 @@ function CartButton() {
     <button
       onClick={() => setDrawerOpen(true)}
       aria-label={`Carrito (${count} items)`}
+      className="header-icon-btn"
       style={{
         position: 'relative', background: 'none', border: 'none',
-        cursor: 'pointer', color: 'rgba(250,250,248,0.75)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        padding: '4px', minHeight: 44,
+        cursor: 'pointer', display: 'flex', alignItems: 'center',
+        justifyContent: 'center', padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
       onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-      onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.75)'}
+      onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <CartIcon size={20} />
       {count > 0 && (
@@ -192,14 +192,15 @@ export default function Header() {
               <button
                 onClick={() => setSearchOpen(true)}
                 aria-label="Buscar"
+                className="header-icon-btn"
                 style={{
                   background: 'none', border: 'none', cursor: 'pointer',
-                  color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                  display: 'flex', alignItems: 'center',
                   justifyContent: 'center', padding: 12, minWidth: 44, minHeight: 44,
                   transition: 'color .2s',
                 }}
                 onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.6)'}
+                onMouseLeave={e => e.currentTarget.style.color = ''}
               >
                 <SearchIcon />
               </button>
@@ -219,9 +220,10 @@ export default function Header() {
             <button
               onClick={() => setSearchOpen(true)}
               aria-label="Buscar"
+              className="header-icon-btn"
               style={{
                 background: 'none', border: 'none', cursor: 'pointer',
-                color: 'rgba(250,250,248,0.6)', display: 'flex', alignItems: 'center',
+                display: 'flex', alignItems: 'center',
                 padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
                 transition: 'color .2s',
               }}

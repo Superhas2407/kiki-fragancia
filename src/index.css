@@ -891,6 +891,10 @@
   align-items: center; justify-content: center;
 }
 
+.header-icon-btn { color: var(--ink-mute); }
+[data-theme='warm'] .header-icon-btn { color: rgba(35,26,13,0.60); }
+[data-theme='warm'] .header-icon-btn:hover { color: var(--gold-ink); }
+
 .kiki-mobile-backdrop {
   display: none; position: fixed; inset: 0; z-index: 9998;
   background: rgba(0,0,0,0.55);
@@ -1067,7 +1071,7 @@
   font-family: var(--font-s); font-size: 10px; font-weight: 300;
   letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
   color: var(--ink); background: transparent;
-  border: 1px solid var(--line); padding: 15px 40px;
+  border: 1px solid rgba(201,168,76,0.5); padding: 15px 40px;
   position: relative; overflow: hidden;
   transition: color .3s ease, background .3s ease, border-color .3s ease;
 }
@@ -3259,7 +3263,7 @@
 [data-theme='warm'] .nav-pill-item:hover,
 [data-theme='warm'] .nav-pill-item.active { color: var(--gold-ink); background: transparent; }
 [data-theme='warm'] .nav-pill-item:hover { color: #1A1208; background: var(--gold); }
-[data-theme='warm'] .btn-cta { color: var(--ink); border-color: var(--line); }
+[data-theme='warm'] .btn-cta { color: var(--ink); border-color: rgba(201,168,76,0.5); }
 [data-theme='warm'] .btn-cta:hover { color: #1A1208; background: var(--gold); border-color: var(--gold); }
 [data-theme='warm'] .hamburger-btn { color: var(--ink); }
 
@@ -3286,21 +3290,20 @@
 [data-theme='warm'] .app-shell,
 [data-theme='warm'] .app-main { background: var(--bg); }
 
-/* ── Hero ── */
-[data-theme='warm'] .hero-section { background: var(--bg) !important; }
-[data-theme='warm'] .hero-bg { background: var(--bg) !important; }
-[data-theme='warm'] .hero-bg-gradient { background: var(--bg) !important; opacity: 0 !important; }
-[data-theme='warm'] .hero-main-title { color: var(--ink); }
-[data-theme='warm'] .hero-eyebrow { color: var(--gold-ink); }
-[data-theme='warm'] .hero-quote { color: var(--ink-mute); }
+/* ── Hero — always has dark photo/video, text stays light in both modes ── */
+[data-theme='warm'] .hero-main-title { color: #FAFAF8 !important; }
+[data-theme='warm'] .hero-eyebrow { color: var(--gold) !important; }
+[data-theme='warm'] .hero-quote { color: rgba(250,250,248,0.85) !important; }
+[data-theme='warm'] .hero-search-link { color: rgba(250,250,248,0.80) !important; border-color: rgba(201,168,76,0.5) !important; }
+[data-theme='warm'] .hero-search-link:hover { color: var(--gold) !important; border-color: var(--gold) !important; }
+[data-theme='warm'] .hero-section .btn-cta { color: #FAFAF8 !important; border-color: rgba(201,168,76,0.5) !important; }
+[data-theme='warm'] .hero-section .btn-cta:hover { color: #0A0A0A !important; background: var(--gold) !important; }
 [data-theme='warm'] .hero-bottom-bar {
-  background: rgba(243,234,217,0.88) !important;
-  border-top-color: var(--line2);
+  background: rgba(10,10,10,0.55) !important;
+  border-top-color: rgba(201,168,76,0.2);
 }
 [data-theme='warm'] .hero-bottom-handle,
-[data-theme='warm'] .kiki-scroll-indicator { color: var(--ink-faint); }
-[data-theme='warm'] .hero-search-link { color: var(--ink-mute); border-color: var(--line); }
-[data-theme='warm'] .hero-search-link:hover { color: var(--gold-ink); border-color: var(--gold-ink); }
+[data-theme='warm'] .kiki-scroll-indicator { color: rgba(250,250,248,0.5); }
 [data-theme='warm'] .gold-line { background: var(--gold); opacity: 0.5; }
 
 /* ── BrandsMarquee ── */
