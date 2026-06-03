@@ -331,7 +331,8 @@ export default function Header() {
         <div
           style={{
             position: 'fixed', inset: 0, zIndex: 300,
-            background: 'rgba(10,10,10,0.92)', backdropFilter: 'blur(12px)',
+            background: theme === 'warm' ? 'rgba(243,234,217,0.96)' : 'rgba(10,10,10,0.92)',
+            backdropFilter: 'blur(12px)',
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             padding: '0 24px',
           }}
@@ -343,11 +344,11 @@ export default function Header() {
             style={{
               position: 'absolute', top: 20, right: 20,
               background: 'none', border: 'none', cursor: 'pointer',
-              color: 'rgba(250,250,248,0.5)', padding: 8,
+              color: 'var(--ink-mute)', padding: 8,
               transition: 'color .2s',
             }}
-            onMouseEnter={e => e.currentTarget.style.color = '#FAFAF8'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--ink)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-mute)'}
           >
             <CloseIcon />
           </button>
@@ -355,7 +356,7 @@ export default function Header() {
           <p style={{
             fontFamily: 'var(--font-d)', fontSize: 'clamp(11px, 1.5vw, 13px)',
             letterSpacing: '0.28em', textTransform: 'uppercase',
-            color: '#C9A84C', marginBottom: 32,
+            color: 'var(--gold-ink)', marginBottom: 32,
           }}>
             Buscar fragancia
           </p>
@@ -363,10 +364,10 @@ export default function Header() {
           <form onSubmit={handleSearch} style={{ width: '100%', maxWidth: 560 }}>
             <div style={{
               display: 'flex', alignItems: 'center',
-              borderBottom: '1px solid rgba(201,168,76,0.6)',
+              borderBottom: '1px solid var(--gold)',
               gap: 16, paddingBottom: 12,
             }}>
-              <span style={{ color: 'rgba(201,168,76,0.7)', display: 'flex', flexShrink: 0 }}>
+              <span style={{ color: 'var(--gold-ink)', display: 'flex', flexShrink: 0 }}>
                 <SearchIcon />
               </span>
               <input
@@ -379,14 +380,14 @@ export default function Header() {
                   flex: 1, background: 'none', border: 'none', outline: 'none',
                   fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
                   fontWeight: 100, fontStyle: 'italic',
-                  color: '#FAFAF8', letterSpacing: '-0.01em',
+                  color: 'var(--ink)', letterSpacing: '-0.01em',
                 }}
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(250,250,248,0.3)', display: 'flex', padding: 4 }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-faint)', display: 'flex', padding: 4 }}
                 >
                   <CloseIcon />
                 </button>
@@ -402,7 +403,7 @@ export default function Header() {
                     style={{
                       display: 'flex', alignItems: 'center', gap: 14,
                       padding: '10px 12px', cursor: 'pointer', borderRadius: 4,
-                      background: i === activeSuggestion ? 'rgba(201,168,76,0.1)' : 'transparent',
+                      background: i === activeSuggestion ? 'rgba(201,168,76,0.12)' : 'transparent',
                       transition: 'background .15s',
                     }}
                   >
@@ -415,14 +416,14 @@ export default function Header() {
                       />
                     )}
                     <span style={{ flex: 1, minWidth: 0 }}>
-                      <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.7)', display: 'block' }}>
+                      <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-ink)', display: 'block' }}>
                         {p.house}
                       </span>
-                      <span style={{ fontFamily: 'var(--font-d)', fontSize: 15, fontStyle: 'italic', color: '#FAFAF8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
+                      <span style={{ fontFamily: 'var(--font-d)', fontSize: 15, fontStyle: 'italic', color: 'var(--ink)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
                         {p.name}
                       </span>
                     </span>
-                    <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.08em', color: 'rgba(250,250,248,0.3)', flexShrink: 0 }}>
+                    <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.08em', color: 'var(--ink-faint)', flexShrink: 0 }}>
                       {p.ml}ml
                     </span>
                   </li>
@@ -431,7 +432,7 @@ export default function Header() {
             ) : (
               <p style={{
                 fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.08em',
-                color: 'rgba(250,250,248,0.25)', marginTop: 16, textAlign: 'center',
+                color: 'var(--ink-faint)', marginTop: 16, textAlign: 'center',
               }}>
                 Presiona Enter para buscar · Esc para cerrar
               </p>
