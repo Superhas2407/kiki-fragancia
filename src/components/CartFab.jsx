@@ -38,7 +38,7 @@ export default function CartFab() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#FAFAF8',
+        color: 'var(--ink)',
         cursor: 'pointer',
         transition: 'border-color 0.2s ease',
       }}

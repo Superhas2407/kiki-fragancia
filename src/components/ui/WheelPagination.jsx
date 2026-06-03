@@ -32,8 +32,8 @@ export default function WheelPagination({ totalPages, currentPage, onPageChange 
           width: '36px', height: '36px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           background: 'transparent',
-          border: `1px solid ${disabled ? 'rgba(250,250,248,0.1)' : 'rgba(250,250,248,0.2)'}`,
-          color: disabled ? 'rgba(250,250,248,0.2)' : '#C9A84C',
+          border: `1px solid ${disabled ? 'var(--line2)' : 'var(--line)'}`,
+          color: disabled ? 'var(--ink-faint)' : '#C9A84C',
           cursor: disabled ? 'default' : 'pointer',
           fontFamily: "'KikiGotham', sans-serif",
           fontSize: '15px',
@@ -41,7 +41,7 @@ export default function WheelPagination({ totalPages, currentPage, onPageChange 
           flexShrink: 0,
         }}
         onMouseEnter={e => { if (!disabled) e.currentTarget.style.borderColor = '#C9A84C' }}
-        onMouseLeave={e => { if (!disabled) e.currentTarget.style.borderColor = 'rgba(250,250,248,0.2)' }}
+        onMouseLeave={e => { if (!disabled) e.currentTarget.style.borderColor = 'var(--line)' }}
       >
         {label}
       </button>
@@ -68,8 +68,8 @@ export default function WheelPagination({ totalPages, currentPage, onPageChange 
                   width: '36px', height: '36px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   background: isActive ? '#C9A84C' : 'transparent',
-                  border: `1px solid ${isActive ? '#C9A84C' : 'rgba(250,250,248,0.2)'}`,
-                  color: isActive ? '#0A0A0A' : '#FAFAF8',
+                  border: `1px solid ${isActive ? '#C9A84C' : 'var(--line)'}`,
+                  color: isActive ? '#0A0A0A' : 'var(--ink)',
                   cursor: isActive ? 'default' : 'pointer',
                   fontFamily: "'KikiGotham', sans-serif",
                   fontSize: '12px', letterSpacing: '0.05em',
@@ -77,7 +77,7 @@ export default function WheelPagination({ totalPages, currentPage, onPageChange 
                   flexShrink: 0,
                 }}
                 onMouseEnter={e => { if (!isActive) e.currentTarget.style.borderColor = '#C9A84C' }}
-                onMouseLeave={e => { if (!isActive) e.currentTarget.style.borderColor = 'rgba(250,250,248,0.2)' }}
+                onMouseLeave={e => { if (!isActive) e.currentTarget.style.borderColor = 'var(--line)' }}
               >
                 {page}
               </motion.button>

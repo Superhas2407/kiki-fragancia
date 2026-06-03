@@ -84,13 +84,13 @@ export default function InstagramFeed() {
             <div>
               <p
                 className="font-sans"
-                style={{ fontSize: '14px', fontWeight: 100, letterSpacing: '0.01em', color: 'var(--ivory)' }}
+                style={{ fontSize: '14px', fontWeight: 100, letterSpacing: '0.01em', color: 'var(--ink)' }}
               >
                 @kiki_fragancia
               </p>
               <p
                 className="font-sans"
-                style={{ fontSize: '12px', fontWeight: 100, color: 'rgba(247,242,234,0.65)' }}
+                style={{ fontSize: '12px', fontWeight: 100, color: 'var(--ink-mute)' }}
               >
                 Fragancias verificadas · Venezuela
               </p>
@@ -117,7 +117,7 @@ export default function InstagramFeed() {
             target="_blank"
             rel="noopener noreferrer"
             className="font-sans self-start sm:self-auto"
-            style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', color: 'rgba(247,242,234,0.65)', transition: 'color 0.2s ease', display: 'inline-flex', alignItems: 'center', minHeight: '44px', paddingTop: '4px', paddingBottom: '4px' }}
+            style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', color: 'var(--ink-mute)', transition: 'color 0.2s ease', display: 'inline-flex', alignItems: 'center', minHeight: '44px', paddingTop: '4px', paddingBottom: '4px' }}
             onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
             onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,242,234,0.65)'}
           >
