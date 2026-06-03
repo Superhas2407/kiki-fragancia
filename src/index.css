@@ -20,21 +20,21 @@
 
 /* Claro cálido (boutique) */
 [data-theme='warm'] {
-  --bg: #F3EAD9;
-  --bg2: #FBF5EA;
-  --bg-warm: #ECE1CD;
-  --raised: #FFFFFF;
-  --ink: #231A0D;
-  --ink-mute: rgba(35,26,13,0.66);
-  --ink-faint: rgba(35,26,13,0.42);
-  --line: rgba(150,118,52,0.30);
-  --line2: rgba(35,26,13,0.12);
+  --bg: #EAE0CC;
+  --bg2: #F2E9D6;
+  --bg-warm: #E4D9C2;
+  --raised: #F5EDD9;
+  --ink: #1A1208;
+  --ink-mute: rgba(35,26,13,0.80);
+  --ink-faint: rgba(35,26,13,0.58);
+  --line: rgba(150,118,52,0.38);
+  --line2: rgba(35,26,13,0.15);
   --gold: #9A7428;
   --gold-ink: #6B5010;
   --gold-fill-ink: #1A1208;
   --photo-floor: rgba(60,42,16,0.30);
-  --chip: rgba(35,26,13,0.04);
-  --shadow: 0 24px 50px -30px rgba(80,60,20,0.40);
+  --chip: rgba(35,26,13,0.07);
+  --shadow: 0 24px 50px -30px rgba(80,60,20,0.45);
   --ink-rgb: 35, 26, 13;
 }
 
