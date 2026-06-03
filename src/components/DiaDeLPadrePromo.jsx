@@ -120,19 +120,19 @@ export default function DiaDeLPadrePromo() {
                     loading="lazy"
                   />
                   <div className="ddp-profile-info">
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold-ink)', marginBottom: 4 }}>
+                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold-ink)', marginBottom: 4 }}>
                       {p.badge}
                     </p>
                     <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 16, fontStyle: 'italic', fontWeight: 100, color: 'var(--ink)', marginBottom: 3, lineHeight: 1.2 }}>
                       {p.name}
                     </p>
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, color: 'var(--ink-faint)', marginBottom: 6 }}>
+                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 11, color: 'var(--ink-mute)', marginBottom: 6 }}>
                       {p.familia}
                     </p>
                     <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 15, color: 'var(--gold-ink)', fontWeight: 100, marginBottom: 8 }}>
-                      ${p.precio} <span style={{ fontSize: 10, color: 'var(--ink-faint)' }}>{p.tipo}</span>
+                      ${p.precio} <span style={{ fontSize: 11, color: 'var(--ink-mute)' }}>{p.tipo}</span>
                     </p>
-                    <span style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 9, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold-ink)', opacity: 0.7 }}>
+                    <span style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
                       Ver →
                     </span>
                   </div>
@@ -141,7 +141,7 @@ export default function DiaDeLPadrePromo() {
             </div>
 
             <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid var(--line)' }}>
-              <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', lineHeight: 1.7, marginBottom: 14 }}>
+              <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 13, fontWeight: 100, color: 'var(--ink-mute)', lineHeight: 1.7, marginBottom: 16 }}>
                 10 fragancias masculinas · Antonio Banderas<br />
                 Envoltura sin costo · Envíos a todo Venezuela
               </p>
@@ -149,10 +149,10 @@ export default function DiaDeLPadrePromo() {
                 to="/dia-del-padre"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
-                  fontFamily: 'KikiGotham, sans-serif', fontSize: 10,
+                  fontFamily: 'KikiGotham, sans-serif', fontSize: 12,
                   letterSpacing: '0.18em', textTransform: 'uppercase',
                   color: 'var(--gold-ink)', textDecoration: 'none',
-                  borderBottom: '1px solid rgba(201,168,76,0.35)',
+                  borderBottom: '1px solid var(--gold)',
                   paddingBottom: 3,
                   transition: 'color .2s, border-color .2s',
                 }}
@@ -179,7 +179,7 @@ export default function DiaDeLPadrePromo() {
                 {STAR_PRODUCT.name}
               </p>
               <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 26, color: 'var(--gold-ink)', fontWeight: 100, marginBottom: 16 }}>
-                ${STAR_PRODUCT.precio} <span style={{ fontSize: 12, color: 'var(--ink-faint)' }}>{STAR_PRODUCT.tipo}</span>
+                ${STAR_PRODUCT.precio} <span style={{ fontSize: 12, color: 'var(--ink-mute)' }}>{STAR_PRODUCT.tipo}</span>
               </p>
               <a href={WA_URL} className="ddp-wa-btn" target="_blank" rel="noopener noreferrer">
                 <WhatsAppSVG />

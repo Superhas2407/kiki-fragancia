@@ -3327,7 +3327,7 @@
 }
 [data-theme='warm'] .mobile-nav-link { color: var(--ink); }
 [data-theme='warm'] .mobile-nav-link:hover { color: var(--gold-ink); background: var(--chip); }
-[data-theme='warm'] .mobile-nav-section-label { color: var(--ink-faint); }
+[data-theme='warm'] .mobile-nav-section-label { color: var(--gold-ink); }
 
 /* ── GlobalSidebar ── */
 [data-theme='warm'] .global-sidebar {

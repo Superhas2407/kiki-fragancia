@@ -257,7 +257,7 @@ export default function Header() {
       <div className={`kiki-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-header">
           <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
-          <button onClick={() => setMenuOpen(false)} style={{ color: 'rgba(250,250,248,.45)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
+          <button onClick={() => setMenuOpen(false)} style={{ color: 'var(--ink-mute)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
             <CloseIcon />
           </button>
         </div>
@@ -266,7 +266,7 @@ export default function Header() {
 
           {/* Sección: Género */}
           <div style={{ padding: '20px 24px 8px', width: '100%' }}>
-            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
+            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
               Género
             </span>
           </div>
@@ -283,11 +283,11 @@ export default function Header() {
           ))}
 
           {/* Divisor */}
-          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'rgba(201,168,76,0.08)', flexShrink: 0 }} />
+          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'var(--line)', flexShrink: 0 }} />
 
           {/* Sección: Tipo */}
           <div style={{ padding: '8px 24px 8px', width: '100%' }}>
-            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
+            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
               Tipo
             </span>
           </div>
@@ -302,11 +302,11 @@ export default function Header() {
           ))}
 
           {/* Divisor */}
-          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'rgba(201,168,76,0.08)', flexShrink: 0 }} />
+          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'var(--line)', flexShrink: 0 }} />
 
           {/* Sección: Navegación general */}
           <div style={{ padding: '8px 24px 8px', width: '100%' }}>
-            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.5)' }}>
+            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
               Menú
             </span>
           </div>

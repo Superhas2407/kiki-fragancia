@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 import VaporCanvas from './VaporCanvas'
 
 const SearchIcon = () => (
@@ -26,6 +27,7 @@ function getSlideDuration(idx) {
 
 
 export default function Hero() {
+  const { theme } = useTheme()
   const [mounted, setMounted]       = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
@@ -220,7 +222,7 @@ export default function Hero() {
               <span aria-hidden="true" style={{
                 display: 'block',
                 width: i === current ? 28 : 8, height: 8,
-                background: i === current ? '#C9A84C' : 'rgba(250,250,248,0.35)',
+                background: i === current ? '#C9A84C' : (theme === 'warm' ? 'rgba(35,26,13,0.30)' : 'rgba(250,250,248,0.35)'),
                 transition: 'width 0.4s ease, background 0.4s ease',
               }} />
             </button>

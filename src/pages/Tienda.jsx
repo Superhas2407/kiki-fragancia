@@ -227,16 +227,16 @@ export default function Tienda() {
   const { theme } = useTheme()
   const isDark = theme === 'dark'
   const C = {
-    bg:       isDark ? '#0A0A0A'               : '#F3EAD9',
-    bg2:      isDark ? '#0E0C08'               : '#FBF5EA',
-    ink:      isDark ? '#F7F2EA'               : '#231A0D',
-    inkMute:  isDark ? 'rgba(247,242,234,0.5)' : 'rgba(35,26,13,0.60)',
-    inkFaint: isDark ? 'rgba(247,242,234,0.3)' : 'rgba(35,26,13,0.38)',
-    line:     isDark ? 'rgba(201,168,76,0.18)' : 'rgba(150,118,52,0.30)',
-    line2:    isDark ? 'rgba(247,242,234,0.07)': 'rgba(35,26,13,0.10)',
+    bg:       isDark ? '#0A0A0A'               : '#EAE0CC',
+    bg2:      isDark ? '#0E0C08'               : '#F2E9D6',
+    ink:      isDark ? '#F7F2EA'               : '#1A1208',
+    inkMute:  isDark ? 'rgba(247,242,234,0.5)' : 'rgba(35,26,13,0.80)',
+    inkFaint: isDark ? 'rgba(247,242,234,0.3)' : 'rgba(35,26,13,0.58)',
+    line:     isDark ? 'rgba(201,168,76,0.18)' : 'rgba(150,118,52,0.38)',
+    line2:    isDark ? 'rgba(247,242,234,0.07)': 'rgba(35,26,13,0.15)',
     gold:     '#C9A84C',
-    goldInk:  isDark ? '#E8C96A'               : '#8A6818',
-    chip:     isDark ? 'rgba(247,242,234,0.05)': 'rgba(35,26,13,0.04)',
+    goldInk:  isDark ? '#E8C96A'               : '#6B5010',
+    chip:     isDark ? 'rgba(247,242,234,0.05)': 'rgba(35,26,13,0.07)',
   }
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()

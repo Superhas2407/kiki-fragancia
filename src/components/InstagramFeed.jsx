@@ -119,7 +119,7 @@ export default function InstagramFeed() {
             className="font-sans self-start sm:self-auto"
             style={{ fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', color: 'var(--ink-mute)', transition: 'color 0.2s ease', display: 'inline-flex', alignItems: 'center', minHeight: '44px', paddingTop: '4px', paddingBottom: '4px' }}
             onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(247,242,234,0.65)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-mute)'}
           >
             Ver perfil →
           </a>
