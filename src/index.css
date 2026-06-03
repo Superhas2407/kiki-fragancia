@@ -3231,6 +3231,15 @@
 }
 
 @media (max-width: 480px) {
+  .ddp-persona-img { height: 150px !important; }
+  .ddp-persona-bottle { width: 58px !important; height: 96px !important; }
+  .ddp-persona-body { padding: 10px 12px 14px !important; }
+  .ddp-persona-headline { font-size: 13px !important; margin-bottom: 6px !important; }
+  .ddp-persona-desc { font-size: 11px !important; margin-bottom: 10px !important; }
+  .ddp-persona-link { padding: 7px 10px !important; font-size: 9px !important; letter-spacing: 0.10em !important; }
+}
+
+@media (max-width: 480px) {
   .ddp-hero { min-height: auto !important; padding: 48px 16px 32px !important; }
   .ddp-headline { font-size: 36px !important; }
   .diadel-padre-grid { grid-template-columns: repeat(2, 1fr) !important; }
