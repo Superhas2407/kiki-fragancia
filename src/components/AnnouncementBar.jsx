@@ -86,7 +86,7 @@ export default function AnnouncementBar() {
             <p className="ddp-popup-eyebrow">Día del Padre · 21 de junio</p>
             <h2 className="ddp-popup-headline">El regalo que no olvidará</h2>
             <div className="ddp-popup-rule" aria-hidden="true" />
-            <p className="ddp-popup-body">Fragancias de lujo seleccionadas para papá. Colección curada para el Día del Padre 2026.</p>
+            <p className="ddp-popup-body">10% de descuento en promoción ciertos perfumes de caballero en divisa</p>
             <button className="ddp-popup-btn" onClick={goToLanding}>
               Ver la colección
             </button>

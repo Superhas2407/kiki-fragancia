@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
+import { useTheme } from '../context/ThemeContext'
 import { products } from '../data/products-enriched'
 import { NOTES_IMAGES } from '../data/notes-images'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
@@ -1064,6 +1065,7 @@ export default function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { addItem } = useCartContext()
+  const { theme } = useTheme()
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -1422,13 +1424,13 @@ export default function ProductDetail() {
                       return (
                         <div key={nombre} className="pd-cuando-item">
                           <span className="pd-cuando-icon" style={{
-                            opacity: activo ? 1 : 0.18,
-                            color: activo ? 'var(--gold)' : 'rgba(247,242,234,.4)',
+                            opacity: activo ? 1 : 0.22,
+                            color: activo ? 'var(--gold)' : (theme === 'warm' ? 'rgba(35,26,13,0.30)' : 'rgba(247,242,234,.4)'),
                             boxShadow: activo ? '0 0 22px rgba(201,168,76,.25)' : 'none',
                           }}>
                             {Icon && <Icon />}
                           </span>
-                          <span className="pd-cuando-text" style={{ color: activo ? 'var(--gold)' : 'rgba(247,242,234,.2)' }}>
+                          <span className="pd-cuando-text" style={{ color: activo ? 'var(--gold)' : (theme === 'warm' ? 'rgba(35,26,13,0.25)' : 'rgba(247,242,234,.2)') }}>
                             {nombre}
                           </span>
                         </div>

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '../components/Footer'
 import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
-import { diaDeLPadreIds } from '../data/dia-del-padre'
 import WheelPagination from '../components/ui/WheelPagination'
 import { useTheme } from '../context/ThemeContext'
 
@@ -489,7 +488,7 @@ export default function Tienda() {
                       >
                         <VitrinaCard
                           product={product}
-                          ribbon={diaDeLPadreIds.includes(product.id) ? 'Día del Padre' : null}
+                          ribbon={product.genero === 'Masculino' ? 'Día del Padre' : null}
                         />
                       </motion.div>
                     ))}

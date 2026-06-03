@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
-import { diaDeLPadreIds, antoniobanderasIds, armafOdysseyIds } from '../data/dia-del-padre'
+import { diaDeLPadreIds } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
 
@@ -70,11 +70,9 @@ export default function DiaDeLPadrePage() {
   const { addItem } = useCartContext()
   const navigate = useNavigate()
 
-  const productos = diaDeLPadreIds
+  const todosLosMasculinos = diaDeLPadreIds
     .map(id => allProducts.find(p => p.id === id))
     .filter(Boolean)
-  const productosAB = productos.filter(p => antoniobanderasIds.includes(p.id))
-  const productosArmaf = productos.filter(p => armafOdysseyIds.includes(p.id))
 
   const featured = allProducts.find(p => p.id === EDITOR_PICK_ID)
 
@@ -245,30 +243,17 @@ export default function DiaDeLPadrePage() {
           <div className="ddp-grid-header">
             <div>
               <p className="ddp-section-eyebrow">Colección Completa</p>
-              <h2 className="ddp-grid-title">10 fragancias para él</h2>
+              <h2 className="ddp-grid-title">{todosLosMasculinos.length} fragancias para él</h2>
             </div>
             <p className="ddp-grid-meta">$25 — $30 · 100 ml</p>
           </div>
           <div className="diadel-padre-grid">
-            {productosAB.map((p, i) => (
+            {todosLosMasculinos.map((p, i) => (
               <VitrinaCard
                 key={p.id}
                 product={p}
                 ribbon="Día del Padre"
-                badge={i === 0 ? 'Más vendido' : i === 1 ? 'Editor\'s pick' : null}
-              />
-            ))} 
-          </div>
-
-          <div className="ddp-brand-divider">
-            <span>Armaf Odyssey</span>
-          </div>
-          <div className="diadel-padre-grid">
-            {productosArmaf.map(p => (
-              <VitrinaCard
-                key={p.id}
-                product={p}
-                ribbon="Día del Padre"
+                badge={p.id === EDITOR_PICK_ID ? 'Editor\'s pick' : (i === 0 ? 'Más vendido' : null)}
               />
             ))}
           </div>
