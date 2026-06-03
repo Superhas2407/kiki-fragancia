@@ -2274,9 +2274,19 @@
   color: var(--ink-mute);
   letter-spacing: 0.02em;
 }
+.vitrina-price-disc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.vitrina-price-disc-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .vitrina-price-orig {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 100;
   color: var(--ink-faint);
   text-decoration: line-through;
@@ -2284,14 +2294,17 @@
 }
 .vitrina-price-badge {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: #1A1208;
   background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
-  padding: 3px 7px;
-  align-self: center;
+  padding: 3px 8px;
+}
+.vitrina-price-usd--big {
+  font-size: 22px !important;
+  line-height: 1;
 }
 
 /* ── DÍA DEL PADRE — PROMO HOMEPAGE (Campaña B v2) ── */

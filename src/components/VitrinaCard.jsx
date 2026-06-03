@@ -192,11 +192,21 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, disc
           const discPrice = discount ? Math.round(minPrice * (1 - discount / 100)) : null
           return (
             <div className="vitrina-price">
-              {discount && <span className="vitrina-price-orig">${minPrice}</span>}
-              <span className="vitrina-price-usd">
-                {hasRange ? 'Desde ' : ''}${discPrice ?? minPrice}
-              </span>
-              {discount && <span className="vitrina-price-badge">-{discount}%</span>}
+              {discount ? (
+                <div className="vitrina-price-disc-block">
+                  <div className="vitrina-price-disc-row">
+                    <span className="vitrina-price-badge">-{discount}% OFERTA</span>
+                    <span className="vitrina-price-orig">${minPrice}</span>
+                  </div>
+                  <span className="vitrina-price-usd vitrina-price-usd--big">
+                    {hasRange ? 'Desde ' : ''}${discPrice}
+                  </span>
+                </div>
+              ) : (
+                <span className="vitrina-price-usd">
+                  {hasRange ? 'Desde ' : ''}${minPrice}
+                </span>
+              )}
             </div>
           )
         })()}
