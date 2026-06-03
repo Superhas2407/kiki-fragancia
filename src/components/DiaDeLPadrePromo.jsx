@@ -189,15 +189,6 @@ export default function DiaDeLPadrePromo() {
           </div>
         </div>
       </div>
-
-      {/* Bloque 3 — Franja de beneficios */}
-      <div style={{ background: 'var(--bg2)', borderTop: '1px solid var(--line)', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '40px', padding: '18px 48px', marginTop: 40 }}>
-        {['🎁 Envoltura sin costo', '🚚 Entrega antes del 21 jun', '✓ Original verificado', '📍 Envíos a todo el país'].map(item => (
-          <span key={item} style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 11, fontWeight: 100, color: 'var(--ink-mute)', letterSpacing: '0.06em' }}>
-            {item}
-          </span>
-        ))}
-      </div>
     </section>
   )
 }
