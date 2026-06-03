@@ -3244,11 +3244,7 @@
 [data-theme='warm'] #root { background: var(--bg); color: var(--ink); }
 [data-theme='warm'] * { transition: background-color 0.25s ease, color 0.2s ease, border-color 0.2s ease; }
 
-/* ── Logo header ── */
-[data-theme='warm'] .kiki-logo-img { filter: brightness(0); }
-
-/* ── Logo footer ── */
-[data-theme='warm'] .footer-logo-img { filter: brightness(0); }
+/* ── Logo: src swapped to /logo-warm.svg in JSX — no filter needed ── */
 
 /* ── Header ── */
 [data-theme='warm'] .kiki-header {
@@ -3290,20 +3286,25 @@
 [data-theme='warm'] .app-shell,
 [data-theme='warm'] .app-main { background: var(--bg); }
 
-/* ── Hero — always has dark photo/video, text stays light in both modes ── */
-[data-theme='warm'] .hero-main-title { color: #FAFAF8 !important; }
+/* ── Hero: lighter in warm mode — brighter photo, less dark overlay ── */
+[data-theme='warm'] .hero-video { opacity: 0.72 !important; }
+[data-theme='warm'] .hero-bg-gradient {
+  background: linear-gradient(180deg, rgba(10,6,2,0.20) 0%, rgba(10,6,2,0.48) 100%) !important;
+}
+[data-theme='warm'] .hero-main-title { color: #FAFAF8 !important; text-shadow: 0 2px 14px rgba(0,0,0,0.60) !important; }
 [data-theme='warm'] .hero-eyebrow { color: var(--gold) !important; }
-[data-theme='warm'] .hero-quote { color: rgba(250,250,248,0.85) !important; }
-[data-theme='warm'] .hero-search-link { color: rgba(250,250,248,0.80) !important; border-color: rgba(201,168,76,0.5) !important; }
+[data-theme='warm'] .hero-quote { color: rgba(250,250,248,0.92) !important; text-shadow: 0 1px 8px rgba(0,0,0,0.50) !important; }
+[data-theme='warm'] .hero-section .eyebrow-text { color: rgba(250,250,248,0.80) !important; text-shadow: 0 1px 4px rgba(0,0,0,0.4) !important; }
+[data-theme='warm'] .hero-search-link { color: rgba(250,250,248,0.85) !important; border-color: rgba(201,168,76,0.55) !important; }
 [data-theme='warm'] .hero-search-link:hover { color: var(--gold) !important; border-color: var(--gold) !important; }
-[data-theme='warm'] .hero-section .btn-cta { color: #FAFAF8 !important; border-color: rgba(201,168,76,0.5) !important; }
+[data-theme='warm'] .hero-section .btn-cta { color: #FAFAF8 !important; border-color: rgba(201,168,76,0.55) !important; }
 [data-theme='warm'] .hero-section .btn-cta:hover { color: #0A0A0A !important; background: var(--gold) !important; }
 [data-theme='warm'] .hero-bottom-bar {
-  background: rgba(10,10,10,0.55) !important;
+  background: rgba(10,6,2,0.45) !important;
   border-top-color: rgba(201,168,76,0.2);
 }
 [data-theme='warm'] .hero-bottom-handle,
-[data-theme='warm'] .kiki-scroll-indicator { color: rgba(250,250,248,0.5); }
+[data-theme='warm'] .kiki-scroll-indicator { color: rgba(250,250,248,0.55); }
 [data-theme='warm'] .gold-line { background: var(--gold); opacity: 0.5; }
 
 /* ── BrandsMarquee ── */
@@ -3526,9 +3527,8 @@
 }
 [data-theme='warm'] .vitrina-vignette { opacity: 0.12 !important; }
 [data-theme='warm'] .vitrina-pedestal { background: rgba(150,118,52,0.18) !important; }
-[data-theme='warm'] .vitrina-ribbon {
-  background: var(--gold) !important;
-  color: #1A1208 !important;
+[data-theme='warm'] .vitrina-ribbon span {
+  box-shadow: 0 2px 10px rgba(80,60,10,0.40) !important;
 }
 
 /* ── Tienda ── */
@@ -3678,9 +3678,15 @@
 }
 
 [data-theme='warm'] .ddp-campaign { background: var(--bg); }
-[data-theme='warm'] .ddp-star-card { background: var(--raised); border-color: var(--line); }
-[data-theme='warm'] .ddp-countdown-box { background: rgba(150,118,52,0.06); border-color: var(--gold); }
+[data-theme='warm'] .ddp-countdown-box { background: var(--bg2); border-color: var(--line); }
+[data-theme='warm'] .ddp-countdown-num { color: var(--gold-ink) !important; }
+[data-theme='warm'] .ddp-countdown-label { color: var(--ink-mute) !important; }
+[data-theme='warm'] .ddp-deadline { color: var(--ink-faint) !important; }
 [data-theme='warm'] .ddp-profile-card { background: var(--raised); border-color: var(--line); }
+[data-theme='warm'] .ddp-star-card { background: var(--raised); border-color: var(--line); }
+[data-theme='warm'] .ddp-star-badge { color: var(--gold-ink) !important; }
+[data-theme='warm'] .ddp-wa-btn { background: var(--gold) !important; color: #1A1208 !important; }
+[data-theme='warm'] .ddp-wa-btn:hover { background: var(--gold-ink) !important; }
 
 /* ── ProductDetail ── */
 [data-theme='warm'] .pd-page { background: var(--bg) !important; }
@@ -3710,6 +3716,43 @@
 /* ── ProductDetail dark sections (warm mode) ── */
 [data-theme='warm'] .pd-dark { background: var(--bg-warm) !important; }
 [data-theme='warm'] .pd-desc-fade { background: linear-gradient(transparent, var(--bg)) !important; }
+
+/* Note chips */
+[data-theme='warm'] .pd-note-chip {
+  background: rgba(150,118,52,0.09) !important;
+  border-color: rgba(150,118,52,0.28) !important;
+  color: var(--ink) !important;
+}
+[data-theme='warm'] .pd-note-emoji { color: var(--gold-ink) !important; opacity: 1 !important; }
+
+/* Pyramid notes */
+[data-theme='warm'] .pd-pyr-note-name { color: var(--ink-mute) !important; }
+[data-theme='warm'] .pd-pyr-tier::after { background: linear-gradient(to right, transparent, rgba(150,118,52,0.25), transparent) !important; }
+[data-theme='warm'] .pd-section-eyebrow span { color: var(--ink-mute) !important; }
+
+/* Acordes */
+[data-theme='warm'] .pd-acorde-label { color: var(--ink-mute) !important; }
+[data-theme='warm'] .pd-acorde-pct { color: var(--ink-faint) !important; }
+[data-theme='warm'] .pd-acorde-bar { background: rgba(150,118,52,0.12) !important; }
+[data-theme='warm'] .pd-acorde-fill { background: var(--gold-ink) !important; }
+
+/* Cuando usar */
+[data-theme='warm'] .pd-cuando-label { color: var(--ink-mute) !important; }
+[data-theme='warm'] .pd-cuando-val { color: var(--ink) !important; }
+[data-theme='warm'] .pd-cuando-badge { background: rgba(150,118,52,0.10) !important; color: var(--ink-mute) !important; border-color: var(--line) !important; }
+
+/* Size selector */
+[data-theme='warm'] .pd-size-btn { color: var(--ink-mute) !important; border-color: var(--line) !important; }
+[data-theme='warm'] .pd-size-btn.active { color: var(--gold-ink) !important; border-color: var(--gold) !important; background: rgba(150,118,52,0.07) !important; }
+[data-theme='warm'] .pd-size-label { color: var(--ink-faint) !important; }
+[data-theme='warm'] .pd-trust { color: var(--ink-mute) !important; }
+
+/* Notes section label */
+[data-theme='warm'] .pd-notes-label { color: var(--ink-faint) !important; }
+[data-theme='warm'] .pd-notes-label span { color: var(--ink-mute) !important; }
+
+/* Verified badge */
+[data-theme='warm'] .pd-verified { background: rgba(8,5,2,0.72) !important; }
 
 /* ── Guarantee pillars (warm mode) ── */
 [data-theme='warm'] .pillar-title { color: var(--ink) !important; }
