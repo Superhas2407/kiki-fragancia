@@ -184,17 +184,16 @@ export default function DiaDeLPadrePage() {
               >
                 <div className="ddp-persona-img">
                   <div className="ddp-persona-img-inner">
-                    {ids.slice(0, 2).map(id => {
-                      const p = allProducts.find(x => x.id === id)
+                    {(() => {
+                      const p = allProducts.find(x => x.id === ids[0])
                       return p?.image ? (
                         <img
-                          key={id}
                           src={`/products/${p.image}`}
                           alt={p.name}
-                          className="ddp-persona-bottle"
+                          className="ddp-persona-bottle ddp-persona-bottle-cover"
                         />
                       ) : null
-                    })}
+                    })()}
                   </div>
                 </div>
                 <div className="ddp-persona-body">

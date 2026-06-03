@@ -2901,6 +2901,11 @@
   flex-shrink: 0;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6));
 }
+.ddp-persona-bottle-cover {
+  width: auto;
+  height: 196px;
+  object-fit: contain;
+}
 
 .ddp-persona-num {
   position: relative;
@@ -3233,6 +3238,7 @@
 @media (max-width: 480px) {
   .ddp-persona-img { height: 150px !important; }
   .ddp-persona-bottle { width: 58px !important; height: 96px !important; }
+  .ddp-persona-bottle-cover { width: auto !important; height: 134px !important; }
   .ddp-persona-body { padding: 10px 12px 14px !important; }
   .ddp-persona-headline { font-size: 13px !important; margin-bottom: 6px !important; }
   .ddp-persona-desc { font-size: 11px !important; margin-bottom: 10px !important; }
@@ -3655,6 +3661,23 @@
 [data-theme='warm'] .ddp-featured-quote,
 [data-theme='warm'] .ddp-wa-sub { color: var(--ink-mute) !important; }
 [data-theme='warm'] .ddp-guide { background: var(--bg2) !important; }
+/* Editorial caption sits on a dark photo overlay — keep text light in both modes */
+[data-theme='warm'] .ddp-editorial-caption-text { color: rgba(250,248,240,0.88) !important; }
+[data-theme='warm'] .ddp-editorial-caption-eyebrow { color: #C9A84C !important; }
+/* Hero CTAs */
+[data-theme='warm'] .ddp-cta-outline { color: var(--ink-mute) !important; border-color: var(--line) !important; }
+/* Countdown section */
+[data-theme='warm'] .ddp-countdown { background: rgba(150,118,52,0.06) !important; border-color: var(--line) !important; }
+[data-theme='warm'] .ddp-countdown-sep { background: var(--line) !important; }
+/* Brand divider line */
+[data-theme='warm'] .ddp-brand-divider::before,
+[data-theme='warm'] .ddp-brand-divider::after { background: var(--line) !important; }
+/* Featured section */
+[data-theme='warm'] .ddp-featured-img-labels { color: var(--ink-faint) !important; }
+[data-theme='warm'] .ddp-btn-outline { color: var(--ink-mute) !important; border-color: var(--line) !important; }
+/* WA section gradient fix (removes dark fade) */
+[data-theme='warm'] .ddp-wa-section { background: rgba(150,118,52,0.06) !important; }
+
 [data-theme='warm'] .ddp-persona-card {
   background: var(--raised) !important;
   border-color: var(--line) !important;
