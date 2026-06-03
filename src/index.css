@@ -30,7 +30,7 @@
   --line: rgba(150,118,52,0.30);
   --line2: rgba(35,26,13,0.12);
   --gold: #C9A84C;
-  --gold-ink: #8A6818;
+  --gold-ink: #6B5010;
   --gold-fill-ink: #1A1208;
   --photo-floor: rgba(60,42,16,0.30);
   --chip: rgba(35,26,13,0.04);
@@ -1511,7 +1511,7 @@
 .pd-notes-chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .pd-note-chip {
   font-family: var(--font-s); font-size: 11px; font-weight: 100;
-  color: var(--ink); background: var(--ink-mute);
+  color: var(--ink-mute); background: rgba(250,250,248,0.08);
   border: 1px solid var(--line2);
   padding: 5px 12px; display: flex; align-items: center; gap: 5px;
 }

@@ -1263,7 +1263,7 @@ export default function ProductDetail() {
 
                 {product.precioUSD > 0 && (() => {
                   const isDDP = diaDeLPadreIds.includes(product.id)
-                  const discPrice = isDDP ? Math.round(product.precioUSD * 0.9) : null
+                  const discPrice = isDDP ? parseFloat((product.precioUSD * 0.9).toFixed(2)) : null
                   return (
                     <div className="pd-price" style={rv(350)}>
                       {isDDP && (
@@ -1277,7 +1277,7 @@ export default function ProductDetail() {
                         </div>
                       )}
                       <span className="pd-price-amount" style={isDDP ? { fontSize: 28 } : {}}>
-                        ${isDDP ? discPrice : product.precioUSD}
+                        ${isDDP ? (Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)) : product.precioUSD}
                       </span>
                       {isDDP && (
                         <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 4 }}>

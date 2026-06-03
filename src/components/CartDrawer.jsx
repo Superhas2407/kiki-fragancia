@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useCartContext } from '../context/CartContext'
+import { useTheme } from '../context/ThemeContext'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -37,8 +38,13 @@ function buildMessage(items) {
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
+  const { theme } = useTheme()
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
+
+  const isWarm = theme === 'warm'
+  const ink = (op) => isWarm ? `rgba(35,26,13,${op})` : `rgba(250,250,248,${op})`
+  const bord = (op) => isWarm ? `rgba(35,26,13,${op})` : `rgba(232,228,220,${op})`
 
   useEffect(() => {
     return () => { if (toastTimerRef.current) clearTimeout(toastTimerRef.current) }
@@ -96,12 +102,12 @@ export default function CartDrawer() {
             justifyContent: 'space-between',
             padding: '0 clamp(12px, 5vw, 24px)',
             height: '60px',
-            borderBottom: '1px solid rgba(232,228,220,0.1)',
+            borderBottom: bord(0.1),
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span
-              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(17px, 5vw, 22px)', color: '#FAFAF8', fontStyle: 'italic', fontWeight: 100 }}
+              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(17px, 5vw, 22px)', color: ink(0.95), fontStyle: 'italic', fontWeight: 100 }}
             >
               Mi Carrito
             </span>
@@ -123,7 +129,7 @@ export default function CartDrawer() {
           </div>
           <button
             onClick={() => setDrawerOpen(false)}
-            style={{ background: 'none', border: 'none', color: 'rgba(250,250,248,0.5)', cursor: 'pointer', padding: '11px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            style={{ background: 'none', border: 'none', color: ink(0.5), cursor: 'pointer', padding: '11px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             aria-label="Cerrar carrito"
           >
             <CloseIcon />
@@ -134,10 +140,10 @@ export default function CartDrawer() {
         <div style={{ flex: 1, overflowY: 'auto', padding: '16px clamp(12px, 5vw, 24px)' }}>
           {items.length === 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '12px' }}>
-              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '20px', color: 'rgba(250,250,248,0.3)', fontStyle: 'italic' }}>
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '20px', color: ink(0.3), fontStyle: 'italic' }}>
                 El carrito está vacío
               </p>
-              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '12px', color: 'rgba(250,250,248,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '12px', color: ink(0.2), letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 Agrega fragancias desde la tienda
               </p>
             </div>
@@ -153,7 +159,7 @@ export default function CartDrawer() {
                       display: 'flex',
                       gap: '14px',
                       paddingBottom: '16px',
-                      borderBottom: '1px solid rgba(232,228,220,0.08)',
+                      borderBottom: `1px solid ${bord(0.08)}`,
                     }}
                   >
                     {/* Imagen */}
@@ -165,16 +171,16 @@ export default function CartDrawer() {
                       />
                     ) : (
                       <div style={{ width: '64px', height: '80px', flexShrink: 0, background: 'var(--raised)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ fontSize: 9, color: 'rgba(250,250,248,0.2)', textAlign: 'center', padding: 4 }}>{item.house}</span>
+                        <span style={{ fontSize: 9, color: ink(0.2), textAlign: 'center', padding: 4 }}>{item.house}</span>
                       </div>
                     )}
 
                     {/* Info */}
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '9px', color: 'rgba(250,250,248,0.35)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '9px', color: ink(0.35), letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                         {item.house}
                       </p>
-                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(14px, 4vw, 17px)', color: '#FAFAF8', fontWeight: 100 }}>
+                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(14px, 4vw, 17px)', color: ink(0.95), fontWeight: 100 }}>
                         {item.name}
                       </p>
                       {unit > 0 && (
@@ -185,26 +191,26 @@ export default function CartDrawer() {
 
                       {/* Cantidad + eliminar */}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', border: '1px solid rgba(232,228,220,0.15)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', border: `1px solid ${bord(0.15)}` }}>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                            style={{ width: '28px', height: '28px', background: 'none', border: 'none', color: '#FAFAF8', cursor: 'pointer', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                            style={{ width: '28px', height: '28px', background: 'none', border: 'none', color: ink(0.95), cursor: 'pointer', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                           >
                             −
                           </button>
-                          <span style={{ width: '32px', textAlign: 'center', fontFamily: "'KikiGotham', sans-serif", fontSize: '13px', color: '#FAFAF8', borderLeft: '1px solid rgba(232,228,220,0.15)', borderRight: '1px solid rgba(232,228,220,0.15)', lineHeight: '28px' }}>
+                          <span style={{ width: '32px', textAlign: 'center', fontFamily: "'KikiGotham', sans-serif", fontSize: '13px', color: ink(0.95), borderLeft: `1px solid ${bord(0.15)}`, borderRight: `1px solid ${bord(0.15)}`, lineHeight: '28px' }}>
                             {item.quantity}
                           </span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                            style={{ width: '28px', height: '28px', background: 'none', border: 'none', color: '#FAFAF8', cursor: 'pointer', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                            style={{ width: '28px', height: '28px', background: 'none', border: 'none', color: ink(0.95), cursor: 'pointer', fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                           >
                             +
                           </button>
                         </div>
                         <button
                           onClick={() => removeItem(item.id)}
-                          style={{ background: 'none', border: 'none', color: 'rgba(250,250,248,0.25)', cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center' }}
+                          style={{ background: 'none', border: 'none', color: ink(0.25), cursor: 'pointer', padding: '4px', display: 'flex', alignItems: 'center' }}
                           aria-label="Eliminar"
                         >
                           <TrashIcon />
@@ -220,10 +226,10 @@ export default function CartDrawer() {
 
         {/* Footer del drawer */}
         {items.length > 0 && (
-          <div style={{ padding: '16px clamp(12px, 5vw, 24px)', borderTop: '1px solid rgba(232,228,220,0.1)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ padding: '16px clamp(12px, 5vw, 24px)', borderTop: `1px solid ${bord(0.1)}`, display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {totalPrice > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '11px', color: 'rgba(250,250,248,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '11px', color: ink(0.4), letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                   Subtotal
                 </span>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 100 }}>
@@ -252,7 +258,7 @@ export default function CartDrawer() {
             >
               Consultar por WhatsApp →
             </button>
-            <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: 'rgba(250,250,248,0.2)', textAlign: 'center', letterSpacing: '0.05em' }}>
+            <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: ink(0.2), textAlign: 'center', letterSpacing: '0.05em' }}>
               Te responderemos para confirmar disponibilidad y precios
             </p>
           </div>
