@@ -53,7 +53,7 @@ const CheckIcon = () => (
   </svg>
 )
 
-export default function VitrinaCard({ product, badge = null, ribbon = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null, discount = null }) {
   const { addItem } = useCartContext()
   const navigate = useNavigate()
   const cardRef = useRef(null)
@@ -189,11 +189,14 @@ export default function VitrinaCard({ product, badge = null, ribbon = null }) {
           if (!allPrices.length) return null
           const minPrice = Math.min(...allPrices)
           const hasRange = variants.length > 1 && allPrices.length > 1
+          const discPrice = discount ? Math.round(minPrice * (1 - discount / 100)) : null
           return (
             <div className="vitrina-price">
+              {discount && <span className="vitrina-price-orig">${minPrice}</span>}
               <span className="vitrina-price-usd">
-                {hasRange ? 'Desde ' : ''}${minPrice}
+                {hasRange ? 'Desde ' : ''}${discPrice ?? minPrice}
               </span>
+              {discount && <span className="vitrina-price-badge">-{discount}%</span>}
             </div>
           )
         })()}

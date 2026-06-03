@@ -1261,11 +1261,25 @@ export default function ProductDetail() {
                   ) : null
                 })()}
 
-                {product.precioUSD > 0 && (
-                  <div className="pd-price" style={rv(350)}>
-                    <span className="pd-price-amount">${product.precioUSD}</span>
-                  </div>
-                )}
+                {product.precioUSD > 0 && (() => {
+                  const isDDP = diaDeLPadreIds.includes(product.id)
+                  const discPrice = isDDP ? Math.round(product.precioUSD * 0.9) : null
+                  return (
+                    <div className="pd-price" style={rv(350)}>
+                      {isDDP && (
+                        <span style={{ fontFamily: 'var(--font-s)', fontSize: 14, fontWeight: 100, color: 'var(--ink-faint)', textDecoration: 'line-through', marginRight: 8 }}>
+                          ${product.precioUSD}
+                        </span>
+                      )}
+                      <span className="pd-price-amount">${isDDP ? discPrice : product.precioUSD}</span>
+                      {isDDP && (
+                        <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1A1208', background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)', padding: '4px 9px', alignSelf: 'center' }}>
+                          -10%
+                        </span>
+                      )}
+                    </div>
+                  )
+                })()}
 
                 <div className="pd-actions" style={rv(380)}>
                   <button

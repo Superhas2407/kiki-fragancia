@@ -489,6 +489,7 @@ export default function Tienda() {
                         <VitrinaCard
                           product={product}
                           ribbon={product.genero === 'Masculino' ? 'Día del Padre' : null}
+                          discount={product.genero === 'Masculino' ? 10 : null}
                         />
                       </motion.div>
                     ))}

@@ -267,6 +267,7 @@ export default function DiaDeLPadrePage() {
                 key={p.id}
                 product={p}
                 ribbon="Día del Padre"
+                discount={10}
                 badge={p.id === EDITOR_PICK_ID ? 'Editor\'s pick' : (i === 0 ? 'Más vendido' : null)}
               />
             ))}
