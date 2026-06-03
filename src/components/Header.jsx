@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useTheme } from '../context/ThemeContext'
 import { allProducts } from '../data/all-products'
 
 const NAV_LINKS = [
@@ -74,6 +75,7 @@ function CartButton() {
 }
 
 export default function Header() {
+  const { theme, toggle } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -201,6 +203,14 @@ export default function Header() {
               >
                 <SearchIcon />
               </button>
+              <button
+                onClick={toggle}
+                className="theme-toggle-btn"
+                aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+                title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+              >
+                {theme === 'dark' ? '☀' : '☾'}
+              </button>
               <CartButton />
             </div>
           </nav>
@@ -217,6 +227,14 @@ export default function Header() {
               }}
             >
               <SearchIcon />
+            </button>
+            <button
+              onClick={toggle}
+              className="theme-toggle-btn"
+              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+            >
+              {theme === 'dark' ? '☀' : '☾'}
             </button>
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
