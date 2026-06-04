@@ -42,7 +42,11 @@ export default function Footer() {
           {/* Col 1 — Brand */}
           <div>
             <Link to="/" className="footer-logo">
-              <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo-transparent.png'} alt="KiKi Fragancia" className="footer-logo-img" />
+              <img
+                src={theme === 'warm' ? '/logo-warm.svg' : '/logo-transparent.png'}
+                alt="KiKi Fragancia"
+                className="footer-logo-img"
+              />
             </Link>
             <p className="footer-tagline">
               La fragancia que te define,<br />verificada y original.
@@ -67,7 +71,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 style={{
                   fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.04em',
-                  color: theme === 'warm' ? 'rgba(35,26,13,0.55)' : 'rgba(250,250,248,0.45)', lineHeight: 1.6, margin: 0,
+                  color: 'rgba(250,250,248,0.45)', lineHeight: 1.6, margin: 0,
                   textDecoration: 'none',
                 }}
               >
@@ -102,7 +106,7 @@ export default function Footer() {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 fontFamily: 'var(--font-s)', fontSize: 11,
                 letterSpacing: '0.08em',
-                color: theme === 'warm' ? 'rgba(35,26,13,0.55)' : 'rgba(250,250,248,0.45)',
+                color: 'rgba(250,250,248,0.45)',
               }}>
                 <WhatsAppIcon size={13} />
                 0414-911-2002
@@ -116,11 +120,11 @@ export default function Footer() {
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   fontFamily: 'var(--font-s)', fontSize: 11,
                   letterSpacing: '0.08em',
-                  color: theme === 'warm' ? 'rgba(35,26,13,0.60)' : 'rgba(250,250,248,0.5)', textDecoration: 'none',
+                  color: 'rgba(250,250,248,0.5)', textDecoration: 'none',
                   transition: 'color .2s',
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = theme === 'warm' ? 'rgba(35,26,13,0.9)' : '#FAFAF8'}
-                onMouseLeave={e => e.currentTarget.style.color = theme === 'warm' ? 'rgba(35,26,13,0.60)' : 'rgba(250,250,248,0.5)'}
+                onMouseEnter={e => e.currentTarget.style.color = '#FAFAF8'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
               >
                 <InstagramIcon size={13} />
                 @kiki_fragancia
