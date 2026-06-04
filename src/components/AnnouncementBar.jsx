@@ -60,7 +60,7 @@ export default function AnnouncementBar() {
         <div className="announcement-bar" role="banner">
           <Link to="/dia-del-padre" className="ann-marquee-link">
             <div className="ann-marquee-track">
-              {[0, 1].map(i => (
+              {[0, 1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="ann-marquee-content" aria-hidden={i > 0 ? 'true' : undefined}>
                   <span className="ann-segment ann-label">Día del Padre</span>
                   <span className="ann-dot">·</span>
