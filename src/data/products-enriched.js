@@ -354,9 +354,9 @@ export const products = [
     "notasSalida": "Melón, Bergamota, Menta, Grosella negra",
     "notasCorazon": "Agua de mar, Manzana verde, Capuchino, Cardamomo",
     "notasFondo": "Nuez moscada, Ámbar, Notas amaderadas",
-    "ml": 80,
-    "precioUSD": 25,
-    "precioBS": 16250,
+    "ml": 200,
+    "precioUSD": 35,
+    "precioBS": 22750,
     "description": "Una fragancia **fresca y seductora para la mujer**, con un carácter acuático-frutal que aporta sensación de limpieza, energía y magnetismo. Blue Seduction de Antonio Banderas se inspira en un estilo moderno, casual y atractivo, muy en la línea de un perfume de diseñador para el día a día.",
     "notes": [
       "Melón",

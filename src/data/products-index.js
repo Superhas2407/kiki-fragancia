@@ -154,8 +154,8 @@ export const products = [
     "familia": "Cítrico",
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
-    "ml": 80,
-    "precioUSD": 25,
+    "ml": 200,
+    "precioUSD": 35,
     "categoria": "disenador"
   },
   {

@@ -274,10 +274,10 @@ export default function Tienda() {
   const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0)
 
   // Pool base: filtrado por la selección del sidebar global.
-  // Los 200ml se excluyen del catálogo porque siempre tienen una variante 100ml
-  // accessible desde el detalle del producto — mostrarlos duplicaría entradas.
+  // Los 200ml con variantIds son variantes de un 100ml — se excluyen para no duplicar.
+  // Los 200ml sin variantIds son productos standalone y sí se muestran.
   const basePool = useMemo(() => {
-    let pool = products.filter(p => p.ml !== 200)
+    let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
     if (urlGenero) pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)   pool = pool.filter(p => p.categoria === urlTipo)
     return pool

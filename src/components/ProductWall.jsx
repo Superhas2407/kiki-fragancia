@@ -3,7 +3,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { ThreeDMarquee } from './ui/ThreeDMarquee'
 import { allProducts } from '../data/all-products'
 
-const PRODUCT_COUNT = allProducts.filter(p => p.ml !== 200).length
+const PRODUCT_COUNT = allProducts.filter(p => p.ml !== 200 || !p.variantIds).length
 
 const IMAGES = [
   '/products-thumb/gucci-bloom-100ml-f.webp',
