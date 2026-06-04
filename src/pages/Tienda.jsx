@@ -6,6 +6,7 @@ import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
 import WheelPagination from '../components/ui/WheelPagination'
 import { useTheme } from '../context/ThemeContext'
+import { diaDeLPadreIds } from '../data/dia-del-padre'
 
 const ITEMS_PER_PAGE = 20
 
@@ -496,8 +497,8 @@ export default function Tienda() {
                       >
                         <VitrinaCard
                           product={product}
-                          ribbon={product.genero === 'Masculino' ? 'Día del Padre' : null}
-                          discount={product.genero === 'Masculino' ? 10 : null}
+                          ribbon={diaDeLPadreIds.includes(product.id) ? 'Día del Padre' : null}
+                          discount={diaDeLPadreIds.includes(product.id) ? 10 : null}
                         />
                       </motion.div>
                     ))}

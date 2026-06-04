@@ -2234,7 +2234,7 @@
 .vitrina-ribbon {
   position: absolute; top: 0; right: 0;
   width: 180px; height: 180px;
-  overflow: visible; z-index: 8; pointer-events: none;
+  overflow: hidden; z-index: 8; pointer-events: none;
 }
 /* clip del ribbon — solo la banda diagonal */
 .vitrina-ribbon > span {
