@@ -76,7 +76,7 @@ function CartButton() {
 }
 
 export default function Header() {
-  const { theme, toggle } = useTheme()
+  const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
