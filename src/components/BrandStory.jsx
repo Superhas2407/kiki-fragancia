@@ -35,11 +35,10 @@ export default function BrandStory() {
             <div ref={imgRef} className="brand-story-img-wrap">
               <img
                 src="/store-interior.webp"
-                alt="Local KiKi Fragancia — CC Todo Tecnología, Caracas"
+                alt="Local KiKi Fragancia"
                 className="brand-story-img"
                 loading="lazy"
               />
-              <div className="brand-story-img-caption">CC Todo Tecnología · Los Cortijos · Caracas</div>
             </div>
           </div>
 
