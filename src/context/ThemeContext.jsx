@@ -32,12 +32,12 @@ export function ThemeProvider({ children }) {
     return () => mq.removeEventListener('change', onSystemChange)
   }, [])
 
-  function toggle() {
+  function toggleTheme() {
     setTheme(t => (t === 'dark' ? 'warm' : 'dark'))
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   )
