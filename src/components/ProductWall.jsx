@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { ThreeDMarquee } from './ui/ThreeDMarquee'
+import { allProducts } from '../data/all-products'
+
+const PRODUCT_COUNT = allProducts.filter(p => p.ml !== 200).length
 
 const IMAGES = [
   '/products-thumb/gucci-bloom-100ml-f.webp',
@@ -44,7 +47,7 @@ export default function ProductWall() {
             lineHeight: 1,
             letterSpacing: '-0.02em',
           }}>
-            416
+            {PRODUCT_COUNT}
           </span>
           <div style={{ flex: 1, maxWidth: 80, height: 1, background: 'linear-gradient(to left, transparent, #C9A84C)' }} />
         </div>
