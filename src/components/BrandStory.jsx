@@ -10,7 +10,7 @@ export default function BrandStory() {
       <div className="kiki-container">
         <div className="brand-story-inner">
 
-          {/* Left: título grande */}
+          {/* Left: título + texto */}
           <div className="brand-story-left">
             <div ref={eyebrowRef} className="brand-story-eyebrow">
               <div className="gold-line"></div>
@@ -20,9 +20,17 @@ export default function BrandStory() {
             <div ref={quoteRef} className="brand-story-quote">
               Cada fragancia<br />cuenta una historia.<br />La tuya empieza aquí.
             </div>
+
+            <p ref={textRef} className="brand-story-text">
+              KiKi Fragancia nació en Caracas con una sola obsesión: traer a Venezuela
+              las fragancias originales de las grandes casas del mundo. Cada frasco es
+              100% verificado, y nuestro equipo te ayuda a encontrar la que realmente
+              va contigo — no la que simplemente está de moda.
+            </p>
+            <p ref={textRef} className="brand-story-attr">— KiKi Fragancia, Caracas</p>
           </div>
 
-          {/* Right: foto + texto */}
+          {/* Right: foto con marco */}
           <div className="brand-story-right">
             <div ref={imgRef} className="brand-story-img-wrap">
               <img
@@ -33,13 +41,6 @@ export default function BrandStory() {
               />
               <div className="brand-story-img-caption">CC Todo Tecnología · Los Cortijos · Caracas</div>
             </div>
-            <p ref={textRef} className="brand-story-text">
-              KiKi Fragancia nació en Caracas con una sola obsesión: traer a Venezuela
-              las fragancias originales de las grandes casas del mundo. Cada frasco es
-              100% verificado, y nuestro equipo te ayuda a encontrar la que realmente
-              va contigo — no la que simplemente está de moda.
-            </p>
-            <p ref={textRef} className="brand-story-attr">— KiKi Fragancia, Caracas</p>
           </div>
 
         </div>
