@@ -106,7 +106,7 @@ export default function Footer() {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 fontFamily: 'var(--font-s)', fontSize: 11,
                 letterSpacing: '0.08em',
-                color: 'rgba(250,250,248,0.45)',
+                color: 'var(--ink-mute)',
               }}>
                 <WhatsAppIcon size={13} />
                 0414-911-2002
@@ -120,11 +120,11 @@ export default function Footer() {
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   fontFamily: 'var(--font-s)', fontSize: 11,
                   letterSpacing: '0.08em',
-                  color: 'rgba(250,250,248,0.5)', textDecoration: 'none',
+                  color: 'var(--ink-mute)', textDecoration: 'none',
                   transition: 'color .2s',
                 }}
-                onMouseEnter={e => e.currentTarget.style.color = '#FAFAF8'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(250,250,248,0.5)'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--ink)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-mute)'}
               >
                 <InstagramIcon size={13} />
                 @kiki_fragancia
