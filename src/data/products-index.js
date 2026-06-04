@@ -347,7 +347,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -443,7 +443,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -491,7 +491,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -515,7 +515,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -539,7 +539,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -563,7 +563,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -575,7 +575,7 @@ export const products = [
     "tipo": "Elixir",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 55,
     "categoria": "arabes"
   },
   {
@@ -635,7 +635,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -683,7 +683,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -731,7 +731,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 90,
     "categoria": "arabes"
   },
   {
@@ -743,7 +743,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 75,
     "categoria": "arabes"
   },
   {
@@ -898,7 +898,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -910,7 +910,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -970,7 +970,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -1029,7 +1029,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 220,
+    "precioUSD": 200,
     "categoria": "disenador"
   },
   {
@@ -1088,7 +1088,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 130,
     "categoria": "disenador"
   },
   {
@@ -1445,7 +1445,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 120,
     "categoria": "arabes"
   },
   {
@@ -1889,7 +1889,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 50,
     "categoria": "arabes"
   },
   {
@@ -1901,7 +1901,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -1937,7 +1937,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -2057,7 +2057,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -2069,7 +2069,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -2225,7 +2225,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 90,
-    "precioUSD": 35,
+    "precioUSD": 25,
     "categoria": "arabes"
   },
   {
@@ -2237,7 +2237,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 90,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -2261,7 +2261,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -2357,7 +2357,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 65,
     "categoria": "arabes"
   },
   {
@@ -2417,7 +2417,7 @@ export const products = [
     "tipo": "Elixir",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -2585,7 +2585,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 80,
-    "precioUSD": 100,
+    "precioUSD": 90,
     "categoria": "arabes"
   },
   {
@@ -2704,7 +2704,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 85,
     "categoria": "disenador"
   },
   {
@@ -2752,7 +2752,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -2884,7 +2884,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -3106,7 +3106,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -3128,7 +3128,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 75,
     "categoria": "disenador"
   },
   {
@@ -3172,7 +3172,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -3194,7 +3194,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 90,
-    "precioUSD": 160,
+    "precioUSD": 180,
     "categoria": "disenador"
   },
   {
@@ -3215,7 +3215,7 @@ export const products = [
     "tipo": "Parfum",
     "genero": "Femenino",
     "ml": 80,
-    "precioUSD": 200,
+    "precioUSD": 180,
     "categoria": "disenador"
   },
   {
@@ -3314,7 +3314,7 @@ export const products = [
     "tipo": "Elixir",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 175,
+    "precioUSD": 180,
     "categoria": "disenador"
   },
   {
@@ -3379,7 +3379,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -3443,7 +3443,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -3476,7 +3476,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 125,
-    "precioUSD": 80,
+    "precioUSD": 60,
     "categoria": "disenador"
   },
   {
@@ -3509,7 +3509,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 180,
     "categoria": "disenador"
   },
   {
@@ -3531,7 +3531,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 85,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -3847,7 +3847,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -4441,7 +4441,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 200,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "variantIds": [
       377,
       378
@@ -4595,7 +4595,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 25,
     "categoria": "disenador"
   },
   {
@@ -4672,7 +4672,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 70,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -4760,7 +4760,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -4967,7 +4967,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 50,
     "categoria": "arabes"
   },
   {
@@ -5003,7 +5003,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 105,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -5136,7 +5136,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 20,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
