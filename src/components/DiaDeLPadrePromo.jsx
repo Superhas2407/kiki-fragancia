@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import GiftWrapOverlay, { useShowWraps } from './GiftWrapOverlay'
 
 const WA_NUMBER = '584149112002'
 
@@ -78,6 +79,7 @@ const WhatsAppSVG = () => (
 
 export default function DiaDeLPadrePromo() {
   const days = daysUntil('2026-06-18')
+  const showWraps = useShowWraps()
 
   return (
     <section className="ddp-campaign">
@@ -112,31 +114,34 @@ export default function DiaDeLPadrePromo() {
             </p>
             <div className="ddp-profiles-grid">
               {PROFILES.map(p => (
-                <Link key={p.id} to={`/tienda/${p.id}`} className="ddp-profile-card" style={{ textDecoration: 'none', display: 'block' }}>
-                  <img
-                    src={`/products/${p.image}`}
-                    alt={p.name}
-                    className="ddp-profile-img"
-                    loading="lazy"
-                  />
-                  <div className="ddp-profile-info">
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold-ink)', marginBottom: 4 }}>
-                      {p.badge}
-                    </p>
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 16, fontStyle: 'italic', fontWeight: 100, color: 'var(--ink)', marginBottom: 3, lineHeight: 1.2 }}>
-                      {p.name}
-                    </p>
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 11, color: 'var(--ink-mute)', marginBottom: 6 }}>
-                      {p.familia}
-                    </p>
-                    <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 15, color: 'var(--gold-ink)', fontWeight: 100, marginBottom: 8 }}>
-                      ${p.precio} <span style={{ fontSize: 11, color: 'var(--ink-mute)' }}>{p.tipo}</span>
-                    </p>
-                    <span style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
-                      Ver →
-                    </span>
-                  </div>
-                </Link>
+                <div key={p.id} style={{ position: 'relative' }}>
+                  <Link to={`/tienda/${p.id}`} className="ddp-profile-card" style={{ textDecoration: 'none', display: 'block' }}>
+                    <img
+                      src={`/products/${p.image}`}
+                      alt={p.name}
+                      className="ddp-profile-img"
+                      loading="lazy"
+                    />
+                    <div className="ddp-profile-info">
+                      <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold-ink)', marginBottom: 4 }}>
+                        {p.badge}
+                      </p>
+                      <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 16, fontStyle: 'italic', fontWeight: 100, color: 'var(--ink)', marginBottom: 3, lineHeight: 1.2 }}>
+                        {p.name}
+                      </p>
+                      <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 11, color: 'var(--ink-mute)', marginBottom: 6 }}>
+                        {p.familia}
+                      </p>
+                      <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 15, color: 'var(--gold-ink)', fontWeight: 100, marginBottom: 8 }}>
+                        REF: {p.precio} <span style={{ fontSize: 11, color: 'var(--ink-mute)' }}>{p.tipo}</span>
+                      </p>
+                      <span style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
+                        Ver →
+                      </span>
+                    </div>
+                  </Link>
+                  {showWraps && <GiftWrapOverlay />}
+                </div>
               ))}
             </div>
 
@@ -163,7 +168,7 @@ export default function DiaDeLPadrePromo() {
           </div>
 
           {/* Derecha — Producto estrella */}
-          <div className="ddp-star-card">
+          <div className="ddp-star-card" style={{ position: 'relative' }}>
             <div className="ddp-star-badge">★ Más vendido</div>
             <img
               src={`/products/${STAR_PRODUCT.image}`}
@@ -179,13 +184,14 @@ export default function DiaDeLPadrePromo() {
                 {STAR_PRODUCT.name}
               </p>
               <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 26, color: 'var(--gold-ink)', fontWeight: 100, marginBottom: 16 }}>
-                ${STAR_PRODUCT.precio} <span style={{ fontSize: 12, color: 'var(--ink-mute)' }}>{STAR_PRODUCT.tipo}</span>
+                REF: {STAR_PRODUCT.precio} <span style={{ fontSize: 12, color: 'var(--ink-mute)' }}>{STAR_PRODUCT.tipo}</span>
               </p>
               <a href={WA_URL} className="ddp-wa-btn" target="_blank" rel="noopener noreferrer">
                 <WhatsAppSVG />
                 Pedir por WhatsApp
               </a>
             </div>
+            {showWraps && <GiftWrapOverlay />}
           </div>
         </div>
       </div>

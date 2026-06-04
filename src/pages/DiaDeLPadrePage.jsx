@@ -1,10 +1,11 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
+import GiftWrapOverlay, { useShowWraps } from '../components/GiftWrapOverlay'
 
 const WA_NUMBER = '584149112002'
 const WA_MSG = encodeURIComponent(
@@ -68,6 +69,7 @@ function daysUntil(dateStr) {
   return Math.max(0, Math.round((target - now) / 86400000))
 }
 
+
 const CornerBracket = ({ pos }) => {
   const isTop = pos.includes('t')
   const isLeft = pos.includes('l')
@@ -89,9 +91,10 @@ export default function DiaDeLPadrePage() {
   const gridRef  = useRef(null)
   const guideRef = useRef(null)
   const { addItem } = useCartContext()
+  const showWraps = useShowWraps()
   const navigate = useNavigate()
 
-  const todosLosMasculinos = diaDeLPadreIds
+const todosLosMasculinos = diaDeLPadreIds
     .map(id => allProducts.find(p => p.id === id))
     .filter(Boolean)
 
@@ -176,26 +179,28 @@ export default function DiaDeLPadrePage() {
             {PERSONAS.map(({ num, label, headline, desc, ids }) => {
               const coverProduct = allProducts.find(x => x.id === ids[0])
               return (
-                <Link
-                  key={num}
-                  to={`/tienda/${ids[0]}`}
-                  className="ddp-persona-card"
-                  style={{ textDecoration: 'none', display: 'block' }}
-                >
-                  {coverProduct?.image && (
-                    <img
-                      src={`/products/${coverProduct.image}`}
-                      alt={coverProduct.name}
-                      className="ddp-persona-cover-img"
-                    />
-                  )}
-                  <div className="ddp-persona-body">
-                    <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>
-                    <h3 className="ddp-persona-headline">{headline}</h3>
-                    <p className="ddp-persona-desc">{desc}</p>
-                    <span className="ddp-persona-link">Ver fragancia →</span>
-                  </div>
-                </Link>
+                <div key={num} style={{ position: 'relative' }}>
+                  <Link
+                    to={`/tienda/${ids[0]}`}
+                    className="ddp-persona-card"
+                    style={{ textDecoration: 'none', display: 'block' }}
+                  >
+                    {coverProduct?.image && (
+                      <img
+                        src={`/products/${coverProduct.image}`}
+                        alt={coverProduct.name}
+                        className="ddp-persona-cover-img"
+                      />
+                    )}
+                    <div className="ddp-persona-body">
+                      <p className="ddp-persona-num-label">{num} · {label.toUpperCase()}</p>
+                      <h3 className="ddp-persona-headline">{headline}</h3>
+                      <p className="ddp-persona-desc">{desc}</p>
+                      <span className="ddp-persona-link">Ver fragancia →</span>
+                    </div>
+                  </Link>
+                  {showWraps && <GiftWrapOverlay />}
+                </div>
               )
             })}
           </div>
@@ -207,7 +212,7 @@ export default function DiaDeLPadrePage() {
         <section className="ddp-featured">
           <div className="kiki-container">
             <div className="ddp-featured-card">
-              <div className="ddp-featured-img-wrap">
+              <div className="ddp-featured-img-wrap" style={{ position: 'relative' }}>
                 <p className="ddp-featured-num">N° 004</p>
                 {featured.image && (
                   <img
@@ -220,6 +225,7 @@ export default function DiaDeLPadrePage() {
                   <span>FRAGANCIA</span>
                   <span>EDP · 100 ML</span>
                 </div>
+                {showWraps && <GiftWrapOverlay />}
               </div>
               <div className="ddp-featured-info">
                 <p className="ddp-featured-pick">★ Editor's Pick</p>

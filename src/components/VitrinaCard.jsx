@@ -2,6 +2,8 @@ import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { allProducts } from '../data/all-products'
+import { useTasaCambio } from '../hooks/useTasaCambio'
+import { useCurrency } from '../context/CurrencyContext'
 
 // ============================================================
 // VitrinaCard v2 — Museum gallery treatment of a product
@@ -29,15 +31,15 @@ const FAMILIA_COLORS = {
 }
 
 const GENDER_DOT = {
-  Masculino: '#C9A84C', // gold
-  Hombre:    '#C9A84C',
+  Masculino: 'var(--gold)', // theme-aware
+  Hombre:    'var(--gold)',
   Femenino:  '#E8A0B4', // pink
   Mujer:     '#E8A0B4',
   Unisex:    '#E0DDD4', // off-white
 }
 
 function famStyle(familia) {
-  const m = FAMILIA_COLORS[familia] || { c: '#C9A84C', c2: '#3D2F12' }
+  const m = FAMILIA_COLORS[familia] || { c: 'var(--gold)', c2: '#3D2F12' }
   return { '--fam-c': m.c, '--fam-c2': m.c2 }
 }
 
@@ -70,8 +72,15 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, disc
     navigate(`/tienda/${variantId}`)
   }
 
+  const tasa = useTasaCambio()
+  const { currency } = useCurrency()
   const imgSrc = product.image ? `/products/${product.image}` : null
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
+
+  // Quitar redundancia: "Afnan 9 AM Dive" con house "Afnan" → "9 AM Dive"
+  const displayName = product.name.toLowerCase().startsWith(product.house.toLowerCase() + ' ')
+    ? product.name.slice(product.house.length + 1)
+    : product.name
 
   function handleAdd(e) {
     e.stopPropagation()
@@ -164,24 +173,10 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, disc
             {product.house}
           </span>
           <span className="vitrina-meta">
-            {product.tipo === 'Eau de Parfum' ? 'EDP' : product.tipo} · {product.ml}ml
+            {({'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC', 'Parfum': 'PDM'})[product.tipo] ?? product.tipo} · {product.ml}ml
           </span>
         </div>
-        <h3 className="vitrina-name">{product.name}</h3>
-        {variants.length > 1 && (
-          <div className="vitrina-variants">
-            {variants.map(v => (
-              <button
-                key={v.id}
-                type="button"
-                className={`vitrina-variant-btn${v.id === product.id ? ' active' : ''}`}
-                onClick={(e) => handleVariant(e, v.id)}
-              >
-                {v.ml}ml
-              </button>
-            ))}
-          </div>
-        )}
+        <h3 className="vitrina-name">{displayName}</h3>
         {(() => {
           const allPrices = variants.length > 1
             ? variants.map(v => v.precioUSD).filter(p => p > 0)
@@ -190,22 +185,43 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, disc
           const minPrice = Math.min(...allPrices)
           const hasRange = variants.length > 1 && allPrices.length > 1
           const discPrice = discount ? parseFloat((minPrice * (1 - discount / 100)).toFixed(2)) : null
+          const usdRef = discPrice ?? minPrice
+
+          // Modo Bs — precio base sin descuento, sin badges
+          const showBs = currency === 'bs' && tasa
+          const bsFmt  = showBs ? 'Bs. ' + Math.round(minPrice * tasa).toLocaleString('es-VE') : null
+
+          if (showBs) {
+            return (
+              <div className="vitrina-price">
+                <div className="vitrina-price-disc-block">
+                  <span className="vitrina-price-usd vitrina-price-usd--big">
+                    {hasRange ? 'Desde ' : ''}{bsFmt}
+                  </span>
+                </div>
+              </div>
+            )
+          }
+
           return (
             <div className="vitrina-price">
               {discount ? (
                 <div className="vitrina-price-disc-block">
                   <div className="vitrina-price-disc-row">
-                    <span className="vitrina-price-badge">-{discount}% OFERTA</span>
-                    <span className="vitrina-price-orig">${minPrice}</span>
+                    <span className="vitrina-price-badge">-{discount}% OFERTA DIVISA</span>
+                    <span className="vitrina-price-orig">REF: {minPrice}</span>
                   </div>
                   <span className="vitrina-price-usd vitrina-price-usd--big">
-                    {hasRange ? 'Desde ' : ''}${Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)}
+                    {hasRange ? 'Desde ' : ''}REF: {Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)}
                   </span>
                 </div>
               ) : (
-                <span className="vitrina-price-usd">
-                  {hasRange ? 'Desde ' : ''}${minPrice}
-                </span>
+                <div className="vitrina-price-disc-block">
+                  <span className="vitrina-price-badge">PROMO DIVISA</span>
+                  <span className="vitrina-price-usd vitrina-price-usd--big">
+                    {hasRange ? 'Desde ' : ''}REF: {minPrice}
+                  </span>
+                </div>
               )}
             </div>
           )

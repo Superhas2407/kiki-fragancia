@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
 import { ThemeProvider } from './context/ThemeContext'
+import { CurrencyProvider } from './context/CurrencyContext'
 import Landing from './pages/Landing'
 import CartDrawer from './components/CartDrawer'
 import CursorTrail from './components/CursorTrail'
@@ -87,7 +88,7 @@ export default function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/coming-soon" element={<ComingSoon />} />
-<Route path="*" element={<ThemeProvider><AppShell /></ThemeProvider>} />
+<Route path="*" element={<CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider>} />
             </Routes>
           </ErrorBoundary>
         </CartProvider>

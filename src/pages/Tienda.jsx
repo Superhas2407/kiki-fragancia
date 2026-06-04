@@ -352,7 +352,7 @@ export default function Tienda() {
               }}>
                 {sectionTitle}
               </h1>
-              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: '#C9A84C', marginTop: 6, letterSpacing: '0.05em' }}>
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: 'var(--gold-ink)', marginTop: 6, letterSpacing: '0.05em' }}>
                 {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
               </p>
             </motion.div>
@@ -364,18 +364,26 @@ export default function Tienda() {
                 display: 'flex', alignItems: 'center', gap: 8,
                 fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
                 letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'transparent', color: '#C9A84C',
-                border: '1px solid #C9A84C', cursor: 'pointer', padding: '11px 16px',
+                background: 'transparent',
+                color: theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)',
+                border: `1px solid ${theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)'}`,
+                cursor: 'pointer', padding: '11px 16px',
                 transition: 'background 0.2s, color 0.2s',
                 whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#C9A84C'; e.currentTarget.style.color = '#0A0A0A' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#C9A84C' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)'
+                e.currentTarget.style.color = 'var(--gold-fill-ink)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'transparent'
+                e.currentTarget.style.color = theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)'
+              }}
             >
               <FilterIcon />
               Filtrar
               {activeFilterCount > 0 && (
-                <span style={{ background: '#C9A84C', color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '1px 6px' }}>
+                <span style={{ background: theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)', color: 'var(--gold-fill-ink)', fontSize: 10, fontWeight: 700, padding: '1px 6px' }}>
                   {activeFilterCount}
                 </span>
               )}

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
+import { useCurrency } from '../context/CurrencyContext'
 import { allProducts } from '../data/all-products'
 
 const NAV_LINKS = [
@@ -76,6 +77,7 @@ function CartButton() {
 
 export default function Header() {
   const { theme, toggle } = useTheme()
+  const { currency, setCurrency } = useCurrency()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -204,6 +206,32 @@ export default function Header() {
               >
                 <SearchIcon />
               </button>
+
+              {/* Switcher de moneda — desktop */}
+              <div style={{ display: 'flex', alignItems: 'center', borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.35)' }}>
+                {[{ val: 'usd', label: '$' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => {
+                  const active = currency === val
+                  return (
+                    <button
+                      key={val}
+                      onClick={() => setCurrency(val)}
+                      title={val === 'usd' ? 'Ver precios en divisa' : 'Ver precios en bolívares'}
+                      style={{
+                        fontFamily: "'KikiGotham', sans-serif",
+                        fontSize: 10, letterSpacing: '0.1em',
+                        padding: '5px 10px', cursor: 'pointer', border: 'none',
+                        background: active ? '#C9A84C' : 'transparent',
+                        color: active ? '#0A0A0A' : 'var(--ink-mute)',
+                        transition: 'background 0.18s, color 0.18s',
+                        lineHeight: 1,
+                      }}
+                    >
+                      {label}
+                    </button>
+                  )
+                })}
+              </div>
+
               <button
                 onClick={toggle}
                 className="theme-toggle-btn"
@@ -322,7 +350,34 @@ export default function Header() {
 
         </nav>
 
-        {/* Moneda en menú móvil */}
+        {/* Switcher de moneda — móvil */}
+        <div style={{ padding: '16px 24px 8px', width: '100%' }}>
+          <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)', display: 'block', marginBottom: 10 }}>
+            Moneda
+          </span>
+          <div style={{ display: 'flex', gap: 0, border: '1px solid rgba(201,168,76,0.35)', alignSelf: 'flex-start', width: 'fit-content', borderRadius: 2, overflow: 'hidden' }}>
+            {[{ val: 'usd', label: '$ Divisa' }, { val: 'bs', label: 'Bs. Bolívares' }].map(({ val, label }) => {
+              const active = currency === val
+              return (
+                <button
+                  key={val}
+                  onClick={() => setCurrency(val)}
+                  style={{
+                    fontFamily: "'KikiGotham', sans-serif",
+                    fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase',
+                    padding: '8px 16px', cursor: 'pointer', border: 'none',
+                    background: active ? '#C9A84C' : 'transparent',
+                    color: active ? '#0A0A0A' : 'var(--ink-mute)',
+                    transition: 'background 0.18s, color 0.18s',
+                  }}
+                >
+                  {label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         <p className="mobile-footer-label">KiKi Fragancia · Venezuela</p>
       </div>
 

@@ -3,6 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
+import { useCurrency } from '../context/CurrencyContext'
+import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
 import { NOTES_IMAGES } from '../data/notes-images'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
@@ -1066,6 +1068,8 @@ export default function ProductDetail() {
   const navigate = useNavigate()
   const { addItem } = useCartContext()
   const { theme } = useTheme()
+  const { currency } = useCurrency()
+  const tasa = useTasaCambio()
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -1264,25 +1268,52 @@ export default function ProductDetail() {
                 {product.precioUSD > 0 && (() => {
                   const isDDP = diaDeLPadreIds.includes(product.id)
                   const discPrice = isDDP ? parseFloat((product.precioUSD * 0.9).toFixed(2)) : null
+                  // Modo Bs: precio base sin descuento (oferta solo en divisa)
+                  const showBs = currency === 'bs' && tasa
+                  const bsFmt  = showBs ? 'Bs. ' + Math.round(product.precioUSD * tasa).toLocaleString('es-VE') : null
+                  if (showBs) {
+                    return (
+                      <div className="pd-price" style={rv(350)}>
+                        <span className="pd-price-amount">{bsFmt}</span>
+                      </div>
+                    )
+                  }
+                  const badgeStyle = {
+                    fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
+                    letterSpacing: '0.10em', textTransform: 'uppercase',
+                    color: '#1A1208',
+                    background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
+                    padding: '4px 12px', display: 'inline-block',
+                  }
                   return (
                     <div className="pd-price" style={rv(350)}>
-                      {isDDP && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
-                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, fontWeight: 600, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#1A1208', background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)', padding: '4px 10px' }}>
-                            -10% Día del Padre
+                      {isDDP ? (
+                        <>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8, flexWrap: 'wrap' }}>
+                            <span style={badgeStyle}>-10% OFERTA DIVISA</span>
+                            <span style={{ fontFamily: 'var(--font-s)', fontSize: 14, fontWeight: 100, color: 'var(--ink-faint)', textDecoration: 'line-through' }}>
+                              REF: {product.precioUSD}
+                            </span>
+                          </div>
+                          <span className="pd-price-amount" style={{ fontSize: 28 }}>
+                            REF: {Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)}
                           </span>
-                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 14, fontWeight: 100, color: 'var(--ink-faint)', textDecoration: 'line-through' }}>
-                            ${product.precioUSD}
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 6 }}>
+                            · Solo en divisa
                           </span>
-                        </div>
-                      )}
-                      <span className="pd-price-amount" style={isDDP ? { fontSize: 28 } : {}}>
-                        ${isDDP ? (Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)) : product.precioUSD}
-                      </span>
-                      {isDDP && (
-                        <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 4 }}>
-                          USD · Precio Día del Padre
-                        </span>
+                        </>
+                      ) : (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={badgeStyle}>PROMO DIVISA</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 6 }}>
+                            · Solo en divisa
+                          </span>
+                        </>
                       )}
                     </div>
                   )
