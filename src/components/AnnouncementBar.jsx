@@ -41,11 +41,11 @@ export default function AnnouncementBar() {
     <>
       {/* Barra desktop/tablet */}
       {barVisible && (
-        <div className="announcement-bar" role="banner">
+        <div className="announcement-bar">
           <Link to="/dia-del-padre" className="ann-marquee-link">
             <div className="ann-marquee-track">
               {[0, 1, 2, 3, 4, 5].map(i => (
-                <div key={i} className="ann-marquee-content" aria-hidden={i > 0 ? 'true' : undefined}>
+                <div key={i} className="ann-marquee-content" aria-hidden={i > 0}>
                   <span className="ann-label">10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE</span>
                   <span className="ann-dot">✦</span>
                 </div>
@@ -58,7 +58,7 @@ export default function AnnouncementBar() {
 
       {/* Pop-up móvil */}
       {popupVisible && (
-        <div className="ddp-popup-overlay" onClick={closePopup} aria-modal="true" role="dialog">
+        <div className="ddp-popup-overlay" onClick={closePopup} aria-modal="true" role="dialog" aria-labelledby="ddp-popup-title">
           <div className="ddp-popup" onClick={e => e.stopPropagation()}>
             <button className="ddp-popup-close" onClick={closePopup} aria-label="Cerrar">×</button>
 
@@ -73,7 +73,7 @@ export default function AnnouncementBar() {
               <span className="ddp-popup-discount-off">OFF</span>
             </div>
 
-            <h2 className="ddp-popup-headline">El regalo que no olvidará</h2>
+            <h2 id="ddp-popup-title" className="ddp-popup-headline">El regalo que no olvidará</h2>
 
             <div className="ddp-popup-rule" aria-hidden="true" />
 

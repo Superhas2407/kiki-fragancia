@@ -42,5 +42,5 @@ public/logo-vector.png
 # Scripts internos de desarrollo (catálogo ya generado)
 scripts/generate-catalog.js
 scripts/generate-prices.js
-design-audit-20260527/
+design-audit-*/
 .claude/worktrees/

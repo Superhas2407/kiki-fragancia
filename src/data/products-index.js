@@ -153,9 +153,9 @@ export const products = [
     "image": "antonio-banderas-blue-seduction-200ml-f.webp",
     "familia": "Cítrico",
     "tipo": "Eau de Toilette",
-    "genero": "Masculino",
-    "ml": 200,
-    "precioUSD": 35,
+    "genero": "Femenino",
+    "ml": 80,
+    "precioUSD": 25,
     "categoria": "disenador"
   },
   {
@@ -4658,8 +4658,8 @@ export const products = [
     "image": "davidoff-cool-water-125ml-m.webp",
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
-    "ml": 125,
-    "precioUSD": 40,
+    "ml": 200,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {

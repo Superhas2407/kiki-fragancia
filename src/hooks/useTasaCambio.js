@@ -39,7 +39,7 @@ async function fetchRate() {
           writeCache(_rate)
         }
       } catch {
-        // sin red o timeout → sin precio en Bs (se omite silenciosamente)
+        _promise = null // permite reintentar si la red se recupera
       }
       return _rate
     })()

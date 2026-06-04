@@ -2271,6 +2271,18 @@
   display: flex; align-items: baseline; justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  position: relative;
+  padding-bottom: 7px;
+}
+.vitrina-info-row::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,168,76,0.40) 20%, rgba(201,168,76,0.40) 80%, transparent);
+}
+[data-theme='warm'] .vitrina-info-row::after {
+  background: linear-gradient(to right, transparent, rgba(154,104,32,0.50) 20%, rgba(154,104,32,0.50) 80%, transparent);
 }
 .vitrina-house {
   display: inline-flex;
@@ -3950,7 +3962,7 @@
   .ddp-campaign { padding: 32px 0 48px; }
 }
 
-[data-theme='warm'] .ddp-campaign { background: var(--bg); }
+[data-theme='warm'] .ddp-campaign { background: var(--bg); border-top: 1px solid var(--line); }
 [data-theme='warm'] .ddp-countdown-box { background: var(--bg2); border-color: var(--line); }
 [data-theme='warm'] .ddp-countdown-num { color: var(--gold-ink) !important; }
 [data-theme='warm'] .ddp-countdown-label { color: var(--ink-mute) !important; }
