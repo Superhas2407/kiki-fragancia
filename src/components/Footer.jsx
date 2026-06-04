@@ -43,7 +43,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="footer-logo">
               <img
-                src={theme === 'warm' ? '/logo-warm.svg' : '/logo-transparent.png'}
+                src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'}
                 alt="KiKi Fragancia"
                 className="footer-logo-img"
               />
@@ -71,7 +71,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 style={{
                   fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.04em',
-                  color: 'rgba(250,250,248,0.45)', lineHeight: 1.6, margin: 0,
+                  color: 'var(--ink-mute)', lineHeight: 1.6, margin: 0,
                   textDecoration: 'none',
                 }}
               >
