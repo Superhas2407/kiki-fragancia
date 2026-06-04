@@ -58,21 +58,23 @@ export default function AnnouncementBar() {
       {/* Barra desktop/tablet */}
       {barVisible && (
         <div className="announcement-bar" role="banner">
-          <Link to="/dia-del-padre" className="announcement-bar-link">
-            <span className="ann-segment ann-label">Día del Padre</span>
-            <span className="ann-sep" />
-            {timeLeft && (
-              <>
-                <span className="ann-segment ann-timer--full">
-                  ⏳ {timeLeft.d}d : {String(timeLeft.h).padStart(2, '0')}h : {String(timeLeft.m).padStart(2, '0')}m
-                </span>
-                <span className="ann-segment ann-timer--short">⏳ {timeLeft.d}d</span>
-                <span className="ann-sep ann-sep--hide" />
-              </>
-            )}
-            <span className="ann-segment ann-cta ann-cta--desktop">
-              Pide antes del 18 jun para entrega a tiempo →
-            </span>
+          <Link to="/dia-del-padre" className="ann-marquee-link">
+            <div className="ann-marquee-track">
+              {[0, 1].map(i => (
+                <div key={i} className="ann-marquee-content" aria-hidden={i > 0 ? 'true' : undefined}>
+                  <span className="ann-segment ann-label">Día del Padre</span>
+                  <span className="ann-dot">·</span>
+                  {timeLeft && (
+                    <span className="ann-segment ann-timer">
+                      ⏳ {timeLeft.d}d : {String(timeLeft.h).padStart(2, '0')}h : {String(timeLeft.m).padStart(2, '0')}m
+                    </span>
+                  )}
+                  {timeLeft && <span className="ann-dot">·</span>}
+                  <span className="ann-segment ann-cta">Pide antes del 18 jun para entrega a tiempo →</span>
+                  <span className="ann-dot" style={{ marginLeft: 16 }}>✦</span>
+                </div>
+              ))}
+            </div>
           </Link>
           <button className="announcement-bar-close" onClick={closeBar} aria-label="Cerrar">×</button>
         </div>

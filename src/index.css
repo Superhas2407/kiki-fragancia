@@ -103,46 +103,72 @@
   overflow: hidden;
   background: linear-gradient(90deg, #3D2108, #7A4A20 50%, #3D2108);
 }
-.announcement-bar-link {
+.ann-marquee-link {
+  flex: 1;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  flex: 1;
-  justify-content: center;
-  padding: 0 48px 0 16px;
   height: 100%;
-  overflow: hidden;
+  text-decoration: none;
+  padding-right: 48px;
 }
-.announcement-bar-label {
+.ann-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ann-scroll 24s linear infinite;
+}
+.ann-marquee-track:hover {
+  animation-play-state: paused;
+}
+.ann-marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  white-space: nowrap;
+  padding-right: 80px;
+}
+@keyframes ann-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ann-label {
   font-family: var(--font-s);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #E8C96A;
-  white-space: nowrap;
   flex-shrink: 0;
 }
-.announcement-bar-sep {
-  color: rgba(232,201,106,0.4);
+.ann-timer {
+  font-family: var(--font-s);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(232,201,106,0.9);
   flex-shrink: 0;
 }
-.announcement-bar-cta-long {
+.ann-cta {
   font-family: var(--font-s);
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.14em;
   color: rgba(232,201,106,0.85);
-  white-space: nowrap;
+  flex-shrink: 0;
 }
-.announcement-bar-cta-short { display: none; }
-[data-theme='warm'] .ann-segment,
-[data-theme='warm'] .ann-marquee-content {
-  color: #F5EDD9;
+.ann-dot {
+  color: rgba(232,201,106,0.4);
+  flex-shrink: 0;
+  font-size: 8px;
+}
+[data-theme='warm'] [data-theme='warm'] .ann-label,
+[data-theme='warm'] .ann-timer,
+[data-theme='warm'] .ann-cta {
+  color: rgba(245,237,217,0.9);
 }
 [data-theme='warm'] .ann-dot {
-  color: rgba(245,237,217,0.45);
+  color: rgba(245,237,217,0.4);
 }
 [data-theme='warm'] .announcement-bar-close {
   background: linear-gradient(to left, #3D2108 50%, transparent);
