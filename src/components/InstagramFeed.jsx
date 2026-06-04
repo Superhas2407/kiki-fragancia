@@ -2,15 +2,15 @@ import { useState } from 'react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const POSTS = [
-  { url: '/products/IMG_8597.jpg', alt: 'KiKi Fragancia' },
-  { url: '/products/IMG_8642.jpg', alt: 'KiKi Fragancia' },
-  { url: '/products/IMG_8643.jpg', alt: 'Khamrah · KiKi Fragancia' },
-  { url: '/products/IMG_8680.jpg', alt: 'KiKi Fragancia' },
-  { url: '/products/IMG_8863.jpg', alt: 'Dior · KiKi Fragancia' },
-  { url: '/products/IMG_8879.jpg', alt: 'Gucci · KiKi Fragancia' },
-  { url: '/products/IMG_8895.jpg', alt: 'Calvin Klein · KiKi Fragancia' },
-  { url: '/products/IMG_8943.jpg', alt: 'KiKi Fragancia' },
-  { url: '/products/IMG_8954.jpg', alt: 'KiKi Fragancia' },
+  { url: '/products/IMG_8597.jpg', alt: 'Colección de fragancias en el local KiKi Fragancia' },
+  { url: '/products/IMG_8642.jpg', alt: 'Exhibición de perfumes originales en KiKi Fragancia' },
+  { url: '/products/IMG_8643.jpg', alt: 'Khamrah de Lattafa — disponible en KiKi Fragancia' },
+  { url: '/products/IMG_8680.jpg', alt: 'Fragancias de lujo en vitrina, KiKi Fragancia Caracas' },
+  { url: '/products/IMG_8863.jpg', alt: 'Dior — perfumes originales en KiKi Fragancia' },
+  { url: '/products/IMG_8879.jpg', alt: 'Gucci — fragancias verificadas en KiKi Fragancia' },
+  { url: '/products/IMG_8895.jpg', alt: 'Calvin Klein — colección disponible en KiKi Fragancia' },
+  { url: '/products/IMG_8943.jpg', alt: 'Selección de perfumes de diseñador en KiKi Fragancia' },
+  { url: '/products/IMG_8954.jpg', alt: 'Local KiKi Fragancia, CC Todo Tecnología, Caracas' },
 ]
 
 const InstagramIcon = () => (

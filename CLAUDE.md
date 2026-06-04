@@ -30,7 +30,7 @@ npm run build  # build de producción
 
 **Code splitting intencional:** `all-products` → `products-index` (ligero) para Tienda/VitrinaCard/autocomplete. `ProductDetail` importa `products-enriched` directamente para tener notas y descripción completas.
 
-**Precios:** solo `precioUSD` — el sistema de bolívares fue eliminado completamente.
+**Precios:** `precioUSD` en todos los productos. El sistema de bolívares está activo vía `CurrencyContext` + `useTasaCambio` (tasa paralelo de `ve.dolarapi.com`).
 
 ## Imágenes públicas
 | Ruta | Contenido |
@@ -83,10 +83,11 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 - `.pd-pyr-footer` — pie con casa · nombre · familia
 
 ## ProductWall (`src/components/ProductWall.jsx`)
-Sección "Colección" en la landing. Muestra el número 442 + heading + marquee 3D + CTA.
+Sección "Colección" en la landing. Muestra el número de productos + heading + marquee 3D + CTA.
 - **Scroll reveal:** eyebrow → número → título en cascada (0 / 100 / 200ms) via `useScrollReveal`
 - **CTA:** `<Link to="/tienda" className="btn-cta btn-shimmer-kiki">` debajo del marquee
 - **Imágenes:** 16 WebP hardcodeadas de `public/products-thumb/`
+- **Número dinámico:** `allProducts.filter(p => p.ml !== 200).length` — no hardcodeado
 
 ## ThreeDMarquee (`src/components/ui/ThreeDMarquee.jsx`)
 Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas animan en Y alterna.
@@ -128,13 +129,14 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 ## Campaña Día del Padre 2026
 - **Ruta:** `/dia-del-padre` — `src/pages/DiaDeLPadrePage.jsx`
 - **Productos:** 10 fragancias masculinas Antonio Banderas 100ml (IDs: 359, 412, 375, 366, 391, 410, 367, 377, 346, 376) — definidos en `src/data/dia-del-padre.js`
-- **Entrada homepage:** `DiaDeLPadrePromo.jsx` — sección editorial después del Hero en `Landing.jsx`
-- **AnnouncementBar:** barra dorada en desktop + bottom sheet pop-up en móvil
-- **Ribbon:** `ribbon="Día del Padre"` en VitrinaCard. Se pasa automáticamente en Tienda (por `diaDeLPadreIds`) y en DiaDeLPadrePage. También aparece en la imagen de ProductDetail para esos IDs.
+- **Entrada homepage:** `DiaDeLPadrePromo.jsx` — sección editorial en `Landing.jsx` **después de ProductWall** (no antes)
+- **AnnouncementBar:** marquee scrolling `10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE` + popup modal en móvil (≤767px)
+- **Ribbon:** `ribbon="Día del Padre"` solo por `diaDeLPadreIds.includes(product.id)` — nunca por `genero === 'Masculino'`
 - **Badge:** `badge="Más vendido"` / `"Editor's pick"` solo en los 2 primeros productos de la página DDP. Oculto en mobile.
-- **Imagen featured (mobile):** `.ddp-featured-img` usa `width:100%; height:auto` en ≤480px (antes `height:220px` la hacía angosta).
+- **Descuento:** 10% solo en modo `$` (divisa). En modo Bs se muestra precio base sin descuento.
+- **GiftWrapOverlay:** solo en cards de "¿Qué tipo de papá?" y editor's pick — NO en el grid de 182 fragancias. `sessionStorage` clave `ddp-cards-unwrapped`.
 - **WhatsApp:** mensaje pre-cargado específico + `ref=dia_del_padre`, número `584149112002`
-- **Grid mobile:** siempre 2 columnas (`.diadel-padre-grid { grid-template-columns: repeat(4, 1fr) }` → override a 2 cols en ≤768px)
+- **Grid mobile:** siempre 2 columnas
 - **Teardown post-campaña (después del 21 de junio):** agregar en `vercel.json` antes de `{ "handle": "filesystem" }`:
   ```json
   { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
@@ -152,8 +154,24 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 | `scripts/export-prices.mjs` | Exporta todos los productos con precios a `precios.csv` para edición manual en Excel |
 | `scripts/import-prices.mjs` | Reimporta `precios.csv` editado → products-enriched.js + products-index.js |
 
+## Sistema de moneda
+- `src/context/CurrencyContext.jsx` — `{ currency, setCurrency }` via `useCurrency()`. Persiste en `localStorage` clave `kiki_currency`. Valores: `'usd' | 'bs'`.
+- `src/hooks/useTasaCambio.js` — fetcha `ve.dolarapi.com/v1/dolares/paralelo`, lee `data.promedio`. Cache 30min en `kiki_tasa_bs`. Promise module-level previene fetches duplicados.
+- Switcher en Header: pill `$` / `Bs` en desktop + sección MONEDA en menú móvil.
+- En modo Bs: se muestra `Bs. XXXXX` sin ningún badge de oferta/descuento.
+
+## Tema
+- `src/context/ThemeContext.jsx` — `{ theme, toggleTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle` — usar `toggle` da undefined).
+- Persiste en `localStorage` clave `kiki-theme`. Default: preferencia del sistema.
+- Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`.
+- Ver `DESIGN.md` para reglas completas de colores por tema.
+
+## BrandStory
+- Foto del local: `/store-interior.webp` (convertida de `IMG_8651.PNG`, 256KB)
+- Layout: texto/quote columna izquierda, foto columna derecha
+- Marco editorial: `::before` rectángulo gold offset `inset: 14px -14px -14px 14px`
+
 ## Pendiente
-- Foto lifestyle real para BrandStory (columna derecha oculta hasta tenerla)
 - Teardown DDP post-21-junio (redirect en vercel.json):
   ```json
   { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
