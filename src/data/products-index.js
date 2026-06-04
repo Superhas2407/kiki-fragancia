@@ -1421,6 +1421,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
@@ -3933,7 +3934,8 @@ export const products = [
     "image": "viktorrolf-bonbon-50ml-f.webp",
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
-    "ml": 50,
+    "ml": 90,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
