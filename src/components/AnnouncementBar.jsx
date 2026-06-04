@@ -3,16 +3,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 const BAR_H = 40
 
-function getCountdown() {
-  const target = new Date('2026-06-18T23:59:00')
-  const diff = target - new Date()
-  if (diff <= 0) return null
-  const d = Math.floor(diff / 86400000)
-  const h = Math.floor((diff % 86400000) / 3600000)
-  const m = Math.floor((diff % 3600000) / 60000)
-  return { d, h, m }
-}
-
 export default function AnnouncementBar() {
   const [barClosed, setBarClosed] = useState(
     () => sessionStorage.getItem('ddp-bar-closed') === '1'
@@ -20,17 +10,11 @@ export default function AnnouncementBar() {
   const [popupClosed, setPopupClosed] = useState(
     () => sessionStorage.getItem('ddp-popup-closed') === '1'
   )
-  const [timeLeft, setTimeLeft] = useState(getCountdown)
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
   const barVisible = !barClosed
   const popupVisible = !popupClosed && pathname === '/'
-
-  useEffect(() => {
-    const id = setInterval(() => setTimeLeft(getCountdown()), 60000)
-    return () => clearInterval(id)
-  }, [])
 
   useEffect(() => {
     const root = document.documentElement
@@ -62,16 +46,8 @@ export default function AnnouncementBar() {
             <div className="ann-marquee-track">
               {[0, 1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="ann-marquee-content" aria-hidden={i > 0 ? 'true' : undefined}>
-                  <span className="ann-segment ann-label">Día del Padre</span>
-                  <span className="ann-dot">·</span>
-                  {timeLeft && (
-                    <span className="ann-segment ann-timer">
-                      ⏳ {timeLeft.d}d : {String(timeLeft.h).padStart(2, '0')}h : {String(timeLeft.m).padStart(2, '0')}m
-                    </span>
-                  )}
-                  {timeLeft && <span className="ann-dot">·</span>}
-                  <span className="ann-segment ann-cta">Pide antes del 18 jun para entrega a tiempo →</span>
-                  <span className="ann-dot" style={{ marginLeft: 16 }}>✦</span>
+                  <span className="ann-label">10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE</span>
+                  <span className="ann-dot">✦</span>
                 </div>
               ))}
             </div>
