@@ -56,17 +56,33 @@ export default function AnnouncementBar() {
         </div>
       )}
 
-      {/* Pop-up móvil — bottom sheet */}
+      {/* Pop-up móvil */}
       {popupVisible && (
         <div className="ddp-popup-overlay" onClick={closePopup} aria-modal="true" role="dialog">
           <div className="ddp-popup" onClick={e => e.stopPropagation()}>
             <button className="ddp-popup-close" onClick={closePopup} aria-label="Cerrar">×</button>
+
+            {/* Franja dorada superior */}
+            <div className="ddp-popup-top-bar" />
+
             <p className="ddp-popup-eyebrow">Día del Padre · 21 de junio</p>
+
+            {/* Descuento grande */}
+            <div className="ddp-popup-discount">
+              <span className="ddp-popup-discount-num">10%</span>
+              <span className="ddp-popup-discount-off">OFF</span>
+            </div>
+
             <h2 className="ddp-popup-headline">El regalo que no olvidará</h2>
+
             <div className="ddp-popup-rule" aria-hidden="true" />
-            <p className="ddp-popup-body">10% de descuento en promoción ciertos perfumes de caballero en divisa</p>
+
+            <p className="ddp-popup-body">
+              Fragancias originales seleccionadas para papá.<br />Solo en divisa · Tiempo limitado.
+            </p>
+
             <button className="ddp-popup-btn" onClick={goToLanding}>
-              Ver la colección
+              Ver la colección →
             </button>
             <button className="ddp-popup-skip" onClick={closePopup}>
               No gracias
