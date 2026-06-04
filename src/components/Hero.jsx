@@ -222,7 +222,7 @@ export default function Hero() {
               <span aria-hidden="true" style={{
                 display: 'block',
                 width: i === current ? 28 : 8, height: 8,
-                background: i === current ? '#C9A84C' : (theme === 'warm' ? 'rgba(35,26,13,0.30)' : 'rgba(250,250,248,0.35)'),
+                background: i === current ? '#C9A84C' : 'var(--ink-mute)',
                 transition: 'width 0.4s ease, background 0.4s ease',
               }} />
             </button>

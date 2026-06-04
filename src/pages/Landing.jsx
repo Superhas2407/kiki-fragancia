@@ -12,9 +12,9 @@ export default function Landing() {
     <>
       <main>
         <Hero />
-        <DiaDeLPadrePromo />
         <BrandsMarquee />
         <ProductWall />
+        <DiaDeLPadrePromo />
         <BrandsMarquee reverse />
         <BrandStory />
         <Testimonials />
