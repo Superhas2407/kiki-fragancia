@@ -52,12 +52,12 @@ export default function ProductWall() {
         <h2 ref={titleRef} style={{
           fontSize: 'clamp(20px, 3vw, 32px)',
           fontWeight: 300,
-          color: '#F7F2EA',
+          color: 'var(--ink)',
           lineHeight: 1.4,
           margin: 0,
           letterSpacing: '0.01em',
         }}>
-          fragancias <em style={{ fontStyle: 'italic', color: 'rgba(247,242,234,0.5)' }}>100% originales</em>
+          fragancias <em style={{ fontStyle: 'italic', color: 'var(--ink-mute)' }}>100% originales</em>
           <br />disponibles para ti
         </h2>
       </div>
