@@ -101,7 +101,7 @@
   justify-content: center;
   z-index: 41;
   overflow: hidden;
-  background: linear-gradient(90deg, #3D2108, #7A4A20 50%, #3D2108);
+  background: linear-gradient(90deg, #040E24, #0A2D72 50%, #040E24);
 }
 .ann-marquee-link {
   flex: 1;
@@ -752,7 +752,7 @@
   top: 0; left: 0; right: 0;
   z-index: 41;
   height: 40px;
-  background: linear-gradient(90deg, #2A1505, #5C3210 50%, #2A1505);
+  background: linear-gradient(90deg, #040E24, #0A2D72 50%, #040E24);
   display: flex;
   align-items: center;
   overflow: hidden;
