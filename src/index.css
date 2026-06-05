@@ -4100,7 +4100,7 @@
 /* El papel interior anima — el overlay lo recorta limpiamente */
 .gw-paper {
   position: absolute;
-  inset: 0;
+  inset: -8px;
   animation: gw-shake 3.2s ease-in-out infinite;
   transform-origin: center center;
 }
