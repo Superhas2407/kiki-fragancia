@@ -3794,9 +3794,13 @@
 [data-theme='warm'] .vitrina-price,
 [data-theme='warm'] .vitrina-price-usd { color: var(--gold-ink) !important; }
 [data-theme='warm'] .vitrina-meta { color: var(--ink-faint) !important; }
-[data-theme='warm'] .vitrina-price-badge {
+[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp) {
   background: var(--gold) !important;
   color: var(--gold-fill-ink) !important;
+}
+[data-theme='warm'] .vitrina-price-badge--ddp {
+  background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72) !important;
+  color: #E8F0FF !important;
 }
 
 [data-theme='warm'] .vitrina-display {

@@ -356,7 +356,7 @@ export default function Tienda() {
                 fontSize: 'clamp(1.5rem, 6vw, 3.5rem)',
                 fontWeight: 100, color: 'var(--ink)',
                 letterSpacing: '-0.02em', lineHeight: 1.08,
-                fontStyle: 'italic', margin: 0,
+                margin: 0,
               }}>
                 {sectionTitle}
               </h1>

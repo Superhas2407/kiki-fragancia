@@ -296,15 +296,23 @@ export default function Header() {
 
         <nav className="kiki-mobile-nav">
 
-          {/* Sección: Campaña */}
-          <div style={{ padding: '20px 24px 8px', width: '100%' }}>
-            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
-              Campaña
-            </span>
-          </div>
-          <Link to="/tienda?ddp=1" className="mobile-nav-link" style={{ transitionDelay: '60ms', color: '#6B9EFF' }}>
+          {/* Campaña DDP */}
+          <Link to="/tienda?ddp=1" className="mobile-nav-link" style={{ transitionDelay: '60ms', color: '#1A52CC' }}>
             🎁 Día del Padre
           </Link>
+
+          {/* Géneros sin título */}
+          {[
+            { key: null,        label: 'Todas'  },
+            { key: 'Masculino', label: 'Hombre' },
+            { key: 'Femenino',  label: 'Mujer'  },
+            { key: 'Unisex',    label: 'Unisex' },
+            { key: 'Niño',      label: 'Kids'   },
+          ].map((l, i) => (
+            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 100}ms` }}>
+              {l.label}
+            </Link>
+          ))}
 
           {/* Divisor */}
           <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'var(--line)', flexShrink: 0 }} />
