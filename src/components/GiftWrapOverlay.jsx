@@ -2,13 +2,6 @@ import { useState } from 'react'
 
 const SESSION_KEY = 'ddp-cards-unwrapped'
 
-/**
- * Envoltura de regalo — se muestra solo la primera vez por sesión.
- * Todos los GiftWrapOverlay de la app comparten el mismo flag en sessionStorage.
- * Después de abrir uno cualquiera, los demás ya no aparecen al recargar.
- *
- * @param {function} onOpen  callback opcional cuando se abre
- */
 export default function GiftWrapOverlay({ onOpen }) {
   const [phase, setPhase] = useState('wrapped') // wrapped | opening | open
 
@@ -33,13 +26,16 @@ export default function GiftWrapOverlay({ onOpen }) {
       <div className="gw-half gw-half--top" />
       <div className="gw-half gw-half--bot" />
       <div className="gw-rib-v" />
-      <div className="gw-bow">★</div>
-      <span className="gw-hint">✦ Toca para abrir ✦</span>
+      <div className="gw-shine" aria-hidden="true" />
+      <div className="gw-bow">
+        <span className="gw-bow-inner">★</span>
+      </div>
+      <div className="gw-tap-ring" aria-hidden="true" />
+      <span className="gw-hint">Toca para revelar</span>
     </div>
   )
 }
 
-/** Hook para saber si mostrar envoltorios en esta sesión */
 export function useShowWraps() {
   return useState(() => {
     try { return sessionStorage.getItem(SESSION_KEY) !== '1' }
