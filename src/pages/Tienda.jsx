@@ -7,7 +7,6 @@ import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
-import { promoDivisaIds } from '../data/promo-divisa'
 
 class GridBoundary extends Component {
   constructor(props) { super(props); this.state = { err: null } }
@@ -504,9 +503,9 @@ export default function Tienda() {
                         product={product}
                         ribbon={
                           diaDeLPadreIds.includes(product.id) ? 'Día del Padre' :
-                          promoDivisaIds.includes(product.id) ? 'Promo en divisa' : null
+                          product.precioUSD > 0 ? 'Promo en divisa' : null
                         }
-                        ribbonVariant={promoDivisaIds.includes(product.id) ? 'promo' : null}
+                        ribbonVariant={!diaDeLPadreIds.includes(product.id) && product.precioUSD > 0 ? 'promo' : null}
                         discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? 10 : null}
                       />
                     </div>
