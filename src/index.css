@@ -2264,6 +2264,12 @@
   clip-path: none;
 }
 
+/* Variante promo — azul profundo */
+.vitrina-ribbon--promo > span {
+  background: linear-gradient(90deg, #0A3D6B, #1565C0 55%, #0A3D6B);
+  color: #E8F1FF;
+}
+
 
 /* Info row debajo del display */
 .vitrina-info {

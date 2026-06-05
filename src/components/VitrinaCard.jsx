@@ -55,7 +55,7 @@ const CheckIcon = () => (
   </svg>
 )
 
-export default function VitrinaCard({ product, badge = null, ribbon = null, discount = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
   const { addItem } = useCartContext()
   const navigate = useNavigate()
   const cardRef = useRef(null)
@@ -140,7 +140,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, disc
         )}
 
         {ribbon && (
-          <div className="vitrina-ribbon" aria-hidden="true">
+          <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
             <span>{ribbon}</span>
           </div>
         )}

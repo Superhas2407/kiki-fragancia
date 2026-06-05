@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
+import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
 
 class GridBoundary extends Component {
@@ -244,6 +245,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
 export default function Tienda() {
   const { theme } = useTheme()
+  const { currency } = useCurrency()
   const isDark = theme === 'dark'
   const C = {
     bg:       isDark ? '#0A0A0A'               : '#EAE0CC',
@@ -499,8 +501,9 @@ export default function Tienda() {
                     >
                       <VitrinaCard
                         product={product}
-                        ribbon={diaDeLPadreIds.includes(product.id) ? 'Día del Padre' : null}
-                        discount={diaDeLPadreIds.includes(product.id) ? 10 : null}
+                        ribbon={diaDeLPadreIds.includes(product.id) ? 'Promo en divisa' : null}
+                        ribbonVariant={diaDeLPadreIds.includes(product.id) ? 'promo' : null}
+                        discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? 10 : null}
                       />
                     </div>
                   ))}
