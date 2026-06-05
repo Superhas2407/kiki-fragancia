@@ -2491,6 +2491,10 @@
   background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
   padding: 4px 10px;
 }
+.vitrina-price-badge--ddp {
+  background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72);
+  color: #E8F0FF;
+}
 .vitrina-price-usd--big {
   font-size: 27px !important;
   line-height: 1;
@@ -3785,6 +3789,8 @@
 /* ── VitrinaCard ── */
 [data-theme='warm'] .vitrina-name { color: var(--ink) !important; }
 [data-theme='warm'] .vitrina-house { color: var(--gold-ink) !important; }
+[data-theme='warm'] .tienda-genero-chip--ddp { border-color: rgba(10,45,114,0.5); color: #0A2D72; }
+[data-theme='warm'] .tienda-genero-chip--ddp.active { background: rgba(10,45,114,0.08); border-color: #0A2D72; color: #0A2D72; }
 [data-theme='warm'] .vitrina-price,
 [data-theme='warm'] .vitrina-price-usd { color: var(--gold-ink) !important; }
 [data-theme='warm'] .vitrina-meta { color: var(--ink-faint) !important; }

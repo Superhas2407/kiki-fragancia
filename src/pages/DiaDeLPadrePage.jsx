@@ -10,8 +10,8 @@ import GiftWrapOverlay, { useShowWraps } from '../components/GiftWrapOverlay'
 
 const WA_NUMBER = '584149112002'
 const WA_MSG = encodeURIComponent(
-  'Hola Kiki! Busco una fragancia de regalo para mi papá\n' +
-  'por el Día del Padre. ¿Me pueden ayudar a elegir?'
+  'Hola Kiki! 🎁 Quiero regalarle una fragancia a mi papá por el Día del Padre 2026. ' +
+  '¿Me pueden asesorar para elegir la indicada según su estilo?'
 )
 const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}&ref=dia_del_padre`
 

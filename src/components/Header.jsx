@@ -98,10 +98,8 @@ export default function Header() {
         const acordes = (acordesByProduct[p.id] || []).map(a => a.toLowerCase())
         const name = p.name.toLowerCase()
         const house = p.house.toLowerCase()
-        const familia = (p.familia || '').toLowerCase()
         return terms.every(t =>
-          name.includes(t) || house.includes(t) || familia.includes(t) ||
-          acordes.some(a => a.includes(t))
+          name.includes(t) || house.includes(t) || acordes.some(a => a.includes(t))
         )
       })
       .slice(0, 6)
@@ -298,23 +296,15 @@ export default function Header() {
 
         <nav className="kiki-mobile-nav">
 
-          {/* Sección: Género */}
+          {/* Sección: Campaña */}
           <div style={{ padding: '20px 24px 8px', width: '100%' }}>
             <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
-              Género
+              Campaña
             </span>
           </div>
-          {[
-            { key: null,        label: 'Todas'  },
-            { key: 'Masculino', label: 'Hombre' },
-            { key: 'Femenino',  label: 'Mujer'  },
-            { key: 'Unisex',    label: 'Unisex' },
-            { key: 'Niño',      label: 'Kids'   },
-          ].map((l, i) => (
-            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 60}ms` }}>
-              {l.label}
-            </Link>
-          ))}
+          <Link to="/tienda?ddp=1" className="mobile-nav-link" style={{ transitionDelay: '60ms', color: '#6B9EFF' }}>
+            🎁 Día del Padre
+          </Link>
 
           {/* Divisor */}
           <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'var(--line)', flexShrink: 0 }} />

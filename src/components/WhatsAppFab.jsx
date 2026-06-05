@@ -5,8 +5,8 @@ import { allProducts } from '../data/all-products'
 const WA_NUMBER = '584149112002'
 
 const MESSAGES = {
-  default: 'Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20fragancias.',
-  ddp: encodeURIComponent('Hola Kiki! Busco una fragancia de regalo para mi papá por el Día del Padre. ¿Me pueden ayudar a elegir?'),
+  default: encodeURIComponent('Hola Kiki! Quiero conocer más sobre sus fragancias. ¿Me pueden asesorar?'),
+  ddp: encodeURIComponent('Hola Kiki! 🎁 Estoy viendo la colección Día del Padre 2026. ¿Me pueden ayudar a elegir la fragancia perfecta para mi papá?'),
 }
 
 function buildUrl(msg, ref) {
@@ -20,7 +20,7 @@ function useWaUrl() {
     const id = Number(productMatch[1])
     const p = allProducts.find(x => x.id === id)
     if (p) {
-      const msg = encodeURIComponent(`Hola, estoy viendo *${p.house} ${p.name}* ${p.ml}ml. ¿Está disponible?`)
+      const msg = encodeURIComponent(`Hola Kiki! Estoy viendo *${p.house} ${p.name}* ${p.ml ? p.ml + 'ml' : ''}${p.precioUSD ? ' — REF ' + p.precioUSD : ''}. ¿Está disponible?`)
       return buildUrl(msg, `fab_detalle_${id}`)
     }
   }

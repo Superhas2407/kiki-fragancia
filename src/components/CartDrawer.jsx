@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
+import { useCurrency } from '../context/CurrencyContext'
+import { diaDeLPadreDiscounts, diaDeLPadreIds } from '../data/dia-del-padre'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -23,15 +25,20 @@ const TrashIcon = () => (
 function buildMessage(items) {
   const lines = items.map(item => {
     const unit = item.precioUSD || 0
-    const lineTotal = unit > 0 ? ` — $${unit * item.quantity}` : ''
-    return `- ${item.house} ${item.name} x${item.quantity}${lineTotal}`
+    const disc = diaDeLPadreDiscounts[item.id]
+    const ddpNote = disc ? ` 🎁 ${disc}% EXTRA Día del Padre` : ''
+    const priceNote = unit > 0 ? ` — REF ${unit * item.quantity}` : ''
+    return `• ${item.house} ${item.name} x${item.quantity}${priceNote}${ddpNote}`
   })
   const hasPrice = items.some(item => item.precioUSD > 0)
-  const totalLine = hasPrice ? `\nTotal: $${items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)}\n` : ''
+  const totalLine = hasPrice ? `\nTotal: REF ${items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)}\n` : ''
+  const hasDdp = items.some(item => diaDeLPadreIds.includes(item.id))
+  const ddpLine = hasDdp ? '\n🎁 Aplica descuento Día del Padre en los productos indicados.\n' : ''
   return (
-    `Hola KiKi Fragancia, me interesa consultar las siguientes fragancias:\n\n` +
+    `Hola Kiki! Quiero hacer el siguiente pedido:\n\n` +
     `${lines.join('\n')}\n` +
     totalLine +
+    ddpLine +
     `\n¿Están disponibles?`
   )
 }
@@ -39,6 +46,7 @@ function buildMessage(items) {
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
   const { theme } = useTheme()
+  const { currency } = useCurrency()
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
 
@@ -183,9 +191,23 @@ export default function CartDrawer() {
                       <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(14px, 4vw, 17px)', color: ink(0.95), fontWeight: 100 }}>
                         {item.name}
                       </p>
+                      {currency === 'usd' && diaDeLPadreIds.includes(item.id) && (() => {
+                        const disc = diaDeLPadreDiscounts[item.id]
+                        return (
+                          <span style={{
+                            fontFamily: "'KikiGotham', sans-serif",
+                            fontSize: 9, fontWeight: 700, letterSpacing: '0.10em',
+                            textTransform: 'uppercase', color: '#E8F0FF',
+                            background: 'linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72)',
+                            padding: '3px 8px', display: 'inline-block', marginBottom: 2,
+                          }}>
+                            {disc ? `${disc}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE'}
+                          </span>
+                        )
+                      })()}
                       {unit > 0 && (
                         <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '16px', color: '#C4781A' }}>
-                          ${lineTotal}
+                          REF {lineTotal}
                         </p>
                       )}
 
@@ -233,7 +255,7 @@ export default function CartDrawer() {
                   Subtotal
                 </span>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 100 }}>
-                  ${totalPrice}
+                  REF {totalPrice}
                 </span>
               </div>
             )}
