@@ -32,7 +32,6 @@ export const diaDeLPadreDiscounts = {
   198: 10, // Lattafa Vintage Radio
   232: 10, // Rasasi Hawas Kobra
   251: 10, // Moschino Toy Boy
-  281: 10, // Carolina Herrera Chic
   286: 10, // Le Labo Santal 33
   287: 10, // Paco Rabanne Paco XS
   295: 15, // Ralph Lauren Polo Sport
