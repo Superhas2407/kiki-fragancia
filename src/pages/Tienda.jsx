@@ -4,11 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '../components/Footer'
 import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
-import WheelPagination from '../components/ui/WheelPagination'
 import { useTheme } from '../context/ThemeContext'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
-
-const ITEMS_PER_PAGE = 20
 
 const SORT_OPTIONS = [
   { label: 'Destacados',    key: 'featured'   },
@@ -246,7 +243,6 @@ export default function Tienda() {
   const [selectedTipos, setSelectedTipos]   = useState([])
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
-  const [currentPage, setCurrentPage] = useState(1)
   const [searchFocused, setSearchFocused] = useState(false)
   const topRef = useRef(null)
   const mountRef = useRef(true)
@@ -257,13 +253,11 @@ export default function Tienda() {
   // Sincronizar searchQuery con ?q= de la URL (cuando cambia desde otro componente)
   useEffect(() => {
     setSearchQuery(searchParams.get('q') || '')
-    setCurrentPage(1)
   }, [searchParams.get('q')])
 
   useEffect(() => {
     setSelectedMarcas([])
     setSelectedTipos([])
-    setCurrentPage(1)
   }, [urlGenero, urlTipo])
 
   const toggleMarca = v => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
@@ -300,20 +294,8 @@ export default function Tienda() {
 
   useEffect(() => {
     if (mountRef.current) { mountRef.current = false; return }
-    setCurrentPage(1)
     topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [sortBy, selectedMarcas, searchQuery, urlGenero])
-
-  const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE)
-  const paginated = useMemo(() => {
-    const start = (currentPage - 1) * ITEMS_PER_PAGE
-    return filtered.slice(start, start + ITEMS_PER_PAGE)
-  }, [filtered, currentPage])
-
-  function handlePageChange(page) {
-    setCurrentPage(page)
-    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   // Label del título según selección del sidebar
   const LABEL_MAP   = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
@@ -486,7 +468,7 @@ export default function Tienda() {
               <>
                 <motion.div layout className="vitrina-grid">
                   <AnimatePresence mode="popLayout">
-                    {paginated.map((product, index) => (
+                    {filtered.map((product, index) => (
                       <motion.div
                         key={product.id}
                         layout
@@ -505,11 +487,6 @@ export default function Tienda() {
                   </AnimatePresence>
                 </motion.div>
 
-                <WheelPagination
-                  totalPages={totalPages}
-                  currentPage={currentPage}
-                  onPageChange={handlePageChange}
-                />
               </>
             )}
           </div>

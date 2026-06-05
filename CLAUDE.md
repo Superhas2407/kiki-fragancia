@@ -14,7 +14,7 @@ npm run build  # build de producción
 - `GlobalSidebar.jsx` — links por género y tipo (solo ≥1024px, oculto en móvil)
 - `Header.jsx` — logo, CartButton, search autocomplete, menú móvil (sidebar deslizante 290px desde la izquierda). Usa `top: var(--bar-h, 0px)` para ceder espacio al AnnouncementBar.
 - `Hero.jsx` — carrusel: 1 video (`/hero.webm`) + 5 imágenes, crossfade CSS, `<picture>` desktop/mobile
-- `Tienda.jsx` — grid de productos, lee `?genero=` y `?q=` de URL, filtros por marca y categoría en drawer
+- `Tienda.jsx` — grid de productos, lee `?genero=` y `?q=` de URL, filtros por marca y categoría en drawer. **Sin paginación** — muestra todos los productos filtrados de una vez.
 - `ProductDetail.jsx` — detalle de producto con pirámide de notas olfativas, acordes y cuando usar
 
 ## Datos de productos
@@ -87,7 +87,7 @@ Sección "Colección" en la landing. Muestra el número de productos + heading +
 - **Scroll reveal:** eyebrow → número → título en cascada (0 / 100 / 200ms) via `useScrollReveal`
 - **CTA:** `<Link to="/tienda" className="btn-cta btn-shimmer-kiki">` debajo del marquee
 - **Imágenes:** 16 WebP hardcodeadas de `public/products-thumb/`
-- **Número dinámico:** `allProducts.filter(p => p.ml !== 200).length` — no hardcodeado
+- **Número dinámico:** `allProducts.filter(p => p.ml !== 200 || !p.variantIds).length` — no hardcodeado
 
 ## ThreeDMarquee (`src/components/ui/ThreeDMarquee.jsx`)
 Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas animan en Y alterna.
@@ -104,7 +104,7 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Search Autocomplete (Header)
 - `useMemo` sobre `allProducts` (products-index) con min 2 chars, max 6 resultados
-- Filtra por `name`, `house`, `familia` — **excluye productos 200ml** (`p.ml !== 200`)
+- Filtra por `name`, `house`, `familia` — **excluye 200ml con variantes** (`p.ml !== 200 || !p.variantIds`)
 - Lista debajo del input: imagen circular 36px, casa uppercase, nombre italic
 - ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado
 - Click en sugerencia → navega a `/tienda/:id`
@@ -119,7 +119,8 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 - URL params: `?genero=Masculino|Femenino|Unisex|Niño` y `?tipo=arabes|disenador|nicho`
 - Drawer "Filtrar": marcas + Categoría (Árabes/Nicho/Diseñador)
 - GlobalSidebar (≥1024px): género + tipo
-- **Productos 200ml excluidos del grid** (`p.ml !== 200` en `basePool`) — accesibles como variante desde la card 100ml
+- **Productos 200ml:** se excluyen del grid si tienen `variantIds` (son variante de 100ml). Los 200ml standalone (sin `variantIds`) sí aparecen. Filtro: `p.ml !== 200 || !p.variantIds`.
+- **Sin paginación** — `WheelPagination` eliminado; el grid renderiza `filtered` completo.
 
 ## VitrinaCard
 - Prop `ribbon` — cinta diagonal dorada en esquina superior derecha (`.vitrina-ribbon`). Cuando hay ribbon, la familia olfativa se oculta (evita solapamiento).
@@ -128,13 +129,13 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Campaña Día del Padre 2026
 - **Ruta:** `/dia-del-padre` — `src/pages/DiaDeLPadrePage.jsx`
-- **Productos:** 10 fragancias masculinas Antonio Banderas 100ml (IDs: 359, 412, 375, 366, 391, 410, 367, 377, 346, 376) — definidos en `src/data/dia-del-padre.js`
+- **Productos del grid:** 15 fragancias curadas — 10 Antonio Banderas (`antoniobanderasIds`) + 5 Armaf Odyssey (`armafOdysseyIds.slice(0,5)`) — definidos en `src/data/dia-del-padre.js`. El export `diaDeLPadreIds` es la unión; `antoniobanderasIds` y `armafOdysseyIds` se exportan también para uso independiente.
 - **Entrada homepage:** `DiaDeLPadrePromo.jsx` — sección editorial en `Landing.jsx` **después de ProductWall** (no antes)
 - **AnnouncementBar:** marquee scrolling `10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE` + popup modal en móvil (≤767px)
 - **Ribbon:** `ribbon="Día del Padre"` solo por `diaDeLPadreIds.includes(product.id)` — nunca por `genero === 'Masculino'`
 - **Badge:** `badge="Más vendido"` / `"Editor's pick"` solo en los 2 primeros productos de la página DDP. Oculto en mobile.
 - **Descuento:** 10% solo en modo `$` (divisa). En modo Bs se muestra precio base sin descuento.
-- **GiftWrapOverlay:** solo en cards de "¿Qué tipo de papá?" y editor's pick — NO en el grid de 182 fragancias. `sessionStorage` clave `ddp-cards-unwrapped`.
+- **GiftWrapOverlay:** solo en cards de "¿Qué tipo de papá?" y editor's pick — NO en el grid de 15 fragancias. `sessionStorage` clave `ddp-cards-unwrapped`.
 - **WhatsApp:** mensaje pre-cargado específico + `ref=dia_del_padre`, número `584149112002`
 - **Grid mobile:** siempre 2 columnas
 - **Teardown post-campaña (después del 21 de junio):** agregar en `vercel.json` antes de `{ "handle": "filesystem" }`:

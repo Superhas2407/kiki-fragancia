@@ -1,5 +1,4 @@
 // Campaña Día del Padre 2026 — Antonio Banderas + Armaf Odyssey
-import { allProducts } from './all-products'
 
 export const antoniobanderasIds = [
   // Antonio Banderas — The Icon
@@ -14,6 +13,8 @@ export const armafOdysseyIds = [
   34, 35, 36, 37, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
 ];
 
-export const diaDeLPadreIds = allProducts
-  .filter(p => p.genero === 'Masculino' && p.ml !== 200)
-  .map(p => p.id)
+// Grid curado: 10 Antonio Banderas + 5 Armaf Odyssey = 15 fragancias
+export const diaDeLPadreIds = [
+  ...antoniobanderasIds,
+  ...armafOdysseyIds.slice(0, 5),
+]
