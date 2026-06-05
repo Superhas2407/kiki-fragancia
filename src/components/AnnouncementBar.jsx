@@ -4,12 +4,14 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 const BAR_H = 40
 
 export default function AnnouncementBar() {
-  const [barClosed, setBarClosed] = useState(
-    () => sessionStorage.getItem('ddp-bar-closed') === '1'
-  )
-  const [popupClosed, setPopupClosed] = useState(
-    () => sessionStorage.getItem('ddp-popup-closed') === '1'
-  )
+  const [barClosed, setBarClosed] = useState(() => {
+    try { return sessionStorage.getItem('ddp-bar-closed') === '1' }
+    catch { return false }
+  })
+  const [popupClosed, setPopupClosed] = useState(() => {
+    try { return sessionStorage.getItem('ddp-popup-closed') === '1' }
+    catch { return false }
+  })
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
@@ -23,12 +25,12 @@ export default function AnnouncementBar() {
   }, [barVisible])
 
   function closeBar() {
-    sessionStorage.setItem('ddp-bar-closed', '1')
+    try { sessionStorage.setItem('ddp-bar-closed', '1') } catch {}
     setBarClosed(true)
   }
 
   function closePopup() {
-    sessionStorage.setItem('ddp-popup-closed', '1')
+    try { sessionStorage.setItem('ddp-popup-closed', '1') } catch {}
     setPopupClosed(true)
   }
 

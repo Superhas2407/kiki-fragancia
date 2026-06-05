@@ -55,9 +55,10 @@ class ErrorBoundary extends Component {
 }
 
 function AppShell() {
+  const isTouch = (() => { try { return window.matchMedia('(hover: none)').matches } catch { return true } })()
   return (
     <>
-      {!window.matchMedia('(hover: none)').matches && <CursorTrail />}
+      {!isTouch && <CursorTrail />}
       <ScrollToTop />
       <AnnouncementBar />
       <Header />
