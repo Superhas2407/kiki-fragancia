@@ -505,7 +505,9 @@ export default function Tienda() {
                           diaDeLPadreIds.includes(product.id) ? 'Día del Padre' :
                           product.precioUSD > 0 ? 'Promo en divisa' : null
                         ) : null}
-                        ribbonVariant={currency === 'usd' && !diaDeLPadreIds.includes(product.id) && product.precioUSD > 0 ? 'promo' : null}
+                        ribbonVariant={currency === 'usd' && !diaDeLPadreIds.includes(product.id) && product.precioUSD > 0
+                          ? ({ Masculino: 'masc', Femenino: 'fem', Unisex: 'unisex', 'Niño': 'nino' }[product.genero] || null)
+                          : null}
                         discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? 10 : null}
                       />
                     </div>
