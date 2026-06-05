@@ -71,8 +71,8 @@ export default function AnnouncementBar() {
 
             {/* Descuento grande */}
             <div className="ddp-popup-discount">
-              <span className="ddp-popup-discount-num">10%</span>
-              <span className="ddp-popup-discount-off">OFF</span>
+              <span className="ddp-popup-discount-label">DESCUENTO</span>
+              <span className="ddp-popup-discount-label ddp-popup-discount-label--accent">EXTRA</span>
             </div>
 
             <h2 id="ddp-popup-title" className="ddp-popup-headline">El regalo que no olvidará</h2>
@@ -84,10 +84,10 @@ export default function AnnouncementBar() {
             </p>
 
             <button className="ddp-popup-btn" onClick={goToLanding}>
-              Ver la colección →
+              Descubrir la colección
             </button>
             <button className="ddp-popup-skip" onClick={closePopup}>
-              No gracias
+              Ahora no
             </button>
           </div>
         </div>
