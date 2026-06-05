@@ -1270,7 +1270,9 @@ export default function ProductDetail() {
                   const discPrice = isDDP ? parseFloat((product.precioUSD * 0.9).toFixed(2)) : null
                   // Modo Bs: precio base sin descuento (oferta solo en divisa)
                   const showBs = currency === 'bs' && tasa
-                  const bsFmt  = showBs ? 'Bs. ' + Math.round(product.precioUSD * tasa).toLocaleString('es-VE') : null
+                  const bsFmt = showBs
+                    ? 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
+                    : null
                   if (showBs) {
                     return (
                       <div className="pd-price" style={rv(350)}>

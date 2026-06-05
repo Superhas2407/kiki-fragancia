@@ -189,7 +189,9 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, disc
 
           // Modo Bs — precio base sin descuento, sin badges
           const showBs = currency === 'bs' && tasa
-          const bsFmt  = showBs ? 'Bs. ' + Math.round(minPrice * tasa).toLocaleString('es-VE') : null
+          const bsFmt = showBs
+            ? 'Bs. ' + (() => { try { return Math.round(minPrice * tasa).toLocaleString('es-VE') } catch { return Math.round(minPrice * tasa).toLocaleString() } })()
+            : null
 
           if (showBs) {
             return (

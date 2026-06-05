@@ -466,16 +466,15 @@ export default function Tienda() {
               </div>
             ) : (
               <>
-                <motion.div layout className="vitrina-grid">
-                  <AnimatePresence mode="popLayout">
+                <div className="vitrina-grid">
+                  <AnimatePresence>
                     {filtered.map((product, index) => (
                       <motion.div
                         key={product.id}
-                        layout
-                        initial={{ opacity: 0, y: 24 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.96 }}
-                        transition={{ duration: 0.35, delay: Math.min(index * 0.04, 0.3), ease: [0.22, 1, 0.36, 1] }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.2), ease: [0.22, 1, 0.36, 1] }}
                       >
                         <VitrinaCard
                           product={product}
@@ -485,7 +484,7 @@ export default function Tienda() {
                       </motion.div>
                     ))}
                   </AnimatePresence>
-                </motion.div>
+                </div>
 
               </>
             )}
