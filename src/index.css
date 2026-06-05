@@ -2264,22 +2264,11 @@
   clip-path: none;
 }
 
-/* Variante promo por género */
-.vitrina-ribbon--masc > span {
-  background: linear-gradient(90deg, #0A1F3D, #1A3A6B 55%, #0A1F3D);
+/* Variante DDP — azul rey */
+.vitrina-ribbon--ddp > span {
+  background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72);
   color: #E8F0FF;
-}
-.vitrina-ribbon--fem > span {
-  background: linear-gradient(90deg, #5C1A3A, #8B2A5A 55%, #5C1A3A);
-  color: #FFE8F2;
-}
-.vitrina-ribbon--unisex > span {
-  background: linear-gradient(90deg, #0A3838, #1A6060 55%, #0A3838);
-  color: #E8FFFF;
-}
-.vitrina-ribbon--nino > span {
-  background: linear-gradient(90deg, #1A1A5C, #2A2A8B 55%, #1A1A5C);
-  color: #E8E8FF;
+  font-size: 9px;
 }
 
 

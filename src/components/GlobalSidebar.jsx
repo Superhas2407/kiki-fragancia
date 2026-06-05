@@ -89,6 +89,10 @@ export default function GlobalSidebar() {
     navigate('/tienda')
   }
 
+  function handleDdp() {
+    navigate('/tienda?ddp=1')
+  }
+
   const isAll = !activeGenero && !activeTipo
 
   return (
@@ -141,6 +145,21 @@ export default function GlobalSidebar() {
               <span className="global-sidebar-text">{item.label}</span>
             </button>
           ))}
+        </nav>
+
+        {/* Divider */}
+        <div className="global-sidebar-divider" />
+
+        {/* Campañas */}
+        <span className="global-sidebar-label">Campañas</span>
+        <nav>
+          <button
+            onClick={handleDdp}
+            className={`global-sidebar-link${activeDdp ? ' active' : ''}`}
+          >
+            <span className="global-sidebar-icon"><GiftIcon /></span>
+            <span className="global-sidebar-text">Día del Padre</span>
+          </button>
         </nav>
 
       </div>
