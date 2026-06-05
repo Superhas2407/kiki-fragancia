@@ -886,7 +886,8 @@ export const products = [
     "familia": "Floral Amaderado",
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
-    "ml": 50,
+    "ml": 100,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -982,6 +983,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 50,
+    "precioUSD": 50,
     "categoria": "disenador"
   },
   {
@@ -1077,6 +1079,7 @@ export const products = [
     "tipo": "Elixir",
     "genero": "Masculino",
     "ml": 60,
+    "precioUSD": 250,
     "categoria": "disenador"
   },
   {
@@ -1112,6 +1115,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 90,
     "categoria": "disenador"
   },
   {
@@ -1291,6 +1295,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 135,
     "categoria": "disenador"
   },
   {
@@ -1302,6 +1307,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 120,
     "categoria": "disenador"
   },
   {
@@ -2693,6 +2699,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -2908,6 +2915,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 190,
     "categoria": "disenador"
   },
   {
@@ -2919,6 +2927,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 195,
     "categoria": "disenador"
   },
   {
@@ -2930,6 +2939,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 230,
     "categoria": "disenador"
   },
   {
@@ -2941,6 +2951,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 50,
+    "precioUSD": 125,
     "categoria": "disenador"
   },
   {
@@ -3020,6 +3031,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 50,
+    "precioUSD": 145,
     "categoria": "disenador"
   },
   {
@@ -3074,6 +3086,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 90,
+    "precioUSD": 230,
     "categoria": "disenador"
   },
   {
@@ -3205,6 +3218,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
+    "precioUSD": 190,
     "categoria": "disenador"
   },
   {
@@ -3358,6 +3372,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 50,
+    "precioUSD": 230,
     "categoria": "disenador"
   },
   {
@@ -3434,6 +3449,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 50,
+    "precioUSD": 270,
     "categoria": "disenador"
   },
   {
@@ -3708,6 +3724,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 75,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -3729,6 +3746,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 90,
+    "precioUSD": 220,
     "categoria": "disenador"
   },
   {
@@ -3761,6 +3779,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 75,
+    "precioUSD": 580,
     "categoria": "nicho"
   },
   {
@@ -4452,11 +4471,12 @@ export const products = [
   {
     "id": 379,
     "house": "HUGO BOSS",
-    "name": "Hugo Boss Hugo Man",
+    "name": "Hugo Boss Man Green",
     "image": "hugo-boss-hugo-man-125ml-m.webp",
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 125,
+    "precioUSD": 75,
     "categoria": "disenador"
   },
   {

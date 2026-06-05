@@ -2172,7 +2172,7 @@ export const products = [
     "notasSalida": "Jacinto, Madreselva, Azucena, Lirio del valle",
     "notasCorazon": "Jazmín, Ylang-ylang, Rosa, Musgo",
     "notasFondo": "Almizcle, Vetiver, Sándalo, Grosella negra",
-    "ml": 50,
+    "ml": 100,
     "description": "Una fragancia **floral** y delicada para la mujer, con una estela clásica, romántica y elegante que envuelve con suavidad. **Anais Anais L’Original** de Cacharel es un perfume atemporal de inspiración femenina, ideal para quienes buscan un estilo refinado y luminoso.",
     "notes": [
       "Jacinto",
@@ -2188,6 +2188,8 @@ export const products = [
       "Sándalo",
       "Grosella negra"
     ],
+    "precioUSD": 45,
+    "precioBS": 29250,
     "categoria": "disenador"
   },
   {
@@ -2432,6 +2434,8 @@ export const products = [
       "Jacinto de agua",
       "Madera blanca"
     ],
+    "precioUSD": 50,
+    "precioBS": 32500,
     "categoria": "disenador"
   },
   {
@@ -2692,6 +2696,8 @@ export const products = [
       "Pachulí",
       "Vetiver de Haití"
     ],
+    "precioUSD": 250,
+    "precioBS": 162500,
     "categoria": "disenador"
   },
   {
@@ -2777,6 +2783,8 @@ export const products = [
       "Ámbar",
       "Notas amaderadas"
     ],
+    "precioUSD": 90,
+    "precioBS": 58500,
     "categoria": "disenador"
   },
   {
@@ -3221,6 +3229,8 @@ export const products = [
       "Raíz de lirio",
       "Sándalo"
     ],
+    "precioUSD": 135,
+    "precioBS": 87750,
     "categoria": "disenador"
   },
   {
@@ -3245,6 +3255,8 @@ export const products = [
       "Sándalo",
       "Almizcle"
     ],
+    "precioUSD": 120,
+    "precioBS": 78000,
     "categoria": "disenador"
   },
   {
@@ -6617,6 +6629,8 @@ export const products = [
       "Pachulí",
       "Ambroxan"
     ],
+    "precioUSD": 150,
+    "precioBS": 97500,
     "categoria": "disenador"
   },
   {
@@ -7135,6 +7149,8 @@ export const products = [
       "Cachemira",
       "Madera de gaiac"
     ],
+    "precioUSD": 190,
+    "precioBS": 123500,
     "categoria": "disenador"
   },
   {
@@ -7156,6 +7172,8 @@ export const products = [
       "Jazmín",
       "Vainilla"
     ],
+    "precioUSD": 195,
+    "precioBS": 126750,
     "categoria": "disenador"
   },
   {
@@ -7178,6 +7196,8 @@ export const products = [
       "Jazmín",
       "Benjuí"
     ],
+    "precioUSD": 230,
+    "precioBS": 149500,
     "categoria": "disenador"
   },
   {
@@ -7202,6 +7222,8 @@ export const products = [
       "Vainilla",
       "Cedro"
     ],
+    "precioUSD": 125,
+    "precioBS": 81250,
     "categoria": "disenador"
   },
   {
@@ -7344,6 +7366,8 @@ export const products = [
     "genero": "Masculino",
     "image": "dolcegabbana-the-one-gold-eau-de-parfum-intense-spray-50ml-m.webp",
     "description": "Fragancia para el hombre elegante y carismática, con un estilo cítrico-amaderado-especiado que combina frescura luminosa y una base cálida y refinada. Se inspira en la sofisticación de Dolce & Gabbana The One for Men Gold, ideal para quien busca una presencia moderna, intensa y distinguida.",
+    "precioUSD": 145,
+    "precioBS": 94250,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Pomelo, Albahaca",
     "notasCorazon": "Cardamomo, Jengibre, Iris",
@@ -7422,6 +7446,8 @@ export const products = [
     "genero": "Femenino",
     "image": "prada-paradoxe-intense-90ml-f.webp",
     "description": "Prada Paradoxe Intense es un perfume para la mujer que destaca por su carácter floral ambarado con un fondo cremoso y elegante. Su estela intensa y sofisticada lo convierte en una propuesta de lujo, inspirada en el universo olfativo moderno de Prada Paradoxe y pensada para una feminidad sensual y envolvente.",
+    "precioUSD": 230,
+    "precioBS": 149500,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Neroli, Ámbar gris",
     "notasCorazon": "Jazmín sambac, Pachulí, Ylang ylang",
@@ -7612,6 +7638,8 @@ export const products = [
     "genero": "Femenino",
     "image": "valentino-donna-born-in-roma-coral-fantasy-100ml-f.webp",
     "description": "Fragancia floral afrutada para la mujer, luminosa y moderna, con un carácter elegante y veraniego que aporta frescura sin perder sofisticación. Se inspira en el ADN de Valentino Born In Roma, con un giro más jugoso y vibrante que la hace ideal para un estilo femenino contemporáneo.",
+    "precioUSD": 190,
+    "precioBS": 123500,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Neroli, Maracuyá",
     "notasCorazon": "Rosa, Iris, Flor de naranjo",
@@ -7834,6 +7862,8 @@ export const products = [
     "genero": "Femenino",
     "image": "yves-saint-laurent-libre-leau-nue-50ml-f.webp",
     "description": "Una fragancia para la mujer luminosa y sofisticada, de carácter cítrico-aromático con un acabado limpio y sensual sobre la piel. Libre L’Eau Nue de Yves Saint Laurent se inspira en el universo elegante de Libre, reinterpretando su firma con un estilo más fresco, delicado y veraniego.",
+    "precioUSD": 230,
+    "precioBS": 149500,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Naranja amarga, Lavanda",
     "notasCorazon": "Flor de naranjo, Jazmín, Iris",
@@ -7944,6 +7974,8 @@ export const products = [
     "genero": "Femenino",
     "image": "tom-ford-velvet-orchid-50ml-f.webp",
     "description": "Velvet Orchid de Tom Ford es una fragancia para la mujer de carácter floral ámbar, lujosa, cálida y refinada. Se inspira en la estela glamourosa de Black Orchid, pero con un perfil más suave, luminoso y marcadamente femenino, ideal para quien busca una presencia elegante y seductora.",
+    "precioUSD": 270,
+    "precioBS": 175500,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Aldehídos, Flor de naranjo",
     "notasCorazon": "Orquídea, Rosa, Jazmín",
@@ -8342,6 +8374,8 @@ export const products = [
     "genero": "Masculino",
     "image": "jean-paul-gaultier-le-beau-jean-paul-gaultier-75ml-m.webp",
     "description": "Un perfume para el hombre de estilo amaderado aromático, fresco y sensual, con un perfil tropical y cremoso que destaca por su carácter seductor. Se inspira en el ADN de Jean Paul Gaultier, con una estela moderna y ultra masculina que recuerda a un diseñador de lujo pensado para atraer.[2][6]",
+    "precioUSD": 110,
+    "precioBS": 71500,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Coco, Pomelo",
     "notasCorazon": "Flor de coco, Nenúfar, Ciclamen",
@@ -8371,6 +8405,8 @@ export const products = [
     "genero": "Femenino",
     "image": "prada-prada-paradoxe-90ml-f.webp",
     "description": "Una fragancia para la mujer moderna que combina frescura floral y elegancia sensual con un acabado limpio y sofisticado. Su estilo olfativo ámbar floral recuerda a la refinada firma de diseñador de Prada, con una estela luminosa y femenina perfecta para el día y la noche.",
+    "precioUSD": 220,
+    "precioBS": 143000,
     "categoria": "disenador",
     "notasSalida": "Bergamota, Neroli, Ámbar gris",
     "notasCorazon": "Jazmín sambac, Magnolia",
@@ -8417,6 +8453,8 @@ export const products = [
     "genero": "Masculino",
     "image": "creed-absolu-aventus-2023-75ml-m.webp",
     "description": "Fragancia de lujo para el hombre, intensa y sofisticada, con un perfil cítrico, especiado y amaderado que aporta presencia y elegancia. Absolu Aventus 2023 de Creed es una reinterpretación más profunda y madura del estilo Aventus, inspirada en el ADN de Aventus y pensada para una estela refinada y versátil.",
+    "precioUSD": 580,
+    "precioBS": 377000,
     "categoria": "nicho",
     "notasSalida": "Piña, Bergamota, Manzana verde",
     "notasCorazon": "Abedul, Jazmín, Rosa",
@@ -9401,16 +9439,18 @@ export const products = [
   {
     "id": 379,
     "house": "HUGO BOSS",
-    "name": "Hugo Boss Hugo Man",
+    "name": "Hugo Boss Man Green",
     "ml": 125,
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "image": "hugo-boss-hugo-man-125ml-m.webp",
-    "description": "Hugo Man de Hugo Boss es una fragancia para el hombre, fresca y aromática, con un estilo moderno y limpio que combina energía urbana con elegancia casual. Su perfil olfativo recuerda a un clásico diseñador masculino, con una salida frutal y herbal sobre un fondo amaderado y ligeramente resinoso.",
+    "description": "Hugo Boss Man Green es el clásico masculino de Hugo Boss, una fragancia aromática fresca con un carácter limpio y enérgico que ha perdurado desde los 90. Su apertura frutal y herbácea evoluciona hacia un corazón floral especiado y un fondo amaderado cálido, ideal para el hombre moderno en movimiento.",
+    "precioUSD": 75,
+    "precioBS": 48750,
     "categoria": "disenador",
-    "notasSalida": "Menta, Albahaca, Hierba verde",
-    "notasCorazon": "Geranio, Cedro, Jazmín",
-    "notasFondo": "Almizcle, Cedro, Ámbar"
+    "notasSalida": "Manzana, Albahaca, Bayas de enebro",
+    "notasCorazon": "Geranio, Salvia, Lavanda",
+    "notasFondo": "Cedro, Sándalo, Musgo de roble"
   },
   {
     "id": 380,
