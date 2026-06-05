@@ -236,7 +236,7 @@ const todosLosMasculinos = diaDeLPadreIds
                 </p>
                 {featured.precioUSD > 0 && (
                   <p className="ddp-featured-price">
-                    <span className="ddp-featured-price-num">${featured.precioUSD}</span>
+                    <span className="ddp-featured-price-num">REF {featured.precioUSD}</span>
                     <span className="ddp-featured-price-meta">EDP · 100 ML</span>
                   </p>
                 )}
@@ -265,7 +265,7 @@ const todosLosMasculinos = diaDeLPadreIds
               <p className="ddp-section-eyebrow">Colección Completa</p>
               <h2 className="ddp-grid-title">{todosLosMasculinos.length} fragancias para él</h2>
             </div>
-            <p className="ddp-grid-meta">$25 — $30 · 100 ml</p>
+            <p className="ddp-grid-meta">REF 25 — REF 30 · 100 ml</p>
           </div>
           <div className="diadel-padre-grid">
             {todosLosMasculinos.map((p, i) => (

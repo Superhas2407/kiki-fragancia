@@ -209,7 +209,7 @@ export default function Header() {
 
               {/* Switcher de moneda — desktop */}
               <div style={{ display: 'flex', alignItems: 'center', borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.35)' }}>
-                {[{ val: 'usd', label: '$' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => {
+                {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => {
                   const active = currency === val
                   return (
                     <button
@@ -356,7 +356,7 @@ export default function Header() {
             Moneda
           </span>
           <div style={{ display: 'flex', gap: 0, border: '1px solid rgba(201,168,76,0.35)', alignSelf: 'flex-start', width: 'fit-content', borderRadius: 2, overflow: 'hidden' }}>
-            {[{ val: 'usd', label: '$ Divisa' }, { val: 'bs', label: 'Bs. Bolívares' }].map(({ val, label }) => {
+            {[{ val: 'usd', label: 'REF Divisa' }, { val: 'bs', label: 'Bs. Bolívares' }].map(({ val, label }) => {
               const active = currency === val
               return (
                 <button
