@@ -1,5 +1,5 @@
 // Campaña Día del Padre 2026 — descuentos en modo REF (divisa)
-// Formato: id → porcentaje de descuento (10 ó 15)
+// Formato: id → porcentaje de descuento (10 ó 15). Sin entrada = sin descuento.
 export const diaDeLPadreDiscounts = {
   2: 10,   // Afnan 9 AM Dive
   3: 10,   // Afnan 9 PM
@@ -13,7 +13,6 @@ export const diaDeLPadreDiscounts = {
   42: 10,  // Armaf Odyssey Go Mango
   44: 10,  // Armaf Odyssey Homme White Edition
   48: 15,  // Armaf Odyssey Mega Man
-  61: 10,  // Bharara King EDP 100ml
   71: 15,  // Bvlgari Aqva Marine
   86: 10,  // Dior Homme Intense
   102: 10, // Emper Stallion 53
@@ -21,6 +20,8 @@ export const diaDeLPadreDiscounts = {
   144: 10, // Lattafa Asad Zanzibar
   147: 15, // Lattafa Bade'e Al Oud Amethyst
   150: 10, // Lattafa Bade'e Al Oud for Glory
+  162: 10, // Lattafa Fakhar Extrait de Parfum
+  166: 10, // Lattafa Hayaati
   169: 10, // Lattafa His Confession
   173: 10, // Lattafa Khamrah Dukhan
   174: 10, // Lattafa Khamrah Qahwa
@@ -55,7 +56,13 @@ export const diaDeLPadreDiscounts = {
   411: 10, // Benetton Cold
 }
 
-export const diaDeLPadreIds = Object.keys(diaDeLPadreDiscounts).map(Number)
+// Productos en DDP sin descuento (solo ribbon)
+const ddpSinDescuento = [61, 272] // Bharara King EDP, Rabanne Phantom Intense
+
+export const diaDeLPadreIds = [
+  ...Object.keys(diaDeLPadreDiscounts).map(Number),
+  ...ddpSinDescuento,
+]
 
 // Subsets para uso independiente (retrocompatibilidad)
 export const antoniobanderasIds = [346, 349, 350, 355, 359, 366, 375, 391, 410]

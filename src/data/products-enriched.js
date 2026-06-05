@@ -4917,7 +4917,7 @@ export const products = [
     "notasCorazon": "Canela, Notas amaderadas",
     "notasFondo": "Almizcle, Vainilla",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "precioBS": 26000,
     "description": "Una fragancia **para el hombre** de carácter amaderado y aromático, con un perfil moderno, limpio y versátil que transmite confianza sin perder elegancia. Se inspira en el estilo de fragancias masculinas contemporáneas con un toque afrutado-especiado, ideal para quien busca una presencia sofisticada y fácil de llevar en el día a día.",
     "notes": [

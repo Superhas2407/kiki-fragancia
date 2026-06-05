@@ -272,6 +272,7 @@ export default function Tienda() {
 
   const urlGenero = searchParams.get('genero') || null
   const urlTipo   = searchParams.get('tipo')   || null
+  const urlDdp    = searchParams.get('ddp') === '1'
 
   // Sincronizar searchQuery con ?q= de la URL (cuando cambia desde otro componente)
   useEffect(() => {
@@ -288,17 +289,18 @@ export default function Tienda() {
 
   const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured'
   const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]) }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0)
 
   // Pool base: filtrado por la selección del sidebar global.
   // Los 200ml con variantIds son variantes de un 100ml — se excluyen para no duplicar.
   // Los 200ml sin variantIds son productos standalone y sí se muestran.
   const basePool = useMemo(() => {
     let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
+    if (urlDdp)    pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
     if (urlGenero) pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)   pool = pool.filter(p => p.categoria === urlTipo)
     return pool
-  }, [urlGenero, urlTipo])
+  }, [urlGenero, urlTipo, urlDdp])
 
   const filtered = useMemo(() => {
     let result = [...basePool]
@@ -405,7 +407,7 @@ export default function Tienda() {
               { key: 'Unisex',    label: 'Unisex' },
               { key: 'Niño',      label: 'Kids' },
             ].map(({ key, label }) => {
-              const isActive = urlGenero === key
+              const isActive = !urlDdp && urlGenero === key
               return (
                 <button
                   key={label}
@@ -421,6 +423,12 @@ export default function Tienda() {
                 </button>
               )
             })}
+            <button
+              onClick={() => navigate('/tienda?ddp=1')}
+              className={`tienda-genero-chip${urlDdp ? ' active' : ''}`}
+            >
+              🎁 Día del Padre
+            </button>
           </div>
 
           {/* Buscador — oculto en mobile (usa lupa del header) */}
@@ -502,12 +510,11 @@ export default function Tienda() {
                       <VitrinaCard
                         product={product}
                         ribbon={currency === 'usd' ? (
-                          diaDeLPadreIds.includes(product.id) ? 'Día del Padre' :
-                          product.precioUSD > 0 ? 'Promo en divisa' : null
+                          diaDeLPadreIds.includes(product.id)
+                            ? (diaDeLPadreDiscounts[product.id] ? `${diaDeLPadreDiscounts[product.id]}% OFF · DÍA DEL PADRE` : 'DÍA DEL PADRE')
+                            : product.precioUSD > 0 ? 'Promo en divisa' : null
                         ) : null}
-                        ribbonVariant={currency === 'usd' && !diaDeLPadreIds.includes(product.id) && product.precioUSD > 0
-                          ? ({ Masculino: 'masc', Femenino: 'fem', Unisex: 'unisex', 'Niño': 'nino' }[product.genero] || null)
-                          : null}
+                        ribbonVariant={currency === 'usd' && diaDeLPadreIds.includes(product.id) ? 'ddp' : null}
                         discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
                       />
                     </div>

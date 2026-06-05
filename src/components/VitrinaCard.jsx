@@ -184,8 +184,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           if (!allPrices.length) return null
           const minPrice = Math.min(...allPrices)
           const hasRange = variants.length > 1 && allPrices.length > 1
-          const discPrice = discount ? parseFloat((minPrice * (1 - discount / 100)).toFixed(2)) : null
-          const usdRef = discPrice ?? minPrice
+          // discPrice eliminado — se muestra precio original con badge de %
 
           // Modo Bs — precio base sin descuento, sin badges
           const showBs = currency === 'bs' && tasa
@@ -207,24 +206,16 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
           return (
             <div className="vitrina-price">
-              {discount ? (
-                <div className="vitrina-price-disc-block">
-                  <div className="vitrina-price-disc-row">
-                    <span className="vitrina-price-badge">-{discount}% OFERTA DIVISA</span>
-                    <span className="vitrina-price-orig">REF: {minPrice}</span>
-                  </div>
-                  <span className="vitrina-price-usd vitrina-price-usd--big">
-                    {hasRange ? 'Desde ' : ''}REF: {Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)}
-                  </span>
-                </div>
-              ) : (
-                <div className="vitrina-price-disc-block">
+              <div className="vitrina-price-disc-block">
+                {discount ? (
+                  <span className="vitrina-price-badge">-{discount}% DÍA DEL PADRE</span>
+                ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
-                  <span className="vitrina-price-usd vitrina-price-usd--big">
-                    {hasRange ? 'Desde ' : ''}REF: {minPrice}
-                  </span>
-                </div>
-              )}
+                )}
+                <span className="vitrina-price-usd vitrina-price-usd--big">
+                  {hasRange ? 'Desde ' : ''}REF: {minPrice}
+                </span>
+              </div>
             </div>
           )
         })()}
