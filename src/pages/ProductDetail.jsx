@@ -1347,12 +1347,8 @@ export default function ProductDetail() {
                     href={waUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="pd-btn-wa"
-                    style={{
-                      background: waHover ? 'var(--gold)' : 'transparent',
-                      color: waHover ? '#0A0A0A' : 'var(--gold)',
-                      transform: waHover ? 'translateY(-2px)' : 'translateY(0)',
-                    }}
+                    className={`pd-btn-wa${waHover ? ' pd-btn-wa--hover' : ''}`}
+                    style={{ transform: waHover ? 'translateY(-2px)' : 'translateY(0)' }}
                     onMouseEnter={() => setWaHover(true)}
                     onMouseLeave={() => setWaHover(false)}
                   >
