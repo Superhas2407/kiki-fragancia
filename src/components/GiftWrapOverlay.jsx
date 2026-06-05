@@ -30,7 +30,7 @@ export default function GiftWrapOverlay({ onOpen }) {
         <div className="gw-shine" aria-hidden="true" />
       </div>
       <div className="gw-bow">
-        <span className="gw-bow-inner">★</span>
+        <span className="gw-bow-inner" />
       </div>
       <div className="gw-tap-ring" aria-hidden="true" />
       <span className="gw-hint">Toca para revelar</span>
