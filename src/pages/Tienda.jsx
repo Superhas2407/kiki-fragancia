@@ -6,7 +6,7 @@ import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { diaDeLPadreIds } from '../data/dia-del-padre'
+import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 
 class GridBoundary extends Component {
   constructor(props) { super(props); this.state = { err: null } }
@@ -508,7 +508,7 @@ export default function Tienda() {
                         ribbonVariant={currency === 'usd' && !diaDeLPadreIds.includes(product.id) && product.precioUSD > 0
                           ? ({ Masculino: 'masc', Femenino: 'fem', Unisex: 'unisex', 'Niño': 'nino' }[product.genero] || null)
                           : null}
-                        discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? 10 : null}
+                        discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
                       />
                     </div>
                   ))}

@@ -505,7 +505,7 @@ export const products = [
     "notasCorazon": "Violeta, Pimienta, Lavanda, Geranio",
     "notasFondo": "Vetiver, Sándalo, Almizcle, Ámbar",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "precioBS": 22750,
     "description": "Una fragancia **para el hombre** fresca, especiada y elegante, pensada para destacar con un carácter moderno y versátil. Su estilo olfativo combina cítricos vibrantes, acordes aromáticos y una base amaderada cálida; a menudo se compara con perfumes masculinos de diseñador de perfil fresco y refinado.",
     "notes": [
@@ -1436,7 +1436,7 @@ export const products = [
     "notasCorazon": "Piña, Enebro de Virginia, Geranio, Salvia",
     "notasFondo": "Haba tonka, Almizcle, Cedro, Vetiver",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "precioBS": 22750,
     "description": "Fragancia **amaderada aromática para el hombre**, moderna y enérgica, pensada para proyectar frescura, carácter y sofisticación en el día a día. Su perfil recuerda el estilo de un diseñador deportivo y elegante, con un aire vibrante que puede evocar propuestas tipo Bleu de Chanel por su frescura limpia y masculina.",
     "notes": [
@@ -1822,7 +1822,7 @@ export const products = [
     "notasCorazon": "Notas afrutadas, Vainilla",
     "notasFondo": "Almizcle blanco, Ámbar",
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "precioBS": 48750,
     "description": "Bharara King Eau de Parfum es una fragancia **para el hombre** de carácter cítrico-frutal, fresca y luminosa al inicio, con un fondo dulce y envolvente que aporta presencia y sofisticación. Su perfil olfativo recuerda a un estilo moderno y magnético, ideal para quien busca una firma masculina llamativa con aire de lujo contemporáneo.",
     "notes": [
@@ -5447,7 +5447,7 @@ export const products = [
     "notasCorazon": "abeto balsámico, ámbar",
     "notasFondo": "cedro, madera de oud",
     "ml": 90,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "precioBS": 22750,
     "description": "Perfume **para el hombre** de carácter moderno, intenso y sofisticado, con un perfil aromático-amaderado que destaca por su apertura frutal y su fondo cálido y elegante. Se inspira en el estilo de fragancias orientales masculinas con un aire cercano a Aventus de Creed, especialmente por su protagonismo de piña y su acabado ahumado y amaderado.",
     "notes": [
@@ -5474,7 +5474,7 @@ export const products = [
     "notasCorazon": "Ylang-ylang, Jazmín, Frangipani",
     "notasFondo": "Vainilla, Almizcle, Sándalo",
     "ml": 90,
-    "precioUSD": 25,
+    "precioUSD": 35,
     "precioBS": 16250,
     "description": "Una fragancia **unisex** vibrante y exótica, con un perfil tropical cremoso y dulce que resulta moderno y muy versátil. Lattafa Qaed Al Fursan Unlimited se inspira en el placer de un oasis tropical, ideal para quienes buscan una estela luminosa, suave y envolvente con aire de perfumería de diseñador.",
     "notes": [
@@ -5533,7 +5533,7 @@ export const products = [
     "notasCorazon": "Salvia, Romero",
     "notasFondo": "Pachulí, Vetiver",
     "ml": 100,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "precioBS": 16250,
     "description": "Una fragancia **para el hombre** de carácter **amaderado aromático** con un perfil elegante, fresco y refinado. Inspirada en el estilo de **Prada L’Homme**, combina una presencia limpia y sofisticada con un fondo cálido y masculino ideal para el día a día o la oficina.",
     "notes": [
@@ -7329,7 +7329,7 @@ export const products = [
     "image": "moschino-toy-boy-100ml-m.webp",
     "description": "Una fragancia para el hombre intensa y provocadora, de estilo especiado-amaderado con un carácter moderno y elegante. Toy Boy de Moschino se inspira en el juego de contrastes entre la frescura frutal, las flores y un fondo sensual de vetiver y almizcle, con una firma distintiva que recuerda a la perfumería de diseñador contemporánea.",
     "categoria": "disenador",
-    "precioUSD": 70,
+    "precioUSD": 80,
     "precioBS": 45500,
     "notasSalida": "Cardamomo, Bergamota, Pomelo",
     "notasCorazon": "Rosa, Davana, Iris",
@@ -8790,7 +8790,7 @@ export const products = [
     "image": "calvin-klein-ck-be-100ml-u.webp",
     "description": "CK Be de Calvin Klein es una fragancia unisex de carácter limpio, fresco y minimalista, ideal para quienes buscan un aroma discreto pero con personalidad. Su perfil almizclado floral amaderado recuerda al estilo relajado y moderno de un diseñador clásico, con una sensación de piel limpia y naturalidad contemporánea.",
     "categoria": "disenador",
-    "precioUSD": 30,
+    "precioUSD": 35,
     "precioBS": 19500,
     "variantIds": [
       343,
@@ -9150,7 +9150,7 @@ export const products = [
     "image": "issey-miyake-leau-dissey-pour-homme-intense-75ml-m.webp",
     "description": "Una fragancia para el hombre de carácter amaderado y especiado, intensa y elegante, que combina frescura cítrica con un fondo cálido y profundo. Está inspirada en el estilo refinado y acuático de Issey Miyake, con un perfil masculino clásico y sofisticado.",
     "categoria": "disenador",
-    "precioUSD": 35,
+    "precioUSD": 50,
     "precioBS": 22750,
     "notasSalida": "Yuzu, Jengibre, Bergamota",
     "notasCorazon": "Nuez moscada, Cedro, Ciprés",
@@ -9552,7 +9552,7 @@ export const products = [
     "image": "calvin-klein-obsession-for-men-125ml-m.webp",
     "description": "Una fragancia para el hombre intensa, sensual y carismática, con un perfil oriental amaderado que combina especias cálidas, cítricos vibrantes y maderas profundas. Obsession for Men de Calvin Klein se inspira en el espíritu provocador de la perfumería de diseñador de los años 80 y es un clásico masculino de gran personalidad.",
     "categoria": "disenador",
-    "precioUSD": 35,
+    "precioUSD": 40,
     "precioBS": 22750,
     "variantIds": [
       388,

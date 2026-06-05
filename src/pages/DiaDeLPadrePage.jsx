@@ -3,7 +3,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
-import { diaDeLPadreIds } from '../data/dia-del-padre'
+import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
 import GiftWrapOverlay, { useShowWraps } from '../components/GiftWrapOverlay'
@@ -275,7 +275,7 @@ const todosLosMasculinos = diaDeLPadreIds
                 key={p.id}
                 product={p}
                 ribbon={currency === 'usd' ? 'Día del Padre' : null}
-                discount={currency === 'usd' ? 10 : null}
+                discount={currency === 'usd' ? diaDeLPadreDiscounts[p.id] ?? 10 : null}
                 badge={p.id === EDITOR_PICK_ID ? 'Editor\'s pick' : (i === 0 ? 'Más vendido' : null)}
               />
             ))}
