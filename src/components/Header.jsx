@@ -453,7 +453,7 @@ export default function Header() {
                 {suggestions.map((p, i) => (
                   <li
                     key={p.id}
-                    onMouseDown={() => handleSuggestionClick(p)}
+                    onClick={() => handleSuggestionClick(p)}
                     onMouseEnter={() => setActiveSuggestion(i)}
                     style={{
                       display: 'flex', alignItems: 'center', gap: 14,

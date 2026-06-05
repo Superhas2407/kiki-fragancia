@@ -34,7 +34,7 @@ export default function GiftWrapOverlay({ onOpen }) {
       <div className="gw-half gw-half--bot" />
       <div className="gw-rib-v" />
       <div className="gw-bow">★</div>
-      <span className="gw-hint">Toca para abrir</span>
+      <span className="gw-hint">✦ Toca para abrir ✦</span>
     </div>
   )
 }
