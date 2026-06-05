@@ -23,10 +23,12 @@ export default function GiftWrapOverlay({ onOpen }) {
       role="button"
       aria-label="Toca para abrir tu regalo"
     >
-      <div className="gw-half gw-half--top" />
-      <div className="gw-half gw-half--bot" />
-      <div className="gw-rib-v" />
-      <div className="gw-shine" aria-hidden="true" />
+      <div className="gw-paper">
+        <div className="gw-half gw-half--top" />
+        <div className="gw-half gw-half--bot" />
+        <div className="gw-rib-v" />
+        <div className="gw-shine" aria-hidden="true" />
+      </div>
       <div className="gw-bow">
         <span className="gw-bow-inner">★</span>
       </div>
