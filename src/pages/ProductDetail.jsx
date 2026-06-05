@@ -7,7 +7,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
 import { NOTES_IMAGES } from '../data/notes-images'
-import { diaDeLPadreIds } from '../data/dia-del-padre'
+import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
@@ -1215,11 +1215,14 @@ export default function ProductDetail() {
                     <span className="pd-img-badge-text">Original Verificado</span>
                   </div>
 
-                  {diaDeLPadreIds.includes(product.id) && (
-                    <div className="vitrina-ribbon" aria-hidden="true">
-                      <span>Día del Padre</span>
-                    </div>
-                  )}
+                  {diaDeLPadreIds.includes(product.id) && currency === 'usd' && (() => {
+                    const disc = diaDeLPadreDiscounts[product.id]
+                    return (
+                      <div className="vitrina-ribbon vitrina-ribbon--ddp" aria-hidden="true">
+                        <span>{disc ? `${disc}% OFF · DÍA DEL PADRE` : 'DÍA DEL PADRE'}</span>
+                      </div>
+                    )
+                  })()}
 
                   <div className="pd-img-familia" style={{
                     opacity: imgHover ? 1 : 0,
@@ -1266,20 +1269,17 @@ export default function ProductDetail() {
                 })()}
 
                 {product.precioUSD > 0 && (() => {
-                  const isDDP = diaDeLPadreIds.includes(product.id)
-                  const discPrice = isDDP ? parseFloat((product.precioUSD * 0.9).toFixed(2)) : null
-                  // Modo Bs: precio base sin descuento (oferta solo en divisa)
                   const showBs = currency === 'bs' && tasa
-                  const bsFmt = showBs
-                    ? 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
-                    : null
                   if (showBs) {
+                    const bsFmt = 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
                     return (
                       <div className="pd-price" style={rv(350)}>
                         <span className="pd-price-amount">{bsFmt}</span>
                       </div>
                     )
                   }
+                  const discPct = diaDeLPadreDiscounts[product.id]
+                  const isDDP = diaDeLPadreIds.includes(product.id)
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
@@ -1287,18 +1287,22 @@ export default function ProductDetail() {
                     background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
                     padding: '4px 12px', display: 'inline-block',
                   }
+                  const ddpBadgeStyle = {
+                    fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
+                    letterSpacing: '0.10em', textTransform: 'uppercase',
+                    color: '#E8F0FF',
+                    background: 'linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72)',
+                    padding: '4px 12px', display: 'inline-block',
+                  }
                   return (
                     <div className="pd-price" style={rv(350)}>
-                      {isDDP ? (
+                      {isDDP && discPct ? (
                         <>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8, flexWrap: 'wrap' }}>
-                            <span style={badgeStyle}>-10% OFERTA DIVISA</span>
-                            <span style={{ fontFamily: 'var(--font-s)', fontSize: 14, fontWeight: 100, color: 'var(--ink-faint)', textDecoration: 'line-through' }}>
-                              REF: {product.precioUSD}
-                            </span>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={ddpBadgeStyle}>-{discPct}% DÍA DEL PADRE</span>
                           </div>
-                          <span className="pd-price-amount" style={{ fontSize: 28 }}>
-                            REF: {Number.isInteger(discPrice) ? discPrice : discPrice.toFixed(2)}
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
                           </span>
                           <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 6 }}>
                             · Solo en divisa
@@ -1307,7 +1311,7 @@ export default function ProductDetail() {
                       ) : (
                         <>
                           <div style={{ marginBottom: 8 }}>
-                            <span style={badgeStyle}>PROMO DIVISA</span>
+                            <span style={badgeStyle}>{isDDP ? 'DÍA DEL PADRE' : 'PROMO DIVISA'}</span>
                           </div>
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}

@@ -54,10 +54,11 @@ export const diaDeLPadreDiscounts = {
   388: 15, // Calvin Klein Obsession for Men
   393: 10, // Guess Seductive Homme
   411: 10, // Benetton Cold
+  272: 10, // Rabanne Phantom Intense
 }
 
 // Productos en DDP sin descuento (solo ribbon)
-const ddpSinDescuento = [61, 272] // Bharara King EDP, Rabanne Phantom Intense
+const ddpSinDescuento = [61] // Bharara King EDP
 
 export const diaDeLPadreIds = [
   ...Object.keys(diaDeLPadreDiscounts).map(Number),
