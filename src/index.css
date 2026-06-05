@@ -2264,10 +2264,10 @@
   clip-path: none;
 }
 
-/* Variante promo — azul profundo */
+/* Variante promo — borgoña */
 .vitrina-ribbon--promo > span {
-  background: linear-gradient(90deg, #0A3D6B, #1565C0 55%, #0A3D6B);
-  color: #E8F1FF;
+  background: linear-gradient(90deg, #4A0614, #8B1A2A 55%, #4A0614);
+  color: #F5E6E8;
 }
 
 
