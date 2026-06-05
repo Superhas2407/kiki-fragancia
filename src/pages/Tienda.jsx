@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo, useEffect, useRef, Component } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '../components/Footer'
@@ -6,6 +6,27 @@ import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { diaDeLPadreIds } from '../data/dia-del-padre'
+
+class GridBoundary extends Component {
+  constructor(props) { super(props); this.state = { err: null } }
+  static getDerivedStateFromError(e) { return { err: e } }
+  render() {
+    if (this.state.err) return (
+      <div style={{ gridColumn: '1/-1', padding: '60px 20px', textAlign: 'center' }}>
+        <p style={{ fontFamily: 'var(--font-d)', fontSize: 18, color: 'var(--ink-faint)', fontStyle: 'italic', marginBottom: 8 }}>
+          Error al cargar productos
+        </p>
+        <p style={{ fontFamily: 'var(--font-s)', fontSize: 10, color: 'var(--ink-faint)', letterSpacing: '0.1em', marginBottom: 24 }}>
+          {this.state.err?.message || 'Error desconocido'}
+        </p>
+        <button onClick={() => window.location.reload()} style={{ fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', padding: '12px 28px', border: '1px solid var(--gold)', background: 'transparent', color: 'var(--gold)', cursor: 'pointer' }}>
+          Recargar
+        </button>
+      </div>
+    )
+    return this.props.children
+  }
+}
 
 const SORT_OPTIONS = [
   { label: 'Destacados',    key: 'featured'   },
@@ -466,25 +487,25 @@ export default function Tienda() {
               </div>
             ) : (
               <>
+                <GridBoundary>
                 <div className="vitrina-grid">
-                  <AnimatePresence>
-                    {filtered.map((product, index) => (
-                      <motion.div
-                        key={product.id}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.2), ease: [0.22, 1, 0.36, 1] }}
-                      >
-                        <VitrinaCard
-                          product={product}
-                          ribbon={diaDeLPadreIds.includes(product.id) ? 'Día del Padre' : null}
-                          discount={diaDeLPadreIds.includes(product.id) ? 10 : null}
-                        />
-                      </motion.div>
-                    ))}
-                  </AnimatePresence>
+                  {filtered.map((product, index) => (
+                    <div
+                      key={product.id}
+                      style={{
+                        animation: 'vitrina-fadein 0.35s ease both',
+                        animationDelay: `${Math.min(index * 0.03, 0.18)}s`,
+                      }}
+                    >
+                      <VitrinaCard
+                        product={product}
+                        ribbon={diaDeLPadreIds.includes(product.id) ? 'Día del Padre' : null}
+                        discount={diaDeLPadreIds.includes(product.id) ? 10 : null}
+                      />
+                    </div>
+                  ))}
                 </div>
+                </GridBoundary>
 
               </>
             )}

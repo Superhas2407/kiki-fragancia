@@ -1977,7 +1977,12 @@
    vignette inferior, eyebrow en notas, dot de gÃ©nero, hover glow.
    ============================================================ */
 
-/* Grid de vitrina: 2 columnas mÃ³vil, 4 columnas desktop */
+@keyframes vitrina-fadein {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Grid de vitrina: 2 columnas móvil, 4 columnas desktop */
 .vitrina-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
