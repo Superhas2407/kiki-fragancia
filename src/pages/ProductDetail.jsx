@@ -1219,7 +1219,7 @@ export default function ProductDetail() {
                     const disc = diaDeLPadreDiscounts[product.id]
                     return (
                       <div className="vitrina-ribbon vitrina-ribbon--ddp" aria-hidden="true">
-                        <span>{disc ? `${disc}% OFF · DÍA DEL PADRE` : 'DÍA DEL PADRE'}</span>
+                        <span>{disc ? `${disc}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE'}</span>
                       </div>
                     )
                   })()}
@@ -1299,7 +1299,7 @@ export default function ProductDetail() {
                       {isDDP && discPct ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
-                            <span style={ddpBadgeStyle}>-{discPct}% DÍA DEL PADRE</span>
+                            <span style={ddpBadgeStyle}>{discPct}% EXTRA · DÍA DEL PADRE</span>
                           </div>
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}

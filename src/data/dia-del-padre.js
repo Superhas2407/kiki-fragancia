@@ -55,10 +55,11 @@ export const diaDeLPadreDiscounts = {
   393: 10, // Guess Seductive Homme
   411: 10, // Benetton Cold
   272: 10, // Rabanne Phantom Intense
+  61: 10,  // Bharara King EDP
 }
 
 // Productos en DDP sin descuento (solo ribbon)
-const ddpSinDescuento = [61] // Bharara King EDP
+const ddpSinDescuento = []
 
 export const diaDeLPadreIds = [
   ...Object.keys(diaDeLPadreDiscounts).map(Number),

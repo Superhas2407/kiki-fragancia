@@ -48,7 +48,7 @@ export default function AnnouncementBar() {
             <div className="ann-marquee-track">
               {[0, 1, 2, 3, 4, 5].map(i => (
                 <div key={i} className="ann-marquee-content" aria-hidden={i > 0}>
-                  <span className="ann-label">10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE</span>
+                  <span className="ann-label">10% EXTRA EN FRAGANCIAS DEL DÍA DEL PADRE</span>
                   <span className="ann-dot">✦</span>
                 </div>
               ))}

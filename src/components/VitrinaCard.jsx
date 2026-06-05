@@ -208,7 +208,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
             <div className="vitrina-price">
               <div className="vitrina-price-disc-block">
                 {discount ? (
-                  <span className="vitrina-price-badge">-{discount}% DÍA DEL PADRE</span>
+                  <span className="vitrina-price-badge">{discount}% EXTRA · DÍA DEL PADRE</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}
