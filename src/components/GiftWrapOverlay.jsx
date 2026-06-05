@@ -16,7 +16,7 @@ export default function GiftWrapOverlay({ onOpen }) {
     e.preventDefault()
     e.stopPropagation()
     if (phase !== 'wrapped') return
-    sessionStorage.setItem(SESSION_KEY, '1')
+    try { sessionStorage.setItem(SESSION_KEY, '1') } catch {}
     setPhase('opening')
     onOpen?.()
     setTimeout(() => setPhase('open'), 520)
@@ -41,5 +41,8 @@ export default function GiftWrapOverlay({ onOpen }) {
 
 /** Hook para saber si mostrar envoltorios en esta sesión */
 export function useShowWraps() {
-  return useState(() => sessionStorage.getItem(SESSION_KEY) !== '1')[0]
+  return useState(() => {
+    try { return sessionStorage.getItem(SESSION_KEY) !== '1' }
+    catch { return true }
+  })[0]
 }

@@ -13,7 +13,7 @@ export function useCart() {
   const [items, setItems] = useState(loadCart)
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)) } catch {}
   }, [items])
 
   const addItem = (product) => setItems(prev => {

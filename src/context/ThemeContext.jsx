@@ -3,13 +3,15 @@ import { createContext, useContext, useEffect, useState } from 'react'
 const ThemeContext = createContext(null)
 
 function getSystemTheme() {
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'warm' : 'dark'
+  try { return window.matchMedia('(prefers-color-scheme: light)').matches ? 'warm' : 'dark' }
+  catch { return 'dark' }
 }
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(
-    () => localStorage.getItem('kiki-theme') || getSystemTheme()
-  )
+  const [theme, setTheme] = useState(() => {
+    try { return localStorage.getItem('kiki-theme') || getSystemTheme() }
+    catch { return getSystemTheme() }
+  })
 
   useEffect(() => {
     const root = document.documentElement
@@ -18,13 +20,15 @@ export function ThemeProvider({ children }) {
     } else {
       root.setAttribute('data-theme', theme)
     }
-    localStorage.setItem('kiki-theme', theme)
+    try { localStorage.setItem('kiki-theme', theme) } catch {}
   }, [theme])
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: light)')
     function onSystemChange(e) {
-      if (!localStorage.getItem('kiki-theme')) {
+      try {
+        if (!localStorage.getItem('kiki-theme')) setTheme(e.matches ? 'warm' : 'dark')
+      } catch {
         setTheme(e.matches ? 'warm' : 'dark')
       }
     }
