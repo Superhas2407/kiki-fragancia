@@ -400,6 +400,12 @@ export default function Tienda() {
 
           {/* Chips de género — visible solo en mobile/tablet (< 1024px) */}
           <div className="tienda-genero-chips tienda-pad">
+            <button
+              onClick={() => navigate('/tienda?ddp=1')}
+              className={`tienda-genero-chip tienda-genero-chip--ddp${urlDdp ? ' active' : ''}`}
+            >
+              🎁 Día del Padre
+            </button>
             {[
               { key: null,        label: 'Todos' },
               { key: 'Masculino', label: 'Hombre' },
@@ -423,12 +429,6 @@ export default function Tienda() {
                 </button>
               )
             })}
-            <button
-              onClick={() => navigate('/tienda?ddp=1')}
-              className={`tienda-genero-chip${urlDdp ? ' active' : ''}`}
-            >
-              🎁 Día del Padre
-            </button>
           </div>
 
           {/* Buscador — oculto en mobile (usa lupa del header) */}

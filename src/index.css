@@ -467,8 +467,34 @@
   border-color: var(--gold);
   color: var(--gold);
 }
+.tienda-genero-chip--ddp {
+  border-color: rgba(26,82,204,0.5);
+  color: #6B9EFF;
+}
+.tienda-genero-chip--ddp.active {
+  background: rgba(26,82,204,0.12);
+  border-color: #1A52CC;
+  color: #6B9EFF;
+}
 
-
+/* Ribbon responsive — scale down on mobile cards */
+@media (max-width: 767px) {
+  .vitrina-ribbon {
+    width: 130px;
+    height: 130px;
+  }
+  .vitrina-ribbon > span {
+    right: -42px;
+    top: 30px;
+    width: 170px;
+    padding: 8px 0;
+    font-size: 8px;
+    letter-spacing: 0.10em;
+  }
+  .vitrina-ribbon--ddp > span {
+    font-size: 7px;
+  }
+}
 
 /* Tienda — product grid responsive */
 .tienda-product-grid {

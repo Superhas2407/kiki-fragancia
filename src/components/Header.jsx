@@ -4,6 +4,7 @@ import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { allProducts } from '../data/all-products'
+import { acordesByProduct } from '../data/acordes-index'
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -88,16 +89,21 @@ export default function Header() {
   const navigate = useNavigate()
 
   const suggestions = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase()
-    if (q.length < 2) return []
+    const raw = searchQuery.trim().toLowerCase()
+    if (raw.length < 2) return []
+    const terms = raw.split(/\s+/).filter(Boolean)
     return allProducts
-      .filter(p =>
-        (p.ml !== 200 || !p.variantIds) && (
-          p.name.toLowerCase().includes(q) ||
-          p.house.toLowerCase().includes(q) ||
-          (p.familia && p.familia.toLowerCase().includes(q))
+      .filter(p => {
+        if (p.ml === 200 && p.variantIds) return false
+        const acordes = (acordesByProduct[p.id] || []).map(a => a.toLowerCase())
+        const name = p.name.toLowerCase()
+        const house = p.house.toLowerCase()
+        const familia = (p.familia || '').toLowerCase()
+        return terms.every(t =>
+          name.includes(t) || house.includes(t) || familia.includes(t) ||
+          acordes.some(a => a.includes(t))
         )
-      )
+      })
       .slice(0, 6)
   }, [searchQuery])
 
@@ -430,7 +436,7 @@ export default function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Nombre, marca o familia..."
+                placeholder="Nombre, marca, familia o acorde..."
                 style={{
                   flex: 1, background: 'none', border: 'none', outline: 'none',
                   fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
