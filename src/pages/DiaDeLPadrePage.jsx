@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useCurrency } from '../context/CurrencyContext'
 import { Link, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
@@ -93,6 +94,7 @@ export default function DiaDeLPadrePage() {
   const { addItem } = useCartContext()
   const showWraps = useShowWraps()
   const navigate = useNavigate()
+  const { currency } = useCurrency()
 
 const todosLosMasculinos = diaDeLPadreIds
     .map(id => allProducts.find(p => p.id === id))
@@ -272,8 +274,8 @@ const todosLosMasculinos = diaDeLPadreIds
               <VitrinaCard
                 key={p.id}
                 product={p}
-                ribbon="Día del Padre"
-                discount={10}
+                ribbon={currency === 'usd' ? 'Día del Padre' : null}
+                discount={currency === 'usd' ? 10 : null}
                 badge={p.id === EDITOR_PICK_ID ? 'Editor\'s pick' : (i === 0 ? 'Más vendido' : null)}
               />
             ))}

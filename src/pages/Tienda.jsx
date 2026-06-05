@@ -501,11 +501,11 @@ export default function Tienda() {
                     >
                       <VitrinaCard
                         product={product}
-                        ribbon={
+                        ribbon={currency === 'usd' ? (
                           diaDeLPadreIds.includes(product.id) ? 'Día del Padre' :
                           product.precioUSD > 0 ? 'Promo en divisa' : null
-                        }
-                        ribbonVariant={!diaDeLPadreIds.includes(product.id) && product.precioUSD > 0 ? 'promo' : null}
+                        ) : null}
+                        ribbonVariant={currency === 'usd' && !diaDeLPadreIds.includes(product.id) && product.precioUSD > 0 ? 'promo' : null}
                         discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? 10 : null}
                       />
                     </div>
