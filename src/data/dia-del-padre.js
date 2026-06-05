@@ -8,7 +8,7 @@ export const diaDeLPadreDiscounts = {
   20: 10,  // Armaf Club de Nuit Intense
   23: 10,  // Armaf Club de Nuit Milestone
   26: 10,  // Armaf Club de Nuit Urban Elixir
-  31: 15,  // Armaf Hunter Intense
+  31: 10,  // Armaf Hunter Intense
   37: 15,  // Armaf Odyssey Black Forest
   42: 10,  // Armaf Odyssey Go Mango
   44: 10,  // Armaf Odyssey Homme White Edition
@@ -42,7 +42,7 @@ export const diaDeLPadreDiscounts = {
   340: 10, // Guess Seductive Red Homme
   343: 15, // Calvin Klein CK Be 100ml
   344: 10, // Calvin Klein CK Be 200ml
-  346: 10, // Antonio Banderas The Golden Secret
+  377: 10, // Antonio Banderas The Secret
   349: 10, // Montblanc Legend Red
   350: 10, // Montblanc Legend Blue
   355: 10, // Antonio Banderas Black Seduction 200ml

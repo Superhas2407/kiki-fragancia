@@ -23,7 +23,7 @@ const PERSONAS = [
     label: 'El Clásico',
     headline: 'Maderas, ámbar, sobrio',
     desc: 'El padre de saco y reloj. Fragancias atemporales que no se discuten.',
-    ids: [332, 86, 346],
+    ids: [332, 86, 377],
   },
   {
     num: '02',
