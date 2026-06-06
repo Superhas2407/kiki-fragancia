@@ -22,7 +22,7 @@ Las imágenes, descripciones y notas olfativas son referenciales. Nos reservamos
   },
   {
     title: '4. Precios y moneda',
-    body: `Los precios se expresan en dólares estadounidenses (USD) como referencia (REF). El cobro puede realizarse en divisa (USD) o en bolívares (Bs.) según la tasa del dólar paralelo vigente al momento del pago.
+    body: `Los precios se expresan en moneda extranjera como referencia (REF). El cobro puede realizarse en divisa o en bolívares (Bs.) según la tasa BCV Euro vigente al momento del pago.
 
 KiKi Fragancia no es responsable de variaciones cambiarias entre el momento del pedido y el momento del pago. El precio confirmado en el momento de la orden es el que aplica.`,
   },
