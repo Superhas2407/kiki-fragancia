@@ -36,7 +36,7 @@ export default function AnnouncementBar() {
 
   function goToLanding() {
     closePopup()
-    navigate('/dia-del-padre')
+    navigate('/dia-del-padre', { state: { scrollToGrid: true } })
   }
 
   return (

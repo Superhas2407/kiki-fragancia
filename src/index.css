@@ -25,10 +25,10 @@
   --bg-warm: #E4D9C2;
   --raised: #F5EDD9;
   --ink: #1A1208;
-  --ink-mute: rgba(35,26,13,0.80);
-  --ink-faint: rgba(35,26,13,0.58);
-  --line: rgba(154,104,32,0.35);
-  --line2: rgba(35,26,13,0.15);
+  --ink-mute: rgba(35,26,13,0.82);
+  --ink-faint: rgba(35,26,13,0.68);
+  --line: rgba(154,104,32,0.45);
+  --line2: rgba(35,26,13,0.22);
   --gold: #9A6820;
   --gold-ink: #6B4012;
   --gold-fill-ink: #FAF0E0;

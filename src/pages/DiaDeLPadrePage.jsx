@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useCurrency } from '../context/CurrencyContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { allProducts } from '../data/all-products'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
@@ -94,7 +94,15 @@ export default function DiaDeLPadrePage() {
   const { addItem } = useCartContext()
   const showWraps = useShowWraps()
   const navigate = useNavigate()
+  const location = useLocation()
   const { currency } = useCurrency()
+
+  useEffect(() => {
+    if (location.state?.scrollToGrid) {
+      const t = setTimeout(() => gridRef.current?.scrollIntoView({ behavior: 'smooth' }), 400)
+      return () => clearTimeout(t)
+    }
+  }, [location.state])
 
 const todosLosMasculinos = diaDeLPadreIds
     .map(id => allProducts.find(p => p.id === id))
