@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useWishlist } from '../context/WishlistContext'
 import { allProducts } from '../data/all-products'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
@@ -57,10 +58,19 @@ const CheckIcon = () => (
 
 export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
   const { addItem } = useCartContext()
+  const { toggle: wishlistToggle, isWishlisted } = useWishlist()
   const navigate = useNavigate()
   const cardRef = useRef(null)
   const [hover, setHover] = useState(false)
   const [added, setAdded] = useState(false)
+
+  const wishlisted = isWishlisted(product.id)
+
+  function handleWishlist(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    wishlistToggle(product.id)
+  }
 
   const variants = product.variantIds
     ? allProducts.filter(p => product.variantIds.includes(p.id)).sort((a, b) => a.ml - b.ml)
@@ -144,6 +154,24 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
             <span>{ribbon}</span>
           </div>
         )}
+
+        {/* Wishlist heart button */}
+        <button
+          type="button"
+          className={`vitrina-heart-btn${wishlisted ? ' active' : ''}`}
+          onClick={handleWishlist}
+          aria-label={wishlisted ? 'Quitar de lista de deseos' : 'Agregar a lista de deseos'}
+        >
+          {wishlisted ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A84C" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+            </svg>
+          )}
+        </button>
 
         {/* Quick-add CTA */}
         <button

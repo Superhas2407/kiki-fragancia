@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { CurrencyProvider } from './context/CurrencyContext'
+import { WishlistProvider } from './context/WishlistContext'
 import Landing from './pages/Landing'
 import CartDrawer from './components/CartDrawer'
 import CursorTrail from './components/CursorTrail'
@@ -12,6 +13,7 @@ import GlobalSidebar from './components/GlobalSidebar'
 import WhatsAppFab from './components/WhatsAppFab'
 import AnnouncementBar from './components/AnnouncementBar'
 import CookieBanner from './components/CookieBanner'
+const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
 const DiaDeLPadrePage = lazy(() => import('./pages/DiaDeLPadrePage'))
@@ -79,6 +81,7 @@ function AppShell() {
         </div>
       </div>
       <CartDrawer />
+      <Suspense fallback={null}><WishlistDrawer /></Suspense>
       <WhatsAppFab />
       <CookieBanner />
     </>
@@ -93,7 +96,7 @@ export default function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/coming-soon" element={<ComingSoon />} />
-<Route path="*" element={<CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider>} />
+<Route path="*" element={<WishlistProvider><CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider></WishlistProvider>} />
             </Routes>
           </ErrorBoundary>
         </CartProvider>

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useWishlist } from '../context/WishlistContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { allProducts } from '../data/all-products'
@@ -61,6 +62,42 @@ function CartButton() {
       onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <CartIcon size={20} />
+      {count > 0 && (
+        <span style={{
+          position: 'absolute', top: -2, right: -4,
+          background: '#C9A84C', color: '#0A0A0A',
+          fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-s)',
+          width: 16, height: 16, borderRadius: '50%',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {count > 9 ? '9+' : count}
+        </span>
+      )}
+    </button>
+  )
+}
+
+function WishlistButton() {
+  const { ids, setDrawerOpen } = useWishlist()
+  const count = ids.length
+
+  return (
+    <button
+      onClick={() => setDrawerOpen(true)}
+      aria-label={`Lista de deseos (${count} items)`}
+      className="header-icon-btn"
+      style={{
+        position: 'relative', background: 'none', border: 'none',
+        cursor: 'pointer', display: 'flex', alignItems: 'center',
+        justifyContent: 'center', padding: '4px', minHeight: 44,
+        transition: 'color .2s',
+      }}
+      onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+      onMouseLeave={e => e.currentTarget.style.color = ''}
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+      </svg>
       {count > 0 && (
         <span style={{
           position: 'absolute', top: -2, right: -4,
@@ -244,6 +281,7 @@ export default function Header() {
               >
                 {theme === 'dark' ? '☀' : '☾'}
               </button>
+              <WishlistButton />
               <CartButton />
             </div>
           </nav>
@@ -270,6 +308,7 @@ export default function Header() {
             >
               {theme === 'dark' ? '☀' : '☾'}
             </button>
+            <WishlistButton />
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
