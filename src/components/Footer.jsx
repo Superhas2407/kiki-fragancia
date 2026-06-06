@@ -137,6 +137,7 @@ export default function Footer() {
         <div className="footer-bottom"></div>
         <div className="footer-meta">
           <span className="footer-copy">© {new Date().getFullYear()} KiKi Fragancia. Todos los derechos reservados.</span>
+          <Link to="/terminos-y-condiciones" className="footer-copy footer-terms-link">Términos y condiciones</Link>
           <span className="footer-craft">Perfumería de lujo venezolana</span>
         </div>
       </div>

@@ -4420,3 +4420,174 @@
   .cs-unit { min-width: 68px; }
   .cs-countdown { gap: 0; }
 }
+
+/* ══ Cookie Banner ══ */
+.cookie-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 24px;
+  background: rgba(14,12,8,0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(201,168,76,0.18);
+  box-shadow: 0 -4px 30px rgba(0,0,0,0.4);
+}
+.cookie-banner-text {
+  font-family: var(--font-s);
+  font-size: 12px;
+  font-weight: 100;
+  color: rgba(247,242,234,0.65);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  flex: 1;
+}
+.cookie-banner-link {
+  color: var(--gold-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.35);
+  transition: border-color .2s;
+}
+.cookie-banner-link:hover { border-color: var(--gold-ink); }
+.cookie-banner-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.cookie-btn {
+  font-family: var(--font-s);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.cookie-btn--accept {
+  background: linear-gradient(135deg, #B8882A, #E0B84A);
+  color: #0A0A0A;
+  border: none;
+}
+.cookie-btn--accept:hover { background: linear-gradient(135deg, #C9A84C, #F0C85A); }
+.cookie-btn--reject {
+  background: transparent;
+  color: rgba(247,242,234,0.45);
+  border: 1px solid rgba(247,242,234,0.18);
+}
+.cookie-btn--reject:hover {
+  color: rgba(247,242,234,0.70);
+  border-color: rgba(247,242,234,0.35);
+}
+@media (max-width: 540px) {
+  .cookie-banner { flex-direction: column; align-items: flex-start; padding: 16px 20px; }
+  .cookie-banner-actions { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; }
+}
+[data-theme='warm'] .cookie-banner {
+  background: rgba(240,230,210,0.97);
+  border-top-color: rgba(154,104,32,0.25);
+  box-shadow: 0 -4px 30px rgba(60,42,16,0.18);
+}
+[data-theme='warm'] .cookie-banner-text { color: rgba(35,26,13,0.70); }
+[data-theme='warm'] .cookie-btn--reject {
+  color: rgba(35,26,13,0.50);
+  border-color: rgba(35,26,13,0.22);
+}
+[data-theme='warm'] .cookie-btn--reject:hover {
+  color: rgba(35,26,13,0.80);
+  border-color: rgba(35,26,13,0.40);
+}
+
+/* Footer terms link */
+.footer-terms-link {
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-terms-link:hover { color: var(--gold-ink); }
+
+/* ══ Términos y Condiciones ══ */
+.terminos-page {
+  min-height: 100vh;
+  padding: calc(var(--bar-h, 0px) + 90px) 0 80px;
+}
+.terminos-inner { max-width: 760px; }
+.terminos-back {
+  display: inline-block;
+  font-family: var(--font-s);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color .2s;
+}
+.terminos-back:hover { color: var(--gold-ink); }
+.terminos-header { margin-bottom: 48px; }
+.terminos-eyebrow {
+  font-family: var(--font-s);
+  font-size: 9.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-bottom: 10px;
+}
+.terminos-title {
+  font-family: var(--font-d);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 100;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+.terminos-date {
+  font-family: var(--font-s);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+.terminos-body { display: flex; flex-direction: column; gap: 36px; }
+.terminos-section {
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line2);
+}
+.terminos-section:last-child { border-bottom: none; }
+.terminos-section-title {
+  font-family: var(--font-s);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--gold-ink);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.terminos-para {
+  font-family: var(--font-s);
+  font-size: 13px;
+  font-weight: 100;
+  color: var(--ink-mute);
+  line-height: 1.8;
+  margin-bottom: 10px;
+  white-space: pre-line;
+}
+.terminos-para:last-child { margin-bottom: 0; }
+.terminos-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-s);
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+.terminos-wa-link {
+  color: var(--gold-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.35);
+}
+.terminos-wa-link:hover { border-color: var(--gold-ink); }
