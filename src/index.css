@@ -1973,7 +1973,10 @@
 .footer-bottom { height: 1px; background: rgba(201,168,76,0.07); margin-bottom: 24px; }
 .footer-meta {
   display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: space-between; gap: 12px;
+  justify-content: space-between; gap: 12px 24px;
+}
+@media (max-width: 540px) {
+  .footer-meta { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 .footer-copy {
   font-family: var(--font-s); font-size: 10px; font-weight: 100;
@@ -4425,7 +4428,7 @@
 .cookie-banner {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  z-index: 200;
+  z-index: 9995;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -4507,8 +4510,10 @@
 .footer-terms-link {
   text-decoration: none;
   transition: color .2s;
+  border-bottom: 1px solid rgba(201,168,76,0.25);
 }
-.footer-terms-link:hover { color: var(--gold-ink); }
+.footer-terms-link:hover { color: var(--gold-ink); border-bottom-color: var(--gold-ink); }
+[data-theme='warm'] .footer-terms-link { border-bottom-color: rgba(154,104,32,0.30); }
 
 /* ══ Términos y Condiciones ══ */
 .terminos-page {
