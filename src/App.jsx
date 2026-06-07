@@ -12,7 +12,7 @@ import Header from './components/Header'
 import GlobalSidebar from './components/GlobalSidebar'
 import WhatsAppFab from './components/WhatsAppFab'
 import AnnouncementBar from './components/AnnouncementBar'
-import CookieBanner from './components/CookieBanner'
+import ConsentBanner from './components/ConsentBanner'
 const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
@@ -83,7 +83,7 @@ function AppShell() {
       <CartDrawer />
       <Suspense fallback={null}><WishlistDrawer /></Suspense>
       <WhatsAppFab />
-      <CookieBanner />
+      <ConsentBanner />
     </>
   )
 }
