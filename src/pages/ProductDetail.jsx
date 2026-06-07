@@ -6,7 +6,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
-import { useLivePrice } from '../context/SanityProductsContext'
+import { useSanityProduct, resolveProductImage } from '../context/SanityProductsContext'
 import { NOTES_IMAGES } from '../data/notes-images'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import Header from '../components/Header'
@@ -1071,7 +1071,7 @@ export default function ProductDetail() {
   const { theme } = useTheme()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
-  const livePrice = useLivePrice(Number(id))
+  const liveData = useSanityProduct(Number(id))
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -1089,9 +1089,25 @@ export default function ProductDetail() {
   }, [id])
 
   const baseProduct = products.find(p => p.id === Number(id))
-  const product = baseProduct && livePrice != null
-    ? { ...baseProduct, precioUSD: livePrice }
-    : baseProduct
+  const product = baseProduct ? {
+    ...baseProduct,
+    precioUSD:   liveData?.precioUSD  ?? baseProduct.precioUSD,
+    sanityImage: liveData?.sanityImage ?? null,
+    _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
+    _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
+                  liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
+      ? {
+          clima:    [
+            ['Época seca', 'sun',  liveData.cuandoEpocaSeca ?? true],
+            ['Lluviosa',   'rain', liveData.cuandoLluviosa  ?? false],
+          ],
+          momentos: [
+            ['Día',   'sun',  liveData.cuandoDia   ?? true],
+            ['Noche', 'moon', liveData.cuandoNoche ?? false],
+          ],
+        }
+      : null,
+  } : baseProduct
 
   if (!product) {
     return (
@@ -1132,8 +1148,10 @@ export default function ProductDetail() {
     corazon: Array.isArray(product.notes) ? product.notes.slice(4, 8) : [],
     fondo:   Array.isArray(product.notes) ? product.notes.slice(8) : [],
   }
-  const acordes = ACORDES_POR_PRODUCTO[product.id] || ACORDES_POR_PRODUTO_FALLBACK
-  const cuando  = CUANDO_POR_PRODUCTO[product.id]  || DEFAULT_CUANDO
+  const acordes = product._sanityAcordes
+    ? product._sanityAcordes.map(a => [a.label, a.pct])
+    : (ACORDES_POR_PRODUCTO[product.id] || ACORDES_POR_PRODUTO_FALLBACK)
+  const cuando = product._sanityWhen || CUANDO_POR_PRODUCTO[product.id] || DEFAULT_CUANDO
 
   function handleAdd() {
     addItem(product)
@@ -1146,7 +1164,10 @@ export default function ProductDetail() {
     ? descripcion.slice(0, 155).replace(/\s\S+$/, '…')
     : `${product.house} ${product.name} ${product.ml}ml ${product.tipo}. Fragancia 100% original en Venezuela.`
   const canonicalUrl = `https://kikifragancia.com/tienda/${product.id}`
-  const productImage = product.image ? `https://kikifragancia.com/products/${product.image}` : 'https://kikifragancia.com/khamrah-hero.jpg'
+  const resolvedImg = resolveProductImage(product)
+  const productImage = resolvedImg
+    ? (resolvedImg.startsWith('/') ? `https://kikifragancia.com${resolvedImg}` : resolvedImg)
+    : 'https://kikifragancia.com/khamrah-hero.jpg'
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -1199,10 +1220,10 @@ export default function ProductDetail() {
                     : (imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)'),
                   transition: 'box-shadow .5s ease',
                 }}>
-                  {product.image ? (
+                  {resolvedImg ? (
                     <img
                       className="pd-img-photo"
-                      src={`/products/${product.image}`}
+                      src={resolvedImg}
                       alt={`${product.house} ${product.name}`}
                       style={{ transform: imgHover ? 'scale(1.04)' : 'scale(1)' }}
                     />

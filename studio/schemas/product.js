@@ -21,12 +21,21 @@ export default {
       type: 'string',
       validation: Rule => Rule.required(),
     },
+    // ── Imagen ─────────────────────────────────────────────────────────
+    {
+      name: 'sanityImage',
+      title: 'Foto (subida aquí)',
+      type: 'image',
+      description: 'Sube la foto directamente. Tiene prioridad sobre el nombre de archivo.',
+      options: { hotspot: true },
+    },
     {
       name: 'image',
       title: 'Foto (nombre de archivo)',
       type: 'string',
       description: 'Ej: lattafa-hayaati-100ml-m.webp — el archivo debe estar en /public/products/',
     },
+    // ── Precio y datos de catálogo ──────────────────────────────────────
     {
       name: 'precioUSD',
       title: 'Precio (USD)',
@@ -83,6 +92,14 @@ export default {
       },
     },
     {
+      name: 'variantIds',
+      title: 'IDs de variantes (200 ml)',
+      type: 'array',
+      of: [{ type: 'number' }],
+      description: 'Si este producto tiene variante 200ml, agrega el ID de esa variante aquí.',
+    },
+    // ── Descripción y notas ─────────────────────────────────────────────
+    {
       name: 'descripcion',
       title: 'Descripción',
       type: 'text',
@@ -103,11 +120,67 @@ export default {
       title: 'Notas de fondo',
       type: 'string',
     },
+    // ── Acordes olfativos ───────────────────────────────────────────────
+    {
+      name: 'acordes',
+      title: 'Acordes olfativos',
+      type: 'array',
+      of: [{
+        type: 'object',
+        name: 'acorde',
+        fields: [
+          {
+            name: 'label',
+            title: 'Acorde',
+            type: 'string',
+            description: 'Ej: Amaderado, Oud, Especiado',
+          },
+          {
+            name: 'pct',
+            title: 'Porcentaje (%)',
+            type: 'number',
+            description: '0–100',
+          },
+        ],
+        preview: {
+          select: { title: 'label', subtitle: 'pct' },
+          prepare: ({ title, subtitle }) => ({ title, subtitle: `${subtitle}%` }),
+        },
+      }],
+      description: 'Hasta 4 acordes principales, de mayor a menor porcentaje.',
+      validation: Rule => Rule.max(4),
+    },
+    // ── Cuándo usar ─────────────────────────────────────────────────────
+    {
+      name: 'cuandoEpocaSeca',
+      title: '¿Cuándo usar? — Funciona en época seca / calor',
+      type: 'boolean',
+      initialValue: true,
+    },
+    {
+      name: 'cuandoLluviosa',
+      title: '¿Cuándo usar? — Funciona en lluvia / humedad',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
+      name: 'cuandoDia',
+      title: '¿Cuándo usar? — Funciona de día',
+      type: 'boolean',
+      initialValue: true,
+    },
+    {
+      name: 'cuandoNoche',
+      title: '¿Cuándo usar? — Funciona de noche',
+      type: 'boolean',
+      initialValue: false,
+    },
   ],
   preview: {
     select: {
       title: 'name',
       subtitle: 'house',
+      media: 'sanityImage',
     },
   },
 }

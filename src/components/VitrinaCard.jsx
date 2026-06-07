@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
-import { allProducts } from '../data/all-products'
+import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
 
@@ -57,6 +57,7 @@ const CheckIcon = () => (
 )
 
 export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
+  const allProducts = useIndexProducts()
   const { addItem } = useCartContext()
   const { toggle: wishlistToggle, isWishlisted } = useWishlist()
   const navigate = useNavigate()
@@ -84,7 +85,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
   const tasa = useTasaCambio()
   const { currency } = useCurrency()
-  const imgSrc = product.image ? `/products/${product.image}` : null
+  const imgSrc = resolveProductImage(product)
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
   // Quitar redundancia: "Afnan 9 AM Dive" con house "Afnan" → "9 AM Dive"
