@@ -1,12 +1,13 @@
 import { useState, useMemo, useEffect, useRef, Component } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '../components/Footer'
 import { allProducts as products } from '../data/all-products'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
+
+const PAGE_SIZE = 48
 
 class GridBoundary extends Component {
   constructor(props) { super(props); this.state = { err: null } }
@@ -267,14 +268,15 @@ export default function Tienda() {
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
   const [searchFocused, setSearchFocused] = useState(false)
-  const topRef = useRef(null)
-  const mountRef = useRef(true)
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const topRef    = useRef(null)
+  const mountRef  = useRef(true)
+  const sentinelRef = useRef(null)
 
   const urlGenero = searchParams.get('genero') || null
   const urlTipo   = searchParams.get('tipo')   || null
   const urlDdp    = searchParams.get('ddp') === '1'
 
-  // Sincronizar searchQuery con ?q= de la URL (cuando cambia desde otro componente)
   useEffect(() => {
     setSearchQuery(searchParams.get('q') || '')
   }, [searchParams.get('q')])
@@ -291,9 +293,6 @@ export default function Tienda() {
   const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]) }
   const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0)
 
-  // Pool base: filtrado por la selección del sidebar global.
-  // Los 200ml con variantIds son variantes de un 100ml — se excluyen para no duplicar.
-  // Los 200ml sin variantIds son productos standalone y sí se muestran.
   const basePool = useMemo(() => {
     let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
     if (urlDdp)    pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
@@ -317,12 +316,32 @@ export default function Tienda() {
     return result
   }, [basePool, selectedMarcas, selectedTipos, searchQuery, sortBy])
 
+  // Reset infinite scroll cuando cambian los filtros
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE)
+  }, [filtered])
+
+  // IntersectionObserver — carga más al acercarse al final
+  useEffect(() => {
+    const el = sentinelRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisibleCount(c => Math.min(c + PAGE_SIZE, filtered.length))
+        }
+      },
+      { rootMargin: '300px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [filtered.length, visibleCount])
+
   useEffect(() => {
     if (mountRef.current) { mountRef.current = false; return }
     topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [sortBy, selectedMarcas, searchQuery, urlGenero])
 
-  // Label del título según selección del sidebar
   const LABEL_MAP   = { Masculino: 'Hombre', Femenino: 'Mujer', Unisex: 'Unisex', 'Niño': 'Kids' }
   const TIPO_MAP    = { arabes: 'Árabes', disenador: 'Diseñador', nicho: 'Nicho' }
   const sectionTitle = [
@@ -331,6 +350,9 @@ export default function Tienda() {
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
   const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate }
+
+  const visibleProducts = filtered.slice(0, visibleCount)
+  const hasMore = visibleCount < filtered.length
 
   return (
     <>
@@ -346,11 +368,7 @@ export default function Tienda() {
               paddingTop: 32, paddingBottom: 0, marginBottom: 20,
             }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            >
+            <div style={{ animation: 'vitrina-fadein 0.4s cubic-bezier(0.22,1,0.36,1) both' }}>
               <h1 style={{
                 fontFamily: "'KikiGotham', sans-serif",
                 fontSize: 'clamp(1.5rem, 6vw, 3.5rem)',
@@ -363,9 +381,9 @@ export default function Tienda() {
               <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: 'var(--gold-ink)', marginTop: 6, letterSpacing: '0.05em' }}>
                 {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
               </p>
-            </motion.div>
+            </div>
 
-            {/* Botón Filtrar — visible en todos los tamaños */}
+            {/* Botón Filtrar */}
             <button
               onClick={() => setDrawerOpen(true)}
               style={{
@@ -398,7 +416,7 @@ export default function Tienda() {
             </button>
           </div>
 
-          {/* Chips de género — visible solo en mobile/tablet (< 1024px) */}
+          {/* Chips de género */}
           <div className="tienda-genero-chips tienda-pad">
             <button
               onClick={() => navigate('/tienda?ddp=1')}
@@ -431,13 +449,10 @@ export default function Tienda() {
             })}
           </div>
 
-          {/* Buscador — oculto en mobile (usa lupa del header) */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.15 }}
+          {/* Buscador — oculto en mobile */}
+          <div
             className="tienda-pad tienda-search-desktop"
-            style={{ marginBottom: 28 }}
+            style={{ marginBottom: 28, animation: 'vitrina-fadein 0.4s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}
           >
             <div style={{
               display: 'flex', alignItems: 'center',
@@ -471,7 +486,7 @@ export default function Tienda() {
                 </button>
               )}
             </div>
-          </motion.div>
+          </div>
 
           {/* Grid de productos */}
           <div className="tienda-pad" style={{ paddingBottom: 80 }}>
@@ -498,30 +513,43 @@ export default function Tienda() {
             ) : (
               <>
                 <GridBoundary>
-                <div className="vitrina-grid">
-                  {filtered.map((product, index) => (
-                    <div
-                      key={product.id}
-                      style={{
-                        animation: 'vitrina-fadein 0.35s ease both',
-                        animationDelay: `${Math.min(index * 0.03, 0.18)}s`,
-                      }}
-                    >
-                      <VitrinaCard
-                        product={product}
-                        ribbon={currency === 'usd' ? (
-                          diaDeLPadreIds.includes(product.id)
-                            ? (diaDeLPadreDiscounts[product.id] ? `${diaDeLPadreDiscounts[product.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE')
-                            : product.precioUSD > 0 ? 'Promo en divisa' : null
-                        ) : null}
-                        ribbonVariant={currency === 'usd' && diaDeLPadreIds.includes(product.id) ? 'ddp' : null}
-                        discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
-                      />
-                    </div>
-                  ))}
-                </div>
+                  <div className="vitrina-grid">
+                    {visibleProducts.map((product, index) => (
+                      <div
+                        key={product.id}
+                        style={{
+                          animation: 'vitrina-fadein 0.35s ease both',
+                          animationDelay: `${Math.min(index * 0.03, 0.18)}s`,
+                        }}
+                      >
+                        <VitrinaCard
+                          product={product}
+                          ribbon={currency === 'usd' ? (
+                            diaDeLPadreIds.includes(product.id)
+                              ? (diaDeLPadreDiscounts[product.id] ? `${diaDeLPadreDiscounts[product.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE')
+                              : product.precioUSD > 0 ? 'Promo en divisa' : null
+                          ) : null}
+                          ribbonVariant={currency === 'usd' && diaDeLPadreIds.includes(product.id) ? 'ddp' : null}
+                          discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </GridBoundary>
 
+                {/* Sentinel para infinite scroll */}
+                {hasMore && (
+                  <div ref={sentinelRef} style={{ height: 1, marginTop: 40 }} />
+                )}
+
+                {/* Indicador de carga */}
+                {hasMore && (
+                  <div style={{ textAlign: 'center', padding: '32px 0', opacity: 0.4 }}>
+                    <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)' }}>
+                      Cargando más…
+                    </span>
+                  </div>
+                )}
               </>
             )}
           </div>
@@ -530,69 +558,64 @@ export default function Tienda() {
 
       <Footer />
 
-      {/* Backdrop */}
-      <AnimatePresence>
-        {drawerOpen && (
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={() => setDrawerOpen(false)}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 99 }}
-          />
-        )}
-      </AnimatePresence>
+      {/* Backdrop — CSS transition en lugar de framer-motion */}
+      <div
+        onClick={() => setDrawerOpen(false)}
+        style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(0,0,0,0.6)',
+          zIndex: 99,
+          opacity: drawerOpen ? 1 : 0,
+          pointerEvents: drawerOpen ? 'auto' : 'none',
+          transition: 'opacity 0.25s ease',
+        }}
+      />
 
-      {/* Drawer de filtros */}
-      <AnimatePresence>
-        {drawerOpen && (
-          <motion.div
-            key="drawer"
-            initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }}
-            transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+      {/* Drawer de filtros — CSS transition en lugar de framer-motion */}
+      <div
+        style={{
+          position: 'fixed', top: 0, left: 0, bottom: 0,
+          width: 300, maxWidth: '88vw',
+          background: C.bg, zIndex: 100,
+          display: 'flex', flexDirection: 'column',
+          transform: drawerOpen ? 'translateX(0)' : 'translateX(-100%)',
+          transition: 'transform 0.32s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}
+      >
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          padding: '0 20px', height: 60,
+          borderBottom: '1px solid var(--line2)', flexShrink: 0,
+        }}>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: 'var(--ink)', fontWeight: 100 }}>
+            Filtros
+          </span>
+          <button
+            onClick={() => setDrawerOpen(false)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-mute)', padding: 4, display: 'flex' }}
+          >
+            <CloseIcon />
+          </button>
+        </div>
+
+        <div style={{ flex: 1, overflowY: 'auto', padding: '20px 20px' }}>
+          <FilterPanel {...filterProps} />
+        </div>
+
+        <div style={{ padding: '16px 20px', borderTop: '1px solid var(--line2)', flexShrink: 0 }}>
+          <button
+            onClick={() => setDrawerOpen(false)}
             style={{
-              position: 'fixed', top: 0, left: 0, bottom: 0,
-              width: 300, maxWidth: '88vw',
-              background: C.bg, zIndex: 100,
-              display: 'flex', flexDirection: 'column',
+              width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
+              padding: 14, fontFamily: "'KikiGotham', sans-serif",
+              fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
+              fontWeight: 100, cursor: 'pointer',
             }}
           >
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              padding: '0 20px', height: 60,
-              borderBottom: '1px solid var(--line2)', flexShrink: 0,
-            }}>
-              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: 'var(--ink)', fontWeight: 100 }}>
-                Filtros
-              </span>
-              <button
-                onClick={() => setDrawerOpen(false)}
-                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-mute)', padding: 4, display: 'flex' }}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <div style={{ flex: 1, overflowY: 'auto', padding: '20px 20px' }}>
-              <FilterPanel {...filterProps} />
-            </div>
-
-            <div style={{ padding: '16px 20px', borderTop: '1px solid var(--line2)', flexShrink: 0 }}>
-              <button
-                onClick={() => setDrawerOpen(false)}
-                style={{
-                  width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
-                  padding: 14, fontFamily: "'KikiGotham', sans-serif",
-                  fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
-                  fontWeight: 100, cursor: 'pointer',
-                }}
-              >
-                Ver resultados
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            Ver resultados
+          </button>
+        </div>
+      </div>
     </>
   )
 }
