@@ -2003,7 +2003,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
