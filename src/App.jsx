@@ -2,6 +2,7 @@ import { Component, lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
+import { SanityProductsProvider } from './context/SanityProductsContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { CurrencyProvider } from './context/CurrencyContext'
 import { WishlistProvider } from './context/WishlistContext'
@@ -96,7 +97,7 @@ export default function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/coming-soon" element={<ComingSoon />} />
-<Route path="*" element={<WishlistProvider><CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider></WishlistProvider>} />
+<Route path="*" element={<SanityProductsProvider><WishlistProvider><CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider></WishlistProvider></SanityProductsProvider>} />
             </Routes>
           </ErrorBoundary>
         </CartProvider>

@@ -22,10 +22,10 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'imagen',
-      title: 'Foto del producto',
-      type: 'image',
-      options: { hotspot: true },
+      name: 'image',
+      title: 'Foto (nombre de archivo)',
+      type: 'string',
+      description: 'Ej: lattafa-hayaati-100ml-m.webp — el archivo debe estar en /public/products/',
     },
     {
       name: 'precioUSD',
@@ -108,7 +108,6 @@ export default {
     select: {
       title: 'name',
       subtitle: 'house',
-      media: 'imagen',
     },
   },
 }

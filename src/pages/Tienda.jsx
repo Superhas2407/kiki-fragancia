@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef, Component } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer'
-import { allProducts as products } from '../data/all-products'
+import { useIndexProducts } from '../context/SanityProductsContext'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
@@ -245,6 +245,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 }
 
 export default function Tienda() {
+  const products = useIndexProducts()
   const { theme } = useTheme()
   const { currency } = useCurrency()
   const isDark = theme === 'dark'

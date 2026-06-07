@@ -4,7 +4,7 @@ import { useCartContext } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { allProducts } from '../data/all-products'
+import { useIndexProducts } from '../context/SanityProductsContext'
 import { acordesByProduct } from '../data/acordes-index'
 
 const NAV_LINKS = [
@@ -114,6 +114,7 @@ function WishlistButton() {
 }
 
 export default function Header() {
+  const allProducts = useIndexProducts()
   const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
   const [scrolled, setScrolled] = useState(false)

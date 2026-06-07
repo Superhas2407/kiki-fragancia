@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { useCurrency } from '../context/CurrencyContext'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { allProducts } from '../data/all-products'
+import { useIndexProducts } from '../context/SanityProductsContext'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
@@ -89,6 +89,7 @@ const CornerBracket = ({ pos }) => {
 }
 
 export default function DiaDeLPadrePage() {
+  const allProducts = useIndexProducts()
   const gridRef  = useRef(null)
   const guideRef = useRef(null)
   const { addItem } = useCartContext()

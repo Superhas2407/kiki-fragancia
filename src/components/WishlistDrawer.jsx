@@ -4,7 +4,7 @@ import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
-import { allProducts } from '../data/all-products'
+import { useIndexProducts } from '../context/SanityProductsContext'
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -20,6 +20,7 @@ const HeartIcon = () => (
 )
 
 export default function WishlistDrawer() {
+  const allProducts = useIndexProducts()
   const { ids, toggle, drawerOpen, setDrawerOpen } = useWishlist()
   const { addItem } = useCartContext()
   const { theme } = useTheme()

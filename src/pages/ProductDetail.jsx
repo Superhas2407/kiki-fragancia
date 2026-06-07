@@ -6,6 +6,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
+import { useLivePrice } from '../context/SanityProductsContext'
 import { NOTES_IMAGES } from '../data/notes-images'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import Header from '../components/Header'
@@ -1070,6 +1071,7 @@ export default function ProductDetail() {
   const { theme } = useTheme()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
+  const livePrice = useLivePrice(Number(id))
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -1086,7 +1088,10 @@ export default function ProductDetail() {
     return () => { cancelAnimationFrame(raf); clearTimeout(t2) }
   }, [id])
 
-  const product = products.find(p => p.id === Number(id))
+  const baseProduct = products.find(p => p.id === Number(id))
+  const product = baseProduct && livePrice != null
+    ? { ...baseProduct, precioUSD: livePrice }
+    : baseProduct
 
   if (!product) {
     return (
