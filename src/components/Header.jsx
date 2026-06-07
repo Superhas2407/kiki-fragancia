@@ -5,6 +5,7 @@ import { useWishlist } from '../context/WishlistContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useIndexProducts } from '../context/SanityProductsContext'
+import { notesLookup } from '../data/notes-lookup'
 import { acordesByProduct } from '../data/acordes-index'
 
 const NAV_LINKS = [
@@ -136,7 +137,7 @@ export default function Header() {
         const acordes = (acordesByProduct[p.id] || []).map(a => a.toLowerCase())
         const name = p.name.toLowerCase()
         const house = p.house.toLowerCase()
-        const notes = [p.notasSalida, p.notasCorazon, p.notasFondo].filter(Boolean).join(' ').toLowerCase()
+        const notes = (notesLookup[p.id] || '').toLowerCase()
         return terms.every(t =>
           name.includes(t) || house.includes(t) || acordes.some(a => a.includes(t)) || notes.includes(t)
         )
