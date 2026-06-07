@@ -1,4 +1,5 @@
 // Notas olfativas por producto ID — generado automáticamente
+// Regenerar: node scripts/sync-from-sanity.mjs
 export const notesLookup = {
   1: "Limón, mandarina, cardamomo, pimienta rosa, lavanda, manzana verde, flor de azahar del naranjo, rosa, almizcle, musgo, cedro, pachulí",
   2: "Limón, Menta, Grosella negra, Pimienta rosa, Manzana, Incienso, Cedro, Jengibre, Sándalo, Pachulí, Jazmín",
@@ -441,5 +442,6 @@ export const notesLookup = {
   439: "Tilo, Lila, Magnolia, Bergamota, Mandarina, Jazmín, Tuberosa, Rosa de Bulgaria, Melocotón, Ylang ylang, Violeta, Clavel, Nuez moscada, Almizcle, Iris, Sándalo, Ámbar, Vainilla, Clavo",
   440: "Lirio de los valles, Freesia, Violeta silvestre, Rosa roja, Flor de naranja marroquí, Jazmín, Ylang ylang, Orquídea, Miel, Musgo de roble, Sándalo",
   441: "Melón, Manzanilla, Caléndula, Albaricoque, Jacinto, Manzana, Cilantro, Mandarina, Grosella negra, Lichi, Ylang ylang, Melocotón, Lirio de los valles, Clavel, Rosa, Jazmín, Clavo, Almizcle, Sándalo, Ámbar, Vetiver, Cedro, Vainilla, Musgo de roble",
-  442: "Frambuesa, Pera, Albaricoque, Bergamota, Rosa, Freesia, Jazmín, Almizcle, Sándalo, Ámbar"
+  442: "Frambuesa, Pera, Albaricoque, Bergamota, Rosa, Freesia, Jazmín, Almizcle, Sándalo, Ámbar",
+  443: "cardamomo, limón, mandarina, sandía, bergamota, pimienta, canela, sandalo, haba tonka, almizcle, ambar, cedro"
 }

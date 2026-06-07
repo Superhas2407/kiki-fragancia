@@ -129,9 +129,10 @@ function NoteIcon({ nota, size = 22 }) {
     </span>
   )
 }
-function parseNotes(str) {
-  if (!str) return []
-  return str.split(',').map(n => n.trim()).filter(Boolean)
+function parseNotes(val) {
+  if (!val) return []
+  if (Array.isArray(val)) return val.filter(Boolean)
+  return val.split(',').map(n => n.trim()).filter(Boolean)
 }
 
 
@@ -1088,11 +1089,15 @@ export default function ProductDetail() {
     return () => { cancelAnimationFrame(raf); clearTimeout(t2) }
   }, [id])
 
-  const baseProduct = products.find(p => p.id === Number(id))
+  const baseProduct = products.find(p => p.id === Number(id)) ?? liveData ?? null
   const product = baseProduct ? {
     ...baseProduct,
-    precioUSD:   liveData?.precioUSD  ?? baseProduct.precioUSD,
-    sanityImage: liveData?.sanityImage ?? null,
+    precioUSD:      liveData?.precioUSD      ?? baseProduct.precioUSD,
+    sanityImage:    liveData?.sanityImage    ?? null,
+    descripcion:    liveData?.descripcion    ?? baseProduct.descripcion ?? baseProduct.description,
+    notasSalida:    liveData?.notasSalida    ?? baseProduct.notasSalida,
+    notasCorazon:   liveData?.notasCorazon   ?? baseProduct.notasCorazon,
+    notasFondo:     liveData?.notasFondo     ?? baseProduct.notasFondo,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
                   liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
@@ -1107,7 +1112,7 @@ export default function ProductDetail() {
           ],
         }
       : null,
-  } : baseProduct
+  } : null
 
   if (!product) {
     return (

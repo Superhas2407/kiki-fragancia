@@ -8,6 +8,13 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const BATCH_SIZE = 50
+
+function toNotesArray(val) {
+  if (!val) return null
+  if (Array.isArray(val)) return val.filter(Boolean)
+  return val.split(',').map(n => n.trim()).filter(Boolean)
+}
 
 function loadToken() {
   if (process.env.SANITY_TOKEN) return process.env.SANITY_TOKEN
@@ -27,7 +34,6 @@ const client = createClient({
   useCdn: false,
 })
 
-// Carga los productos desde el archivo JS existente
 const dataPath = join(__dirname, '../src/data/products-enriched.js')
 const raw = readFileSync(dataPath, 'utf8')
 const match = raw.match(/export const products\s*=\s*(\[[\s\S]*\])/)
@@ -36,15 +42,17 @@ if (!match) {
   process.exit(1)
 }
 const products = JSON.parse(match[1])
-
-console.log(`Migrando ${products.length} productos a Sanity...`)
+console.log(`Migrando ${products.length} productos en batches de ${BATCH_SIZE}...`)
 
 let ok = 0
 let err = 0
 
-for (const p of products) {
-  try {
-    await client.createOrReplace({
+for (let i = 0; i < products.length; i += BATCH_SIZE) {
+  const batch = products.slice(i, i + BATCH_SIZE)
+  const transaction = client.transaction()
+
+  for (const p of batch) {
+    transaction.createOrReplace({
       _type: 'product',
       _id: `product-${p.id}`,
       id: p.id,
@@ -58,15 +66,19 @@ for (const p of products) {
       tipo: p.tipo ?? null,
       categoria: p.categoria ?? null,
       descripcion: p.descripcion ?? null,
-      notasSalida: p.notasSalida ?? null,
-      notasCorazon: p.notasCorazon ?? null,
-      notasFondo: p.notasFondo ?? null,
+      notasSalida: toNotesArray(p.notasSalida),
+      notasCorazon: toNotesArray(p.notasCorazon),
+      notasFondo: toNotesArray(p.notasFondo),
     })
-    ok++
-    if (ok % 50 === 0) console.log(`  ${ok}/${products.length}...`)
+  }
+
+  try {
+    await transaction.commit()
+    ok += batch.length
+    console.log(`  ${ok}/${products.length}...`)
   } catch (e) {
-    console.error(`Error en ID ${p.id}:`, e.message)
-    err++
+    console.error(`Error en batch ${i}–${i + batch.length}:`, e.message)
+    err += batch.length
   }
 }
 

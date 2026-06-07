@@ -1,3 +1,17 @@
+import notesList from './notes-list.json'
+import { NotesInput } from '../components/NotesInput'
+
+const NOTES_OPTIONS = notesList.map(n => ({ title: n, value: n }))
+
+const ACORDES_OPTIONS = [
+  'acuático', 'ahumado', 'ámbar', 'amaderado', 'aromático',
+  'avainillado', 'cálido especiado', 'caramelo', 'chipre', 'cítrico',
+  'cuero', 'dulce', 'especiado', 'floral', 'fresco',
+  'frutal', 'gourmand', 'herbal', 'marino', 'amoscado',
+  'oriental', 'oud', 'powder', 'resinoso', 'seco',
+  'terroso', 'verde',
+].map(a => ({ title: a, value: a }))
+
 export default {
   name: 'product',
   title: 'Producto',
@@ -7,7 +21,7 @@ export default {
       name: 'id',
       title: 'ID',
       type: 'number',
-      readOnly: true,
+      readOnly: ({ document }) => !document?._id?.startsWith('drafts.'),
     },
     {
       name: 'house',
@@ -98,27 +112,37 @@ export default {
       of: [{ type: 'number' }],
       description: 'Si este producto tiene variante 200ml, agrega el ID de esa variante aquí.',
     },
-    // ── Descripción y notas ─────────────────────────────────────────────
+    // ── Descripción ─────────────────────────────────────────────────────
     {
       name: 'descripcion',
       title: 'Descripción',
       type: 'text',
       rows: 4,
     },
+    // ── Notas olfativas ─────────────────────────────────────────────────
     {
       name: 'notasSalida',
       title: 'Notas de salida',
-      type: 'string',
+      type: 'array',
+      of: [{ type: 'string' }],
+      components: { input: NotesInput },
+      description: 'Las primeras notas que se perciben (5–30 min).',
     },
     {
       name: 'notasCorazon',
       title: 'Notas de corazón',
-      type: 'string',
+      type: 'array',
+      of: [{ type: 'string' }],
+      components: { input: NotesInput },
+      description: 'El alma del perfume (30 min – 2 h).',
     },
     {
       name: 'notasFondo',
       title: 'Notas de fondo',
-      type: 'string',
+      type: 'array',
+      of: [{ type: 'string' }],
+      components: { input: NotesInput },
+      description: 'Las notas que quedan (2 h+). Base y estela.',
     },
     // ── Acordes olfativos ───────────────────────────────────────────────
     {
@@ -133,13 +157,17 @@ export default {
             name: 'label',
             title: 'Acorde',
             type: 'string',
-            description: 'Ej: Amaderado, Oud, Especiado',
+            options: {
+              list: ACORDES_OPTIONS,
+            },
+            validation: Rule => Rule.required(),
           },
           {
             name: 'pct',
             title: 'Porcentaje (%)',
             type: 'number',
             description: '0–100',
+            validation: Rule => Rule.required().min(1).max(100),
           },
         ],
         preview: {

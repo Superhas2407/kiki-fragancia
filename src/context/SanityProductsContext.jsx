@@ -4,7 +4,7 @@ import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
 
 const QUERY = `*[_type == "product"] | order(id asc) {
   id, precioUSD, name, house, image, sanityImage, genero, familia,
-  tipo, categoria, ml, variantIds, acordes,
+  tipo, categoria, ml, variantIds, acordes, descripcion,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche,
   notasSalida, notasCorazon, notasFondo
 }`
@@ -26,6 +26,7 @@ export function SanityProductsProvider({ children }) {
   useEffect(() => {
     sanityClient.fetch(QUERY)
       .then(sanityProducts => {
+        console.log('[Sanity] productos recibidos:', sanityProducts?.length)
         if (!sanityProducts?.length) return
 
         // Build a map of local data for structural fields (variantIds, etc.)
@@ -45,7 +46,7 @@ export function SanityProductsProvider({ children }) {
 
         setIndexProducts(merged)
       })
-      .catch(() => {}) // silently fall back to local data
+      .catch((e) => console.error('[Sanity] fetch failed:', e))
   }, [])
 
   return <Ctx.Provider value={indexProducts}>{children}</Ctx.Provider>
