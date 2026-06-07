@@ -1,0 +1,18 @@
+{
+  "name": "kiki-fragancia-studio",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/vision": "^5.30.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-is": "^19.2.7",
+    "sanity": "^5.30.0",
+    "styled-components": "^6.4.2"
+  }
+}
