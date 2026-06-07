@@ -5,7 +5,8 @@ import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
 const QUERY = `*[_type == "product"] | order(id asc) {
   id, precioUSD, name, house, image, sanityImage, genero, familia,
   tipo, categoria, ml, variantIds, acordes,
-  cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche
+  cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche,
+  notasSalida, notasCorazon, notasFondo
 }`
 
 const Ctx = createContext(null)

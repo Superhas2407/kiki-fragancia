@@ -136,8 +136,9 @@ export default function Header() {
         const acordes = (acordesByProduct[p.id] || []).map(a => a.toLowerCase())
         const name = p.name.toLowerCase()
         const house = p.house.toLowerCase()
+        const notes = [p.notasSalida, p.notasCorazon, p.notasFondo].filter(Boolean).join(' ').toLowerCase()
         return terms.every(t =>
-          name.includes(t) || house.includes(t) || acordes.some(a => a.includes(t))
+          name.includes(t) || house.includes(t) || acordes.some(a => a.includes(t)) || notes.includes(t)
         )
       })
       .slice(0, 6)
