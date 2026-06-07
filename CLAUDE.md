@@ -20,17 +20,60 @@ npm run build  # build de producción
 ## Datos de productos
 | Archivo | Descripción |
 |---|---|
-| `src/data/products-enriched.js` | 442 productos completos: imagen, notas, descripción, precioUSD, variantIds (fuente de verdad) |
+| `src/data/products-enriched.js` | 442 productos completos: imagen, notas, descripción, precioUSD, variantIds (fuente de verdad local) |
 | `src/data/products-index.js` | 442 productos ligeros — solo campos de catálogo, sin descripción/notas largas |
-| `src/data/all-products.js` | Re-exporta `products-index` como `allProducts` — usado por Tienda, VitrinaCard, Header autocomplete |
+| `src/data/all-products.js` | Re-exporta `products-index` como `allProducts` — legacy, preferir `useIndexProducts()` |
 | `src/data/notes-images.js` | Mapeo nota → ruta imagen (390 entradas, todas WebP) |
+| `src/data/notes-lookup.js` | Mapeo id → notas concatenadas (salida+corazón+fondo) — generado de products-enriched, usado por el buscador |
 | `src/data/dia-del-padre.js` | IDs numéricos de los 10 productos de la campaña Día del Padre 2026 |
 
 **Campos por producto:** `id, house, name, image (.webp), familia, tipo, genero, ml, description, notasSalida, notasCorazon, notasFondo, precioUSD, categoria ('arabes'|'disenador'|'nicho'), variantIds[]`
 
-**Code splitting intencional:** `all-products` → `products-index` (ligero) para Tienda/VitrinaCard/autocomplete. `ProductDetail` importa `products-enriched` directamente para tener notas y descripción completas.
+**Code splitting intencional:** `products-index` (ligero) para bundle principal. `ProductDetail` importa `products-enriched` directamente. `notes-lookup` está en el bundle principal para búsqueda inmediata.
 
 **Precios:** `precioUSD` en todos los productos. El sistema de bolívares está activo vía `CurrencyContext` + `useTasaCambio` (tasa paralelo de `ve.dolarapi.com`).
+
+## Sanity CMS
+Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `production`.
+
+### Arquitectura
+- **Sanity es la fuente primaria de productos.** La app carga `products-index.js` al instante como fallback, luego Sanity parchea/extiende los datos en background.
+- Productos nuevos creados en Studio aparecen en /tienda sin tocar código.
+- `src/lib/sanityClient.js` — cliente público (sin token, `useCdn: true`). Exporta `sanityClient` y `sanityImageUrl(source)`.
+- `src/context/SanityProductsContext.jsx` — provider + hooks:
+  - `<SanityProductsProvider>` — en `App.jsx` envuelve la app
+  - `useIndexProducts()` — array de productos fusionados (local + Sanity)
+  - `useSanityProduct(id)` — producto individual con todos los campos de Sanity
+  - `useLivePrice(id)` — precio en vivo por ID
+  - `resolveProductImage(product)` — resuelve la mejor imagen: `sanityImage` (CDN Sanity) > `/products/{image}` (local)
+
+### Schema de Sanity (campos editables desde Studio)
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `name`, `house` | string | Nombre y marca |
+| `precioUSD` | number | Precio — se refleja al instante en el sitio |
+| `sanityImage` | image | Foto subida directo al Studio (CDN Sanity, prioridad alta) |
+| `image` | string | Nombre de archivo local (ej: `lattafa-hayaati-100ml-m.webp`) |
+| `genero`, `familia`, `tipo`, `categoria` | string | Campos de catálogo |
+| `ml`, `variantIds` | number/array | Tamaño y variantes |
+| `descripcion`, `notasSalida`, `notasCorazon`, `notasFondo` | text/string | Descripción y pirámide |
+| `acordes` | array `{label, pct}` | Hasta 4 acordes — si están en Sanity, reemplazan los hardcodeados |
+| `cuandoEpocaSeca`, `cuandoLluviosa`, `cuandoDia`, `cuandoNoche` | boolean | Cuándo usar — si alguno está en Sanity, reemplaza el hardcodeado |
+
+### Scripts de migración
+| Script | Uso |
+|---|---|
+| `scripts/migrate-to-sanity.mjs` | Crea/reemplaza los 442 documentos en Sanity desde products-enriched.js. Auto-lee token de `.env.local`. |
+| `scripts/migrate-images-to-sanity.mjs` | (Obsoleto — subida de imágenes como asset falla por permisos de token) |
+
+### Credenciales (NO commitear)
+- `.env.local` — `SANITY_TOKEN`, `VITE_SANITY_PROJECT_ID`, `VITE_SANITY_DATASET`
+- Token de escritura solo en `.env.local`, nunca en chat ni en git
+
+### Flujo para agregar un producto nuevo
+1. Crear documento en Studio con todos los campos + foto
+2. El producto aparece en /tienda automáticamente (sin deploy)
+3. Si tiene notas nuevas, regenerar `notes-lookup.js`: `node scripts/generate-notes-lookup.mjs` (pendiente crear) y hacer commit
 
 ## Imágenes públicas
 | Ruta | Contenido |
@@ -60,13 +103,16 @@ npm run build  # build de producción
 - En cualquier otra página → mensaje genérico + `ref=fab_general`
 
 ## Acordes y Cuando usar (ProductDetail)
-Datos por producto (no por familia) definidos directamente en `ProductDetail.jsx`:
+**Prioridad: Sanity > hardcodeado en ProductDetail.jsx**
+
+Si el producto tiene acordes o cuándo-usar en Sanity, se usan esos. Si no, se usan los hardcodeados.
+
+Hardcodeados en `ProductDetail.jsx`:
 - `ACORDES_POR_PRODUCTO` — objeto keyed por `product.id`, valor: array de 4 `[label, pct]` ordenados de mayor a menor
-- `CUANDO_POR_PRODUCTO` — objeto keyed por `product.id`, valor: `{ clima: [[...],[...]], momentos: [[...],[...]] }`
+- `CUANDO_POR_PRODUCTO` — objeto keyed por `product.id`, valor: `{ clima: [[label,icon,bool],...], momentos: [[label,icon,bool],...] }`
 - `ACORDES_POR_PRODUTO_FALLBACK` y `DEFAULT_CUANDO` — fallbacks si el ID no existe
-- Lookup: `const acordes = ACORDES_POR_PRODUCTO[product.id] || ACORDES_POR_PRODUTO_FALLBACK`
 - Labels de acordes válidos: dulce, cálido especiado, avainillado, ámbar, amaderado, terroso, seco, floral, frutal, cítrico, fresco, verde, gourmand, caramelo, aromático, powder, especiado, acuático, ahumado, cuero, resinoso, chipre, oud, oriental, amoscado, herbal, marino
-- Para agregar/editar datos de un producto, editar directamente los objetos en `ProductDetail.jsx` (líneas ~136 y ~581)
+- Para editar sin Sanity: editar directamente los objetos en `ProductDetail.jsx` (líneas ~140 y ~585)
 
 ## Notas olfativas en ProductDetail
 - `src/data/notes-images.js` — mapeo nota→imagen (WebP)
@@ -103,11 +149,12 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 - Sin viñetas radiales en `hero-bg-gradient` (solo `linear-gradient` para legibilidad del texto)
 
 ## Search Autocomplete (Header)
-- `useMemo` sobre `allProducts` (products-index) con min 2 chars, max 6 resultados
-- Filtra por `name`, `house`, `familia` — **excluye 200ml con variantes** (`p.ml !== 200 || !p.variantIds`)
+- `useMemo` sobre `useIndexProducts()` (live desde Sanity) con min 2 chars, max 6 resultados
+- Filtra por `name`, `house`, `acordes` (acordes-index.js) y **notas olfativas** (`notes-lookup.js`) — **excluye 200ml con variantes**
 - Lista debajo del input: imagen circular 36px, casa uppercase, nombre italic
 - ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado
 - Click en sugerencia → navega a `/tienda/:id`
+- `notes-lookup.js` — contiene notas de los 442 productos concatenadas para búsqueda instantánea (sin esperar Sanity). Regenerar si se agregan productos: pendiente script `generate-notes-lookup.mjs`
 
 ## Menú móvil
 - Sidebar deslizante desde la izquierda (290px), backdrop oscuro
@@ -154,6 +201,7 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 | `scripts/sync-prices.mjs` | Sincroniza precios desde `C:/Users/Azael/Downloads/LISTA DE PRECIOS PDF ABRIL 2.md` → products-enriched.js + products-index.js. Parsea formato BS+USD concatenado (ratio 650). Filtra TESTER, BODY SPRAY y SET. |
 | `scripts/export-prices.mjs` | Exporta todos los productos con precios a `precios.csv` para edición manual en Excel |
 | `scripts/import-prices.mjs` | Reimporta `precios.csv` editado → products-enriched.js + products-index.js |
+| `scripts/migrate-to-sanity.mjs` | Sube/actualiza los 442 productos a Sanity desde products-enriched.js. Auto-lee token de `.env.local`. |
 
 ## Sistema de moneda
 - `src/context/CurrencyContext.jsx` — `{ currency, setCurrency }` via `useCurrency()`. Persiste en `localStorage` clave `kiki_currency`. Valores: `'usd' | 'bs'`.
