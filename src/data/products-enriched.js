@@ -9155,7 +9155,7 @@ export const products = [
   {
     "id": 324,
     "house": "RALPH LAUREN",
-    "name": "Ralph Lauren Polo Blue",
+    "name": "Set Ralph Lauren Polo Blue",
     "image": "ralph-lauren-polo-blue-travel-set-125ml-m.webp",
     "familia": null,
     "tipo": "Eau de Toilette",
@@ -9177,7 +9177,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 85,
     "categoria": "disenador"
   },
   {
