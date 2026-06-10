@@ -137,13 +137,23 @@ export default function Header() {
         const acordes = (acordesByProduct[p.id] || []).map(a => a.toLowerCase())
         const name = p.name.toLowerCase()
         const house = p.house.toLowerCase()
-        const notes = (notesLookup[p.id] || '').toLowerCase()
+        const familia = (p.familia || '').toLowerCase()
+        
+        // Notas olfativas: divide la cadena en palabras individuales para búsqueda por nota específica
+        const notesString = (notesLookup[p.id] || '').toLowerCase()
+        const notesArray = notesString.split(/[,\s]+/).filter(n => n.length > 0)
+        
         return terms.every(t =>
-          name.includes(t) || house.includes(t) || acordes.some(a => a.includes(t)) || notes.includes(t)
+          name.includes(t) || 
+          house.includes(t) || 
+          familia.includes(t) ||
+          acordes.some(a => a.includes(t)) || 
+          notesArray.some(n => n.includes(t)) ||
+          notesString.includes(t)
         )
       })
       .slice(0, 6)
-  }, [searchQuery])
+  }, [searchQuery, allProducts])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
@@ -331,7 +341,7 @@ export default function Header() {
       <div className={`kiki-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-header">
           <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
-          <button onClick={() => setMenuOpen(false)} style={{ color: 'var(--ink-mute)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8, minWidth: 44, minHeight: 44 }} aria-label="Cerrar menú">
+          <button onClick={() => setMenuOpen(false)} style={{ color: 'var(--ink-mute)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8 }}>
             <CloseIcon />
           </button>
         </div>
@@ -476,7 +486,7 @@ export default function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Nombre, marca, familia o acorde..."
+                placeholder="Nombre, marca, familia, acorde o nota..."
                 style={{
                   flex: 1, background: 'none', border: 'none', outline: 'none',
                   fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
