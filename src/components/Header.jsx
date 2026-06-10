@@ -153,7 +153,7 @@ export default function Header() {
         )
       })
       .slice(0, 6)
-  }, [searchQuery, allProducts])
+  }, [searchQuery])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
@@ -486,7 +486,7 @@ export default function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Nombre, marca, familia, acorde o nota..."
+                placeholder="Nombre, marca, familia o acorde..."
                 style={{
                   flex: 1, background: 'none', border: 'none', outline: 'none',
                   fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
