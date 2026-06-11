@@ -12527,7 +12527,7 @@ export const products = [
     "id": 443,
     "house": "CAROLINA HERRERA",
     "name": "Chic For Men",
-    "image": "carolina-herrera-chic-for-men-100ml-m",
+    "image": "carolina-herrera-chic-for-men-100ml-m.webp",
     "familia": "amadera especiada",
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
