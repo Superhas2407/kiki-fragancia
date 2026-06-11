@@ -6,6 +6,8 @@ import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
+import { notesLookup } from '../data/notes-lookup'
+import { norm, productMatchesQuery } from '../lib/search'
 
 const PAGE_SIZE = 48
 
@@ -307,8 +309,13 @@ export default function Tienda() {
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
     if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase()
-      result = result.filter(p => p.name.toLowerCase().includes(q) || p.house.toLowerCase().includes(q))
+      const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
+      result = result.filter(p => productMatchesQuery(terms, [
+        norm(p.name),
+        norm(p.house),
+        norm(p.familia),
+        norm(notesLookup[p.id]),
+      ]))
     }
     if (sortBy === 'name')       result.sort((a, b) => a.name.localeCompare(b.name))
     if (sortBy === 'name-desc')  result.sort((a, b) => b.name.localeCompare(a.name))

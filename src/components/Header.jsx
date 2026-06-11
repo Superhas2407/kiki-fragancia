@@ -7,6 +7,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { useIndexProducts } from '../context/SanityProductsContext'
 import { notesLookup } from '../data/notes-lookup'
 import { acordesByProduct } from '../data/acordes-index'
+import { norm, productMatchesQuery } from '../lib/search'
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -128,29 +129,20 @@ export default function Header() {
   const navigate = useNavigate()
 
   const suggestions = useMemo(() => {
-    const raw = searchQuery.trim().toLowerCase()
+    const raw = norm(searchQuery.trim())
     if (raw.length < 2) return []
     const terms = raw.split(/\s+/).filter(Boolean)
     return allProducts
       .filter(p => {
         if (p.ml === 200 && p.variantIds) return false
-        const acordes = (acordesByProduct[p.id] || []).map(a => a.toLowerCase())
-        const name = p.name.toLowerCase()
-        const house = p.house.toLowerCase()
-        const familia = (p.familia || '').toLowerCase()
-        
-        // Notas olfativas: divide la cadena en palabras individuales para búsqueda por nota específica
-        const notesString = (notesLookup[p.id] || '').toLowerCase()
-        const notesArray = notesString.split(/[,\s]+/).filter(n => n.length > 0)
-        
-        return terms.every(t =>
-          name.includes(t) || 
-          house.includes(t) || 
-          familia.includes(t) ||
-          acordes.some(a => a.includes(t)) || 
-          notesArray.some(n => n.includes(t)) ||
-          notesString.includes(t)
-        )
+        const fields = [
+          norm(p.name),
+          norm(p.house),
+          norm(p.familia),
+          norm(notesLookup[p.id]),
+          ...(acordesByProduct[p.id] || []).map(norm),
+        ]
+        return productMatchesQuery(terms, fields)
       })
       .slice(0, 6)
   }, [searchQuery])
