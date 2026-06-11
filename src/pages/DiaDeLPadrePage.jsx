@@ -283,9 +283,9 @@ const todosLosMasculinos = diaDeLPadreIds
               <VitrinaCard
                 key={p.id}
                 product={p}
-                ribbon={currency === 'usd' ? (diaDeLPadreDiscounts[p.id] ? `${diaDeLPadreDiscounts[p.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE') : null}
+                ribbon={currency === 'usd' ? ((p.descuento ?? diaDeLPadreDiscounts[p.id]) ? `${p.descuento ?? diaDeLPadreDiscounts[p.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE') : null}
                 ribbonVariant={currency === 'usd' ? 'ddp' : null}
-                discount={currency === 'usd' ? (diaDeLPadreDiscounts[p.id] || null) : null}
+                discount={currency === 'usd' ? (p.descuento ?? diaDeLPadreDiscounts[p.id] ?? null) : null}
                 badge={p.id === EDITOR_PICK_ID ? 'Editor\'s pick' : (i === 0 ? 'Más vendido' : null)}
               />
             ))}

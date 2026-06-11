@@ -20,6 +20,7 @@ const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
 const DiaDeLPadrePage = lazy(() => import('./pages/DiaDeLPadrePage'))
 const TerminosPage    = lazy(() => import('./pages/TerminosPage'))
 const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
+const KikiDeskPage    = lazy(() => import('./pages/KikiDeskPage'))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -97,6 +98,7 @@ export default function App() {
           <ErrorBoundary>
             <Routes>
               <Route path="/coming-soon" element={<ComingSoon />} />
+              <Route path="/kiki-desk" element={<Suspense fallback={null}><KikiDeskPage /></Suspense>} />
 <Route path="*" element={<SanityProductsProvider><WishlistProvider><CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider></WishlistProvider></SanityProductsProvider>} />
             </Routes>
           </ErrorBoundary>

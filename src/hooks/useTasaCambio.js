@@ -1,15 +1,43 @@
 /**
  * useTasaCambio — tasa de cambio USDT→VES
- * Fuente: API pública venezolana (paralelo/cripto)
- * Caché: localStorage, TTL 30 minutos
- * Un solo fetch por sesión de JS aunque haya múltiples consumidores
+ * Prioridad: manual (kiki_tasa_manual) > API (kiki_tasa_bs, TTL 30min)
  */
 
-const CACHE_KEY = 'kiki_tasa_bs'
-const CACHE_TTL = 30 * 60 * 1000 // 30 min
+const CACHE_KEY  = 'kiki_tasa_bs'
+const MANUAL_KEY = 'kiki_tasa_manual'
+const CACHE_TTL  = 30 * 60 * 1000 // 30 min
 
-let _promise = null   // promesa compartida para evitar fetches duplicados
-let _rate    = null   // valor en memoria una vez resuelto
+let _promise = null
+let _rate    = null
+
+function readManual() {
+  try {
+    const m = JSON.parse(localStorage.getItem(MANUAL_KEY) || 'null')
+    if (m && m.rate > 0) return m.rate
+  } catch {}
+  return null
+}
+
+export function setTasaManual(rate) {
+  const r = Number(rate)
+  if (!r || r <= 0) return
+  try { localStorage.setItem(MANUAL_KEY, JSON.stringify({ rate: r, ts: Date.now() })) } catch {}
+  _rate    = r
+  _promise = null
+}
+
+export function clearTasaManual() {
+  try { localStorage.removeItem(MANUAL_KEY) } catch {}
+  _rate    = null
+  _promise = null
+}
+
+export function getTasaManualInfo() {
+  try {
+    const m = JSON.parse(localStorage.getItem(MANUAL_KEY) || 'null')
+    return m ?? null
+  } catch { return null }
+}
 
 function readCache() {
   try {
@@ -24,7 +52,9 @@ function writeCache(rate) {
 }
 
 async function fetchRate() {
-  if (_rate) return _rate
+  const manual = readManual()
+  if (manual) { _rate = manual; return _rate }
+  if (_rate)   return _rate
   if (!_promise) {
     _promise = (async () => {
       try {
@@ -39,7 +69,7 @@ async function fetchRate() {
           writeCache(_rate)
         }
       } catch {
-        _promise = null // permite reintentar si la red se recupera
+        _promise = null
       }
       return _rate
     })()
@@ -53,12 +83,12 @@ async function fetchRate() {
 import { useState, useEffect } from 'react'
 
 export function useTasaCambio() {
-  const [tasa, setTasa] = useState(() => readCache() || _rate)
+  const [tasa, setTasa] = useState(() => readManual() || readCache() || _rate)
 
   useEffect(() => {
     if (tasa) return
     fetchRate().then(r => { if (r) setTasa(r) })
   }, [tasa])
 
-  return tasa   // null mientras carga, número cuando listo
+  return tasa
 }

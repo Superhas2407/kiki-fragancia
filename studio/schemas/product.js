@@ -56,6 +56,13 @@ export default {
       type: 'number',
     },
     {
+      name: 'descuento',
+      title: 'Descuento (%)',
+      type: 'number',
+      description: 'Porcentaje de descuento activo (ej: 10 → 10%). Dejar vacío si no hay descuento.',
+      validation: Rule => Rule.min(1).max(99),
+    },
+    {
       name: 'ml',
       title: 'Mililitros',
       type: 'number',

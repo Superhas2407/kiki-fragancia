@@ -31,7 +31,7 @@ const client = createClient({
 
 const QUERY = `*[_type == "product"] | order(id asc) {
   id, house, name, image, sanityImage, familia, tipo, genero,
-  ml, precioUSD, categoria, variantIds, descripcion,
+  ml, precioUSD, descuento, categoria, variantIds, descripcion,
   notasSalida, notasCorazon, notasFondo, acordes,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche
 }`
@@ -67,6 +67,7 @@ const indexProducts = raw.map(p => {
     categoria: p.categoria ?? null,
   }
   if (p.variantIds?.length) obj.variantIds = p.variantIds
+  if (p.descuento)          obj.descuento  = p.descuento
   return obj
 })
 
@@ -107,6 +108,7 @@ const enrichedProducts = raw.map(p => {
     categoria: p.categoria ?? null,
   }
   if (p.variantIds?.length) obj.variantIds = p.variantIds
+  if (p.descuento)          obj.descuento  = p.descuento
   return obj
 })
 

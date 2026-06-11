@@ -57,6 +57,7 @@ const CheckIcon = () => (
 )
 
 export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
+  const effectiveDiscount = discount ?? product?.descuento ?? null
   const allProducts = useIndexProducts()
   const { addItem } = useCartContext()
   const { toggle: wishlistToggle, isWishlisted } = useWishlist()
@@ -236,8 +237,8 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           return (
             <div className="vitrina-price">
               <div className="vitrina-price-disc-block">
-                {discount ? (
-                  <span className="vitrina-price-badge vitrina-price-badge--ddp">{discount}% EXTRA · DÍA DEL PADRE</span>
+                {effectiveDiscount ? (
+                  <span className="vitrina-price-badge vitrina-price-badge--ddp">{effectiveDiscount}% EXTRA · DÍA DEL PADRE</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}
