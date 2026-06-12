@@ -1321,8 +1321,8 @@ export default function ProductDetail() {
                   const ddpBadgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
-                    color: 'var(--gold-fill-ink)',
-                    background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
+                    color: '#E8F0FF',
+                    background: 'linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72)',
                     padding: '4px 12px', display: 'inline-block',
                   }
                   return (
