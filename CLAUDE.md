@@ -26,7 +26,7 @@ npm run build  # sync Sanity → local + sitemap + vite build
 | `src/data/notes-lookup.js` | Mapeo id → notas concatenadas — **generado por sync-from-sanity**, usado por el buscador |
 | `src/data/dia-del-padre.js` | IDs numéricos de los productos de la campaña Día del Padre 2026 |
 
-**Campos por producto:** `id, house, name, image (.webp), familia, tipo, genero, ml, description, notasSalida, notasCorazon, notasFondo, precioUSD, categoria ('arabes'|'disenador'|'nicho'), variantIds[]`
+**Campos por producto:** `id, house, name, image (.webp), familia, tipo, genero, ml, description, notasSalida, notasCorazon, notasFondo, precioUSD, descuento, categoria ('arabes'|'disenador'|'nicho'), variantIds[]`
 
 **Code splitting intencional:** `products-index` (ligero) para bundle principal. `ProductDetail` importa `products-enriched` directamente. `notes-lookup` está en el bundle principal para búsqueda inmediata.
 
@@ -59,6 +59,7 @@ Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `pr
 | `notasSalida`, `notasCorazon`, `notasFondo` | array de strings | Notas olfativas — selección con autocomplete de 415 notas disponibles. `parseNotes()` en ProductDetail acepta array o string. |
 | `acordes` | array `{label, pct}` | Hasta 4 acordes — dropdown con 27 labels válidos. Si están en Sanity, reemplazan los hardcodeados. |
 | `cuandoEpocaSeca`, `cuandoLluviosa`, `cuandoDia`, `cuandoNoche` | boolean | Cuándo usar — si alguno está en Sanity, reemplaza el hardcodeado |
+| `descuento` | number | Porcentaje de descuento activo (1-99). Sanity tiene prioridad sobre el hardcodeado en `dia-del-padre.js`. Dejar vacío si no hay descuento. |
 
 ### Flujo para agregar o editar un producto
 1. En Studio: crear/editar el documento → **Publish**
@@ -160,10 +161,14 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 - CTA "Explorar colección" + link "Buscar fragancia" con ícono lupa
 - **Barra inferior unificada** (`.hero-bottom-bar`): `@kiki_fragancia · Instagram` | dots carrusel | scroll indicator. Oculta en ≤767px.
 
-## Search Autocomplete (Header)
-- `useMemo` sobre `useIndexProducts()` (live desde Sanity) con min 2 chars, max 6 resultados
-- Filtra por `name`, `house`, `acordes` y **notas olfativas** (`notes-lookup.js`) — excluye 200ml con variantes
-- ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado
+## Búsqueda (Header autocomplete + Tienda)
+- `src/lib/search.js` — utilidades compartidas:
+  - `norm(s)` — normaliza tildes (NFD + strip diacríticos) y pone en minúsculas. "cítrico" = "citrico".
+  - `productMatchesQuery(terms, searchFields)` — todos los términos deben matchear algún campo (AND).
+  - Fuzzy con Levenshtein: tolerancia 0 (≤3 chars), 1 (4-5 chars), 2 (≥6 chars).
+- **Header autocomplete:** min 2 chars, max 6 resultados. Campos: `name`, `house`, `familia`, `acordes`, **notas olfativas** (`notes-lookup.js`). Excluye 200ml con variantes.
+- **Tienda:** mismos campos + notas. Todos normalizados con `norm()`.
+- ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado.
 
 ## Menú móvil
 - Sidebar deslizante desde la izquierda (290px), backdrop oscuro
@@ -187,7 +192,8 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 - **Entrada homepage:** `DiaDeLPadrePromo.jsx` — sección editorial en `Landing.jsx` después de ProductWall
 - **AnnouncementBar:** marquee scrolling `10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE` + popup modal en móvil
 - **Ribbon:** `ribbon="Día del Padre"` solo por `diaDeLPadreIds.includes(product.id)`
-- **Descuento:** 10% solo en modo `$` (divisa)
+- **Descuento:** Sanity (`p.descuento`) tiene prioridad sobre `diaDeLPadreDiscounts[p.id]` (hardcodeado). Solo en modo `$` (divisa).
+- **Badge DDP en ProductDetail:** gradiente azul `#0A2D72 → #1A52CC` con texto `#E8F0FF` — **color de campaña intencional**, no cambiar aunque viole la regla gold-only de DESIGN.md.
 - **WhatsApp:** mensaje pre-cargado específico + `ref=dia_del_padre`, número `584149112002`
 - **Teardown post-campaña (después del 21 de junio):** agregar en `vercel.json` antes de `{ "handle": "filesystem" }`:
   ```json
@@ -196,8 +202,13 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Sistema de moneda
 - `src/context/CurrencyContext.jsx` — `{ currency, setCurrency }` via `useCurrency()`. Valores: `'usd' | 'bs'`.
-- `src/hooks/useTasaCambio.js` — fetcha `ve.dolarapi.com/v1/dolares/paralelo`. Cache 30min en `kiki_tasa_bs`.
-- Switcher en Header: pill `$` / `Bs` en desktop + sección MONEDA en menú móvil.
+- `src/hooks/useTasaCambio.js` — fetcha `ve.dolarapi.com/v1/dolares/paralelo`. Cache 30min en `kiki_tasa_bs`. Soporta override manual vía `kiki_tasa_manual` en localStorage.
+  - `setTasaManual(rate)` — guarda tasa manual con timestamp
+  - `clearTasaManual()` — elimina el override, vuelve a usar la API
+  - `getTasaManualInfo()` — devuelve `{ rate, savedAt }` o `null`
+  - Prioridad: manual localStorage > cache API > fetch API
+- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente. Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.**
+- Switcher en Header: pill `REF` / `Bs` en desktop + sección MONEDA en menú móvil.
 
 ## Tema
 - `src/context/ThemeContext.jsx` — `{ theme, toggleTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`).
