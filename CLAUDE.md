@@ -3,7 +3,6 @@
 Sitio web de tienda de perfumería de lujo. React + Vite. Dominio: **kikifragancia.com**
 
 ## Comandos
-```
 npm run dev    # servidor de desarrollo
 npm run build  # sync Sanity → local + sitemap + vite build
 ```
