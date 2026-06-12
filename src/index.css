@@ -4776,3 +4776,83 @@
   padding-bottom: 2px; transition: border-color .2s;
 }
 .wl-empty-link:hover { border-color: var(--gold-ink); }
+
+/* ══ ColeccionesSection ══ */
+.colecciones-section {
+  padding: clamp(64px, 8vw, 96px) clamp(20px, 5vw, 80px);
+  background: var(--bg);
+}
+.colecciones-inner { max-width: 1200px; margin: 0 auto; }
+.colecciones-eyebrow {
+  font-family: var(--font-s); font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-ink); margin: 0 0 12px;
+}
+.colecciones-heading {
+  font-family: var(--font-d); font-size: clamp(28px, 4vw, 48px);
+  font-weight: 100; font-style: italic; color: var(--ink);
+  margin: 0 0 clamp(32px, 4vw, 52px);
+}
+.colecciones-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.coleccion-tile {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 28px 24px 24px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  background: var(--raised);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.coleccion-tile:hover {
+  border-color: rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.04);
+}
+.coleccion-emoji {
+  font-size: 28px; line-height: 1;
+}
+.coleccion-titulo {
+  font-family: var(--font-d); font-size: clamp(18px, 2vw, 22px);
+  font-style: italic; font-weight: 100; color: var(--ink);
+  line-height: 1.2;
+}
+.coleccion-subtitulo {
+  font-family: var(--font-s); font-size: 11px; line-height: 1.6;
+  color: var(--ink-mute); letter-spacing: 0.03em;
+  flex: 1;
+}
+.coleccion-cta {
+  font-family: var(--font-s); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-ink);
+  margin-top: 4px;
+}
+[data-theme='warm'] .coleccion-tile { background: rgba(255,248,235,0.04); }
+[data-theme='warm'] .coleccion-tile:hover { background: rgba(201,168,76,0.07); }
+@media (max-width: 900px) {
+  .colecciones-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .colecciones-grid { grid-template-columns: 1fr; gap: 12px; }
+  .colecciones-section { padding: 52px 20px; }
+}
+
+/* ══ Tienda — banner colección activa ══ */
+.tienda-coleccion-banner {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.25);
+  margin-bottom: 20px;
+  font-family: var(--font-s); font-size: 11px;
+  letter-spacing: 0.08em; color: var(--gold-ink);
+}
+.tienda-coleccion-banner a {
+  color: var(--ink-mute); text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px; transition: color 0.15s;
+  margin-left: auto; white-space: nowrap;
+}
+.tienda-coleccion-banner a:hover { color: var(--ink); }
+

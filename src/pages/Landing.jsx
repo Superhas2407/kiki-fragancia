@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import DiaDeLPadrePromo from '../components/DiaDeLPadrePromo'
 import Testimonials from '../components/Testimonials'
 import ProductWall from '../components/ProductWall'
+import ColeccionesSection from '../components/ColeccionesSection'
 
 export default function Landing() {
   return (
@@ -14,6 +15,7 @@ export default function Landing() {
         <Hero />
         <BrandsMarquee />
         <ProductWall />
+        <ColeccionesSection />
         <DiaDeLPadrePromo />
         <BrandsMarquee reverse />
         <BrandStory />

@@ -6,6 +6,7 @@ import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
+import { coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery } from '../lib/search'
 
@@ -276,9 +277,11 @@ export default function Tienda() {
   const mountRef  = useRef(true)
   const sentinelRef = useRef(null)
 
-  const urlGenero = searchParams.get('genero') || null
-  const urlTipo   = searchParams.get('tipo')   || null
-  const urlDdp    = searchParams.get('ddp') === '1'
+  const urlGenero     = searchParams.get('genero')     || null
+  const urlTipo       = searchParams.get('tipo')       || null
+  const urlDdp        = searchParams.get('ddp') === '1'
+  const urlColeccion  = searchParams.get('coleccion')  || null
+  const coleccionData = urlColeccion ? coleccionById[urlColeccion] : null
 
   useEffect(() => {
     setSearchQuery(searchParams.get('q') || '')
@@ -298,11 +301,12 @@ export default function Tienda() {
 
   const basePool = useMemo(() => {
     let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
-    if (urlDdp)    pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
-    if (urlGenero) pool = pool.filter(p => p.genero === urlGenero)
-    if (urlTipo)   pool = pool.filter(p => p.categoria === urlTipo)
+    if (urlDdp)        pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
+    if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
+    if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
+    if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
     return pool
-  }, [urlGenero, urlTipo, urlDdp])
+  }, [urlGenero, urlTipo, urlDdp, coleccionData])
 
   const filtered = useMemo(() => {
     let result = [...basePool]
@@ -456,6 +460,16 @@ export default function Tienda() {
               )
             })}
           </div>
+
+          {/* Banner colección activa */}
+          {coleccionData && (
+            <div className="tienda-coleccion-banner tienda-pad">
+              <span>{coleccionData.emoji} {coleccionData.titulo}</span>
+              <a href="/tienda" onClick={e => { e.preventDefault(); navigate('/tienda') }}>
+                Ver toda la tienda ×
+              </a>
+            </div>
+          )}
 
           {/* Buscador — oculto en mobile */}
           <div
