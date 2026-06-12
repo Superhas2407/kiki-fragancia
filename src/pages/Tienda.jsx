@@ -6,7 +6,7 @@ import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
-import { coleccionById } from '../data/colecciones'
+import { COLECCIONES, coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery } from '../lib/search'
 
@@ -108,7 +108,7 @@ const TIPO_OPTIONS = [
   { label: 'EDC',              value: 'Eau de Cologne'    },
 ]
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -179,6 +179,38 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           </span>
         </div>
         {SORT_OPTIONS.map(opt => <RadioItem key={opt.key} label={opt.label} value={opt.key}/>)}
+      </div>
+
+      <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+            Por ocasión
+          </span>
+        </div>
+        <select
+          value={urlColeccion || ''}
+          onChange={e => {
+            const p = new URLSearchParams()
+            if (urlTipo) p.set('tipo', urlTipo)
+            if (urlGenero) p.set('genero', urlGenero)
+            if (e.target.value) p.set('coleccion', e.target.value)
+            navigate(p.toString() ? `/tienda?${p}` : '/tienda')
+          }}
+          style={{
+            width: '100%',
+            fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: 100,
+            color: urlColeccion ? 'var(--ink)' : 'var(--ink-mute)',
+            background: 'var(--raised)', border: '1px solid var(--line)',
+            padding: '9px 12px', cursor: 'pointer', outline: 'none',
+            letterSpacing: '0.03em',
+          }}
+        >
+          <option value="">Todas las ocasiones</option>
+          {COLECCIONES.map(col => (
+            <option key={col.key} value={col.key}>{col.emoji} {col.titulo}</option>
+          ))}
+        </select>
       </div>
 
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
@@ -297,7 +329,7 @@ export default function Tienda() {
 
   const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured'
   const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]) }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0) + (urlColeccion ? 1 : 0)
 
   const basePool = useMemo(() => {
     let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
@@ -361,7 +393,7 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
@@ -459,6 +491,26 @@ export default function Tienda() {
                 </button>
               )
             })}
+          </div>
+
+          {/* Selector "Por ocasión" — visible en mobile y desktop */}
+          <div className="tienda-ocasion-row tienda-pad">
+            <select
+              value={urlColeccion || ''}
+              onChange={e => {
+                const p = new URLSearchParams()
+                if (urlTipo) p.set('tipo', urlTipo)
+                if (urlGenero) p.set('genero', urlGenero)
+                if (e.target.value) p.set('coleccion', e.target.value)
+                navigate(p.toString() ? `/tienda?${p}` : '/tienda')
+              }}
+              className={`tienda-ocasion-select${urlColeccion ? ' active' : ''}`}
+            >
+              <option value="">Por ocasión</option>
+              {COLECCIONES.map(col => (
+                <option key={col.key} value={col.key}>{col.emoji} {col.titulo}</option>
+              ))}
+            </select>
           </div>
 
           {/* Banner colección activa */}
