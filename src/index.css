@@ -193,7 +193,7 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  width: 30px; height: 30px;
+  width: 44px; height: 44px;
   flex-shrink: 0;
   font-size: 15px;
   transition: border-color .2s, color .2s;
@@ -922,6 +922,7 @@
 .kiki-logo {
   text-decoration: none; line-height: 1; flex-shrink: 0;
   display: flex; align-items: center;
+  min-height: 44px; min-width: 44px;
 }
 .kiki-logo-img {
   height: 16px;

@@ -265,7 +265,7 @@ export default function Header() {
                       style={{
                         fontFamily: "'KikiGotham', sans-serif",
                         fontSize: 10, letterSpacing: '0.1em',
-                        padding: '5px 10px', cursor: 'pointer', border: 'none',
+                        padding: '0 10px', minHeight: 44, cursor: 'pointer', border: 'none',
                         background: active ? '#C9A84C' : 'transparent',
                         color: active ? '#0A0A0A' : 'var(--ink-mute)',
                         transition: 'background 0.18s, color 0.18s',
@@ -341,8 +341,8 @@ export default function Header() {
         <nav className="kiki-mobile-nav">
 
           {/* Campaña DDP */}
-          <Link to="/tienda?ddp=1" className="mobile-nav-link" style={{ transitionDelay: '60ms', color: '#1A52CC' }}>
-            🎁 Día del Padre
+          <Link to="/tienda?ddp=1" className="mobile-nav-link" style={{ transitionDelay: '60ms', color: 'var(--gold)' }}>
+            Día del Padre
           </Link>
 
           {/* Géneros sin título */}
