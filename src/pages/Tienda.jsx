@@ -233,6 +233,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
               const p = new URLSearchParams()
               if (urlTipo !== key) p.set('tipo', key)
               if (urlGenero) p.set('genero', urlGenero)
+              if (urlColeccion) p.set('coleccion', urlColeccion)
               navigate(p.toString() ? `/tienda?${p}` : '/tienda')
             }}
             count={productPool.filter(p => p.categoria === key).length}
@@ -483,6 +484,7 @@ export default function Tienda() {
                     const p = new URLSearchParams()
                     if (urlTipo) p.set('tipo', urlTipo)
                     if (key) p.set('genero', key)
+                    if (urlColeccion) p.set('coleccion', urlColeccion)
                     navigate(p.toString() ? `/tienda?${p}` : '/tienda')
                   }}
                   className={`tienda-genero-chip${isActive ? ' active' : ''}`}
