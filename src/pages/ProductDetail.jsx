@@ -1137,7 +1137,7 @@ export default function ProductDetail() {
   const waPrecio = product.precioUSD > 0 ? ` — REF ${product.precioUSD}` : ''
   const waMl = product.ml ? ` ${product.ml}ml` : ''
   const waMsg = encodeURIComponent(
-    `Hola, me interesa *${product.house} ${product.name}*${waMl}${waPrecio}. ¿Está disponible?`
+    `Hola! Me interesa el *${product.house} ${product.name}*${waMl}${waPrecio ? ` (REF $${product.precioUSD})` : ''}. ¿Tienen disponibilidad?`
   )
   const waUrl = `https://wa.me/584149112002?text=${waMsg}&ref=detalle_${product.id}`
 

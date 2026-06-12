@@ -69,7 +69,7 @@ const PROFILES = [
 
 const STAR_PRODUCT = PROFILES[0]
 
-const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola Kiki! 🎁 Quiero regalarle una fragancia a mi papá por el Día del Padre 2026. ¿Me pueden asesorar?')}&ref=dia_del_padre`
+const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola! Quiero regalarle una fragancia a mi papá para el Día del Padre. ¿Cuál me recomiendan?')}&ref=dia_del_padre`
 
 const WhatsAppSVG = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

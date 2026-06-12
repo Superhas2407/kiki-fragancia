@@ -35,7 +35,7 @@ function buildMessage(items) {
   const hasDdp = items.some(item => diaDeLPadreIds.includes(item.id))
   const ddpLine = hasDdp ? '\n🎁 Aplica descuento Día del Padre en los productos indicados.\n' : ''
   return (
-    `Hola Kiki! Quiero hacer el siguiente pedido:\n\n` +
+    `Hola! Quiero hacer el siguiente pedido:\n\n` +
     `${lines.join('\n')}\n` +
     totalLine +
     ddpLine +

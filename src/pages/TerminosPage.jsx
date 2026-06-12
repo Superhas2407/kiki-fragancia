@@ -115,7 +115,7 @@ export default function TerminosPage() {
         <footer className="terminos-footer">
           <p>¿Preguntas? Escríbenos por{' '}
             <a
-              href="https://wa.me/584149112002?text=Hola%20Kiki!%20Tengo%20una%20pregunta%20sobre%20los%20t%C3%A9rminos%20y%20condiciones."
+              href={`https://wa.me/584149112002?text=${encodeURIComponent('Hola! Tengo una duda sobre los términos y condiciones de la tienda.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="terminos-wa-link"
