@@ -4861,6 +4861,199 @@
 }
 .tienda-coleccion-banner a:hover { color: var(--ink); }
 
+/* ══════════════════════════════════════════
+   QuickGenero — ¿Para quién?
+══════════════════════════════════════════ */
+.quick-genero-section {
+  padding: clamp(32px, 4vw, 52px) clamp(16px, 4vw, 48px);
+  border-bottom: 1px solid var(--line2);
+}
+.quick-genero-inner { max-width: 1200px; margin: 0 auto; }
+.quick-genero-eyebrow {
+  font-family: var(--font-s);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 16px;
+}
+.quick-genero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.quick-genero-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 20px 20px;
+  border: 1px solid var(--line);
+  background: var(--raised);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  min-height: 120px;
+}
+.quick-genero-tile:hover {
+  border-color: rgba(201,168,76,0.55);
+  background: rgba(201,168,76,0.04);
+}
+.quick-genero-symbol {
+  font-size: 22px;
+  color: var(--gold-ink);
+  line-height: 1;
+  font-family: var(--font-d);
+  font-style: italic;
+}
+.quick-genero-label {
+  font-family: var(--font-d);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: italic;
+  font-weight: 100;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.quick-genero-sub {
+  font-family: var(--font-s);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  flex: 1;
+}
+.quick-genero-cta {
+  font-family: var(--font-s);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-top: 4px;
+}
+/* Mobile: tiles más compactos */
+@media (max-width: 480px) {
+  .quick-genero-tile { padding: 18px 14px 16px; min-height: 100px; gap: 6px; }
+  .quick-genero-sub { display: none; }
+  .quick-genero-symbol { font-size: 18px; }
+}
+
+/* ══════════════════════════════════════════
+   BestsellerRow — Más populares
+══════════════════════════════════════════ */
+.bestseller-section {
+  padding: clamp(32px, 4vw, 52px) 0;
+  border-bottom: 1px solid var(--line2);
+}
+.bestseller-inner { max-width: 1200px; margin: 0 auto; }
+.bestseller-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 clamp(16px, 4vw, 48px);
+  margin-bottom: 20px;
+}
+.bestseller-eyebrow {
+  font-family: var(--font-s);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0;
+}
+.bestseller-ver-todo {
+  font-family: var(--font-s);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.4);
+  padding-bottom: 1px;
+  transition: color 0.15s;
+}
+.bestseller-ver-todo:hover { color: var(--ink); }
+
+/* Carousel — scroll horizontal en mobile, grid en desktop */
+.bs-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px clamp(16px, 4vw, 48px) 12px;
+}
+.bs-row::-webkit-scrollbar { display: none; }
+
+@media (min-width: 900px) {
+  .bs-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+}
+
+/* Tarjeta */
+.bs-card {
+  flex-shrink: 0;
+  width: 160px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.bs-card:hover { opacity: 0.85; }
+@media (min-width: 900px) {
+  .bs-card { width: auto; }
+}
+.bs-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--raised);
+  margin-bottom: 10px;
+}
+.bs-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.bs-card:hover .bs-card-img { transform: scale(1.04); }
+.bs-card-body { padding: 0 2px; }
+.bs-card-house {
+  font-family: var(--font-s);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 3px;
+}
+.bs-card-name {
+  font-family: var(--font-d);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 100;
+  color: var(--ink);
+  margin: 0 0 5px;
+  line-height: 1.2;
+}
+.bs-card-price {
+  font-family: var(--font-s);
+  font-size: 11px;
+  color: var(--gold-ink);
+  letter-spacing: 0.05em;
+}
+.bs-card-price-ref {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  opacity: 0.7;
+  margin-right: 3px;
+}
+
+/* Warm theme */
+[data-theme='warm'] .quick-genero-tile:hover { background: rgba(201,168,76,0.07); }
+
 /* ══ Tienda — selector "Por ocasión" ══ */
 .tienda-ocasion-row {
   padding-bottom: 16px;

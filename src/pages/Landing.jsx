@@ -7,12 +7,16 @@ import DiaDeLPadrePromo from '../components/DiaDeLPadrePromo'
 import Testimonials from '../components/Testimonials'
 import ProductWall from '../components/ProductWall'
 import ColeccionesSection from '../components/ColeccionesSection'
+import QuickGenero from '../components/QuickGenero'
+import BestsellerRow from '../components/BestsellerRow'
 
 export default function Landing() {
   return (
     <>
       <main>
         <Hero />
+        <QuickGenero />
+        <BestsellerRow />
         <BrandsMarquee />
         <ProductWall />
         <ColeccionesSection />
