@@ -67,8 +67,11 @@ export default function BestsellerRow() {
           <Link to="/tienda" className="bestseller-ver-todo">Ver todo →</Link>
         </div>
 
+        <div className="bs-row-wrap">
         <div className="bs-row" ref={rowRef}>
           {items.map(p => <BsCard key={p.id} product={p} />)}
+        </div>
+        <p className="bs-swipe-hint">Desliza para ver más →</p>
         </div>
       </div>
     </section>

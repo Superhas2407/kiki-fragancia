@@ -962,6 +962,8 @@
 .kiki-mobile-controls { display: flex; align-items: center; gap: 10px; }
 @media (min-width: 1024px) { .kiki-mobile-controls { display: none; } }
 @media (max-width: 400px) { .kiki-mobile-controls { gap: 4px; } }
+/* En pantallas muy pequeñas, ocultar wishlist del header para que el hamburger no quede cortado */
+@media (max-width: 380px) { .header-wishlist-xs-hide { display: none; } }
 .hamburger-btn {
   background: none; border: none; cursor: pointer;
   color: var(--gold); display: flex; padding: 4px;
@@ -4970,6 +4972,36 @@
   transition: color 0.15s;
 }
 .bestseller-ver-todo:hover { color: var(--ink); }
+
+/* Wrapper con fade-out en el borde derecho (indica que hay más) */
+.bs-row-wrap {
+  position: relative;
+}
+.bs-row-wrap::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 20px;
+  width: 48px;
+  background: linear-gradient(to left, var(--bg, #0A0A0A), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+@media (min-width: 900px) {
+  .bs-row-wrap::after { display: none; }
+}
+
+/* Texto hint de swipe — solo mobile */
+.bs-swipe-hint {
+  font-family: var(--font-s);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 0 clamp(16px, 4vw, 48px);
+  margin: 2px 0 0;
+  display: block;
+}
+@media (min-width: 900px) { .bs-swipe-hint { display: none; } }
 
 /* Carousel — scroll horizontal en mobile, grid en desktop */
 .bs-row {

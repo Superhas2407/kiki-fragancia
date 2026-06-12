@@ -313,7 +313,7 @@ export default function Header() {
             >
               {theme === 'dark' ? '☀' : '☾'}
             </button>
-            <WishlistButton />
+            <span className="header-wishlist-xs-hide"><WishlistButton /></span>
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
