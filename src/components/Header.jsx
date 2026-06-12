@@ -119,6 +119,7 @@ export default function Header() {
   const allProducts = useIndexProducts()
   const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
+  const { ids: wishlistIds, setDrawerOpen: openWishlist } = useWishlist()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -305,15 +306,12 @@ export default function Header() {
             >
               <SearchIcon />
             </button>
-            <button
-              onClick={toggle}
-              className="theme-toggle-btn"
-              aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-              title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
-            >
-              {theme === 'dark' ? '☀' : '☾'}
-            </button>
-            <span className="header-wishlist-xs-hide"><WishlistButton /></span>
+            <span className="header-mobile-hide">
+              <button onClick={toggle} className="theme-toggle-btn" aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
+                {theme === 'dark' ? '☀' : '☾'}
+              </button>
+            </span>
+            <span className="header-mobile-hide"><WishlistButton /></span>
             <CartButton />
             <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -397,6 +395,36 @@ export default function Header() {
           })}
 
         </nav>
+
+        {/* Wishlist + Tema — acciones rápidas en el menú */}
+        <div style={{ display: 'flex', gap: 12, padding: '0 24px 4px', width: '100%' }}>
+          <button
+            onClick={() => { openWishlist(true); setMenuOpen(false) }}
+            style={{
+              flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+              color: 'var(--ink-mute)', background: 'none', border: '1px solid var(--line)',
+              padding: '10px 0', cursor: 'pointer',
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+            </svg>
+            Deseos {wishlistIds.length > 0 && `(${wishlistIds.length})`}
+          </button>
+          <button
+            onClick={toggle}
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
+              color: 'var(--ink-mute)', background: 'none', border: '1px solid var(--line)',
+              padding: '10px 16px', cursor: 'pointer',
+            }}
+            aria-label="Cambiar tema"
+          >
+            {theme === 'dark' ? '☀ Claro' : '☾ Oscuro'}
+          </button>
+        </div>
 
         {/* Switcher de moneda — móvil */}
         <div style={{ padding: '16px 24px 8px', width: '100%' }}>

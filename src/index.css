@@ -962,8 +962,9 @@
 .kiki-mobile-controls { display: flex; align-items: center; gap: 10px; }
 @media (min-width: 1024px) { .kiki-mobile-controls { display: none; } }
 @media (max-width: 400px) { .kiki-mobile-controls { gap: 4px; } }
-/* En pantallas muy pequeñas, ocultar wishlist del header para que el hamburger no quede cortado */
-@media (max-width: 380px) { .header-wishlist-xs-hide { display: none; } }
+/* Tema y wishlist se ocultan del header en mobile — accesibles desde el menú hamburguesa */
+.header-mobile-hide { display: none; }
+@media (min-width: 1024px) { .header-mobile-hide { display: contents; } }
 .hamburger-btn {
   background: none; border: none; cursor: pointer;
   color: var(--gold); display: flex; padding: 4px;
