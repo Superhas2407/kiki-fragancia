@@ -4834,7 +4834,12 @@
   .colecciones-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 480px) {
-  .colecciones-grid { grid-template-columns: 1fr; gap: 12px; }
+  .colecciones-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .coleccion-tile { padding: 18px 14px 16px; gap: 7px; }
+  .coleccion-emoji { font-size: 22px; }
+  .coleccion-titulo { font-size: 15px; }
+  .coleccion-subtitulo { font-size: 10px; line-height: 1.5; display: none; }
+  .coleccion-cta { font-size: 9px; }
   .colecciones-section { padding: 52px 20px; }
 }
 

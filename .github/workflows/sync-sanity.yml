@@ -1,0 +1,36 @@
+name: Sync from Sanity
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'   # cada 2 horas
+  workflow_dispatch:          # también permite correrlo manualmente desde GitHub
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Run sync
+        run: node scripts/sync-from-sanity.mjs
+        env:
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+          VITE_SANITY_PROJECT_ID: ${{ secrets.VITE_SANITY_PROJECT_ID }}
+          VITE_SANITY_DATASET: ${{ secrets.VITE_SANITY_DATASET }}
+
+      - name: Commit changes if any
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/products-index.js src/data/products-enriched.js src/data/notes-lookup.js
+          git diff --cached --quiet || git commit -m "chore: sync products from Sanity [skip ci]"
+          git push
