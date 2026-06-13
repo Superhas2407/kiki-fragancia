@@ -5381,18 +5381,30 @@
    SEARCH OVERLAY
 ══════════════════════════════════════════ */
 @keyframes kiki-search-fade {
-  from { opacity: 0; transform: translateY(-6px); }
+  from { opacity: 0; transform: translateY(-8px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+.kiki-search-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 299;
+  background: rgba(0, 0, 0, 0.30);
+  animation: kiki-search-fade 0.22s ease-out;
 }
 
 .kiki-search-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 300;
   background: var(--bg);
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  max-height: 82vh;
+  overflow-y: auto;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.22);
   animation: kiki-search-fade 0.22s ease-out;
 }
 
@@ -5514,14 +5526,21 @@
   background: var(--chip);
 }
 
-/* ── Product grid ── */
+/* ── Product grid — fila horizontal ── */
 .kiki-search-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 2px;
 }
+.kiki-search-grid::-webkit-scrollbar { display: none; }
 
 .kiki-search-product {
+  flex: 0 0 130px;
+  scroll-snap-align: start;
   cursor: pointer;
 }
 .kiki-search-product:hover .kiki-search-product-img-bg {
@@ -5600,10 +5619,11 @@
 
 /* ── Desktop ── */
 @media (min-width: 768px) {
-  .kiki-search-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kiki-search-product { flex: 0 0 180px; }
   .kiki-search-bar-row { padding: 0 48px; }
-  .kiki-search-body { padding: 28px 48px 60px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+  .kiki-search-body { padding: 20px 48px 36px; }
   .kiki-search-input { font-size: 26px; }
+  .kiki-search-product-name { font-size: 13px; }
 }
 
 /* ── Suggestions (al escribir) ── */

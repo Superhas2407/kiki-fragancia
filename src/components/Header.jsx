@@ -385,9 +385,11 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Search overlay — Afnan-style */}
+      {/* Search overlay — panel style */}
       {searchOpen && (
-        <div className="kiki-search-overlay" onClick={e => { if (e.target === e.currentTarget) setSearchOpen(false) }}>
+        <>
+        <div className="kiki-search-backdrop" onClick={() => setSearchOpen(false)} />
+        <div className="kiki-search-overlay">
           {/* Barra superior: input + X */}
           <div className="kiki-search-bar-row">
             <form onSubmit={handleSearch} className="kiki-search-form">
@@ -481,6 +483,7 @@ export default function Header() {
             )}
           </div>
         </div>
+        </>
       )}
     </>
   )
