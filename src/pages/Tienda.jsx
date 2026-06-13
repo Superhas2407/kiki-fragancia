@@ -616,6 +616,15 @@ export default function Tienda() {
   const toggleMarca = v => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
   const toggleTipo  = v => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v]))
 
+  const basePool = useMemo(() => {
+    let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
+    if (urlDdp)        pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
+    if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
+    if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
+    if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
+    return pool
+  }, [urlGenero, urlTipo, urlDdp, coleccionData])
+
   const priceBounds = useMemo(() => {
     const prices = basePool.map(p => p.precioUSD).filter(v => v > 0)
     if (!prices.length) return [0, 200]
@@ -630,15 +639,6 @@ export default function Tienda() {
   const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered
   const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setPriceRange(priceBounds) }
   const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0) + (urlColeccion ? 1 : 0)
-
-  const basePool = useMemo(() => {
-    let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
-    if (urlDdp)        pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
-    if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
-    if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
-    if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
-    return pool
-  }, [urlGenero, urlTipo, urlDdp, coleccionData])
 
   const filtered = useMemo(() => {
     let result = [...basePool]
