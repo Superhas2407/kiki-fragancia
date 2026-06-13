@@ -5306,6 +5306,10 @@
   border-top: 1px solid var(--line2);
   border-bottom: 1px solid var(--line2);
   margin-bottom: 16px;
+  position: sticky;
+  top: calc(var(--bar-h, 0px) + var(--kiki-header-h, 114px));
+  z-index: 30;
+  background: var(--bg);
 }
 @media (min-width: 1024px) {
   .tienda-mobile-bar { display: none !important; }
