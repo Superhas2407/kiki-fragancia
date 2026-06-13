@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
@@ -7,6 +7,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
 import { useSanityProduct, resolveProductImage } from '../context/SanityProductsContext'
+import { toSlug } from '../lib/slugs'
 import { NOTES_IMAGES } from '../data/notes-images'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import Header from '../components/Header'
@@ -1072,7 +1073,16 @@ export default function ProductDetail() {
   const { theme } = useTheme()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
-  const liveData = useSanityProduct(Number(id))
+
+  const numericId = Number(id)
+  const localProduct = useMemo(() =>
+    isNaN(numericId)
+      ? products.find(p => toSlug(p.house, p.name, p.ml) === id)
+      : products.find(p => p.id === numericId),
+    [id]
+  )
+  const resolvedNumericId = localProduct?.id ?? (isNaN(numericId) ? null : numericId)
+  const liveData = useSanityProduct(resolvedNumericId)
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
@@ -1089,7 +1099,7 @@ export default function ProductDetail() {
     return () => { cancelAnimationFrame(raf); clearTimeout(t2) }
   }, [id])
 
-  const baseProduct = products.find(p => p.id === Number(id)) ?? liveData ?? null
+  const baseProduct = localProduct ?? liveData ?? null
   const product = baseProduct ? {
     ...baseProduct,
     precioUSD:      liveData?.precioUSD      ?? baseProduct.precioUSD,
@@ -1168,7 +1178,7 @@ export default function ProductDetail() {
   const metaDesc = descripcion
     ? descripcion.slice(0, 155).replace(/\s\S+$/, '…')
     : `${product.house} ${product.name} ${product.ml}ml ${product.tipo}. Fragancia 100% original en Venezuela.`
-  const canonicalUrl = `https://kikifragancia.com/tienda/${product.id}`
+  const canonicalUrl = `https://kikifragancia.com/tienda/${toSlug(product.house, product.name, product.ml)}`
   const resolvedImg = resolveProductImage(product)
   const productImage = resolvedImg
     ? (resolvedImg.startsWith('/') ? `https://kikifragancia.com${resolvedImg}` : resolvedImg)

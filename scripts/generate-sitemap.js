@@ -2,6 +2,13 @@ import { writeFileSync } from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { products } from '../src/data/products-enriched.js'
+import { norm } from '../src/lib/search.js'
+
+function toSlug(house, name, ml) {
+  const base = norm(`${house} ${name}`)
+    .replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-')
+  return ml ? `${base}-${ml}ml` : base
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const BASE = 'https://kikifragancia.com'
@@ -14,7 +21,7 @@ const staticRoutes = [
 ]
 
 const productRoutes = products.map(p => ({
-  loc: `/tienda/${p.id}`,
+  loc: `/tienda/${toSlug(p.house, p.name, p.ml)}`,
   changefreq: 'monthly',
   priority: '0.8',
 }))

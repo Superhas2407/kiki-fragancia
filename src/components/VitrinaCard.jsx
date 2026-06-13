@@ -5,6 +5,7 @@ import { useWishlist } from '../context/WishlistContext'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
+import { toSlug } from '../lib/slugs'
 
 // ============================================================
 // VitrinaCard v2 — Museum gallery treatment of a product
@@ -81,7 +82,8 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   function handleVariant(e, variantId) {
     e.preventDefault()
     e.stopPropagation()
-    navigate(`/tienda/${variantId}`)
+    const v = allProducts.find(p => p.id === variantId)
+    navigate(v ? `/tienda/${toSlug(v.house, v.name, v.ml)}` : `/tienda/${variantId}`)
   }
 
   const tasa = useTasaCambio()
@@ -105,7 +107,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   return (
     <Link
       ref={cardRef}
-      to={`/tienda/${product.id}`}
+      to={`/tienda/${toSlug(product.house, product.name, product.ml)}`}
       className="vitrina-card"
       style={famStyle(product.familia)}
       onMouseEnter={() => setHover(true)}

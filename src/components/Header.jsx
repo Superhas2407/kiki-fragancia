@@ -8,6 +8,7 @@ import { useIndexProducts } from '../context/SanityProductsContext'
 import { notesLookup } from '../data/notes-lookup'
 import { acordesByProduct } from '../data/acordes-index'
 import { norm, productMatchesQuery } from '../lib/search'
+import { toSlug } from '../lib/slugs'
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -215,7 +216,8 @@ export default function Header() {
   function handleSearch(e) {
     e.preventDefault()
     if (activeSuggestion >= 0 && suggestions[activeSuggestion]) {
-      navigate(`/tienda/${suggestions[activeSuggestion].id}`)
+      const s = suggestions[activeSuggestion]
+      navigate(`/tienda/${toSlug(s.house, s.name, s.ml)}`)
       setSearchOpen(false)
       return
     }
@@ -225,8 +227,8 @@ export default function Header() {
     }
   }
 
-  function handleSuggestionClick(product) {
-    navigate(`/tienda/${product.id}`)
+  function handleSuggestionClick(p) {
+    navigate(`/tienda/${toSlug(p.house, p.name, p.ml)}`)
     setSearchOpen(false)
   }
 
