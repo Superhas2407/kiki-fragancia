@@ -151,7 +151,7 @@ export default function Header() {
   }, [searchQuery])
 
   const topProducts = useMemo(() =>
-    allProducts.filter(p => !(p.ml === 200 && p.variantIds) && p.image).slice(0, 8),
+    allProducts.filter(p => !(p.ml === 200 && p.variantIds) && p.image).slice(0, 12),
     [allProducts]
   )
 
