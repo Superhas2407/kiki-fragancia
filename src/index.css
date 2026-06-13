@@ -5471,12 +5471,23 @@
 .kiki-search-section { margin-bottom: 28px; }
 
 .kiki-search-label {
-  font-family: var(--font-s);
-  font-size: 9px;
-  letter-spacing: 0.30em;
-  color: var(--ink-faint);
+  font-family: var(--font-d);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 100;
+  letter-spacing: 0.02em;
+  color: var(--gold-ink);
   margin: 0 0 14px;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.kiki-search-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.30;
 }
 
 /* ── Chips trending ── */
@@ -5553,9 +5564,11 @@
   color: var(--ink);
   margin: 0 0 5px;
   text-align: center;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.4;
 }
 
 .kiki-search-product-price {

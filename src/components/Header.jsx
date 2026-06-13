@@ -397,7 +397,7 @@ export default function Header() {
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="BUSCAR FRAGANCIA..."
+                placeholder="Buscar fragancia…"
                 className="kiki-search-input"
               />
               {searchQuery && (
@@ -417,7 +417,7 @@ export default function Header() {
               <>
                 {/* Trending */}
                 <div className="kiki-search-section">
-                  <p className="kiki-search-label">TRENDING</p>
+                  <p className="kiki-search-label">Tendencias</p>
                   <div className="kiki-search-chips">
                     {TRENDING_TERMS.map(t => (
                       <button key={t} className="kiki-search-chip"
@@ -431,7 +431,7 @@ export default function Header() {
                 {/* Top productos */}
                 {topProducts.length > 0 && (
                   <div className="kiki-search-section">
-                    <p className="kiki-search-label">TOP PRODUCTOS</p>
+                    <p className="kiki-search-label">Destacados</p>
                     <div className="kiki-search-grid">
                       {topProducts.map(p => {
                         const sale = p.descuento ? Math.round(p.precioUSD * (1 - p.descuento / 100)) : null
