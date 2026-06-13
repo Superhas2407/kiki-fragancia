@@ -440,15 +440,16 @@ export default function Header() {
                             <div className="kiki-search-product-img-bg">
                               <img src={`/products/${p.image}`} alt={p.name} loading="lazy" className="kiki-search-product-img" />
                             </div>
+                            <p className="kiki-search-product-house">{p.house}</p>
                             <p className="kiki-search-product-name">{p.name}</p>
                             <div className="kiki-search-product-price">
                               {sale ? (
                                 <>
                                   <del className="kiki-search-price-orig">${p.precioUSD}</del>
-                                  <span className="kiki-search-price-sale">${sale}.00</span>
+                                  <span className="kiki-search-price-sale">${sale}</span>
                                 </>
                               ) : (
-                                <span className="kiki-search-price-normal">${p.precioUSD}.00</span>
+                                <span className="kiki-search-price-normal">${p.precioUSD}</span>
                               )}
                             </div>
                           </div>

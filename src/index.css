@@ -5378,8 +5378,13 @@
 }
 
 /* ══════════════════════════════════════════
-   SEARCH OVERLAY — Afnan-style
+   SEARCH OVERLAY
 ══════════════════════════════════════════ */
+@keyframes kiki-search-fade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .kiki-search-overlay {
   position: fixed;
   inset: 0;
@@ -5388,26 +5393,28 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  animation: kiki-search-fade 0.22s ease-out;
 }
 
+/* ── Barra superior ── */
 .kiki-search-bar-row {
   display: flex;
   align-items: stretch;
-  border: 1.5px solid var(--line2);
-  margin: 16px;
+  border-bottom: 1px solid var(--line2);
   flex-shrink: 0;
+  padding: 0 20px;
 }
 
 .kiki-search-form {
   display: flex;
   align-items: center;
   flex: 1;
-  gap: 10px;
-  padding: 14px 16px;
+  gap: 12px;
+  padding: 18px 0;
 }
 
 .kiki-search-icon {
-  color: var(--ink-mute);
+  color: var(--ink-faint);
   display: flex;
   flex-shrink: 0;
 }
@@ -5417,13 +5424,18 @@
   background: none;
   border: none;
   outline: none;
-  font-family: var(--font-s);
-  font-size: 16px;
-  letter-spacing: 0.14em;
+  font-family: var(--font-d);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 100;
+  letter-spacing: 0.02em;
   color: var(--ink);
 }
 
-.kiki-search-input::placeholder { color: var(--ink-faint); }
+.kiki-search-input::placeholder {
+  color: var(--ink-faint);
+  font-style: italic;
+}
 
 .kiki-search-clear {
   background: none;
@@ -5431,7 +5443,7 @@
   cursor: pointer;
   color: var(--ink-faint);
   display: flex;
-  padding: 2px;
+  padding: 4px;
   transition: color .2s;
   flex-shrink: 0;
 }
@@ -5444,15 +5456,15 @@
   color: var(--ink-mute);
   display: flex;
   align-items: center;
-  padding: 0 18px;
-  border-left: 1.5px solid var(--line2);
+  padding: 0 0 0 20px;
   transition: color .2s;
   flex-shrink: 0;
 }
 .kiki-search-close:hover { color: var(--ink); }
 
+/* ── Cuerpo ── */
 .kiki-search-body {
-  padding: 8px 16px 48px;
+  padding: 24px 20px 48px;
   flex: 1;
 }
 
@@ -5460,12 +5472,14 @@
 
 .kiki-search-label {
   font-family: var(--font-s);
-  font-size: 10px;
-  letter-spacing: 0.24em;
-  color: var(--ink-mute);
+  font-size: 9px;
+  letter-spacing: 0.30em;
+  color: var(--ink-faint);
   margin: 0 0 14px;
+  text-transform: uppercase;
 }
 
+/* ── Chips trending ── */
 .kiki-search-chips {
   display: flex;
   flex-wrap: wrap;
@@ -5474,62 +5488,68 @@
 
 .kiki-search-chip {
   font-family: var(--font-s);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  padding: 8px 18px;
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  padding: 7px 16px;
   border: 1px solid var(--line2);
   background: none;
   cursor: pointer;
-  color: var(--ink);
-  transition: border-color .2s, color .2s;
+  color: var(--ink-mute);
+  transition: border-color .2s, color .2s, background .2s;
 }
 .kiki-search-chip:hover {
   border-color: var(--gold);
   color: var(--gold-ink);
+  background: var(--chip);
 }
 
-/* Product grid */
+/* ── Product grid ── */
 .kiki-search-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-@media (min-width: 600px) {
-  .kiki-search-grid { grid-template-columns: repeat(3, 1fr); }
-}
-@media (min-width: 1024px) {
-  .kiki-search-grid { grid-template-columns: repeat(4, 1fr); }
-  .kiki-search-bar-row { margin: 20px 40px; }
-  .kiki-search-body { padding: 8px 40px 60px; }
+  gap: 10px;
 }
 
 .kiki-search-product {
   cursor: pointer;
-  transition: opacity .2s;
 }
-.kiki-search-product:hover { opacity: 0.75; }
+.kiki-search-product:hover .kiki-search-product-img-bg {
+  opacity: 0.85;
+}
 
 .kiki-search-product-img-bg {
-  background: var(--bg2);
-  aspect-ratio: 3/4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
+  margin-bottom: 8px;
+  transition: opacity .2s;
 }
 
 .kiki-search-product-img {
-  width: 65%;
+  width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.kiki-search-product-house {
+  font-family: var(--font-s);
+  font-size: 8px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 2px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .kiki-search-product-name {
-  font-family: var(--font-s);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: var(--font-d);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 100;
   color: var(--ink);
   margin: 0 0 5px;
   text-align: center;
@@ -5548,37 +5568,46 @@
 
 .kiki-search-price-orig {
   color: var(--ink-faint);
-  font-size: 11px;
+  font-size: 10px;
   text-decoration: line-through;
 }
 
 .kiki-search-price-sale {
   color: var(--gold-ink);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .kiki-search-price-normal {
   color: var(--ink-mute);
-  font-size: 12px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
 }
 
-/* Suggestions (cuando el usuario escribe) */
+/* ── Desktop ── */
+@media (min-width: 768px) {
+  .kiki-search-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .kiki-search-bar-row { padding: 0 48px; }
+  .kiki-search-body { padding: 28px 48px 60px; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+  .kiki-search-input { font-size: 26px; }
+}
+
+/* ── Suggestions (al escribir) ── */
 .kiki-search-suggestions {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--line2);
 }
 
 .kiki-search-suggestion {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 0;
+  padding: 13px 0;
   cursor: pointer;
   border-bottom: 1px solid var(--line2);
-  transition: background .15s, padding .15s;
+  transition: background .15s;
 }
 .kiki-search-suggestion.active,
 .kiki-search-suggestion:hover {
@@ -5591,7 +5620,7 @@
 .kiki-search-sug-img {
   width: 44px;
   height: 44px;
-  object-fit: contain;
+  object-fit: cover;
   flex-shrink: 0;
 }
 
@@ -5600,20 +5629,22 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  gap: 1px;
 }
 
 .kiki-search-sug-house {
   font-family: var(--font-s);
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 9px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold-ink);
 }
 
 .kiki-search-sug-name {
   font-family: var(--font-d);
-  font-size: 16px;
+  font-size: 17px;
   font-style: italic;
+  font-weight: 100;
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
@@ -5629,9 +5660,10 @@
 }
 
 .kiki-search-empty {
-  font-family: var(--font-s);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-family: var(--font-d);
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 100;
   color: var(--ink-faint);
   text-align: center;
   margin-top: 48px;
