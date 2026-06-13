@@ -16,6 +16,8 @@ const NAV_LINKS = [
   { label: 'Contacto',  to: '/#contacto',                           type: 'anchor'   },
 ]
 
+const TRENDING_TERMS = ['Khamrah', 'Oud', '9 PM', 'Lattafa', 'Floral', 'Afnan']
+
 const CartIcon = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
@@ -147,6 +149,11 @@ export default function Header() {
       })
       .slice(0, 6)
   }, [searchQuery])
+
+  const topProducts = useMemo(() =>
+    allProducts.filter(p => !(p.ml === 200 && p.variantIds) && p.image).slice(0, 8),
+    [allProducts]
+  )
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32)
@@ -378,118 +385,100 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Search overlay */}
+      {/* Search overlay — Afnan-style */}
       {searchOpen && (
-        <div
-          style={{
-            position: 'fixed', inset: 0, zIndex: 300,
-            background: theme === 'warm' ? 'rgba(243,234,217,0.96)' : 'rgba(10,10,10,0.92)',
-            backdropFilter: 'blur(12px)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: '0 24px',
-          }}
-          onClick={e => { if (e.target === e.currentTarget) setSearchOpen(false) }}
-        >
-          <button
-            onClick={() => setSearchOpen(false)}
-            aria-label="Cerrar búsqueda"
-            style={{
-              position: 'absolute', top: 20, right: 20,
-              background: 'none', border: 'none', cursor: 'pointer',
-              color: 'var(--ink-mute)', padding: 8,
-              transition: 'color .2s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--ink)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--ink-mute)'}
-          >
-            <CloseIcon />
-          </button>
-
-          <p style={{
-            fontFamily: 'var(--font-d)', fontSize: 'clamp(11px, 1.5vw, 13px)',
-            letterSpacing: '0.28em', textTransform: 'uppercase',
-            color: 'var(--gold-ink)', marginBottom: 32,
-          }}>
-            Buscar fragancia
-          </p>
-
-          <form onSubmit={handleSearch} style={{ width: '100%', maxWidth: 560 }}>
-            <div style={{
-              display: 'flex', alignItems: 'center',
-              borderBottom: '1px solid var(--gold)',
-              gap: 16, paddingBottom: 12,
-            }}>
-              <span style={{ color: 'var(--gold-ink)', display: 'flex', flexShrink: 0 }}>
-                <SearchIcon />
-              </span>
+        <div className="kiki-search-overlay" onClick={e => { if (e.target === e.currentTarget) setSearchOpen(false) }}>
+          {/* Barra superior: input + X */}
+          <div className="kiki-search-bar-row">
+            <form onSubmit={handleSearch} className="kiki-search-form">
+              <span className="kiki-search-icon"><SearchIcon /></span>
               <input
                 ref={searchInputRef}
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="Nombre, marca, familia o acorde..."
-                style={{
-                  flex: 1, background: 'none', border: 'none', outline: 'none',
-                  fontFamily: 'var(--font-d)', fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                  fontWeight: 100, fontStyle: 'italic',
-                  color: 'var(--ink)', letterSpacing: '-0.01em',
-                }}
+                placeholder="BUSCAR FRAGANCIA..."
+                className="kiki-search-input"
               />
               {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-faint)', display: 'flex', padding: 4 }}
-                >
+                <button type="button" onClick={() => setSearchQuery('')} className="kiki-search-clear">
                   <CloseIcon />
                 </button>
               )}
-            </div>
-            {suggestions.length > 0 ? (
-              <ul style={{ listStyle: 'none', margin: '8px 0 0', padding: 0 }}>
+            </form>
+            <button onClick={() => setSearchOpen(false)} aria-label="Cerrar búsqueda" className="kiki-search-close">
+              <CloseIcon />
+            </button>
+          </div>
+
+          {/* Contenido */}
+          <div className="kiki-search-body">
+            {searchQuery.length < 2 ? (
+              <>
+                {/* Trending */}
+                <div className="kiki-search-section">
+                  <p className="kiki-search-label">TRENDING</p>
+                  <div className="kiki-search-chips">
+                    {TRENDING_TERMS.map(t => (
+                      <button key={t} className="kiki-search-chip"
+                        onClick={() => { setSearchQuery(t); searchInputRef.current?.focus() }}>
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Top productos */}
+                {topProducts.length > 0 && (
+                  <div className="kiki-search-section">
+                    <p className="kiki-search-label">TOP PRODUCTOS</p>
+                    <div className="kiki-search-grid">
+                      {topProducts.map(p => {
+                        const sale = p.descuento ? Math.round(p.precioUSD * (1 - p.descuento / 100)) : null
+                        return (
+                          <div key={p.id} className="kiki-search-product" onClick={() => handleSuggestionClick(p)}>
+                            <div className="kiki-search-product-img-bg">
+                              <img src={`/products/${p.image}`} alt={p.name} loading="lazy" className="kiki-search-product-img" />
+                            </div>
+                            <p className="kiki-search-product-name">{p.name}</p>
+                            <div className="kiki-search-product-price">
+                              {sale ? (
+                                <>
+                                  <del className="kiki-search-price-orig">${p.precioUSD}</del>
+                                  <span className="kiki-search-price-sale">${sale}.00</span>
+                                </>
+                              ) : (
+                                <span className="kiki-search-price-normal">${p.precioUSD}.00</span>
+                              )}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : suggestions.length > 0 ? (
+              <ul className="kiki-search-suggestions">
                 {suggestions.map((p, i) => (
-                  <li
-                    key={p.id}
+                  <li key={p.id}
                     onClick={() => handleSuggestionClick(p)}
                     onMouseEnter={() => setActiveSuggestion(i)}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 14,
-                      padding: '10px 12px', cursor: 'pointer', borderRadius: 4,
-                      background: i === activeSuggestion ? 'rgba(201,168,76,0.12)' : 'transparent',
-                      transition: 'background .15s',
-                    }}
+                    className={`kiki-search-suggestion${i === activeSuggestion ? ' active' : ''}`}
                   >
-                    {p.image && (
-                      <img
-                        src={`/products/${p.image}`}
-                        alt=""
-                        loading="lazy"
-                        style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0, opacity: 0.85 }}
-                      />
-                    )}
-                    <span style={{ flex: 1, minWidth: 0 }}>
-                      <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold-ink)', display: 'block' }}>
-                        {p.house}
-                      </span>
-                      <span style={{ fontFamily: 'var(--font-d)', fontSize: 15, fontStyle: 'italic', color: 'var(--ink)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', display: 'block' }}>
-                        {p.name}
-                      </span>
+                    {p.image && <img src={`/products/${p.image}`} alt="" loading="lazy" className="kiki-search-sug-img" />}
+                    <span className="kiki-search-sug-info">
+                      <span className="kiki-search-sug-house">{p.house}</span>
+                      <span className="kiki-search-sug-name">{p.name}</span>
                     </span>
-                    <span style={{ fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.08em', color: 'var(--ink-faint)', flexShrink: 0 }}>
-                      {p.ml}ml
-                    </span>
+                    <span className="kiki-search-sug-ml">{p.ml}ml</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p style={{
-                fontFamily: 'var(--font-s)', fontSize: 11, letterSpacing: '0.08em',
-                color: 'var(--ink-faint)', marginTop: 16, textAlign: 'center',
-              }}>
-                Presiona Enter para buscar · Esc para cerrar
-              </p>
+              <p className="kiki-search-empty">Sin resultados para "{searchQuery}"</p>
             )}
-          </form>
+          </div>
         </div>
       )}
     </>
