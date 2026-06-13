@@ -20,22 +20,22 @@
 
 /* Claro cálido (boutique) */
 [data-theme='warm'] {
-  --bg: #EAE0CC;
-  --bg2: #F2E9D6;
-  --bg-warm: #E4D9C2;
+  --bg: #FAF6EE;
+  --bg2: #F5EEE0;
+  --bg-warm: #EDE6D4;
   --raised: #F5EDD9;
   --ink: #1A1208;
-  --ink-mute: rgba(35,26,13,0.82);
-  --ink-faint: rgba(35,26,13,0.68);
-  --line: rgba(154,104,32,0.45);
-  --line2: rgba(35,26,13,0.22);
+  --ink-mute: rgba(22,14,4,0.88);
+  --ink-faint: rgba(22,14,4,0.74);
+  --line: rgba(154,104,32,0.40);
+  --line2: rgba(22,14,4,0.18);
   --gold: #9A6820;
-  --gold-ink: #6B4012;
+  --gold-ink: #5E3A0E;
   --gold-fill-ink: #FAF0E0;
   --photo-floor: rgba(60,42,16,0.30);
-  --chip: rgba(35,26,13,0.07);
-  --shadow: 0 24px 50px -30px rgba(80,60,20,0.45);
-  --ink-rgb: 35, 26, 13;
+  --chip: rgba(22,14,4,0.06);
+  --shadow: 0 24px 50px -30px rgba(80,60,20,0.38);
+  --ink-rgb: 22, 14, 4;
 }
 
 /* Ajustes globales para modo claro */
@@ -44,11 +44,11 @@
   color: var(--ink);
 }
 [data-theme='warm'] .kiki-header {
-  background: rgba(243,234,217,0.92);
+  background: rgba(250,246,238,0.92);
   border-bottom-color: var(--line2);
 }
 [data-theme='warm'] .kiki-header.scrolled {
-  background: rgba(251,245,234,0.97);
+  background: rgba(250,246,238,0.97);
 }
 [data-theme='warm'] .kiki-header .nav-link,
 [data-theme='warm'] .kiki-header .logo {
