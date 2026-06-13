@@ -7,10 +7,12 @@ function getSystemTheme() {
   catch { return 'dark' }
 }
 
+const THEME_KEY = 'kiki-theme-v2'
+
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    try { return localStorage.getItem('kiki-theme') || getSystemTheme() }
-    catch { return getSystemTheme() }
+    try { return localStorage.getItem(THEME_KEY) || 'warm' }
+    catch { return 'warm' }
   })
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export function ThemeProvider({ children }) {
     } else {
       root.setAttribute('data-theme', theme)
     }
-    try { localStorage.setItem('kiki-theme', theme) } catch {}
+    try { localStorage.setItem(THEME_KEY, theme) } catch {}
   }, [theme])
 
   useEffect(() => {

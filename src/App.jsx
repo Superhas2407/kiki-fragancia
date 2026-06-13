@@ -10,6 +10,7 @@ import Landing from './pages/Landing'
 import CartDrawer from './components/CartDrawer'
 import CursorTrail from './components/CursorTrail'
 import Header from './components/Header'
+import BottomNav from './components/BottomNav'
 import GlobalSidebar from './components/GlobalSidebar'
 import WhatsAppFab from './components/WhatsAppFab'
 import AnnouncementBar from './components/AnnouncementBar'
@@ -86,6 +87,7 @@ function AppShell() {
       <Suspense fallback={null}><WishlistDrawer /></Suspense>
       <WhatsAppFab />
       <ConsentBanner />
+      <BottomNav />
     </>
   )
 }

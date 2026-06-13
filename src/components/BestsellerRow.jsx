@@ -8,7 +8,8 @@ const BESTSELLER_IDS = [88, 20, 311, 256, 172, 202, 260, 104, 247, 266]
 
 function PriceTag({ product }) {
   const { currency } = useCurrency()
-  const { tasa } = useTasaCambio()
+  const tasaData = useTasaCambio()
+  const tasa = tasaData?.tasa
   if (!product.precioUSD) return null
   if (currency === 'usd') {
     return (

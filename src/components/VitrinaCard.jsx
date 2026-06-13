@@ -113,19 +113,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
       aria-label={`${product.house} ${product.name}`}
     >
       <div className="vitrina-display">
-        {/* Gallery frame — gold corner brackets */}
-        <span className="vitrina-frame-corner tl" aria-hidden="true" />
-        <span className="vitrina-frame-corner tr" aria-hidden="true" />
-        <span className="vitrina-frame-corner bl" aria-hidden="true" />
-        <span className="vitrina-frame-corner br" aria-hidden="true" />
-
-        <div className="vitrina-corner">
-          <div className="vitrina-num">
-            <span>N°&nbsp;{String(product.id).padStart(3, '0')}</span>
-            <span className="vitrina-num-line" aria-hidden="true" />
-          </div>
-          {!ribbon && <span className="vitrina-familia">{product.familia}</span>}
-        </div>
 
         <div
           className="vitrina-spotlight"

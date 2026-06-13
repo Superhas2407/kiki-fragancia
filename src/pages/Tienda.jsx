@@ -56,6 +56,12 @@ const CloseIcon = () => (
     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
 )
+const ChevronIcon = ({ open }) => (
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+    style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease', flexShrink: 0 }}>
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+)
 
 function GoldCheckbox({ label, checked, onToggle, count }) {
   return (
@@ -108,7 +114,187 @@ const TIPO_OPTIONS = [
   { label: 'EDC',              value: 'Eau de Cologne'    },
 ]
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion }) {
+const GENERO_OPTIONS = [
+  { key: null,        label: 'Todos' },
+  { key: 'Masculino', label: 'Hombre' },
+  { key: 'Femenino',  label: 'Mujer' },
+  { key: 'Unisex',    label: 'Unisex' },
+  { key: 'Niño',      label: 'Kids' },
+]
+
+const CATEGORIA_OPTIONS = [
+  { key: 'arabes',    label: 'Árabes' },
+  { key: 'disenador', label: 'Diseñador' },
+  { key: 'nicho',     label: 'Nicho' },
+]
+
+function SidebarSection({ title, open, onToggle, children }) {
+  return (
+    <div style={{ borderBottom: '1px solid var(--line2)' }}>
+      <button
+        onClick={onToggle}
+        style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          width: '100%', background: 'none', border: 'none', cursor: 'pointer',
+          padding: '13px 0', color: 'var(--ink-mute)',
+        }}
+      >
+        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.26em', textTransform: 'uppercase' }}>
+          {title}
+        </span>
+        <ChevronIcon open={open} />
+      </button>
+      {open && <div style={{ paddingBottom: 12 }}>{children}</div>}
+    </div>
+  )
+}
+
+function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool }) {
+  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, marca: false, ocasion: false })
+  const toggle = k => setOpen(s => ({ ...s, [k]: !s[k] }))
+
+  const marcas = useMemo(() => [...new Set(basePool.map(p => p.house))].sort(), [basePool])
+
+  function navGenero(key) {
+    const p = new URLSearchParams()
+    if (urlTipo) p.set('tipo', urlTipo)
+    if (key) p.set('genero', key)
+    if (urlColeccion) p.set('coleccion', urlColeccion)
+    navigate(p.toString() ? `/tienda?${p}` : '/tienda')
+  }
+
+  function navCategoria(key) {
+    const p = new URLSearchParams()
+    if (urlTipo !== key) p.set('tipo', key)
+    if (urlGenero) p.set('genero', urlGenero)
+    if (urlColeccion) p.set('coleccion', urlColeccion)
+    navigate(p.toString() ? `/tienda?${p}` : '/tienda')
+  }
+
+  return (
+    <div>
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', paddingBottom: 16, marginBottom: 4, borderBottom: '1px solid var(--line2)' }}>
+        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink)' }}>
+          Filtrar
+        </span>
+        {hasFilters && (
+          <button onClick={clearFilters} style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+            Limpiar
+          </button>
+        )}
+      </div>
+
+      {/* Día del Padre */}
+      <button
+        onClick={() => navigate('/tienda?ddp=1')}
+        style={{
+          width: '100%', margin: '12px 0',
+          fontFamily: "'KikiGotham', sans-serif", fontSize: 9.5,
+          letterSpacing: '0.14em', textTransform: 'uppercase',
+          padding: '9px 12px', cursor: 'pointer', textAlign: 'left',
+          border: `1px solid ${urlDdp ? '#1A52CC' : 'rgba(26,82,204,0.30)'}`,
+          background: urlDdp ? 'rgba(26,82,204,0.08)' : 'transparent',
+          color: urlDdp ? '#6B9FFF' : 'var(--ink-mute)',
+          transition: 'all 0.18s',
+        }}
+      >
+        🎁 Día del Padre
+      </button>
+
+      {/* Género */}
+      <SidebarSection title="Género" open={open.genero} onToggle={() => toggle('genero')}>
+        {GENERO_OPTIONS.map(({ key, label }) => {
+          const active = !urlDdp && urlGenero === key
+          return (
+            <button
+              key={label}
+              onClick={() => navGenero(key)}
+              style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0' }}
+            >
+              <span style={{
+                width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
+                background: active ? '#C9A84C' : 'transparent',
+                border: `1px solid ${active ? '#C9A84C' : 'var(--line)'}`,
+                boxShadow: active ? '0 0 0 2px rgba(201,168,76,0.18)' : 'none',
+              }} />
+              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em', transition: 'color 0.18s' }}>
+                {label}
+              </span>
+            </button>
+          )
+        })}
+      </SidebarSection>
+
+      {/* Categoría */}
+      <SidebarSection title="Categoría" open={open.categoria} onToggle={() => toggle('categoria')}>
+        {CATEGORIA_OPTIONS.map(({ key, label }) => (
+          <GoldCheckbox
+            key={key}
+            label={label}
+            checked={urlTipo === key}
+            onToggle={() => navCategoria(key)}
+            count={basePool.filter(p => p.categoria === key).length}
+          />
+        ))}
+      </SidebarSection>
+
+      {/* Concentración */}
+      <SidebarSection title="Concentración" open={open.concentracion} onToggle={() => toggle('concentracion')}>
+        {TIPO_OPTIONS.filter(opt => basePool.some(p => p.tipo === opt.value)).map(opt => (
+          <GoldCheckbox
+            key={opt.value}
+            label={opt.label}
+            checked={selectedTipos.includes(opt.value)}
+            onToggle={() => toggleTipo(opt.value)}
+            count={basePool.filter(p => p.tipo === opt.value).length}
+          />
+        ))}
+      </SidebarSection>
+
+      {/* Por ocasión */}
+      <SidebarSection title="Por ocasión" open={open.ocasion} onToggle={() => toggle('ocasion')}>
+        <select
+          value={urlColeccion || ''}
+          onChange={e => {
+            const p = new URLSearchParams()
+            if (urlTipo) p.set('tipo', urlTipo)
+            if (urlGenero) p.set('genero', urlGenero)
+            if (e.target.value) p.set('coleccion', e.target.value)
+            navigate(p.toString() ? `/tienda?${p}` : '/tienda')
+          }}
+          style={{
+            width: '100%',
+            fontFamily: "'KikiGotham', sans-serif", fontSize: 11, fontWeight: 100,
+            color: urlColeccion ? 'var(--ink)' : 'var(--ink-mute)',
+            background: 'var(--raised)', border: '1px solid var(--line)',
+            padding: '8px 10px', cursor: 'pointer', outline: 'none',
+          }}
+        >
+          <option value="">Todas las ocasiones</option>
+          {COLECCIONES.map(col => (
+            <option key={col.key} value={col.key}>{col.emoji} {col.titulo}</option>
+          ))}
+        </select>
+      </SidebarSection>
+
+      {/* Marca */}
+      <SidebarSection title="Marca" open={open.marca} onToggle={() => toggle('marca')}>
+        {marcas.map(m => (
+          <GoldCheckbox
+            key={m}
+            label={m}
+            checked={selectedMarcas.includes(m)}
+            onToggle={() => toggleMarca(m)}
+            count={basePool.filter(p => p.house === m).length}
+          />
+        ))}
+      </SidebarSection>
+    </div>
+  )
+}
+
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -120,6 +306,14 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
   function countForTipo(tipo) {
     return productPool.filter(p => p.tipo === tipo).length
+  }
+
+  function navGenero(key) {
+    const p = new URLSearchParams()
+    if (urlTipo) p.set('tipo', urlTipo)
+    if (key) p.set('genero', key)
+    if (urlColeccion) p.set('coleccion', urlColeccion)
+    navigate(p.toString() ? `/tienda?${p}` : '/tienda')
   }
 
   function RadioItem({ label, value }) {
@@ -151,6 +345,15 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
     )
   }
 
+  const sectionLabel = (text) => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+      <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
+      <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+        {text}
+      </span>
+    </div>
+  )
+
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24 }}>
@@ -171,13 +374,43 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         )}
       </div>
 
-      <div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
-            Ordenar
-          </span>
-        </div>
+      {/* Género — solo en mobile drawer */}
+      <div style={{ marginBottom: 24 }}>
+        {sectionLabel('Género')}
+        <button
+          onClick={() => navigate('/tienda?ddp=1')}
+          style={{
+            width: '100%', marginBottom: 6,
+            fontFamily: "'KikiGotham', sans-serif", fontSize: 9.5,
+            letterSpacing: '0.14em', textTransform: 'uppercase',
+            padding: '8px 12px', cursor: 'pointer', textAlign: 'left',
+            border: `1px solid ${urlDdp ? '#1A52CC' : 'rgba(26,82,204,0.30)'}`,
+            background: urlDdp ? 'rgba(26,82,204,0.08)' : 'transparent',
+            color: urlDdp ? '#6B9FFF' : 'var(--ink-mute)',
+          }}
+        >
+          🎁 Día del Padre
+        </button>
+        {GENERO_OPTIONS.map(({ key, label }) => {
+          const active = !urlDdp && urlGenero === key
+          return (
+            <button key={label} onClick={() => navGenero(key)}
+              style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0' }}>
+              <span style={{
+                width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
+                background: active ? '#C9A84C' : 'transparent',
+                border: `1px solid ${active ? '#C9A84C' : 'var(--line)'}`,
+              }} />
+              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em' }}>
+                {label}
+              </span>
+            </button>
+          )
+        })}
+      </div>
+
+      <div style={{ borderTop: '1px solid var(--line2)', paddingTop: 20, marginBottom: 0 }}>
+        {sectionLabel('Ordenar')}
         {SORT_OPTIONS.map(opt => <RadioItem key={opt.key} label={opt.label} value={opt.key}/>)}
       </div>
 
@@ -361,12 +594,10 @@ export default function Tienda() {
     return result
   }, [basePool, selectedMarcas, selectedTipos, searchQuery, sortBy])
 
-  // Reset infinite scroll cuando cambian los filtros
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
   }, [filtered])
 
-  // IntersectionObserver — carga más al acercarse al final
   useEffect(() => {
     const el = sentinelRef.current
     if (!el) return
@@ -394,247 +625,202 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion }
+  const sidebarProps = { urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
 
   return (
     <>
-      <div style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + 76px)' }}>
+      <div ref={topRef} style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <div className="tienda-layout">
 
-          {/* Barra superior */}
-          <div
-            ref={topRef}
-            className="tienda-pad"
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              paddingTop: 32, paddingBottom: 0, marginBottom: 20,
-            }}
-          >
-            <div style={{ animation: 'vitrina-fadein 0.4s cubic-bezier(0.22,1,0.36,1) both' }}>
-              <h1 style={{
-                fontFamily: "'KikiGotham', sans-serif",
-                fontSize: 'clamp(1.5rem, 6vw, 3.5rem)',
-                fontWeight: 100, color: 'var(--ink)',
-                letterSpacing: '-0.02em', lineHeight: 1.08,
-                margin: 0,
-              }}>
-                {sectionTitle}
-              </h1>
-              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: 'var(--gold-ink)', marginTop: 6, letterSpacing: '0.05em' }}>
-                {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
-              </p>
-            </div>
+            {/* === SIDEBAR DESKTOP === */}
+            <aside className="tienda-sidebar-desktop">
+              <DesktopSidebar {...sidebarProps} />
+            </aside>
 
-            {/* Botón Filtrar */}
-            <button
-              onClick={() => setDrawerOpen(true)}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'transparent',
-                color: theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)',
-                border: `1px solid ${theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)'}`,
-                cursor: 'pointer', padding: '11px 16px',
-                transition: 'background 0.2s, color 0.2s',
-                whiteSpace: 'nowrap',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.background = theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)'
-                e.currentTarget.style.color = 'var(--gold-fill-ink)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.background = 'transparent'
-                e.currentTarget.style.color = theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)'
-              }}
-            >
-              <FilterIcon />
-              Filtrar
-              {activeFilterCount > 0 && (
-                <span style={{ background: theme === 'warm' ? 'var(--gold-ink)' : 'var(--gold)', color: 'var(--gold-fill-ink)', fontSize: 10, fontWeight: 700, padding: '1px 6px' }}>
-                  {activeFilterCount}
+            {/* === CONTENIDO PRINCIPAL === */}
+            <div className="tienda-main">
+
+              {/* Barra superior — desktop */}
+              <div className="tienda-topbar-desktop tienda-main-pad">
+                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: 'var(--ink-mute)', letterSpacing: '0.05em' }}>
+                  {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
                 </span>
-              )}
-            </button>
-          </div>
-
-          {/* Chips de género */}
-          <div className="tienda-genero-chips tienda-pad">
-            <button
-              onClick={() => navigate('/tienda?ddp=1')}
-              className={`tienda-genero-chip tienda-genero-chip--ddp${urlDdp ? ' active' : ''}`}
-            >
-              🎁 Día del Padre
-            </button>
-            {[
-              { key: null,        label: 'Todos' },
-              { key: 'Masculino', label: 'Hombre' },
-              { key: 'Femenino',  label: 'Mujer' },
-              { key: 'Unisex',    label: 'Unisex' },
-              { key: 'Niño',      label: 'Kids' },
-            ].map(({ key, label }) => {
-              const isActive = !urlDdp && urlGenero === key
-              return (
-                <button
-                  key={label}
-                  onClick={() => {
-                    const p = new URLSearchParams()
-                    if (urlTipo) p.set('tipo', urlTipo)
-                    if (key) p.set('genero', key)
-                    if (urlColeccion) p.set('coleccion', urlColeccion)
-                    navigate(p.toString() ? `/tienda?${p}` : '/tienda')
-                  }}
-                  className={`tienda-genero-chip${isActive ? ' active' : ''}`}
-                >
-                  {label}
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Selector "Por ocasión" — visible en mobile y desktop */}
-          <div className="tienda-ocasion-row tienda-pad">
-            <select
-              value={urlColeccion || ''}
-              onChange={e => {
-                const p = new URLSearchParams()
-                if (urlTipo) p.set('tipo', urlTipo)
-                if (urlGenero) p.set('genero', urlGenero)
-                if (e.target.value) p.set('coleccion', e.target.value)
-                navigate(p.toString() ? `/tienda?${p}` : '/tienda')
-              }}
-              className={`tienda-ocasion-select${urlColeccion ? ' active' : ''}`}
-            >
-              <option value="">Por ocasión</option>
-              {COLECCIONES.map(col => (
-                <option key={col.key} value={col.key}>{col.emoji} {col.titulo}</option>
-              ))}
-            </select>
-          </div>
-
-          {/* Banner colección activa */}
-          {coleccionData && (
-            <div className="tienda-coleccion-banner tienda-pad">
-              <span>{coleccionData.emoji} {coleccionData.titulo}</span>
-              <a href="/tienda" onClick={e => { e.preventDefault(); navigate('/tienda') }}>
-                Ver toda la tienda ×
-              </a>
-            </div>
-          )}
-
-          {/* Buscador — oculto en mobile */}
-          <div
-            className="tienda-pad tienda-search-desktop"
-            style={{ marginBottom: 28, animation: 'vitrina-fadein 0.4s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}
-          >
-            <div style={{
-              display: 'flex', alignItems: 'center',
-              border: `1px solid ${searchFocused ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
-              background: 'var(--raised)', padding: '0 16px', gap: 12,
-              transition: 'border-color 0.2s',
-            }}>
-              <span style={{ color: searchFocused ? '#C9A84C' : 'var(--ink-faint)', display: 'flex', flexShrink: 0, transition: 'color 0.2s' }}>
-                <SearchIcon />
-              </span>
-              <input
-                type="text"
-                placeholder="Buscar por nombre o marca..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                onFocus={() => setSearchFocused(true)}
-                onBlur={() => setSearchFocused(false)}
-                style={{
-                  flex: 1, fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: 100,
-                  color: 'var(--ink)', background: 'none', border: 'none', outline: 'none',
-                  padding: '12px 0', letterSpacing: '0.02em',
-                }}
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-faint)', display: 'flex', padding: 4 }}
-                  aria-label="Limpiar búsqueda"
-                >
-                  <CloseIcon />
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Grid de productos */}
-          <div className="tienda-pad" style={{ paddingBottom: 80 }}>
-            {filtered.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '80px 20px' }}>
-                <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'var(--ink-mute)', fontStyle: 'italic', marginBottom: 8 }}>
-                  No encontramos esa fragancia
-                </p>
-                <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, color: 'var(--ink-faint)', marginBottom: 28 }}>
-                  Intenta con otros filtros
-                </p>
-                <button
-                  onClick={clearFilters}
-                  style={{
-                    fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
-                    letterSpacing: '0.15em', textTransform: 'uppercase',
-                    color: '#C9A84C', background: 'none',
-                    border: '1px solid rgba(201,168,76,0.35)', padding: '10px 20px', cursor: 'pointer',
-                  }}
-                >
-                  Ver todas
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink-faint)' }}>
+                    Ordenar
+                  </span>
+                  <select
+                    value={sortBy}
+                    onChange={e => setSortBy(e.target.value)}
+                    style={{
+                      fontFamily: "'KikiGotham', sans-serif", fontSize: 11, fontWeight: 300,
+                      color: 'var(--ink)', background: 'var(--raised)',
+                      border: '1px solid var(--line)', padding: '6px 10px',
+                      cursor: 'pointer', outline: 'none', letterSpacing: '0.03em',
+                    }}
+                  >
+                    {SORT_OPTIONS.map(opt => <option key={opt.key} value={opt.key}>{opt.label}</option>)}
+                  </select>
+                </div>
               </div>
-            ) : (
-              <>
-                <GridBoundary>
-                  <div className="vitrina-grid">
-                    {visibleProducts.map((product, index) => (
-                      <div
-                        key={product.id}
-                        style={{
-                          animation: 'vitrina-fadein 0.35s ease both',
-                          animationDelay: `${Math.min(index * 0.03, 0.18)}s`,
-                        }}
-                      >
-                        <VitrinaCard
-                          product={product}
-                          ribbon={currency === 'usd' ? (
-                            diaDeLPadreIds.includes(product.id)
-                              ? (diaDeLPadreDiscounts[product.id] ? `${diaDeLPadreDiscounts[product.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE')
-                              : product.precioUSD > 0 ? 'Promo en divisa' : null
-                          ) : null}
-                          ribbonVariant={currency === 'usd' && diaDeLPadreIds.includes(product.id) ? 'ddp' : null}
-                          discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
-                        />
+
+              {/* Barra Filtrar | Ordenar — mobile */}
+              <div className="tienda-mobile-bar tienda-mobile-only">
+                <button
+                  className="tienda-mobile-bar-btn"
+                  onClick={() => setDrawerOpen(true)}
+                >
+                  <FilterIcon />
+                  <span>Filtrar</span>
+                  {activeFilterCount > 0 && (
+                    <span className="tienda-mobile-bar-badge">{activeFilterCount}</span>
+                  )}
+                </button>
+                <div className="tienda-mobile-bar-sep" />
+                <div className="tienda-mobile-bar-sort">
+                  <span className="tienda-mobile-bar-sort-label">Ordenar</span>
+                  <ChevronIcon open={false} />
+                  <select
+                    value={sortBy}
+                    onChange={e => setSortBy(e.target.value)}
+                    className="tienda-mobile-bar-sort-select"
+                  >
+                    {SORT_OPTIONS.map(opt => <option key={opt.key} value={opt.key}>{opt.label}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              {/* Conteo — mobile */}
+              <div className="tienda-pad tienda-mobile-only" style={{ paddingTop: 14, paddingBottom: 4 }}>
+                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, color: 'var(--ink-faint)', letterSpacing: '0.05em' }}>
+                  {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
+                  {sectionTitle !== 'Fragancias' && ` · ${sectionTitle}`}
+                </span>
+              </div>
+
+              {/* Banner colección activa */}
+              {coleccionData && (
+                <div className="tienda-coleccion-banner tienda-pad">
+                  <span>{coleccionData.emoji} {coleccionData.titulo}</span>
+                  <a href="/tienda" onClick={e => { e.preventDefault(); navigate('/tienda') }}>
+                    Ver toda la tienda ×
+                  </a>
+                </div>
+              )}
+
+              {/* Buscador */}
+              <div
+                className="tienda-pad tienda-search-desktop"
+                style={{ marginBottom: 28, animation: 'vitrina-fadein 0.4s cubic-bezier(0.22,1,0.36,1) 0.1s both' }}
+              >
+                <div style={{
+                  display: 'flex', alignItems: 'center',
+                  border: `1px solid ${searchFocused ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
+                  background: 'var(--raised)', padding: '0 16px', gap: 12,
+                  transition: 'border-color 0.2s',
+                }}>
+                  <span style={{ color: searchFocused ? '#C9A84C' : 'var(--ink-faint)', display: 'flex', flexShrink: 0, transition: 'color 0.2s' }}>
+                    <SearchIcon />
+                  </span>
+                  <input
+                    type="text"
+                    placeholder="Buscar por nombre o marca..."
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    onFocus={() => setSearchFocused(true)}
+                    onBlur={() => setSearchFocused(false)}
+                    style={{
+                      flex: 1, fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: 100,
+                      color: 'var(--ink)', background: 'none', border: 'none', outline: 'none',
+                      padding: '12px 0', letterSpacing: '0.02em',
+                    }}
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink-faint)', display: 'flex', padding: 4 }}
+                      aria-label="Limpiar búsqueda"
+                    >
+                      <CloseIcon />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Grid de productos */}
+              <div className="tienda-main-pad" style={{ paddingBottom: 80 }}>
+                {filtered.length === 0 ? (
+                  <div style={{ textAlign: 'center', padding: '80px 20px' }}>
+                    <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'var(--ink-mute)', fontStyle: 'italic', marginBottom: 8 }}>
+                      No encontramos esa fragancia
+                    </p>
+                    <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, color: 'var(--ink-faint)', marginBottom: 28 }}>
+                      Intenta con otros filtros
+                    </p>
+                    <button
+                      onClick={clearFilters}
+                      style={{
+                        fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
+                        letterSpacing: '0.15em', textTransform: 'uppercase',
+                        color: '#C9A84C', background: 'none',
+                        border: '1px solid rgba(201,168,76,0.35)', padding: '10px 20px', cursor: 'pointer',
+                      }}
+                    >
+                      Ver todas
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <GridBoundary>
+                      <div className="vitrina-grid">
+                        {visibleProducts.map((product, index) => (
+                          <div
+                            key={product.id}
+                            style={{
+                              animation: 'vitrina-fadein 0.35s ease both',
+                              animationDelay: `${Math.min(index * 0.03, 0.18)}s`,
+                            }}
+                          >
+                            <VitrinaCard
+                              product={product}
+                              ribbon={currency === 'usd' ? (
+                                diaDeLPadreIds.includes(product.id)
+                                  ? (diaDeLPadreDiscounts[product.id] ? `${diaDeLPadreDiscounts[product.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE')
+                                  : product.precioUSD > 0 ? 'Promo en divisa' : null
+                              ) : null}
+                              ribbonVariant={currency === 'usd' && diaDeLPadreIds.includes(product.id) ? 'ddp' : null}
+                              discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
+                            />
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </GridBoundary>
+                    </GridBoundary>
 
-                {/* Sentinel para infinite scroll */}
-                {hasMore && (
-                  <div ref={sentinelRef} style={{ height: 1, marginTop: 40 }} />
-                )}
+                    {hasMore && <div ref={sentinelRef} style={{ height: 1, marginTop: 40 }} />}
 
-                {/* Indicador de carga */}
-                {hasMore && (
-                  <div style={{ textAlign: 'center', padding: '32px 0', opacity: 0.4 }}>
-                    <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)' }}>
-                      Cargando más…
-                    </span>
-                  </div>
+                    {hasMore && (
+                      <div style={{ textAlign: 'center', padding: '32px 0', opacity: 0.4 }}>
+                        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--gold)' }}>
+                          Cargando más…
+                        </span>
+                      </div>
+                    )}
+                  </>
                 )}
-              </>
-            )}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <Footer />
 
-      {/* Backdrop — CSS transition en lugar de framer-motion */}
+      {/* Backdrop drawer (mobile) */}
       <div
         onClick={() => setDrawerOpen(false)}
         style={{
@@ -647,7 +833,7 @@ export default function Tienda() {
         }}
       />
 
-      {/* Drawer de filtros — CSS transition en lugar de framer-motion */}
+      {/* Drawer de filtros (mobile) */}
       <div
         style={{
           position: 'fixed', top: 0, left: 0, bottom: 0,

@@ -8,12 +8,13 @@ npm run build  # sync Sanity → local + sitemap + vite build
 ```
 
 ## Arquitectura general
-- `App.jsx` — `CartProvider` > `ErrorBoundary` > `AppShell` (AnnouncementBar + Header + GlobalSidebar + Routes)
+- `App.jsx` — `CartProvider` > `ErrorBoundary` > `AppShell` (AnnouncementBar + Header + GlobalSidebar + Routes + BottomNav)
 - `AnnouncementBar.jsx` — barra dorada fija encima del header (z-index 41). Gestiona también el bottom sheet pop-up en móvil (<768px). Ambos usan `sessionStorage` para mostrarse solo una vez por sesión. Ajusta `--bar-h` en `:root` para bajar el header.
 - `GlobalSidebar.jsx` — links por género y tipo (solo ≥1024px, oculto en móvil)
-- `Header.jsx` — logo, CartButton, search autocomplete, menú móvil (sidebar deslizante 290px desde la izquierda). Usa `top: var(--bar-h, 0px)` para ceder espacio al AnnouncementBar.
+- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito a la derecha (ocultos en móvil vía `visibility: hidden`). Sidebar deslizante 290px con nav italic 22px y utilidades al fondo. Escucha evento `kiki:open-search` para abrir el buscador desde BottomNav.
+- `BottomNav.jsx` — barra fija inferior en móvil (≤1023px): Inicio · Tienda · Buscar · Carrito. Buscar dispara `kiki:open-search`. WhatsAppFab flota en `bottom: calc(60px + safe-area + 16px)`.
 - `Hero.jsx` — carrusel: 1 video (`/hero.webm`) + 5 imágenes, crossfade CSS, `<picture>` desktop/mobile
-- `Tienda.jsx` — grid de productos, lee `?genero=` y `?q=` de URL, filtros por marca y categoría en drawer. **Sin paginación** — muestra todos los productos filtrados de una vez.
+- `Tienda.jsx` — **Desktop**: layout grid `220px sidebar | 1fr main`. Sidebar fijo sticky con acordeones (Género, Categoría, Concentración, Por ocasión, Marca) + barra superior con conteo y select Ordenar. **Mobile**: barra `Filtrar | Ordenar` (reemplaza chips) + drawer con Género incluido. Sin paginación — infinite scroll.
 - `ProductDetail.jsx` — detalle de producto con pirámide de notas olfativas, acordes y cuando usar
 
 ## Datos de productos
@@ -107,7 +108,7 @@ El `npm run build` corre `sync-from-sanity.mjs` que descarga todos los productos
 - WhatsApp `?ref=` tracking en todos los links WA: `ref=detalle_{id}`, `ref=carrito`, `ref=fab_general`, `ref=fab_detalle_{id}`, `ref=fab_dia_del_padre`, `ref=dia_del_padre`
 
 ## Performance
-- FOUC eliminado: `<style>html,body{background:#0A0A0A;color:#F7F2EA}</style>` inline en `index.html`
+- FOUC eliminado: `<style>html,body{background:#EAE0CC;color:#1A1208}</style>` inline en `index.html` (warm/light por defecto). Script anti-FOUC usa `localStorage.getItem('kiki-theme-v2')` — si es `'dark'` aplica colores oscuros, si no aplica `data-theme="warm"`.
 - Todas las imágenes en WebP (quality 82)
 
 ## WhatsAppFab
@@ -177,13 +178,15 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Filtros Tienda
 - URL params: `?genero=Masculino|Femenino|Unisex|Niño` y `?tipo=arabes|disenador|nicho`
-- Drawer "Filtrar": marcas + Categoría (Árabes/Nicho/Diseñador)
-- GlobalSidebar (≥1024px): género + tipo
+- **Desktop (≥1024px):** sidebar sticky 220px con acordeones: Género (DDP button + radio), Categoría, Concentración, Por ocasión, Marca. Topbar con conteo + select Ordenar.
+- **Mobile:** barra `Filtrar | Ordenar` (transparent select overlay). Drawer con Género incluido (radio DDP + opciones).
 - **Productos 200ml:** se excluyen del grid si tienen `variantIds`. Filtro: `p.ml !== 200 || !p.variantIds`.
 
 ## VitrinaCard
-- Prop `ribbon` — cinta diagonal dorada en esquina superior derecha. Cuando hay ribbon, la familia olfativa se oculta.
+- Display oscuro simplificado: gradiente sólido `#161210 → #0A0806`, overlay reducido (22% alto, 0.28 opacidad). Sin esquinas de marco editorial ni N° numeración.
+- Prop `ribbon` — cinta diagonal dorada en esquina superior derecha (180×180px overflow hidden, `rotate(45deg)`). Cuando hay ribbon, la familia olfativa se oculta.
 - Prop `badge` — etiqueta en esquina inferior-izquierda. **Oculta en ≤768px**.
+- Heart button: `rgba(10,8,4,0.72)` base con color `rgba(247,242,234,0.80)` — visible sobre ribbon dorado.
 - "Original Verificado" en ProductDetail: `bottom: 16px; left: 16px` con fondo `rgba(8,5,2,0.78)`.
 
 ## Campaña Día del Padre 2026
@@ -212,7 +215,7 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Tema
 - `src/context/ThemeContext.jsx` — `{ theme, toggleTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`).
-- Persiste en `localStorage` clave `kiki-theme`. Default: preferencia del sistema.
+- Persiste en `localStorage` clave **`kiki-theme-v2`** (v2 forzó reset de sesiones que tenían el tema oscuro guardado). Default: `'warm'` (no sigue preferencia del sistema).
 - Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`.
 
 ## BrandStory

@@ -48,8 +48,8 @@ export default function WhatsAppFab() {
       aria-label="Consultar por WhatsApp"
       style={{
         position: 'fixed',
-        bottom: 24,
-        right: 24,
+        bottom: 'calc(60px + env(safe-area-inset-bottom) + 16px)',
+        right: 20,
         zIndex: 200,
         width: 56,
         height: 56,

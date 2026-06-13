@@ -167,6 +167,12 @@ export default function Header() {
   }, [searchOpen])
 
   useEffect(() => {
+    const handler = () => setSearchOpen(true)
+    window.addEventListener('kiki:open-search', handler)
+    return () => window.removeEventListener('kiki:open-search', handler)
+  }, [])
+
+  useEffect(() => {
     setActiveSuggestion(-1)
   }, [searchQuery])
 
@@ -221,103 +227,87 @@ export default function Header() {
     <>
       <header className={`kiki-header${scrolled ? ' scrolled' : ''}`}>
         <div className="header-inner">
-          <Link to="/" className="kiki-logo">
-            <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
-          </Link>
-
-          <nav className="kiki-desktop-nav">
-            <div className="nav-pill">
-              {NAV_LINKS.map(link => {
-                const isActive = link.type === 'route' && location.pathname === link.to
-                const style = isActive ? { color: '#C9A84C', background: 'rgba(201,168,76,.1)' } : {}
-                if (link.type === 'route')
-                  return <Link key={link.label} to={link.to} className="nav-pill-item" style={style}>{link.label}</Link>
-                if (link.type === 'external')
-                  return <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" className="nav-pill-item">{link.label}</a>
-                return <a key={link.label} href={link.to} className="nav-pill-item">{link.label}</a>
-              })}
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <button
-                onClick={() => setSearchOpen(true)}
-                aria-label="Buscar"
-                className="header-icon-btn"
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center',
-                  justifyContent: 'center', padding: 12, minWidth: 44, minHeight: 44,
-                  transition: 'color .2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
-                onMouseLeave={e => e.currentTarget.style.color = ''}
-              >
-                <SearchIcon />
-              </button>
-
-              {/* Switcher de moneda — desktop */}
+          {/* LEFT — mobile: hamburger | desktop: currency + theme */}
+          <div className="header-util-left">
+            <button className="hamburger-btn header-desktop-hide" onClick={() => setMenuOpen(v => !v)}
+              aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
+              {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
+            </button>
+            <span className="header-mobile-hide">
               <div style={{ display: 'flex', alignItems: 'center', borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.35)' }}>
                 {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => {
                   const active = currency === val
                   return (
-                    <button
-                      key={val}
-                      onClick={() => setCurrency(val)}
+                    <button key={val} onClick={() => setCurrency(val)}
                       title={val === 'usd' ? 'Ver precios en divisa' : 'Ver precios en bolívares'}
                       style={{
-                        fontFamily: "'KikiGotham', sans-serif",
-                        fontSize: 10, letterSpacing: '0.1em',
-                        padding: '0 10px', minHeight: 44, cursor: 'pointer', border: 'none',
+                        fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.1em',
+                        padding: '0 10px', minHeight: 36, cursor: 'pointer', border: 'none',
                         background: active ? '#C9A84C' : 'transparent',
                         color: active ? '#0A0A0A' : 'var(--ink-mute)',
-                        transition: 'background 0.18s, color 0.18s',
-                        lineHeight: 1,
+                        transition: 'background 0.18s, color 0.18s', lineHeight: 1,
                       }}
-                    >
-                      {label}
-                    </button>
+                    >{label}</button>
                   )
                 })}
               </div>
-
-              <button
-                onClick={toggle}
-                className="theme-toggle-btn"
-                aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-                title={theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
-              >
-                {theme === 'dark' ? '☀' : '☾'}
-              </button>
-              <WishlistButton />
-              <CartButton />
-            </div>
-          </nav>
-
-          <div className="kiki-mobile-controls">
-            <button
-              onClick={() => setSearchOpen(true)}
-              aria-label="Buscar"
-              className="header-icon-btn"
-              style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                display: 'flex', alignItems: 'center',
-                padding: 4, minWidth: 36, minHeight: 36, justifyContent: 'center',
-                transition: 'color .2s',
-              }}
-            >
-              <SearchIcon />
-            </button>
-            <span className="header-mobile-hide">
-              <button onClick={toggle} className="theme-toggle-btn" aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
+              <button onClick={toggle} className="theme-toggle-btn"
+                aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
                 {theme === 'dark' ? '☀' : '☾'}
               </button>
             </span>
+          </div>
+
+          {/* CENTER — logo */}
+          <Link to="/" className="kiki-logo">
+            <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
+          </Link>
+
+          {/* RIGHT — search + wishlist (desktop) + cart */}
+          <div className="header-util-right">
+            <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn"
+              style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, minWidth: 44, minHeight: 44, transition: 'color .2s' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+              onMouseLeave={e => e.currentTarget.style.color = ''}
+            >
+              <SearchIcon />
+            </button>
             <span className="header-mobile-hide"><WishlistButton /></span>
             <CartButton />
-            <button className="hamburger-btn" onClick={() => setMenuOpen(v => !v)} aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} aria-expanded={menuOpen}>
-              {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
-            </button>
           </div>
         </div>
+
+        {/* NAV HORIZONTAL — desktop only */}
+        {(() => {
+          const sp = new URLSearchParams(location.search)
+          const g = sp.get('genero'); const t = sp.get('tipo'); const ddp = sp.get('ddp') === '1'
+          const isPath = (p) => location.pathname === p
+          return (
+            <nav className="header-cat-nav">
+              {[
+                { label: 'Hombre',    href: '/tienda?genero=Masculino', active: g === 'Masculino' && !ddp },
+                { label: 'Mujer',     href: '/tienda?genero=Femenino',  active: g === 'Femenino'  && !ddp },
+                { label: 'Unisex',    href: '/tienda?genero=Unisex',    active: g === 'Unisex'    && !ddp },
+                { label: 'Kids',      href: '/tienda?genero=Niño',      active: g === 'Niño'      && !ddp },
+              ].map(l => (
+                <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
+              ))}
+              <span className="header-cat-sep" />
+              {[
+                { label: 'Árabes',    href: '/tienda?tipo=arabes',    active: t === 'arabes'    },
+                { label: 'Diseñador', href: '/tienda?tipo=disenador', active: t === 'disenador' },
+                { label: 'Nicho',     href: '/tienda?tipo=nicho',     active: t === 'nicho'     },
+              ].map(l => (
+                <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
+              ))}
+              <span className="header-cat-sep" />
+              <a href="/#nosotros" className={`header-cat-link${isPath('/') ? ' active' : ''}`}>Nosotros</a>
+              <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="header-cat-link">Instagram</a>
+              <Link to="/tienda?ddp=1" className={`header-cat-link header-cat-ddp${ddp ? ' active' : ''}`}>🎁 Día del Padre</Link>
+            </nav>
+          )
+        })()}
+
       </header>
 
       {/* Backdrop */}
@@ -331,130 +321,61 @@ export default function Header() {
       <div className={`kiki-mobile-menu${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
         <div className="mobile-menu-header">
           <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
-          <button onClick={() => setMenuOpen(false)} style={{ color: 'var(--ink-mute)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 8 }}>
+          <button onClick={() => setMenuOpen(false)} className="mobile-menu-close">
             <CloseIcon />
           </button>
         </div>
 
         <nav className="kiki-mobile-nav">
-
-          {/* Campaña DDP */}
-          <Link to="/tienda?ddp=1" className="mobile-nav-link" style={{ transitionDelay: '60ms', color: 'var(--gold)' }}>
+          <Link to="/tienda?ddp=1" className="mobile-nav-link mobile-nav-ddp" style={{ transitionDelay: '40ms' }}>
             Día del Padre
           </Link>
 
-          {/* Géneros sin título */}
           {[
-            { key: null,        label: 'Todas'  },
             { key: 'Masculino', label: 'Hombre' },
             { key: 'Femenino',  label: 'Mujer'  },
             { key: 'Unisex',    label: 'Unisex' },
             { key: 'Niño',      label: 'Kids'   },
           ].map((l, i) => (
-            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 100}ms` }}>
+            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 80}ms` }}>
               {l.label}
             </Link>
           ))}
 
-          {/* Divisor */}
-          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'var(--line)', flexShrink: 0 }} />
+          <div className="mobile-nav-divider" />
 
-          {/* Sección: Tipo */}
-          <div style={{ padding: '8px 24px 8px', width: '100%' }}>
-            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
-              Tipo
-            </span>
-          </div>
           {[
             { key: 'arabes',    label: 'Árabes'    },
             { key: 'disenador', label: 'Diseñador' },
             { key: 'nicho',     label: 'Nicho'     },
           ].map((l, i) => (
-            <Link key={l.key} to={tipoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 280}ms` }}>
+            <Link key={l.key} to={tipoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 260}ms` }}>
               {l.label}
             </Link>
           ))}
 
-          {/* Divisor */}
-          <div style={{ width: 'calc(100% - 48px)', margin: '12px 24px', height: 1, background: 'var(--line)', flexShrink: 0 }} />
+          <div className="mobile-nav-divider" />
 
-          {/* Sección: Navegación general */}
-          <div style={{ padding: '8px 24px 8px', width: '100%' }}>
-            <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)' }}>
-              Menú
-            </span>
-          </div>
-          {NAV_LINKS.map((link, i) => {
-            const delay = i * 40 + 440
-            const linkProps = { className: 'mobile-nav-link', style: { transitionDelay: `${delay}ms` } }
-            if (link.type === 'route')
-              return <Link key={link.label} to={link.to} {...linkProps}>{link.label}</Link>
-            if (link.type === 'external')
-              return <a key={link.label} href={link.to} target="_blank" rel="noopener noreferrer" {...linkProps}>{link.label}</a>
-            return <a key={link.label} href={link.to} {...linkProps}>{link.label}</a>
-          })}
-
+          <a href="/#nosotros" className="mobile-nav-link" style={{ transitionDelay: '380ms' }}>Nosotros</a>
+          <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" style={{ transitionDelay: '420ms' }}>Instagram</a>
         </nav>
 
-        {/* Wishlist + Tema — acciones rápidas en el menú */}
-        <div style={{ display: 'flex', gap: 12, padding: '0 24px 4px', width: '100%' }}>
-          <button
-            onClick={() => { openWishlist(true); setMenuOpen(false) }}
-            style={{
-              flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: 'var(--ink-mute)', background: 'none', border: '1px solid var(--line)',
-              padding: '10px 0', cursor: 'pointer',
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-            </svg>
-            Deseos {wishlistIds.length > 0 && `(${wishlistIds.length})`}
+        {/* Utilidades al fondo — compactas */}
+        <div className="mobile-menu-utils">
+          <button onClick={() => { openWishlist(true); setMenuOpen(false) }} className="mobile-util-link">
+            ♡ Deseos{wishlistIds.length > 0 ? ` (${wishlistIds.length})` : ''}
           </button>
-          <button
-            onClick={toggle}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              fontFamily: 'var(--font-s)', fontSize: 10, letterSpacing: '0.14em', textTransform: 'uppercase',
-              color: 'var(--ink-mute)', background: 'none', border: '1px solid var(--line)',
-              padding: '10px 16px', cursor: 'pointer',
-            }}
-            aria-label="Cambiar tema"
-          >
-            {theme === 'dark' ? '☀ Claro' : '☾ Oscuro'}
+          <button onClick={toggle} className="mobile-util-link">
+            {theme === 'dark' ? '☀ Modo claro' : '☾ Modo oscuro'}
           </button>
-        </div>
-
-        {/* Switcher de moneda — móvil */}
-        <div style={{ padding: '16px 24px 8px', width: '100%' }}>
-          <span style={{ fontFamily: 'var(--font-s)', fontSize: 9, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--gold-ink)', display: 'block', marginBottom: 10 }}>
-            Moneda
-          </span>
-          <div style={{ display: 'flex', gap: 0, border: '1px solid rgba(201,168,76,0.35)', alignSelf: 'flex-start', width: 'fit-content', borderRadius: 2, overflow: 'hidden' }}>
-            {[{ val: 'usd', label: 'REF Divisa' }, { val: 'bs', label: 'Bs. Bolívares' }].map(({ val, label }) => {
-              const active = currency === val
-              return (
-                <button
-                  key={val}
-                  onClick={() => setCurrency(val)}
-                  style={{
-                    fontFamily: "'KikiGotham', sans-serif",
-                    fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase',
-                    padding: '8px 16px', cursor: 'pointer', border: 'none',
-                    background: active ? '#C9A84C' : 'transparent',
-                    color: active ? '#0A0A0A' : 'var(--ink-mute)',
-                    transition: 'background 0.18s, color 0.18s',
-                  }}
-                >
-                  {label}
-                </button>
-              )
-            })}
+          <div className="mobile-currency-row">
+            {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => (
+              <button key={val} onClick={() => setCurrency(val)} className={`mobile-currency-btn${currency === val ? ' active' : ''}`}>
+                {label}
+              </button>
+            ))}
           </div>
         </div>
-
-        <p className="mobile-footer-label">KiKi Fragancia · Venezuela</p>
       </div>
 
       {/* Search overlay */}
