@@ -5378,6 +5378,68 @@
 }
 
 /* ══════════════════════════════════════════
+   PRICE RANGE SLIDER
+══════════════════════════════════════════ */
+.price-slider-track-wrap {
+  position: relative;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin: 0 6px;
+}
+
+.price-slider-track {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--line2);
+}
+
+.price-slider-fill {
+  position: absolute;
+  height: 1px;
+  background: var(--gold);
+}
+
+.price-slider-input {
+  position: absolute;
+  left: -6px; right: -6px;
+  width: calc(100% + 12px);
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  pointer-events: none;
+  margin: 0;
+  height: 20px;
+}
+
+.price-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--gold);
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.price-slider-input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--gold);
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.price-slider-input::-webkit-slider-runnable-track { background: transparent; }
+.price-slider-input::-moz-range-track { background: transparent; }
+
+/* ══════════════════════════════════════════
    SEARCH OVERLAY
 ══════════════════════════════════════════ */
 @keyframes kiki-search-fade {

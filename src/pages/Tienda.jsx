@@ -149,8 +149,39 @@ function SidebarSection({ title, open, onToggle, children }) {
   )
 }
 
-function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool }) {
-  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, marca: false, ocasion: false })
+function PriceRangeSlider({ min, max, value, onChange, step = 5 }) {
+  const [lo, hi] = value
+  const pct = v => ((v - min) / (max - min)) * 100
+
+  return (
+    <div style={{ paddingBottom: 4 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: "'KikiGotham', sans-serif", fontSize: 11, letterSpacing: '0.04em', color: 'var(--ink-mute)', marginBottom: 14 }}>
+        <span>${lo}</span>
+        <span>${hi}{hi >= max ? '+' : ''}</span>
+      </div>
+      <div className="price-slider-track-wrap">
+        <div className="price-slider-track" />
+        <div
+          className="price-slider-fill"
+          style={{ left: `${pct(lo)}%`, right: `${100 - pct(hi)}%` }}
+        />
+        <input
+          type="range" min={min} max={max} step={step} value={lo}
+          className="price-slider-input"
+          onChange={e => onChange([Math.min(Number(e.target.value), hi - step), hi])}
+        />
+        <input
+          type="range" min={min} max={max} step={step} value={hi}
+          className="price-slider-input"
+          onChange={e => onChange([lo, Math.max(Number(e.target.value), lo + step)])}
+        />
+      </div>
+    </div>
+  )
+}
+
+function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds }) {
+  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false })
   const toggle = k => setOpen(s => ({ ...s, [k]: !s[k] }))
 
   const marcas = useMemo(() => [...new Set(basePool.map(p => p.house))].sort(), [basePool])
@@ -278,6 +309,17 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
         </select>
       </SidebarSection>
 
+      {/* Precio */}
+      {priceBounds[0] < priceBounds[1] && (
+        <SidebarSection title="Precio" open={open.precio} onToggle={() => toggle('precio')}>
+          <PriceRangeSlider
+            min={priceBounds[0]} max={priceBounds[1]}
+            value={priceRange}
+            onChange={setPriceRange}
+          />
+        </SidebarSection>
+      )}
+
       {/* Marca */}
       <SidebarSection title="Marca" open={open.marca} onToggle={() => toggle('marca')}>
         {marcas.map(m => (
@@ -294,7 +336,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
   )
 }
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion, priceRange, setPriceRange, priceBounds }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -492,6 +534,17 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         ))}
       </div>
 
+      {priceBounds[0] < priceBounds[1] && (
+        <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
+          {sectionLabel('Precio')}
+          <PriceRangeSlider
+            min={priceBounds[0]} max={priceBounds[1]}
+            value={priceRange}
+            onChange={setPriceRange}
+          />
+        </div>
+      )}
+
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
@@ -537,6 +590,7 @@ export default function Tienda() {
   const [selectedTipos, setSelectedTipos]   = useState([])
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
+  const [priceRange, setPriceRange]   = useState([0, 9999])
   const [searchFocused, setSearchFocused] = useState(false)
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const topRef    = useRef(null)
@@ -556,13 +610,25 @@ export default function Tienda() {
   useEffect(() => {
     setSelectedMarcas([])
     setSelectedTipos([])
+    setPriceRange([0, 9999])
   }, [urlGenero, urlTipo])
 
   const toggleMarca = v => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
-  const toggleTipo  = v => setSelectedTipos(p  => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
+  const toggleTipo  = v => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v]))
 
-  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured'
-  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]) }
+  const priceBounds = useMemo(() => {
+    const prices = basePool.map(p => p.precioUSD).filter(v => v > 0)
+    if (!prices.length) return [0, 200]
+    return [Math.floor(Math.min(...prices) / 5) * 5, Math.ceil(Math.max(...prices) / 5) * 5]
+  }, [basePool])
+
+  useEffect(() => {
+    setPriceRange(priceBounds)
+  }, [priceBounds[0], priceBounds[1]])
+
+  const isPriceFiltered = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1]
+  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered
+  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setPriceRange(priceBounds) }
   const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0) + (urlColeccion ? 1 : 0)
 
   const basePool = useMemo(() => {
@@ -578,6 +644,7 @@ export default function Tienda() {
     let result = [...basePool]
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
+    if (isPriceFiltered) result = result.filter(p => (p.precioUSD || 0) >= priceRange[0] && (p.precioUSD || 0) <= priceRange[1])
     if (searchQuery.trim()) {
       const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
       result = result.filter(p => productMatchesQuery(terms, [
@@ -625,8 +692,8 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion }
-  const sidebarProps = { urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion, priceRange, setPriceRange, priceBounds }
+  const sidebarProps = { urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
