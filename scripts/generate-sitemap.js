@@ -5,7 +5,10 @@ import { products } from '../src/data/products-enriched.js'
 import { norm } from '../src/lib/search.js'
 
 function toSlug(house, name, ml) {
-  const base = norm(`${house} ${name}`)
+  const displayName = name.toLowerCase().startsWith(house.toLowerCase() + ' ')
+    ? name.slice(house.length + 1)
+    : name
+  const base = norm(`${house} ${displayName}`)
     .replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-')
   return ml ? `${base}-${ml}ml` : base
 }

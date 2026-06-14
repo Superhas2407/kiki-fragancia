@@ -1174,7 +1174,10 @@ export default function ProductDetail() {
     setTimeout(() => setAdded(false), 1800)
   }
 
-  const metaTitle = `${product.house} ${product.name} ${product.ml}ml — KiKi Fragancia`
+  const pdCleanName = product.name.toLowerCase().startsWith(product.house.toLowerCase() + ' ')
+    ? product.name.slice(product.house.length + 1)
+    : product.name
+  const metaTitle = `${product.house} ${pdCleanName}${product.ml ? ' ' + product.ml + 'ml' : ''} — KiKi Fragancia`
   const metaDesc = descripcion
     ? descripcion.slice(0, 155).replace(/\s\S+$/, '…')
     : `${product.house} ${product.name} ${product.ml}ml ${product.tipo}. Fragancia 100% original en Venezuela.`
