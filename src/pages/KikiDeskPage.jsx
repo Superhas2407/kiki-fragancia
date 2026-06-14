@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { setTasaManual, clearTasaManual, getTasaManualInfo } from '../hooks/useTasaCambio'
+import { useState, useEffect } from 'react'
+import { setTasaSanity, clearTasaSanity, getTasaSanityCache } from '../hooks/useTasaCambio'
+import { sanityClient } from '../lib/sanityClient'
 
 function fmt(ts) {
   if (!ts) return '—'
@@ -8,28 +9,53 @@ function fmt(ts) {
 
 export default function KikiDeskPage() {
   const [input, setInput]   = useState('')
-  const [info, setInfo]     = useState(() => getTasaManualInfo())
+  const [info, setInfo]     = useState(() => getTasaSanityCache())
+  const [saving, setSaving] = useState(false)
   const [msg, setMsg]       = useState(null)
+
+  // Fetch live value from Sanity on mount
+  useEffect(() => {
+    sanityClient.fetch(`*[_id == "kiki-ajustes"][0]{ tasaManual, updatedAt }`)
+      .then(doc => {
+        if (doc?.tasaManual > 0) setInfo({ rate: doc.tasaManual, ts: new Date(doc.updatedAt).getTime() })
+        else setInfo(null)
+      })
+      .catch(() => {})
+  }, [])
 
   function flash(text, ok = true) {
     setMsg({ text, ok })
-    setTimeout(() => setMsg(null), 3000)
+    setTimeout(() => setMsg(null), 3500)
   }
 
-  function handleSet(e) {
+  async function handleSet(e) {
     e.preventDefault()
     const val = parseFloat(input.replace(',', '.'))
     if (!val || val <= 0) { flash('Ingresa un número válido', false); return }
-    setTasaManual(val)
-    setInfo(getTasaManualInfo())
-    setInput('')
-    flash(`Tasa manual guardada: ${val.toLocaleString('es-VE')} Bs/$`)
+    setSaving(true)
+    try {
+      await setTasaSanity(val)
+      setInfo({ rate: val, ts: Date.now() })
+      setInput('')
+      flash(`Tasa guardada: ${val.toLocaleString('es-VE')} Bs/$ — visible para todos`)
+    } catch {
+      flash('Error al guardar en Sanity. Revisa el token de escritura.', false)
+    } finally {
+      setSaving(false)
+    }
   }
 
-  function handleClear() {
-    clearTasaManual()
-    setInfo(null)
-    flash('Tasa manual eliminada — usando API', true)
+  async function handleClear() {
+    setSaving(true)
+    try {
+      await clearTasaSanity()
+      setInfo(null)
+      flash('Tasa eliminada — todos verán la API automática', true)
+    } catch {
+      flash('Error al limpiar en Sanity.', false)
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -45,7 +71,7 @@ export default function KikiDeskPage() {
               <div>
                 <p style={styles.statusLabel}>Tasa manual activa</p>
                 <p style={styles.statusValue}>{info.rate.toLocaleString('es-VE')} <span style={styles.unit}>Bs/$</span></p>
-                <p style={styles.statusMeta}>Guardada el {fmt(info.ts)}</p>
+                <p style={styles.statusMeta}>Guardada el {fmt(info.ts)} · Sanity · visible para todos</p>
               </div>
             </>
           ) : (
@@ -71,12 +97,14 @@ export default function KikiDeskPage() {
               style={styles.input}
               autoComplete="off"
             />
-            <button type="submit" style={styles.btnPrimary}>Guardar</button>
+            <button type="submit" style={styles.btnPrimary} disabled={saving}>
+              {saving ? '…' : 'Guardar'}
+            </button>
           </div>
         </form>
 
         {info && (
-          <button onClick={handleClear} style={styles.btnGhost}>
+          <button onClick={handleClear} style={styles.btnGhost} disabled={saving}>
             Volver a usar API automática
           </button>
         )}
