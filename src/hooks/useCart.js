@@ -16,10 +16,10 @@ export function useCart() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)) } catch {}
   }, [items])
 
-  const addItem = (product) => setItems(prev => {
+  const addItem = (product, qty = 1) => setItems(prev => {
     const found = prev.find(i => i.id === product.id)
-    if (found) return prev.map(i => i.id === product.id ? { ...i, quantity: i.quantity + 1 } : i)
-    return [...prev, { ...product, quantity: 1 }]
+    if (found) return prev.map(i => i.id === product.id ? { ...i, quantity: i.quantity + qty } : i)
+    return [...prev, { ...product, quantity: qty }]
   })
 
   const removeItem = (id) => setItems(prev => prev.filter(i => i.id !== id))

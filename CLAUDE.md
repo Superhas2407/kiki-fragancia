@@ -3,8 +3,9 @@
 Sitio web de tienda de perfumería de lujo. React + Vite. Dominio: **kikifragancia.com**
 
 ## Comandos
+```
 npm run dev    # servidor de desarrollo
-npm run build  # sync Sanity → local + sitemap + vite build
+npm run build  # sync Sanity → local + sitemap + vite build + generate-product-pages
 ```
 
 ## Arquitectura general
@@ -103,9 +104,10 @@ El `npm run build` corre `sync-from-sanity.mjs` que descarga todos los productos
 - `react-helmet-async` — `HelmetProvider` en `App.jsx` envuelve toda la app
 - `ProductDetail` tiene `<Helmet>` con `<title>`, `<meta description>`, canonical, OG tags, y JSON-LD `schema.org/Product`
 - `DiaDeLPadrePage` tiene `<Helmet>` con meta/OG propios de campaña
-- `scripts/generate-sitemap.js` — genera `public/sitemap.xml` con todas las URLs en cada `npm run build`
+- `scripts/generate-sitemap.js` — genera `public/sitemap.xml` con todas las URLs (slugs) en cada `npm run build`
 - `public/robots.txt` → `Sitemap: https://kikifragancia.com/sitemap.xml`
 - WhatsApp `?ref=` tracking en todos los links WA: `ref=detalle_{id}`, `ref=carrito`, `ref=fab_general`, `ref=fab_detalle_{id}`, `ref=fab_dia_del_padre`, `ref=dia_del_padre`
+- **OG tags estáticos para bots (Telegram, WhatsApp, Twitter):** `scripts/generate-product-pages.mjs` corre al final del build y genera `dist/tienda/[slug]/index.html` por cada producto con los meta tags correctos. Bots reciben HTML estático con OG tags; humanos reciben el mismo HTML → React SPA carga normalmente. Vercel sirve archivos estáticos primero (`{ "handle": "filesystem" }` en `vercel.json`).
 
 ## Performance
 - FOUC eliminado: `<style>html,body{background:#EAE0CC;color:#1A1208}</style>` inline en `index.html` (warm/light por defecto). Script anti-FOUC usa `localStorage.getItem('kiki-theme-v2')` — si es `'dark'` aplica colores oscuros, si no aplica `data-theme="warm"`.
@@ -167,9 +169,13 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
   - `norm(s)` — normaliza tildes (NFD + strip diacríticos) y pone en minúsculas. "cítrico" = "citrico".
   - `productMatchesQuery(terms, searchFields)` — todos los términos deben matchear algún campo (AND).
   - Fuzzy con Levenshtein: tolerancia 0 (≤3 chars), 1 (4-5 chars), 2 (≥6 chars).
-- **Header autocomplete:** min 2 chars, max 6 resultados. Campos: `name`, `house`, `familia`, `acordes`, **notas olfativas** (`notes-lookup.js`). Excluye 200ml con variantes.
+- **Header autocomplete:** min 2 chars, max 12 resultados. Campos: `name`, `house`, `familia`, `acordes`, **notas olfativas** (`notes-lookup.js`). Excluye 200ml con variantes.
 - **Tienda:** mismos campos + notas. Todos normalizados con `norm()`.
 - ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado.
+- **Overlay estilo panel** (no full-screen): `.kiki-search-backdrop` (fondo oscuro 30%, `z-index 299`) + `.kiki-search-overlay` (`position: fixed; top: 0; left: 0; right: 0; max-height: 82vh; z-index 300`). Clic en backdrop cierra.
+- **Productos en fila horizontal:** `.kiki-search-grid` es `display: flex; overflow-x: auto; scroll-snap-type: x mandatory`. Cards con `flex: 0 0 130px` (mobile) / `180px` (≥768px). Imágenes con `aspect-ratio: 1/1; object-fit: cover`.
+- **Labels de sección:** "Tendencias" y "Destacados" — dorados itálicos con línea dorada `::after`.
+- **Navegación:** usa slugs — `navigate(\`/tienda/${toSlug(p.house, p.name, p.ml)}\`)`.
 
 ## Menú móvil
 - Sidebar deslizante desde la izquierda (290px), backdrop oscuro
@@ -178,9 +184,19 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Filtros Tienda
 - URL params: `?genero=Masculino|Femenino|Unisex|Niño` y `?tipo=arabes|disenador|nicho`
-- **Desktop (≥1024px):** sidebar sticky 220px con acordeones: Género (DDP button + radio), Categoría, Concentración, Por ocasión, Marca. Topbar con conteo + select Ordenar.
-- **Mobile:** barra `Filtrar | Ordenar` (transparent select overlay). Drawer con Género incluido (radio DDP + opciones).
+- **Desktop (≥1024px):** sidebar sticky 220px con acordeones: Género (DDP button + radio), **Precio**, Categoría, Concentración, Por ocasión, Marca. Topbar con conteo + select Ordenar.
+- **Mobile:** barra `Filtrar | Ordenar` (transparent select overlay). Drawer con Género incluido (radio DDP + opciones) + **Precio**.
+- **Barra de precio dual:** `PriceRangeSlider` — dos `<input type="range">` superpuestos sobre un track div. El relleno dorado (`.price-slider-fill`) se ajusta con `left: pct(lo)%` y `right: (100-pct(hi))%`. `priceBounds` se deriva de `basePool` vía `useMemo`; **CRÍTICO: `basePool` debe declararse antes que `priceBounds`** (temporal dead zone). `useEffect` sincroniza `priceRange` cuando `priceBounds` cambian.
 - **Productos 200ml:** se excluyen del grid si tienen `variantIds`. Filtro: `p.ml !== 200 || !p.variantIds`.
+
+## Slugs / URLs de productos
+- `src/lib/slugs.js` — `toSlug(house, name, ml)`:
+  - Usa `norm()` de `search.js` para quitar tildes y bajar a minúsculas
+  - **Deduplicación:** si `name` ya empieza con `house` (ej: house="Afnan", name="Afnan 9 PM"), recorta el prefijo para evitar `afnan-afnan-9-pm`
+  - Formato resultante: `afnan-9-pm-100ml`, `al-haramain-amber-oud-100ml`
+- **Rutas:** `/tienda/[slug]` — `VitrinaCard`, `Header` y variantes en `ProductDetail` navegan con slug
+- **Lookup en ProductDetail:** acepta slug o ID numérico (legacy). Si el param `id` no es numérico, busca por `toSlug(p.house, p.name, p.ml) === id`. Resuelve `canonicalUrl` al slug limpio.
+- **Sitemap y OG pages:** ambos scripts usan la misma lógica `toSlug` (copiada inline en los scripts ESM)
 
 ## VitrinaCard
 - Display oscuro simplificado: gradiente sólido `#161210 → #0A0806`, overlay reducido (22% alto, 0.28 opacidad). Sin esquinas de marco editorial ni N° numeración.
@@ -231,7 +247,8 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 | `scripts/generate-notes-lookup.mjs` | Regenera notes-lookup.js desde products-enriched.js local (sin Sanity). |
 | `scripts/convert-to-webp.mjs` | Convierte jpg/png → webp con `.rotate()` EXIF. Requiere `sharp`. |
 | `scripts/add-new-products.mjs` | Agrega nuevos perfumes al catálogo local. |
-| `scripts/generate-sitemap.js` | Corre automáticamente en cada `npm run build`. |
+| `scripts/generate-sitemap.js` | Corre automáticamente en cada `npm run build`. URLs con slugs. |
+| `scripts/generate-product-pages.mjs` | Genera `dist/tienda/[slug]/index.html` por producto con OG tags correctos. Corre al final de cada `npm run build`. |
 | `scripts/sync-prices.mjs` | Sincroniza precios desde lista PDF → products-enriched.js + products-index.js. |
 | `scripts/export-prices.mjs` | Exporta todos los productos con precios a `precios.csv`. |
 | `scripts/import-prices.mjs` | Reimporta `precios.csv` editado → archivos locales. |

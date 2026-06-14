@@ -251,7 +251,7 @@ export default function Header() {
                       title={val === 'usd' ? 'Ver precios en divisa' : 'Ver precios en bolívares'}
                       style={{
                         fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.1em',
-                        padding: '0 10px', minHeight: 36, cursor: 'pointer', border: 'none',
+                        padding: '0 10px', minHeight: 44, cursor: 'pointer', border: 'none',
                         background: active ? '#C9A84C' : 'transparent',
                         color: active ? '#0A0A0A' : 'var(--ink-mute)',
                         transition: 'background 0.18s, color 0.18s', lineHeight: 1,

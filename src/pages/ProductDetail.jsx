@@ -1066,6 +1066,52 @@ const WhatsAppIcon = ({ size = 15 }) => (
   </svg>
 )
 
+function RelatedProducts({ product }) {
+  const related = useMemo(() => {
+    const excludeIds = new Set([product.id, ...(product.variantIds ?? [])])
+    const isValid = p => !excludeIds.has(p.id) && !(p.ml === 200 && p.variantIds)
+
+    const byFamilia = products.filter(p => isValid(p) && p.familia === product.familia)
+    const byHouse   = products.filter(p => isValid(p) && p.house === product.house && p.familia !== product.familia)
+
+    const pool = [...byFamilia, ...byHouse]
+    const seen = new Set()
+    const deduped = pool.filter(p => { if (seen.has(p.id)) return false; seen.add(p.id); return true })
+    return deduped.slice(0, 8)
+  }, [product.id, product.familia, product.house])
+
+  if (!related.length) return null
+
+  return (
+    <section className="pd-related">
+      <div className="pd-related-inner">
+        <h2 className="pd-related-title">También te puede gustar</h2>
+        <div className="pd-related-strip">
+          {related.map(p => {
+            const slug = toSlug(p.house, p.name, p.ml)
+            const img  = resolveProductImage(p)
+            const cleanName = p.name.toLowerCase().startsWith(p.house.toLowerCase() + ' ')
+              ? p.name.slice(p.house.length + 1) : p.name
+            return (
+              <Link key={p.id} to={`/tienda/${slug}`} className="pd-related-card">
+                <div className="pd-related-img-wrap">
+                  {img
+                    ? <img src={img} alt={p.name} className="pd-related-img" loading="lazy" />
+                    : <div className="pd-related-img-placeholder" />}
+                </div>
+                <p className="pd-related-house">{p.house}</p>
+                <p className="pd-related-name">{cleanName}{p.ml ? ` ${p.ml}ml` : ''}</p>
+                {p.familia && <p className="pd-related-familia">{p.familia}</p>}
+                {p.precioUSD > 0 && <p className="pd-related-price">${p.precioUSD}</p>}
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function ProductDetail() {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -1089,11 +1135,13 @@ export default function ProductDetail() {
   const [imgHover,     setImgHover]     = useState(false)
   const [waHover,      setWaHover]      = useState(false)
   const [descExpanded, setDescExpanded] = useState(false)
+  const [qty,          setQty]          = useState(1)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
     setMounted(false)
     setDescExpanded(false)
+    setQty(1)
     const raf = requestAnimationFrame(() => setMounted(true))
     const t2 = setTimeout(() => setBarsReady(true), 500)
     return () => { cancelAnimationFrame(raf); clearTimeout(t2) }
@@ -1169,7 +1217,7 @@ export default function ProductDetail() {
   const cuando = product._sanityWhen || CUANDO_POR_PRODUCTO[product.id] || DEFAULT_CUANDO
 
   function handleAdd() {
-    addItem(product)
+    addItem(product, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
   }
@@ -1370,6 +1418,12 @@ export default function ProductDetail() {
                 })()}
 
                 <div className="pd-actions" style={rv(380)}>
+                  <div className="pd-qty-row">
+                    <button className="pd-qty-btn" onClick={() => setQty(q => Math.max(1, q - 1))} aria-label="Restar">−</button>
+                    <span className="pd-qty-val">{qty}</span>
+                    <button className="pd-qty-btn" onClick={() => setQty(q => q + 1)} aria-label="Sumar">+</button>
+                  </div>
+
                   <button
                     onClick={handleAdd}
                     style={{
@@ -1496,7 +1550,7 @@ export default function ProductDetail() {
                     <div className="pd-acorde-track">
                       <div className="pd-acorde-bar" style={{
                         width: barsReady ? `${pct}%` : '0%',
-                        background: `linear-gradient(90deg, ${color}88, ${color})`,
+                        background: 'linear-gradient(90deg, var(--line), var(--gold-ink))',
                       }}></div>
                     </div>
                   </div>
@@ -1548,6 +1602,8 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
+
+      <RelatedProducts product={product} />
 
       <Footer />
     </>

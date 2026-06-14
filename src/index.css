@@ -1044,6 +1044,9 @@
   padding: 0 20px; height: 68px; flex-shrink: 0;
   border-bottom: 1px solid var(--line);
 }
+.mobile-menu-header .kiki-logo-img {
+  max-width: calc(100% - 52px);
+}
 .mobile-menu-close {
   color: var(--ink-mute); background: none; border: none;
   cursor: pointer; display: flex; align-items: center; padding: 8px;
@@ -1772,6 +1775,23 @@
 }
 
 .pd-actions { display: flex; flex-direction: column; gap: 10px; }
+.pd-qty-row {
+  display: flex; align-items: center; gap: 0;
+  border: 1px solid var(--line2); width: fit-content;
+}
+.pd-qty-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink); font-size: 18px; font-weight: 300;
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  transition: color .2s ease;
+}
+.pd-qty-btn:hover { color: var(--gold); }
+.pd-qty-val {
+  font-family: var(--font-s); font-size: 13px; letter-spacing: .1em;
+  min-width: 40px; text-align: center; color: var(--ink);
+  border-left: 1px solid var(--line2); border-right: 1px solid var(--line2);
+  line-height: 44px;
+}
 .pd-btn-wa {
   font-family: var(--font-s); font-size: 10px; font-weight: 300; letter-spacing: .2em;
   text-transform: uppercase; border: 1px solid var(--gold); color: var(--gold);
@@ -1964,6 +1984,101 @@
   border: none; cursor: pointer; transition: color .25s ease;
 }
 .pd-back-link:hover { color: var(--gold); }
+
+/* ── RELATED PRODUCTS ── */
+.pd-related {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  padding: 48px 0 56px;
+}
+.pd-related-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.pd-related-title {
+  font-family: var(--font-d);
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  margin: 0 0 28px;
+}
+.pd-related-strip {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.pd-related-strip::-webkit-scrollbar { display: none; }
+.pd-related-card {
+  flex: 0 0 148px;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pd-related-img-wrap {
+  aspect-ratio: 3/4;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+.pd-related-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.pd-related-card:hover .pd-related-img { transform: scale(1.04); }
+.pd-related-img-placeholder {
+  width: 100%; height: 100%;
+  background: var(--bg2);
+}
+.pd-related-house {
+  font-family: var(--font-s);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0;
+}
+.pd-related-name {
+  font-family: var(--font-d);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+}
+.pd-related-familia {
+  font-family: var(--font-s);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0;
+}
+.pd-related-price {
+  font-family: var(--font-s);
+  font-size: 11px;
+  color: var(--ink-mute);
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .pd-related-card { flex: 0 0 180px; }
+}
 
 /* â”€â”€ FOOTER â”€â”€ */
 .kiki-footer { background: var(--bg); position: relative; overflow: hidden; }
