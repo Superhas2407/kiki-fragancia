@@ -123,6 +123,7 @@ export default function Header() {
   const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
   const { ids: wishlistIds, setDrawerOpen: openWishlist } = useWishlist()
+  const isLanding = location.pathname === '/'
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -157,10 +158,12 @@ export default function Header() {
   )
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32)
+    const threshold = isLanding ? window.innerHeight * 0.85 : 32
+    setScrolled(!isLanding || window.scrollY > threshold)
+    const onScroll = () => setScrolled(window.scrollY > threshold)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [isLanding])
 
   useEffect(() => {
     document.body.style.overflow = (menuOpen || searchOpen) ? 'hidden' : ''
