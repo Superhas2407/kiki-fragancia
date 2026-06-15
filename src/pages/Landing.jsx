@@ -11,6 +11,7 @@ import ProductWall from '../components/ProductWall'
 import ColeccionesSection from '../components/ColeccionesSection'
 import QuickGenero from '../components/QuickGenero'
 import BestsellerRow from '../components/BestsellerRow'
+import NewLaunchBanner from '../components/NewLaunchBanner'
 import { useIndexProducts } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
 
@@ -68,6 +69,7 @@ export default function Landing() {
           <span className="trust-bar-sep" aria-hidden="true" />
           <span className="trust-bar-item"><span className="trust-bar-check">✓</span> Pago en Bs o divisa</span>
         </div>
+        <NewLaunchBanner />
         <BestsellerRow />
         <QuickGenero />
         <BrandsMarquee />
