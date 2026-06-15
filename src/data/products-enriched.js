@@ -6213,8 +6213,8 @@ export const products = [
   {
     "id": 218,
     "house": "PARIS HILTON",
-    "name": "Paris Hilton",
-    "image": "paris-hilton-paris-hilton-100ml-f.webp",
+    "name": "Paris Hilton Clasica",
+    "image": "paris-hilton-paris-hilton-clasica-100ml-f.webp",
     "familia": "Floral Frutal",
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
