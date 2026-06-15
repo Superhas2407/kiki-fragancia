@@ -6092,19 +6092,19 @@
 .nlb-btn-outline:hover { border-color: rgba(255,255,255,0.85); color: #fff; }
 
 @media (max-width: 767px) {
-  /* Mobile: imagen arriba, contenido abajo apilado */
+  /* Mobile: texto al fondo de la imagen, gradiente cubre solo la franja inferior */
   .nlb-section {
     height: auto;
     min-height: unset;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display: block;
   }
   .nlb-picture {
     position: relative;
     inset: unset;
     width: 100%;
     height: auto;
-    flex-shrink: 0;
+    display: block;
   }
   .nlb-img {
     width: 100%;
@@ -6112,17 +6112,28 @@
     object-fit: unset;
     display: block;
   }
-  .nlb-overlay { display: none; }
+  .nlb-overlay {
+    display: block;
+    background: linear-gradient(
+      to top,
+      rgba(10,4,8,0.90) 0%,
+      rgba(10,4,8,0.55) 30%,
+      rgba(10,4,8,0.0) 58%
+    );
+  }
   .nlb-content {
-    position: relative;
-    top: unset; right: unset; bottom: unset; left: unset;
+    position: absolute;
+    top: unset;
     transform: none;
+    bottom: 28px;
+    right: 0;
+    left: 0;
     width: 100%;
     text-align: center;
-    padding: 32px 24px 36px;
-    background: var(--bg);
+    padding: 0 24px;
   }
-  .nlb-title { font-size: clamp(28px, 8vw, 40px); }
+  .nlb-title { font-size: clamp(26px, 7vw, 36px); }
+  .nlb-name { margin-bottom: 20px; }
   .nlb-ctas { justify-content: center; }
 }
 
