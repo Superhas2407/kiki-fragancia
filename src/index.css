@@ -5210,16 +5210,17 @@
 .bestseller-cta {
   display: inline-block;
   font-family: var(--font-s);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #0A0804;
   text-decoration: none;
-  border: 1px solid rgba(201,168,76,0.6);
-  padding: 14px 40px;
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 16px 52px;
   transition: background 0.22s, color 0.22s, border-color 0.22s;
 }
-.bestseller-cta:hover { background: var(--gold); color: #0A0804; border-color: var(--gold); }
+.bestseller-cta:hover { background: transparent; color: var(--gold-ink); }
 
 /* Wrapper con fade-out en el borde derecho (indica que hay más) */
 .bs-row-wrap {
@@ -5263,12 +5264,18 @@
 }
 .bs-row::-webkit-scrollbar { display: none; }
 
+/* Mobile/desktop toggle */
+.bs-mobile-only { display: block; }
+.bs-desktop-only { display: none; }
 @media (min-width: 900px) {
-  .bs-row {
+  .bs-mobile-only { display: none; }
+  .bs-desktop-only { display: block; }
+  .bs-row-desktop {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
     overflow-x: visible;
-    padding-bottom: 0;
+    padding: 0 clamp(24px, 4vw, 64px);
   }
 }
 
@@ -5291,6 +5298,7 @@
   aspect-ratio: 3/4;
   overflow: hidden;
   background: var(--bg2);
+  border: 1px solid var(--line2);
   margin-bottom: 14px;
 }
 .bs-card-img {

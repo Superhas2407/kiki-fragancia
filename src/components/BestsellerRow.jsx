@@ -4,7 +4,8 @@ import { toSlug } from '../lib/slugs'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 
-const BESTSELLER_IDS = [88, 20, 311, 256, 172, 202, 260, 104, 247, 266]
+const BESTSELLER_IDS_MOBILE = [88, 20, 311, 256, 172, 202, 260, 104, 247, 266]
+const BESTSELLER_IDS_DESKTOP = [88, 20, 311, 256, 172]
 
 function PriceTag({ product }) {
   const { currency } = useCurrency()
@@ -37,11 +38,15 @@ function BsCard({ product }) {
 export default function BestsellerRow() {
   const products = useIndexProducts()
 
-  const items = BESTSELLER_IDS
+  const allItems = BESTSELLER_IDS_MOBILE
     .map(id => products.find(p => p.id === id))
     .filter(Boolean)
 
-  if (!items.length) return null
+  const desktopItems = BESTSELLER_IDS_DESKTOP
+    .map(id => products.find(p => p.id === id))
+    .filter(Boolean)
+
+  if (!allItems.length) return null
 
   return (
     <section className="bestseller-section">
@@ -51,11 +56,19 @@ export default function BestsellerRow() {
         <div className="bestseller-rule" />
       </div>
 
-      <div className="bs-row-wrap">
+      {/* Mobile: scroll con todos los items */}
+      <div className="bs-row-wrap bs-mobile-only">
         <div className="bs-row">
-          {items.map(p => <BsCard key={p.id} product={p} />)}
+          {allItems.map(p => <BsCard key={p.id} product={p} />)}
         </div>
         <p className="bs-swipe-hint">Desliza para ver más</p>
+      </div>
+
+      {/* Desktop: una sola fila de 5 */}
+      <div className="bs-row-wrap bs-desktop-only">
+        <div className="bs-row bs-row-desktop">
+          {desktopItems.map(p => <BsCard key={p.id} product={p} />)}
+        </div>
       </div>
 
       <div className="bestseller-cta-wrap">
