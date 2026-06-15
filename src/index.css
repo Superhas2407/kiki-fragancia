@@ -1136,7 +1136,16 @@
     background: linear-gradient(180deg, rgba(10,6,2,0.80) 0%, rgba(10,6,2,0.74) 100%);
   }
   .hero-bottom-bar { display: none !important; }
-  .hero-search-link { display: none !important; }
+  .hero-cta-row { flex-direction: column; align-items: stretch !important; }
+  .hero-section .btn-cta {
+    width: 100%; justify-content: center;
+    background: var(--gold) !important;
+    color: #0A0A0A !important;
+    border-color: var(--gold) !important;
+    padding: 18px 32px !important;
+    font-size: 11px !important;
+  }
+  .hero-search-link { width: 100%; justify-content: center; }
 }
 .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
 .eyebrow-text {
@@ -1160,6 +1169,58 @@
   font-weight: 100; font-style: italic;
   color: var(--ink-mute); line-height: 1.55; margin: 0 0 44px;
 }
+/* Trust bar — barra bajo el hero, fondo sólido */
+.trust-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; background: var(--bg2);
+  border-bottom: 1px solid var(--line2);
+  padding: 13px 24px; flex-wrap: wrap;
+}
+.trust-bar-item {
+  font-family: var(--font-s); font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-mute); padding: 4px 20px;
+}
+.trust-bar-check { color: var(--gold); margin-right: 6px; }
+.trust-bar-sep {
+  width: 1px; height: 14px; background: var(--line2); flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .trust-bar { flex-direction: column; gap: 2px; padding: 10px 16px; }
+  .trust-bar-sep { display: none; }
+  .trust-bar-item { padding: 3px 0; }
+}
+
+/* Sticky CTA bar — solo móvil, aparece tras scrollear el hero */
+.landing-sticky-cta {
+  display: none;
+}
+@media (max-width: 1023px) {
+  .landing-sticky-cta {
+    display: block;
+    position: fixed;
+    bottom: calc(60px + env(safe-area-inset-bottom));
+    left: 0; right: 0;
+    z-index: 60;
+    padding: 0 16px 10px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .landing-sticky-cta.visible {
+    opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .landing-sticky-btn {
+    display: block; width: 100%; text-align: center;
+    font-family: var(--font-s); font-size: 11px; font-weight: 400;
+    letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+    background: var(--gold); color: #0A0A0A;
+    padding: 15px 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  }
+}
+
 /* Link "Buscar fragancia" en el hero */
 .hero-search-link {
   display: inline-flex; align-items: center; gap: 9px;
@@ -1803,6 +1864,14 @@
   background: var(--gold);
   color: #0A0A0A;
 }
+.pd-btn-share {
+  font-family: var(--font-s); font-size: 10px; font-weight: 300; letter-spacing: .2em;
+  text-transform: uppercase; border: 1px solid var(--line2); color: var(--ink-mute);
+  background: none; padding: 13px 32px; display: flex; align-items: center;
+  justify-content: center; gap: 10px; width: 100%; cursor: pointer;
+  transition: border-color .25s ease, color .25s ease;
+}
+.pd-btn-share:hover { border-color: var(--gold); color: var(--gold); }
 .pd-trust {
   font-family: var(--font-s); font-size: 10px; font-weight: 100;
   color: var(--ink-mute); letter-spacing: .03em; margin: 4px 0 0;
@@ -3739,6 +3808,9 @@
 [data-theme='warm'] .hero-search-link:hover { color: #C9A84C !important; border-color: #C9A84C !important; }
 [data-theme='warm'] .hero-section .btn-cta { color: #FAFAF8 !important; border-color: rgba(201,168,76,0.65) !important; background: rgba(201,168,76,0.08) !important; }
 [data-theme='warm'] .hero-section .btn-cta:hover { color: #0A0A0A !important; background: #C9A84C !important; border-color: #C9A84C !important; }
+@media (max-width: 767px) {
+  [data-theme='warm'] .hero-section .btn-cta { background: var(--gold) !important; color: #0A0A0A !important; border-color: var(--gold) !important; }
+}
 [data-theme='warm'] .hero-bottom-bar {
   background: rgba(10,6,2,0.45) !important;
   border-top-color: rgba(201,168,76,0.2);

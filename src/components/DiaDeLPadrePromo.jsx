@@ -78,7 +78,7 @@ const WhatsAppSVG = () => (
 )
 
 export default function DiaDeLPadrePromo() {
-  const days = daysUntil('2026-06-18')
+  const days = daysUntil('2026-06-30')
   const showWraps = useShowWraps()
 
   return (
@@ -90,7 +90,7 @@ export default function DiaDeLPadrePromo() {
             <div className="ddp-countdown-num">{days}</div>
             <div className="ddp-countdown-label">días restantes</div>
             <div style={{ width: '100%', height: 1, background: 'rgba(201,168,76,0.3)', margin: '10px 0 8px' }} />
-            <div className="ddp-deadline">Pide antes del<br />18 de junio</div>
+            <div className="ddp-deadline">Pide antes del<br />30 de junio</div>
           </div>
           <div>
             <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: '9.5px', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--gold-ink)', marginBottom: 12 }}>
@@ -100,7 +100,7 @@ export default function DiaDeLPadrePromo() {
               Esta vez, regálale algo que recuerde
             </h2>
             <p style={{ fontFamily: 'KikiGotham, sans-serif', fontSize: 13, fontWeight: 100, color: 'var(--ink-mute)', lineHeight: 1.6 }}>
-              10 fragancias para él. Pedido antes del 18 jun para entrega a tiempo · envoltura sin costo.
+              10 fragancias para él. Pedido antes del 30 jun para entrega a tiempo · envoltura sin costo.
             </p>
           </div>
         </div>

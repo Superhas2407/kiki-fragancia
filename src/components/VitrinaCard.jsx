@@ -91,7 +91,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   const imgSrc = resolveProductImage(product)
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
-  // Quitar redundancia: "Afnan 9 AM Dive" con house "Afnan" → "9 AM Dive"
   const displayName = product.name.toLowerCase().startsWith(product.house.toLowerCase() + ' ')
     ? product.name.slice(product.house.length + 1)
     : product.name
