@@ -1208,6 +1208,8 @@ export default function ProductDetail() {
     transition: `opacity .75s ease ${d}ms, transform .75s cubic-bezier(.22,1,.36,1) ${d}ms`,
   })
 
+  const canonicalUrl = `https://kikifragancia.com/tienda/${toSlug(product.house, product.name, product.ml)}`
+
   const waPrecio = product.precioUSD > 0 ? ` — REF ${product.precioUSD}` : ''
   const waMl = product.ml ? ` ${product.ml}ml` : ''
   const waMsg = encodeURIComponent(
@@ -1233,8 +1235,6 @@ export default function ProductDetail() {
       })
     }
   }
-
-  const canonicalUrl = `https://kikifragancia.com/tienda/${toSlug(product.house, product.name, product.ml)}`
 
   const descripcion = product.descripcion || (product.description ? product.description.replace(/\*\*/g, '') : null)
 
