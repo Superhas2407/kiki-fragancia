@@ -35,7 +35,7 @@ export default function Hero() {
       </div>
 
       {/* Contenido — izquierda, estilo Afnan DDP */}
-      <div className="kiki-container" style={{ width: '100%', position: 'relative', zIndex: 5 }}>
+      <div className="kiki-container" style={{ width: '100%', zIndex: 5 }}>
         <div className="hero-content-wrap hero-ddp-layout">
 
           <p className="hero-ddp-eyebrow" style={rv(0)}>— Edición Día del Padre · 2026</p>

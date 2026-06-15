@@ -237,7 +237,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`kiki-header${scrolled ? ' scrolled' : ''}`}>
+      <header className={`kiki-header${scrolled ? ' scrolled' : ''}${isLanding ? ' on-landing' : ''}`}>
         <div className="header-inner">
           {/* LEFT — mobile: hamburger | desktop: currency + theme */}
           <div className="header-util-left">
