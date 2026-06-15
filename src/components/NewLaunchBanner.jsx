@@ -6,8 +6,7 @@ const WA_MSG = encodeURIComponent(
 )
 const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}&ref=new_launch_ch`
 
-// Placeholder: cuando el producto esté en Sanity, reemplazar PRODUCT_SLUG
-// con el slug real (ej: 'carolina-herrera-good-girl-blush-100ml')
+// Cuando el producto esté en Sanity, poner el slug real aquí
 const PRODUCT_SLUG = null
 
 export default function NewLaunchBanner() {
@@ -24,11 +23,10 @@ export default function NewLaunchBanner() {
         />
       </picture>
 
+      {/* Gradiente solo al fondo para legibilidad de botones */}
       <div className="nlb-overlay" aria-hidden="true" />
 
       <div className="nlb-content">
-        <p className="nlb-eyebrow">— Nuevo lanzamiento</p>
-        <h2 className="nlb-title">NUEVO LANZAMIENTO</h2>
         <p className="nlb-name">CAROLINA HERRERA</p>
         <div className="nlb-ctas">
           {PRODUCT_SLUG ? (
