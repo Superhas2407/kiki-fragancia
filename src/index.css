@@ -5206,9 +5206,12 @@
 .bestseller-cta-wrap {
   text-align: center;
   margin-top: clamp(24px, 3vw, 40px);
+  padding: 0 clamp(16px, 4vw, 48px);
 }
 .bestseller-cta {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
   font-family: var(--font-s);
   font-size: 11px;
   letter-spacing: 0.22em;
@@ -5219,8 +5222,12 @@
   border: 1px solid var(--gold);
   padding: 16px 52px;
   transition: background 0.22s, color 0.22s, border-color 0.22s;
+  text-align: center;
 }
 .bestseller-cta:hover { background: transparent; color: var(--gold-ink); }
+@media (min-width: 600px) {
+  .bestseller-cta { display: inline-block; width: auto; }
+}
 
 /* Wrapper con fade-out en el borde derecho (indica que hay más) */
 .bs-row-wrap {
@@ -5267,6 +5274,17 @@
 /* Mobile/desktop toggle */
 .bs-mobile-only { display: block; }
 .bs-desktop-only { display: none; }
+
+/* Mobile: grilla 2 columnas */
+.bs-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0 clamp(16px, 4vw, 32px);
+  overflow-x: visible;
+  scroll-snap-type: unset;
+}
+
 @media (min-width: 900px) {
   .bs-mobile-only { display: none; }
   .bs-desktop-only { display: block; }
@@ -5282,7 +5300,7 @@
 /* Tarjeta */
 .bs-card {
   flex-shrink: 0;
-  width: 180px;
+  width: 100%;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
