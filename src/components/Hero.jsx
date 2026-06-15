@@ -208,29 +208,7 @@ export default function Hero() {
           @kiki_fragancia · Instagram
         </a>
 
-        {/* Dots de navegación */}
-        <div style={{ display: 'flex', gap: 0, alignItems: 'center' }}>
-          {SLIDES_ACTIVE.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              aria-label={`Slide ${i + 1}`}
-              style={{
-                height: 44, padding: '0 4px',
-                background: 'transparent',
-                border: 'none', cursor: 'pointer',
-                display: 'flex', alignItems: 'center',
-              }}
-            >
-              <span aria-hidden="true" style={{
-                display: 'block',
-                width: i === current ? 28 : 8, height: 8,
-                background: i === current ? '#C9A84C' : 'var(--ink-mute)',
-                transition: 'width 0.4s ease, background 0.4s ease',
-              }} />
-            </button>
-          ))}
-        </div>
+        <div />
 
         {/* Scroll indicator */}
         <div className="kiki-scroll-indicator" style={{ position: 'static', bottom: 'auto', left: 'auto' }}>
