@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
@@ -12,22 +11,11 @@ function PriceTag({ product }) {
   const tasaData = useTasaCambio()
   const tasa = tasaData?.tasa
   if (!product.precioUSD) return null
-  if (currency === 'usd') {
-    return (
-      <span className="bs-card-price">
-        <span className="bs-card-price-ref">REF</span> ${product.precioUSD}
-      </span>
-    )
-  }
-  if (tasa && product.precioUSD) {
+  if (currency === 'bs' && tasa) {
     const bs = Math.round(product.precioUSD * tasa)
-    return (
-      <span className="bs-card-price">
-        Bs. {bs.toLocaleString('es-VE')}
-      </span>
-    )
+    return <span className="bs-price">Bs. {bs.toLocaleString('es-VE')}</span>
   }
-  return null
+  return <span className="bs-price">${product.precioUSD}</span>
 }
 
 function BsCard({ product }) {
@@ -35,12 +23,7 @@ function BsCard({ product }) {
   return (
     <Link to={`/tienda/${toSlug(product.house, product.name, product.ml)}`} className="bs-card">
       <div className="bs-card-img-wrap">
-        <img
-          src={img}
-          alt={product.name}
-          className="bs-card-img"
-          loading="lazy"
-        />
+        <img src={img} alt={product.name} className="bs-card-img" loading="lazy" />
       </div>
       <div className="bs-card-body">
         <p className="bs-card-house">{product.house}</p>
@@ -53,7 +36,6 @@ function BsCard({ product }) {
 
 export default function BestsellerRow() {
   const products = useIndexProducts()
-  const rowRef = useRef(null)
 
   const items = BESTSELLER_IDS
     .map(id => products.find(p => p.id === id))
@@ -63,18 +45,21 @@ export default function BestsellerRow() {
 
   return (
     <section className="bestseller-section">
-      <div className="bestseller-inner">
-        <div className="bestseller-header">
-          <p className="bestseller-eyebrow">Más populares</p>
-          <Link to="/tienda" className="bestseller-ver-todo">Ver todo →</Link>
-        </div>
+      <div className="bestseller-heading-wrap">
+        <p className="bestseller-label">Kiki Fragancia</p>
+        <h2 className="bestseller-title">LO MÁS VENDIDO</h2>
+        <div className="bestseller-rule" />
+      </div>
 
-        <div className="bs-row-wrap">
-        <div className="bs-row" ref={rowRef}>
+      <div className="bs-row-wrap">
+        <div className="bs-row">
           {items.map(p => <BsCard key={p.id} product={p} />)}
         </div>
-        <p className="bs-swipe-hint">Desliza para ver más →</p>
-        </div>
+        <p className="bs-swipe-hint">Desliza para ver más</p>
+      </div>
+
+      <div className="bestseller-cta-wrap">
+        <Link to="/tienda" className="bestseller-cta">Ver toda la colección</Link>
       </div>
     </section>
   )
