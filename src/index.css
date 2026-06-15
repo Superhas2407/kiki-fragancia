@@ -260,7 +260,6 @@
 
   html { scroll-behavior: smooth; }
 
-  html { overflow-x: hidden; }
   body {
     font-family: 'KikiGotham', sans-serif;
     font-weight: 100;
@@ -268,6 +267,8 @@
     color: var(--carbon);
     -webkit-font-smoothing: antialiased;
   }
+  /* overflow-x en #root, NO en html/body — en iOS body/html overflow rompe position:fixed */
+  #root { overflow-x: hidden; }
 
   h1, h2, h3 { text-wrap: balance; }
 
