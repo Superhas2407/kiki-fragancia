@@ -1132,12 +1132,23 @@
   .hero-section .kiki-container { padding: 0; width: 100%; }
   .hero-content-wrap {
     position: static !important;
-    padding: 0 28px 90px !important;
+    padding: 0 20px 90px !important;
     width: 100%;
   }
-  .hero-ddp-layout { max-width: 100%; text-align: center; }
+  .hero-ddp-layout {
+    max-width: 100%; text-align: center;
+    background: rgba(4,8,18,0.32);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 22px 20px 24px;
+  }
   .hero-ddp-eyebrow { display: none; }
-  .hero-ddp-title { font-size: clamp(28px, 8.5vw, 44px); }
+  .hero-ddp-title {
+    font-size: clamp(26px, 7.5vw, 40px);
+    font-weight: 300;
+  }
+  .hero-ddp-sub { font-size: 11px; letter-spacing: 0.18em; }
   .hero-ddp-desc { display: none; }
   .hero-ddp-actions { justify-content: center; }
   .hero-ddp-btn-primary,
