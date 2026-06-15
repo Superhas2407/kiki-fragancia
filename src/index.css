@@ -6018,12 +6018,13 @@
 }
 .nlb-content {
   position: absolute;
-  right: 56px;
+  right: 48px;
   top: 50%;
   transform: translateY(-50%);
   text-align: right;
   z-index: 2;
-  max-width: 400px;
+  width: 38%;
+  min-width: 280px;
 }
 .nlb-label {
   font-family: var(--font-d);
@@ -6036,11 +6037,11 @@
 }
 .nlb-title {
   font-family: var(--font-s);
-  font-size: clamp(34px, 5vw, 68px);
+  font-size: clamp(28px, 3.8vw, 56px);
   font-weight: 100;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   color: #fff;
-  line-height: 1.05;
+  line-height: 1.08;
   margin-bottom: 14px;
 }
 .nlb-name {

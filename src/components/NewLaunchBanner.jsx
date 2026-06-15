@@ -27,7 +27,7 @@ export default function NewLaunchBanner() {
 
       <div className="nlb-content">
         <p className="nlb-label">— Llegando a KiKi Fragancia</p>
-        <h2 className="nlb-title">NUEVO<br />LANZAMIENTO</h2>
+        <h2 className="nlb-title">NUEVO LANZAMIENTO</h2>
         <p className="nlb-name">CAROLINA HERRERA</p>
         <div className="nlb-ctas">
           {PRODUCT_SLUG ? (
