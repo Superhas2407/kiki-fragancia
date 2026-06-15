@@ -6023,8 +6023,7 @@
   transform: translateY(-50%);
   text-align: right;
   z-index: 2;
-  width: 38%;
-  min-width: 280px;
+  width: min(42%, 500px);
 }
 .nlb-label {
   font-family: var(--font-d);
@@ -6036,13 +6035,14 @@
   margin-bottom: 14px;
 }
 .nlb-title {
-  font-family: var(--font-s);
-  font-size: clamp(28px, 3.8vw, 56px);
-  font-weight: 100;
-  letter-spacing: 0.12em;
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: clamp(32px, 4vw, 60px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: #fff;
-  line-height: 1.08;
-  margin-bottom: 14px;
+  line-height: 1.15;
+  margin-bottom: 16px;
 }
 .nlb-name {
   font-family: var(--font-s);
