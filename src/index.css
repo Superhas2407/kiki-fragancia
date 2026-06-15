@@ -260,7 +260,6 @@
 
   html { scroll-behavior: smooth; }
 
-  html { overflow-x: hidden; }
   body {
     font-family: 'KikiGotham', sans-serif;
     font-weight: 100;
@@ -268,8 +267,6 @@
     color: var(--carbon);
     -webkit-font-smoothing: antialiased;
   }
-  /* overflow-x en #root, NO en html/body — en iOS body/html overflow rompe position:fixed */
-  #root { overflow-x: hidden; }
 
   h1, h2, h3 { text-wrap: balance; }
 
@@ -330,10 +327,12 @@
 }
 
 /* App shell: global sidebar + main content */
+/* overflow-x aquí (no en html/body/#root) para no romper position:fixed en iOS Safari */
 .app-shell {
   display: flex;
   min-height: 100dvh;
   background: var(--bg);
+  overflow-x: hidden;
 }
 .app-main {
   flex: 1;
@@ -5356,9 +5355,6 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding-bottom: env(safe-area-inset-bottom);
-    /* GPU layer — fixes iOS Safari fixed positioning with overflow-x:hidden */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
   }
 }
 .bottom-nav-item {
