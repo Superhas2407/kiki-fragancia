@@ -1175,11 +1175,11 @@
   margin-top: 20px;
 }
 .hero-proof-item {
-  font-family: var(--font-s); font-size: 9px; font-weight: 300;
+  font-family: var(--font-s); font-size: 9px; font-weight: 400;
   letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(201,168,76,0.75);
+  color: rgba(250,247,240,0.90);
 }
-.hero-proof-sep { color: rgba(201,168,76,0.35); font-size: 10px; }
+.hero-proof-sep { color: rgba(201,168,76,0.6); font-size: 10px; }
 @media (max-width: 767px) {
   .hero-social-proof { flex-direction: column; align-items: flex-start; gap: 6px; }
   .hero-proof-sep { display: none; }
