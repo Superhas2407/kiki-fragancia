@@ -61,6 +61,13 @@ export default function Landing() {
 
       <main>
         <Hero />
+        <div className="trust-bar">
+          <span className="trust-bar-item"><span className="trust-bar-check">✓</span> 100% originales verificadas</span>
+          <span className="trust-bar-sep" aria-hidden="true" />
+          <span className="trust-bar-item"><span className="trust-bar-check">✓</span> Envío a todo Venezuela</span>
+          <span className="trust-bar-sep" aria-hidden="true" />
+          <span className="trust-bar-item"><span className="trust-bar-check">✓</span> Pago en Bs o divisa</span>
+        </div>
         <BestsellerRow />
         <QuickGenero />
         <BrandsMarquee />

@@ -193,14 +193,6 @@ export default function Hero() {
               Buscar fragancia
             </Link>
           </div>
-
-          <div className="hero-social-proof" style={rv(440)}>
-            <span className="hero-proof-item">✓ 100% originales verificadas</span>
-            <span className="hero-proof-sep" aria-hidden="true">·</span>
-            <span className="hero-proof-item">✓ Envío a todo Venezuela</span>
-            <span className="hero-proof-sep" aria-hidden="true">·</span>
-            <span className="hero-proof-item">✓ Pago en Bs o divisa</span>
-          </div>
         </div>
       </div>
 

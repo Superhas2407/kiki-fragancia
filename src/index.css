@@ -1169,20 +1169,26 @@
   font-weight: 100; font-style: italic;
   color: var(--ink-mute); line-height: 1.55; margin: 0 0 44px;
 }
-/* Social proof strip below hero CTAs */
-.hero-social-proof {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin-top: 20px;
+/* Trust bar — barra bajo el hero, fondo sólido */
+.trust-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; background: var(--bg2);
+  border-bottom: 1px solid var(--line2);
+  padding: 13px 24px; flex-wrap: wrap;
 }
-.hero-proof-item {
-  font-family: var(--font-s); font-size: 9px; font-weight: 400;
-  letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(250,247,240,0.90);
+.trust-bar-item {
+  font-family: var(--font-s); font-size: 9.5px; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-mute); padding: 4px 20px;
 }
-.hero-proof-sep { color: rgba(201,168,76,0.6); font-size: 10px; }
-@media (max-width: 767px) {
-  .hero-social-proof { flex-direction: column; align-items: flex-start; gap: 6px; }
-  .hero-proof-sep { display: none; }
+.trust-bar-check { color: var(--gold); margin-right: 6px; }
+.trust-bar-sep {
+  width: 1px; height: 14px; background: var(--line2); flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .trust-bar { flex-direction: column; gap: 2px; padding: 10px 16px; }
+  .trust-bar-sep { display: none; }
+  .trust-bar-item { padding: 3px 0; }
 }
 
 /* Sticky CTA bar — solo móvil, aparece tras scrollear el hero */
