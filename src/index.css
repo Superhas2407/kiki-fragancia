@@ -5275,15 +5275,17 @@
 .bs-mobile-only { display: block; }
 .bs-desktop-only { display: none; }
 
-/* Mobile: grilla 2 columnas */
+/* Mobile: hilera horizontal con scroll */
 .bs-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   gap: 12px;
-  padding: 0 clamp(16px, 4vw, 32px);
-  overflow-x: visible;
-  scroll-snap-type: unset;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px clamp(16px, 4vw, 32px) 12px;
 }
+.bs-row::-webkit-scrollbar { display: none; }
 
 @media (min-width: 900px) {
   .bs-mobile-only { display: none; }
@@ -5300,7 +5302,7 @@
 /* Tarjeta */
 .bs-card {
   flex-shrink: 0;
-  width: 100%;
+  width: 160px;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
