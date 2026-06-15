@@ -896,6 +896,24 @@
 }
 .nav-pill-item:hover { color: #0A0A0A; background: var(--gold); }
 
+/* Currency pill */
+.currency-pill {
+  display: flex; align-items: center;
+  border-radius: 2px; overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.35);
+}
+.currency-btn {
+  font-family: 'KikiGotham', sans-serif; font-size: 10px; letter-spacing: 0.1em;
+  padding: 0 10px; min-height: 44px; cursor: pointer; border: none;
+  background: transparent; color: var(--ink-mute);
+  transition: background 0.18s, color 0.18s; line-height: 1;
+}
+.currency-btn.active { background: #C9A84C; color: #0A0A0A; }
+/* Sobre el hero transparente — texto blanco sin importar el modo */
+.kiki-header.on-landing:not(.scrolled) .currency-pill { border-color: rgba(255,255,255,0.3); }
+.kiki-header.on-landing:not(.scrolled) .currency-btn { color: rgba(255,255,255,0.8); }
+.kiki-header.on-landing:not(.scrolled) .currency-btn.active { color: #0A0A0A; }
+
 .btn-wa {
   display: flex; align-items: center; gap: 7px;
   font-family: var(--font-s); font-size: 10px;

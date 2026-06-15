@@ -245,19 +245,13 @@ export default function Header() {
               {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
             </button>
             <span className="header-mobile-hide">
-              <div style={{ display: 'flex', alignItems: 'center', borderRadius: 2, overflow: 'hidden', border: '1px solid rgba(201,168,76,0.35)' }}>
+              <div className="currency-pill">
                 {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => {
                   const active = currency === val
                   return (
                     <button key={val} onClick={() => setCurrency(val)}
                       title={val === 'usd' ? 'Ver precios en divisa' : 'Ver precios en bolívares'}
-                      style={{
-                        fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.1em',
-                        padding: '0 10px', minHeight: 44, cursor: 'pointer', border: 'none',
-                        background: active ? '#C9A84C' : 'transparent',
-                        color: active ? '#0A0A0A' : 'var(--ink-mute)',
-                        transition: 'background 0.18s, color 0.18s', lineHeight: 1,
-                      }}
+                      className={`currency-btn${active ? ' active' : ''}`}
                     >{label}</button>
                   )
                 })}
