@@ -43,18 +43,9 @@
   background: var(--bg);
   color: var(--ink);
 }
-[data-theme='warm'] .kiki-header {
-  background: transparent;
-  border-bottom-color: transparent;
-}
 [data-theme='warm'] .kiki-header.scrolled {
   background: rgba(250,246,238,0.97);
   border-bottom-color: var(--line2);
-}
-[data-theme='warm'] .kiki-header.on-landing,
-[data-theme='warm'] .kiki-header.on-landing.scrolled {
-  background: transparent !important;
-  border-bottom-color: transparent !important;
 }
 [data-theme='warm'] .kiki-header .nav-link,
 [data-theme='warm'] .kiki-header .logo {
@@ -818,12 +809,7 @@
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
   border-bottom-color: var(--gold-ink);
 }
-/* Landing: transparente solo mientras el hero es visible (no scrolled) */
-.kiki-header.on-landing:not(.scrolled) {
-  background: transparent;
-  border-bottom-color: transparent;
-}
-/* Logo e iconos blancos solo mientras el header está transparente sobre el hero */
+/* En landing transparente, logo e iconos blancos sobre el hero */
 .kiki-header.on-landing:not(.scrolled) .kiki-logo-img {
   filter: brightness(0) invert(1);
 }

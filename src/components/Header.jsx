@@ -158,12 +158,11 @@ export default function Header() {
   )
 
   useEffect(() => {
-    const threshold = isLanding ? window.innerHeight * 0.85 : 32
-    setScrolled(!isLanding || window.scrollY > threshold)
-    const onScroll = () => setScrolled(window.scrollY > threshold)
+    setScrolled(window.scrollY > 32)
+    const onScroll = () => setScrolled(window.scrollY > 32)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [isLanding])
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = (menuOpen || searchOpen) ? 'hidden' : ''
