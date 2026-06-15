@@ -3,6 +3,8 @@ import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreDiscounts, diaDeLPadreIds } from '../data/dia-del-padre'
+import { toSlug } from '../lib/slugs'
+import { resolveProductImage } from '../context/SanityProductsContext'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -27,16 +29,20 @@ function buildMessage(items) {
     const unit = item.precioUSD || 0
     const disc = diaDeLPadreDiscounts[item.id]
     const ddpNote = disc ? ` 🎁 ${disc}% EXTRA Día del Padre` : ''
-    const priceNote = unit > 0 ? ` — REF ${unit * item.quantity}` : ''
-    return `• ${item.house} ${item.name} x${item.quantity}${priceNote}${ddpNote}`
+    const priceNote = unit > 0 ? ` — REF $${unit}` : ''
+    const mlNote = item.ml ? ` ${item.ml}ml` : ''
+    const slug = toSlug(item.house, item.name, item.ml)
+    const link = `https://kikifragancia.com/tienda/${slug}`
+    return `• *${item.house} ${item.name}*${mlNote} x${item.quantity}${priceNote}${ddpNote}\n  ${link}`
   })
   const hasPrice = items.some(item => item.precioUSD > 0)
-  const totalLine = hasPrice ? `\nTotal: REF ${items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)}\n` : ''
+  const total = items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)
+  const totalLine = hasPrice ? `\n*Total: REF $${total}*\n` : ''
   const hasDdp = items.some(item => diaDeLPadreIds.includes(item.id))
   const ddpLine = hasDdp ? '\n🎁 Aplica descuento Día del Padre en los productos indicados.\n' : ''
   return (
     `Hola! Quiero hacer el siguiente pedido:\n\n` +
-    `${lines.join('\n')}\n` +
+    `${lines.join('\n\n')}\n` +
     totalLine +
     ddpLine +
     `\n¿Están disponibles?`
@@ -171,17 +177,20 @@ export default function CartDrawer() {
                     }}
                   >
                     {/* Imagen */}
-                    {item.image ? (
-                      <img
-                        src={`/products/${item.image}`}
-                        alt={item.name}
-                        style={{ width: 'clamp(52px, 14vw, 64px)', height: 'clamp(66px, 18vw, 80px)', objectFit: 'cover', flexShrink: 0 }}
-                      />
-                    ) : (
-                      <div style={{ width: '64px', height: '80px', flexShrink: 0, background: 'var(--raised)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <span style={{ fontSize: 9, color: ink(0.2), textAlign: 'center', padding: 4 }}>{item.house}</span>
-                      </div>
-                    )}
+                    {(() => {
+                      const imgSrc = resolveProductImage(item)
+                      return imgSrc ? (
+                        <img
+                          src={imgSrc}
+                          alt={item.name}
+                          style={{ width: 'clamp(52px, 14vw, 64px)', height: 'clamp(66px, 18vw, 80px)', objectFit: 'cover', flexShrink: 0 }}
+                        />
+                      ) : (
+                        <div style={{ width: '64px', height: '80px', flexShrink: 0, background: 'var(--raised)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <span style={{ fontSize: 9, color: ink(0.2), textAlign: 'center', padding: 4 }}>{item.house}</span>
+                        </div>
+                      )
+                    })()}
 
                     {/* Info */}
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '4px' }}>

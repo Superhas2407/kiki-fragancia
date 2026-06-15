@@ -1803,6 +1803,14 @@
   background: var(--gold);
   color: #0A0A0A;
 }
+.pd-btn-share {
+  font-family: var(--font-s); font-size: 10px; font-weight: 300; letter-spacing: .2em;
+  text-transform: uppercase; border: 1px solid var(--line2); color: var(--ink-mute);
+  background: none; padding: 13px 32px; display: flex; align-items: center;
+  justify-content: center; gap: 10px; width: 100%; cursor: pointer;
+  transition: border-color .25s ease, color .25s ease;
+}
+.pd-btn-share:hover { border-color: var(--gold); color: var(--gold); }
 .pd-trust {
   font-family: var(--font-s); font-size: 10px; font-weight: 100;
   color: var(--ink-mute); letter-spacing: .03em; margin: 4px 0 0;
