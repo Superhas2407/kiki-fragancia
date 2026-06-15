@@ -1331,7 +1331,7 @@ export default function ProductDetail() {
               {/* Info */}
               <div className="pd-info">
                 <p className="pd-house" style={rv(140)}>{product.house}</p>
-                <h1 className="pd-title" style={rv(200)}>{product.name}</h1>
+                <h1 className="pd-title" style={rv(200)}>{pdCleanName}</h1>
                 <p className="pd-meta" style={rv(260)}>
                   {[product.ml && `${product.ml} ml`, product.tipo, product.genero].filter(Boolean).join(' · ')}
                 </p>
