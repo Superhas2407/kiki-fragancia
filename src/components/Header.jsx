@@ -123,6 +123,8 @@ export default function Header() {
   const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
   const { ids: wishlistIds, setDrawerOpen: openWishlist } = useWishlist()
+  const location = useLocation()
+  const navigate = useNavigate()
   const isLanding = location.pathname === '/'
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -130,8 +132,6 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeSuggestion, setActiveSuggestion] = useState(-1)
   const searchInputRef = useRef(null)
-  const location = useLocation()
-  const navigate = useNavigate()
 
   const suggestions = useMemo(() => {
     const raw = norm(searchQuery.trim())
