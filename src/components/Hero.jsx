@@ -45,7 +45,7 @@ export default function Hero() {
           </h1>
 
           <p className="hero-ddp-sub" style={rv(240)}>
-            REGÁLALE SU FRAGANCIA
+            EL AMOR VERDADERO SE DEMUESTRA EN KIKI FRAGANCIA
           </p>
 
           <p className="hero-ddp-desc" style={rv(320)}>
