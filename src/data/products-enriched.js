@@ -6233,7 +6233,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "disenador"
   },
   {
