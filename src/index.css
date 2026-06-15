@@ -1131,9 +1131,9 @@
   .hero-ddp-btn-outline { flex: 1; min-width: 120px; }
 }
 @media (max-width: 767px) {
-  /* Hero fullscreen en mobile — contenido centrado al fondo */
-  .hero-section { min-height: 100dvh; height: 100dvh; justify-content: flex-end; }
-  .hero-section .kiki-container { padding: 0; width: 100%; }
+  /* Hero fullscreen en mobile — contenido pegado al fondo */
+  .hero-section { min-height: 100dvh; height: 100dvh; flex-direction: column; justify-content: flex-end; align-items: stretch; }
+  .hero-section .kiki-container { padding: 0; width: 100%; flex-shrink: 0; }
   .hero-content-wrap {
     position: static !important;
     padding: 0 28px 90px !important;
