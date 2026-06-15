@@ -6092,17 +6092,37 @@
 .nlb-btn-outline:hover { border-color: rgba(255,255,255,0.85); color: #fff; }
 
 @media (max-width: 767px) {
-  .nlb-section { height: auto; min-height: unset; }
-  .nlb-picture { position: relative; inset: unset; width: 100%; height: auto; }
-  .nlb-img { height: auto; object-fit: unset; }
-  .nlb-overlay {
-    background: linear-gradient(to top, rgba(10,4,8,0.82) 0%, rgba(10,4,8,0.08) 55%, rgba(10,4,8,0) 100%);
+  /* Mobile: imagen arriba, contenido abajo apilado */
+  .nlb-section {
+    height: auto;
+    min-height: unset;
+    display: flex;
+    flex-direction: column;
   }
+  .nlb-picture {
+    position: relative;
+    inset: unset;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+  }
+  .nlb-img {
+    width: 100%;
+    height: auto;
+    object-fit: unset;
+    display: block;
+  }
+  .nlb-overlay { display: none; }
   .nlb-content {
-    position: absolute; top: unset; transform: none;
-    bottom: 32px; right: 0; left: 0;
-    text-align: center; padding: 0 24px; max-width: 100%;
+    position: relative;
+    top: unset; right: unset; bottom: unset; left: unset;
+    transform: none;
+    width: 100%;
+    text-align: center;
+    padding: 32px 24px 36px;
+    background: var(--bg);
   }
+  .nlb-title { font-size: clamp(28px, 8vw, 40px); }
   .nlb-ctas { justify-content: center; }
 }
 
