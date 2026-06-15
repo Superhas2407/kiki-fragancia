@@ -818,23 +818,20 @@
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
   border-bottom-color: var(--gold-ink);
 }
-/* En el landing el header siempre es transparente — el fade lo da el hero */
-.kiki-header.on-landing,
-.kiki-header.on-landing.scrolled {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
+/* Landing: transparente solo mientras el hero es visible (no scrolled) */
+.kiki-header.on-landing:not(.scrolled) {
+  background: transparent;
+  border-bottom-color: transparent;
 }
-/* Logo e iconos siempre blancos sobre el hero (independiente de modo claro/oscuro) */
-.kiki-header.on-landing .kiki-logo-img {
+/* Logo e iconos blancos solo mientras el header está transparente sobre el hero */
+.kiki-header.on-landing:not(.scrolled) .kiki-logo-img {
   filter: brightness(0) invert(1);
 }
-.kiki-header.on-landing .header-icon-btn,
-.kiki-header.on-landing .hamburger-btn,
-.kiki-header.on-landing .header-cat-link,
-.kiki-header.on-landing .theme-toggle-btn {
-  color: rgba(255,255,255,0.92) !important;
+.kiki-header.on-landing:not(.scrolled) .header-icon-btn,
+.kiki-header.on-landing:not(.scrolled) .hamburger-btn,
+.kiki-header.on-landing:not(.scrolled) .header-cat-link,
+.kiki-header.on-landing:not(.scrolled) .theme-toggle-btn {
+  color: rgba(255,255,255,0.88) !important;
 }
 .header-inner {
   max-width: 1440px; margin: 0 auto;
@@ -876,14 +873,15 @@
 @media (min-width: 1024px) {
   .header-cat-nav {
     display: flex; align-items: center; justify-content: center;
-    border-top: 1px solid var(--line2); height: 44px; overflow: hidden;
+    border-top: 1px solid var(--line2); height: 48px; overflow: hidden;
+    gap: 4px;
   }
 }
 .header-cat-link {
-  font-family: 'KikiGotham', sans-serif; font-size: 10px;
-  letter-spacing: 0.16em; text-transform: uppercase;
+  font-family: 'KikiGotham', sans-serif; font-size: 11.5px;
+  letter-spacing: 0.20em; text-transform: uppercase;
   color: var(--ink-mute); text-decoration: none;
-  padding: 0 14px; height: 44px;
+  padding: 0 18px; height: 48px;
   display: flex; align-items: center; white-space: nowrap;
   transition: color 0.18s;
 }
@@ -891,7 +889,7 @@
 .header-cat-link.active { color: var(--gold-ink); }
 .header-cat-ddp { color: #6B9EFF; }
 .header-cat-ddp.active { color: #6B9EFF; opacity: 0.85; }
-.header-cat-sep { width: 1px; height: 14px; background: var(--line2); flex-shrink: 0; margin: 0 2px; }
+.header-cat-sep { width: 1px; height: 14px; background: var(--line2); flex-shrink: 0; margin: 0 4px; }
 
 
 /* Legacy — ya no se usan */
