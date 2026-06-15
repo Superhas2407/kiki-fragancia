@@ -135,6 +135,16 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom"></div>
+
+        {/* Trust bar */}
+        <div className="footer-trust">
+          <span className="footer-trust-item"><span className="footer-trust-check">✓</span> 100% originales verificadas</span>
+          <span className="footer-trust-sep" aria-hidden="true" />
+          <span className="footer-trust-item"><span className="footer-trust-check">✓</span> Envío a todo Venezuela</span>
+          <span className="footer-trust-sep" aria-hidden="true" />
+          <span className="footer-trust-item"><span className="footer-trust-check">✓</span> Pago en Bs o divisa</span>
+        </div>
+
         <div className="footer-meta">
           <span className="footer-copy">© {new Date().getFullYear()} KiKi Fragancia. Todos los derechos reservados.</span>
           <Link to="/terminos-y-condiciones" className="footer-copy footer-terms-link">Términos y condiciones</Link>

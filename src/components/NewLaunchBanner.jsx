@@ -23,10 +23,11 @@ export default function NewLaunchBanner() {
         />
       </picture>
 
-      {/* Gradiente solo al fondo para legibilidad de botones */}
       <div className="nlb-overlay" aria-hidden="true" />
 
       <div className="nlb-content">
+        <p className="nlb-label">— Llegando a KiKi Fragancia</p>
+        <h2 className="nlb-title">NUEVO<br />LANZAMIENTO</h2>
         <p className="nlb-name">CAROLINA HERRERA</p>
         <div className="nlb-ctas">
           {PRODUCT_SLUG ? (
