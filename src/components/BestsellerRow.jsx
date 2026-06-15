@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
+import { toSlug } from '../lib/slugs'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 
@@ -32,7 +33,7 @@ function PriceTag({ product }) {
 function BsCard({ product }) {
   const img = resolveProductImage(product)
   return (
-    <Link to={`/tienda/${product.id}`} className="bs-card">
+    <Link to={`/tienda/${toSlug(product.house, product.name, product.ml)}`} className="bs-card">
       <div className="bs-card-img-wrap">
         <img
           src={img}
