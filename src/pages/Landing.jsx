@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
 import BrandsMarquee from '../components/BrandsMarquee'
@@ -19,13 +17,6 @@ export default function Landing() {
   const allProducts = useIndexProducts()
   const featuredIds = [88, 20, 311, 256, 172, 202, 260, 104, 247, 266]
   const featured = featuredIds.map(id => allProducts.find(p => p.id === id)).filter(Boolean)
-  const [stickyVisible, setStickyVisible] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 0.6)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -52,13 +43,6 @@ export default function Landing() {
         <link rel="canonical" href="https://kikifragancia.com" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
-      {/* Sticky CTA bar — aparece en móvil al scrollear más allá del hero */}
-      <div className={`landing-sticky-cta${stickyVisible ? ' visible' : ''}`} aria-hidden={!stickyVisible}>
-        <Link to="/tienda" className="landing-sticky-btn">
-          Ver colección completa →
-        </Link>
-      </div>
-
       <main>
         <Hero />
         <div className="trust-bar">
