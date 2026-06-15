@@ -6092,12 +6092,12 @@
 .nlb-btn-outline:hover { border-color: rgba(255,255,255,0.85); color: #fff; }
 
 @media (max-width: 767px) {
-  /* Mobile: texto al fondo de la imagen, gradiente cubre solo la franja inferior */
+  /* Mobile: imagen natural + texto/botones al fondo con overlay */
   .nlb-section {
     height: auto;
     min-height: unset;
     position: relative;
-    display: block;
+    overflow: hidden;
   }
   .nlb-picture {
     position: relative;
@@ -6112,28 +6112,41 @@
     object-fit: unset;
     display: block;
   }
+  /* Overlay: gradiente fuerte en franja inferior */
   .nlb-overlay {
-    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     background: linear-gradient(
       to top,
-      rgba(10,4,8,0.90) 0%,
-      rgba(10,4,8,0.55) 30%,
-      rgba(10,4,8,0.0) 58%
+      rgba(10,4,8,0.92) 0%,
+      rgba(10,4,8,0.60) 32%,
+      rgba(10,4,8,0.0) 60%
     );
   }
+  /* Contenido: sobre el overlay, fondo de la imagen */
   .nlb-content {
     position: absolute;
     top: unset;
     transform: none;
-    bottom: 28px;
+    bottom: 32px;
     right: 0;
     left: 0;
     width: 100%;
+    max-width: 100%;
     text-align: center;
     padding: 0 24px;
+    z-index: 2;
   }
-  .nlb-title { font-size: clamp(26px, 7vw, 36px); }
-  .nlb-name { margin-bottom: 20px; }
+  /* Forzar colores blancos — funciona en modo claro y oscuro */
+  .nlb-title {
+    font-size: clamp(26px, 7vw, 36px);
+    color: #fff !important;
+  }
+  .nlb-name {
+    color: rgba(255,255,255,0.75) !important;
+    margin-bottom: 20px;
+  }
   .nlb-ctas { justify-content: center; }
 }
 
