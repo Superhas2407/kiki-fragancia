@@ -43,10 +43,6 @@
   background: var(--bg);
   color: var(--ink);
 }
-[data-theme='warm'] .kiki-header.scrolled {
-  background: rgba(250,246,238,0.97);
-  border-bottom-color: var(--line2);
-}
 [data-theme='warm'] .kiki-header .nav-link,
 [data-theme='warm'] .kiki-header .logo {
   color: var(--ink);
@@ -803,20 +799,14 @@
   background: transparent;
   border-bottom: 1px solid transparent;
 }
-.kiki-header.scrolled {
-  background: rgba(10,8,4,0.93);
-  backdrop-filter: blur(18px) saturate(1.5);
-  -webkit-backdrop-filter: blur(18px) saturate(1.5);
-  border-bottom-color: var(--gold-ink);
-}
-/* En landing transparente, logo e iconos blancos sobre el hero */
-.kiki-header.on-landing:not(.scrolled) .kiki-logo-img {
+/* En landing logo e iconos blancos sobre el hero */
+.kiki-header.on-landing .kiki-logo-img {
   filter: brightness(0) invert(1);
 }
-.kiki-header.on-landing:not(.scrolled) .header-icon-btn,
-.kiki-header.on-landing:not(.scrolled) .hamburger-btn,
-.kiki-header.on-landing:not(.scrolled) .header-cat-link,
-.kiki-header.on-landing:not(.scrolled) .theme-toggle-btn {
+.kiki-header.on-landing .header-icon-btn,
+.kiki-header.on-landing .hamburger-btn,
+.kiki-header.on-landing .header-cat-link,
+.kiki-header.on-landing .theme-toggle-btn {
   color: rgba(255,255,255,0.88) !important;
 }
 .header-inner {
@@ -910,9 +900,9 @@
 }
 .currency-btn.active { background: #C9A84C; color: #0A0A0A; }
 /* Sobre el hero transparente — texto blanco sin importar el modo */
-.kiki-header.on-landing:not(.scrolled) .currency-pill { border-color: rgba(255,255,255,0.3); }
-.kiki-header.on-landing:not(.scrolled) .currency-btn { color: rgba(255,255,255,0.8); }
-.kiki-header.on-landing:not(.scrolled) .currency-btn.active { color: #0A0A0A; }
+.kiki-header.on-landing .currency-pill { border-color: rgba(255,255,255,0.3); }
+.kiki-header.on-landing .currency-btn { color: rgba(255,255,255,0.8); }
+.kiki-header.on-landing .currency-btn.active { color: #0A0A0A; }
 
 .btn-wa {
   display: flex; align-items: center; gap: 7px;
@@ -3773,10 +3763,6 @@
 [data-theme='warm'] .kiki-header {
   background: transparent !important;
   border-bottom-color: transparent !important;
-}
-[data-theme='warm'] .kiki-header.scrolled {
-  background: rgba(251,245,234,0.98) !important;
-  border-bottom-color: var(--line) !important;
 }
 [data-theme='warm'] .nav-pill { background: rgba(35,26,13,0.06); border-color: rgba(35,26,13,0.20); }
 [data-theme='warm'] .nav-pill-item { color: rgba(35,26,13,0.82); }

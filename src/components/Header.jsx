@@ -126,7 +126,6 @@ export default function Header() {
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -156,13 +155,6 @@ export default function Header() {
     allProducts.filter(p => !(p.ml === 200 && p.variantIds) && p.image).slice(0, 12),
     [allProducts]
   )
-
-  useEffect(() => {
-    setScrolled(window.scrollY > 32)
-    const onScroll = () => setScrolled(window.scrollY > 32)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     document.body.style.overflow = (menuOpen || searchOpen) ? 'hidden' : ''
@@ -236,7 +228,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`kiki-header${scrolled ? ' scrolled' : ''}${isLanding ? ' on-landing' : ''}`}>
+      <header className={`kiki-header${isLanding ? ' on-landing' : ''}`}>
         <div className="header-inner">
           {/* LEFT — mobile: hamburger | desktop: currency + theme */}
           <div className="header-util-left">
