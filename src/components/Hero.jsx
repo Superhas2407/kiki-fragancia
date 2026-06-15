@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
+import { useIndexProducts } from '../context/SanityProductsContext'
 import VaporCanvas from './VaporCanvas'
 
 const SearchIcon = () => (
@@ -28,6 +29,8 @@ function getSlideDuration(idx) {
 
 export default function Hero() {
   const { theme } = useTheme()
+  const allProducts = useIndexProducts()
+  const productCount = allProducts.filter(p => p.ml !== 200 || !p.variantIds).length
   const [mounted, setMounted]       = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const navigate = useNavigate()
@@ -183,12 +186,20 @@ export default function Hero() {
 
           <div className="hero-cta-row" style={{ display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap', ...rv(360) }}>
             <Link to="/tienda" className="btn-cta btn-shimmer-kiki">
-              Explorar colección <span className="btn-arrow">→</span>
+              Ver {productCount}+ fragancias <span className="btn-arrow">→</span>
             </Link>
             <Link to="/tienda" className="hero-search-link">
               <SearchIcon />
               Buscar fragancia
             </Link>
+          </div>
+
+          <div className="hero-social-proof" style={rv(440)}>
+            <span className="hero-proof-item">✓ 100% originales verificadas</span>
+            <span className="hero-proof-sep" aria-hidden="true">·</span>
+            <span className="hero-proof-item">✓ Envío a todo Venezuela</span>
+            <span className="hero-proof-sep" aria-hidden="true">·</span>
+            <span className="hero-proof-item">✓ Pago en Bs o divisa</span>
           </div>
         </div>
       </div>
