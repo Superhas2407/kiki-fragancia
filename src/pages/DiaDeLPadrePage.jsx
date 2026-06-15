@@ -110,7 +110,7 @@ const todosLosMasculinos = diaDeLPadreIds
 
   const featured = allProducts.find(p => p.id === EDITOR_PICK_ID)
 
-  const daysLeft     = daysUntil('2026-06-18')
+  const daysLeft     = daysUntil('2026-06-30')
   const daysUntilDad = daysUntil('2026-06-21')
 
   function scrollToGrid()  { gridRef.current?.scrollIntoView({ behavior: 'smooth' }) }
@@ -120,7 +120,7 @@ const todosLosMasculinos = diaDeLPadreIds
     <main className="ddp-page">
       <Helmet>
         <title>Día del Padre 2026 — Fragancias de Lujo para Papá · KiKi Fragancia</title>
-        <meta name="description" content="10 fragancias curadas para el Día del Padre 2026. Pide antes del 18 de junio y llega a tiempo. Antonio Banderas 100% originales." />
+        <meta name="description" content="10 fragancias curadas para el Día del Padre 2026. Pide antes del 30 de junio y llega a tiempo. Antonio Banderas 100% originales." />
         <link rel="canonical" href="https://kikifragancia.com/dia-del-padre" />
         <meta property="og:title" content="Día del Padre 2026 — KiKi Fragancia" />
         <meta property="og:description" content="Una fragancia que él recordará cada vez que se vista. 10 ediciones curadas, una para cada tipo de padre." />
@@ -166,7 +166,7 @@ const todosLosMasculinos = diaDeLPadreIds
         <div className="ddp-countdown-sep" />
         <div className="ddp-countdown-item">
           <span className="ddp-count-label">Pedido antes del</span>
-          <span className="ddp-count-date">18 de junio · entrega a tiempo</span>
+          <span className="ddp-count-date">30 de junio · entrega a tiempo</span>
         </div>
         <div className="ddp-countdown-sep" />
         <div className="ddp-countdown-item">
