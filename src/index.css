@@ -867,7 +867,7 @@
   .header-cat-nav {
     display: flex; align-items: center; justify-content: center;
     border-top: 1px solid rgba(255,255,255,0.12); height: 48px; overflow: hidden;
-    gap: 4px; background: rgba(0,0,0,0.55); backdrop-filter: blur(8px);
+    gap: 4px; background: rgba(0,0,0,0.72);
   }
 }
 .header-cat-link {
@@ -907,9 +907,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(8,5,2,0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #0D0906;
   border-top: 1px solid rgba(201,168,76,0.12);
   border-bottom: 1px solid rgba(201,168,76,0.12);
   padding: 36px 48px 28px;
