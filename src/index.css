@@ -5771,25 +5771,25 @@
 .nlb-btn-pink {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 16px 36px;
+  gap: 12px;
+  padding: 20px 48px;
   background: linear-gradient(135deg, #C4366A, #E0507E);
   border: none;
   color: #fff;
   font-family: var(--font-s);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   text-decoration: none;
   -webkit-text-stroke: 0.4px currentColor;
-  box-shadow: 0 4px 24px rgba(196,54,106,0.45), 0 1px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 28px rgba(196,54,106,0.5), 0 2px 8px rgba(0,0,0,0.2);
   transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 .nlb-btn-pink:hover {
   background: linear-gradient(135deg, #B02E5E, #D04472);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(196,54,106,0.55), 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 36px rgba(196,54,106,0.6), 0 3px 10px rgba(0,0,0,0.25);
 }
 .nlb-btn-outline {
   display: inline-block;
