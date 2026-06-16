@@ -2505,7 +2505,8 @@
   gap: 9px;
   font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
-  font-weight: 100;
+  font-weight: 600;
+  -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold);
@@ -2520,7 +2521,8 @@
 .vitrina-meta {
   font-family: 'KikiGotham', sans-serif;
   font-size: 11.5px;
-  font-weight: 300;
+  font-weight: 600;
+  -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-mute);
@@ -2529,6 +2531,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: clamp(17px, 1.8vw, 26px);
   font-weight: 100;
+  -webkit-text-stroke: 0.3px currentColor;
   font-style: italic;
   color: var(--ink);
   letter-spacing: -0.02em;
@@ -2558,6 +2561,8 @@
 .vitrina-notes-label {
   font-family: 'KikiGotham', sans-serif;
   font-size: 9px;
+  font-weight: 600;
+  -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--gold);
@@ -3472,6 +3477,9 @@
 [data-theme='warm'] .kiki-header .theme-toggle-btn { color: rgba(255,255,255,0.88); }
 [data-theme='warm'] .kiki-header .currency-btn { color: rgba(255,255,255,0.75); }
 [data-theme='warm'] .kiki-header .currency-btn.active { color: #0A0A0A; }
+[data-theme='warm'] .kiki-header .header-cat-link { color: rgba(255,255,255,0.75); }
+[data-theme='warm'] .kiki-header .header-cat-link:hover { color: rgba(255,255,255,1); }
+[data-theme='warm'] .kiki-header .header-cat-link.active { color: var(--gold); }
 
 /* ── Menú móvil ── */
 [data-theme='warm'] .kiki-mobile-menu {
