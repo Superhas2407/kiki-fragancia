@@ -12553,5 +12553,28 @@ export const products = [
     "ml": 100,
     "precioUSD": 130,
     "categoria": "disenador"
+  },
+  {
+    "id": 444,
+    "house": "CAROLINA HERRERA",
+    "name": "La Bomba ",
+    "image": "carolina-herrera-la-bomba-80ml-w.webp",
+    "familia": "Floral Frutal Ámbar",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "La Bomba de Carolina Herrera es una vibrante fragancia femenina de la familia floral, afrutada y ambarina, diseñada para mujeres exuberantes y libres. Destaca por su aroma dulce pero refrescante y su llamativo diseño, simbolizando la transformación, la energía y la pasión.",
+    "description": "La Bomba de Carolina Herrera es una vibrante fragancia femenina de la familia floral, afrutada y ambarina, diseñada para mujeres exuberantes y libres. Destaca por su aroma dulce pero refrescante y su llamativo diseño, simbolizando la transformación, la energía y la pasión.",
+    "notasSalida": null,
+    "notasCorazon": "frangipani, peonia",
+    "notasFondo": "vainilla, pachulí",
+    "notes": [
+      "frangipani",
+      "peonia",
+      "vainilla",
+      "pachulí"
+    ],
+    "ml": 80,
+    "precioUSD": 200,
+    "categoria": "disenador"
   }
 ]

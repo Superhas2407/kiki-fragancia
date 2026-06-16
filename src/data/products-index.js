@@ -5314,5 +5314,17 @@ export const products = [
     "ml": 100,
     "precioUSD": 130,
     "categoria": "disenador"
+  },
+  {
+    "id": 444,
+    "house": "CAROLINA HERRERA",
+    "name": "La Bomba ",
+    "image": "carolina-herrera-la-bomba-80ml-w.webp",
+    "familia": "Floral Frutal Ámbar",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 80,
+    "precioUSD": 200,
+    "categoria": "disenador"
   }
 ]

@@ -443,5 +443,6 @@ export const notesLookup = {
   440: "Lirio de los valles, Freesia, Violeta silvestre, Rosa roja, Flor de naranja marroquí, Jazmín, Ylang ylang, Orquídea, Miel, Musgo de roble, Sándalo",
   441: "Melón, Manzanilla, Caléndula, Albaricoque, Jacinto, Manzana, Cilantro, Mandarina, Grosella negra, Lichi, Ylang ylang, Melocotón, Lirio de los valles, Clavel, Rosa, Jazmín, Clavo, Almizcle, Sándalo, Ámbar, Vetiver, Cedro, Vainilla, Musgo de roble",
   442: "Frambuesa, Pera, Albaricoque, Bergamota, Rosa, Freesia, Jazmín, Almizcle, Sándalo, Ámbar",
-  443: "cardamomo, limón, mandarina, sandía, bergamota, pimienta, canela, sandalo, haba tonka, almizcle, ambar, cedro"
+  443: "cardamomo, limón, mandarina, sandía, bergamota, pimienta, canela, sandalo, haba tonka, almizcle, ambar, cedro",
+  444: "frangipani, peonia, vainilla, pachulí"
 }
