@@ -315,7 +315,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
           <PriceRangeSlider
             min={priceBounds[0]} max={priceBounds[1]}
             value={priceRange}
-            onChange={handlePriceChange}
+            onChange={setPriceRange}
           />
         </SidebarSection>
       )}
@@ -540,7 +540,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           <PriceRangeSlider
             min={priceBounds[0]} max={priceBounds[1]}
             value={priceRange}
-            onChange={handlePriceChange}
+            onChange={setPriceRange}
           />
         </div>
       )}
