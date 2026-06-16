@@ -1235,8 +1235,9 @@
     position: static !important;
     padding: 0 28px 72px !important;
     width: 100%;
+    align-items: center;
   }
-  .hero-ddp-layout { max-width: 100%; text-align: center; }
+  .hero-ddp-layout { max-width: 100%; width: 100%; text-align: center; }
   .hero-ddp-eyebrow { display: none; }
   .hero-ddp-title {
     font-family: var(--font-d);
@@ -5790,6 +5791,18 @@
   background: linear-gradient(135deg, #B02E5E, #D04472);
   transform: translateY(-2px);
   box-shadow: 0 10px 36px rgba(196,54,106,0.6), 0 3px 10px rgba(0,0,0,0.25);
+}
+.nlb-btn-flower-wrap {
+  position: relative;
+  display: inline-block;
+}
+.nlb-floral-frame {
+  position: absolute;
+  inset: -14px;
+  width: calc(100% + 28px);
+  height: calc(100% + 28px);
+  pointer-events: none;
+  overflow: visible;
 }
 .nlb-btn-outline {
   display: inline-block;
