@@ -315,7 +315,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
           <PriceRangeSlider
             min={priceBounds[0]} max={priceBounds[1]}
             value={priceRange}
-            onChange={setPriceRange}
+            onChange={handlePriceChange}
           />
         </SidebarSection>
       )}
@@ -540,7 +540,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           <PriceRangeSlider
             min={priceBounds[0]} max={priceBounds[1]}
             value={priceRange}
-            onChange={setPriceRange}
+            onChange={handlePriceChange}
           />
         </div>
       )}
@@ -583,14 +583,18 @@ export default function Tienda() {
     goldInk:  isDark ? '#E8C96A'               : '#6B5010',
     chip:     isDark ? 'rgba(247,242,234,0.05)': 'rgba(35,26,13,0.07)',
   }
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const [sortBy, setSortBy]           = useState('featured')
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [selectedTipos, setSelectedTipos]   = useState([])
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
-  const [priceRange, setPriceRange]   = useState([0, 9999])
+  const [priceRange, setPriceRange]   = useState(() => {
+    const lo = parseInt(searchParams.get('precioMin'))
+    const hi = parseInt(searchParams.get('precioMax'))
+    return (lo >= 0 && hi > 0) ? [lo, hi] : [0, 9999]
+  })
   const [searchFocused, setSearchFocused] = useState(false)
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const topRef    = useRef(null)
@@ -632,12 +636,37 @@ export default function Tienda() {
   }, [basePool])
 
   useEffect(() => {
-    setPriceRange(priceBounds)
+    const lo = parseInt(searchParams.get('precioMin'))
+    const hi = parseInt(searchParams.get('precioMax'))
+    if (lo >= 0 && hi > 0 && lo >= priceBounds[0] && hi <= priceBounds[1]) {
+      setPriceRange([lo, hi])
+    } else {
+      setPriceRange(priceBounds)
+    }
   }, [priceBounds[0], priceBounds[1]])
+
+  function handlePriceChange(newRange) {
+    setPriceRange(newRange)
+    const params = new URLSearchParams(searchParams)
+    if (newRange[0] === priceBounds[0] && newRange[1] === priceBounds[1]) {
+      params.delete('precioMin')
+      params.delete('precioMax')
+    } else {
+      params.set('precioMin', newRange[0])
+      params.set('precioMax', newRange[1])
+    }
+    setSearchParams(params, { replace: true })
+  }
 
   const isPriceFiltered = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1]
   const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered
-  const clearFilters = () => { setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setPriceRange(priceBounds) }
+  const clearFilters = () => {
+    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([])
+    setPriceRange(priceBounds)
+    const params = new URLSearchParams(searchParams)
+    params.delete('precioMin'); params.delete('precioMax')
+    setSearchParams(params, { replace: true })
+  }
   const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0) + (urlColeccion ? 1 : 0)
 
   const filtered = useMemo(() => {
@@ -692,8 +721,8 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion, priceRange, setPriceRange, priceBounds }
-  const sidebarProps = { urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds }
+  const sidebarProps = { urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
