@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 const BAR_H = 40
 
@@ -7,6 +8,13 @@ export default function AnnouncementBar() {
     try { return sessionStorage.getItem('kiki-bar-closed') === '1' }
     catch { return false }
   })
+  const [popupClosed, setPopupClosed] = useState(() => {
+    try { return sessionStorage.getItem('kiki-popup-closed') === '1' }
+    catch { return false }
+  })
+  const { pathname } = useLocation()
+
+  const popupVisible = !popupClosed && pathname === '/'
 
   useEffect(() => {
     const root = document.documentElement
@@ -19,23 +27,61 @@ export default function AnnouncementBar() {
     setBarClosed(true)
   }
 
-  if (barClosed) return null
+  function closePopup() {
+    try { sessionStorage.setItem('kiki-popup-closed', '1') } catch {}
+    setPopupClosed(true)
+  }
 
   return (
-    <div className="announcement-bar">
-      <div className="ann-marquee-track">
-        {[0, 1, 2, 3, 4, 5].map(i => (
-          <div key={i} className="ann-marquee-content" aria-hidden={i > 0}>
-            <span className="ann-label">Fragancias 100% Originales</span>
-            <span className="ann-dot">✦</span>
-            <span className="ann-label">Envíos en Venezuela</span>
-            <span className="ann-dot">✦</span>
-            <span className="ann-label">Originales Verificadas</span>
-            <span className="ann-dot">✦</span>
+    <>
+      {/* Barra superior */}
+      {!barClosed && (
+        <div className="announcement-bar">
+          <div className="ann-marquee-track">
+            {[0, 1, 2, 3, 4, 5].map(i => (
+              <div key={i} className="ann-marquee-content" aria-hidden={i > 0}>
+                <span className="ann-label">Fragancias 100% Originales</span>
+                <span className="ann-dot">✦</span>
+                <span className="ann-label">Envíos en Venezuela</span>
+                <span className="ann-dot">✦</span>
+                <span className="ann-label">Originales Verificadas</span>
+                <span className="ann-dot">✦</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <button className="announcement-bar-close" onClick={closeBar} aria-label="Cerrar">×</button>
-    </div>
+          <button className="announcement-bar-close" onClick={closeBar} aria-label="Cerrar">×</button>
+        </div>
+      )}
+
+      {/* Pop-up móvil */}
+      {popupVisible && (
+        <div className="ddp-popup-overlay" onClick={closePopup} aria-modal="true" role="dialog">
+          <div className="ddp-popup" onClick={e => e.stopPropagation()}>
+            <button className="ddp-popup-close" onClick={closePopup} aria-label="Cerrar">×</button>
+            <div className="ddp-popup-top-bar" />
+
+            <p className="ddp-popup-eyebrow">Día del Padre · 21 de junio</p>
+
+            <h2 className="ddp-popup-headline">
+              El regalo<br />que no olvidará
+            </h2>
+
+            <div className="ddp-popup-rule" />
+
+            <p className="ddp-popup-body">
+              Fragancias originales seleccionadas para papá.<br />
+              Solo en divisa · Tiempo limitado.
+            </p>
+
+            <Link to="/tienda?genero=Masculino" className="ddp-popup-btn" onClick={closePopup}>
+              Explorar colección
+            </Link>
+            <button className="ddp-popup-skip" onClick={closePopup}>
+              Ahora no
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
