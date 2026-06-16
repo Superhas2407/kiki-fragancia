@@ -19,6 +19,21 @@ const NAV_LINKS = [
 
 const TRENDING_TERMS = ['Khamrah', 'Oud', '9 PM', 'Lattafa', 'Floral', 'Afnan']
 
+const MEGA_BRANDS = [
+  { house: 'DIOR',             img: 'dior-homme-2020-100ml-m.webp',                   label: 'Dior'            },
+  { house: 'CAROLINA HERRERA', img: 'carolina-herrera-ch-men-sport-100ml-m.webp',      label: 'Carolina Herrera'},
+  { house: 'RALPH LAUREN',     img: 'ralph-lauren-polo-67-ralph-lauren-100ml-m.webp',  label: 'Ralph Lauren'    },
+  { house: 'HUGO BOSS',        img: 'hugo-boss-hugo-xy-100ml-m.webp',                  label: 'Hugo Boss'       },
+  { house: 'DOLCE & GABBANA',  img: 'dolcegabbana-devotion-pour-homme-100ml-m.webp',   label: 'Dolce & Gabbana' },
+  { house: 'MONTBLANC',        img: 'montblanc-legend-spirit-100ml-m.webp',            label: 'Montblanc'       },
+  { house: 'RABANNE',          img: 'rabanne-phantom-intense-100ml-m.webp',            label: 'Rabanne'         },
+  { house: 'ANTONIO BANDERAS', img: 'antonio-banderas-the-golden-secret-100ml-m.webp', label: 'A. Banderas'     },
+  { house: 'LATTAFA',          img: 'lattafa-asad-100ml-m.webp',                       label: 'Lattafa'         },
+  { house: 'RASASI',           img: 'rasasi-hawas-for-him-100ml-m.webp',              label: 'Rasasi'          },
+  { house: 'ARMAF',            img: 'armaf-aura-100ml-m.webp',                         label: 'Armaf'           },
+  { house: 'CALVIN KLEIN',     img: 'calvin-klein-eternity-for-men-100ml-m.webp',      label: 'Calvin Klein'    },
+]
+
 const CartIcon = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
@@ -130,7 +145,12 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeSuggestion, setActiveSuggestion] = useState(-1)
+  const [megaOpen, setMegaOpen] = useState(false)
   const searchInputRef = useRef(null)
+  const megaTimer = useRef(null)
+
+  function openMega() { clearTimeout(megaTimer.current); setMegaOpen(true) }
+  function closeMega() { megaTimer.current = setTimeout(() => setMegaOpen(false), 180) }
 
   const suggestions = useMemo(() => {
     const raw = norm(searchQuery.trim())
@@ -305,12 +325,48 @@ export default function Header() {
                 <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
               ))}
               <span className="header-cat-sep" />
+              <div className="header-mega-wrap" onMouseEnter={openMega} onMouseLeave={closeMega}>
+                <button className={`header-cat-link header-mega-btn${megaOpen ? ' active' : ''}`}>
+                  Marcas <span className="header-mega-arrow" style={{ fontSize: 8, marginLeft: 2, display: 'inline-block', transform: megaOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
+                </button>
+              </div>
+              <span className="header-cat-sep" />
               <a href="/#nosotros" className={`header-cat-link${isPath('/') ? ' active' : ''}`}>Nosotros</a>
               <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="header-cat-link">Instagram</a>
               <Link to="/tienda?ddp=1" className={`header-cat-link header-cat-ddp${ddp ? ' active' : ''}`}>🎁 Día del Padre</Link>
             </nav>
           )
         })()}
+
+        {/* Mega-menu marcas — desktop only */}
+        {megaOpen && (
+          <div className="header-mega-panel" onMouseEnter={openMega} onMouseLeave={closeMega}>
+            <div className="header-mega-grid">
+              {MEGA_BRANDS.map(b => (
+                <Link
+                  key={b.house}
+                  to={`/tienda?q=${encodeURIComponent(b.house)}`}
+                  className="header-mega-brand"
+                  onClick={() => setMegaOpen(false)}
+                >
+                  <div className="header-mega-img-wrap">
+                    <img src={`/products/${b.img}`} alt={b.label} className="header-mega-img" loading="lazy" />
+                  </div>
+                  <span className="header-mega-label">{b.label}</span>
+                </Link>
+              ))}
+            </div>
+            <div className="header-mega-footer">
+              <Link to="/tienda?tipo=arabes"    className="header-mega-cat" onClick={() => setMegaOpen(false)}>Árabes</Link>
+              <span className="header-mega-sep">·</span>
+              <Link to="/tienda?tipo=disenador" className="header-mega-cat" onClick={() => setMegaOpen(false)}>Diseñador</Link>
+              <span className="header-mega-sep">·</span>
+              <Link to="/tienda?tipo=nicho"     className="header-mega-cat" onClick={() => setMegaOpen(false)}>Nicho</Link>
+              <span className="header-mega-sep">·</span>
+              <Link to="/tienda"                className="header-mega-cat header-mega-all" onClick={() => setMegaOpen(false)}>Ver todo →</Link>
+            </div>
+          </div>
+        )}
 
       </header>
 
