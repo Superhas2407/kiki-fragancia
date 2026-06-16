@@ -7401,7 +7401,7 @@ export const products = [
       "Cachemira"
     ],
     "ml": 100,
-    "precioUSD": 55,
+    "precioUSD": 75,
     "categoria": "disenador"
   },
   {
