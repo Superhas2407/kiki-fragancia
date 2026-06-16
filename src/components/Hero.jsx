@@ -54,11 +54,8 @@ export default function Hero() {
           </p>
 
           <div className="hero-ddp-actions" style={rv(380)}>
-            <Link to="/dia-del-padre" className="hero-ddp-btn-primary">
-              Compra ahora
-            </Link>
-            <Link to="/tienda?genero=Masculino" className="hero-ddp-btn-outline">
-              Explorar
+            <Link to="/tienda?genero=Masculino" className="hero-ddp-btn-primary">
+              Explorar colección
             </Link>
           </div>
 
