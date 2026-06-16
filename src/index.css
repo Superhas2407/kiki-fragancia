@@ -3453,6 +3453,10 @@
 [data-theme='warm'] .btn-cta:hover { color: #1A1208; background: var(--gold); border-color: var(--gold); }
 [data-theme='warm'] .hamburger-btn { color: var(--ink); }
 [data-theme='warm'] .kiki-header .hamburger-btn { color: rgba(255,255,255,0.88); }
+[data-theme='warm'] .kiki-header .header-icon-btn,
+[data-theme='warm'] .kiki-header .theme-toggle-btn { color: rgba(255,255,255,0.88); }
+[data-theme='warm'] .kiki-header .currency-btn { color: rgba(255,255,255,0.75); }
+[data-theme='warm'] .kiki-header .currency-btn.active { color: #0A0A0A; }
 
 /* ── Menú móvil ── */
 [data-theme='warm'] .kiki-mobile-menu {
