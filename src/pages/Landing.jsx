@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
-import BrandsMarquee from '../components/BrandsMarquee'
 import BrandStory from '../components/BrandStory'
 import Guarantee from '../components/Guarantee'
 import Footer from '../components/Footer'
@@ -65,10 +64,8 @@ export default function Landing() {
         <NewLaunchBanner />
         <BestsellerRow />
         <QuickGenero />
-        <BrandsMarquee />
         <ProductWall />
         <ColeccionesSection />
-        <BrandsMarquee reverse />
         <BrandStory />
         <Testimonials />
         <Guarantee />

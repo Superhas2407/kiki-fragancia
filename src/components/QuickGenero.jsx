@@ -20,7 +20,7 @@ const GENEROS = [
     label: 'Unisex',
     href: '/tienda?genero=Unisex',
     img: '/hero/unisex-desktop.webp',
-    imgMobile: '/hero/unisex-mobile.webp',
+    imgMobile: '/hero/unisex-desktop.webp',
   },
 ]
 

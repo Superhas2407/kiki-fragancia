@@ -5110,10 +5110,11 @@
     grid-template-columns: 1fr 1fr;
     height: auto;
     max-height: none;
+    gap: 0;
   }
   .qg-section .qg-tile:last-child {
     grid-column: 1 / -1;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
   }
 }
 .qg-tile {
@@ -5123,7 +5124,7 @@
   text-decoration: none;
 }
 @media (max-width: 767px) {
-  .qg-tile { height: auto; min-height: unset; aspect-ratio: 3 / 4; }
+  .qg-tile { height: auto; min-height: unset; aspect-ratio: 2 / 3; }
 }
 .qg-picture {
   position: absolute; inset: 0;
