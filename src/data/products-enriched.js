@@ -11527,7 +11527,7 @@ export const products = [
       "Madera"
     ],
     "ml": 75,
-    "precioUSD": 55,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
