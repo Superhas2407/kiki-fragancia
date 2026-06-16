@@ -12,7 +12,7 @@ npm run build  # sync Sanity → local + sitemap + vite build + generate-product
 - `App.jsx` — `CartProvider` > `ErrorBoundary` > `AppShell` (AnnouncementBar + Header + GlobalSidebar + Routes + BottomNav)
 - `AnnouncementBar.jsx` — barra dorada fija encima del header (z-index 41). Gestiona también el bottom sheet pop-up en móvil (<768px). Ambos usan `sessionStorage` para mostrarse solo una vez por sesión. Ajusta `--bar-h` en `:root` para bajar el header.
 - `GlobalSidebar.jsx` — links por género y tipo (solo ≥1024px, oculto en móvil)
-- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito a la derecha (ocultos en móvil vía `visibility: hidden`). Sidebar deslizante 290px con nav italic 22px y utilidades al fondo. Escucha evento `kiki:open-search` para abrir el buscador desde BottomNav.
+- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito a la derecha (ocultos en móvil vía `visibility: hidden`). Logo e iconos siempre blancos (`.kiki-header .kiki-logo-img { filter: brightness(0) invert(1) }`). En modo warm (claro) fuera de landing, el header tiene fondo oscuro `#140E06`. En landing y dark mode, el header es transparente. Switcher de moneda REF/Bs en desktop (pill) y en móvil (botones `hcm-btn` absoluteados al right del header-inner). Sidebar deslizante 290px con nav italic 22px y utilidades al fondo. Escucha evento `kiki:open-search` para abrir el buscador desde BottomNav.
 - `BottomNav.jsx` — barra fija inferior en móvil (≤1023px): Inicio · Tienda · Buscar · Carrito. Buscar dispara `kiki:open-search`. WhatsAppFab flota en `bottom: calc(60px + safe-area + 16px)`.
 - `Hero.jsx` — carrusel: 1 video (`/hero.webm`) + 5 imágenes, crossfade CSS, `<picture>` desktop/mobile
 - `Tienda.jsx` — **Desktop**: layout grid `220px sidebar | 1fr main`. Sidebar fijo sticky con acordeones (Género, Categoría, Concentración, Por ocasión, Marca) + barra superior con conteo y select Ordenar. **Mobile**: barra `Filtrar | Ordenar` (reemplaza chips) + drawer con Género incluido. Sin paginación — infinite scroll.
@@ -40,7 +40,7 @@ Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `pr
 ### Arquitectura
 - **Sanity es la fuente primaria de productos.** Los archivos locales son fallback de carga inicial y se regeneran en cada `npm run build`.
 - Productos nuevos creados en Studio aparecen en /tienda sin tocar código (vía fetch del contexto).
-- `src/lib/sanityClient.js` — cliente público (`useCdn: true`). Exporta `sanityClient` y `sanityImageUrl(source)`.
+- `src/lib/sanityClient.js` — cliente público (`useCdn: true`). Exporta `sanityClient` y `sanityImageUrl(source)`. También exporta `sanityWriteClient` (usa `VITE_SANITY_WRITE_TOKEN`, `useCdn: false`) para escrituras desde el cliente.
 - `src/context/SanityProductsContext.jsx` — provider + hooks:
   - `<SanityProductsProvider>` — en `App.jsx` envuelve la app
   - `useIndexProducts()` — array de productos fusionados (local + Sanity)
@@ -81,8 +81,9 @@ El `npm run build` corre `sync-from-sanity.mjs` que descarga todos los productos
 - `http://localhost:5173`
 
 ### Credenciales (NO commitear)
-- `.env.local` — `SANITY_TOKEN`, `VITE_SANITY_PROJECT_ID`, `VITE_SANITY_DATASET`
-- `SANITY_TOKEN` también configurado en Vercel → Settings → Environment Variables
+- `.env.local` — `SANITY_TOKEN`, `VITE_SANITY_PROJECT_ID`, `VITE_SANITY_DATASET`, `VITE_SANITY_WRITE_TOKEN`
+- `SANITY_TOKEN` y `VITE_SANITY_WRITE_TOKEN` también configurados en Vercel → Settings → Environment Variables
+- `VITE_SANITY_WRITE_TOKEN` es el mismo valor que `SANITY_TOKEN` — necesario para escrituras desde el cliente (tasa de cambio)
 
 ### Scripts de migración
 | Script | Uso |
@@ -146,16 +147,54 @@ Forma de pirámide real con tier-based max-width, centrada con `margin: 0 auto`:
 - `.pd-pyr-tier-label` — texto dorado italic uppercase
 - `.pd-pyr-footer` — pie con casa · nombre · familia
 
-## ProductWall (`src/components/ProductWall.jsx`)
-Sección "Colección" en la landing. Muestra el número de productos + heading + marquee 3D + CTA.
-- **Scroll reveal:** eyebrow → número → título en cascada (0 / 100 / 200ms) via `useScrollReveal`
-- **CTA:** `<Link to="/tienda" className="btn-cta btn-shimmer-kiki">` debajo del marquee
-- **Imágenes:** 16 WebP hardcodeadas de `public/products-thumb/`
-- **Número dinámico:** `allProducts.filter(p => p.ml !== 200 || !p.variantIds).length`
+## Componentes eliminados (junio 2026)
+Los siguientes archivos fueron borrados — no existen en el repo:
+- `ProductWall.jsx`, `BrandsMarquee.jsx`, `ColeccionesSection.jsx`, `DiaDeLPadrePromo.jsx`
+- `CartFab.jsx`, `InstagramFeed.jsx`, `VaporCanvas.jsx`
+- `ui/ThreeDMarquee.jsx`, `ui/WheelPagination.jsx`, `ui/gradient-wave.jsx`
+- `data/promo-divisa.js`
 
-## ThreeDMarquee (`src/components/ui/ThreeDMarquee.jsx`)
-Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas animan en Y alterna.
-- **Separadores dorados:** 3 líneas de 2px en `24.5% / 50% / 75.5%` del contenedor, `rgba(201,168,76,0.6)` con fade en extremos, `zIndex: 20`, fijas.
+## Landing — orden de secciones
+`src/pages/Landing.jsx` — orden actual:
+1. `<Hero />` — carrusel hero
+2. `<NewLaunchBanner />` — banner de nuevos lanzamientos
+3. `<BestsellerRow />` — fila de bestsellers
+4. `<QuickGenero />` — 3 tiles de género (Para él / Para ella / Unisex)
+5. `<MustHaveMen />` — carrusel horizontal de fragancias masculinas
+6. `<QuickOcasion />` — 4 tiles por ocasión (trabajo / salir / diario / jóvenes)
+7. `<MustHaveWomen />` — carrusel horizontal de fragancias femeninas
+8. `<BrandStory />` — historia de la marca
+9. `<Testimonials />` — testimonios
+10. `<Guarantee />` — garantías
+
+Eliminados de Landing en junio 2026: `BrandsMarquee` (×2), `ProductWall`, `ThreeDMarquee`, `ColeccionesSection`.
+
+## QuickGenero (`src/components/QuickGenero.jsx`)
+3 tiles de género en la landing. Imágenes actuales en `public/hero/`:
+- Para él: `sauvage-desktop.webp` / `sauvage-mobile.webp` (Dior Sauvage)
+- Para ella: `paraella-desktop.webp` / `paraella-mobile.webp`
+- Unisex: `unisex-desktop.webp` / `unisex-mobile.webp`
+
+**Mobile layout (≤767px):** grid 2 columnas. Para él + Para ella en `aspect-ratio: 2/3`. Unisex ocupa el ancho completo (`grid-column: 1 / -1`) con `aspect-ratio: 4/3`.
+**Label style:** texto uppercase `font-size: 11px`, borde blanco `1px solid rgba(255,255,255,0.75)`, hover → dorado. Sin CTA visible.
+
+## QuickOcasion (`src/components/QuickOcasion.jsx`)
+4 tiles por ocasión. Reutiliza clases `.qg-section.qo-section` y `.qg-tile`.
+- Para el trabajo → `/tienda?coleccion=trabajo`
+- Para salir → `/tienda?coleccion=noche`
+- Para el diario → `/tienda?coleccion=diario`
+- Para jóvenes → `/tienda?coleccion=joven`
+
+Imágenes en `public/hero/ocasion-{key}-{desktop|mobile}.webp`. Las tiles de "diario" y "jovenes" usan `objectPosition: '70% center'` para centrar los frascos.
+
+**Desktop:** 4 columnas (`grid-template-columns: repeat(4, 1fr)`), altura `80vh`.
+**Mobile:** 4 tiles en columna única `aspect-ratio: 9/16` cada una.
+
+## MustHaveMen (`src/components/MustHaveMen.jsx`)
+Carrusel horizontal de fragancias masculinas. IDs: `[88, 20, 256, 255, 279, 272, 104, 247, 266, 311]` — todos género Masculino. Heading: "DEBERÍAS COMPRAR" + subtitle italic "Para hombres". CTA → `/tienda?genero=Masculino`. Reutiliza clases CSS: `bestseller-section`, `bs-card`, `bs-row`, `bs-row-desktop`.
+
+## MustHaveWomen (`src/components/MustHaveWomen.jsx`)
+Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131, 81, 78, 208, 209]` — todos género Femenino. Heading: "DEBERÍAS COMPRAR" + subtitle italic "Para mujeres". CTA → `/tienda?genero=Femenino`.
 
 ## Hero carrusel (Opción A — 2026-05-29)
 - Video: 14s, fotos: 7s por slide (`getSlideDuration(idx)`)
@@ -208,7 +247,7 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 ## Campaña Día del Padre 2026
 - **Ruta:** `/dia-del-padre` — `src/pages/DiaDeLPadrePage.jsx`
 - **Productos del grid:** 15 fragancias curadas — definidos en `src/data/dia-del-padre.js`
-- **Entrada homepage:** `DiaDeLPadrePromo.jsx` — sección editorial en `Landing.jsx` después de ProductWall
+- **Entrada homepage:** `DiaDeLPadrePromo.jsx` — **eliminado en junio 2026**. La campaña es accesible desde la ruta `/dia-del-padre` y el AnnouncementBar.
 - **AnnouncementBar:** marquee scrolling `10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE` + popup modal en móvil
 - **Ribbon:** `ribbon="Día del Padre"` solo por `diaDeLPadreIds.includes(product.id)`
 - **Descuento:** Sanity (`p.descuento`) tiene prioridad sobre `diaDeLPadreDiscounts[p.id]` (hardcodeado). Solo en modo `$` (divisa).
@@ -221,13 +260,16 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 
 ## Sistema de moneda
 - `src/context/CurrencyContext.jsx` — `{ currency, setCurrency }` via `useCurrency()`. Valores: `'usd' | 'bs'`.
-- `src/hooks/useTasaCambio.js` — fetcha `ve.dolarapi.com/v1/dolares/paralelo`. Cache 30min en `kiki_tasa_bs`. Soporta override manual vía `kiki_tasa_manual` en localStorage.
-  - `setTasaManual(rate)` — guarda tasa manual con timestamp
-  - `clearTasaManual()` — elimina el override, vuelve a usar la API
-  - `getTasaManualInfo()` — devuelve `{ rate, savedAt }` o `null`
-  - Prioridad: manual localStorage > cache API > fetch API
-- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente. Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.**
+- `src/hooks/useTasaCambio.js` — prioridad de fuentes:
+  1. **Sanity** (`kiki-ajustes.tasaManual`) con cache 5min en localStorage
+  2. **dolarapi** (`ve.dolarapi.com/v1/dolares/paralelo`) con cache 30min
+  - `setTasaSanity(rate)` — escribe tasa en Sanity vía `sanityWriteClient` (visible para todos los usuarios) + actualiza cache local
+  - `clearTasaSanity()` — borra `tasaManual` de Sanity + limpia cache local
+  - `getTasaSanityCache()` — devuelve `{ rate, ts }` del cache local o `null`
+  - En mount: fetcha Sanity en vivo (`*[_id == "kiki-ajustes"][0]{ tasaManual }`)
+- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente. Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.** Cuando hay tasa manual activa muestra "· Sanity · visible para todos".
 - Switcher en Header: pill `REF` / `Bs` en desktop + sección MONEDA en menú móvil.
+- **Documento Sanity:** `kiki-ajustes` (singleton `_id: "kiki-ajustes"`). Campo `tasaManual: number`. La tasa de Sanity es global — cuando el admin la cambia, todos los usuarios la ven (con 5min de delay por cache).
 
 ## Tema
 - `src/context/ThemeContext.jsx` — `{ theme, toggleTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`).
@@ -235,9 +277,12 @@ Grid 3D inclinado (`rotateX(55deg) rotateZ(-45deg)`) de 4 columnas, columnas ani
 - Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`.
 
 ## BrandStory
-- Foto del local: `/store-interior.webp`
-- Layout: texto/quote columna izquierda, foto columna derecha
-- Marco editorial: `::before` rectángulo gold offset `inset: 14px -14px -14px 14px`
+Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
+- Sección `#nosotros`, `.bs2-section` — 80vh desktop, auto en móvil
+- `<img class="bs2-img">` — `position: absolute; inset: 0; object-fit: cover` (foto `/store-interior.webp`)
+- `.bs2-overlay` — gradiente oscuro a la derecha en desktop, de abajo a arriba en móvil
+- `.bs2-content` — 44% ancho desktop (alineado a la derecha), absolute bottom en móvil
+- Scroll reveal con `useScrollReveal` en eyebrow / quote / text / cta
 
 ## Scripts útiles
 | Script | Uso |

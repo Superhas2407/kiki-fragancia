@@ -260,8 +260,15 @@ export default function Header() {
             <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
           </Link>
 
-          {/* RIGHT — search + wishlist (desktop) + cart */}
+          {/* RIGHT — currency pill (mobile) + search + wishlist (desktop) + cart */}
           <div className="header-util-right">
+            <div className="header-currency-mobile header-desktop-hide">
+              {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }, i) => (
+                <button key={val} onClick={() => setCurrency(val)}
+                  className={`hcm-btn${currency === val ? ' active' : ''}`}
+                >{label}</button>
+              ))}
+            </div>
             <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn"
               style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, minWidth: 44, minHeight: 44, transition: 'color .2s' }}
               onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
