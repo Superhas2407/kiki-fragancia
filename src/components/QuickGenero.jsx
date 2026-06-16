@@ -12,15 +12,15 @@ const GENEROS = [
     key: 'Femenino',
     label: 'Para ella',
     href: '/tienda?genero=Femenino',
-    img: '/hero/gucci-bloom-desktop.webp',
-    imgMobile: '/hero/gucci-bloom-mobile.webp',
+    img: '/hero/paraella-desktop.webp',
+    imgMobile: '/hero/paraella-mobile.webp',
   },
   {
     key: 'Unisex',
     label: 'Unisex',
     href: '/tienda?genero=Unisex',
-    img: '/hero/ysl-desktop.webp',
-    imgMobile: '/hero/ysl-mobile.webp',
+    img: '/hero/unisex-desktop.webp',
+    imgMobile: '/hero/unisex-mobile.webp',
   },
 ]
 
