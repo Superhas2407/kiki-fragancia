@@ -5,8 +5,8 @@ const GENEROS = [
     key: 'Masculino',
     label: 'Para él',
     href: '/tienda?genero=Masculino',
-    img: '/hero/ddp-hero-desktop.webp',
-    imgMobile: '/hero/ddp-hero-mobile.webp',
+    img: '/hero/sauvage-desktop.webp',
+    imgMobile: '/hero/sauvage-mobile.webp',
   },
   {
     key: 'Femenino',
