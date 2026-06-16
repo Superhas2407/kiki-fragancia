@@ -20,12 +20,12 @@ const NAV_LINKS = [
 const TRENDING_TERMS = ['Khamrah', 'Oud', '9 PM', 'Lattafa', 'Floral', 'Afnan']
 
 const MEGA_CATS = [
-  { label: 'Hombre',    to: '/tienda?genero=Masculino', img: 'dior-homme-2020-100ml-m.webp',              sub: 'Fragancias masculinas'  },
-  { label: 'Mujer',     to: '/tienda?genero=Femenino',  img: 'rabanne-fame-parfum-rabanne-80ml-f.webp',   sub: 'Fragancias femeninas'   },
-  { label: 'Unisex',    to: '/tienda?genero=Unisex',    img: 'lattafa-khamrah-100ml-u.webp',              sub: 'Para todos'             },
-  { label: 'Árabes',    to: '/tienda?tipo=arabes',      img: 'lattafa-asad-100ml-m.webp',                 sub: 'Oud · Amaderado · Ambar'},
-  { label: 'Diseñador', to: '/tienda?tipo=disenador',   img: 'carolina-herrera-ch-men-sport-100ml-m.webp',sub: 'Marcas de lujo'         },
-  { label: 'Nicho',     to: '/tienda?tipo=nicho',       img: 'creed-aventus-creed-100ml-m.webp',          sub: 'Exclusivo · Artesanal'  },
+  { label: 'Hombre',    to: '/tienda?genero=Masculino', img: '/silhouettes/mega-hombre.jpeg',    sub: 'Fragancias masculinas'  },
+  { label: 'Mujer',     to: '/tienda?genero=Femenino',  img: '/silhouettes/mega-mujer.jpeg',     sub: 'Fragancias femeninas'   },
+  { label: 'Unisex',    to: '/tienda?genero=Unisex',    img: '/silhouettes/mega-unisex.jpeg',    sub: 'Para todos'             },
+  { label: 'Árabes',    to: '/tienda?tipo=arabes',      img: '/silhouettes/mega-arabes.jpeg',    sub: 'Oud · Amaderado · Ámbar'},
+  { label: 'Diseñador', to: '/tienda?tipo=disenador',   img: '/silhouettes/mega-disenador.jpeg', sub: 'Marcas de lujo'         },
+  { label: 'Nicho',     to: '/tienda?tipo=nicho',       img: '/silhouettes/mega-nicho.jpeg',     sub: 'Exclusivo · Artesanal'  },
 ]
 
 const CartIcon = ({ size = 18 }) => (
@@ -328,7 +328,7 @@ export default function Header() {
                   onClick={() => setMegaOpen(false)}
                 >
                   <div className="header-mega-img-wrap">
-                    <img src={`/products/${c.img}`} alt={c.label} className="header-mega-img" loading="lazy" />
+                    <img src={c.img} alt={c.label} className="header-mega-img" loading="lazy" />
                   </div>
                   <span className="header-mega-label">{c.label}</span>
                   <span className="header-mega-sub">{c.sub}</span>
