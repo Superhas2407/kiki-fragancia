@@ -19,19 +19,13 @@ const NAV_LINKS = [
 
 const TRENDING_TERMS = ['Khamrah', 'Oud', '9 PM', 'Lattafa', 'Floral', 'Afnan']
 
-const MEGA_BRANDS = [
-  { house: 'DIOR',             img: 'dior-homme-2020-100ml-m.webp',                   label: 'Dior'            },
-  { house: 'CAROLINA HERRERA', img: 'carolina-herrera-ch-men-sport-100ml-m.webp',      label: 'Carolina Herrera'},
-  { house: 'RALPH LAUREN',     img: 'ralph-lauren-polo-67-ralph-lauren-100ml-m.webp',  label: 'Ralph Lauren'    },
-  { house: 'HUGO BOSS',        img: 'hugo-boss-hugo-xy-100ml-m.webp',                  label: 'Hugo Boss'       },
-  { house: 'DOLCE & GABBANA',  img: 'dolcegabbana-devotion-pour-homme-100ml-m.webp',   label: 'Dolce & Gabbana' },
-  { house: 'MONTBLANC',        img: 'montblanc-legend-spirit-100ml-m.webp',            label: 'Montblanc'       },
-  { house: 'RABANNE',          img: 'rabanne-phantom-intense-100ml-m.webp',            label: 'Rabanne'         },
-  { house: 'ANTONIO BANDERAS', img: 'antonio-banderas-the-golden-secret-100ml-m.webp', label: 'A. Banderas'     },
-  { house: 'LATTAFA',          img: 'lattafa-asad-100ml-m.webp',                       label: 'Lattafa'         },
-  { house: 'RASASI',           img: 'rasasi-hawas-for-him-100ml-m.webp',              label: 'Rasasi'          },
-  { house: 'ARMAF',            img: 'armaf-aura-100ml-m.webp',                         label: 'Armaf'           },
-  { house: 'CALVIN KLEIN',     img: 'calvin-klein-eternity-for-men-100ml-m.webp',      label: 'Calvin Klein'    },
+const MEGA_CATS = [
+  { label: 'Hombre',    to: '/tienda?genero=Masculino', img: 'dior-homme-2020-100ml-m.webp',              sub: 'Fragancias masculinas'  },
+  { label: 'Mujer',     to: '/tienda?genero=Femenino',  img: 'rabanne-fame-parfum-rabanne-80ml-f.webp',   sub: 'Fragancias femeninas'   },
+  { label: 'Unisex',    to: '/tienda?genero=Unisex',    img: 'lattafa-khamrah-100ml-u.webp',              sub: 'Para todos'             },
+  { label: 'Árabes',    to: '/tienda?tipo=arabes',      img: 'lattafa-asad-100ml-m.webp',                 sub: 'Oud · Amaderado · Ambar'},
+  { label: 'Diseñador', to: '/tienda?tipo=disenador',   img: 'carolina-herrera-ch-men-sport-100ml-m.webp',sub: 'Marcas de lujo'         },
+  { label: 'Nicho',     to: '/tienda?tipo=nicho',       img: 'creed-aventus-creed-100ml-m.webp',          sub: 'Exclusivo · Artesanal'  },
 ]
 
 const CartIcon = ({ size = 18 }) => (
@@ -304,30 +298,14 @@ export default function Header() {
         {/* NAV HORIZONTAL — desktop only */}
         {(() => {
           const sp = new URLSearchParams(location.search)
-          const g = sp.get('genero'); const t = sp.get('tipo'); const ddp = sp.get('ddp') === '1'
+          const ddp = sp.get('ddp') === '1'
           const isPath = (p) => location.pathname === p
           return (
             <nav className="header-cat-nav">
-              {[
-                { label: 'Hombre',    href: '/tienda?genero=Masculino', active: g === 'Masculino' && !ddp },
-                { label: 'Mujer',     href: '/tienda?genero=Femenino',  active: g === 'Femenino'  && !ddp },
-                { label: 'Unisex',    href: '/tienda?genero=Unisex',    active: g === 'Unisex'    && !ddp },
-                { label: 'Kids',      href: '/tienda?genero=Niño',      active: g === 'Niño'      && !ddp },
-              ].map(l => (
-                <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
-              ))}
-              <span className="header-cat-sep" />
-              {[
-                { label: 'Árabes',    href: '/tienda?tipo=arabes',    active: t === 'arabes'    },
-                { label: 'Diseñador', href: '/tienda?tipo=disenador', active: t === 'disenador' },
-                { label: 'Nicho',     href: '/tienda?tipo=nicho',     active: t === 'nicho'     },
-              ].map(l => (
-                <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
-              ))}
-              <span className="header-cat-sep" />
               <div className="header-mega-wrap" onMouseEnter={openMega} onMouseLeave={closeMega}>
                 <button className={`header-cat-link header-mega-btn${megaOpen ? ' active' : ''}`}>
-                  Marcas <span className="header-mega-arrow" style={{ fontSize: 8, marginLeft: 2, display: 'inline-block', transform: megaOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
+                  Colección
+                  <span style={{ fontSize: 8, marginLeft: 3, display: 'inline-block', transform: megaOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
                 </button>
               </div>
               <span className="header-cat-sep" />
@@ -338,32 +316,24 @@ export default function Header() {
           )
         })()}
 
-        {/* Mega-menu marcas — desktop only */}
+        {/* Mega-menu colección — desktop only */}
         {megaOpen && (
           <div className="header-mega-panel" onMouseEnter={openMega} onMouseLeave={closeMega}>
             <div className="header-mega-grid">
-              {MEGA_BRANDS.map(b => (
+              {MEGA_CATS.map(c => (
                 <Link
-                  key={b.house}
-                  to={`/tienda?q=${encodeURIComponent(b.house)}`}
+                  key={c.label}
+                  to={c.to}
                   className="header-mega-brand"
                   onClick={() => setMegaOpen(false)}
                 >
                   <div className="header-mega-img-wrap">
-                    <img src={`/products/${b.img}`} alt={b.label} className="header-mega-img" loading="lazy" />
+                    <img src={`/products/${c.img}`} alt={c.label} className="header-mega-img" loading="lazy" />
                   </div>
-                  <span className="header-mega-label">{b.label}</span>
+                  <span className="header-mega-label">{c.label}</span>
+                  <span className="header-mega-sub">{c.sub}</span>
                 </Link>
               ))}
-            </div>
-            <div className="header-mega-footer">
-              <Link to="/tienda?tipo=arabes"    className="header-mega-cat" onClick={() => setMegaOpen(false)}>Árabes</Link>
-              <span className="header-mega-sep">·</span>
-              <Link to="/tienda?tipo=disenador" className="header-mega-cat" onClick={() => setMegaOpen(false)}>Diseñador</Link>
-              <span className="header-mega-sep">·</span>
-              <Link to="/tienda?tipo=nicho"     className="header-mega-cat" onClick={() => setMegaOpen(false)}>Nicho</Link>
-              <span className="header-mega-sep">·</span>
-              <Link to="/tienda"                className="header-mega-cat header-mega-all" onClick={() => setMegaOpen(false)}>Ver todo →</Link>
             </div>
           </div>
         )}
