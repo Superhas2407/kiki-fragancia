@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef, Component } from 'react'
+import { useState, useMemo, useEffect, useRef, Component, useTransition, startTransition } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer'
 import { useIndexProducts } from '../context/SanityProductsContext'
@@ -362,7 +362,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
     const active = sortBy === value
     return (
       <button
-        onClick={() => setSortBy(value)}
+        onClick={() => startTransition(() => setSortBy(value))}
         style={{
           display: 'flex', alignItems: 'center', gap: 12,
           background: 'none', border: 'none', cursor: 'pointer',
@@ -585,6 +585,7 @@ export default function Tienda() {
   }
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
+  const [, startTransition] = useTransition()
   const [sortBy, setSortBy]           = useState('featured')
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [selectedTipos, setSelectedTipos]   = useState([])
@@ -617,8 +618,8 @@ export default function Tienda() {
     setPriceRange([0, 9999])
   }, [urlGenero, urlTipo])
 
-  const toggleMarca = v => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v])
-  const toggleTipo  = v => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v]))
+  const toggleMarca = v => startTransition(() => setSelectedMarcas(p => p.includes(v) ? p.filter(x => x !== v) : [...p, v]))
+  const toggleTipo  = v => startTransition(() => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v])))
 
   const basePool = useMemo(() => {
     let pool = products.filter(p => p.ml !== 200 || !p.variantIds)

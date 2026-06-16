@@ -19,6 +19,15 @@ const NAV_LINKS = [
 
 const TRENDING_TERMS = ['Khamrah', 'Oud', '9 PM', 'Lattafa', 'Floral', 'Afnan']
 
+const MEGA_CATS = [
+  { label: 'Hombre',    to: '/tienda?genero=Masculino', img: '/silhouettes/mega-hombre.jpeg',    sub: 'Fragancias masculinas'  },
+  { label: 'Mujer',     to: '/tienda?genero=Femenino',  img: '/silhouettes/mega-mujer.jpeg',     sub: 'Fragancias femeninas'   },
+  { label: 'Unisex',    to: '/tienda?genero=Unisex',    img: '/silhouettes/mega-unisex.jpeg',    sub: 'Para todos'             },
+  { label: 'Árabes',    to: '/tienda?tipo=arabes',      img: '/silhouettes/mega-arabes.jpeg',    sub: 'Oud · Amaderado · Ámbar'},
+  { label: 'Diseñador', to: '/tienda?tipo=disenador',   img: '/silhouettes/mega-disenador.jpeg', sub: 'Marcas de lujo'         },
+  { label: 'Nicho',     to: '/tienda?tipo=nicho',       img: '/silhouettes/mega-nicho.jpeg',     sub: 'Exclusivo · Artesanal'  },
+]
+
 const CartIcon = ({ size = 18 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
@@ -130,7 +139,12 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeSuggestion, setActiveSuggestion] = useState(-1)
+  const [megaOpen, setMegaOpen] = useState(false)
   const searchInputRef = useRef(null)
+  const megaTimer = useRef(null)
+
+  function openMega() { clearTimeout(megaTimer.current); setMegaOpen(true) }
+  function closeMega() { megaTimer.current = setTimeout(() => setMegaOpen(false), 180) }
 
   const suggestions = useMemo(() => {
     const raw = norm(searchQuery.trim())
@@ -284,26 +298,16 @@ export default function Header() {
         {/* NAV HORIZONTAL — desktop only */}
         {(() => {
           const sp = new URLSearchParams(location.search)
-          const g = sp.get('genero'); const t = sp.get('tipo'); const ddp = sp.get('ddp') === '1'
+          const ddp = sp.get('ddp') === '1'
           const isPath = (p) => location.pathname === p
           return (
             <nav className="header-cat-nav">
-              {[
-                { label: 'Hombre',    href: '/tienda?genero=Masculino', active: g === 'Masculino' && !ddp },
-                { label: 'Mujer',     href: '/tienda?genero=Femenino',  active: g === 'Femenino'  && !ddp },
-                { label: 'Unisex',    href: '/tienda?genero=Unisex',    active: g === 'Unisex'    && !ddp },
-                { label: 'Kids',      href: '/tienda?genero=Niño',      active: g === 'Niño'      && !ddp },
-              ].map(l => (
-                <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
-              ))}
-              <span className="header-cat-sep" />
-              {[
-                { label: 'Árabes',    href: '/tienda?tipo=arabes',    active: t === 'arabes'    },
-                { label: 'Diseñador', href: '/tienda?tipo=disenador', active: t === 'disenador' },
-                { label: 'Nicho',     href: '/tienda?tipo=nicho',     active: t === 'nicho'     },
-              ].map(l => (
-                <Link key={l.label} to={l.href} className={`header-cat-link${l.active ? ' active' : ''}`}>{l.label}</Link>
-              ))}
+              <div className="header-mega-wrap" onMouseEnter={openMega} onMouseLeave={closeMega}>
+                <button className={`header-cat-link header-mega-btn${megaOpen ? ' active' : ''}`}>
+                  Colección
+                  <span style={{ fontSize: 8, marginLeft: 3, display: 'inline-block', transform: megaOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▾</span>
+                </button>
+              </div>
               <span className="header-cat-sep" />
               <a href="/#nosotros" className={`header-cat-link${isPath('/') ? ' active' : ''}`}>Nosotros</a>
               <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="header-cat-link">Instagram</a>
@@ -311,6 +315,28 @@ export default function Header() {
             </nav>
           )
         })()}
+
+        {/* Mega-menu colección — desktop only */}
+        {megaOpen && (
+          <div className="header-mega-panel" onMouseEnter={openMega} onMouseLeave={closeMega}>
+            <div className="header-mega-grid">
+              {MEGA_CATS.map(c => (
+                <Link
+                  key={c.label}
+                  to={c.to}
+                  className="header-mega-brand"
+                  onClick={() => setMegaOpen(false)}
+                >
+                  <div className="header-mega-img-wrap">
+                    <img src={c.img} alt={c.label} className="header-mega-img" loading="lazy" />
+                  </div>
+                  <span className="header-mega-label">{c.label}</span>
+                  <span className="header-mega-sub">{c.sub}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
       </header>
 
