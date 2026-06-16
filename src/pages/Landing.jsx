@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
+import MustHaveMen from '../components/MustHaveMen'
+import MustHaveWomen from '../components/MustHaveWomen'
+import QuickOcasion from '../components/QuickOcasion'
 import BrandStory from '../components/BrandStory'
 import Guarantee from '../components/Guarantee'
 import Footer from '../components/Footer'
 import Testimonials from '../components/Testimonials'
 import ProductWall from '../components/ProductWall'
-import ColeccionesSection from '../components/ColeccionesSection'
 import QuickGenero from '../components/QuickGenero'
 import BestsellerRow from '../components/BestsellerRow'
 import NewLaunchBanner from '../components/NewLaunchBanner'
@@ -64,8 +66,9 @@ export default function Landing() {
         <NewLaunchBanner />
         <BestsellerRow />
         <QuickGenero />
-        <ProductWall />
-        <ColeccionesSection />
+        <MustHaveMen />
+        <QuickOcasion />
+        <MustHaveWomen />
         <BrandStory />
         <Testimonials />
         <Guarantee />
