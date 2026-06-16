@@ -453,6 +453,7 @@
   cursor: pointer;
   white-space: nowrap;
   transition: color 0.18s, background 0.18s, border-color 0.18s;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .tienda-genero-chip:hover {
   color: var(--ink-mute);
@@ -981,6 +982,7 @@
   opacity: 0; transform: translateX(-16px);
   transition: color .2s ease, background .2s ease, opacity .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
   line-height: 1.2;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .kiki-mobile-menu.open .mobile-nav-link { opacity: 1; transform: translateX(0); }
 .mobile-nav-link:hover { color: var(--gold-ink); }
@@ -1056,6 +1058,7 @@
   letter-spacing: 0.05em;
   margin-bottom: 20px;
   opacity: 0.9;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .hero-ddp-title {
   font-family: var(--font-s);
@@ -1066,6 +1069,7 @@
   line-height: 1.0;
   margin-bottom: 16px;
   text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 8px rgba(0,0,0,0.5);
+  -webkit-text-stroke: 0.25px currentColor;
 }
 .hero-ddp-sub {
   font-family: var(--font-s);
@@ -1075,6 +1079,7 @@
   color: rgba(255,255,255,0.95);
   margin-bottom: 16px;
   text-shadow: 0 1px 12px rgba(0,0,0,0.6), 0 2px 20px rgba(0,0,0,0.4);
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .hero-ddp-desc {
   font-family: var(--font-d);
@@ -1083,6 +1088,7 @@
   color: rgba(255,255,255,0.65);
   line-height: 1.7;
   margin-bottom: 36px;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .hero-ddp-actions {
   display: flex;
@@ -1310,10 +1316,12 @@
   font-size: clamp(17px, 1.4vw, 22px);
   font-weight: 100; color: var(--ivory);
   letter-spacing: -0.01em; line-height: 1.2;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .pillar-desc {
   font-family: var(--font-s); font-size: 14px; font-weight: 100;
   color: var(--ink-mute); line-height: 1.78;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 
 /* â”€â”€ CATALOG â”€â”€ */
@@ -1949,6 +1957,7 @@
   font-weight: 300;
   color: var(--ink);
   margin: 0 0 28px;
+  -webkit-text-stroke: 0.25px currentColor;
 }
 .pd-related-strip {
   display: flex;
@@ -1994,6 +2003,7 @@
   text-transform: uppercase;
   color: var(--gold-ink);
   margin: 0;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .pd-related-name {
   font-family: var(--font-d);
@@ -2007,6 +2017,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.35;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .pd-related-familia {
   font-family: var(--font-s);
@@ -2015,12 +2026,14 @@
   text-transform: uppercase;
   color: var(--ink-faint);
   margin: 0;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .pd-related-price {
   font-family: var(--font-s);
   font-size: 11px;
   color: var(--ink-mute);
   margin: 0;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 @media (min-width: 768px) {
   .pd-related-card { flex: 0 0 180px; }
@@ -2061,6 +2074,7 @@
   font-family: var(--font-d); font-size: 15px; font-weight: 100;
   font-style: italic; color: var(--ink-mute); line-height: 1.65;
   max-width: 240px; margin: 0 0 14px;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .footer-sub {
   font-family: var(--font-s); font-size: 12px; font-weight: 100;
@@ -2147,6 +2161,7 @@
 .footer-craft {
   font-family: var(--font-d); font-size: 12px; font-style: italic;
   color: var(--ink-mute);
+  -webkit-text-stroke: 0.3px currentColor;
 }
 
 /* â”€â”€ REVEAL ANIMATION â”€â”€ */
@@ -2564,6 +2579,7 @@
   font-style: italic;
   font-weight: 100;
   color: var(--ink-mute);
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .vitrina-note + .vitrina-note::before {
   content: "Â·";
@@ -2615,6 +2631,7 @@
   font-weight: 100;
   color: var(--gold);
   letter-spacing: -0.01em;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .vitrina-price-bs {
   font-family: 'KikiGotham', sans-serif;
@@ -2622,6 +2639,7 @@
   font-weight: 100;
   color: var(--ink-mute);
   letter-spacing: 0.02em;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .vitrina-price-disc-block {
   display: flex;
@@ -2647,6 +2665,7 @@
   color: var(--ink-faint);
   text-decoration: line-through;
   letter-spacing: -0.01em;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .vitrina-price-badge {
   font-family: 'KikiGotham', sans-serif;
@@ -4716,6 +4735,7 @@
   color: var(--ink);
   margin: 0 0 20px;
   line-height: 1;
+  -webkit-text-stroke: 0.25px currentColor;
 }
 .mhm-subtitle {
   font-family: var(--font-d);
@@ -4724,6 +4744,7 @@
   font-weight: 400;
   color: var(--ink-mute);
   margin: 0 0 20px;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 .bestseller-rule {
   width: 40px; height: 1px;
@@ -4750,6 +4771,7 @@
   padding: 16px 52px;
   transition: background 0.22s, color 0.22s, border-color 0.22s;
   text-align: center;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .bestseller-cta:hover { background: transparent; color: var(--gold-ink); }
 @media (min-width: 600px) {
@@ -4959,6 +4981,7 @@
   color: var(--ink-mute); text-decoration: none;
   background: none; border: none; cursor: pointer;
   font-family: 'KikiGotham', sans-serif; font-size: 9px;
+  -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.12em; text-transform: uppercase;
   padding: 8px 4px; transition: color 0.18s;
   min-height: 44px;
@@ -5341,6 +5364,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .kiki-search-label::after {
   content: '';
@@ -5367,6 +5391,7 @@
   cursor: pointer;
   color: var(--ink-mute);
   transition: border-color .2s, color .2s, background .2s;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .kiki-search-chip:hover {
   border-color: var(--gold);
@@ -5421,6 +5446,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 
 .kiki-search-product-name {
@@ -5436,6 +5462,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   line-height: 1.4;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 
 .kiki-search-product-price {
@@ -5463,6 +5490,7 @@
   color: var(--ink-mute);
   font-size: 11px;
   letter-spacing: 0.04em;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 
 /* ── Desktop ── */
@@ -5519,6 +5547,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gold-ink);
+  -webkit-text-stroke: 0.4px currentColor;
 }
 
 .kiki-search-sug-name {
@@ -5530,6 +5559,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 
 .kiki-search-sug-ml {
@@ -5538,6 +5568,7 @@
   letter-spacing: 0.06em;
   color: var(--ink-faint);
   flex-shrink: 0;
+  -webkit-text-stroke: 0.4px currentColor;
 }
 
 .kiki-search-empty {
@@ -5548,6 +5579,7 @@
   color: var(--ink-faint);
   text-align: center;
   margin-top: 48px;
+  -webkit-text-stroke: 0.3px currentColor;
 }
 
 /* ══ NewLaunchBanner ══ */
