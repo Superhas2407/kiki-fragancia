@@ -1004,7 +1004,7 @@ export const products = [
       "Pachulí"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -1030,7 +1030,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 50,
     "categoria": "arabes"
   },
   {
@@ -1261,7 +1261,7 @@ export const products = [
       "Cedro"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -1288,7 +1288,7 @@ export const products = [
       "Madera de gaiac"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -1406,7 +1406,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -1433,7 +1433,7 @@ export const products = [
       "pachulí"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
