@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 
-const WA_NUMBER = '584149112002'
-const WA_MSG = encodeURIComponent(
-  'Hola! Vi el nuevo lanzamiento de Carolina Herrera en la web. ¿Cuándo estará disponible y cuánto cuesta?'
-)
-const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${WA_MSG}&ref=new_launch_ch`
+const PRODUCT_SLUG = 'carolina-herrera-la-bomba-80ml'
 
-// Cuando el producto esté en Sanity, poner el slug real aquí
-const PRODUCT_SLUG = null
+const FlowerIcon = () => (
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{ flexShrink: 0 }}>
+    <ellipse cx="12" cy="5.5" rx="2.2" ry="4.5" />
+    <ellipse cx="12" cy="5.5" rx="2.2" ry="4.5" transform="rotate(72 12 12)" />
+    <ellipse cx="12" cy="5.5" rx="2.2" ry="4.5" transform="rotate(144 12 12)" />
+    <ellipse cx="12" cy="5.5" rx="2.2" ry="4.5" transform="rotate(216 12 12)" />
+    <ellipse cx="12" cy="5.5" rx="2.2" ry="4.5" transform="rotate(288 12 12)" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+)
 
 export default function NewLaunchBanner() {
   return (
@@ -17,7 +21,7 @@ export default function NewLaunchBanner() {
         <source srcSet="/hero/carolina-herrera-desktop.webp" type="image/webp" />
         <img
           src="/hero/carolina-herrera-desktop.webp"
-          alt="Nuevo lanzamiento — Carolina Herrera"
+          alt="Nuevo lanzamiento — Carolina Herrera La Bomba"
           className="nlb-img"
           loading="lazy"
         />
@@ -26,18 +30,14 @@ export default function NewLaunchBanner() {
       <div className="nlb-overlay" aria-hidden="true" />
 
       <div className="nlb-content">
-        <h2 className="nlb-title">Llegando a<br />KiKi Fragancia</h2>
+        <h2 className="nlb-title">Nueva en<br />KiKi Fragancia</h2>
         <p className="nlb-name">CAROLINA HERRERA</p>
         <div className="nlb-ctas">
-          {PRODUCT_SLUG ? (
-            <Link to={`/tienda/${PRODUCT_SLUG}`} className="nlb-btn-primary">
-              Ver fragancia
-            </Link>
-          ) : (
-            <Link to="/tienda?tipo=disenador" className="nlb-btn-primary">
-              Explorar colección
-            </Link>
-          )}
+          <Link to={`/tienda/${PRODUCT_SLUG}`} className="nlb-btn-pink">
+            <FlowerIcon />
+            Compra ahora
+            <FlowerIcon />
+          </Link>
         </div>
       </div>
     </section>
