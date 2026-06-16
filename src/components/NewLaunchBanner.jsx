@@ -34,13 +34,10 @@ export default function NewLaunchBanner() {
               Ver fragancia
             </Link>
           ) : (
-            <a href={WA_HREF} target="_blank" rel="noopener noreferrer" className="nlb-btn-primary">
-              Notificarme
-            </a>
+            <Link to="/tienda?tipo=disenador" className="nlb-btn-primary">
+              Explorar colección
+            </Link>
           )}
-          <Link to="/tienda?tipo=disenador" className="nlb-btn-outline">
-            Explorar colección
-          </Link>
         </div>
       </div>
     </section>
