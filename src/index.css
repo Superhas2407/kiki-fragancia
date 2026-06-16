@@ -129,6 +129,7 @@
   font-family: var(--font-s);
   font-size: 10px;
   font-weight: 700;
+  -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #FFFFFF;
