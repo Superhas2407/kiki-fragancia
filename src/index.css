@@ -960,19 +960,19 @@
 }
 .header-mega-label {
   font-family: var(--font-s);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(247,242,234,0.75);
+  color: rgba(247,242,234,0.95);
   text-align: center;
   -webkit-text-stroke: 0.4px currentColor;
   transition: color 0.15s;
 }
 .header-mega-sub {
   font-family: var(--font-s);
-  font-size: 8px;
+  font-size: 8.5px;
   letter-spacing: 0.04em;
-  color: rgba(247,242,234,0.32);
+  color: rgba(247,242,234,0.55);
   text-align: center;
   transition: color 0.15s;
 }
