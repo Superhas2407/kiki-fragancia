@@ -3676,7 +3676,8 @@
   border: none;
   cursor: pointer;
   transition: background .25s, width .25s;
-  padding: 0;
+  padding: 20px 0;
+  background-clip: content-box;
 }
 .testimonials-dot.active {
   background: var(--gold);
