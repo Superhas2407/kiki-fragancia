@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { setTasaSanity, clearTasaSanity, getTasaSanityCache } from '../hooks/useTasaCambio'
 import { sanityClient } from '../lib/sanityClient'
+import { supabase } from '../lib/supabaseClient'
 
 function fmt(ts) {
   if (!ts) return '—'
@@ -58,10 +59,19 @@ export default function KikiDeskPage() {
     }
   }
 
+  async function handleLogout() {
+    await supabase.auth.signOut()
+  }
+
   return (
     <div style={styles.page}>
       <div style={styles.card}>
-        <p style={styles.eyebrow}>kiki fragancia</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
+          <p style={styles.eyebrow}>kiki fragancia</p>
+          <button onClick={handleLogout} style={{ background: 'none', border: 'none', color: 'rgba(247,242,234,0.3)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer', padding: 0 }}>
+            Cerrar sesión
+          </button>
+        </div>
         <h1 style={styles.title}>Tasa de cambio</h1>
 
         <div style={styles.statusBox}>

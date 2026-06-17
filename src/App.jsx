@@ -1,7 +1,8 @@
 import { Component, lazy, Suspense, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
+import { AuthProvider, useAuth } from './context/AuthContext'
 import { SanityProductsProvider } from './context/SanityProductsContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { CurrencyProvider } from './context/CurrencyContext'
@@ -22,6 +23,7 @@ const DiaDeLPadrePage = lazy(() => import('./pages/DiaDeLPadrePage'))
 const TerminosPage    = lazy(() => import('./pages/TerminosPage'))
 const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
 const KikiDeskPage    = lazy(() => import('./pages/KikiDeskPage'))
+const AdminLoginPage  = lazy(() => import('./pages/AdminLoginPage'))
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -61,6 +63,13 @@ class ErrorBoundary extends Component {
   }
 }
 
+function ProtectedRoute({ children }) {
+  const { session, loading } = useAuth()
+  if (loading) return <div style={{ minHeight: '100dvh', background: '#0A0806' }} />
+  if (!session) return <Navigate to="/kiki-login" replace />
+  return children
+}
+
 function AppShell() {
   const isTouch = (() => { try { return window.matchMedia('(hover: none)').matches } catch { return true } })()
   return (
@@ -96,15 +105,26 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <CartProvider>
-          <ErrorBoundary>
-            <Routes>
-              <Route path="/coming-soon" element={<ComingSoon />} />
-              <Route path="/kiki-desk" element={<Suspense fallback={null}><KikiDeskPage /></Suspense>} />
-<Route path="*" element={<SanityProductsProvider><WishlistProvider><CurrencyProvider><ThemeProvider><AppShell /></ThemeProvider></CurrencyProvider></WishlistProvider></SanityProductsProvider>} />
-            </Routes>
-          </ErrorBoundary>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <ErrorBoundary>
+              <Routes>
+                <Route path="/coming-soon" element={<ComingSoon />} />
+                <Route path="/kiki-login" element={<Suspense fallback={null}><AdminLoginPage /></Suspense>} />
+                <Route path="/kiki-desk" element={
+                  <ProtectedRoute>
+                    <Suspense fallback={null}><KikiDeskPage /></Suspense>
+                  </ProtectedRoute>
+                } />
+                <Route path="*" element={
+                  <SanityProductsProvider><WishlistProvider><CurrencyProvider><ThemeProvider>
+                    <AppShell />
+                  </ThemeProvider></CurrencyProvider></WishlistProvider></SanityProductsProvider>
+                } />
+              </Routes>
+            </ErrorBoundary>
+          </CartProvider>
+        </AuthProvider>
       </BrowserRouter>
     </HelmetProvider>
   )
