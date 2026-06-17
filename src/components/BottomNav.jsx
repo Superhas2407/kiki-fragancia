@@ -1,5 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
+import { useAuth } from '../context/AuthContext'
+import { useWishlist } from '../context/WishlistContext'
+import { supabase } from '../lib/supabaseClient'
 
 const HomeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -30,9 +33,18 @@ const CartIcon = () => (
   </svg>
 )
 
+const UserIcon = ({ filled }) => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+)
+
 export default function BottomNav() {
   const location = useLocation()
   const { items, setDrawerOpen } = useCartContext()
+  const { session } = useAuth()
+  const { setAuthModalOpen } = useWishlist()
   const cartCount = items.reduce((s, i) => s + i.quantity, 0)
 
   const isHome = location.pathname === '/'
@@ -67,6 +79,14 @@ export default function BottomNav() {
           )}
         </span>
         <span>Carrito</span>
+      </button>
+
+      <button
+        className="bottom-nav-item"
+        onClick={() => session ? supabase.auth.signOut() : setAuthModalOpen(true)}
+      >
+        <UserIcon filled={!!session} />
+        <span>{session ? 'Cuenta' : 'Entrar'}</span>
       </button>
     </nav>
   )
