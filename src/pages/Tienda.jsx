@@ -734,10 +734,10 @@ export default function Tienda() {
   }
   const BANNER_TIPO = {
     'arabes':    '/BANNERTIENDAARABE.webp',
-    'disenador': '/BANNERTIENDADISEÑADOR.webp',
+    'disenador': '/BANNERTIENDADISENADOR.webp',
     'nicho':     '/BANNERTIENDANICHO.webp',
   }
-  const bannerSrc = (urlTipo && BANNER_TIPO[urlTipo]) || (urlGenero && BANNER_GENERO[urlGenero]) || '/BANNERTIENDATODOS.webp'
+  const bannerSrc = BANNER_TIPO[urlTipo] || BANNER_GENERO[urlGenero] || '/BANNERTIENDATODOS.webp'
 
   return (
     <>
