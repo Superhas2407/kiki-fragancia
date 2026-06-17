@@ -5,10 +5,13 @@ import { useWishlist } from '../context/WishlistContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useIndexProducts } from '../context/SanityProductsContext'
+import { useAuth } from '../context/AuthContext'
+import { supabase } from '../lib/supabaseClient'
 import { notesLookup } from '../data/notes-lookup'
 import { acordesByProduct } from '../data/acordes-index'
 import { norm, productMatchesQuery } from '../lib/search'
 import { toSlug } from '../lib/slugs'
+import AuthModal from './AuthModal'
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -131,7 +134,8 @@ export default function Header() {
   const allProducts = useIndexProducts()
   const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
-  const { ids: wishlistIds, setDrawerOpen: openWishlist } = useWishlist()
+  const { ids: wishlistIds, setDrawerOpen: openWishlist, authModalOpen, setAuthModalOpen } = useWishlist()
+  const { session } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
@@ -140,6 +144,8 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('')
   const [activeSuggestion, setActiveSuggestion] = useState(-1)
   const [megaOpen, setMegaOpen] = useState(false)
+  const [authOpen, setAuthOpen] = useState(false)
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
   const searchInputRef = useRef(null)
   const megaTimer = useRef(null)
 
@@ -291,6 +297,40 @@ export default function Header() {
               <SearchIcon />
             </button>
             <span className="header-mobile-hide"><WishlistButton /></span>
+            <span className="header-mobile-hide" style={{ position: 'relative' }}>
+              <button
+                onClick={() => session ? setUserMenuOpen(v => !v) : setAuthOpen(true)}
+                aria-label={session ? 'Mi cuenta' : 'Iniciar sesión'}
+                className="header-icon-btn"
+                style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4px', minHeight: 44, transition: 'color .2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+                onMouseLeave={e => e.currentTarget.style.color = ''}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill={session ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </button>
+              {userMenuOpen && session && (
+                <div style={{
+                  position: 'absolute', top: '100%', right: 0, marginTop: 8,
+                  background: '#0F0D0A', border: '1px solid rgba(201,168,76,0.15)',
+                  padding: '8px 0', minWidth: 180, zIndex: 50,
+                }}>
+                  <p style={{ padding: '8px 16px', color: 'rgba(247,242,234,0.45)', fontSize: 10, letterSpacing: '0.1em' }}>
+                    {session.user.email}
+                  </p>
+                  <div style={{ height: 1, background: 'rgba(201,168,76,0.1)', margin: '4px 0' }} />
+                  <button onClick={async () => { await supabase.auth.signOut(); setUserMenuOpen(false) }} style={{
+                    width: '100%', padding: '8px 16px', background: 'none', border: 'none',
+                    color: '#F7F2EA', fontSize: 11, textAlign: 'left', cursor: 'pointer',
+                    letterSpacing: '0.05em',
+                  }}>
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
+            </span>
             <CartButton />
           </div>
         </div>
@@ -398,6 +438,15 @@ export default function Header() {
           <button onClick={() => { openWishlist(true); setMenuOpen(false) }} className="mobile-util-link">
             ♡ Deseos{wishlistIds.length > 0 ? ` (${wishlistIds.length})` : ''}
           </button>
+          {session ? (
+            <button onClick={async () => { await supabase.auth.signOut(); setMenuOpen(false) }} className="mobile-util-link">
+              ○ Cerrar sesión
+            </button>
+          ) : (
+            <button onClick={() => { setAuthOpen(true); setMenuOpen(false) }} className="mobile-util-link">
+              ○ Iniciar sesión
+            </button>
+          )}
           <button onClick={toggle} className="mobile-util-link">
             {theme === 'dark' ? '☀ Modo claro' : '☾ Modo oscuro'}
           </button>
@@ -511,6 +560,7 @@ export default function Header() {
         </div>
         </>
       )}
+      <AuthModal open={authOpen || authModalOpen} onClose={() => { setAuthOpen(false); setAuthModalOpen(false) }} />
     </>
   )
 }
