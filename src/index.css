@@ -3557,8 +3557,8 @@
 
 /* ── Header ── */
 [data-theme='warm'] .kiki-header {
-  background: transparent !important;
-  border-bottom-color: transparent !important;
+  background: transparent;
+  border-bottom-color: transparent;
 }
 [data-theme='warm'] .nav-pill { background: rgba(35,26,13,0.06); border-color: rgba(35,26,13,0.20); }
 [data-theme='warm'] .nav-pill-item { color: rgba(35,26,13,0.82); }
