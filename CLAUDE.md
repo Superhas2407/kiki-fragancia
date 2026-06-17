@@ -98,8 +98,26 @@ El `npm run build` corre `sync-from-sanity.mjs` que descarga todos los productos
 | `public/hero/` | Imágenes del carrusel: `{nombre}-desktop.webp` y `{nombre}-mobile.webp` |
 | `public/notes/` | 245 WebP de ingredientes/notas olfativas |
 | `public/products/` | WebP de productos |
+| `public/silhouettes/` | `mega-{arabes,disenador,hombre,mujer,nicho,unisex}.jpeg` — imágenes de categoría (no usadas actualmente) |
+| `public/BANNERTIENDA*.webp` | Banners de la página Tienda por categoría — ver sección Banners Tienda |
 
 **Todas las imágenes son WebP.** Convertidas con `scripts/convert-to-webp.mjs` (sharp + `.rotate()` para corregir EXIF).
+
+## Banners Tienda
+Banner full-bleed al tope de `/tienda` (encima del sidebar+grid, sin maxWidth). Altura `clamp(200px, 28vw, 360px)`.
+
+Lógica en `Tienda.jsx` — prioridad: tipo > género > default:
+| Condición | Imagen |
+|---|---|
+| `?tipo=arabes` | `BANNERTIENDAARABE.webp` |
+| `?tipo=disenador` | `BANNERTIENDADISEÑADOR.webp` |
+| `?tipo=nicho` | `BANNERTIENDANICHO.webp` |
+| `?genero=Masculino` | `BANNERTIENDAHOMBRE.webp` |
+| `?genero=Femenino` | `BANNERTIENDAMUJER.webp` |
+| `?genero=Unisex` | `BANNERTIENDAUNISEX.webp` |
+| Sin filtro (todos) | `BANNERTIENDATODOS.webp` |
+
+Overlay: `linear-gradient(to top, rgba(10,8,4,0.75) 0%, rgba(10,8,4,0.20) 50%, rgba(10,8,4,0.05) 100%)`. Texto: `sectionTitle` italic 200 + conteo de fragancias.
 
 ## SEO
 - `react-helmet-async` — `HelmetProvider` en `App.jsx` envuelve toda la app
@@ -218,11 +236,12 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 
 ## Menú móvil
 - Sidebar deslizante desde la izquierda (290px), backdrop oscuro
-- Sección "Fragancias": Todas, Hombre, Mujer, Unisex, Kids
-- Sección "Menú": Colección, Nosotros, Instagram, Contacto
+- Links: **Todas las fragancias** · **Día del Padre** (azul `#1A52CC`) · Hombre · Mujer · Unisex · — · Árabes · Diseñador · Nicho · — · Nosotros · Instagram
+- `.mobile-nav-ddp` — solo aplica `color: #1A52CC !important`, mismo tamaño/itálica que los demás links
+- Kids eliminado (junio 2026)
 
 ## Filtros Tienda
-- URL params: `?genero=Masculino|Femenino|Unisex|Niño` y `?tipo=arabes|disenador|nicho`
+- URL params: `?genero=Masculino|Femenino|Unisex` y `?tipo=arabes|disenador|nicho`
 - **Desktop (≥1024px):** sidebar sticky 220px con acordeones: Género (DDP button + radio), **Precio**, Categoría, Concentración, Por ocasión, Marca. Topbar con conteo + select Ordenar.
 - **Mobile:** barra `Filtrar | Ordenar` (transparent select overlay). Drawer con Género incluido (radio DDP + opciones) + **Precio**.
 - **Barra de precio dual:** `PriceRangeSlider` — dos `<input type="range">` superpuestos sobre un track div. El relleno dorado (`.price-slider-fill`) se ajusta con `left: pct(lo)%` y `right: (100-pct(hi))%`. `priceBounds` se deriva de `basePool` vía `useMemo`; **CRÍTICO: `basePool` debe declararse antes que `priceBounds`** (temporal dead zone). `useEffect` sincroniza `priceRange` cuando `priceBounds` cambian.
