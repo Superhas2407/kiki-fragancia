@@ -327,7 +327,7 @@
   display: flex;
   min-height: 100dvh;
   background: var(--bg);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 .app-main {
   flex: 1;
