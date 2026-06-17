@@ -21,11 +21,6 @@ const UnisexIcon = () => (
     <circle cx="10" cy="8" r="3.5"/><circle cx="16" cy="8" r="3.5"/><path d="M5 20c0-3 2.5-5 5-5s5 2 5 5"/>
   </svg>
 )
-const KidsIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-    <circle cx="12" cy="7" r="3"/><path d="M5 21c0-3 3-5 7-5s7 2 7 5"/>
-  </svg>
-)
 const ArabeIcon = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
     <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
@@ -51,7 +46,6 @@ const GENERO_ITEMS = [
   { key: 'Masculino', label: 'Hombre',  icon: <MenIcon />    },
   { key: 'Femenino',  label: 'Mujer',   icon: <WomenIcon />  },
   { key: 'Unisex',    label: 'Unisex',  icon: <UnisexIcon /> },
-  { key: 'Niño',      label: 'Kids',    icon: <KidsIcon />   },
 ]
 
 const TIPO_ITEMS = [

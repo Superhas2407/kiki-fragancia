@@ -90,7 +90,6 @@ export default function Footer() {
               <Link to="/tienda?genero=Masculino" className="footer-nav-link">Hombre</Link>
               <Link to="/tienda?genero=Femenino" className="footer-nav-link">Mujer</Link>
               <Link to="/tienda?genero=Unisex" className="footer-nav-link">Unisex</Link>
-              <Link to="/tienda?genero=Niño" className="footer-nav-link">Kids</Link>
             </nav>
           </div>
 

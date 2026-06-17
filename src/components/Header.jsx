@@ -365,7 +365,6 @@ export default function Header() {
             { key: 'Masculino', label: 'Hombre' },
             { key: 'Femenino',  label: 'Mujer'  },
             { key: 'Unisex',    label: 'Unisex' },
-            { key: 'Niño',      label: 'Kids'   },
           ].map((l, i) => (
             <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 80}ms` }}>
               {l.label}
