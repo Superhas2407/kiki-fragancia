@@ -155,15 +155,12 @@ const { currency, setCurrency } = useCurrency()
 - `badge` prop → etiqueta bottom-left, oculta en ≤768px
 - En modo Bs: precio en bolívares sin descuento, sin badge OFERTA/PROMO
 
-### BrandStory
-- Layout: quote + texto izquierda / foto derecha
-- Foto: `/store-interior.webp` (local del CC Todo Tecnología)
-- Marco: `::before` rectángulo gold offset `inset: 14px -14px -14px 14px`
-- Zoom hover: `scale(1.02)` en `.brand-story-img`
-
-### ProductWall
-- Número de productos: `allProducts.filter(p => p.ml !== 200).length` — dinámico, no hardcodeado
-- Fondo: `var(--bg)` — respeta el tema
+### BrandStory (bs2 — full-bleed, junio 2026)
+- Sección `#nosotros`, clases `bs2-*`, altura 80vh desktop / auto mobile
+- Foto `/store-interior.webp` con `position: absolute; inset: 0; object-fit: cover`
+- `.bs2-overlay` — gradiente oscuro a la derecha (desktop) / de abajo a arriba (mobile)
+- `.bs2-content` — 44% ancho alineado a la derecha en desktop; `position: absolute; bottom: 0` en mobile
+- Scroll reveal con `useScrollReveal` en eyebrow / quote / text / cta
 
 ### Footer
 - Logo: mismo sistema que Header (`logo-warm.svg` / `logo vector letras.svg`)
@@ -171,21 +168,23 @@ const { currency, setCurrency } = useCurrency()
 
 ---
 
-## Landing — orden de secciones
+## Landing — orden de secciones (actualizado junio 2026)
 
 ```
 Hero
-BrandsMarquee
-ProductWall         ← propuesta de valor primero
-DiaDeLPadrePromo    ← promo temporal después de establecer credibilidad
-BrandsMarquee (reverse)
-BrandStory
+NewLaunchBanner     ← nuevos lanzamientos
+BestsellerRow       ← bestsellers
+QuickGenero         ← 3 tiles género
+MustHaveMen         ← carrusel masculino
+QuickOcasion        ← 4 tiles por ocasión
+MustHaveWomen       ← carrusel femenino
+BrandStory (bs2)    ← historia full-bleed
 Testimonials
 Guarantee
 Footer
 ```
 
-**Regla:** Las promos temporales van después de ProductWall, nunca antes.
+**Eliminados (junio 2026):** BrandsMarquee (×2), ProductWall, DiaDeLPadrePromo, ColeccionesSection.
 
 ---
 
