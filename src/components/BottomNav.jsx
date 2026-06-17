@@ -55,7 +55,7 @@ export default function BottomNav() {
   }
 
   return (
-    <nav className="bottom-nav">
+    <nav className="bottom-nav" style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100 }}>
       <Link to="/" className={`bottom-nav-item${isHome ? ' active' : ''}`}>
         <HomeIcon />
         <span>Inicio</span>
