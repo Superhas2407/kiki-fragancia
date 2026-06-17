@@ -34,7 +34,6 @@ tools/
 public/tools/
 
 # Fuente comercial — licencia local, no distribuir públicamente
-public/fonts/
 
 # Logo original con fondo blanco (reemplazado por SVG y PNG transparente)
 public/logo-vector.png

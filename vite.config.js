@@ -10,9 +10,10 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules/framer-motion')) return 'motion'
           if (id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom') || id.includes('node_modules/react/')) return 'vendor'
+          if (id.includes('node_modules/@sanity') || id.includes('node_modules/@sanity-typed') || id.includes('node_modules/sanity')) return 'sanity'
+          if (id.includes('node_modules/react-helmet-async')) return 'vendor'
         },
       },
     },
   },
 })
-

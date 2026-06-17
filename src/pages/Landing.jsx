@@ -1,19 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
-import MustHaveMen from '../components/MustHaveMen'
-import MustHaveWomen from '../components/MustHaveWomen'
-import QuickOcasion from '../components/QuickOcasion'
-import BrandStory from '../components/BrandStory'
-import Guarantee from '../components/Guarantee'
-import Footer from '../components/Footer'
-import Testimonials from '../components/Testimonials'
-import QuickGenero from '../components/QuickGenero'
-import BestsellerRow from '../components/BestsellerRow'
 import NewLaunchBanner from '../components/NewLaunchBanner'
+import BestsellerRow from '../components/BestsellerRow'
+import QuickGenero from '../components/QuickGenero'
 import { useIndexProducts } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
+
+const MustHaveMen   = lazy(() => import('../components/MustHaveMen'))
+const QuickOcasion  = lazy(() => import('../components/QuickOcasion'))
+const MustHaveWomen = lazy(() => import('../components/MustHaveWomen'))
+const BrandStory    = lazy(() => import('../components/BrandStory'))
+const Testimonials  = lazy(() => import('../components/Testimonials'))
+const Guarantee     = lazy(() => import('../components/Guarantee'))
+const Footer        = lazy(() => import('../components/Footer'))
+
+const SectionFallback = () => <div style={{ minHeight: 300 }} />
 
 export default function Landing() {
   const allProducts = useIndexProducts()
@@ -53,7 +56,6 @@ export default function Landing() {
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
-      {/* Sticky "Ver colección" — aparece tras scrollear medio hero, queda bajo el BottomNav */}
       <div className={`landing-sticky-cta${stickyVisible ? ' visible' : ''}`}>
         <Link to="/tienda" className="landing-sticky-btn">
           Ver colección completa →
@@ -65,14 +67,28 @@ export default function Landing() {
         <NewLaunchBanner />
         <BestsellerRow />
         <QuickGenero />
-        <MustHaveMen />
-        <QuickOcasion />
-        <MustHaveWomen />
-        <BrandStory />
-        <Testimonials />
-        <Guarantee />
+        <Suspense fallback={<SectionFallback />}>
+          <MustHaveMen />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <QuickOcasion />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <MustHaveWomen />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <BrandStory />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Testimonials />
+        </Suspense>
+        <Suspense fallback={<SectionFallback />}>
+          <Guarantee />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   )
 }
