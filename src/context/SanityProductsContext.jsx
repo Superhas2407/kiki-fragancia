@@ -44,7 +44,7 @@ export function SanityProductsProvider({ children }) {
           }
         })
 
-        setIndexProducts(merged)
+        setIndexProducts(merged.filter(p => p.id && p.name && p.house))
       })
       .catch((e) => console.error('[Sanity] fetch failed:', e))
   }, [])
