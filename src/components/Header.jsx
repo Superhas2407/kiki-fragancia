@@ -311,7 +311,7 @@ export default function Header() {
               <span className="header-cat-sep" />
               <a href="/#nosotros" className={`header-cat-link${isPath('/') ? ' active' : ''}`}>Nosotros</a>
               <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="header-cat-link">Instagram</a>
-              <Link to="/tienda?ddp=1" className={`header-cat-link header-cat-ddp${ddp ? ' active' : ''}`}>🎁 Día del Padre</Link>
+              <Link to="/tienda?ddp=1" className={`header-cat-link header-cat-ddp${ddp ? ' active' : ''}`}>Día del Padre</Link>
             </nav>
           )
         })()}
