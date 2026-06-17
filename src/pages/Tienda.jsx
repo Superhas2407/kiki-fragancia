@@ -727,12 +727,17 @@ export default function Tienda() {
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
 
-  const BANNER_IMG = {
+  const BANNER_GENERO = {
     'Masculino': '/BANNERTIENDAHOMBRE.webp',
     'Femenino':  '/BANNERTIENDAMUJER.webp',
     'Unisex':    '/BANNERTIENDAUNISEX.webp',
   }
-  const bannerSrc = BANNER_IMG[urlGenero] || '/BANNERTIENDATODOS.webp'
+  const BANNER_TIPO = {
+    'arabes':    '/BANNERTIENDAARABE.webp',
+    'disenador': '/BANNERTIENDADISEÑADOR.webp',
+    'nicho':     '/BANNERTIENDANICHO.webp',
+  }
+  const bannerSrc = (urlTipo && BANNER_TIPO[urlTipo]) || (urlGenero && BANNER_GENERO[urlGenero]) || '/BANNERTIENDATODOS.webp'
 
   return (
     <>
