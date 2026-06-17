@@ -1077,7 +1077,7 @@
 }
 .kiki-mobile-menu.open .mobile-nav-link { opacity: 1; transform: translateX(0); }
 .mobile-nav-link:hover { color: var(--gold-ink); }
-.mobile-nav-ddp { color: var(--gold-ink) !important; font-style: normal; font-family: var(--font-s); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding-bottom: 8px; }
+.mobile-nav-ddp { color: #1A52CC !important; }
 .mobile-nav-divider {
   width: calc(100% - 56px); margin: 8px 28px; height: 1px;
   background: var(--line2); flex-shrink: 0;
