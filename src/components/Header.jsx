@@ -357,7 +357,11 @@ export default function Header() {
         </div>
 
         <nav className="kiki-mobile-nav">
-          <Link to="/tienda?ddp=1" className="mobile-nav-link mobile-nav-ddp" style={{ transitionDelay: '40ms' }}>
+          <Link to="/tienda" className="mobile-nav-link" style={{ transitionDelay: '40ms' }}>
+            Todas las fragancias
+          </Link>
+
+          <Link to="/tienda?ddp=1" className="mobile-nav-link mobile-nav-ddp" style={{ transitionDelay: '80ms' }}>
             Día del Padre
           </Link>
 
@@ -366,7 +370,7 @@ export default function Header() {
             { key: 'Femenino',  label: 'Mujer'  },
             { key: 'Unisex',    label: 'Unisex' },
           ].map((l, i) => (
-            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 80}ms` }}>
+            <Link key={l.label} to={generoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 120}ms` }}>
               {l.label}
             </Link>
           ))}
@@ -378,15 +382,15 @@ export default function Header() {
             { key: 'disenador', label: 'Diseñador' },
             { key: 'nicho',     label: 'Nicho'     },
           ].map((l, i) => (
-            <Link key={l.key} to={tipoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 260}ms` }}>
+            <Link key={l.key} to={tipoTo(l.key)} className="mobile-nav-link" style={{ transitionDelay: `${i * 40 + 300}ms` }}>
               {l.label}
             </Link>
           ))}
 
           <div className="mobile-nav-divider" />
 
-          <a href="/#nosotros" className="mobile-nav-link" style={{ transitionDelay: '380ms' }}>Nosotros</a>
-          <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" style={{ transitionDelay: '420ms' }}>Instagram</a>
+          <a href="/#nosotros" className="mobile-nav-link" style={{ transitionDelay: '420ms' }}>Nosotros</a>
+          <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="mobile-nav-link" style={{ transitionDelay: '460ms' }}>Instagram</a>
         </nav>
 
         {/* Utilidades al fondo — compactas */}
