@@ -732,7 +732,7 @@ export default function Tienda() {
     'Femenino':  '/BANNERTIENDAMUJER.webp',
     'Unisex':    '/BANNERTIENDAUNISEX.webp',
   }
-  const bannerSrc = BANNER_IMG[urlGenero] || '/BANNERTIENDA.webp'
+  const bannerSrc = BANNER_IMG[urlGenero] || '/BANNERTIENDATODOS.webp'
 
   return (
     <>
