@@ -5693,6 +5693,12 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  animation: nlbKenBurns 18s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+@keyframes nlbKenBurns {
+  from { transform: scale(1)    translateX(0)     translateY(0); }
+  to   { transform: scale(1.08) translateX(-1.5%) translateY(-1%); }
 }
 .nlb-overlay {
   position: absolute;
