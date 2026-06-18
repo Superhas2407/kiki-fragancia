@@ -4113,7 +4113,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "descuento": 20
   },
   {
     "id": 344,
@@ -4359,11 +4360,11 @@ export const products = [
     "id": 364,
     "house": "ISSEY MIYAKE",
     "name": "Issey Miyake L'Eau d'Issey Pour Homme Intense",
-    "image": "issey-miyake-leau-dissey-pour-homme-intense-125ml-m.webp",
+    "image": "issey-miyake-leau-dissey-pour-homme-intense-75ml-m.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
-    "ml": 125,
+    "ml": 75,
     "precioUSD": 50,
     "categoria": "disenador"
   },
