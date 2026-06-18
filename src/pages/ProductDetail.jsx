@@ -1366,6 +1366,17 @@ export default function ProductDetail() {
                 </div>
               </div>
 
+              {/* Franja DDP — solo móvil, entre imagen e info */}
+              {currency === 'usd' && (product.descuento || diaDeLPadreIds.includes(product.id)) && (() => {
+                const disc = product.descuento ?? diaDeLPadreDiscounts[product.id]
+                const isDDP = diaDeLPadreIds.includes(product.id)
+                return (
+                  <div className="pd-ddp-strip">
+                    {isDDP ? (disc ? `${disc}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE') : `${disc}% DESCUENTO`}
+                  </div>
+                )
+              })()}
+
               {/* Info */}
               <div className="pd-info">
                 <p className="pd-house" style={rv(140)}>{product.house}</p>
@@ -1664,6 +1675,31 @@ export default function ProductDetail() {
 
           </div>
         </div>
+
+        {/* Barra sticky móvil — precio + agregar al carrito */}
+        {product.precioUSD > 0 && (
+          <div className="pd-sticky-bar">
+            <div className="pd-sticky-price">
+              {currency === 'bs' && tasa
+                ? 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
+                : `REF ${product.precioUSD}`
+              }
+            </div>
+            <button
+              className="pd-sticky-btn"
+              onClick={handleAdd}
+              style={{
+                background: added ? '#25D366' : 'var(--gold)',
+                color: added ? '#fff' : '#0A0A0A',
+                border: 'none',
+                transition: 'background .25s ease, color .25s ease',
+              }}
+            >
+              {added ? '✓ Agregado' : 'Agregar al carrito'}
+            </button>
+          </div>
+        )}
+
       </div>
 
       <RelatedProducts product={product} />
