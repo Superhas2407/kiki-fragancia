@@ -1349,7 +1349,7 @@ export default function ProductDetail() {
                     const isDDP = diaDeLPadreIds.includes(product.id)
                     return (
                       <div className={`vitrina-ribbon${isDDP ? ' vitrina-ribbon--ddp' : ''}`} aria-hidden="true">
-                        <span>{disc ? `${disc}% DESCUENTO` : 'DÍA DEL PADRE'}</span>
+                        <span>{isDDP ? (disc ? `${disc}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE') : `${disc}% DESCUENTO`}</span>
                       </div>
                     )
                   })()}
