@@ -1432,7 +1432,7 @@ export default function ProductDetail() {
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}
                           </span>
-                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 6 }}>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 300, color: 'var(--ink-faint)', marginLeft: 6 }}>
                             · Solo en divisa
                           </span>
                         </>
@@ -1444,7 +1444,7 @@ export default function ProductDetail() {
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}
                           </span>
-                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 100, color: 'var(--ink-faint)', marginLeft: 6 }}>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 300, color: 'var(--ink-faint)', marginLeft: 6 }}>
                             · Solo en divisa
                           </span>
                         </>

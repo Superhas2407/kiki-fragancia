@@ -295,7 +295,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
           }}
           style={{
             width: '100%',
-            fontFamily: "'KikiGotham', sans-serif", fontSize: 11, fontWeight: 100,
+            fontFamily: "'KikiGotham', sans-serif", fontSize: 11, fontWeight: 300,
             color: urlColeccion ? 'var(--ink)' : 'var(--ink-mute)',
             background: 'var(--raised)', border: '1px solid var(--line)',
             padding: '8px 10px', cursor: 'pointer', outline: 'none',
@@ -400,7 +400,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 24 }}>
         <h2 style={{
           fontFamily: "'KikiGotham', sans-serif", fontSize: 22,
-          fontWeight: 100, color: 'var(--ink)', fontStyle: 'italic', margin: 0,
+          fontWeight: 300, color: 'var(--ink)', fontStyle: 'italic', margin: 0,
         }}>
           Filtrar
         </h2>
@@ -473,7 +473,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           }}
           style={{
             width: '100%',
-            fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: 100,
+            fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: 300,
             color: urlColeccion ? 'var(--ink)' : 'var(--ink-mute)',
             background: 'var(--raised)', border: '1px solid var(--line)',
             padding: '9px 12px', cursor: 'pointer', outline: 'none',
@@ -859,7 +859,7 @@ export default function Tienda() {
                     onFocus={() => setSearchFocused(true)}
                     onBlur={() => setSearchFocused(false)}
                     style={{
-                      flex: 1, fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: 100,
+                      flex: 1, fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: 300,
                       color: 'var(--ink)', background: 'none', border: 'none', outline: 'none',
                       padding: '12px 0', letterSpacing: '0.02em',
                     }}
@@ -973,7 +973,7 @@ export default function Tienda() {
           padding: '0 20px', height: 60,
           borderBottom: '1px solid var(--line2)', flexShrink: 0,
         }}>
-          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: 'var(--ink)', fontWeight: 100 }}>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 22, fontStyle: 'italic', color: 'var(--ink)', fontWeight: 300 }}>
             Filtros
           </span>
           <button
@@ -995,7 +995,7 @@ export default function Tienda() {
               width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
               padding: 14, fontFamily: "'KikiGotham', sans-serif",
               fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
-              fontWeight: 100, cursor: 'pointer',
+              fontWeight: 300, cursor: 'pointer',
             }}
           >
             Ver resultados

@@ -42,6 +42,7 @@
 [data-theme='warm'] body {
   background: var(--bg);
   color: var(--ink);
+  font-weight: 500;
 }
 [data-theme='warm'] .kiki-header .nav-link,
 [data-theme='warm'] .kiki-header .logo {
@@ -257,7 +258,7 @@
 
   body {
     font-family: 'KikiGotham', sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     background: var(--ivory);
     color: var(--carbon);
     -webkit-font-smoothing: antialiased;
@@ -270,7 +271,7 @@
     outline-offset: 3px;
   }
 
-  .font-display { font-family: 'KikiGotham', sans-serif; font-weight: 100; }
+  .font-display { font-family: 'KikiGotham', sans-serif; font-weight: 300; }
 }
 
 /* Hero â€” shimmer CTA */
@@ -375,7 +376,7 @@
   margin-bottom: 4px;
   font-family: 'KikiGotham', sans-serif;
   font-size: 13px;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-mute);
   letter-spacing: 0.04em;
   text-align: left;
@@ -389,7 +390,7 @@
   color: #C9A84C;
   background: rgba(201,168,76,0.08);
   border-color: rgba(201,168,76,0.25);
-  font-weight: 100;
+  font-weight: 300;
 }
 .global-sidebar-icon {
   display: flex;
@@ -446,7 +447,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
-  font-weight: 100;
+  font-weight: 300;
   padding: 7px 16px;
   border: 1px solid var(--line);
   background: transparent;
@@ -626,11 +627,11 @@
 .kiki-section-title {
   font-family: var(--font-d);
   font-size: clamp(28px, 4.5vw, 52px);
-  font-weight: 100; -webkit-text-stroke: 0.25px currentColor;
+  font-weight: 300; -webkit-text-stroke: 0.25px currentColor;
   letter-spacing: -0.02em; line-height: 1.1;
 }
 .kiki-section-subtitle {
-  font-family: var(--font-d); font-weight: 100; font-style: italic;
+  font-family: var(--font-d); font-weight: 300; font-style: italic;
   -webkit-text-stroke: 0.25px currentColor;
   font-size: clamp(16px, 1.5vw, 20px); line-height: 1.6; margin-top: 16px;
 }
@@ -726,7 +727,7 @@
 }
 .ddp-popup-headline {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 28px; font-weight: 100; font-style: italic;
+  font-size: 28px; font-weight: 300; font-style: italic;
   -webkit-text-stroke: 0.25px currentColor;
   color: #F7F2EA;
   line-height: 1.2;
@@ -1068,7 +1069,7 @@
   align-items: flex-start; padding: 12px 0;
 }
 .mobile-nav-link {
-  font-family: var(--font-d); font-size: 22px; font-weight: 100; font-style: italic;
+  font-family: var(--font-d); font-size: 22px; font-weight: 300; font-style: italic;
   color: var(--ink); text-decoration: none;
   width: 100%; padding: 12px 28px;
   opacity: 0; transform: translateX(-16px);
@@ -1156,7 +1157,7 @@
 .hero-ddp-title {
   font-family: var(--font-s);
   font-size: clamp(36px, 5.5vw, 80px);
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.10em;
   color: #fff;
   line-height: 1.0;
@@ -1264,24 +1265,24 @@
 }
 .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
 .eyebrow-text {
-  font-family: var(--font-s); font-size: 10px; font-weight: 100;
+  font-family: var(--font-s); font-size: 10px; font-weight: 300;
   color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase;
 }
 .hero-main-title {
   font-family: var(--font-d);
   font-size: clamp(40px, 6vw, 88px);
-  font-weight: 100; font-style: italic; color: var(--ink);
+  font-weight: 300; font-style: italic; color: var(--ink);
   letter-spacing: -0.03em; line-height: 0.98; margin: 0 0 30px;
 }
 .hero-tagline {
-  font-family: var(--font-s); font-size: 11px; font-weight: 100;
+  font-family: var(--font-s); font-size: 11px; font-weight: 300;
   color: var(--ink-mute); letter-spacing: 0.22em; line-height: 2.2;
   text-transform: uppercase; margin: 0 0 32px;
 }
 .hero-quote {
   font-family: var(--font-d);
   font-size: clamp(16px, 1.7vw, 19px);
-  font-weight: 100; font-style: italic;
+  font-weight: 300; font-style: italic;
   color: var(--ink-mute); line-height: 1.55; margin: 0 0 44px;
 }
 /* Trust bar — barra bajo el hero, fondo sólido */
@@ -1310,7 +1311,7 @@
 /* Link "Buscar fragancia" en el hero */
 .hero-search-link {
   display: inline-flex; align-items: center; gap: 9px;
-  font-family: var(--font-s); font-size: 11px; font-weight: 100;
+  font-family: var(--font-s); font-size: 11px; font-weight: 300;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--ink-mute);
   border-bottom: 1px solid var(--line);
@@ -1326,7 +1327,7 @@
   background: transparent;
 }
 .hero-bottom-handle {
-  font-family: var(--font-s); font-size: 9px; font-weight: 100;
+  font-family: var(--font-s); font-size: 9px; font-weight: 300;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--ink-mute); text-decoration: none;
   transition: color .2s;
@@ -1408,12 +1409,12 @@
 .pillar-title {
   font-family: var(--font-d);
   font-size: clamp(17px, 1.4vw, 22px);
-  font-weight: 100; color: var(--ivory);
+  font-weight: 300; color: var(--ivory);
   letter-spacing: -0.01em; line-height: 1.2;
   -webkit-text-stroke: 0.4px currentColor;
 }
 .pillar-desc {
-  font-family: var(--font-s); font-size: 14px; font-weight: 100;
+  font-family: var(--font-s); font-size: 14px; font-weight: 300;
   color: var(--ink-mute); line-height: 1.78;
   -webkit-text-stroke: 0.3px currentColor;
 }
@@ -1497,7 +1498,7 @@
 .card-name {
   font-family: var(--font-d);
   font-size: clamp(15px, 1.3vw, 19px);
-  font-style: italic; font-weight: 100; color: var(--ink);
+  font-style: italic; font-weight: 300; color: var(--ink);
   letter-spacing: -0.01em; line-height: 1.2; margin: 0;
   display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
 }
@@ -1540,16 +1541,16 @@
 @media (min-width: 1024px) { .familia-card { width: 240px; } }
 .familia-card:hover { transform: translateY(-5px); }
 .familia-count {
-  font-family: var(--font-d); font-size: 52px; font-weight: 100;
+  font-family: var(--font-d); font-size: 52px; font-weight: 300;
   line-height: 1; margin-bottom: 4px;
 }
 .familia-name {
   font-family: var(--font-d); font-size: 22px; font-style: italic;
-  color: var(--ink); font-weight: 100; margin-bottom: 12px;
+  color: var(--ink); font-weight: 300; margin-bottom: 12px;
 }
 .familia-divider { height: 1px; width: 32px; margin-bottom: 12px; }
 .familia-desc {
-  font-family: var(--font-s); font-size: 12px; font-weight: 100;
+  font-family: var(--font-s); font-size: 12px; font-weight: 300;
   color: var(--ink-mute); line-height: 1.65;
 }
 .familia-bg-circle {
@@ -1590,7 +1591,7 @@
   border: 1px solid var(--line);
   font-family: var(--font-s);
   font-size: 11px;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-mute);
@@ -1635,7 +1636,7 @@
 }
 .bs2-quote {
   font-family: var(--font-d); font-style: italic;
-  font-size: clamp(24px, 3vw, 42px); font-weight: 100;
+  font-size: clamp(24px, 3vw, 42px); font-weight: 300;
   -webkit-text-stroke: 0.3px currentColor;
   line-height: 1.2; color: #fff; margin: 0 0 24px;
 }
@@ -1741,18 +1742,18 @@
 .pd-title {
   font-family: var(--font-d);
   font-size: clamp(24px, 6vw, 56px);
-  font-weight: 100; font-style: italic; color: var(--ink);
+  font-weight: 300; font-style: italic; color: var(--ink);
   letter-spacing: -0.03em; line-height: 1.04; margin: 0 0 14px;
 }
 .pd-meta {
-  font-family: var(--font-s); font-size: 12px; font-weight: 100;
+  font-family: var(--font-s); font-size: 12px; font-weight: 300;
   color: var(--ink-mute); letter-spacing: .06em; margin: 0 0 22px;
 }
 .pd-divider { height: 1px; background: rgba(201,168,76,0.07); margin: 0 0 26px; }
 
 .pd-desc-wrap { margin-bottom: 28px; }
 .pd-desc {
-  font-family: var(--font-s); font-size: 14px; font-weight: 100;
+  font-family: var(--font-s); font-size: 14px; font-weight: 300;
   color: var(--ink-mute); line-height: 1.72; margin: 0;
 }
 .pd-desc-fade {
@@ -1776,7 +1777,7 @@
 }
 .pd-notes-chips { display: flex; flex-wrap: wrap; gap: 7px; }
 .pd-note-chip {
-  font-family: var(--font-s); font-size: 11px; font-weight: 100;
+  font-family: var(--font-s); font-size: 11px; font-weight: 300;
   color: var(--ink-mute); background: rgba(250,250,248,0.08);
   border: 1px solid var(--line2);
   padding: 5px 12px; display: flex; align-items: center; gap: 5px;
@@ -1810,7 +1811,7 @@
 
 .pd-price { margin-bottom: 24px; }
 .pd-price-amount {
-  font-family: var(--font-s); font-size: 22px; font-weight: 100;
+  font-family: var(--font-s); font-size: 22px; font-weight: 300;
   letter-spacing: 0.04em; color: var(--gold-ink);
 }
 
@@ -1852,7 +1853,7 @@
 }
 .pd-btn-share:hover { border-color: var(--gold); color: var(--gold); }
 .pd-trust {
-  font-family: var(--font-s); font-size: 10px; font-weight: 100;
+  font-family: var(--font-s); font-size: 10px; font-weight: 300;
   color: var(--ink-mute); letter-spacing: .03em; margin: 4px 0 0;
 }
 
@@ -1868,7 +1869,7 @@
 }
 .pd-section-title {
   font-family: var(--font-d); font-size: clamp(22px, 3vw, 34px);
-  font-weight: 100; font-style: italic; color: var(--ivory); margin: 0;
+  font-weight: 300; font-style: italic; color: var(--ivory); margin: 0;
 }
 .pd-sep { height: 1px; background: rgba(201,168,76,0.07); margin: 56px 0; }
 
@@ -1890,7 +1891,7 @@
 }
 .pd-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .pd-chip {
-  font-family: var(--font-s); font-size: 12px; font-weight: 100;
+  font-family: var(--font-s); font-size: 12px; font-weight: 300;
   color: var(--ink-mute); border: 1px solid var(--line);
   padding: 7px 14px; display: flex; align-items: center; gap: 7px;
   transition: border-color .2s ease;
@@ -1932,7 +1933,7 @@
   font-family: var(--font-d);
   font-size: 11px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: .15em;
   text-transform: uppercase;
   color: var(--gold-ink);
@@ -1979,7 +1980,7 @@
 .pd-acordes { display: flex; flex-direction: column; gap: 18px; }
 .pd-acorde-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
 .pd-acorde-name {
-  font-family: var(--font-s); font-size: 11px; font-weight: 100;
+  font-family: var(--font-s); font-size: 11px; font-weight: 300;
   color: var(--ink-mute); letter-spacing: .06em; text-transform: capitalize;
 }
 .pd-acorde-pct {
@@ -2417,7 +2418,7 @@
 .vitrina-num > span:first-child {
   font-family: 'KikiGotham', sans-serif;
   font-size: 9.5px;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.34em;
   color: var(--gold);
   text-transform: uppercase;
@@ -2435,7 +2436,7 @@
   display: none;
   font-family: 'KikiGotham', sans-serif;
   font-size: 8.5px;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.30em;
   color: var(--ink-mute);
   text-transform: uppercase;
@@ -2591,7 +2592,7 @@
 .vitrina-name {
   font-family: 'KikiGotham', sans-serif;
   font-size: clamp(17px, 1.8vw, 26px);
-  font-weight: 100;
+  font-weight: 300;
   -webkit-text-stroke: 0.3px currentColor;
   font-style: italic;
   color: var(--ink);
@@ -2638,7 +2639,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 14px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-mute);
   -webkit-text-stroke: 0.3px currentColor;
 }
@@ -2689,7 +2690,7 @@
 .vitrina-price-usd {
   font-family: 'KikiGotham', sans-serif;
   font-size: 24px;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--gold);
   letter-spacing: -0.01em;
   -webkit-text-stroke: 0.3px currentColor;
@@ -2697,7 +2698,7 @@
 .vitrina-price-bs {
   font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-mute);
   letter-spacing: 0.02em;
   -webkit-text-stroke: 0.4px currentColor;
@@ -2722,7 +2723,7 @@
 .vitrina-price-orig {
   font-family: 'KikiGotham', sans-serif;
   font-size: 12px;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-faint);
   text-decoration: line-through;
   letter-spacing: -0.01em;
@@ -2772,7 +2773,7 @@
 }
 .ddp-promo-guide-label {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 9.5px; font-weight: 100;
+  font-size: 9.5px; font-weight: 300;
   letter-spacing: 0.3em; text-transform: uppercase;
   color: #C9A84C;
   flex-shrink: 0;
@@ -2816,24 +2817,24 @@
 }
 .ddp-promo-persona-perfil {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 9px; font-weight: 100;
+  font-size: 9px; font-weight: 300;
   letter-spacing: 0.26em; text-transform: uppercase;
   color: #C9A84C; margin-bottom: 6px;
 }
 .ddp-promo-persona-name {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 18px; font-weight: 100; font-style: italic;
+  font-size: 18px; font-weight: 300; font-style: italic;
   color: var(--ink); margin-bottom: 6px; line-height: 1.2;
 }
 .ddp-promo-persona-fam {
-  font-size: 10.5px; font-weight: 100;
+  font-size: 10.5px; font-weight: 300;
   color: var(--ink-faint);
   letter-spacing: 0.05em; margin-bottom: 10px;
   line-height: 1.5;
 }
 .ddp-promo-persona-price {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 18px; font-weight: 100;
+  font-size: 18px; font-weight: 300;
   color: #C9A84C;
 }
 
@@ -2850,7 +2851,7 @@
 }
 .ddp-promo-benefit {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 11.5px; font-weight: 100;
+  font-size: 11.5px; font-weight: 300;
   letter-spacing: 0.06em;
   color: var(--ink-mute);
 }
@@ -3618,7 +3619,7 @@
 .testimonials-title {
   font-family: 'KikiGotham', sans-serif;
   font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 100;
+  font-weight: 300;
   -webkit-text-stroke: 0.25px currentColor;
   font-style: italic;
   color: var(--ink);
@@ -3705,7 +3706,7 @@
 .testimonial-quote {
   font-family: 'KikiGotham', sans-serif;
   font-size: clamp(14px, 1.4vw, 17px);
-  font-weight: 100;
+  font-weight: 300;
   -webkit-text-stroke: 0.25px currentColor;
   font-style: italic;
   color: var(--ink);
@@ -3752,7 +3753,7 @@
 .testimonial-source {
   font-family: 'KikiGotham', sans-serif;
   font-size: 10px;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-faint, rgba(247,242,234,0.3));
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -3861,9 +3862,9 @@
 .ddp-campaign { padding: 46px 0 64px; background: linear-gradient(135deg, #1d1206 0%, #0A0A0A 60%); }
 .ddp-urgency-row { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; margin-bottom: 34px; }
 .ddp-countdown-box { padding: 18px 26px; border: 1px solid var(--gold); background: rgba(201,168,76,0.07); text-align: center; }
-.ddp-countdown-num { font-family: 'KikiGotham', sans-serif; font-size: 76px; font-weight: 100; font-style: italic; color: var(--gold-ink); line-height: 0.9; letter-spacing: -0.02em; }
-.ddp-countdown-label { font-size: 9px; font-weight: 100; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); }
-.ddp-deadline { font-family: 'KikiGotham', sans-serif; font-size: 22px; font-weight: 100; font-style: italic; color: var(--gold-ink); line-height: 1.3; }
+.ddp-countdown-num { font-family: 'KikiGotham', sans-serif; font-size: 76px; font-weight: 300; font-style: italic; color: var(--gold-ink); line-height: 0.9; letter-spacing: -0.02em; }
+.ddp-countdown-label { font-size: 9px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); }
+.ddp-deadline { font-family: 'KikiGotham', sans-serif; font-size: 22px; font-weight: 300; font-style: italic; color: var(--gold-ink); line-height: 1.3; }
 .ddp-content-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
 .ddp-profiles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .ddp-profile-card { border: 1px solid var(--line); background: var(--bg2); }
@@ -4307,7 +4308,7 @@
 .cookie-banner-text {
   font-family: var(--font-s);
   font-size: 12px;
-  font-weight: 100;
+  font-weight: 300;
   color: rgba(247,242,234,0.65);
   letter-spacing: 0.04em;
   line-height: 1.5;
@@ -4410,7 +4411,7 @@
 .terminos-title {
   font-family: var(--font-d);
   font-size: clamp(28px, 4vw, 44px);
-  font-weight: 100;
+  font-weight: 300;
   font-style: italic;
   color: var(--ink);
   margin-bottom: 8px;
@@ -4440,7 +4441,7 @@
 .terminos-para {
   font-family: var(--font-s);
   font-size: 13px;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-mute);
   line-height: 1.8;
   margin-bottom: 10px;
@@ -4536,7 +4537,7 @@
 }
 .wl-title {
   font-family: var(--font-d); font-size: 18px;
-  font-style: italic; font-weight: 100; color: var(--ink);
+  font-style: italic; font-weight: 300; color: var(--ink);
 }
 .wl-count {
   font-family: var(--font-s); font-size: 10px;
@@ -4573,13 +4574,13 @@
 }
 .wl-item-name {
   font-family: var(--font-d); font-size: 15px;
-  font-style: italic; font-weight: 100;
+  font-style: italic; font-weight: 300;
   color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   margin-bottom: 4px;
 }
 .wl-item-price {
   font-family: var(--font-s); font-size: 12px;
-  color: var(--gold-ink); font-weight: 100;
+  color: var(--gold-ink); font-weight: 300;
 }
 .wl-item-actions {
   display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
@@ -4631,7 +4632,7 @@
 .wl-empty-icon { color: var(--ink-faint); opacity: 0.5; }
 .wl-empty-text {
   font-family: var(--font-d); font-size: 16px;
-  font-style: italic; font-weight: 100; color: var(--ink-faint);
+  font-style: italic; font-weight: 300; color: var(--ink-faint);
 }
 .wl-empty-link {
   font-family: var(--font-s); font-size: 10px;
@@ -4779,7 +4780,7 @@
 .bestseller-title {
   font-family: var(--font-s);
   font-size: clamp(28px, 5vw, 56px);
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--ink);
@@ -4974,7 +4975,7 @@
 .tienda-ocasion-select {
   font-family: 'KikiGotham', sans-serif;
   font-size: 11px;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.08em;
   padding: 7px 14px;
   border: 1px solid var(--line);
@@ -5361,7 +5362,7 @@
   font-family: var(--font-d);
   font-size: 20px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.02em;
   color: var(--ink);
 }
@@ -5408,7 +5409,7 @@
   font-family: var(--font-d);
   font-size: 13px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   letter-spacing: 0.02em;
   color: var(--gold-ink);
   margin: 0 0 14px;
@@ -5504,7 +5505,7 @@
   font-family: var(--font-d);
   font-size: 12px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink);
   margin: 0 0 5px;
   text-align: center;
@@ -5605,7 +5606,7 @@
   font-family: var(--font-d);
   font-size: 17px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
@@ -5626,7 +5627,7 @@
   font-family: var(--font-d);
   font-size: 16px;
   font-style: italic;
-  font-weight: 100;
+  font-weight: 300;
   color: var(--ink-faint);
   text-align: center;
   margin-top: 48px;

@@ -121,7 +121,7 @@ export default function CartDrawer() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span
-              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(17px, 5vw, 22px)', color: ink(0.95), fontStyle: 'italic', fontWeight: 100 }}
+              style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(17px, 5vw, 22px)', color: ink(0.95), fontStyle: 'italic', fontWeight: 300 }}
             >
               Mi Carrito
             </span>
@@ -197,7 +197,7 @@ export default function CartDrawer() {
                       <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '9px', color: ink(0.35), letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                         {item.house}
                       </p>
-                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(14px, 4vw, 17px)', color: ink(0.95), fontWeight: 100 }}>
+                      <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(14px, 4vw, 17px)', color: ink(0.95), fontWeight: 300 }}>
                         {item.name}
                       </p>
                       {currency === 'usd' && diaDeLPadreIds.includes(item.id) && (() => {
@@ -263,7 +263,7 @@ export default function CartDrawer() {
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '11px', color: ink(0.4), letterSpacing: '0.15em', textTransform: 'uppercase' }}>
                   Subtotal
                 </span>
-                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 100 }}>
+                <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '26px', color: 'var(--gold)', fontWeight: 300 }}>
                   REF {totalPrice}
                 </span>
               </div>
