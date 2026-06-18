@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 253.38 345">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Degradado_sin_nombre_20);
+      }
+
+      .cls-2 {
+        fill: #1a1414;
+      }
+    </style>
+    <linearGradient id="Degradado_sin_nombre_20" data-name="Degradado sin nombre 20" x1="251.45" y1="5.45" x2="70.88" y2="318.22" gradientUnits="userSpaceOnUse">
+      <stop offset=".1" stop-color="#ecb426"/>
+      <stop offset=".25" stop-color="#f4ed81"/>
+      <stop offset=".5" stop-color="#ecb426"/>
+      <stop offset=".73" stop-color="#f4ed81"/>
+      <stop offset="1" stop-color="#d09e25"/>
+    </linearGradient>
+  </defs>
+  <path class="cls-1" d="M208.24,35.28s19.25-1.1,38.22,5.86l6.91-34.57S151.2-28.39,121.24,63.03c0,0-4.03,10.08-4.03,25.83v24.49h-38.22v33.42h38.22v198.2h48.4s-.05-122.47-.04-198.2h63.23v-33.42h-63.22c0-13.72.02-22.83.03-24.68.1-10.56,2.52-49.78,42.64-53.39Z"/>
+  <g>
+    <polygon class="cls-2" points="165.6 277.11 165.6 344.97 220.9 344.67 165.6 277.11"/>
+    <polygon class="cls-2" points="117.25 217.63 110.68 209.61 207.39 113.38 150.55 113.38 46.67 217.28 46.67 4.48 0 4.48 0 345 46.67 345 46.67 273.31 77.45 242.69 117.25 291.31 117.25 217.63"/>
+  </g>
+</svg>
