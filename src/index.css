@@ -788,13 +788,13 @@
   font-size: 10px; font-weight: 700;
   -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.22em; text-transform: uppercase;
-  color: #0a0804;
-  background: var(--gold);
+  color: #E8F0FF;
+  background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72);
   border: none; padding: 17px;
   cursor: pointer; text-decoration: none;
-  transition: background 0.2s;
+  transition: opacity 0.2s;
 }
-.ddp-popup-btn:hover { background: #b8902e; }
+.ddp-popup-btn:hover { opacity: 0.88; }
 .ddp-popup-skip {
   display: block;
   background: none; border: none;
