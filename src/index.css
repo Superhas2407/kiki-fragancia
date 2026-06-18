@@ -1707,7 +1707,7 @@
 }
 @media (max-width: 767px) {
   .pd-layout { grid-template-columns: 1fr; }
-  .pd-layout > div:first-child { position: relative; top: 0; height: 68vw; min-height: 300px; max-height: 70vh; }
+  .pd-layout > div:first-child { position: relative; top: 0; height: 50vw; min-height: 260px; max-height: 48vh; }
 }
 
 .pd-img-wrap {
