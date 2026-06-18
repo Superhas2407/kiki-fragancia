@@ -53,32 +53,41 @@ export default function AnnouncementBar() {
         </div>
       )}
 
-      {/* Pop-up móvil */}
+      {/* Pop-up móvil — bottom sheet */}
       {popupVisible && (
         <div className="ddp-popup-overlay" onClick={closePopup} aria-modal="true" role="dialog">
           <div className="ddp-popup" onClick={e => e.stopPropagation()}>
+            <div className="ddp-sheet-handle" />
+
+            {/* Imagen campaña */}
+            <div className="ddp-sheet-img-wrap">
+              <img src="/BANNERTIENDAHOMBRE.webp" alt="Día del Padre" className="ddp-sheet-img" />
+              <div className="ddp-sheet-img-overlay">
+                <p className="ddp-popup-eyebrow">Día del Padre · 21 de junio</p>
+              </div>
+            </div>
+
             <button className="ddp-popup-close" onClick={closePopup} aria-label="Cerrar">×</button>
-            <div className="ddp-popup-top-bar" />
 
-            <p className="ddp-popup-eyebrow">Día del Padre · 21 de junio</p>
+            <div className="ddp-sheet-body">
+              <h2 className="ddp-popup-headline">
+                El regalo<br />que no olvidará
+              </h2>
 
-            <h2 className="ddp-popup-headline">
-              El regalo<br />que no olvidará
-            </h2>
+              <div className="ddp-popup-rule" />
 
-            <div className="ddp-popup-rule" />
+              <p className="ddp-popup-body">
+                Fragancias originales seleccionadas para papá.<br />
+                Descuentos exclusivos · Tiempo limitado.
+              </p>
 
-            <p className="ddp-popup-body">
-              Fragancias originales seleccionadas para papá.<br />
-              Solo en divisa · Tiempo limitado.
-            </p>
-
-            <Link to="/tienda?genero=Masculino" className="ddp-popup-btn" onClick={closePopup}>
-              Explorar colección
-            </Link>
-            <button className="ddp-popup-skip" onClick={closePopup}>
-              Ahora no
-            </button>
+              <Link to="/dia-del-padre" className="ddp-popup-btn" onClick={closePopup}>
+                Ver fragancias del Día del Padre
+              </Link>
+              <button className="ddp-popup-skip" onClick={closePopup}>
+                Ahora no
+              </button>
+            </div>
           </div>
         </div>
       )}
