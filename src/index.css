@@ -1790,10 +1790,24 @@
     padding: 10px 16px;
   }
   .pd-sticky-price {
-    font-family: var(--font-s);
-    font-size: 22px; font-weight: 300;
-    color: var(--gold-ink);
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
+    line-height: 1;
+  }
+  .pd-sticky-price::before {
+    content: 'PRECIO REF';
+    font-family: var(--font-s);
+    font-size: 8px; font-weight: 400;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 3px;
+  }
+  .pd-sticky-price-val {
+    font-family: var(--font-d);
+    font-size: 32px; font-weight: 300; font-style: italic;
+    color: var(--gold);
+    letter-spacing: -0.02em;
   }
   .pd-sticky-btn {
     flex: 1;

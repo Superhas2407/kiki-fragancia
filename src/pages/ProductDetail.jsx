@@ -1680,10 +1680,12 @@ export default function ProductDetail() {
         {product.precioUSD > 0 && (
           <div className="pd-sticky-bar">
             <div className="pd-sticky-price">
-              {currency === 'bs' && tasa
-                ? 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
-                : `REF ${product.precioUSD}`
-              }
+              <span className="pd-sticky-price-val">
+                {currency === 'bs' && tasa
+                  ? 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
+                  : product.precioUSD
+                }
+              </span>
             </div>
             <button
               className="pd-sticky-btn"
