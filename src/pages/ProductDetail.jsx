@@ -1172,6 +1172,7 @@ export default function ProductDetail() {
     notasSalida:    liveData?.notasSalida    ?? baseProduct.notasSalida,
     notasCorazon:   liveData?.notasCorazon   ?? baseProduct.notasCorazon,
     notasFondo:     liveData?.notasFondo     ?? baseProduct.notasFondo,
+    descuento:      liveData?.descuento      ?? baseProduct?.descuento ?? null,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
                   liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
@@ -1343,11 +1344,12 @@ export default function ProductDetail() {
                     <span className="pd-img-badge-text">Original Verificado</span>
                   </div>
 
-                  {diaDeLPadreIds.includes(product.id) && currency === 'usd' && (() => {
-                    const disc = diaDeLPadreDiscounts[product.id]
+                  {currency === 'usd' && (product.descuento || diaDeLPadreIds.includes(product.id)) && (() => {
+                    const disc = product.descuento ?? diaDeLPadreDiscounts[product.id]
+                    const isDDP = diaDeLPadreIds.includes(product.id)
                     return (
-                      <div className="vitrina-ribbon vitrina-ribbon--ddp" aria-hidden="true">
-                        <span>{disc ? `${disc}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE'}</span>
+                      <div className={`vitrina-ribbon${isDDP ? ' vitrina-ribbon--ddp' : ''}`} aria-hidden="true">
+                        <span>{disc ? `${disc}% DESCUENTO` : 'DÍA DEL PADRE'}</span>
                       </div>
                     )
                   })()}
@@ -1406,7 +1408,7 @@ export default function ProductDetail() {
                       </div>
                     )
                   }
-                  const discPct = diaDeLPadreDiscounts[product.id]
+                  const discPct = product.descuento ?? diaDeLPadreDiscounts[product.id]
                   const isDDP = diaDeLPadreIds.includes(product.id)
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
@@ -1424,10 +1426,12 @@ export default function ProductDetail() {
                   }
                   return (
                     <div className="pd-price" style={rv(350)}>
-                      {isDDP && discPct ? (
+                      {discPct ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
-                            <span style={ddpBadgeStyle}>{discPct}% EXTRA · DÍA DEL PADRE</span>
+                            <span style={isDDP ? ddpBadgeStyle : badgeStyle}>
+                              {isDDP ? `${discPct}% EXTRA · DÍA DEL PADRE` : `${discPct}% DESCUENTO`}
+                            </span>
                           </div>
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}
