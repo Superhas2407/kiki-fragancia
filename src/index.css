@@ -1730,7 +1730,9 @@
   transition: transform .7s cubic-bezier(.22,1,.36,1);
 }
 @media (max-width: 767px) {
-  .pd-img-photo { object-fit: cover; }
+  .pd-img-wrap { background: var(--bg2); }
+  .pd-img-photo { object-fit: contain; background: var(--bg2); }
+  .pd-img-badge { display: none; }
 }
 .pd-img-label {
   font-family: monospace; font-size: 10px; color: var(--gold-ink);
