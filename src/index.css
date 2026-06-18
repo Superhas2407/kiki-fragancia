@@ -1779,42 +1779,20 @@
 @media (max-width: 767px) {
   .pd-sticky-bar {
     display: flex;
-    align-items: center;
-    gap: 12px;
     position: fixed;
     left: 0; right: 0;
     bottom: calc(60px + env(safe-area-inset-bottom, 0px));
     z-index: 95;
+    padding: 10px 16px;
     background: var(--bg);
     border-top: 1px solid var(--line);
-    padding: 10px 16px;
-  }
-  .pd-sticky-price {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    line-height: 1;
-  }
-  .pd-sticky-price::before {
-    content: 'PRECIO REF';
-    font-family: var(--font-s);
-    font-size: 8px; font-weight: 400;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: var(--ink-mute);
-    margin-bottom: 3px;
-  }
-  .pd-sticky-price-val {
-    font-family: var(--font-d);
-    font-size: 32px; font-weight: 300; font-style: italic;
-    color: var(--gold);
-    letter-spacing: -0.02em;
   }
   .pd-sticky-btn {
     flex: 1;
-    font-family: var(--font-s); font-size: 11px; font-weight: 400;
+    font-family: var(--font-s); font-size: 12px; font-weight: 400;
     letter-spacing: .18em; text-transform: uppercase;
-    padding: 13px 16px; cursor: pointer;
-    min-height: 44px;
+    padding: 15px 16px; cursor: pointer;
+    min-height: 48px;
   }
 }
 
@@ -1898,10 +1876,12 @@
 }
 
 .pd-price { margin-bottom: 28px; }
-@media (max-width: 767px) { .pd-price { display: none; } }
 .pd-price-amount {
-  font-family: var(--font-s); font-size: clamp(28px, 3.5vw, 40px); font-weight: 300;
-  letter-spacing: 0.02em; color: var(--gold-ink);
+  font-family: var(--font-d); font-size: clamp(36px, 3.5vw, 48px); font-weight: 300;
+  font-style: italic; letter-spacing: -0.02em; color: var(--gold);
+}
+@media (max-width: 767px) {
+  .pd-price-amount { font-size: 44px; }
 }
 
 .pd-actions { display: flex; flex-direction: column; gap: 10px; }

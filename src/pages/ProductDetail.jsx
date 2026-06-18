@@ -1679,14 +1679,6 @@ export default function ProductDetail() {
         {/* Barra sticky móvil — precio + agregar al carrito */}
         {product.precioUSD > 0 && (
           <div className="pd-sticky-bar">
-            <div className="pd-sticky-price">
-              <span className="pd-sticky-price-val">
-                {currency === 'bs' && tasa
-                  ? 'Bs. ' + (() => { try { return Math.round(product.precioUSD * tasa).toLocaleString('es-VE') } catch { return Math.round(product.precioUSD * tasa).toLocaleString() } })()
-                  : product.precioUSD
-                }
-              </span>
-            </div>
             <button
               className="pd-sticky-btn"
               onClick={handleAdd}
@@ -1697,7 +1689,7 @@ export default function ProductDetail() {
                 transition: 'background .25s ease, color .25s ease',
               }}
             >
-              {added ? '✓ Agregado' : 'Agregar al carrito'}
+              {added ? '✓ Agregado al carrito' : 'Agregar al carrito'}
             </button>
           </div>
         )}
