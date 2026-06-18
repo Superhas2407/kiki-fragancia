@@ -4,7 +4,7 @@ import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
-import { useIndexProducts } from '../context/SanityProductsContext'
+import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useAuth } from '../context/AuthContext'
 
 const CloseIcon = () => (
@@ -49,7 +49,7 @@ export default function WishlistDrawer() {
         return 'Bs. ' + Math.round(product.precioUSD * tasa).toLocaleString()
       }
     }
-    return `REF: ${product.precioUSD}`
+    return `REF ${product.precioUSD}`
   }
 
   return (
@@ -130,20 +130,20 @@ export default function WishlistDrawer() {
               const price = formatPrice(product)
               return (
                 <div key={product.id} className="wl-item">
-                  {product.image ? (
-                    <img
-                      src={`/products/${product.image}`}
-                      alt={`${product.house} ${product.name}`}
-                      className="wl-item-img"
-                    />
-                  ) : (
-                    <div className="wl-item-img" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <span style={{ fontSize: 8, color: 'var(--ink-faint)', textAlign: 'center', padding: 4 }}>{product.house}</span>
-                    </div>
-                  )}
+                  {(() => {
+                    const imgSrc = resolveProductImage(product)
+                    return imgSrc ? (
+                      <img src={imgSrc} alt={`${product.house} ${product.name}`} className="wl-item-img" />
+                    ) : (
+                      <div className="wl-item-img wl-item-img--empty">
+                        <span>{product.house}</span>
+                      </div>
+                    )
+                  })()}
                   <div className="wl-item-info">
                     <div className="wl-item-house">{product.house}</div>
                     <div className="wl-item-name">{product.name}</div>
+                    {product.ml && <div className="wl-item-ml">{product.ml} ml</div>}
                     {price && <div className="wl-item-price">{price}</div>}
                   </div>
                   <div className="wl-item-actions">

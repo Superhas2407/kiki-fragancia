@@ -7,6 +7,7 @@ import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
 import GiftWrapOverlay, { useShowWraps } from '../components/GiftWrapOverlay'
+import { toSlug } from '../lib/slugs'
 
 const WA_NUMBER = '584149112002'
 const WA_MSG = encodeURIComponent(
@@ -191,7 +192,7 @@ const todosLosMasculinos = diaDeLPadreIds
               return (
                 <div key={num} style={{ position: 'relative' }}>
                   <Link
-                    to={`/tienda/${ids[0]}`}
+                    to={coverProduct ? `/tienda/${toSlug(coverProduct.house, coverProduct.name, coverProduct.ml)}` : `/tienda/${ids[0]}`}
                     className="ddp-persona-card"
                     style={{ textDecoration: 'none', display: 'block' }}
                   >
