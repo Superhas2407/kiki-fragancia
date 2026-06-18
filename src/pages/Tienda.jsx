@@ -70,7 +70,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       style={{
         display: 'flex', alignItems: 'center', gap: 12,
         background: 'none', border: 'none', cursor: 'pointer',
-        padding: '6px 0', width: '100%', textAlign: 'left',
+        padding: '8px 0', width: '100%', textAlign: 'left',
       }}
     >
       <span style={{
@@ -87,7 +87,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
         )}
       </span>
       <span style={{
-        fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: checked ? 400 : 300,
+        fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: checked ? 400 : 300,
         color: checked ? 'var(--ink)' : 'var(--ink-mute)',
         letterSpacing: '0.03em', flex: 1, transition: 'color 0.18s',
       }}>
@@ -95,7 +95,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       </span>
       {count !== undefined && (
         <span style={{
-          fontFamily: "'KikiGotham', sans-serif", fontSize: 10,
+          fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
           color: checked ? '#C9A84C' : 'var(--ink-faint)', transition: 'color 0.18s',
         }}>
           {count}
@@ -135,15 +135,15 @@ function SidebarSection({ title, open, onToggle, children }) {
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           width: '100%', background: 'none', border: 'none', cursor: 'pointer',
-          padding: '13px 0', color: 'var(--ink-mute)',
+          padding: '16px 0', color: 'var(--ink)',
         }}
       >
-        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.26em', textTransform: 'uppercase' }}>
+        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
           {title}
         </span>
         <ChevronIcon open={open} />
       </button>
-      {open && <div style={{ paddingBottom: 12 }}>{children}</div>}
+      {open && <div style={{ paddingBottom: 16 }}>{children}</div>}
     </div>
   )
 }
@@ -205,7 +205,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
     <div>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', paddingBottom: 16, marginBottom: 4, borderBottom: '1px solid var(--line2)' }}>
-        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink)' }}>
+        <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 18, fontWeight: 200, fontStyle: 'italic', letterSpacing: '0.04em', color: 'var(--ink)' }}>
           Filtrar
         </span>
         {hasFilters && (
@@ -240,7 +240,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
             <button
               key={label}
               onClick={() => navGenero(key)}
-              style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0' }}
             >
               <span style={{
                 width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
@@ -248,7 +248,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
                 border: `1px solid ${active ? '#C9A84C' : 'var(--line)'}`,
                 boxShadow: active ? '0 0 0 2px rgba(201,168,76,0.18)' : 'none',
               }} />
-              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em', transition: 'color 0.18s' }}>
+              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em', transition: 'color 0.18s' }}>
                 {label}
               </span>
             </button>
@@ -436,13 +436,13 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           const active = !urlDdp && urlGenero === key
           return (
             <button key={label} onClick={() => navGenero(key)}
-              style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '6px 0' }}>
+              style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0' }}>
               <span style={{
                 width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
                 background: active ? '#C9A84C' : 'transparent',
                 border: `1px solid ${active ? '#C9A84C' : 'var(--line)'}`,
               }} />
-              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em' }}>
+              <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em' }}>
                 {label}
               </span>
             </button>

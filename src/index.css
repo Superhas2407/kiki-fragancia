@@ -5092,7 +5092,7 @@
 @media (min-width: 1024px) {
   .tienda-layout {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 260px 1fr;
     align-items: start;
   }
 }
@@ -5107,7 +5107,7 @@
     max-height: calc(100vh - var(--bar-h, 0px) - var(--kiki-header-h, 114px));
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 32px 20px 40px 32px;
+    padding: 36px 24px 48px 36px;
     border-right: 1px solid var(--line2);
     scrollbar-width: thin;
     scrollbar-color: var(--line2) transparent;
@@ -5158,7 +5158,7 @@
   display: flex;
   align-items: stretch;
   border-top: 1px solid var(--line2);
-  border-bottom: 1px solid var(--line2);
+  border-bottom: 1px solid var(--line);
   margin-bottom: 16px;
   position: sticky;
   top: calc(var(--bar-h, 0px) + var(--kiki-header-h, 114px));
@@ -5177,9 +5177,9 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 13px 16px;
+  padding: 16px 20px;
   font-family: 'KikiGotham', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-mute);
@@ -5208,7 +5208,7 @@
   gap: 6px;
   flex: 1;
   justify-content: center;
-  padding: 13px 16px;
+  padding: 16px 20px;
   position: relative;
   color: var(--ink-mute);
   cursor: pointer;
@@ -5216,7 +5216,7 @@
 
 .tienda-mobile-bar-sort-label {
   font-family: 'KikiGotham', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   pointer-events: none;
