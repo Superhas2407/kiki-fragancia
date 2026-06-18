@@ -36,8 +36,25 @@ const QUERY = `*[_type == "product"] | order(id asc) {
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche
 }`
 
+async function fetchWithRetry(query, retries = 4, delayMs = 3000) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await client.fetch(query)
+    } catch (err) {
+      const isServerError = err?.statusCode >= 500
+      if (isServerError && attempt < retries) {
+        console.warn(`  ⚠ Sanity error (intento ${attempt}/${retries}): ${err.message}. Reintentando en ${delayMs / 1000}s...`)
+        await new Promise(r => setTimeout(r, delayMs))
+        delayMs *= 2
+      } else {
+        throw err
+      }
+    }
+  }
+}
+
 console.log('Obteniendo productos desde Sanity...')
-const raw = await client.fetch(QUERY)
+const raw = await fetchWithRetry(QUERY)
 console.log(`  ${raw.length} productos recibidos`)
 
 function toStr(val) {
