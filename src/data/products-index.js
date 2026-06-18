@@ -4359,7 +4359,7 @@ export const products = [
     "id": 364,
     "house": "ISSEY MIYAKE",
     "name": "Issey Miyake L'Eau d'Issey Pour Homme Intense",
-    "image": "issey-miyake-leau-dissey-pour-homme-intense-75ml-m.webp",
+    "image": "issey-miyake-leau-dissey-pour-homme-intense-125ml-m.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
