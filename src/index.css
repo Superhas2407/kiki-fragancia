@@ -1830,10 +1830,10 @@
   background: rgba(201,168,76,0.07);
 }
 
-.pd-price { margin-bottom: 24px; }
+.pd-price { margin-bottom: 28px; }
 .pd-price-amount {
-  font-family: var(--font-s); font-size: 22px; font-weight: 300;
-  letter-spacing: 0.04em; color: var(--gold-ink);
+  font-family: var(--font-s); font-size: clamp(28px, 3.5vw, 40px); font-weight: 300;
+  letter-spacing: 0.02em; color: var(--gold-ink);
 }
 
 .pd-actions { display: flex; flex-direction: column; gap: 10px; }

@@ -1375,29 +1375,6 @@ export default function ProductDetail() {
                 </p>
                 <div className="pd-divider" style={rv(300)}></div>
 
-                {product.variantIds && (() => {
-                  const variantGroup = products
-                    .filter(p => product.variantIds.includes(p.id))
-                    .sort((a, b) => a.ml - b.ml)
-                  return variantGroup.length > 1 ? (
-                    <div className="pd-size-selector" style={rv(330)}>
-                      <span className="pd-size-label">Tamaño</span>
-                      <div className="pd-size-btns">
-                        {variantGroup.map(v => (
-                          <button
-                            key={v.id}
-                            type="button"
-                            className={`pd-size-btn${v.id === product.id ? ' active' : ''}`}
-                            onClick={() => navigate(`/tienda/${v.id}`)}
-                          >
-                            {v.ml} ml
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null
-                })()}
-
                 {product.precioUSD > 0 && (() => {
                   const showBs = currency === 'bs' && tasa
                   if (showBs) {
@@ -1455,6 +1432,29 @@ export default function ProductDetail() {
                       )}
                     </div>
                   )
+                })()}
+
+                {product.variantIds && (() => {
+                  const variantGroup = products
+                    .filter(p => product.variantIds.includes(p.id))
+                    .sort((a, b) => a.ml - b.ml)
+                  return variantGroup.length > 1 ? (
+                    <div className="pd-size-selector" style={rv(355)}>
+                      <span className="pd-size-label">Tamaño</span>
+                      <div className="pd-size-btns">
+                        {variantGroup.map(v => (
+                          <button
+                            key={v.id}
+                            type="button"
+                            className={`pd-size-btn${v.id === product.id ? ' active' : ''}`}
+                            onClick={() => navigate(`/tienda/${v.id}`)}
+                          >
+                            {v.ml} ml
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null
                 })()}
 
                 <div className="pd-actions" style={rv(380)}>
