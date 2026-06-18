@@ -101,7 +101,7 @@ export default function CartDrawer() {
           maxWidth: '420px',
           background: 'var(--bg2)',
           borderLeft: '1px solid rgba(196,120,26,0.2)',
-          zIndex: 80,
+          zIndex: 110,
           display: 'flex',
           flexDirection: 'column',
           transform: drawerOpen ? 'translateX(0)' : 'translateX(100%)',
