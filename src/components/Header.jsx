@@ -9,7 +9,7 @@ import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
 import { notesLookup } from '../data/notes-lookup'
 import { acordesByProduct } from '../data/acordes-index'
-import { norm, productMatchesQuery } from '../lib/search'
+import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 import { toSlug } from '../lib/slugs'
 import AuthModal from './AuthModal'
 
@@ -168,6 +168,7 @@ export default function Header() {
         ]
         return productMatchesQuery(terms, fields)
       })
+      .sort((a, b) => scoreProduct(terms, b.name, b.house) - scoreProduct(terms, a.name, a.house))
       .slice(0, 6)
   }, [searchQuery])
 

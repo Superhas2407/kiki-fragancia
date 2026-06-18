@@ -38,3 +38,43 @@ function termMatchesText(term, text) {
 export function productMatchesQuery(terms, searchFields) {
   return terms.every(t => searchFields.some(field => termMatchesText(t, field)))
 }
+
+// Devuelve un score de relevancia (mayor = más relevante).
+// Prioriza coincidencias en nombre > casa > resto.
+export function scoreProduct(terms, name, house) {
+  const nName  = norm(name  || '')
+  const nHouse = norm(house || '')
+  const phrase = terms.join(' ')
+
+  // Coincidencia exacta de nombre completo
+  if (nName === phrase) return 100000
+
+  let score = 0
+
+  // Frase completa en el nombre
+  if (nName.startsWith(phrase + ' ') || nName === phrase) score += 5000
+  else if (nName.includes(' ' + phrase)) score += 3000
+  else if (nName.includes(phrase)) score += 2000
+
+  // Frase completa en la casa
+  if (nHouse.includes(phrase)) score += 1500
+
+  // Todos los términos están en el nombre
+  if (terms.every(t => nName.includes(t))) score += 800
+
+  // Términos individuales — coincidencia exacta de palabra > inicio de palabra > substring
+  const nameWords  = nName.split(/[\s\-,./]+/).filter(Boolean)
+  const houseWords = nHouse.split(/[\s\-,./]+/).filter(Boolean)
+
+  for (const t of terms) {
+    if (nameWords.includes(t))                          score += 400  // palabra exacta en nombre
+    else if (nameWords.some(w => w.startsWith(t)))     score += 180  // inicio de palabra en nombre
+    else if (nName.includes(t))                         score += 60   // substring en nombre
+
+    if (houseWords.includes(t))                         score += 120  // palabra exacta en casa
+    else if (houseWords.some(w => w.startsWith(t)))    score += 50   // inicio en casa
+    else if (nHouse.includes(t))                        score += 20   // substring en casa
+  }
+
+  return score
+}

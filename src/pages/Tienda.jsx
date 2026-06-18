@@ -8,7 +8,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import { COLECCIONES, coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
-import { norm, productMatchesQuery } from '../lib/search'
+import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 
 const PAGE_SIZE = 48
 
@@ -682,6 +682,9 @@ export default function Tienda() {
         norm(p.familia),
         norm(notesLookup[p.id]),
       ]))
+      if (sortBy === 'featured') {
+        result.sort((a, b) => scoreProduct(terms, b.name, b.house) - scoreProduct(terms, a.name, a.house))
+      }
     }
     if (sortBy === 'name')       result.sort((a, b) => a.name.localeCompare(b.name))
     if (sortBy === 'name-desc')  result.sort((a, b) => b.name.localeCompare(a.name))
