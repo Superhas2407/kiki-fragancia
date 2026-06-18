@@ -742,23 +742,24 @@ export default function Tienda() {
   }
   const bannerSrc = BANNER_TIPO[urlTipo] || BANNER_GENERO[urlGenero] || '/BANNERTIENDATODOS.webp'
 
+  const BANNER_SUB = {
+    'Masculino': 'Fragancias masculinas', 'Femenino': 'Fragancias femeninas', 'Unisex': 'Para todos',
+    'arabes': 'Perfumería oriental', 'disenador': 'Las grandes casas', 'nicho': 'Perfumería artesanal',
+  }
+  const bannerSub = BANNER_SUB[urlTipo] || BANNER_SUB[urlGenero] || 'Toda la colección'
+
   return (
     <>
       <div ref={topRef} style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
-        <div style={{ position: 'relative', width: '100%', height: 'clamp(200px, 28vw, 360px)', overflow: 'hidden' }}>
-          <img
-            src={bannerSrc}
-            alt=""
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-          />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,8,4,0.75) 0%, rgba(10,8,4,0.20) 50%, rgba(10,8,4,0.05) 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 'clamp(24px, 4vw, 48px)', gap: 8 }}>
-            <h1 style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(36px, 6vw, 80px)', fontStyle: 'italic', fontWeight: 200, color: 'rgba(247,242,234,0.95)', letterSpacing: '-0.01em', margin: 0, lineHeight: 1 }}>
-              {sectionTitle}
-            </h1>
-            <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, fontWeight: 400, color: 'rgba(247,242,234,0.50)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
-              {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
-            </span>
+        {/* Banner split: texto izquierda / imagen derecha */}
+        <div className="tienda-banner">
+          <div className="tienda-banner-left">
+            <span className="tienda-banner-sub">{bannerSub}</span>
+            <h1 className="tienda-banner-title">{sectionTitle}</h1>
+            <span className="tienda-banner-count">{filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}</span>
+          </div>
+          <div className="tienda-banner-right">
+            <img src={bannerSrc} alt="" className="tienda-banner-img" />
           </div>
         </div>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
