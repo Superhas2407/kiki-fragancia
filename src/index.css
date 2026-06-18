@@ -43,6 +43,7 @@
   background: var(--bg);
   color: var(--ink);
   font-weight: 500;
+  -webkit-text-stroke: 0.55px currentColor;
 }
 [data-theme='warm'] .kiki-header .nav-link,
 [data-theme='warm'] .kiki-header .logo {
@@ -262,6 +263,7 @@
     background: var(--ivory);
     color: var(--carbon);
     -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 0.35px currentColor;
   }
 
   h1, h2, h3 { text-wrap: balance; }
