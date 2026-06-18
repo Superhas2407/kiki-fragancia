@@ -9,13 +9,14 @@ npm run build  # sync Sanity → local + sitemap + vite build + generate-product
 ```
 
 ## Arquitectura general
-- `App.jsx` — `CartProvider` > `ErrorBoundary` > `AppShell` (AnnouncementBar + Header + GlobalSidebar + Routes + BottomNav)
+- `App.jsx` — `HelmetProvider` > `BrowserRouter` > `AuthProvider` > `CartProvider` > `ErrorBoundary`. Rutas especiales (`/coming-soon`, `/kiki-login`, `/kiki-desk`) fuera del AppShell. Resto (`/*`) dentro de `SanityProductsProvider > WishlistProvider > CurrencyProvider > ThemeProvider > AppShell`.
+- `AppShell` — AnnouncementBar + Header + GlobalSidebar + Routes + CartDrawer + WishlistDrawer + WhatsAppFab + ConsentBanner + BottomNav
 - `AnnouncementBar.jsx` — barra dorada fija encima del header (z-index 41). Gestiona también el bottom sheet pop-up en móvil (<768px). Ambos usan `sessionStorage` para mostrarse solo una vez por sesión. Ajusta `--bar-h` en `:root` para bajar el header.
 - `GlobalSidebar.jsx` — links por género y tipo (solo ≥1024px, oculto en móvil)
-- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito a la derecha (ocultos en móvil vía `visibility: hidden`). Logo e iconos siempre blancos (`.kiki-header .kiki-logo-img { filter: brightness(0) invert(1) }`). En modo warm (claro) fuera de landing, el header tiene fondo oscuro `#140E06`. En landing y dark mode, el header es transparente. Switcher de moneda REF/Bs en desktop (pill) y en móvil (botones `hcm-btn` absoluteados al right del header-inner). Sidebar deslizante 290px con nav italic 22px y utilidades al fondo. Escucha evento `kiki:open-search` para abrir el buscador desde BottomNav.
+- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito/wishlist/cuenta a la derecha. Logo siempre blanco (`.kiki-header .kiki-logo-img { filter: brightness(0) invert(1) }`). En modo warm fuera de landing, fondo `#140E06`. En landing/dark, transparente. **Mega menú desktop**: al hover en "Colección" abre panel con 6 tiles (Hombre/Mujer/Unisex/Árabes/Diseñador/Nicho) usando imágenes `public/silhouettes/mega-*.jpeg`. Switcher moneda REF/Bs. Sidebar móvil 290px. Escucha `kiki:open-search` desde BottomNav.
 - `BottomNav.jsx` — barra fija inferior en móvil (≤1023px): Inicio · Tienda · Buscar · Carrito. Buscar dispara `kiki:open-search`. WhatsAppFab flota en `bottom: calc(60px + safe-area + 16px)`.
 - `Hero.jsx` — carrusel: 1 video (`/hero.webm`) + 5 imágenes, crossfade CSS, `<picture>` desktop/mobile
-- `Tienda.jsx` — **Desktop**: layout grid `220px sidebar | 1fr main`. Sidebar fijo sticky con acordeones (Género, Categoría, Concentración, Por ocasión, Marca) + barra superior con conteo y select Ordenar. **Mobile**: barra `Filtrar | Ordenar` (reemplaza chips) + drawer con Género incluido. Sin paginación — infinite scroll.
+- `Tienda.jsx` — **Desktop**: layout grid `220px sidebar | 1fr main`. Sidebar fijo sticky con acordeones (Género, Categoría, Concentración, Por ocasión, Marca) + barra superior con conteo y select Ordenar. **Mobile**: barra `Filtrar | Ordenar` + drawer. Sin paginación — infinite scroll. Banner full-bleed al tope (ver sección Banners Tienda).
 - `ProductDetail.jsx` — detalle de producto con pirámide de notas olfativas, acordes y cuando usar
 
 ## Datos de productos
@@ -98,7 +99,8 @@ El `npm run build` corre `sync-from-sanity.mjs` que descarga todos los productos
 | `public/hero/` | Imágenes del carrusel: `{nombre}-desktop.webp` y `{nombre}-mobile.webp` |
 | `public/notes/` | 245 WebP de ingredientes/notas olfativas |
 | `public/products/` | WebP de productos |
-| `public/silhouettes/` | `mega-{arabes,disenador,hombre,mujer,nicho,unisex}.jpeg` — imágenes de categoría (no usadas actualmente) |
+| `public/fonts/` | `GothamThin.otf` + `GothamThin.woff2` — fuente KikiGotham servida desde public |
+| `public/silhouettes/` | `mega-{arabes,disenador,hombre,mujer,nicho,unisex}.jpeg` — tiles del mega menú desktop del Header |
 | `public/BANNERTIENDA*.webp` | Banners de la página Tienda por categoría — ver sección Banners Tienda |
 
 **Todas las imágenes son WebP.** Convertidas con `scripts/convert-to-webp.mjs` (sharp + `.rotate()` para corregir EXIF).
@@ -186,6 +188,24 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 10. `<Guarantee />` — garantías
 
 Eliminados de Landing en junio 2026: `BrandsMarquee` (×2), `ProductWall`, `ThreeDMarquee`, `ColeccionesSection`.
+
+## Footer (rediseñado junio 2026)
+`src/components/Footer.jsx` — 5 columnas en desktop, stack en móvil. Clases `kf-*`.
+| Col | Contenido |
+|---|---|
+| Brand | Logo + tagline + descripción |
+| Colección | Links: Todas, Hombre, Mujer, Unisex, Árabes, Diseñador, Nicho |
+| Información | Nosotros, Términos y condiciones, Dirección (CC Todo Tecnología #29, Los Cortijos) |
+| Atención al cliente | WhatsApp, Instagram, horario Lun–Sáb 9am–7pm |
+| Newsletter | Logo pequeño + form email/suscribir (submit local, no integración externa aún) |
+
+Bottom bar: íconos sociales (IG, WA, TikTok) + copyright + crédito.
+
+## Mega menú Header (desktop)
+Al hover en "Colección" en el nav desktop, abre un panel full-width con 6 tiles:
+- `MEGA_CATS` en `Header.jsx`: Hombre · Mujer · Unisex · Árabes · Diseñador · Nicho
+- Imágenes: `public/silhouettes/mega-{hombre,mujer,unisex,arabes,disenador,nicho}.jpeg`
+- Delay de 180ms al cerrar (timer ref) para evitar cierre accidental al mover el mouse
 
 ## QuickGenero (`src/components/QuickGenero.jsx`)
 3 tiles de género en la landing. Imágenes actuales en `public/hero/`:
@@ -276,6 +296,28 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
   ```json
   { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
   ```
+
+## Supabase / Autenticación
+
+Proyecto Supabase: `dgyjwztiwkricpbkxaxd.supabase.co`
+
+- `src/lib/supabaseClient.js` — `createClient` con URL y anon key públicas. Exporta `supabase`.
+- `src/context/AuthContext.jsx` — `{ session, loading }` via `useAuth()`. `session` es `null` (no autenticado) o el objeto de sesión de Supabase. `loading: true` mientras se resuelve la sesión inicial.
+- `src/components/AuthModal.jsx` — modal de login/registro con tabs "Entrar" / "Crear cuenta" + Google OAuth. Se cierra automáticamente al detectar sesión activa. Se controla con `open` / `onClose` props.
+- `src/pages/AdminLoginPage.jsx` — ruta `/kiki-login`: login simplificado solo email+password para el admin. Navega a `/kiki-desk` tras autenticarse.
+- `ProtectedRoute` en `App.jsx` — redirige a `/kiki-login` si no hay sesión. Protege `/kiki-desk`.
+
+### Wishlist con Supabase
+`WishlistContext.jsx` — `{ ids, toggle, isWishlisted, drawerOpen, setDrawerOpen, authModalOpen, setAuthModalOpen }`:
+- Sin sesión: wishlist solo en `localStorage` clave `kiki-wishlist`
+- Con sesión: al iniciar sesión, fusiona local + Supabase tabla `wishlists` (`user_id`, `product_id`). Los items solo-locales se suben a Supabase.
+- `toggle(id)` — agrega/quita; si hay sesión, persiste en Supabase.
+
+### Rutas admin (security by obscurity — NO linkear en UI)
+- `/kiki-login` — login admin (sustituyó la ruta directa a `/kiki-desk`)
+- `/kiki-desk` — panel admin protegido por `ProtectedRoute`
+
+---
 
 ## Sistema de moneda
 - `src/context/CurrencyContext.jsx` — `{ currency, setCurrency }` via `useCurrency()`. Valores: `'usd' | 'bs'`.
