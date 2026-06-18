@@ -1772,29 +1772,8 @@
   }
 }
 
-/* Barra sticky móvil */
-.pd-sticky-bar {
-  display: none;
-}
-@media (max-width: 767px) {
-  .pd-sticky-bar {
-    display: flex;
-    position: fixed;
-    left: 0; right: 0;
-    bottom: calc(60px + env(safe-area-inset-bottom, 0px));
-    z-index: 95;
-    padding: 10px 16px;
-    background: var(--bg);
-    border-top: 1px solid var(--line);
-  }
-  .pd-sticky-btn {
-    flex: 1;
-    font-family: var(--font-s); font-size: 12px; font-weight: 400;
-    letter-spacing: .18em; text-transform: uppercase;
-    padding: 15px 16px; cursor: pointer;
-    min-height: 48px;
-  }
-}
+/* Barra sticky móvil — desactivada, botón vive en pd-actions */
+.pd-sticky-bar { display: none; }
 
 /* Info panel */
 .pd-info {
