@@ -5045,7 +5045,7 @@
 }
 /* Padding para que el contenido no quede tapado por la barra */
 @media (max-width: 1023px) {
-  .app-main { padding-bottom: 60px; }
+  .app-main { padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px) + 16px); }
 }
 
 /* Sticky "Ver colección" — solo mobile, z-index BAJO el BottomNav (50) */
