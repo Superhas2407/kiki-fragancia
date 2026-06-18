@@ -29,6 +29,7 @@ function BsCard({ product }) {
       <div className="bs-card-body">
         <p className="bs-card-house">{product.house}</p>
         <p className="bs-card-name">{product.name}</p>
+        {product.ml && <p className="bs-card-ml">{product.ml} ml</p>}
         <PriceTag product={product} />
       </div>
     </Link>
