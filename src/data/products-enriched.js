@@ -2144,7 +2144,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 35,
     "categoria": "disenador"
   },
   {
