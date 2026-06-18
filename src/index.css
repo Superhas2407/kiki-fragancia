@@ -2590,6 +2590,21 @@
 }
 
 
+/* Ribbon más grande en ProductDetail (imagen full-height) */
+@media (min-width: 768px) {
+  .pd-img-wrap .vitrina-ribbon {
+    width: 260px; height: 260px;
+  }
+  .pd-img-wrap .vitrina-ribbon > span {
+    right: -72px; top: 62px;
+    width: 320px;
+    font-size: 13px; padding: 14px 0;
+  }
+  .pd-img-wrap .vitrina-ribbon--ddp > span {
+    font-size: 11px;
+  }
+}
+
 /* Info row debajo del display */
 .vitrina-info {
   display: flex;
