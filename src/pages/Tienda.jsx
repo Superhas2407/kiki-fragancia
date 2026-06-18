@@ -202,7 +202,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
   }
 
   return (
-    <div>
+    <div className="tienda-sidebar-filters">
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', paddingBottom: 16, marginBottom: 4, borderBottom: '1px solid var(--line2)' }}>
         <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 18, fontWeight: 200, fontStyle: 'italic', letterSpacing: '0.04em', color: 'var(--ink)' }}>

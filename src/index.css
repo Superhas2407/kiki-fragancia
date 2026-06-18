@@ -5114,6 +5114,12 @@
   }
 }
 
+/* Filtros sidebar — modo claro: texto más pesado para legibilidad */
+[data-theme='warm'] .tienda-sidebar-filters span,
+[data-theme='warm'] .tienda-sidebar-filters button span {
+  font-weight: 600 !important;
+}
+
 /* Barra superior desktop: count + ordenar */
 .tienda-topbar-desktop { display: none; }
 @media (min-width: 1024px) {
