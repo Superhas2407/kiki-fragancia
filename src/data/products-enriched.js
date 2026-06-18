@@ -10293,7 +10293,7 @@ export const products = [
       "Vetiver",
       "Almizcle"
     ],
-    "ml": 75,
+    "ml": 125,
     "precioUSD": 50,
     "categoria": "disenador"
   },
@@ -12299,7 +12299,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 60,
     "categoria": "disenador"
   },
   {

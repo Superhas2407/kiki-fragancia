@@ -4363,7 +4363,7 @@ export const products = [
     "familia": null,
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
-    "ml": 75,
+    "ml": 125,
     "precioUSD": 50,
     "categoria": "disenador"
   },
@@ -5216,7 +5216,7 @@ export const products = [
     "tipo": "Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 60,
     "categoria": "disenador"
   },
   {
