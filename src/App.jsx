@@ -25,6 +25,22 @@ const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
 const KikiDeskPage    = lazy(() => import('./pages/KikiDeskPage'))
 const AdminLoginPage  = lazy(() => import('./pages/AdminLoginPage'))
 
+function MetaPixel() {
+  useEffect(() => {
+    if (window.fbq) return
+    const f = window, b = document, e = 'script'
+    const n = f.fbq = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }
+    if (!f._fbq) f._fbq = n
+    n.push = n; n.loaded = true; n.version = '2.0'; n.queue = []
+    const t = b.createElement(e); t.async = true
+    t.src = 'https://connect.facebook.net/en_US/fbevents.js'
+    b.head.appendChild(t)
+    window.fbq('init', '1276910773324685')
+    window.fbq('track', 'PageView')
+  }, [])
+  return null
+}
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
@@ -75,6 +91,7 @@ function AppShell() {
   return (
     <>
       {!isTouch && <CursorTrail />}
+      <MetaPixel />
       <ScrollToTop />
       <AnnouncementBar />
       <Header />
