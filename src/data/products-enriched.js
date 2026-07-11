@@ -1773,7 +1773,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 80,
+    "precioUSD": 75,
     "categoria": "arabes"
   },
   {
@@ -2263,7 +2263,7 @@ export const products = [
       "Algalia"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -2972,7 +2972,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -4512,7 +4512,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -4539,7 +4539,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -4632,7 +4632,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -4774,7 +4774,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -4806,7 +4806,7 @@ export const products = [
       "ámbar"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -5235,7 +5235,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
