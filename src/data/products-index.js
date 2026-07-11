@@ -3512,7 +3512,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 75,
     "categoria": "disenador"
   },
   {
@@ -3524,7 +3524,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -3536,7 +3536,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -3572,7 +3572,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 125,
-    "precioUSD": 150,
+    "precioUSD": 180,
     "categoria": "disenador"
   },
   {
@@ -3644,7 +3644,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 125,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -3776,7 +3776,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 110,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -3812,7 +3812,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 85,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -3932,7 +3932,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 90,
     "categoria": "disenador"
   },
   {
@@ -4016,7 +4016,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 170,
     "categoria": "disenador"
   },
   {
@@ -4365,7 +4365,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 50,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -4449,7 +4449,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -4641,7 +4641,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -4665,7 +4665,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 55,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -5241,7 +5241,7 @@ export const products = [
     "tipo": "Parfum de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {

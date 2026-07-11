@@ -8315,7 +8315,7 @@ export const products = [
       "Cachemira"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 75,
     "categoria": "disenador"
   },
   {
@@ -8343,7 +8343,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -8371,7 +8371,7 @@ export const products = [
       "Madera"
     ],
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -8454,7 +8454,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 125,
-    "precioUSD": 150,
+    "precioUSD": 180,
     "categoria": "disenador"
   },
   {
@@ -8620,7 +8620,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 125,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -8925,7 +8925,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 75,
-    "precioUSD": 110,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -9008,7 +9008,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 85,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -9287,7 +9287,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 90,
     "categoria": "disenador"
   },
   {
@@ -9478,7 +9478,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 170,
     "categoria": "disenador"
   },
   {
@@ -10295,7 +10295,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 75,
-    "precioUSD": 50,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -10492,7 +10492,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -10940,7 +10940,7 @@ export const products = [
       "Madera"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -10996,7 +10996,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 75,
-    "precioUSD": 55,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -12353,7 +12353,7 @@ export const products = [
       "Albaricoque"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
