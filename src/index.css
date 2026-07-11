@@ -597,6 +597,20 @@
 /* Hero — base */
 .hero-section { overflow: hidden; }
 
+/* Hero text always white — background is always dark regardless of theme */
+[data-theme='warm'] .hero-main-title,
+[data-theme='warm'] .hero-ddp-title { color: #F7F2EA; }
+[data-theme='warm'] .hero-tagline,
+[data-theme='warm'] .hero-quote,
+[data-theme='warm'] .hero-search-link,
+[data-theme='warm'] .hero-bottom-handle,
+[data-theme='warm'] .kiki-scroll-indicator,
+[data-theme='warm'] .eyebrow-text,
+[data-theme='warm'] .hero-ddp-eyebrow,
+[data-theme='warm'] .hero-ddp-sub,
+[data-theme='warm'] .hero-ddp-desc { color: rgba(247,242,234,0.70); }
+[data-theme='warm'] .hero-cta { color: #F7F2EA; border-color: rgba(201,168,76,0.75); }
+
 /* Hero â€” scroll indicator */
 @keyframes scroll-breath {
   0%, 100% { opacity: 0.8; transform: scaleY(1); }
