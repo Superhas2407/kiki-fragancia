@@ -5,7 +5,6 @@ import { useIndexProducts } from '../context/SanityProductsContext'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { diaDeLPadreIds, diaDeLPadreDiscounts } from '../data/dia-del-padre'
 import { COLECCIONES, coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
@@ -179,7 +178,7 @@ function PriceRangeSlider({ min, max, value, onChange, step = 5 }) {
   )
 }
 
-function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds }) {
+function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds }) {
   const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false })
   const toggle = k => setOpen(s => ({ ...s, [k]: !s[k] }))
 
@@ -215,27 +214,10 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
         )}
       </div>
 
-      {/* Día del Padre */}
-      <button
-        onClick={() => navigate('/tienda?ddp=1')}
-        style={{
-          width: '100%', margin: '12px 0',
-          fontFamily: "'KikiGotham', sans-serif", fontSize: 9.5,
-          letterSpacing: '0.14em', textTransform: 'uppercase',
-          padding: '9px 12px', cursor: 'pointer', textAlign: 'left',
-          border: `1px solid ${urlDdp ? '#1A52CC' : 'rgba(26,82,204,0.30)'}`,
-          background: urlDdp ? 'rgba(26,82,204,0.08)' : 'transparent',
-          color: urlDdp ? '#6B9FFF' : 'var(--ink-mute)',
-          transition: 'all 0.18s',
-        }}
-      >
-        🎁 Día del Padre
-      </button>
-
       {/* Género */}
       <SidebarSection title="Género" open={open.genero} onToggle={() => toggle('genero')}>
         {GENERO_OPTIONS.map(({ key, label }) => {
-          const active = !urlDdp && urlGenero === key
+          const active = urlGenero === key
           return (
             <button
               key={label}
@@ -335,7 +317,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlDdp, urlColeccion, navigate, se
   )
 }
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion, priceRange, setPriceRange, priceBounds }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -418,22 +400,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
       {/* Género — solo en mobile drawer */}
       <div style={{ marginBottom: 24 }}>
         {sectionLabel('Género')}
-        <button
-          onClick={() => navigate('/tienda?ddp=1')}
-          style={{
-            width: '100%', marginBottom: 6,
-            fontFamily: "'KikiGotham', sans-serif", fontSize: 9.5,
-            letterSpacing: '0.14em', textTransform: 'uppercase',
-            padding: '8px 12px', cursor: 'pointer', textAlign: 'left',
-            border: `1px solid ${urlDdp ? '#1A52CC' : 'rgba(26,82,204,0.30)'}`,
-            background: urlDdp ? 'rgba(26,82,204,0.08)' : 'transparent',
-            color: urlDdp ? '#6B9FFF' : 'var(--ink-mute)',
-          }}
-        >
-          🎁 Día del Padre
-        </button>
         {GENERO_OPTIONS.map(({ key, label }) => {
-          const active = !urlDdp && urlGenero === key
+          const active = urlGenero === key
           return (
             <button key={label} onClick={() => navGenero(key)}
               style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0' }}>
@@ -603,7 +571,6 @@ export default function Tienda() {
 
   const urlGenero     = searchParams.get('genero')     || null
   const urlTipo       = searchParams.get('tipo')       || null
-  const urlDdp        = searchParams.get('ddp') === '1'
   const urlColeccion  = searchParams.get('coleccion')  || null
   const coleccionData = urlColeccion ? coleccionById[urlColeccion] : null
 
@@ -622,12 +589,11 @@ export default function Tienda() {
 
   const basePool = useMemo(() => {
     let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
-    if (urlDdp)        pool = pool.filter(p => diaDeLPadreIds.includes(p.id))
     if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
     if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
     return pool
-  }, [urlGenero, urlTipo, urlDdp, coleccionData])
+  }, [urlGenero, urlTipo, coleccionData])
 
   const priceBounds = useMemo(() => {
     const prices = basePool.map(p => p.precioUSD).filter(v => v > 0)
@@ -667,7 +633,7 @@ export default function Tienda() {
     params.delete('precioMin'); params.delete('precioMax')
     setSearchParams(params, { replace: true })
   }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlDdp ? 1 : 0) + (urlColeccion ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...basePool]
@@ -724,8 +690,8 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, urlDdp, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds }
-  const sidebarProps = { urlGenero, urlTipo, urlDdp, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds }
+  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
@@ -915,13 +881,7 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              ribbon={currency === 'usd' ? (
-                                diaDeLPadreIds.includes(product.id)
-                                  ? (diaDeLPadreDiscounts[product.id] ? `${diaDeLPadreDiscounts[product.id]}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE')
-                                  : product.precioUSD > 0 ? 'Promo en divisa' : null
-                              ) : null}
-                              ribbonVariant={currency === 'usd' && diaDeLPadreIds.includes(product.id) ? 'ddp' : null}
-                              discount={diaDeLPadreIds.includes(product.id) && currency === 'usd' ? diaDeLPadreDiscounts[product.id] : null}
+                              ribbon={currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
                             />
                           </div>
                         ))}

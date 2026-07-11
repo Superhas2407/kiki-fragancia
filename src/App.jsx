@@ -19,7 +19,6 @@ import ConsentBanner from './components/ConsentBanner'
 const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
-const DiaDeLPadrePage = lazy(() => import('./pages/DiaDeLPadrePage'))
 const TerminosPage    = lazy(() => import('./pages/TerminosPage'))
 const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
 const KikiDeskPage    = lazy(() => import('./pages/KikiDeskPage'))
@@ -103,7 +102,6 @@ function AppShell() {
               <Route path="/" element={<Landing />} />
               <Route path="/tienda" element={<Tienda />} />
               <Route path="/tienda/:id" element={<ProductDetail />} />
-              <Route path="/dia-del-padre" element={<DiaDeLPadrePage />} />
               <Route path="/terminos-y-condiciones" element={<TerminosPage />} />
             </Routes>
           </Suspense>

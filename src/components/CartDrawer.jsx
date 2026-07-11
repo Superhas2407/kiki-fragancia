@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { diaDeLPadreDiscounts, diaDeLPadreIds } from '../data/dia-del-padre'
 import { toSlug } from '../lib/slugs'
 import { resolveProductImage } from '../context/SanityProductsContext'
 
@@ -34,24 +33,19 @@ const WAIcon = () => (
 function buildMessage(items) {
   const lines = items.map(item => {
     const unit = item.precioUSD || 0
-    const disc = diaDeLPadreDiscounts[item.id]
-    const ddpNote = disc ? ` 🎁 ${disc}% EXTRA Día del Padre` : ''
     const priceNote = unit > 0 ? ` — REF $${unit}` : ''
     const mlNote = item.ml ? ` ${item.ml}ml` : ''
     const slug = toSlug(item.house, item.name, item.ml)
     const link = `https://kikifragancia.com/tienda/${slug}`
-    return `• *${item.house} ${item.name}*${mlNote} x${item.quantity}${priceNote}${ddpNote}\n  ${link}`
+    return `• *${item.house} ${item.name}*${mlNote} x${item.quantity}${priceNote}\n  ${link}`
   })
   const hasPrice = items.some(item => item.precioUSD > 0)
   const total = items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)
   const totalLine = hasPrice ? `\n*Total: REF $${total}*\n` : ''
-  const hasDdp = items.some(item => diaDeLPadreIds.includes(item.id))
-  const ddpLine = hasDdp ? '\n🎁 Aplica descuento Día del Padre en los productos indicados.\n' : ''
   return (
     `Hola! Quiero hacer el siguiente pedido:\n\n` +
     `${lines.join('\n\n')}\n` +
     totalLine +
-    ddpLine +
     `\n¿Están disponibles?`
   )
 }
@@ -175,8 +169,7 @@ export default function CartDrawer() {
                 const unit = item.precioUSD || 0
                 const lineTotal = unit * item.quantity
                 const imgSrc = resolveProductImage(item)
-                const isDDP = diaDeLPadreIds.includes(item.id)
-                const disc = item.descuento ?? diaDeLPadreDiscounts[item.id]
+                const disc = item.descuento
                 return (
                   <li
                     key={item.id}
@@ -219,15 +212,15 @@ export default function CartDrawer() {
                         </p>
                       )}
 
-                      {currency === 'usd' && isDDP && (
+                      {currency === 'usd' && disc && (
                         <span style={{
                           fontFamily: "'KikiGotham', sans-serif",
                           fontSize: 8, fontWeight: 700, letterSpacing: '0.10em',
-                          textTransform: 'uppercase', color: '#E8F0FF',
-                          background: 'linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72)',
+                          textTransform: 'uppercase', color: '#1A1208',
+                          background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
                           padding: '3px 7px', display: 'inline-block', marginBottom: '6px', alignSelf: 'flex-start',
                         }}>
-                          {disc ? `${disc}% EXTRA · DÍA DEL PADRE` : 'DÍA DEL PADRE'}
+                          {disc}% DESCUENTO
                         </span>
                       )}
 

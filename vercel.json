@@ -10,6 +10,7 @@
     }
   ],
   "routes": [
+    { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
