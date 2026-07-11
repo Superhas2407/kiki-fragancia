@@ -73,6 +73,7 @@ export default function CartDrawer() {
   }, [])
 
   function handleWhatsApp() {
+    if (window.fbq) window.fbq('track', 'Contact')
     const message = buildMessage(items)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}&ref=carrito`
     window.open(url, '_blank', 'noopener,noreferrer')

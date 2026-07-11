@@ -1500,6 +1500,7 @@ export default function ProductDetail() {
                     style={{ transform: waHover ? 'translateY(-2px)' : 'translateY(0)' }}
                     onMouseEnter={() => setWaHover(true)}
                     onMouseLeave={() => setWaHover(false)}
+                    onClick={() => { if (window.fbq) window.fbq('track', 'Contact') }}
                   >
                     <WhatsAppIcon />
                     Consultar por WhatsApp
