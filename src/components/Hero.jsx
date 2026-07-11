@@ -28,6 +28,7 @@ export default function Hero() {
     opacity:   mounted ? 1 : 0,
     transform: mounted ? 'translateY(0)' : 'translateY(24px)',
     transition: `opacity 0.85s ease ${delay}ms, transform 0.85s cubic-bezier(.22,1,.36,1) ${delay}ms`,
+    color: '#F7F2EA',
   })
 
   return (
