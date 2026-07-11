@@ -598,12 +598,27 @@
 .hero-section { overflow: hidden; }
 
 /* Hero text always white — background is always dark regardless of theme */
+.hero-section .hero-title,
+.hero-section .hero-eyebrow,
+.hero-section .hero-quote,
+.hero-section .hero-actions { color: #F7F2EA; }
+.hero-section .hero-btn-primary {
+  color: #F7F2EA;
+  border-color: rgba(201,168,76,0.75);
+}
+[data-theme='warm'] .hero-section .hero-title,
+[data-theme='warm'] .hero-section .hero-eyebrow,
+[data-theme='warm'] .hero-section .hero-quote { color: #F7F2EA; }
+[data-theme='warm'] .hero-section p,
+[data-theme='warm'] .hero-section h1,
+[data-theme='warm'] .hero-section a,
+[data-theme='warm'] .hero-bottom-handle,
+[data-theme='warm'] .hero-section .hero-btn-primary { color: #F7F2EA; }
 [data-theme='warm'] .hero-main-title,
 [data-theme='warm'] .hero-ddp-title { color: #F7F2EA; }
 [data-theme='warm'] .hero-tagline,
 [data-theme='warm'] .hero-quote,
 [data-theme='warm'] .hero-search-link,
-[data-theme='warm'] .hero-bottom-handle,
 [data-theme='warm'] .kiki-scroll-indicator,
 [data-theme='warm'] .eyebrow-text,
 [data-theme='warm'] .hero-ddp-eyebrow,
