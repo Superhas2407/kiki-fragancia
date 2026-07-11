@@ -1,12 +1,27 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+const SLIDES = [
+  { desktop: '/hero/ysl-desktop.webp',              mobile: '/hero/ysl-mobile.webp'              },
+  { desktop: '/hero/carolina-herrera-desktop.webp', mobile: '/hero/carolina-herrera-mobile.webp' },
+  { desktop: '/hero/gucci-bloom-desktop.webp',      mobile: '/hero/gucci-bloom-mobile.webp'      },
+  { desktop: '/hero/mandarin-sky-desktop.webp',     mobile: '/hero/mandarin-sky-mobile.webp'     },
+  { desktop: '/hero/nitro-red-desktop.webp',        mobile: '/hero/nitro-red-mobile.webp'        },
+  { desktop: '/hero/yara-desktop.webp',             mobile: '/hero/yara-mobile.webp'             },
+]
+
 export default function Hero() {
+  const [current, setCurrent] = useState(0)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80)
     return () => clearTimeout(t)
+  }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => setCurrent(c => (c + 1) % SLIDES.length), 7000)
+    return () => clearInterval(id)
   }, [])
 
   const rv = (delay) => ({
@@ -17,48 +32,42 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
-      {/* Foto de fondo */}
-      <div className="hero-bg" style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
-        <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
-          <source media="(max-width: 767px)" srcSet="/hero/ddp-hero-mobile.webp" type="image/webp" />
-          <source srcSet="/hero/ddp-hero-desktop.webp" type="image/webp" />
-          <img
-            src="/hero/ddp-hero-desktop.webp"
-            alt=""
-            aria-hidden="true"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-            loading="eager"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="hero-bg-gradient" style={{ zIndex: 2 }} />
-      </div>
+      {/* Slides de fondo */}
+      {SLIDES.map((slide, i) => (
+        <div
+          key={i}
+          className="hero-bg"
+          style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, transition: 'opacity 0.85s ease', zIndex: i === current ? 1 : 0 }}
+        >
+          <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
+            <source media="(max-width: 767px)" srcSet={slide.mobile} type="image/webp" />
+            <source srcSet={slide.desktop} type="image/webp" />
+            <img
+              src={slide.desktop}
+              alt=""
+              aria-hidden="true"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'auto'}
+            />
+          </picture>
+          <div className="hero-bg-gradient" style={{ zIndex: 2 }} />
+        </div>
+      ))}
 
-      {/* Contenido — izquierda, estilo Afnan DDP */}
+      {/* Contenido */}
       <div className="kiki-container" style={{ width: '100%', zIndex: 5 }}>
-        <div className="hero-content-wrap hero-ddp-layout">
-
-          <p className="hero-ddp-eyebrow" style={rv(0)}>— Edición Día del Padre · 2026</p>
-
-          <h1 className="hero-ddp-title" style={rv(120)}>
-            ESTE DÍA<br />DEL PADRE,
+        <div className="hero-content-wrap">
+          <p className="hero-eyebrow" style={rv(0)}>Fragancias 100% Originales</p>
+          <h1 className="hero-title" style={rv(120)}>
+            Oler bien<br />deja gratos<br /><em>recuerdos</em>
           </h1>
-
-          <p className="hero-ddp-sub" style={rv(240)}>
-            EL AMOR VERDADERO SE DEMUESTRA EN KIKI FRAGANCIA
+          <p className="hero-quote" style={rv(240)}>
+            con KiKi Fragancia nunca te olvidarán
           </p>
-
-          <p className="hero-ddp-desc" style={rv(320)}>
-            Fragancias de diseñador 100% originales.<br />
-            Colección masculina curada para él.
-          </p>
-
-          <div className="hero-ddp-actions" style={rv(380)}>
-            <Link to="/tienda?genero=Masculino" className="hero-ddp-btn-primary">
-              Explorar colección
-            </Link>
+          <div className="hero-actions" style={rv(360)}>
+            <Link to="/tienda" className="hero-btn-primary">Explorar colección</Link>
           </div>
-
         </div>
       </div>
 
@@ -73,7 +82,16 @@ export default function Hero() {
         >
           @kiki_fragancia · Instagram
         </a>
-        <div />
+        <div className="hero-dots">
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`hero-dot${i === current ? ' active' : ''}`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
         <div className="kiki-scroll-indicator" style={{ position: 'static', bottom: 'auto', left: 'auto' }}>
           <span className="scroll-text">Scroll</span>
           <div className="scroll-line-wrap">

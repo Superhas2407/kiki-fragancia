@@ -6,7 +6,6 @@ const WA_NUMBER = '584149112002'
 
 const MESSAGES = {
   default: encodeURIComponent('Hola! Entré a la tienda y me gustaría que me ayuden a elegir una fragancia 🙌'),
-  ddp: encodeURIComponent('Hola! Estoy buscando algo para regalarle a mi papá 🎁 ¿Me pueden recomendar?'),
 }
 
 function buildUrl(msg, ref) {
@@ -24,7 +23,6 @@ function useWaUrl() {
       return buildUrl(msg, `fab_detalle_${id}`)
     }
   }
-  if (pathname === '/dia-del-padre') return buildUrl(MESSAGES.ddp, 'fab_dia_del_padre')
   return buildUrl(MESSAGES.default, 'fab_general')
 }
 

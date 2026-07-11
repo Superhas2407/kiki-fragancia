@@ -1,5 +1,4 @@
 import { useNavigate, useLocation } from 'react-router-dom'
-import { diaDeLPadreIds } from '../data/dia-del-padre'
 
 const AllIcon = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -36,11 +35,6 @@ const NichoIcon = () => (
     <path d="M12 2l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z"/>
   </svg>
 )
-const GiftIcon = () => (
-  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
-  </svg>
-)
 
 const GENERO_ITEMS = [
   { key: 'Masculino', label: 'Hombre',  icon: <MenIcon />    },
@@ -63,7 +57,6 @@ export default function GlobalSidebar() {
   const params = new URLSearchParams(location.search)
   const activeGenero = params.get('genero') || null
   const activeTipo   = params.get('tipo')   || null
-  const activeDdp    = params.get('ddp') === '1'
 
   function handleGenero(key) {
     const p = new URLSearchParams()
@@ -81,10 +74,6 @@ export default function GlobalSidebar() {
 
   function handleAll() {
     navigate('/tienda')
-  }
-
-  function handleDdp() {
-    navigate('/tienda?ddp=1')
   }
 
   const isAll = !activeGenero && !activeTipo
@@ -139,21 +128,6 @@ export default function GlobalSidebar() {
               <span className="global-sidebar-text">{item.label}</span>
             </button>
           ))}
-        </nav>
-
-        {/* Divider */}
-        <div className="global-sidebar-divider" />
-
-        {/* Campañas */}
-        <span className="global-sidebar-label">Campañas</span>
-        <nav>
-          <button
-            onClick={handleDdp}
-            className={`global-sidebar-link${activeDdp ? ' active' : ''}`}
-          >
-            <span className="global-sidebar-icon"><GiftIcon /></span>
-            <span className="global-sidebar-text">Día del Padre</span>
-          </button>
         </nav>
 
       </div>

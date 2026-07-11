@@ -338,8 +338,6 @@ export default function Header() {
 
         {/* NAV HORIZONTAL — desktop only */}
         {(() => {
-          const sp = new URLSearchParams(location.search)
-          const ddp = sp.get('ddp') === '1'
           const isPath = (p) => location.pathname === p
           return (
             <nav className="header-cat-nav">
@@ -352,7 +350,6 @@ export default function Header() {
               <span className="header-cat-sep" />
               <a href="/#nosotros" className={`header-cat-link${isPath('/') ? ' active' : ''}`}>Nosotros</a>
               <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="header-cat-link">Instagram</a>
-              <Link to="/tienda?ddp=1" className={`header-cat-link header-cat-ddp${ddp ? ' active' : ''}`}>Día del Padre</Link>
             </nav>
           )
         })()}
@@ -400,10 +397,6 @@ export default function Header() {
         <nav className="kiki-mobile-nav">
           <Link to="/tienda" className="mobile-nav-link" style={{ transitionDelay: '40ms' }}>
             Todas las fragancias
-          </Link>
-
-          <Link to="/tienda?ddp=1" className="mobile-nav-link mobile-nav-ddp" style={{ transitionDelay: '80ms' }}>
-            Día del Padre
           </Link>
 
           {[
