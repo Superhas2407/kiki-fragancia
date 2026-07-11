@@ -64,6 +64,7 @@ export default function WhatsAppFab() {
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         animation: 'wa-pulse 2.8s ease-in-out infinite',
       }}
+      onClick={() => { if (window.fbq) window.fbq('track', 'Contact') }}
       onMouseEnter={e => {
         e.currentTarget.style.transform = 'scale(1.1)'
         e.currentTarget.style.boxShadow = '0 6px 28px rgba(37,211,102,0.5)'
