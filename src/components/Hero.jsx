@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 const SLIDES = [
@@ -13,6 +13,8 @@ const SLIDES = [
 export default function Hero() {
   const [current, setCurrent] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const sectionRef = useRef(null)
+  const videoRef = useRef(null)
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80)
@@ -24,6 +26,31 @@ export default function Hero() {
     return () => clearInterval(id)
   }, [])
 
+  // Parallax del video de fondo — solo desktop, throttled con rAF
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    let ticking = false
+
+    const update = () => {
+      ticking = false
+      if (!mq.matches || !sectionRef.current || !videoRef.current) return
+      const rect = sectionRef.current.getBoundingClientRect()
+      const offset = -rect.top * 0.3
+      videoRef.current.style.transform = `translateY(${offset}px)`
+    }
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   const rv = (delay) => ({
     opacity:   mounted ? 1 : 0,
     transform: mounted ? 'translateY(0)' : 'translateY(24px)',
@@ -31,12 +58,24 @@ export default function Hero() {
   })
 
   return (
-    <section className="hero-section">
-      {/* Slides de fondo */}
+    <section className="hero-section" ref={sectionRef}>
+      {/* Video parallax — solo desktop */}
+      <div className="hero-video-bg">
+        <video
+          ref={videoRef}
+          autoPlay muted loop playsInline
+          className="hero-video-fixed"
+        >
+          <source src="/hero/hero-parallax.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-bg-gradient" style={{ zIndex: 2 }} />
+      </div>
+
+      {/* Slides de imágenes — solo mobile */}
       {SLIDES.map((slide, i) => (
         <div
           key={i}
-          className="hero-bg"
+          className="hero-bg hero-bg-mobile-only"
           style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, transition: 'opacity 0.85s ease', zIndex: i === current ? 1 : 0 }}
         >
           <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>

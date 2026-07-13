@@ -597,6 +597,25 @@
 /* Hero — base */
 .hero-section { overflow: hidden; }
 
+/* Video parallax background — solo desktop */
+.hero-video-bg { display: none; }
+.hero-video-fixed { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 768px) {
+  .hero-video-bg {
+    display: block;
+    position: absolute; inset: 0; z-index: 1;
+    overflow: hidden;
+  }
+  .hero-video-fixed {
+    position: absolute;
+    top: -15%; left: 0;
+    width: 100%; height: 130%;
+    object-fit: cover;
+    will-change: transform;
+  }
+  .hero-bg-mobile-only { display: none !important; }
+}
+
 /* Hero â€” scroll indicator */
 @keyframes scroll-breath {
   0%, 100% { opacity: 0.8; transform: scaleY(1); }
@@ -1263,7 +1282,7 @@
   .hero-section .kiki-container { padding: 0; width: 100%; flex-shrink: 0; }
   .hero-content-wrap {
     position: static !important;
-    padding: 0 28px 72px !important;
+    padding: 0 28px 120px !important;
     width: 100%;
     align-items: center;
   }
@@ -1292,10 +1311,21 @@
       linear-gradient(to top, rgba(4,8,18,0.92) 0%, rgba(4,8,18,0.55) 32%, rgba(4,8,18,0) 60%);
   }
 }
-.hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.hero-eyebrow {
+  font-family: var(--font-s); font-size: 11px; font-weight: 300;
+  color: var(--gold); letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 28px;
+}
 .eyebrow-text {
   font-family: var(--font-s); font-size: 10px; font-weight: 300;
   color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase;
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(40px, 6vw, 88px);
+  font-weight: 300; font-style: italic; color: #fff;
+  letter-spacing: -0.02em; line-height: 1.0; margin: 0 0 28px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5), 0 1px 8px rgba(0,0,0,0.4);
 }
 .hero-main-title {
   font-family: var(--font-d);
@@ -1312,8 +1342,18 @@
   font-family: var(--font-d);
   font-size: clamp(16px, 1.7vw, 19px);
   font-weight: 300; font-style: italic;
-  color: var(--ink-mute); line-height: 1.55; margin: 0 0 44px;
+  color: rgba(255,255,255,0.80); line-height: 1.55; margin: 0 0 44px;
 }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-btn-primary {
+  display: inline-block; padding: 14px 36px;
+  font-family: var(--font-s); font-size: 11px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+  background: #fff; border: 1px solid #fff; color: #0a0804;
+  transition: background 0.25s, color 0.25s;
+}
+.hero-btn-primary:hover { background: transparent; color: #fff; }
+
 /* Trust bar — barra bajo el hero, fondo sólido */
 .trust-bar {
   display: flex; align-items: center; justify-content: center;
