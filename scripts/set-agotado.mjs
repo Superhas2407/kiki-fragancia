@@ -1,8 +1,8 @@
 /**
- * Marca productos como agotados en Sanity a partir de una lista de IDs numéricos.
+ * Marca o desmarca productos como agotados en Sanity a partir de una lista de IDs numéricos.
  *
  * Uso: PRODUCT_IDS="1,2,3" node scripts/set-agotado.mjs
- * (o node scripts/set-agotado.mjs 1,2,3)
+ * Para desmarcar: AGOTADO_VALUE=false PRODUCT_IDS="1,2,3" node scripts/set-agotado.mjs
  */
 import { createClient } from '@sanity/client'
 import { readFileSync, existsSync } from 'fs'
@@ -27,7 +27,8 @@ if (!idsArg) {
   process.exit(1)
 }
 const ids = idsArg.split(',').map(s => Number(s.trim())).filter(n => !isNaN(n))
-console.log(`Marcando ${ids.length} productos como agotados...`)
+const value = process.env.AGOTADO_VALUE !== 'false'
+console.log(`${value ? 'Marcando' : 'Desmarcando'} ${ids.length} productos como agotados...`)
 
 const client = createClient({
   projectId: '7j25mwk7',
@@ -48,9 +49,9 @@ if (missing.length) {
 
 let tx = client.transaction()
 for (const doc of docs) {
-  tx = tx.patch(doc._id, p => p.set({ agotado: true }))
+  tx = tx.patch(doc._id, p => p.set({ agotado: value }))
 }
 await tx.commit()
 
-console.log(`✓ ${docs.length} productos marcados como agotados:`)
+console.log(`✓ ${docs.length} productos ${value ? 'marcados' : 'desmarcados'}:`)
 for (const doc of docs) console.log(`  - [${doc.id}] ${doc.name}`)
