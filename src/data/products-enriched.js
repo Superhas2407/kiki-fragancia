@@ -12552,7 +12552,7 @@ export const products = [
       "cedro"
     ],
     "ml": 100,
-    "precioUSD": 130,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
