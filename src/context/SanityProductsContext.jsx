@@ -3,7 +3,7 @@ import { products as localProducts } from '../data/products-index'
 import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
 
 const QUERY = `*[_type == "product"] | order(id asc) {
-  id, precioUSD, descuento, name, house, image, sanityImage, genero, familia,
+  id, precioUSD, descuento, agotado, name, house, image, sanityImage, genero, familia,
   tipo, categoria, ml, variantIds, acordes, descripcion,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche,
   notasSalida, notasCorazon, notasFondo
