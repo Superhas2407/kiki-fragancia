@@ -63,6 +63,13 @@ export default {
       validation: Rule => Rule.min(1).max(99),
     },
     {
+      name: 'agotado',
+      title: 'Agotado (sin stock)',
+      type: 'boolean',
+      description: 'Actívalo cuando no quede stock. El sitio muestra automáticamente un badge "Agotado" y desactiva el botón de compra — no requiere ningún otro cambio.',
+      initialValue: false,
+    },
+    {
       name: 'ml',
       title: 'Mililitros',
       type: 'number',
