@@ -5638,14 +5638,18 @@
   cursor: pointer;
 }
 .kiki-search-product:hover .kiki-search-product-img-bg {
-  opacity: 0.85;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -10px rgba(0,0,0,0.35);
 }
 
 .kiki-search-product-img-bg {
+  position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  margin-bottom: 8px;
-  transition: opacity .2s;
+  margin-bottom: 10px;
+  background: linear-gradient(160deg, var(--surface-2, #161210), var(--bg));
+  box-shadow: 0 6px 16px -8px rgba(0,0,0,0.25);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .kiki-search-product-img {
@@ -5654,6 +5658,38 @@
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: opacity .2s;
+}
+.kiki-search-product.is-agotado .kiki-search-product-img {
+  opacity: 0.5;
+  filter: grayscale(0.6);
+}
+
+.kiki-search-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-family: var(--font-s);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 3px 8px;
+  color: #F2ECDE;
+}
+.kiki-search-badge--agotado {
+  background: linear-gradient(90deg, #2A2620, #4A443A);
+}
+.kiki-search-badge--sale {
+  background: linear-gradient(90deg, #B8902F, #E8C96A);
+  color: #1A1208;
+}
+
+.kiki-search-price-agotado {
+  font-family: var(--font-s);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
 }
 
 .kiki-search-product-house {
@@ -5734,24 +5770,48 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 13px 0;
+  padding: 11px 12px;
+  margin: 0 -12px;
   cursor: pointer;
   border-bottom: 1px solid var(--line2);
-  transition: background .15s;
+  border-left: 2px solid transparent;
+  transition: background .15s, border-color .15s;
 }
 .kiki-search-suggestion.active,
 .kiki-search-suggestion:hover {
   background: var(--chip);
-  padding-left: 12px;
-  padding-right: 12px;
-  margin: 0 -12px;
+  border-left-color: var(--gold);
+}
+.kiki-search-suggestion.is-agotado {
+  opacity: 0.68;
+}
+
+.kiki-search-sug-img-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
 }
 
 .kiki-search-sug-img {
-  width: 44px;
-  height: 44px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
+  box-shadow: 0 4px 12px -6px rgba(0,0,0,0.3);
+}
+.kiki-search-suggestion.is-agotado .kiki-search-sug-img {
+  filter: grayscale(0.6);
+}
+
+.kiki-search-sug-dot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4A443A;
+  border: 1.5px solid var(--bg);
 }
 
 .kiki-search-sug-info {
@@ -5759,7 +5819,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .kiki-search-sug-house {
@@ -5783,13 +5843,41 @@
   -webkit-text-stroke: 0.3px currentColor;
 }
 
+.kiki-search-sug-badge {
+  align-self: flex-start;
+  font-family: var(--font-s);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #F2ECDE;
+  background: linear-gradient(90deg, #2A2620, #4A443A);
+  padding: 2px 7px;
+  margin-top: 2px;
+}
+
+.kiki-search-sug-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
 .kiki-search-sug-ml {
   font-family: var(--font-s);
   font-size: 10px;
   letter-spacing: 0.06em;
   color: var(--ink-faint);
-  flex-shrink: 0;
   -webkit-text-stroke: 0.4px currentColor;
+}
+
+.kiki-search-sug-price {
+  font-family: var(--font-s);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--gold-ink);
 }
 
 .kiki-search-empty {

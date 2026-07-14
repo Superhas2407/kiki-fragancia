@@ -4,7 +4,7 @@ import { useCartContext } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { useIndexProducts } from '../context/SanityProductsContext'
+import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
 import { notesLookup } from '../data/notes-lookup'
@@ -505,16 +505,23 @@ export default function Header() {
                     <p className="kiki-search-label">Destacados</p>
                     <div className="kiki-search-grid">
                       {topProducts.map(p => {
-                        const sale = p.descuento ? Math.round(p.precioUSD * (1 - p.descuento / 100)) : null
+                        const sale = !p.agotado && p.descuento ? Math.round(p.precioUSD * (1 - p.descuento / 100)) : null
                         return (
-                          <div key={p.id} className="kiki-search-product" onClick={() => handleSuggestionClick(p)}>
+                          <div key={p.id} className={`kiki-search-product${p.agotado ? ' is-agotado' : ''}`} onClick={() => handleSuggestionClick(p)}>
                             <div className="kiki-search-product-img-bg">
-                              <img src={`/products/${p.image}`} alt={p.name} loading="lazy" className="kiki-search-product-img" />
+                              <img src={resolveProductImage(p)} alt={p.name} loading="lazy" className="kiki-search-product-img" />
+                              {p.agotado ? (
+                                <span className="kiki-search-badge kiki-search-badge--agotado">Agotado</span>
+                              ) : p.descuento ? (
+                                <span className="kiki-search-badge kiki-search-badge--sale">-{p.descuento}%</span>
+                              ) : null}
                             </div>
                             <p className="kiki-search-product-house">{p.house}</p>
                             <p className="kiki-search-product-name">{p.name}</p>
                             <div className="kiki-search-product-price">
-                              {sale ? (
+                              {p.agotado ? (
+                                <span className="kiki-search-price-agotado">Agotado</span>
+                              ) : sale ? (
                                 <>
                                   <del className="kiki-search-price-orig">${p.precioUSD}</del>
                                   <span className="kiki-search-price-sale">${sale}</span>
@@ -536,14 +543,21 @@ export default function Header() {
                   <li key={p.id}
                     onClick={() => handleSuggestionClick(p)}
                     onMouseEnter={() => setActiveSuggestion(i)}
-                    className={`kiki-search-suggestion${i === activeSuggestion ? ' active' : ''}`}
+                    className={`kiki-search-suggestion${i === activeSuggestion ? ' active' : ''}${p.agotado ? ' is-agotado' : ''}`}
                   >
-                    {p.image && <img src={`/products/${p.image}`} alt="" loading="lazy" className="kiki-search-sug-img" />}
+                    <span className="kiki-search-sug-img-wrap">
+                      <img src={resolveProductImage(p)} alt="" loading="lazy" className="kiki-search-sug-img" />
+                      {p.agotado && <span className="kiki-search-sug-dot" aria-hidden="true" />}
+                    </span>
                     <span className="kiki-search-sug-info">
                       <span className="kiki-search-sug-house">{p.house}</span>
                       <span className="kiki-search-sug-name">{p.name}</span>
+                      {p.agotado && <span className="kiki-search-sug-badge">Agotado</span>}
                     </span>
-                    <span className="kiki-search-sug-ml">{p.ml}ml</span>
+                    <span className="kiki-search-sug-meta">
+                      <span className="kiki-search-sug-ml">{p.ml}ml</span>
+                      {!p.agotado && p.precioUSD > 0 && <span className="kiki-search-sug-price">${p.precioUSD}</span>}
+                    </span>
                   </li>
                 ))}
               </ul>
