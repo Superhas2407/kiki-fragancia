@@ -7,6 +7,14 @@ on:
         description: 'IDs numéricos de producto separados por coma (ej: 12,53,88)'
         required: true
         type: string
+      value:
+        description: 'Marcar como agotado (true) o desmarcar (false)'
+        required: true
+        type: choice
+        default: 'true'
+        options:
+          - 'true'
+          - 'false'
 
 jobs:
   set-agotado:
@@ -26,3 +34,4 @@ jobs:
         env:
           SANITY_TOKEN: ${{ secrets.SANITY_SYNC }}
           PRODUCT_IDS: ${{ inputs.ids }}
+          AGOTADO_VALUE: ${{ inputs.value }}
