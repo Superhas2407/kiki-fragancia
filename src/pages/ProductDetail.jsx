@@ -1172,6 +1172,7 @@ export default function ProductDetail() {
     notasCorazon:   liveData?.notasCorazon   ?? baseProduct.notasCorazon,
     notasFondo:     liveData?.notasFondo     ?? baseProduct.notasFondo,
     descuento:      liveData?.descuento      ?? baseProduct?.descuento ?? null,
+    agotado:        liveData?.agotado        ?? baseProduct?.agotado ?? false,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
                   liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
@@ -1282,7 +1283,7 @@ export default function ProductDetail() {
       url: canonicalUrl,
       priceCurrency: 'USD',
       price: product.precioUSD || undefined,
-      availability: 'https://schema.org/InStock',
+      availability: product.agotado ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
     },
   }
 
@@ -1327,7 +1328,10 @@ export default function ProductDetail() {
                       className="pd-img-photo"
                       src={resolvedImg}
                       alt={`${product.house} ${product.name}`}
-                      style={{ transform: imgHover ? 'scale(1.04)' : 'scale(1)' }}
+                      style={{
+                        transform: imgHover ? 'scale(1.04)' : 'scale(1)',
+                        ...(product.agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : {}),
+                      }}
                     />
                   ) : (
                     <div className="pd-img-placeholder" style={{ transform: imgHover ? 'scale(1.04)' : 'scale(1)' }}>
@@ -1343,7 +1347,11 @@ export default function ProductDetail() {
                     <span className="pd-img-badge-text">Original Verificado</span>
                   </div>
 
-                  {currency === 'usd' && product.descuento && (
+                  {product.agotado ? (
+                    <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
+                      <span>Agotado</span>
+                    </div>
+                  ) : currency === 'usd' && product.descuento && (
                     <div className="vitrina-ribbon" aria-hidden="true">
                       <span>{product.descuento}% DESCUENTO</span>
                     </div>
@@ -1362,7 +1370,7 @@ export default function ProductDetail() {
               </div>
 
               {/* Franja descuento — solo móvil, entre imagen e info */}
-              {currency === 'usd' && product.descuento && (
+              {!product.agotado && currency === 'usd' && product.descuento && (
                 <div className="pd-ddp-strip">
                   {product.descuento}% DESCUENTO
                 </div>
@@ -1459,20 +1467,22 @@ export default function ProductDetail() {
                   </div>
 
                   <button
-                    onClick={handleAdd}
+                    onClick={product.agotado ? undefined : handleAdd}
+                    disabled={product.agotado}
                     style={{
                       fontFamily: 'var(--font-s)', fontSize: 'clamp(11px, 3vw, 12px)', fontWeight: 400, letterSpacing: '.2em',
                       textTransform: 'uppercase', padding: 'clamp(13px, 3vw, 16px) clamp(20px, 5vw, 32px)', width: '100%', minHeight: '46px',
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      border: added ? '1px solid #25D366' : '1px solid var(--gold)',
-                      background: added ? '#25D366' : 'var(--gold)',
-                      color: added ? '#FFF' : '#0A0A0A',
+                      cursor: product.agotado ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                      border: product.agotado ? '1px solid var(--line)' : added ? '1px solid #25D366' : '1px solid var(--gold)',
+                      background: product.agotado ? 'transparent' : added ? '#25D366' : 'var(--gold)',
+                      color: product.agotado ? 'var(--ink-faint)' : added ? '#FFF' : '#0A0A0A',
+                      opacity: product.agotado ? 0.6 : 1,
                       transition: 'background .25s ease, border-color .25s ease, color .25s ease',
                     }}
-                    onMouseEnter={e => { if (!added) e.currentTarget.style.background = '#E8C96A' }}
-                    onMouseLeave={e => { if (!added) e.currentTarget.style.background = 'var(--gold)' }}
+                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = '#E8C96A' }}
+                    onMouseLeave={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold)' }}
                   >
-                    {added ? '✓ Agregado' : 'Agregar al carrito'}
+                    {product.agotado ? 'Agotado' : added ? '✓ Agregado' : 'Agregar al carrito'}
                   </button>
 
                   <a
@@ -1665,15 +1675,18 @@ export default function ProductDetail() {
           <div className="pd-sticky-bar">
             <button
               className="pd-sticky-btn"
-              onClick={handleAdd}
+              onClick={product.agotado ? undefined : handleAdd}
+              disabled={product.agotado}
               style={{
-                background: added ? '#25D366' : 'var(--gold)',
-                color: added ? '#fff' : '#0A0A0A',
-                border: 'none',
+                background: product.agotado ? 'transparent' : added ? '#25D366' : 'var(--gold)',
+                color: product.agotado ? 'var(--ink-faint)' : added ? '#fff' : '#0A0A0A',
+                border: product.agotado ? '1px solid var(--line)' : 'none',
+                opacity: product.agotado ? 0.6 : 1,
+                cursor: product.agotado ? 'not-allowed' : 'pointer',
                 transition: 'background .25s ease, color .25s ease',
               }}
             >
-              {added ? '✓ Agregado al carrito' : 'Agregar al carrito'}
+              {product.agotado ? 'Agotado' : added ? '✓ Agregado al carrito' : 'Agregar al carrito'}
             </button>
           </div>
         )}

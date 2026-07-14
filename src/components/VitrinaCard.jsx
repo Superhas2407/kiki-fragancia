@@ -68,6 +68,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   const [added, setAdded] = useState(false)
 
   const wishlisted = isWishlisted(product.id)
+  const agotado = !!product?.agotado
 
   function handleWishlist(e) {
     e.preventDefault()
@@ -98,6 +99,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   function handleAdd(e) {
     e.stopPropagation()
     e.preventDefault()
+    if (agotado) return
     addItem(product)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
@@ -124,6 +126,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               src={imgSrc}
               alt={`${product.house} ${product.name}`}
               className="vitrina-img"
+              style={agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : undefined}
             />
           ) : (
             <div className="vitrina-placeholder">
@@ -139,7 +142,11 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           <span className="badge-regalo">{badge}</span>
         )}
 
-        {ribbon && (
+        {agotado ? (
+          <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
+            <span>Agotado</span>
+          </div>
+        ) : ribbon && (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
             <span>{ribbon}</span>
           </div>
@@ -164,24 +171,26 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
         </button>
 
         {/* Quick-add CTA */}
-        <button
-          type="button"
-          className={`vitrina-quick-add${hover ? ' visible' : ''}${added ? ' added' : ''}`}
-          onClick={handleAdd}
-          aria-label={added ? 'Agregado al carrito' : 'Agregar al carrito'}
-        >
-          {added ? (
-            <>
-              <CheckIcon />
-              <span>Agregado</span>
-            </>
-          ) : (
-            <>
-              <PlusIcon />
-              <span>Carrito</span>
-            </>
-          )}
-        </button>
+        {!agotado && (
+          <button
+            type="button"
+            className={`vitrina-quick-add${hover ? ' visible' : ''}${added ? ' added' : ''}`}
+            onClick={handleAdd}
+            aria-label={added ? 'Agregado al carrito' : 'Agregar al carrito'}
+          >
+            {added ? (
+              <>
+                <CheckIcon />
+                <span>Agregado</span>
+              </>
+            ) : (
+              <>
+                <PlusIcon />
+                <span>Carrito</span>
+              </>
+            )}
+          </button>
+        )}
       </div>
 
       <div className="vitrina-info">

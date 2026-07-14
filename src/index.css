@@ -2629,6 +2629,13 @@
   font-size: 9px;
 }
 
+/* Variante Agotado — gris neutro, nunca dorado (no es una promo) */
+.vitrina-ribbon--agotado > span {
+  background: linear-gradient(90deg, #2A2620, #4A443A 55%, #2A2620);
+  color: #F2ECDE;
+  font-size: 10px;
+}
+
 
 /* Ribbon más grande en ProductDetail (imagen full-height) */
 @media (min-width: 768px) {
