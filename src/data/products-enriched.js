@@ -344,7 +344,8 @@ export const products = [
     ],
     "ml": 200,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 13,
@@ -516,7 +517,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 19,
@@ -1552,7 +1554,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 54,
@@ -1634,7 +1637,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 57,
@@ -1945,7 +1949,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 68,
@@ -2204,7 +2209,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 77,
@@ -2470,7 +2476,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 220,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 85,
@@ -2581,7 +2588,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 250,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 89,
@@ -2664,7 +2672,8 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 80,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 92,
@@ -2726,7 +2735,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 94,
@@ -2818,7 +2828,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 97,
@@ -2848,7 +2859,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 98,
@@ -2910,7 +2922,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 20,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 100,
@@ -3125,7 +3138,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 135,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 108,
@@ -3178,7 +3192,8 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 90,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 110,
@@ -3356,7 +3371,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 116,
@@ -3571,7 +3587,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 124,
@@ -3629,7 +3646,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 126,
@@ -3689,7 +3707,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 128,
@@ -3796,7 +3815,8 @@ export const products = [
     ],
     "ml": 90,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 132,
@@ -4192,7 +4212,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 146,
@@ -4487,7 +4508,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 157,
@@ -4686,7 +4708,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 164,
@@ -4918,7 +4941,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 172,
@@ -5124,7 +5148,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 179,
@@ -5598,7 +5623,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 196,
@@ -5731,7 +5757,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 201,
@@ -5785,7 +5812,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 203,
@@ -5896,7 +5924,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 207,
@@ -6180,7 +6209,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 217,
@@ -6292,7 +6322,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 221,
@@ -6381,7 +6412,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 224,
@@ -6408,7 +6440,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 225,
@@ -6521,7 +6554,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 229,
@@ -6606,7 +6640,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 232,
@@ -7291,7 +7326,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 100,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 257,
@@ -7319,7 +7355,8 @@ export const products = [
     ],
     "ml": 90,
     "precioUSD": 230,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 258,
@@ -7402,7 +7439,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 75,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 261,
@@ -7483,7 +7521,8 @@ export const products = [
     ],
     "ml": 125,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 264,
@@ -7760,7 +7799,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 125,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 274,
@@ -7926,7 +7966,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 180,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 280,
@@ -8204,7 +8245,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 320,
-    "categoria": "nicho"
+    "categoria": "nicho",
+    "agotado": true
   },
   {
     "id": 290,
@@ -8512,7 +8554,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 125,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 301,
@@ -8595,7 +8638,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 304,
@@ -8787,7 +8831,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 311,
@@ -8898,7 +8943,8 @@ export const products = [
     ],
     "ml": 80,
     "precioUSD": 200,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 315,
@@ -8926,7 +8972,8 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 316,
@@ -9479,7 +9526,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 100,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 336,
@@ -9535,7 +9583,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 15,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 338,
@@ -9563,7 +9612,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 20,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 339,
@@ -9792,7 +9842,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 347,
@@ -10156,7 +10207,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 360,
@@ -10184,7 +10236,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 15,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 361,
@@ -10408,7 +10461,8 @@ export const products = [
     ],
     "ml": 200,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 369,
@@ -10577,7 +10631,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 375,
@@ -10717,7 +10772,8 @@ export const products = [
     ],
     "ml": 125,
     "precioUSD": 75,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 380,
@@ -10773,7 +10829,8 @@ export const products = [
     ],
     "ml": 125,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 382,
@@ -10829,7 +10886,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 384,
@@ -10997,7 +11055,8 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 390,
@@ -11081,7 +11140,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 393,
@@ -11109,7 +11169,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 394,
@@ -11221,7 +11282,8 @@ export const products = [
     ],
     "ml": 200,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 398,
@@ -11445,7 +11507,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 406,
@@ -11915,7 +11978,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 423,
@@ -12188,7 +12252,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 432,
@@ -12328,7 +12393,8 @@ export const products = [
     ],
     "ml": 80,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 437,
