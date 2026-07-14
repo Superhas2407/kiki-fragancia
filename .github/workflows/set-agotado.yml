@@ -1,0 +1,28 @@
+name: Marcar productos agotados
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: 'IDs numéricos de producto separados por coma (ej: 12,53,88)'
+        required: true
+        type: string
+
+jobs:
+  set-agotado:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Marcar agotados
+        run: node scripts/set-agotado.mjs
+        env:
+          SANITY_TOKEN: ${{ secrets.SANITY_SYNC }}
+          PRODUCT_IDS: ${{ inputs.ids }}
