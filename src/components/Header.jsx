@@ -7,8 +7,6 @@ import { useCurrency } from '../context/CurrencyContext'
 import { useIndexProducts } from '../context/SanityProductsContext'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
-import { notesLookup } from '../data/notes-lookup'
-import { acordesByProduct } from '../data/acordes-index'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 import { toSlug } from '../lib/slugs'
 import AuthModal from './AuthModal'
@@ -148,9 +146,19 @@ export default function Header() {
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const searchInputRef = useRef(null)
   const megaTimer = useRef(null)
+  const [searchIndex, setSearchIndex] = useState(null)
 
   function openMega() { clearTimeout(megaTimer.current); setMegaOpen(true) }
   function closeMega() { megaTimer.current = setTimeout(() => setMegaOpen(false), 180) }
+
+  useEffect(() => {
+    if (!searchOpen || searchIndex) return
+    Promise.all([import('../data/notes-lookup'), import('../data/acordes-index')])
+      .then(([notes, acordes]) => setSearchIndex({
+        notesLookup: notes.notesLookup,
+        acordesByProduct: acordes.acordesByProduct,
+      }))
+  }, [searchOpen, searchIndex])
 
   const suggestions = useMemo(() => {
     const raw = norm(searchQuery.trim())
@@ -163,14 +171,14 @@ export default function Header() {
           norm(p.name),
           norm(p.house),
           norm(p.familia),
-          norm(notesLookup[p.id]),
-          ...(acordesByProduct[p.id] || []).map(norm),
+          norm(searchIndex?.notesLookup[p.id]),
+          ...(searchIndex?.acordesByProduct[p.id] || []).map(norm),
         ]
         return productMatchesQuery(terms, fields)
       })
       .sort((a, b) => scoreProduct(terms, b.name, b.house) - scoreProduct(terms, a.name, a.house))
       .slice(0, 6)
-  }, [searchQuery])
+  }, [searchQuery, searchIndex])
 
   const topProducts = useMemo(() =>
     allProducts.filter(p => !(p.ml === 200 && p.variantIds) && p.image).slice(0, 12),
