@@ -517,20 +517,28 @@ export default function Header() {
                         return (
                           <div key={p.id} className="kiki-search-product" onClick={() => handleSuggestionClick(p)}>
                             <div className="kiki-search-product-img-bg">
-                              <img src={`/products/${p.image}`} alt={p.name} loading="lazy" className="kiki-search-product-img" />
+                              <img
+                                src={`/products/${p.image}`} alt={p.name} loading="lazy"
+                                className="kiki-search-product-img"
+                                style={p.agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : undefined}
+                              />
                             </div>
                             <p className="kiki-search-product-house">{p.house}</p>
                             <p className="kiki-search-product-name">{p.name}</p>
-                            <div className="kiki-search-product-price">
-                              {sale ? (
-                                <>
-                                  <del className="kiki-search-price-orig">${p.precioUSD}</del>
-                                  <span className="kiki-search-price-sale">${sale}</span>
-                                </>
-                              ) : (
-                                <span className="kiki-search-price-normal">${p.precioUSD}</span>
-                              )}
-                            </div>
+                            {p.agotado ? (
+                              <span className="kiki-search-agotado">Agotado</span>
+                            ) : (
+                              <div className="kiki-search-product-price">
+                                {sale ? (
+                                  <>
+                                    <del className="kiki-search-price-orig">${p.precioUSD}</del>
+                                    <span className="kiki-search-price-sale">${sale}</span>
+                                  </>
+                                ) : (
+                                  <span className="kiki-search-price-normal">${p.precioUSD}</span>
+                                )}
+                              </div>
+                            )}
                           </div>
                         )
                       })}
@@ -546,12 +554,19 @@ export default function Header() {
                     onMouseEnter={() => setActiveSuggestion(i)}
                     className={`kiki-search-suggestion${i === activeSuggestion ? ' active' : ''}`}
                   >
-                    {p.image && <img src={`/products/${p.image}`} alt="" loading="lazy" className="kiki-search-sug-img" />}
+                    {p.image && (
+                      <img
+                        src={`/products/${p.image}`} alt="" loading="lazy" className="kiki-search-sug-img"
+                        style={p.agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : undefined}
+                      />
+                    )}
                     <span className="kiki-search-sug-info">
                       <span className="kiki-search-sug-house">{p.house}</span>
                       <span className="kiki-search-sug-name">{p.name}</span>
                     </span>
-                    <span className="kiki-search-sug-ml">{p.ml}ml</span>
+                    {p.agotado
+                      ? <span className="kiki-search-agotado">Agotado</span>
+                      : <span className="kiki-search-sug-ml">{p.ml}ml</span>}
                   </li>
                 ))}
               </ul>

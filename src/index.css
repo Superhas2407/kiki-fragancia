@@ -5817,6 +5817,18 @@
   -webkit-text-stroke: 0.4px currentColor;
 }
 
+/* Estado agotado en resultados del buscador — gris neutro, nunca dorado */
+.kiki-search-agotado {
+  font-family: var(--font-s);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--line2);
+  padding: 3px 7px;
+  flex-shrink: 0;
+}
+
 .kiki-search-empty {
   font-family: var(--font-d);
   font-size: 16px;

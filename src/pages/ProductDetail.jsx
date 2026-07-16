@@ -1083,7 +1083,7 @@ const WhatsAppIcon = ({ size = 15 }) => (
 function RelatedProducts({ product }) {
   const related = useMemo(() => {
     const excludeIds = new Set([product.id, ...(product.variantIds ?? [])])
-    const isValid = p => !excludeIds.has(p.id) && !(p.ml === 200 && p.variantIds)
+    const isValid = p => !excludeIds.has(p.id) && !(p.ml === 200 && p.variantIds) && !p.agotado
 
     const byFamilia = products.filter(p => isValid(p) && p.familia === product.familia)
     const byHouse   = products.filter(p => isValid(p) && p.house === product.house && p.familia !== product.familia)
