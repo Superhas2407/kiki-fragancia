@@ -2587,7 +2587,7 @@
   .vitrina-quick-add { opacity: 1; transform: translateY(0); }
 }
 
-/* Badge de ocasiÃ³n â€” ej. "Para papÃ¡" */
+/* Badge de ocasión — ej. "Para papá" */
 .badge-regalo {
   position: absolute;
   bottom: 54px;
@@ -2602,6 +2602,31 @@
   text-transform: uppercase;
   pointer-events: none;
   border: 1px solid var(--line);
+}
+
+/* Badge exclusivo de tendencia — esquina superior izquierda, siempre visible (incl. móvil) */
+.vitrina-badge-hot {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: linear-gradient(135deg, #E8C96A, #C9A84C 55%, #8B6F2E);
+  color: #1A1208;
+  font-family: var(--font-s, sans-serif);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(232,201,106,0.45), 0 4px 12px rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+@media (max-width: 480px) {
+  .vitrina-badge-hot { font-size: 8px; padding: 4px 7px; }
 }
 
 /* Ribbon diagonal de campaña */

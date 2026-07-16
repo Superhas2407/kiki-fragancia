@@ -7,6 +7,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useAuth } from '../context/AuthContext'
 import { COLECCIONES, coleccionById } from '../data/colecciones'
+import { tendencia2026Ids } from '../data/tendencia-2026'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 
@@ -179,8 +180,8 @@ function PriceRangeSlider({ min, max, value, onChange, step = 5 }) {
   )
 }
 
-function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }) {
-  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false, estado: true })
+function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloTendencia, setSoloTendencia }) {
+  const [open, setOpen] = useState({ genero: true, tendencia: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false, estado: true })
   const toggle = k => setOpen(s => ({ ...s, [k]: !s[k] }))
 
   const marcas = useMemo(() => [...new Set(basePool.map(p => p.house))].sort(), [basePool])
@@ -237,6 +238,16 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
             </button>
           )
         })}
+      </SidebarSection>
+
+      {/* Tendencia / HOT 2026 */}
+      <SidebarSection title="Tendencia" open={open.tendencia} onToggle={() => toggle('tendencia')}>
+        <GoldCheckbox
+          label="🔥 HOT 2026"
+          checked={soloTendencia}
+          onToggle={() => setSoloTendencia(v => !v)}
+          count={basePool.filter(p => tendencia2026Ids.includes(p.id)).length}
+        />
       </SidebarSection>
 
       {/* Categoría */}
@@ -330,7 +341,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
   )
 }
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloTendencia, setSoloTendencia }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -432,6 +443,16 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
       </div>
 
       <div style={{ borderTop: '1px solid var(--line2)', paddingTop: 20, marginBottom: 0 }}>
+        {sectionLabel('Tendencia')}
+        <GoldCheckbox
+          label="🔥 HOT 2026"
+          checked={soloTendencia}
+          onToggle={() => setSoloTendencia(v => !v)}
+          count={productPool.filter(p => tendencia2026Ids.includes(p.id)).length}
+        />
+      </div>
+
+      <div style={{ borderTop: '1px solid var(--line2)', paddingTop: 20, marginTop: 24, marginBottom: 0 }}>
         {sectionLabel('Ordenar')}
         {SORT_OPTIONS.map(opt => <RadioItem key={opt.key} label={opt.label} value={opt.key}/>)}
       </div>
@@ -584,6 +605,7 @@ export default function Tienda() {
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [selectedTipos, setSelectedTipos]   = useState([])
   const [soloAgotados, setSoloAgotados]     = useState(false)
+  const [soloTendencia, setSoloTendencia]   = useState(false)
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
   const [priceRange, setPriceRange]   = useState(() => {
@@ -653,21 +675,22 @@ export default function Tienda() {
   }
 
   const isPriceFiltered = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1]
-  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados
+  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados || soloTendencia
   const clearFilters = () => {
-    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false)
+    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false); setSoloTendencia(false)
     setPriceRange(priceBounds)
     const params = new URLSearchParams(searchParams)
     params.delete('precioMin'); params.delete('precioMax')
     setSearchParams(params, { replace: true })
   }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0) + (soloTendencia ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...basePool]
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
     if (isAdmin && soloAgotados) result = result.filter(p => p.agotado)
+    if (soloTendencia) result = result.filter(p => tendencia2026Ids.includes(p.id))
     if (isPriceFiltered) result = result.filter(p => (p.precioUSD || 0) >= priceRange[0] && (p.precioUSD || 0) <= priceRange[1])
     if (searchQuery.trim()) {
       const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
@@ -686,7 +709,7 @@ export default function Tienda() {
     if (sortBy === 'price-asc')  result.sort((a, b) => (a.precioUSD || 9999) - (b.precioUSD || 9999))
     if (sortBy === 'price-desc') result.sort((a, b) => (b.precioUSD || 0) - (a.precioUSD || 0))
     return result
-  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
+  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, soloTendencia, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
@@ -719,8 +742,8 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }
-  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloTendencia, setSoloTendencia }
+  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloTendencia, setSoloTendencia }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
@@ -911,6 +934,7 @@ export default function Tienda() {
                             <VitrinaCard
                               product={product}
                               ribbon={currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
+                              hot={tendencia2026Ids.includes(product.id)}
                             />
                           </div>
                         ))}

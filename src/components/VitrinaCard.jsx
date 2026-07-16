@@ -57,7 +57,7 @@ const CheckIcon = () => (
   </svg>
 )
 
-export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null, hot = false }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
   const allProducts = useIndexProducts()
   const { addItem } = useCartContext()
@@ -140,6 +140,10 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
         {badge && (
           <span className="badge-regalo">{badge}</span>
+        )}
+
+        {hot && (
+          <span className="vitrina-badge-hot">🔥 HOT 2026</span>
         )}
 
         {agotado ? (
