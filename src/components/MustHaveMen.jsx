@@ -4,7 +4,7 @@ import { toSlug } from '../lib/slugs'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 
-const MEN_IDS = [88, 20, 256, 255, 279, 272, 104, 247, 266, 311]
+const MEN_IDS = [19, 20, 141, 255, 272, 104, 247, 266, 311, 172]
 
 function PriceTag({ product }) {
   const { currency } = useCurrency()
