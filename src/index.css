@@ -2604,10 +2604,10 @@
   border: 1px solid var(--line);
 }
 
-/* Badge exclusivo de tendencia — esquina superior izquierda, siempre visible (incl. móvil) */
+/* Badge exclusivo de tendencia — esquina inferior izquierda, siempre visible (incl. móvil) */
 .vitrina-badge-hot {
   position: absolute;
-  top: 12px;
+  bottom: 16px;
   left: 12px;
   z-index: 9;
   display: flex;
