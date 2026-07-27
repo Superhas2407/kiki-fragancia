@@ -701,7 +701,7 @@ export const products = [
       "Cedro"
     ],
     "ml": 55,
-    "precioUSD": 70,
+    "precioUSD": 75,
     "categoria": "arabes"
   },
   {
