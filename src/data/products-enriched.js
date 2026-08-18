@@ -7007,7 +7007,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 190,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 243,
@@ -7029,7 +7030,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 195,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 244,
@@ -7052,7 +7054,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 230,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 245,
@@ -7077,7 +7080,8 @@ export const products = [
     ],
     "ml": 50,
     "precioUSD": 125,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 246,
@@ -7133,7 +7137,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 248,
@@ -7359,7 +7364,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 100,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 256,
@@ -7611,7 +7617,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 95,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 265,
@@ -7666,7 +7673,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 267,
@@ -7722,7 +7730,8 @@ export const products = [
     ],
     "ml": 90,
     "precioUSD": 180,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 269,
@@ -7806,7 +7815,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 65,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 272,
@@ -8084,7 +8094,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 70,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 282,
@@ -8531,7 +8542,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 180,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 298,
@@ -8644,7 +8656,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 130,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 302,
