@@ -45,7 +45,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 5,
@@ -228,7 +229,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 105,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 20,
@@ -252,7 +254,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 105,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 22,
@@ -300,7 +303,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 105,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 26,
@@ -432,7 +436,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 37,
@@ -480,7 +485,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 41,
@@ -564,7 +570,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 48,
@@ -600,7 +607,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 51,
@@ -734,7 +742,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 80,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 62,
@@ -758,7 +767,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 90,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 64,
@@ -770,7 +780,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 65,
@@ -806,8 +817,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 68,
@@ -819,7 +829,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 69,
@@ -867,19 +878,21 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 73,
     "house": "CACHAREL",
-    "name": "Cacharel Anaïs Anaïs L'Original",
+    "name": "Anaïs Anaïs L'Original",
     "image": "cacharel-anais-anais-loriginal-eau-de-toilette-50ml-f.webp",
     "familia": "Floral Amaderado",
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 74,
@@ -903,7 +916,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 76,
@@ -940,7 +954,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 79,
@@ -952,7 +967,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 80,
@@ -964,7 +980,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 80,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 81,
@@ -976,7 +993,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 50,
     "precioUSD": 50,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 82,
@@ -988,7 +1006,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 83,
@@ -1049,7 +1068,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 88,
@@ -1074,7 +1094,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 60,
     "precioUSD": 250,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 90,
@@ -1111,7 +1132,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 90,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 93,
@@ -1136,7 +1158,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 95,
@@ -1186,7 +1209,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 99,
@@ -1259,7 +1283,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 75,
     "precioUSD": 130,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 105,
@@ -1271,7 +1296,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 130,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 106,
@@ -1308,7 +1334,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 120,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 109,
@@ -1333,7 +1360,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 111,
@@ -1345,7 +1373,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 112,
@@ -1357,19 +1386,21 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 113,
     "house": "HUGO BOSS",
-    "name": "Hugo Boss Boss Orange",
+    "name": "Boss Woman",
     "image": "hugo-boss-boss-orange-75ml-f.webp",
     "familia": "Frutal",
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 114,
@@ -1381,7 +1412,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 90,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 115,
@@ -1455,7 +1487,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 120,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 121,
@@ -1479,7 +1512,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 123,
@@ -1566,7 +1600,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 110,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 130,
@@ -1578,7 +1613,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 95,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 131,
@@ -1700,7 +1736,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 141,
@@ -1833,7 +1870,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 152,
@@ -1869,7 +1907,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 155,
@@ -1930,7 +1969,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 160,
@@ -1954,7 +1994,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 162,
@@ -2003,7 +2044,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 166,
@@ -2063,7 +2105,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 171,
@@ -2317,7 +2360,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 192,
@@ -2414,7 +2458,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 200,
@@ -2439,7 +2484,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 202,
@@ -2525,7 +2571,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 209,
@@ -2537,7 +2584,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 210,
@@ -2549,7 +2597,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 211,
@@ -2646,7 +2695,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 219,
@@ -2683,7 +2733,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 222,
@@ -2695,7 +2746,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 223,
@@ -2733,7 +2785,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 226,
@@ -2782,7 +2835,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 230,
@@ -2819,7 +2873,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 65,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 233,
@@ -2831,7 +2886,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 75,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 234,
@@ -2855,7 +2911,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 236,
@@ -2891,7 +2948,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 239,
@@ -2903,7 +2961,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 68,
     "precioUSD": 20,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 240,
@@ -3157,8 +3216,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 75,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 261,
@@ -4000,14 +4058,15 @@ export const products = [
   {
     "id": 330,
     "house": "MUGLER",
-    "name": "Mugler Alien",
+    "name": "Mugler Alien Woman",
     "image": "mugler-alien-mugler-90ml-f.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 90,
     "precioUSD": 115,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 331,
