@@ -295,6 +295,7 @@ export const notesLookup = {
   292: "Fresa, Mandarina, Flor de cerezo, Orquídea, Rosa, Jazmín, Almizcle, Vainilla, Cachemira",
   293: "Pera, Frambuesa, Bergamota, Rosa, Jazmín, Orquídea, Almizcle blanco, Vainilla, Cachemira",
   294: "Mandarina, Pomelo, Canela, Salvia, Geranio, Rosa, Cedro, Ámbar, Sándalo",
+  294: "Mandarina, Pomelo, Canela, Salvia, Geranio, Rosa, Cedro, Ámbar, Sándalo",
   295: "Bergamota, Pomelo, Menta, Lavanda, Geranio, Cedro, Almizcle, Ámbar, Madera",
   296: "Bergamota, Limón, Cardamomo, Iris, Rosa, Vetiver, Oud, Ámbar, Almizcle",
   297: "Naranja sanguina, Bergamota, Pimienta, Salvia, Neroli, Labdano, Vetiver, Styrax, Tabaco",

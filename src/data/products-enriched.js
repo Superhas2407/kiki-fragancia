@@ -8177,7 +8177,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 70,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 285,
@@ -8374,7 +8375,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 292,
@@ -8431,6 +8433,35 @@ export const products = [
     "ml": 100,
     "precioUSD": 65,
     "categoria": "disenador"
+  },
+  {
+    "id": 294,
+    "house": "RALPH LAUREN",
+    "name": "Ralph Lauren Polo Red Eau de Parfum",
+    "image": "ralph-lauren-polo-red-eau-de-parfum-125ml-m.webp",
+    "familia": null,
+    "tipo": "Eau de Parfum",
+    "genero": "Masculino",
+    "descripcion": null,
+    "description": null,
+    "notasSalida": "Mandarina, Pomelo, Canela",
+    "notasCorazon": "Salvia, Geranio, Rosa",
+    "notasFondo": "Cedro, Ámbar, Sándalo",
+    "notes": [
+      "Mandarina",
+      "Pomelo",
+      "Canela",
+      "Salvia",
+      "Geranio",
+      "Rosa",
+      "Cedro",
+      "Ámbar",
+      "Sándalo"
+    ],
+    "ml": 125,
+    "precioUSD": 60,
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 294,
@@ -9546,7 +9577,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 334,
