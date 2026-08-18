@@ -69,7 +69,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 60,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 7,
@@ -1405,7 +1406,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 90,
     "precioUSD": 50,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 117,
@@ -1601,7 +1603,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 133,
@@ -3997,7 +4000,7 @@ export const products = [
   {
     "id": 330,
     "house": "MUGLER",
-    "name": "Mugler Alien",
+    "name": "Mugler Alien Woman",
     "image": "mugler-alien-mugler-90ml-f.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
