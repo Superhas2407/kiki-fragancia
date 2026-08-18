@@ -6,8 +6,9 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
-import { useSanityProduct, resolveProductImage } from '../context/SanityProductsContext'
+import { useSanityProduct, useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
+import { norm } from '../lib/search'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -1134,13 +1135,36 @@ export default function ProductDetail() {
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
 
+  const indexProducts = useIndexProducts()
+
+  // Slug fallback: si ningún producto matchea el slug exacto (típicamente porque
+  // el nombre cambió en Sanity y el slug quedó viejo), busca por casa + ml —
+  // solo si hay un único candidato, para no adivinar mal.
+  const slugFallbackMatch = (list, slug) => {
+    const mlMatch = slug.match(/-(\d+)ml$/)
+    const ml = mlMatch ? Number(mlMatch[1]) : null
+    const base = ml ? slug.slice(0, -mlMatch[0].length) : slug
+    const candidates = list.filter(p => {
+      if (ml != null && p.ml !== ml) return false
+      const houseSlug = norm(p.house || '').replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-')
+      return houseSlug && base.startsWith(houseSlug)
+    })
+    return candidates.length === 1 ? candidates[0] : null
+  }
+
   const numericId = Number(id)
-  const localProduct = useMemo(() =>
-    isNaN(numericId)
-      ? products.find(p => toSlug(p.house, p.name, p.ml) === id)
-      : products.find(p => p.id === numericId),
-    [id]
-  )
+  const localProduct = useMemo(() => {
+    if (!isNaN(numericId)) {
+      return products.find(p => p.id === numericId) ?? indexProducts.find(p => p.id === numericId)
+    }
+    // 1. slug exacto contra el snapshot local (rápido, disponible antes de hidratar Sanity)
+    return products.find(p => toSlug(p.house, p.name, p.ml) === id)
+      // 2. slug exacto contra datos live de Sanity (cubre renombres recién publicados, sin rebuild)
+      ?? indexProducts.find(p => toSlug(p.house, p.name, p.ml) === id)
+      // 3. fallback por casa + ml para links viejos compartidos que quedaron con el nombre anterior
+      ?? slugFallbackMatch(indexProducts, id)
+      ?? slugFallbackMatch(products, id)
+  }, [id, indexProducts])
   const resolvedNumericId = localProduct?.id ?? (isNaN(numericId) ? null : numericId)
   const liveData = useSanityProduct(resolvedNumericId)
   const [mounted,      setMounted]      = useState(false)
@@ -1188,6 +1212,14 @@ export default function ProductDetail() {
         }
       : null,
   } : null
+
+  // Si el producto se resolvió por un slug viejo (nombre cambiado en Sanity), corrige
+  // silenciosamente la URL a la canónica actual — sin recargar ni mostrar "no encontrado".
+  useEffect(() => {
+    if (!isNaN(numericId) || !product) return
+    const currentSlug = toSlug(product.house, product.name, product.ml)
+    if (currentSlug !== id) navigate(`/tienda/${currentSlug}`, { replace: true })
+  }, [id, product, numericId])
 
   if (!product) {
     return (
