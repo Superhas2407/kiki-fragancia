@@ -4000,7 +4000,7 @@ export const products = [
   {
     "id": 330,
     "house": "MUGLER",
-    "name": "Mugler Alien Woman",
+    "name": "Mugler Alien",
     "image": "mugler-alien-mugler-90ml-f.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
