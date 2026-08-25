@@ -1499,9 +1499,16 @@ export default function ProductDetail() {
                   )
                 })()}
 
-                {product.variantIds?.length > 0 && (() => {
-                  const others = indexProducts.filter(p => product.variantIds.includes(p.id))
-                  const variantGroup = [product, ...others]
+                {(() => {
+                  // El grupo de variantes puede estar declarado en este producto (es el
+                  // "canónico") o en otro que lo referencia a él (este es una presentación
+                  // oculta del grid, vista directo por URL/selector) — hay que cubrir ambos.
+                  const hub = product.variantIds?.length
+                    ? product
+                    : indexProducts.find(p => p.variantIds?.includes(product.id))
+                  if (!hub) return null
+                  const others = indexProducts.filter(p => hub.variantIds.includes(p.id))
+                  const variantGroup = [hub, product, ...others]
                     .filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i)
                     .sort((a, b) => a.ml - b.ml)
                   const tipoAbbrMap = { 'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC', 'Parfum': 'PDM' }
