@@ -176,7 +176,7 @@ export const products = [
     "precioUSD": 60,
     "categoria": "arabes",
     "variantIds": [
-      null
+      445
     ],
     "agotado": true
   },
@@ -12789,7 +12789,7 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": null,
+    "id": 445,
     "house": "AL HARAMAIN",
     "name": "Al Haramain Amber Oud Carbon Edition",
     "image": "al-haramain-amber-oud-carbon-edition-60ml-u.webp",

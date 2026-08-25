@@ -446,5 +446,5 @@ export const notesLookup = {
   442: "Frambuesa, Pera, Albaricoque, Bergamota, Rosa, Freesia, Jazmín, Almizcle, Sándalo, Ámbar",
   443: "cardamomo, limón, mandarina, sandía, bergamota, pimienta, canela, sandalo, haba tonka, almizcle, ambar, cedro",
   444: "frangipani, peonia, vainilla, pachulí",
-  null: "lavanda, bergamota, romero, notas marinas, geranio, salvia, ámbar, vetiver, musgo, cedro"
+  445: "lavanda, bergamota, romero, notas marinas, geranio, salvia, ámbar, vetiver, musgo, cedro"
 }
