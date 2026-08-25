@@ -151,8 +151,8 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
             <span>{ribbon}</span>
           </div>
         ) : product?.promoVerano && (
-          <div className="vitrina-ribbon" aria-hidden="true">
-            <span>Promo Verano</span>
+          <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
+            <span>☀ Promo Verano</span>
           </div>
         )}
 
@@ -241,7 +241,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
                 ) : product.promoVerano ? (
-                  <span className="vitrina-price-badge">PROMO VERANO</span>
+                  <span className="vitrina-price-badge vitrina-price-badge--verano">☀ Promo Verano</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}

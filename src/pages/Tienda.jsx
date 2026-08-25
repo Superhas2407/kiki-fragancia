@@ -936,7 +936,8 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              ribbon={currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
+                              ribbon={product.promoVerano ? '☀ Promo Verano' : currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
+                              ribbonVariant={product.promoVerano ? 'verano' : null}
                             />
                           </div>
                         ))}
