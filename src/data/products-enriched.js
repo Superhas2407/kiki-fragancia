@@ -207,36 +207,10 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 65,
-    "categoria": "arabes"
-  },
-  {
-    "id": 7,
-    "house": "AL HARAMAIN",
-    "name": "Al Haramain Amber Oud Dubai Night",
-    "image": "al-haramain-amber-oud-dubai-night-75ml-u.webp",
-    "familia": "Floral Frutal",
-    "tipo": "Eau de Parfum",
-    "genero": "Unisex",
-    "descripcion": "Unisex y sofisticado, Amber Oud Dubai Night de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
-    "description": "Unisex y sofisticado, Amber Oud Dubai Night de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
-    "notasSalida": "Azafrán, Bergamota, Resina de elemí, Rosa búlgara",
-    "notasCorazon": "Oud, Lirio de los valles, Haba tonka",
-    "notasFondo": "Ámbar, Almizcle blanco, Musgo de roble",
-    "notes": [
-      "Azafrán",
-      "Bergamota",
-      "Resina de elemí",
-      "Rosa búlgara",
-      "Oud",
-      "Lirio de los valles",
-      "Haba tonka",
-      "Ámbar",
-      "Almizcle blanco",
-      "Musgo de roble"
-    ],
-    "ml": 75,
-    "precioUSD": 65,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "variantIds": [
+      446
+    ]
   },
   {
     "id": 8,
@@ -320,7 +294,11 @@ export const products = [
     ],
     "ml": 60,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "variantIds": [
+      8,
+      9
+    ]
   },
   {
     "id": 11,
@@ -615,7 +593,7 @@ export const products = [
       "Musgo de roble"
     ],
     "ml": 105,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -835,7 +813,7 @@ export const products = [
       "Cedro"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 50,
     "categoria": "arabes"
   },
   {
@@ -865,7 +843,7 @@ export const products = [
       "haba tonka"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -1709,7 +1687,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -1737,7 +1715,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 15,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
@@ -1762,7 +1740,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 80,
-    "precioUSD": 30,
+    "precioUSD": 25,
     "categoria": "disenador"
   },
   {
@@ -1794,7 +1772,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
@@ -2082,7 +2060,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 71,
@@ -2197,7 +2176,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -2289,7 +2268,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -2534,40 +2513,12 @@ export const products = [
     "agotado": true
   },
   {
-    "id": 85,
-    "house": "DIOR",
-    "name": "Dior Homme 2020",
-    "image": "dior-homme-2020-100ml-m.webp",
-    "familia": "Floral Amaderado",
-    "tipo": "Eau de Toilette",
-    "genero": "Masculino",
-    "descripcion": "Una fragancia para el hombre de estilo amaderado limpio y moderno, con una salida fresca y especiada que transmite elegancia discreta. Inspirada en la línea Dior Homme, ofrece un perfil sofisticado, sobrio y contemporáneo, ideal para uso diario y ocasiones formales.",
-    "description": "Una fragancia para el hombre de estilo amaderado limpio y moderno, con una salida fresca y especiada que transmite elegancia discreta. Inspirada en la línea Dior Homme, ofrece un perfil sofisticado, sobrio y contemporáneo, ideal para uso diario y ocasiones formales.",
-    "notasSalida": "Bergamota, Pimienta rosa, Elemí",
-    "notasCorazon": "Cedro del Atlas, Madera de cachemira, Pachulí",
-    "notasFondo": "Iso E Super, Vetiver de Haití, Almizcle blanco",
-    "notes": [
-      "Bergamota",
-      "Pimienta rosa",
-      "Elemí",
-      "Cedro del Atlas",
-      "Madera de cachemira",
-      "Pachulí",
-      "Iso E Super",
-      "Vetiver de Haití",
-      "Almizcle blanco"
-    ],
-    "ml": 100,
-    "precioUSD": 200,
-    "categoria": "disenador"
-  },
-  {
     "id": 86,
     "house": "DIOR",
-    "name": "Dior Homme Intense 2025",
+    "name": "Dior Homme Intense",
     "image": "dior-homme-intense-2025-100ml-m.webp",
     "familia": "Frutal",
-    "tipo": "Eau de Parfum",
+    "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "descripcion": "Dior Homme Intense 2025 es una fragancia sofisticada y envolvente para el hombre, con un iris aterciopelado y elegante que aporta una firma refinada y muy moderna. Su estilo olfativo es amaderado floral almizclado, con un aire inspirado en la elegancia característica de Dior Homme Intense, ideal para quien busca presencia, distinción y un toque seductor.",
     "description": "Dior Homme Intense 2025 es una fragancia sofisticada y envolvente para el hombre, con un iris aterciopelado y elegante que aporta una firma refinada y muy moderna. Su estilo olfativo es amaderado floral almizclado, con un aire inspirado en la elegancia característica de Dior Homme Intense, ideal para quien busca presencia, distinción y un toque seductor.",
@@ -7343,7 +7294,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 130,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 254,
@@ -7594,7 +7546,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -8466,6 +8418,34 @@ export const products = [
       "Cachemira"
     ],
     "ml": 100,
+    "precioUSD": 75,
+    "categoria": "disenador"
+  },
+  {
+    "id": 293,
+    "house": "ARIANA GRANDE",
+    "name": "Ariana Grande Thank U Next 2.0",
+    "image": "ariana-grande-thank-u-next-20-100ml-f.webp",
+    "familia": null,
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": null,
+    "description": null,
+    "notasSalida": "Pera, Frambuesa, Bergamota",
+    "notasCorazon": "Rosa, Jazmín, Orquídea",
+    "notasFondo": "Almizcle blanco, Vainilla, Cachemira",
+    "notes": [
+      "Pera",
+      "Frambuesa",
+      "Bergamota",
+      "Rosa",
+      "Jazmín",
+      "Orquídea",
+      "Almizcle blanco",
+      "Vainilla",
+      "Cachemira"
+    ],
+    "ml": 100,
     "precioUSD": 65,
     "categoria": "disenador"
   },
@@ -8979,7 +8959,7 @@ export const products = [
   {
     "id": 312,
     "house": "CAROLINA HERRERA",
-    "name": "Carolina Herrera 212 Heroes",
+    "name": "Carolina Herrera 212 Heroes Forever",
     "image": "carolina-herrera-212-heroes-100ml-m.webp",
     "familia": null,
     "tipo": "Eau de Toilette",
@@ -9450,7 +9430,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 90,
     "categoria": "disenador"
   },
   {
@@ -9703,7 +9683,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 100,
-    "precioUSD": 15,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
@@ -9877,9 +9857,14 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 30,
     "categoria": "disenador",
-    "descuento": 20
+    "variantIds": [
+      344
+    ],
+    "descuento": 20,
+    "promoVerano": true,
+    "precioOriginalUSD": 35
   },
   {
     "id": 344,
@@ -9907,8 +9892,10 @@ export const products = [
       "Sándalo"
     ],
     "ml": 200,
-    "precioUSD": 45,
-    "categoria": "disenador"
+    "precioUSD": 40,
+    "categoria": "disenador",
+    "promoVerano": true,
+    "precioOriginalUSD": 45
   },
   {
     "id": 345,
@@ -9937,6 +9924,35 @@ export const products = [
     "ml": 100,
     "precioUSD": 45,
     "categoria": "arabes"
+  },
+  {
+    "id": 346,
+    "house": "ANTONIO BANDERAS",
+    "name": "Antonio Banderas The Golden Secret",
+    "image": "antonio-banderas-the-golden-secret-100ml-m.webp",
+    "familia": null,
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "descripcion": null,
+    "description": null,
+    "notasSalida": "Pomelo, Limón, Cardamomo",
+    "notasCorazon": "Lavanda, Cedro, Geranio",
+    "notasFondo": "Almizcle, Ámbar, Madera",
+    "notes": [
+      "Pomelo",
+      "Limón",
+      "Cardamomo",
+      "Lavanda",
+      "Cedro",
+      "Geranio",
+      "Almizcle",
+      "Ámbar",
+      "Madera"
+    ],
+    "ml": 100,
+    "precioUSD": 25,
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 346,
@@ -10251,7 +10267,8 @@ export const products = [
     ],
     "ml": 200,
     "precioUSD": 50,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 357,
@@ -10514,28 +10531,36 @@ export const products = [
     "house": "ANTONIO BANDERAS",
     "name": "Antonio Banderas King of Seduction",
     "image": "antonio-banderas-king-of-seduction-100ml-m.webp",
-    "familia": null,
+    "familia": "amadera especiada",
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "descripcion": null,
     "description": null,
-    "notasSalida": "Bergamota, Lima, Mandarina",
-    "notasCorazon": "Lavanda, Cedro, Geranio",
-    "notasFondo": "Almizcle, Ámbar, Madera",
+    "notasSalida": "piña, melón, bergamota, manzana verde, toronja (pomelo)",
+    "notasCorazon": "notas marinas, jazmin, cardamomo, neroli",
+    "notasFondo": "vetiver, almizcle blanco, cedro, gamuza, ambar",
     "notes": [
-      "Bergamota",
-      "Lima",
-      "Mandarina",
-      "Lavanda",
-      "Cedro",
-      "Geranio",
-      "Almizcle",
-      "Ámbar",
-      "Madera"
+      "piña",
+      "melón",
+      "bergamota",
+      "manzana verde",
+      "toronja (pomelo)",
+      "notas marinas",
+      "jazmin",
+      "cardamomo",
+      "neroli",
+      "vetiver",
+      "almizcle blanco",
+      "cedro",
+      "gamuza",
+      "ambar"
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "variantIds": [
+      448
+    ]
   },
   {
     "id": 367,
@@ -10792,7 +10817,10 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "variantIds": [
+      355
+    ]
   },
   {
     "id": 376,
@@ -10849,7 +10877,10 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "variantIds": [
+      378
+    ]
   },
   {
     "id": 378,
@@ -10876,7 +10907,7 @@ export const products = [
       "Madera"
     ],
     "ml": 200,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "disenador"
   },
   {
@@ -10911,7 +10942,7 @@ export const products = [
   {
     "id": 380,
     "house": "BOUCHERON",
-    "name": "Boucheron Pour Homme Collector Eau de Parfum",
+    "name": "Boucheron Men Pour Homme",
     "image": "boucheron-pour-homme-collector-eau-de-parfum-100ml-m.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
@@ -11160,7 +11191,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 125,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "disenador"
   },
   {
@@ -11225,28 +11256,34 @@ export const products = [
     "house": "ANTONIO BANDERAS",
     "name": "Antonio Banderas Blue Seduction",
     "image": "antonio-banderas-blue-seduction-100ml-m.webp",
-    "familia": null,
+    "familia": "Oriental Fougère ",
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
-    "descripcion": null,
-    "description": null,
-    "notasSalida": "Mandarina, Pomelo, Bergamota",
-    "notasCorazon": "Lavanda, Cedro, Iris",
-    "notasFondo": "Almizcle, Ámbar, Madera",
+    "descripcion": "Una fragancia fresca y afrutada que abre con un contraste jugoso entre el melón dulce, la bergamota cítrica y un toque verde de menta, realzado por grosellas negras. En el corazón, una brisa marina se mezcla con manzana verde, capuchino y cardamomo, creando un carácter sofisticado y ligeramente especiado. La base de notas amaderadas y ámbar deja una estela cálida y sensual. Blue Seduction combina frescura y seducción en un mismo aliento — ideal para el día a día con carácter propio.",
+    "description": "Una fragancia fresca y afrutada que abre con un contraste jugoso entre el melón dulce, la bergamota cítrica y un toque verde de menta, realzado por grosellas negras. En el corazón, una brisa marina se mezcla con manzana verde, capuchino y cardamomo, creando un carácter sofisticado y ligeramente especiado. La base de notas amaderadas y ámbar deja una estela cálida y sensual. Blue Seduction combina frescura y seducción en un mismo aliento — ideal para el día a día con carácter propio.",
+    "notasSalida": "melón, bergamota, menta, grosellas negras",
+    "notasCorazon": "agua de mar, manzana verde, capuchino, cardamomo, nuez moscada",
+    "notasFondo": "notas amaderadas, ambar",
     "notes": [
-      "Mandarina",
-      "Pomelo",
-      "Bergamota",
-      "Lavanda",
-      "Cedro",
-      "Iris",
-      "Almizcle",
-      "Ámbar",
-      "Madera"
+      "melón",
+      "bergamota",
+      "menta",
+      "grosellas negras",
+      "agua de mar",
+      "manzana verde",
+      "capuchino",
+      "cardamomo",
+      "nuez moscada",
+      "notas amaderadas",
+      "ambar"
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "variantIds": [
+      447
+    ],
+    "agotado": true
   },
   {
     "id": 392,
@@ -12486,7 +12523,34 @@ export const products = [
   {
     "id": 435,
     "house": "CLINIQUE",
-    "name": "Clinique Happy",
+    "name": "Clinique Happy Woman",
+    "image": "clinique-happy-100ml-f.webp",
+    "familia": "Floral Cítrico",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "Happy de Clinique es una fragancia para la mujer floral cítrica luminosa e icónica en concentración Parfum Spray 100ml, lanzada en 1997. Su apertura chispeante de pomelo, mandarina y bergamota evoluciona hacia un corazón floral brillante de flor de azahar y lirio tropical, cerrando con una base limpia y suave de almizcle y ámbar. Una fragancia optimista, fresca y reconocida mundialmente por su carácter alegre y sofisticado.",
+    "description": "Happy de Clinique es una fragancia para la mujer floral cítrica luminosa e icónica en concentración Parfum Spray 100ml, lanzada en 1997. Su apertura chispeante de pomelo, mandarina y bergamota evoluciona hacia un corazón floral brillante de flor de azahar y lirio tropical, cerrando con una base limpia y suave de almizcle y ámbar. Una fragancia optimista, fresca y reconocida mundialmente por su carácter alegre y sofisticado.",
+    "notasSalida": "Pomelo, Mandarina, Bergamota",
+    "notasCorazon": "Flor de azahar, Lirio tropical, Rosa silvestre",
+    "notasFondo": "Almizcle, Ámbar",
+    "notes": [
+      "Pomelo",
+      "Mandarina",
+      "Bergamota",
+      "Flor de azahar",
+      "Lirio tropical",
+      "Rosa silvestre",
+      "Almizcle",
+      "Ámbar"
+    ],
+    "ml": 100,
+    "precioUSD": 60,
+    "categoria": "disenador"
+  },
+  {
+    "id": 435,
+    "house": "CLINIQUE",
+    "name": "Clinique Happy Woman",
     "image": "clinique-happy-100ml-f.webp",
     "familia": "Floral Cítrico",
     "tipo": "Parfum",
@@ -12534,7 +12598,7 @@ export const products = [
       "Pachulí"
     ],
     "ml": 80,
-    "precioUSD": 30,
+    "precioUSD": 25,
     "categoria": "disenador",
     "agotado": true
   },
@@ -12544,7 +12608,7 @@ export const products = [
     "name": "Cofinluxe Watt Pink",
     "image": "cofinluxe-watt-pink-100ml-f.webp",
     "familia": "Floral Frutal",
-    "tipo": "Parfum de Toilette",
+    "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "descripcion": "Watt Pink de Cofinluxe es una fragancia para la mujer floral frutal delicada y femenina, lanzada en 1993. Su composición gira en torno a un bouquet floral de rosa, jacinto y violeta sobre una base afrutada de melocotón y albaricoque, con un toque suavizante de manzanilla y jazmín. Fresca, romántica y fácil de llevar, perfecta para el día a día en primavera y verano.",
     "description": "Watt Pink de Cofinluxe es una fragancia para la mujer floral frutal delicada y femenina, lanzada en 1993. Su composición gira en torno a un bouquet floral de rosa, jacinto y violeta sobre una base afrutada de melocotón y albaricoque, con un toque suavizante de manzanilla y jazmín. Fresca, romántica y fácil de llevar, perfecta para el día a día en primavera y verano.",
@@ -12561,7 +12625,7 @@ export const products = [
       "Albaricoque"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
@@ -12762,7 +12826,7 @@ export const products = [
       "cedro"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -12817,5 +12881,97 @@ export const products = [
     "precioUSD": 160,
     "categoria": "arabes",
     "agotado": true
+  },
+  {
+    "id": 446,
+    "house": "AL HARAMAIN",
+    "name": "Al Haramain Amber Oud Dubai Night",
+    "image": "al-haramain-amber-oud-dubai-night-75ml-u.webp",
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "descripcion": "Unisex y sofisticado, Amber Oud Dubai Night de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
+    "description": "Unisex y sofisticado, Amber Oud Dubai Night de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
+    "notasSalida": "azafrán, bergamota, resina de elemí, rosa búlgara",
+    "notasCorazon": "oud, lirio de los valles, haba tonka",
+    "notasFondo": "ambar, almizcle blanco, musgo de roble",
+    "notes": [
+      "azafrán",
+      "bergamota",
+      "resina de elemí",
+      "rosa búlgara",
+      "oud",
+      "lirio de los valles",
+      "haba tonka",
+      "ambar",
+      "almizcle blanco",
+      "musgo de roble"
+    ],
+    "ml": 100,
+    "precioUSD": 75,
+    "categoria": "arabes"
+  },
+  {
+    "id": 447,
+    "house": "ANTONIO BANDERAS",
+    "name": "Antonio Banderas Blue Seduction",
+    "image": "antonio-banderas-blue-seduction-100ml-m.webp",
+    "familia": "Oriental Fougère  ",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "descripcion": "Una fragancia fresca y afrutada que abre con un contraste jugoso entre el melón dulce, la bergamota cítrica y un toque verde de menta, realzado por grosellas negras. En el corazón, una brisa marina se mezcla con manzana verde, capuchino y cardamomo, creando un carácter sofisticado y ligeramente especiado. La base de notas amaderadas y ámbar deja una estela cálida y sensual. Blue Seduction combina frescura y seducción en un mismo aliento — ideal para el día a día con carácter propio.",
+    "description": "Una fragancia fresca y afrutada que abre con un contraste jugoso entre el melón dulce, la bergamota cítrica y un toque verde de menta, realzado por grosellas negras. En el corazón, una brisa marina se mezcla con manzana verde, capuchino y cardamomo, creando un carácter sofisticado y ligeramente especiado. La base de notas amaderadas y ámbar deja una estela cálida y sensual. Blue Seduction combina frescura y seducción en un mismo aliento — ideal para el día a día con carácter propio.",
+    "notasSalida": "melón, bergamota, menta, grosellas negras",
+    "notasCorazon": "agua de mar, manzana verde, capuchino, cardamomo, nuez moscada",
+    "notasFondo": "notas amaderadas, ambar",
+    "notes": [
+      "melón",
+      "bergamota",
+      "menta",
+      "grosellas negras",
+      "agua de mar",
+      "manzana verde",
+      "capuchino",
+      "cardamomo",
+      "nuez moscada",
+      "notas amaderadas",
+      "ambar"
+    ],
+    "ml": 200,
+    "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 448,
+    "house": "ANTONIO BANDERAS",
+    "name": "Antonio Banderas King of Seduction",
+    "image": "antonio-banderas-king-of-seduction-100ml-m.webp",
+    "familia": "amadera especiada",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "descripcion": null,
+    "description": null,
+    "notasSalida": "piña, melón, bergamota, manzana verde, toronja (pomelo)",
+    "notasCorazon": "notas marinas, jazmin, cardamomo, neroli",
+    "notasFondo": "vetiver, almizcle blanco, cedro, gamuza, ambar",
+    "notes": [
+      "piña",
+      "melón",
+      "bergamota",
+      "manzana verde",
+      "toronja (pomelo)",
+      "notas marinas",
+      "jazmin",
+      "cardamomo",
+      "neroli",
+      "vetiver",
+      "almizcle blanco",
+      "cedro",
+      "gamuza",
+      "ambar"
+    ],
+    "ml": 200,
+    "precioUSD": 35,
+    "categoria": "disenador"
   }
 ]
