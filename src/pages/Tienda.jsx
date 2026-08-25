@@ -9,6 +9,7 @@ import { useAuth } from '../context/AuthContext'
 import { COLECCIONES, coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
+import { excludeVariantDuplicates } from '../lib/variants'
 
 const PAGE_SIZE = 48
 
@@ -641,12 +642,12 @@ export default function Tienda() {
   const toggleTipo  = v => startTransition(() => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v])))
 
   const basePool = useMemo(() => {
-    let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
+    let pool = excludeVariantDuplicates(products)
     if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
     if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
     return pool
-  }, [urlGenero, urlTipo, coleccionData])
+  }, [products, urlGenero, urlTipo, coleccionData])
 
   const priceBounds = useMemo(() => {
     const prices = basePool.map(p => p.precioUSD).filter(v => v > 0)

@@ -268,7 +268,7 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 - **Desktop (≥1024px):** sidebar sticky 220px con acordeones: Género (DDP button + radio), **Precio**, Categoría, Concentración, Por ocasión, Marca. Topbar con conteo + select Ordenar.
 - **Mobile:** barra `Filtrar | Ordenar` (transparent select overlay). Drawer con Género incluido (radio DDP + opciones) + **Precio**.
 - **Barra de precio dual:** `PriceRangeSlider` — dos `<input type="range">` superpuestos sobre un track div. El relleno dorado (`.price-slider-fill`) se ajusta con `left: pct(lo)%` y `right: (100-pct(hi))%`. `priceBounds` se deriva de `basePool` vía `useMemo`; **CRÍTICO: `basePool` debe declararse antes que `priceBounds`** (temporal dead zone). `useEffect` sincroniza `priceRange` cuando `priceBounds` cambian.
-- **Productos 200ml:** se excluyen del grid si tienen `variantIds`. Filtro: `p.ml !== 200 || !p.variantIds`.
+- **Variantes (otras presentaciones):** un producto listado en el `variantIds` de otro se excluye del grid — solo se muestra el producto "canónico" (el que tiene `variantIds`), con un selector de tamaño (`.vitrina-size-pills` en `VitrinaCard`) para elegir entre sus presentaciones. Helper: `excludeVariantDuplicates()` en `src/lib/variants.js`, usado en `basePool` de `Tienda.jsx`.
 
 ## Slugs / URLs de productos
 - `src/lib/slugs.js` — `toSlug(house, name, ml)`:

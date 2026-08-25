@@ -2752,6 +2752,27 @@
 }
 .vitrina-card:hover .vitrina-name { color: var(--gold); }
 
+/* Selector de tamaño — otras presentaciones (variantIds) */
+.vitrina-size-pills {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin: 2px 0 4px;
+}
+.vitrina-size-pill {
+  font-family: 'KikiGotham', sans-serif;
+  font-size: 10px; font-weight: 300; letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  background: transparent; color: var(--ink-faint);
+  cursor: pointer; transition: border-color .18s, color .18s, background .18s;
+  position: relative; z-index: 2;
+}
+.vitrina-size-pill:hover:not(:disabled) { border-color: var(--gold); color: var(--ink-mute); }
+.vitrina-size-pill.active {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  cursor: default;
+}
+
 .vitrina-rule {
   height: 1px;
   background: rgba(201,168,76,0.07);
