@@ -77,6 +77,14 @@ export default {
       initialValue: false,
     },
     {
+      name: 'precioPromoVerano',
+      title: 'Precio Promo Verano (USD)',
+      type: 'number',
+      description: 'Precio especial mientras dure la Promo Verano. El precio de arriba (Precio USD) NO se toca — queda guardado como el precio normal. Mientras "Promo Verano" esté activo, el sitio muestra y cobra este precio; al desactivar "Promo Verano" (o borrar este campo), el sitio vuelve solo al precio normal automáticamente.',
+      hidden: ({ parent }) => !parent?.promoVerano,
+      validation: Rule => Rule.min(0),
+    },
+    {
       name: 'ml',
       title: 'Mililitros',
       type: 'number',

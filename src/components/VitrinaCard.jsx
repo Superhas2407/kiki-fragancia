@@ -240,12 +240,19 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
+                ) : product.promoVerano ? (
+                  <span className="vitrina-price-badge">PROMO VERANO</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
                   {hasRange ? 'Desde ' : ''}REF: {minPrice}
                 </span>
+                {!hasRange && product.precioOriginalUSD > minPrice && (
+                  <span style={{ fontSize: 12, opacity: 0.5, textDecoration: 'line-through', marginLeft: 6 }}>
+                    REF: {product.precioOriginalUSD}
+                  </span>
+                )}
               </div>
             </div>
           )
