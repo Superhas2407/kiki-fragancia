@@ -175,7 +175,39 @@ export const products = [
     "ml": 60,
     "precioUSD": 60,
     "categoria": "arabes",
+    "variantIds": [
+      null
+    ],
     "agotado": true
+  },
+  {
+    "id": 7,
+    "house": "AL HARAMAIN",
+    "name": "Al Haramain Amber Oud Dubai Night",
+    "image": "al-haramain-amber-oud-dubai-night-75ml-u.webp",
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "descripcion": "Unisex y sofisticado, Amber Oud Dubai Night de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
+    "description": "Unisex y sofisticado, Amber Oud Dubai Night de Al Haramain despliega un carácter oriental amaderado con una apertura especiada y cítrica, seguida de un corazón floral-oud de gran presencia. Su perfil opulento y envolvente lo convierte en una propuesta de lujo ideal para noches especiales, con un aire de inspiración nicho que recuerda el estilo de fragancias ámbar-oud de alta gama.",
+    "notasSalida": "Azafrán, Bergamota, Resina de elemí, Rosa búlgara",
+    "notasCorazon": "Oud, Lirio de los valles, Haba tonka",
+    "notasFondo": "Ámbar, Almizcle blanco, Musgo de roble",
+    "notes": [
+      "Azafrán",
+      "Bergamota",
+      "Resina de elemí",
+      "Rosa búlgara",
+      "Oud",
+      "Lirio de los valles",
+      "Haba tonka",
+      "Ámbar",
+      "Almizcle blanco",
+      "Musgo de roble"
+    ],
+    "ml": 75,
+    "precioUSD": 65,
+    "categoria": "arabes"
   },
   {
     "id": 7,
@@ -12755,5 +12787,35 @@ export const products = [
     "ml": 80,
     "precioUSD": 200,
     "categoria": "disenador"
+  },
+  {
+    "id": null,
+    "house": "AL HARAMAIN",
+    "name": "Al Haramain Amber Oud Carbon Edition",
+    "image": "al-haramain-amber-oud-carbon-edition-60ml-u.webp",
+    "familia": "Amaderado",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "descripcion": "Una fragancia unisex de estilo amaderado aromático, fresca, limpia y elegante, ideal para quienes buscan un perfil sofisticado con carácter moderno. Se inspira claramente en Terre d’Hermès, ofreciendo un acorde mineral y seco con una salida aromática muy refinada.",
+    "description": "Una fragancia unisex de estilo amaderado aromático, fresca, limpia y elegante, ideal para quienes buscan un perfil sofisticado con carácter moderno. Se inspira claramente en Terre d’Hermès, ofreciendo un acorde mineral y seco con una salida aromática muy refinada.",
+    "notasSalida": "lavanda, bergamota, romero, notas marinas",
+    "notasCorazon": "geranio, salvia, ámbar",
+    "notasFondo": "vetiver, musgo, cedro",
+    "notes": [
+      "lavanda",
+      "bergamota",
+      "romero",
+      "notas marinas",
+      "geranio",
+      "salvia",
+      "ámbar",
+      "vetiver",
+      "musgo",
+      "cedro"
+    ],
+    "ml": 100,
+    "precioUSD": 160,
+    "categoria": "arabes",
+    "agotado": true
   }
 ]

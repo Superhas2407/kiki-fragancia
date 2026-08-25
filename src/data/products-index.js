@@ -73,7 +73,22 @@ export const products = [
     "ml": 60,
     "precioUSD": 60,
     "categoria": "arabes",
+    "variantIds": [
+      null
+    ],
     "agotado": true
+  },
+  {
+    "id": 7,
+    "house": "AL HARAMAIN",
+    "name": "Al Haramain Amber Oud Dubai Night",
+    "image": "al-haramain-amber-oud-dubai-night-75ml-u.webp",
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 75,
+    "precioUSD": 65,
+    "categoria": "arabes"
   },
   {
     "id": 7,
@@ -5505,5 +5520,18 @@ export const products = [
     "ml": 80,
     "precioUSD": 200,
     "categoria": "disenador"
+  },
+  {
+    "id": null,
+    "house": "AL HARAMAIN",
+    "name": "Al Haramain Amber Oud Carbon Edition",
+    "image": "al-haramain-amber-oud-carbon-edition-60ml-u.webp",
+    "familia": "Amaderado",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 100,
+    "precioUSD": 160,
+    "categoria": "arabes",
+    "agotado": true
   }
 ]

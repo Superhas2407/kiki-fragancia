@@ -8,6 +8,7 @@ export const notesLookup = {
   5: "Bergamota, Mandarina, Ámbar, Notas amaderadas, Almizcle, Pachulí, Especias frescas",
   6: "Lavanda, Bergamota, Romero, Notas marinas, Geranio, Salvia, Ámbar, Vetiver, Musgo, Cedro",
   7: "Azafrán, Bergamota, Resina de elemí, Rosa búlgara, Oud, Lirio de los valles, Haba tonka, Ámbar, Almizcle blanco, Musgo de roble",
+  7: "Azafrán, Bergamota, Resina de elemí, Rosa búlgara, Oud, Lirio de los valles, Haba tonka, Ámbar, Almizcle blanco, Musgo de roble",
   8: "Bergamota, Notas verdes, Melón, Piña, Notas dulces, Ámbar, Almizcle, Vainilla, Notas amaderadas",
   9: "Bergamota, Notas verdes, Melón, Piña, Notas dulces, Ámbar, Almizcle, Vainilla, Notas amaderadas",
   10: "Bergamota, Notas verdes, Melón, Piña, Notas dulces, Ámbar, Almizcle, Vainilla, Notas amaderadas",
@@ -444,5 +445,6 @@ export const notesLookup = {
   441: "Melón, Manzanilla, Caléndula, Albaricoque, Jacinto, Manzana, Cilantro, Mandarina, Grosella negra, Lichi, Ylang ylang, Melocotón, Lirio de los valles, Clavel, Rosa, Jazmín, Clavo, Almizcle, Sándalo, Ámbar, Vetiver, Cedro, Vainilla, Musgo de roble",
   442: "Frambuesa, Pera, Albaricoque, Bergamota, Rosa, Freesia, Jazmín, Almizcle, Sándalo, Ámbar",
   443: "cardamomo, limón, mandarina, sandía, bergamota, pimienta, canela, sandalo, haba tonka, almizcle, ambar, cedro",
-  444: "frangipani, peonia, vainilla, pachulí"
+  444: "frangipani, peonia, vainilla, pachulí",
+  null: "lavanda, bergamota, romero, notas marinas, geranio, salvia, ámbar, vetiver, musgo, cedro"
 }
