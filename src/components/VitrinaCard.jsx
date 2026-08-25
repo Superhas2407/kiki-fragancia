@@ -146,9 +146,13 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
             <span>Agotado</span>
           </div>
-        ) : ribbon && (
+        ) : ribbon ? (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
             <span>{ribbon}</span>
+          </div>
+        ) : product?.promoVerano && (
+          <div className="vitrina-ribbon" aria-hidden="true">
+            <span>Promo Verano</span>
           </div>
         )}
 

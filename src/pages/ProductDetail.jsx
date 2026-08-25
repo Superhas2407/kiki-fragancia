@@ -1197,6 +1197,7 @@ export default function ProductDetail() {
     notasFondo:     liveData?.notasFondo     ?? baseProduct.notasFondo,
     descuento:      liveData?.descuento      ?? baseProduct?.descuento ?? null,
     agotado:        liveData?.agotado        ?? baseProduct?.agotado ?? false,
+    promoVerano:    liveData?.promoVerano     ?? baseProduct?.promoVerano ?? false,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
                   liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
@@ -1383,9 +1384,13 @@ export default function ProductDetail() {
                     <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
                       <span>Agotado</span>
                     </div>
-                  ) : currency === 'usd' && product.descuento && (
+                  ) : currency === 'usd' && product.descuento ? (
                     <div className="vitrina-ribbon" aria-hidden="true">
                       <span>{product.descuento}% DESCUENTO</span>
+                    </div>
+                  ) : product.promoVerano && (
+                    <div className="vitrina-ribbon" aria-hidden="true">
+                      <span>Promo Verano</span>
                     </div>
                   )}
 

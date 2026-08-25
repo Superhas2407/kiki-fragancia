@@ -70,6 +70,13 @@ export default {
       initialValue: false,
     },
     {
+      name: 'promoVerano',
+      title: 'Promo Verano',
+      type: 'boolean',
+      description: 'Actívalo para marcar el producto como parte de la Promo Verano. El sitio muestra automáticamente la cinta "Promo Verano" y el filtro correspondiente en /tienda — no requiere ningún otro cambio.',
+      initialValue: false,
+    },
+    {
       name: 'ml',
       title: 'Mililitros',
       type: 'number',
