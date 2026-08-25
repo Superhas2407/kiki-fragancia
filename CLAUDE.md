@@ -64,7 +64,7 @@ Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `pr
 | `cuandoEpocaSeca`, `cuandoLluviosa`, `cuandoDia`, `cuandoNoche` | boolean | Cuándo usar — si alguno está en Sanity, reemplaza el hardcodeado |
 | `descuento` | number | Porcentaje de descuento activo (1-99). Sanity tiene prioridad sobre el hardcodeado en `dia-del-padre.js`. Dejar vacío si no hay descuento. |
 | `agotado` | boolean | Sin stock — el sitio muestra badge "Agotado" y desactiva la compra. |
-| `promoVerano` | boolean | Marca el producto en la campaña Promo Verano — el sitio muestra automáticamente la cinta "Promo Verano" y habilita el filtro correspondiente en `/tienda`. |
+| `promoVerano` | boolean | Marca el producto en la campaña Promo Verano — el sitio muestra automáticamente la cinta "Promo Verano" y habilita el filtro correspondiente en `/tienda`. Paleta propia de campaña (`vitrina-ribbon--verano` / `vitrina-price-badge--verano` / `pd-ddp-strip--verano`): gradiente atardecer coral→ámbar `#FF7A45 → #FFC15E` + resplandor turquesa `rgba(45,181,168,…)` + ícono de sol (`SunIcon` en `VitrinaCard.jsx`) — **excepción intencional a la regla gold-only**, igual que el azul de Día del Padre. No cambiar a dorado plano. |
 | `precioPromoVerano` | number | Precio especial mientras `promoVerano` esté activo. **No reemplaza `precioUSD`** — el precio normal queda guardado intacto. Mientras la promo esté activa, el sitio muestra y cobra `precioPromoVerano` (guardando el normal en `precioOriginalUSD` para el tachado); al desactivar `promoVerano` o borrar este campo, el precio normal vuelve solo, sin tocar nada más. Solo visible en Studio cuando `promoVerano` está activo. |
 
 ### Flujo para agregar o editar un producto

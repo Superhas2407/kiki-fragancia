@@ -12,6 +12,7 @@ import { norm } from '../lib/search'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { SunIcon as VeranoSunIcon } from '../components/VitrinaCard'
 
 // SVG icons per note family — no emoji, consistent with luxury aesthetic
 const NOTE_ICONS = {
@@ -1391,7 +1392,7 @@ export default function ProductDetail() {
                     </div>
                   ) : product.promoVerano && (
                     <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
-                      <span>☀ Promo Verano</span>
+                      <span><VeranoSunIcon />Promo Verano</span>
                     </div>
                   )}
 
@@ -1414,8 +1415,8 @@ export default function ProductDetail() {
                 </div>
               )}
               {!product.agotado && currency === 'usd' && !product.descuento && product.promoVerano && product.precioOriginalUSD > product.precioUSD && (
-                <div className="pd-ddp-strip" style={{ background: 'linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F)', color: '#2A1904' }}>
-                  ☀ PROMO VERANO
+                <div className="pd-ddp-strip pd-ddp-strip--verano">
+                  <VeranoSunIcon size={11} /> PROMO VERANO
                 </div>
               )}
 
@@ -1449,9 +1450,9 @@ export default function ProductDetail() {
                   }
                   const veranoBadgeStyle = {
                     ...badgeStyle,
-                    color: '#2A1904',
-                    background: 'linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F)',
-                    boxShadow: '0 2px 14px rgba(240,200,110,0.4)',
+                    color: '#3A1300',
+                    background: 'linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45)',
+                    boxShadow: '0 2px 16px rgba(45,181,168,0.45), 0 2px 10px rgba(255,122,69,0.35)',
                   }
                   return (
                     <div className="pd-price" style={rv(350)}>
@@ -1472,7 +1473,7 @@ export default function ProductDetail() {
                       ) : isVerano ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
-                            <span style={veranoBadgeStyle}>☀ PROMO VERANO</span>
+                            <span style={veranoBadgeStyle}><VeranoSunIcon size={11} /> PROMO VERANO</span>
                           </div>
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}

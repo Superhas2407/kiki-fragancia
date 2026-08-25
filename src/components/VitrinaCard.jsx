@@ -56,6 +56,21 @@ const CheckIcon = () => (
     <polyline points="20 6 9 17 4 12" />
   </svg>
 )
+export const SunIcon = ({ size = 10 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline', verticalAlign: '-1px', marginRight: 3 }}>
+    <circle cx="12" cy="12" r="4.5" />
+    <g stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4.5" />
+      <line x1="12" y1="19.5" x2="12" y2="22.5" />
+      <line x1="1.5" y1="12" x2="4.5" y2="12" />
+      <line x1="19.5" y1="12" x2="22.5" y2="12" />
+      <line x1="4.5" y1="4.5" x2="6.6" y2="6.6" />
+      <line x1="17.4" y1="17.4" x2="19.5" y2="19.5" />
+      <line x1="4.5" y1="19.5" x2="6.6" y2="17.4" />
+      <line x1="17.4" y1="6.6" x2="19.5" y2="4.5" />
+    </g>
+  </svg>
+)
 
 export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
@@ -148,11 +163,11 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           </div>
         ) : ribbon ? (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
-            <span>{ribbon}</span>
+            <span>{ribbonVariant === 'verano' && <SunIcon />}{ribbon}</span>
           </div>
         ) : product?.promoVerano && (
           <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
-            <span>☀ Promo Verano</span>
+            <span><SunIcon />Promo Verano</span>
           </div>
         )}
 
@@ -241,7 +256,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
                 ) : product.promoVerano ? (
-                  <span className="vitrina-price-badge vitrina-price-badge--verano">☀ Promo Verano</span>
+                  <span className="vitrina-price-badge vitrina-price-badge--verano"><SunIcon size={9} />Promo Verano</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}
