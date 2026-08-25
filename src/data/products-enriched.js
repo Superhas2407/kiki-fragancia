@@ -144,7 +144,8 @@ export const products = [
     "ml": 90,
     "precioUSD": 40,
     "categoria": "arabes",
-    "promoVerano": true
+    "promoVerano": true,
+    "precioOriginalUSD": 45
   },
   {
     "id": 6,
