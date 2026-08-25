@@ -38,7 +38,7 @@ export const products = [
   {
     "id": 4,
     "house": "AFNAN",
-    "name": "Afnan Supremacy Collector's Edition Pour Homme",
+    "name": "Supremacy Collector's Edition Pour Homme",
     "image": "afnan-supremacy-collectors-edition-pour-homme-100ml-m.webp",
     "familia": "Cítrico",
     "tipo": "Eau de Parfum",
@@ -57,8 +57,9 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 90,
-    "precioUSD": 45,
-    "categoria": "arabes"
+    "precioUSD": 40,
+    "categoria": "arabes",
+    "promoVerano": true
   },
   {
     "id": 6,
@@ -4576,8 +4577,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 15,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 370,
