@@ -223,6 +223,23 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           </span>
         </div>
         <h3 className="vitrina-name">{displayName}</h3>
+        {variants.length > 0 && (
+          <div className="vitrina-size-pills">
+            {[product, ...variants]
+              .sort((a, b) => a.ml - b.ml)
+              .map(v => (
+                <button
+                  key={v.id}
+                  type="button"
+                  className={`vitrina-size-pill${v.id === product.id ? ' active' : ''}`}
+                  onClick={e => handleVariant(e, v.id)}
+                  disabled={v.id === product.id}
+                >
+                  {v.ml}ml
+                </button>
+              ))}
+          </div>
+        )}
         {(() => {
           const allPrices = variants.length > 1
             ? variants.map(v => v.precioUSD).filter(p => p > 0)
