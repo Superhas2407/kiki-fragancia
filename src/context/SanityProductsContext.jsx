@@ -4,7 +4,7 @@ import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
 
 const QUERY = `*[_type == "product"] | order(id asc) {
   id, precioUSD, descuento, agotado, promoVerano, precioPromoVerano, name, house, image, sanityImage, genero, familia,
-  tipo, categoria, ml, variantIds, acordes, descripcion,
+  tipo, categoria, ml, "variantIds": variantIds[]->id, acordes, descripcion,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche,
   notasSalida, notasCorazon, notasFondo
 }`

@@ -136,10 +136,20 @@ export default {
     },
     {
       name: 'variantIds',
-      title: 'IDs de variantes (200 ml)',
+      title: 'Otras presentaciones (variantes)',
       type: 'array',
-      of: [{ type: 'number' }],
-      description: 'Si este producto tiene variante 200ml, agrega el ID de esa variante aquí.',
+      of: [{
+        type: 'reference',
+        to: [{ type: 'product' }],
+        options: {
+          filter: ({ document }) => ({
+            filter: '_id != $id',
+            params: { id: (document?._id ?? '').replace(/^drafts\./, '') },
+          }),
+        },
+      }],
+      description: 'Otras presentaciones de este mismo perfume (distinto ml y/o concentración, ej: 90ml y 200ml). Buscá el producto por nombre — cada opción te muestra su marca, ml, concentración, precio y si está agotado, para que no tengas que adivinar IDs.',
+      validation: Rule => Rule.unique(),
     },
     // ── Descripción ─────────────────────────────────────────────────────
     {
@@ -236,8 +246,24 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'house',
+      house: 'house',
       media: 'sanityImage',
+      ml: 'ml',
+      tipo: 'tipo',
+      precioUSD: 'precioUSD',
+      agotado: 'agotado',
+    },
+    prepare({ title, house, media, ml, tipo, precioUSD, agotado }) {
+      const tipoAbbr = {
+        'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC',
+        'Parfum': 'Parfum', 'Extrait de Parfum': 'Extrait', 'Elixir': 'Elixir',
+      }[tipo] ?? tipo
+      const parts = [house, ml ? `${ml}ml` : null, tipoAbbr, precioUSD ? `$${precioUSD}` : null].filter(Boolean)
+      return {
+        title,
+        subtitle: (agotado ? '⛔ Agotado · ' : '') + parts.join(' · '),
+        media,
+      }
     },
   },
 }
