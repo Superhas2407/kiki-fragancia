@@ -1841,6 +1841,11 @@
     padding: 10px 16px;
     grid-column: 1 / -1;
   }
+  .pd-ddp-strip--verano {
+    background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
+    color: #3A1300;
+    box-shadow: inset 0 -2px 12px rgba(45,181,168,0.35);
+  }
 }
 
 /* Barra sticky móvil — desactivada, botón vive en pd-actions */
@@ -2639,13 +2644,13 @@
   font-size: 10px;
 }
 
-/* Variante Verano — dorado cálido con brillo, distinto del gold plano genérico */
+/* Variante Verano — atardecer coral con resplandor turquesa (paleta de campaña) */
 .vitrina-ribbon--verano > span {
-  background: linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F);
-  color: #2A1904;
+  background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
+  color: #3A1300;
   font-weight: 700;
   font-size: 10px;
-  box-shadow: 0 2px 18px rgba(240,200,110,0.55), 0 2px 14px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 18px rgba(45,181,168,0.5), 0 2px 14px rgba(0,0,0,0.4);
 }
 
 
@@ -2874,9 +2879,11 @@
   color: #E8F0FF;
 }
 .vitrina-price-badge--verano {
-  background: linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F);
-  color: #2A1904;
-  box-shadow: 0 2px 12px rgba(240,200,110,0.4);
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
+  color: #3A1300;
+  box-shadow: 0 2px 14px rgba(45,181,168,0.45), 0 2px 8px rgba(255,122,69,0.3);
 }
 .vitrina-price-usd--big {
   font-size: 27px !important;
