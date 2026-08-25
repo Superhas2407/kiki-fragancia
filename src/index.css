@@ -1921,19 +1921,29 @@
   font-family: var(--font-s); font-size: 9px; font-weight: 400;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute);
 }
-.pd-size-btns { display: flex; gap: 8px; }
+.pd-size-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .pd-size-btn {
   font-family: var(--font-s); font-size: 10px; font-weight: 300;
   letter-spacing: 0.1em; padding: 7px 16px;
   border: 1px solid var(--line);
   background: transparent; color: var(--ink-mute);
-  cursor: pointer; transition: border-color .2s, color .2s, background .2s;
+  cursor: pointer; transition: border-color .2s, color .2s, background .2s, opacity .2s;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
 .pd-size-btn:hover { border-color: var(--line); color: var(--ink-mute); }
 .pd-size-btn.active {
   border-color: var(--gold); color: var(--gold);
   background: rgba(201,168,76,0.07);
 }
+.pd-size-btn-main { font-size: 10px; letter-spacing: 0.08em; }
+.pd-size-btn-sub {
+  font-size: 8px; letter-spacing: 0.06em; opacity: 0.6;
+  font-weight: 400;
+}
+.pd-size-btn:disabled {
+  opacity: 0.4; cursor: not-allowed; text-decoration: line-through;
+}
+.pd-size-btn:disabled:hover { border-color: var(--line); color: var(--ink-mute); }
 
 .pd-price { margin-bottom: 28px; }
 .pd-price-amount {

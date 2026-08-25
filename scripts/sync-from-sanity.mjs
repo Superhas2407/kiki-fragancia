@@ -31,7 +31,7 @@ const client = createClient({
 
 const QUERY = `*[_type == "product"] | order(id asc) {
   id, house, name, image, sanityImage, familia, tipo, genero,
-  ml, precioUSD, descuento, agotado, promoVerano, precioPromoVerano, categoria, variantIds, descripcion,
+  ml, precioUSD, descuento, agotado, promoVerano, precioPromoVerano, categoria, "variantIds": variantIds[]->id, descripcion,
   notasSalida, notasCorazon, notasFondo, acordes,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche
 }`

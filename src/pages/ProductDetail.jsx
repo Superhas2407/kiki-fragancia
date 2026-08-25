@@ -1499,24 +1499,36 @@ export default function ProductDetail() {
                   )
                 })()}
 
-                {product.variantIds && (() => {
-                  const variantGroup = products
-                    .filter(p => product.variantIds.includes(p.id))
+                {product.variantIds?.length > 0 && (() => {
+                  const others = indexProducts.filter(p => product.variantIds.includes(p.id))
+                  const variantGroup = [product, ...others]
+                    .filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i)
                     .sort((a, b) => a.ml - b.ml)
+                  const tipoAbbrMap = { 'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC', 'Parfum': 'PDM' }
                   return variantGroup.length > 1 ? (
                     <div className="pd-size-selector" style={rv(355)}>
                       <span className="pd-size-label">Tamaño</span>
                       <div className="pd-size-btns">
-                        {variantGroup.map(v => (
-                          <button
-                            key={v.id}
-                            type="button"
-                            className={`pd-size-btn${v.id === product.id ? ' active' : ''}`}
-                            onClick={() => navigate(`/tienda/${v.id}`)}
-                          >
-                            {v.ml} ml
-                          </button>
-                        ))}
+                        {variantGroup.map(v => {
+                          const showTipo = v.tipo && v.tipo !== product.tipo
+                          const isActive = v.id === product.id
+                          return (
+                            <button
+                              key={v.id}
+                              type="button"
+                              className={`pd-size-btn${isActive ? ' active' : ''}`}
+                              disabled={v.agotado}
+                              onClick={() => { if (!isActive) navigate(`/tienda/${toSlug(v.house, v.name, v.ml)}`) }}
+                            >
+                              <span className="pd-size-btn-main">
+                                {v.ml} ml{showTipo ? ` · ${tipoAbbrMap[v.tipo] ?? v.tipo}` : ''}
+                              </span>
+                              <span className="pd-size-btn-sub">
+                                {v.agotado ? 'Agotado' : v.precioUSD > 0 ? `REF: ${v.precioUSD}` : ''}
+                              </span>
+                            </button>
+                          )
+                        })}
                       </div>
                     </div>
                   ) : null
