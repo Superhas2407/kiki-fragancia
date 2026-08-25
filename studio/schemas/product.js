@@ -21,7 +21,19 @@ export default {
       name: 'id',
       title: 'ID',
       type: 'number',
+      description: 'Número único. Obligatorio: sin ID (o con un ID repetido de otro producto), el producto NO aparece en el sitio — se descarta en silencio, sin ningún error visible ahí. Al duplicar un producto en Studio, este campo queda vacío: hay que ponerle un número nuevo que no use ningún otro producto.',
       readOnly: ({ document }) => !document?._id?.startsWith('drafts.'),
+      validation: Rule => Rule.required().error('Sin ID, este producto no va a aparecer en el sitio.').custom(async (id, context) => {
+        if (id == null) return true // required() ya lo marca
+        const { document, getClient } = context
+        const client = getClient({ apiVersion: '2024-01-01' })
+        const publishedId = document._id.replace(/^drafts\./, '')
+        const count = await client.fetch(
+          `count(*[_type == "product" && id == $id && !(_id in [$pub, $draft])])`,
+          { id, pub: publishedId, draft: `drafts.${publishedId}` }
+        )
+        return count === 0 || 'Este ID ya lo está usando otro producto — tiene que ser único.'
+      }),
     },
     {
       name: 'house',
