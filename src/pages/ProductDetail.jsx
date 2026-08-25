@@ -1198,6 +1198,7 @@ export default function ProductDetail() {
     descuento:      liveData?.descuento      ?? baseProduct?.descuento ?? null,
     agotado:        liveData?.agotado        ?? baseProduct?.agotado ?? false,
     promoVerano:    liveData?.promoVerano     ?? baseProduct?.promoVerano ?? false,
+    precioOriginalUSD: liveData?.precioOriginalUSD ?? baseProduct?.precioOriginalUSD ?? null,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
                   liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
@@ -1412,6 +1413,11 @@ export default function ProductDetail() {
                   {product.descuento}% DESCUENTO
                 </div>
               )}
+              {!product.agotado && currency === 'usd' && !product.descuento && product.promoVerano && product.precioOriginalUSD > product.precioUSD && (
+                <div className="pd-ddp-strip" style={{ background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)', color: '#1A1208' }}>
+                  PROMO VERANO
+                </div>
+              )}
 
               {/* Info */}
               <div className="pd-info">
@@ -1433,6 +1439,7 @@ export default function ProductDetail() {
                     )
                   }
                   const discPct = product.descuento
+                  const isVerano = !discPct && product.promoVerano && product.precioOriginalUSD > product.precioUSD
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
@@ -1454,6 +1461,18 @@ export default function ProductDetail() {
                           </span>
                           <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 300, color: 'var(--ink-faint)', marginLeft: 6 }}>
                             · Solo en divisa
+                          </span>
+                        </>
+                      ) : isVerano ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={badgeStyle}>PROMO VERANO</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                            REF: {product.precioOriginalUSD}
                           </span>
                         </>
                       ) : (

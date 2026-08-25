@@ -3,7 +3,7 @@ import { products as localProducts } from '../data/products-index'
 import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
 
 const QUERY = `*[_type == "product"] | order(id asc) {
-  id, precioUSD, descuento, agotado, promoVerano, name, house, image, sanityImage, genero, familia,
+  id, precioUSD, descuento, agotado, promoVerano, precioPromoVerano, name, house, image, sanityImage, genero, familia,
   tipo, categoria, ml, variantIds, acordes, descripcion,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche,
   notasSalida, notasCorazon, notasFondo
@@ -35,13 +35,24 @@ export function SanityProductsProvider({ children }) {
         // Sanity is the primary source; merge in local structural fields
         const merged = sanityProducts.map(sp => {
           const local = localMap.get(sp.id) ?? {}
-          return {
+          const p = {
             ...local,
             // Sanity overrides (only non-null values)
             ...Object.fromEntries(Object.entries(sp).filter(([, v]) => v != null)),
             // variantIds: prefer local (already there) unless Sanity explicitly sets it
             variantIds: sp.variantIds?.length ? sp.variantIds : local.variantIds,
           }
+          // Promo Verano: mientras esté activa y tenga precio propio, ese precio
+          // pasa a ser el precio efectivo (precioUSD); el original queda en
+          // precioOriginalUSD. Al desactivar la promo en Sanity, esto deja de
+          // aplicarse solo — el precio normal vuelve sin tocar nada más.
+          if (sp.promoVerano && sp.precioPromoVerano != null) {
+            p.precioOriginalUSD = p.precioUSD
+            p.precioUSD = sp.precioPromoVerano
+          } else {
+            delete p.precioOriginalUSD
+          }
+          return p
         })
 
         setIndexProducts(merged.filter(p => p.id && p.name && p.house))

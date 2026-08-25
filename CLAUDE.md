@@ -63,6 +63,9 @@ Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `pr
 | `acordes` | array `{label, pct}` | Hasta 4 acordes — dropdown con 27 labels válidos. Si están en Sanity, reemplazan los hardcodeados. |
 | `cuandoEpocaSeca`, `cuandoLluviosa`, `cuandoDia`, `cuandoNoche` | boolean | Cuándo usar — si alguno está en Sanity, reemplaza el hardcodeado |
 | `descuento` | number | Porcentaje de descuento activo (1-99). Sanity tiene prioridad sobre el hardcodeado en `dia-del-padre.js`. Dejar vacío si no hay descuento. |
+| `agotado` | boolean | Sin stock — el sitio muestra badge "Agotado" y desactiva la compra. |
+| `promoVerano` | boolean | Marca el producto en la campaña Promo Verano — el sitio muestra automáticamente la cinta "Promo Verano" y habilita el filtro correspondiente en `/tienda`. |
+| `precioPromoVerano` | number | Precio especial mientras `promoVerano` esté activo. **No reemplaza `precioUSD`** — el precio normal queda guardado intacto. Mientras la promo esté activa, el sitio muestra y cobra `precioPromoVerano` (guardando el normal en `precioOriginalUSD` para el tachado); al desactivar `promoVerano` o borrar este campo, el precio normal vuelve solo, sin tocar nada más. Solo visible en Studio cuando `promoVerano` está activo. |
 
 ### Flujo para agregar o editar un producto
 1. En Studio: crear/editar el documento → **Publish**
