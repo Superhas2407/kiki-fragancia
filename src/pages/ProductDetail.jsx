@@ -1390,8 +1390,8 @@ export default function ProductDetail() {
                       <span>{product.descuento}% DESCUENTO</span>
                     </div>
                   ) : product.promoVerano && (
-                    <div className="vitrina-ribbon" aria-hidden="true">
-                      <span>Promo Verano</span>
+                    <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
+                      <span>☀ Promo Verano</span>
                     </div>
                   )}
 
@@ -1414,8 +1414,8 @@ export default function ProductDetail() {
                 </div>
               )}
               {!product.agotado && currency === 'usd' && !product.descuento && product.promoVerano && product.precioOriginalUSD > product.precioUSD && (
-                <div className="pd-ddp-strip" style={{ background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)', color: '#1A1208' }}>
-                  PROMO VERANO
+                <div className="pd-ddp-strip" style={{ background: 'linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F)', color: '#2A1904' }}>
+                  ☀ PROMO VERANO
                 </div>
               )}
 
@@ -1447,6 +1447,12 @@ export default function ProductDetail() {
                     background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
                     padding: '4px 12px', display: 'inline-block',
                   }
+                  const veranoBadgeStyle = {
+                    ...badgeStyle,
+                    color: '#2A1904',
+                    background: 'linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F)',
+                    boxShadow: '0 2px 14px rgba(240,200,110,0.4)',
+                  }
                   return (
                     <div className="pd-price" style={rv(350)}>
                       {discPct ? (
@@ -1466,7 +1472,7 @@ export default function ProductDetail() {
                       ) : isVerano ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
-                            <span style={badgeStyle}>PROMO VERANO</span>
+                            <span style={veranoBadgeStyle}>☀ PROMO VERANO</span>
                           </div>
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}

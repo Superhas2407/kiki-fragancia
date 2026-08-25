@@ -494,6 +494,9 @@
   .vitrina-ribbon--ddp > span {
     font-size: 7px;
   }
+  .vitrina-ribbon--verano > span {
+    font-size: 7px;
+  }
 }
 
 /* Tienda — product grid responsive */
@@ -2636,6 +2639,15 @@
   font-size: 10px;
 }
 
+/* Variante Verano — dorado cálido con brillo, distinto del gold plano genérico */
+.vitrina-ribbon--verano > span {
+  background: linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F);
+  color: #2A1904;
+  font-weight: 700;
+  font-size: 10px;
+  box-shadow: 0 2px 18px rgba(240,200,110,0.55), 0 2px 14px rgba(0,0,0,0.5);
+}
+
 
 /* Ribbon más grande en ProductDetail (imagen full-height) */
 @media (min-width: 768px) {
@@ -2649,6 +2661,9 @@
   }
   .pd-img-wrap .vitrina-ribbon--ddp > span {
     font-size: 11px;
+  }
+  .pd-img-wrap .vitrina-ribbon--verano > span {
+    font-size: 12px;
   }
 }
 
@@ -2857,6 +2872,11 @@
 .vitrina-price-badge--ddp {
   background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72);
   color: #E8F0FF;
+}
+.vitrina-price-badge--verano {
+  background: linear-gradient(90deg, #8B5E1F, #F0C86E 35%, #FFDD8A 50%, #F0C86E 65%, #8B5E1F);
+  color: #2A1904;
+  box-shadow: 0 2px 12px rgba(240,200,110,0.4);
 }
 .vitrina-price-usd--big {
   font-size: 27px !important;
@@ -3932,7 +3952,7 @@
 [data-theme='warm'] .vitrina-price,
 [data-theme='warm'] .vitrina-price-usd { color: var(--gold-ink) !important; }
 [data-theme='warm'] .vitrina-meta { color: var(--ink-faint) !important; }
-[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp) {
+[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp):not(.vitrina-price-badge--verano) {
   background: var(--gold) !important;
   color: var(--gold-fill-ink) !important;
 }
