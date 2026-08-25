@@ -3125,7 +3125,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 195,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 107,
@@ -4185,7 +4186,7 @@ export const products = [
       "Ámbar seco"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -4424,8 +4425,10 @@ export const products = [
       "almizcle"
     ],
     "ml": 75,
-    "precioUSD": 60,
-    "categoria": "arabes"
+    "precioUSD": 45,
+    "categoria": "arabes",
+    "promoVerano": true,
+    "precioOriginalUSD": 60
   },
   {
     "id": 153,
@@ -4449,8 +4452,10 @@ export const products = [
       "Caramelo"
     ],
     "ml": 75,
-    "precioUSD": 60,
-    "categoria": "arabes"
+    "precioUSD": 45,
+    "categoria": "arabes",
+    "promoVerano": true,
+    "precioOriginalUSD": 60
   },
   {
     "id": 154,
@@ -4507,8 +4512,10 @@ export const products = [
       "Azúcar"
     ],
     "ml": 75,
-    "precioUSD": 60,
-    "categoria": "arabes"
+    "precioUSD": 45,
+    "categoria": "arabes",
+    "promoVerano": true,
+    "precioOriginalUSD": 60
   },
   {
     "id": 156,
@@ -4743,7 +4750,7 @@ export const products = [
   {
     "id": 164,
     "house": "LATTAFA",
-    "name": "Lattafa Fakhar Rose",
+    "name": "Lattafa Fakhar Rose Woman",
     "image": "lattafa-fakhar-rose-100ml-f.webp",
     "familia": "Floral Amaderado",
     "tipo": "Eau de Parfum",
@@ -4772,7 +4779,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 165,
@@ -4827,7 +4835,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -4859,7 +4867,7 @@ export const products = [
       "ámbar"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 30,
     "categoria": "arabes",
     "agotado": true
   },
@@ -4918,7 +4926,7 @@ export const products = [
       "Pachulí"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 50,
     "categoria": "arabes"
   },
   {
@@ -5035,7 +5043,7 @@ export const products = [
       "Benjuí"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -5065,7 +5073,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -5292,7 +5300,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -5344,7 +5352,7 @@ export const products = [
       "madera de oud"
     ],
     "ml": 90,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -5685,7 +5693,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -6101,7 +6109,7 @@ export const products = [
       "Madera de ámbar"
     ],
     "ml": 100,
-    "precioUSD": 80,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -6185,7 +6193,7 @@ export const products = [
       "Bergamota"
     ],
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 90,
     "categoria": "arabes"
   },
   {
@@ -6218,7 +6226,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 80,
-    "precioUSD": 90,
+    "precioUSD": 100,
     "categoria": "arabes"
   },
   {
@@ -6510,7 +6518,7 @@ export const products = [
   {
     "id": 226,
     "house": "RASASI",
-    "name": "Rasasi Daarej Pour Femme",
+    "name": "Rasasi Daarej Women",
     "image": "rasasi-daarej-pour-femme-100ml-f.webp",
     "familia": "Frutal",
     "tipo": "Eau de Parfum",
@@ -6770,7 +6778,7 @@ export const products = [
       "Madera de cachemira"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -6824,7 +6832,7 @@ export const products = [
       "Cachemira"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -6939,13 +6947,13 @@ export const products = [
       "Pachulí"
     ],
     "ml": 100,
-    "precioUSD": 70,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
     "id": 241,
     "house": "SALVATORE FERRAGAMO",
-    "name": "Salvatore Ferragamo Signorina Leather Edition",
+    "name": "Eau de Parfum Leather Edition",
     "image": "salvatore-ferragamo-signorina-leather-edition-100ml-f.webp",
     "familia": "Floral",
     "tipo": "Eau de Parfum",
@@ -6964,7 +6972,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -7177,7 +7185,7 @@ export const products = [
       "Cedro"
     ],
     "ml": 100,
-    "precioUSD": 85,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -7236,7 +7244,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 80,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -7293,9 +7301,8 @@ export const products = [
       "Ámbar gris"
     ],
     "ml": 100,
-    "precioUSD": 130,
-    "categoria": "disenador",
-    "agotado": true
+    "precioUSD": 110,
+    "categoria": "disenador"
   },
   {
     "id": 254,
@@ -7774,7 +7781,8 @@ export const products = [
     ],
     "ml": 80,
     "precioUSD": 180,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 271,
@@ -7939,7 +7947,7 @@ export const products = [
       "Incienso"
     ],
     "ml": 90,
-    "precioUSD": 90,
+    "precioUSD": 125,
     "categoria": "disenador"
   },
   {
@@ -8107,7 +8115,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 80,
-    "precioUSD": 90,
+    "precioUSD": 85,
     "categoria": "disenador"
   },
   {
@@ -8193,7 +8201,9 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "promoVerano": true,
+    "precioOriginalUSD": 135
   },
   {
     "id": 286,
@@ -8220,7 +8230,7 @@ export const products = [
       "Papiro"
     ],
     "ml": 50,
-    "precioUSD": 590,
+    "precioUSD": 580,
     "categoria": "nicho"
   },
   {
@@ -8587,7 +8597,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 125,
-    "precioUSD": 150,
+    "precioUSD": 185,
     "categoria": "disenador"
   },
   {
@@ -8616,7 +8626,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 95,
     "categoria": "disenador"
   },
   {
@@ -8703,7 +8713,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 125,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 303,
@@ -8814,7 +8825,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 307,
@@ -8954,7 +8966,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 312,
@@ -9010,7 +9023,8 @@ export const products = [
     ],
     "ml": 80,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 314,
@@ -9065,7 +9079,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 75,
-    "precioUSD": 110,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -9321,7 +9335,8 @@ export const products = [
     ],
     "ml": 125,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 325,
@@ -9354,7 +9369,7 @@ export const products = [
   {
     "id": 326,
     "house": "RABANNE",
-    "name": "Rabanne Black XS for Her Eau de Parfum",
+    "name": "Rabanne Black XS Excess",
     "image": "rabanne-black-xs-for-her-eau-de-parfum-80ml-f.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
@@ -9540,7 +9555,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 70,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -10494,8 +10509,11 @@ export const products = [
       "Almizcle"
     ],
     "ml": 75,
-    "precioUSD": 50,
-    "categoria": "disenador"
+    "precioUSD": 35,
+    "categoria": "disenador",
+    "variantIds": [
+      372
+    ]
   },
   {
     "id": 365,
@@ -10709,7 +10727,7 @@ export const products = [
   {
     "id": 372,
     "house": "ISSEY MIYAKE",
-    "name": "Issey Miyake Nuit d'Issey",
+    "name": "Issey Miyake L'Eau d'Issey Pour Homme Intense",
     "image": "issey-miyake-nuit-dissey-125ml-m.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
@@ -10731,7 +10749,7 @@ export const products = [
       "Incienso"
     ],
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -11163,7 +11181,7 @@ export const products = [
       "Madera"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -11368,7 +11386,7 @@ export const products = [
       "Madera"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -11764,7 +11782,7 @@ export const products = [
       "Madera"
     ],
     "ml": 75,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -12216,33 +12234,6 @@ export const products = [
     "agotado": true
   },
   {
-    "id": 425,
-    "house": "LATTAFA",
-    "name": "Lattafa Sakeena",
-    "image": "lattafa-sakeena-100ml-f.webp",
-    "familia": "Oriental Floral",
-    "tipo": "Eau de Parfum",
-    "genero": "Femenino",
-    "descripcion": "Sakeena de Lattafa es una fragancia para la mujer oriental floral opulenta y majestuosa, con un perfil rico en oud, rosa y azafrán. Su corazón floral especiado con incienso sobre una base de oud, pachulí, ámbar y vainilla transmite sofisticación árabe auténtica. El frasco de terciopelo granate con detalles dorados refleja su carácter lujoso y exclusivo.",
-    "description": "Sakeena de Lattafa es una fragancia para la mujer oriental floral opulenta y majestuosa, con un perfil rico en oud, rosa y azafrán. Su corazón floral especiado con incienso sobre una base de oud, pachulí, ámbar y vainilla transmite sofisticación árabe auténtica. El frasco de terciopelo granate con detalles dorados refleja su carácter lujoso y exclusivo.",
-    "notasSalida": "Rosa, Azafrán",
-    "notasCorazon": "Incienso, Oud",
-    "notasFondo": "Almizcle, Ámbar, Pachulí, Vainilla",
-    "notes": [
-      "Rosa",
-      "Azafrán",
-      "Incienso",
-      "Oud",
-      "Almizcle",
-      "Ámbar",
-      "Pachulí",
-      "Vainilla"
-    ],
-    "ml": 100,
-    "precioUSD": 45,
-    "categoria": "arabes"
-  },
-  {
     "id": 426,
     "house": "BHARARA",
     "name": "Bharara Queen",
@@ -12339,8 +12330,8 @@ export const products = [
   },
   {
     "id": 429,
-    "house": "MAST PERFUME",
-    "name": "Mast Perfume Rome Paradox",
+    "house": "BHARARA",
+    "name": "Rome Paradox",
     "image": "mast-perfume-rome-paradox-100ml-f.webp",
     "familia": "Floral Frutal",
     "tipo": "Eau de Parfum",
@@ -12371,8 +12362,8 @@ export const products = [
   },
   {
     "id": 430,
-    "house": "MAST PERFUME",
-    "name": "Mast Perfume Rome Extradose Pour Femme",
+    "house": "BHARARA",
+    "name": "Rome Extradose Pour Femme",
     "image": "mast-perfume-rome-extradose-pour-femme-100ml-f.webp",
     "familia": "Floral Frutal",
     "tipo": "Eau de Parfum",
@@ -12849,8 +12840,10 @@ export const products = [
       "pachulí"
     ],
     "ml": 80,
-    "precioUSD": 200,
-    "categoria": "disenador"
+    "precioUSD": 195,
+    "categoria": "disenador",
+    "promoVerano": true,
+    "precioOriginalUSD": 200
   },
   {
     "id": 445,

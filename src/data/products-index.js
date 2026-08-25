@@ -1310,7 +1310,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 195,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 107,
@@ -1773,7 +1774,7 @@ export const products = [
     "tipo": "Elixir",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -1883,8 +1884,10 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 60,
-    "categoria": "arabes"
+    "precioUSD": 45,
+    "categoria": "arabes",
+    "promoVerano": true,
+    "precioOriginalUSD": 60
   },
   {
     "id": 153,
@@ -1895,8 +1898,10 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 60,
-    "categoria": "arabes"
+    "precioUSD": 45,
+    "categoria": "arabes",
+    "promoVerano": true,
+    "precioOriginalUSD": 60
   },
   {
     "id": 154,
@@ -1920,8 +1925,10 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 60,
-    "categoria": "arabes"
+    "precioUSD": 45,
+    "categoria": "arabes",
+    "promoVerano": true,
+    "precioOriginalUSD": 60
   },
   {
     "id": 156,
@@ -2026,14 +2033,15 @@ export const products = [
   {
     "id": 164,
     "house": "LATTAFA",
-    "name": "Lattafa Fakhar Rose",
+    "name": "Lattafa Fakhar Rose Woman",
     "image": "lattafa-fakhar-rose-100ml-f.webp",
     "familia": "Floral Amaderado",
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 165,
@@ -2057,7 +2065,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -2069,7 +2077,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 30,
     "categoria": "arabes",
     "agotado": true
   },
@@ -2094,7 +2102,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 50,
     "categoria": "arabes"
   },
   {
@@ -2144,7 +2152,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -2156,7 +2164,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -2253,7 +2261,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -2277,7 +2285,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 90,
-    "precioUSD": 40,
+    "precioUSD": 35,
     "categoria": "arabes"
   },
   {
@@ -2423,7 +2431,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -2611,7 +2619,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 80,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -2647,7 +2655,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 100,
+    "precioUSD": 90,
     "categoria": "arabes"
   },
   {
@@ -2659,7 +2667,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 80,
-    "precioUSD": 90,
+    "precioUSD": 100,
     "categoria": "arabes"
   },
   {
@@ -2793,7 +2801,7 @@ export const products = [
   {
     "id": 226,
     "house": "RASASI",
-    "name": "Rasasi Daarej Pour Femme",
+    "name": "Rasasi Daarej Women",
     "image": "rasasi-daarej-pour-femme-100ml-f.webp",
     "familia": "Frutal",
     "tipo": "Eau de Parfum",
@@ -2900,7 +2908,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -2925,7 +2933,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 30,
     "categoria": "arabes"
   },
   {
@@ -2975,19 +2983,19 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 70,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
     "id": 241,
     "house": "SALVATORE FERRAGAMO",
-    "name": "Salvatore Ferragamo Signorina Leather Edition",
+    "name": "Eau de Parfum Leather Edition",
     "image": "salvatore-ferragamo-signorina-leather-edition-100ml-f.webp",
     "familia": "Floral",
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -3088,7 +3096,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 85,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -3112,7 +3120,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 80,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -3136,9 +3144,8 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 130,
-    "categoria": "disenador",
-    "agotado": true
+    "precioUSD": 110,
+    "categoria": "disenador"
   },
   {
     "id": 254,
@@ -3349,7 +3356,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 80,
     "precioUSD": 180,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 271,
@@ -3422,7 +3430,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 90,
-    "precioUSD": 90,
+    "precioUSD": 125,
     "categoria": "disenador"
   },
   {
@@ -3496,7 +3504,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 80,
-    "precioUSD": 90,
+    "precioUSD": 85,
     "categoria": "disenador"
   },
   {
@@ -3534,7 +3542,9 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "promoVerano": true,
+    "precioOriginalUSD": 135
   },
   {
     "id": 286,
@@ -3545,7 +3555,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 50,
-    "precioUSD": 590,
+    "precioUSD": 580,
     "categoria": "nicho"
   },
   {
@@ -3705,7 +3715,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 125,
-    "precioUSD": 150,
+    "precioUSD": 185,
     "categoria": "disenador"
   },
   {
@@ -3717,7 +3727,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 110,
+    "precioUSD": 95,
     "categoria": "disenador"
   },
   {
@@ -3756,7 +3766,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 125,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 303,
@@ -3806,7 +3817,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 307,
@@ -3868,7 +3880,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 150,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 312,
@@ -3892,7 +3905,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 80,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 314,
@@ -3916,7 +3930,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 110,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -4028,7 +4042,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 125,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 325,
@@ -4045,7 +4060,7 @@ export const products = [
   {
     "id": 326,
     "house": "RABANNE",
-    "name": "Rabanne Black XS for Her Eau de Parfum",
+    "name": "Rabanne Black XS Excess",
     "image": "rabanne-black-xs-for-her-eau-de-parfum-80ml-f.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
@@ -4125,7 +4140,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 70,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -4548,8 +4563,11 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 50,
-    "categoria": "disenador"
+    "precioUSD": 35,
+    "categoria": "disenador",
+    "variantIds": [
+      372
+    ]
   },
   {
     "id": 365,
@@ -4645,13 +4663,13 @@ export const products = [
   {
     "id": 372,
     "house": "ISSEY MIYAKE",
-    "name": "Issey Miyake Nuit d'Issey",
+    "name": "Issey Miyake L'Eau d'Issey Pour Homme Intense",
     "image": "issey-miyake-nuit-dissey-125ml-m.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 125,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -4843,7 +4861,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -4934,7 +4952,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -5106,7 +5124,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -5307,18 +5325,6 @@ export const products = [
     "agotado": true
   },
   {
-    "id": 425,
-    "house": "LATTAFA",
-    "name": "Lattafa Sakeena",
-    "image": "lattafa-sakeena-100ml-f.webp",
-    "familia": "Oriental Floral",
-    "tipo": "Eau de Parfum",
-    "genero": "Femenino",
-    "ml": 100,
-    "precioUSD": 45,
-    "categoria": "arabes"
-  },
-  {
     "id": 426,
     "house": "BHARARA",
     "name": "Bharara Queen",
@@ -5357,8 +5363,8 @@ export const products = [
   },
   {
     "id": 429,
-    "house": "MAST PERFUME",
-    "name": "Mast Perfume Rome Paradox",
+    "house": "BHARARA",
+    "name": "Rome Paradox",
     "image": "mast-perfume-rome-paradox-100ml-f.webp",
     "familia": "Floral Frutal",
     "tipo": "Eau de Parfum",
@@ -5369,8 +5375,8 @@ export const products = [
   },
   {
     "id": 430,
-    "house": "MAST PERFUME",
-    "name": "Mast Perfume Rome Extradose Pour Femme",
+    "house": "BHARARA",
+    "name": "Rome Extradose Pour Femme",
     "image": "mast-perfume-rome-extradose-pour-femme-100ml-f.webp",
     "familia": "Floral Frutal",
     "tipo": "Eau de Parfum",
@@ -5561,8 +5567,10 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 80,
-    "precioUSD": 200,
-    "categoria": "disenador"
+    "precioUSD": 195,
+    "categoria": "disenador",
+    "promoVerano": true,
+    "precioOriginalUSD": 200
   },
   {
     "id": 445,

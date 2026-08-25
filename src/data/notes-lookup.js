@@ -426,7 +426,6 @@ export const notesLookup = {
   422: "Coco, Frambuesa, Fresa, Rosa, Peonía, Malvavisco, Vainilla, Ámbar, Almizcle",
   423: "Frutas rojas, Ruibarbo, Lichi, Rosa, Incienso, Cedro, Vainilla, Almizcle, Ambergris",
   424: "Bergamota, Naranja, Especias, Coco, Ylang ylang, Ambroxan, Mahonial, Sándalo, Almizcle, Benjuí",
-  425: "Rosa, Azafrán, Incienso, Oud, Almizcle, Ámbar, Pachulí, Vainilla",
   426: "Bergamota, Pimienta rosa, Grosella negra, Jazmín, Rosa, Pachulí, Ámbar, Almizcle, Madera de cachemira",
   427: "Rosa, Azafrán, Geranio, Nuez moscada, Pimienta, Violeta, Alcaravea, Pachulí, Oud, Vainilla, Ámbar",
   428: "Coco, Manzana, Limón, Peonía, Lirio de los valles, Malvavisco, Fresa, Melocotón, Albaricoque, Frambuesa, Flor de azahar, Mascarpone, Vainilla, Praliné, Almizcle, Haba tonka, Ámbar",
