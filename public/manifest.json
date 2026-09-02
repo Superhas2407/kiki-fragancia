@@ -1,0 +1,35 @@
+{
+  "name": "Kiki Fragancia",
+  "short_name": "Kiki",
+  "description": "Fragancias 100% originales en Venezuela. Árabes, Diseñador y Nicho.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF6EE",
+  "theme_color": "#C9A84C",
+  "orientation": "portrait-primary",
+  "lang": "es-VE",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver tienda",
+      "short_name": "Tienda",
+      "description": "Explorar todas las fragancias",
+      "url": "/tienda",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
