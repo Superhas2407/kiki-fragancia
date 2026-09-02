@@ -23,7 +23,7 @@ export default function OfertaDelDia() {
   const products = useIndexProducts()
   const navigate = useNavigate()
   const { currency } = useCurrency()
-  const { tasa } = useTasaCambio()
+  const tasa = useTasaCambio()
   const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
   const [visible, setVisible] = useState(true)
 

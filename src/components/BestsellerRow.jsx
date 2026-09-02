@@ -9,8 +9,7 @@ const BESTSELLER_IDS_DESKTOP = [88, 20, 311, 256, 172]
 
 function PriceTag({ product }) {
   const { currency } = useCurrency()
-  const tasaData = useTasaCambio()
-  const tasa = tasaData?.tasa
+  const tasa = useTasaCambio()
   if (!product.precioUSD) return null
   if (currency === 'bs' && tasa) {
     const bs = Math.round(product.precioUSD * tasa)
