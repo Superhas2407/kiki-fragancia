@@ -60,7 +60,7 @@ export default function InstallBanner() {
         <button className="install-banner-close" onClick={handleDismiss} aria-label="Cerrar">✕</button>
 
         <div className="install-banner-logo">
-          <img src="/logo-transparent.png" alt="Kiki Fragancia" width={38} height={38} />
+          <img src="/icon-192.png" alt="Kiki Fragancia" width={38} height={38} />
         </div>
 
         <div className="install-banner-text">
