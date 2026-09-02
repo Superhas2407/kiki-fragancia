@@ -6,11 +6,13 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { products } from '../data/products-enriched'
-import { useSanityProduct, resolveProductImage } from '../context/SanityProductsContext'
+import { useSanityProduct, useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
+import { norm } from '../lib/search'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { SunIcon as VeranoSunIcon } from '../components/VitrinaCard'
 
 // SVG icons per note family — no emoji, consistent with luxury aesthetic
 const NOTE_ICONS = {
@@ -1134,13 +1136,36 @@ export default function ProductDetail() {
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
 
+  const indexProducts = useIndexProducts()
+
+  // Slug fallback: si ningún producto matchea el slug exacto (típicamente porque
+  // el nombre cambió en Sanity y el slug quedó viejo), busca por casa + ml —
+  // solo si hay un único candidato, para no adivinar mal.
+  const slugFallbackMatch = (list, slug) => {
+    const mlMatch = slug.match(/-(\d+)ml$/)
+    const ml = mlMatch ? Number(mlMatch[1]) : null
+    const base = ml ? slug.slice(0, -mlMatch[0].length) : slug
+    const candidates = list.filter(p => {
+      if (ml != null && p.ml !== ml) return false
+      const houseSlug = norm(p.house || '').replace(/[^a-z0-9\s]/g, '').trim().replace(/\s+/g, '-')
+      return houseSlug && base.startsWith(houseSlug)
+    })
+    return candidates.length === 1 ? candidates[0] : null
+  }
+
   const numericId = Number(id)
-  const localProduct = useMemo(() =>
-    isNaN(numericId)
-      ? products.find(p => toSlug(p.house, p.name, p.ml) === id)
-      : products.find(p => p.id === numericId),
-    [id]
-  )
+  const localProduct = useMemo(() => {
+    if (!isNaN(numericId)) {
+      return products.find(p => p.id === numericId) ?? indexProducts.find(p => p.id === numericId)
+    }
+    // 1. slug exacto contra el snapshot local (rápido, disponible antes de hidratar Sanity)
+    return products.find(p => toSlug(p.house, p.name, p.ml) === id)
+      // 2. slug exacto contra datos live de Sanity (cubre renombres recién publicados, sin rebuild)
+      ?? indexProducts.find(p => toSlug(p.house, p.name, p.ml) === id)
+      // 3. fallback por casa + ml para links viejos compartidos que quedaron con el nombre anterior
+      ?? slugFallbackMatch(indexProducts, id)
+      ?? slugFallbackMatch(products, id)
+  }, [id, indexProducts])
   const resolvedNumericId = localProduct?.id ?? (isNaN(numericId) ? null : numericId)
   const liveData = useSanityProduct(resolvedNumericId)
   const [mounted,      setMounted]      = useState(false)
@@ -1172,6 +1197,9 @@ export default function ProductDetail() {
     notasCorazon:   liveData?.notasCorazon   ?? baseProduct.notasCorazon,
     notasFondo:     liveData?.notasFondo     ?? baseProduct.notasFondo,
     descuento:      liveData?.descuento      ?? baseProduct?.descuento ?? null,
+    agotado:        liveData?.agotado        ?? baseProduct?.agotado ?? false,
+    promoVerano:    liveData?.promoVerano     ?? baseProduct?.promoVerano ?? false,
+    precioOriginalUSD: liveData?.precioOriginalUSD ?? baseProduct?.precioOriginalUSD ?? null,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
                   liveData?.cuandoDia != null       || liveData?.cuandoNoche != null)
@@ -1187,6 +1215,14 @@ export default function ProductDetail() {
         }
       : null,
   } : null
+
+  // Si el producto se resolvió por un slug viejo (nombre cambiado en Sanity), corrige
+  // silenciosamente la URL a la canónica actual — sin recargar ni mostrar "no encontrado".
+  useEffect(() => {
+    if (!isNaN(numericId) || !product) return
+    const currentSlug = toSlug(product.house, product.name, product.ml)
+    if (currentSlug !== id) navigate(`/tienda/${currentSlug}`, { replace: true })
+  }, [id, product, numericId])
 
   if (!product) {
     return (
@@ -1282,7 +1318,7 @@ export default function ProductDetail() {
       url: canonicalUrl,
       priceCurrency: 'USD',
       price: product.precioUSD || undefined,
-      availability: 'https://schema.org/InStock',
+      availability: product.agotado ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
     },
   }
 
@@ -1327,7 +1363,10 @@ export default function ProductDetail() {
                       className="pd-img-photo"
                       src={resolvedImg}
                       alt={`${product.house} ${product.name}`}
-                      style={{ transform: imgHover ? 'scale(1.04)' : 'scale(1)' }}
+                      style={{
+                        transform: imgHover ? 'scale(1.04)' : 'scale(1)',
+                        ...(product.agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : {}),
+                      }}
                     />
                   ) : (
                     <div className="pd-img-placeholder" style={{ transform: imgHover ? 'scale(1.04)' : 'scale(1)' }}>
@@ -1343,9 +1382,17 @@ export default function ProductDetail() {
                     <span className="pd-img-badge-text">Original Verificado</span>
                   </div>
 
-                  {currency === 'usd' && product.descuento && (
+                  {product.agotado ? (
+                    <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
+                      <span>Agotado</span>
+                    </div>
+                  ) : currency === 'usd' && product.descuento ? (
                     <div className="vitrina-ribbon" aria-hidden="true">
                       <span>{product.descuento}% DESCUENTO</span>
+                    </div>
+                  ) : product.promoVerano && (
+                    <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
+                      <span><VeranoSunIcon />Promo Verano</span>
                     </div>
                   )}
 
@@ -1362,9 +1409,14 @@ export default function ProductDetail() {
               </div>
 
               {/* Franja descuento — solo móvil, entre imagen e info */}
-              {currency === 'usd' && product.descuento && (
+              {!product.agotado && currency === 'usd' && product.descuento && (
                 <div className="pd-ddp-strip">
                   {product.descuento}% DESCUENTO
+                </div>
+              )}
+              {!product.agotado && currency === 'usd' && !product.descuento && product.promoVerano && product.precioOriginalUSD > product.precioUSD && (
+                <div className="pd-ddp-strip pd-ddp-strip--verano">
+                  <VeranoSunIcon size={11} /> PROMO VERANO
                 </div>
               )}
 
@@ -1388,12 +1440,19 @@ export default function ProductDetail() {
                     )
                   }
                   const discPct = product.descuento
+                  const isVerano = !discPct && product.promoVerano && product.precioOriginalUSD > product.precioUSD
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
                     color: '#1A1208',
                     background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
                     padding: '4px 12px', display: 'inline-block',
+                  }
+                  const veranoBadgeStyle = {
+                    ...badgeStyle,
+                    color: '#3A1300',
+                    background: 'linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45)',
+                    boxShadow: '0 2px 16px rgba(45,181,168,0.45), 0 2px 10px rgba(255,122,69,0.35)',
                   }
                   return (
                     <div className="pd-price" style={rv(350)}>
@@ -1409,6 +1468,18 @@ export default function ProductDetail() {
                           </span>
                           <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 300, color: 'var(--ink-faint)', marginLeft: 6 }}>
                             · Solo en divisa
+                          </span>
+                        </>
+                      ) : isVerano ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={veranoBadgeStyle}><VeranoSunIcon size={11} /> PROMO VERANO</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                            REF: {product.precioOriginalUSD}
                           </span>
                         </>
                       ) : (
@@ -1428,24 +1499,43 @@ export default function ProductDetail() {
                   )
                 })()}
 
-                {product.variantIds && (() => {
-                  const variantGroup = products
-                    .filter(p => product.variantIds.includes(p.id))
+                {(() => {
+                  // El grupo de variantes puede estar declarado en este producto (es el
+                  // "canónico") o en otro que lo referencia a él (este es una presentación
+                  // oculta del grid, vista directo por URL/selector) — hay que cubrir ambos.
+                  const hub = product.variantIds?.length
+                    ? product
+                    : indexProducts.find(p => p.variantIds?.includes(product.id))
+                  if (!hub) return null
+                  const others = indexProducts.filter(p => hub.variantIds.includes(p.id))
+                  const variantGroup = [hub, product, ...others]
+                    .filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i)
                     .sort((a, b) => a.ml - b.ml)
+                  const tipoAbbrMap = { 'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC', 'Parfum': 'PDM' }
                   return variantGroup.length > 1 ? (
                     <div className="pd-size-selector" style={rv(355)}>
                       <span className="pd-size-label">Tamaño</span>
                       <div className="pd-size-btns">
-                        {variantGroup.map(v => (
-                          <button
-                            key={v.id}
-                            type="button"
-                            className={`pd-size-btn${v.id === product.id ? ' active' : ''}`}
-                            onClick={() => navigate(`/tienda/${v.id}`)}
-                          >
-                            {v.ml} ml
-                          </button>
-                        ))}
+                        {variantGroup.map(v => {
+                          const showTipo = v.tipo && v.tipo !== product.tipo
+                          const isActive = v.id === product.id
+                          return (
+                            <button
+                              key={v.id}
+                              type="button"
+                              className={`pd-size-btn${isActive ? ' active' : ''}`}
+                              disabled={v.agotado}
+                              onClick={() => { if (!isActive) navigate(`/tienda/${toSlug(v.house, v.name, v.ml)}`) }}
+                            >
+                              <span className="pd-size-btn-main">
+                                {v.ml} ml{showTipo ? ` · ${tipoAbbrMap[v.tipo] ?? v.tipo}` : ''}
+                              </span>
+                              <span className="pd-size-btn-sub">
+                                {v.agotado ? 'Agotado' : v.precioUSD > 0 ? `REF: ${v.precioUSD}` : ''}
+                              </span>
+                            </button>
+                          )
+                        })}
                       </div>
                     </div>
                   ) : null
@@ -1459,20 +1549,22 @@ export default function ProductDetail() {
                   </div>
 
                   <button
-                    onClick={handleAdd}
+                    onClick={product.agotado ? undefined : handleAdd}
+                    disabled={product.agotado}
                     style={{
                       fontFamily: 'var(--font-s)', fontSize: 'clamp(11px, 3vw, 12px)', fontWeight: 400, letterSpacing: '.2em',
                       textTransform: 'uppercase', padding: 'clamp(13px, 3vw, 16px) clamp(20px, 5vw, 32px)', width: '100%', minHeight: '46px',
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-                      border: added ? '1px solid #25D366' : '1px solid var(--gold)',
-                      background: added ? '#25D366' : 'var(--gold)',
-                      color: added ? '#FFF' : '#0A0A0A',
+                      cursor: product.agotado ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+                      border: product.agotado ? '1px solid var(--line)' : added ? '1px solid #25D366' : '1px solid var(--gold)',
+                      background: product.agotado ? 'transparent' : added ? '#25D366' : 'var(--gold)',
+                      color: product.agotado ? 'var(--ink-faint)' : added ? '#FFF' : '#0A0A0A',
+                      opacity: product.agotado ? 0.6 : 1,
                       transition: 'background .25s ease, border-color .25s ease, color .25s ease',
                     }}
-                    onMouseEnter={e => { if (!added) e.currentTarget.style.background = '#E8C96A' }}
-                    onMouseLeave={e => { if (!added) e.currentTarget.style.background = 'var(--gold)' }}
+                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = '#E8C96A' }}
+                    onMouseLeave={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold)' }}
                   >
-                    {added ? '✓ Agregado' : 'Agregar al carrito'}
+                    {product.agotado ? 'Agotado' : added ? '✓ Agregado' : 'Agregar al carrito'}
                   </button>
 
                   <a
@@ -1665,15 +1757,18 @@ export default function ProductDetail() {
           <div className="pd-sticky-bar">
             <button
               className="pd-sticky-btn"
-              onClick={handleAdd}
+              onClick={product.agotado ? undefined : handleAdd}
+              disabled={product.agotado}
               style={{
-                background: added ? '#25D366' : 'var(--gold)',
-                color: added ? '#fff' : '#0A0A0A',
-                border: 'none',
+                background: product.agotado ? 'transparent' : added ? '#25D366' : 'var(--gold)',
+                color: product.agotado ? 'var(--ink-faint)' : added ? '#fff' : '#0A0A0A',
+                border: product.agotado ? '1px solid var(--line)' : 'none',
+                opacity: product.agotado ? 0.6 : 1,
+                cursor: product.agotado ? 'not-allowed' : 'pointer',
                 transition: 'background .25s ease, color .25s ease',
               }}
             >
-              {added ? '✓ Agregado al carrito' : 'Agregar al carrito'}
+              {product.agotado ? 'Agotado' : added ? '✓ Agregado al carrito' : 'Agregar al carrito'}
             </button>
           </div>
         )}

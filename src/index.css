@@ -494,6 +494,9 @@
   .vitrina-ribbon--ddp > span {
     font-size: 7px;
   }
+  .vitrina-ribbon--verano > span {
+    font-size: 7px;
+  }
 }
 
 /* Tienda — product grid responsive */
@@ -597,34 +600,24 @@
 /* Hero — base */
 .hero-section { overflow: hidden; }
 
-/* Hero text always white — background is always dark regardless of theme */
-.hero-section .hero-title,
-.hero-section .hero-eyebrow,
-.hero-section .hero-quote,
-.hero-section .hero-actions { color: #F7F2EA; }
-.hero-section .hero-btn-primary {
-  color: #F7F2EA;
-  border-color: rgba(201,168,76,0.75);
+/* Video parallax background — solo desktop */
+.hero-video-bg { display: none; }
+.hero-video-fixed { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 768px) {
+  .hero-video-bg {
+    display: block;
+    position: absolute; inset: 0; z-index: 1;
+    overflow: hidden;
+  }
+  .hero-video-fixed {
+    position: absolute;
+    top: -15%; left: 0;
+    width: 100%; height: 130%;
+    object-fit: cover;
+    will-change: transform;
+  }
+  .hero-bg-mobile-only { display: none !important; }
 }
-[data-theme='warm'] .hero-section .hero-title,
-[data-theme='warm'] .hero-section .hero-eyebrow,
-[data-theme='warm'] .hero-section .hero-quote { color: #F7F2EA; }
-[data-theme='warm'] .hero-section p,
-[data-theme='warm'] .hero-section h1,
-[data-theme='warm'] .hero-section a,
-[data-theme='warm'] .hero-bottom-handle,
-[data-theme='warm'] .hero-section .hero-btn-primary { color: #F7F2EA; }
-[data-theme='warm'] .hero-main-title,
-[data-theme='warm'] .hero-ddp-title { color: #F7F2EA; }
-[data-theme='warm'] .hero-tagline,
-[data-theme='warm'] .hero-quote,
-[data-theme='warm'] .hero-search-link,
-[data-theme='warm'] .kiki-scroll-indicator,
-[data-theme='warm'] .eyebrow-text,
-[data-theme='warm'] .hero-ddp-eyebrow,
-[data-theme='warm'] .hero-ddp-sub,
-[data-theme='warm'] .hero-ddp-desc { color: rgba(247,242,234,0.70); }
-[data-theme='warm'] .hero-cta { color: #F7F2EA; border-color: rgba(201,168,76,0.75); }
 
 /* Hero â€” scroll indicator */
 @keyframes scroll-breath {
@@ -1292,7 +1285,7 @@
   .hero-section .kiki-container { padding: 0; width: 100%; flex-shrink: 0; }
   .hero-content-wrap {
     position: static !important;
-    padding: 0 28px 72px !important;
+    padding: 0 28px 120px !important;
     width: 100%;
     align-items: center;
   }
@@ -1321,10 +1314,21 @@
       linear-gradient(to top, rgba(4,8,18,0.92) 0%, rgba(4,8,18,0.55) 32%, rgba(4,8,18,0) 60%);
   }
 }
-.hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.hero-eyebrow {
+  font-family: var(--font-s); font-size: 11px; font-weight: 300;
+  color: var(--gold); letter-spacing: 0.28em; text-transform: uppercase;
+  margin-bottom: 28px;
+}
 .eyebrow-text {
   font-family: var(--font-s); font-size: 10px; font-weight: 300;
   color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase;
+}
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(40px, 6vw, 88px);
+  font-weight: 300; font-style: italic; color: #fff;
+  letter-spacing: -0.02em; line-height: 1.0; margin: 0 0 28px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.5), 0 1px 8px rgba(0,0,0,0.4);
 }
 .hero-main-title {
   font-family: var(--font-d);
@@ -1341,8 +1345,18 @@
   font-family: var(--font-d);
   font-size: clamp(16px, 1.7vw, 19px);
   font-weight: 300; font-style: italic;
-  color: var(--ink-mute); line-height: 1.55; margin: 0 0 44px;
+  color: rgba(255,255,255,0.80); line-height: 1.55; margin: 0 0 44px;
 }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-btn-primary {
+  display: inline-block; padding: 14px 36px;
+  font-family: var(--font-s); font-size: 11px; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+  background: #fff; border: 1px solid #fff; color: #0a0804;
+  transition: background 0.25s, color 0.25s;
+}
+.hero-btn-primary:hover { background: transparent; color: #fff; }
+
 /* Trust bar — barra bajo el hero, fondo sólido */
 .trust-bar {
   display: flex; align-items: center; justify-content: center;
@@ -1827,6 +1841,11 @@
     padding: 10px 16px;
     grid-column: 1 / -1;
   }
+  .pd-ddp-strip--verano {
+    background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
+    color: #3A1300;
+    box-shadow: inset 0 -2px 12px rgba(45,181,168,0.35);
+  }
 }
 
 /* Barra sticky móvil — desactivada, botón vive en pd-actions */
@@ -1902,19 +1921,29 @@
   font-family: var(--font-s); font-size: 9px; font-weight: 400;
   letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute);
 }
-.pd-size-btns { display: flex; gap: 8px; }
+.pd-size-btns { display: flex; gap: 8px; flex-wrap: wrap; }
 .pd-size-btn {
   font-family: var(--font-s); font-size: 10px; font-weight: 300;
   letter-spacing: 0.1em; padding: 7px 16px;
   border: 1px solid var(--line);
   background: transparent; color: var(--ink-mute);
-  cursor: pointer; transition: border-color .2s, color .2s, background .2s;
+  cursor: pointer; transition: border-color .2s, color .2s, background .2s, opacity .2s;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
 .pd-size-btn:hover { border-color: var(--line); color: var(--ink-mute); }
 .pd-size-btn.active {
   border-color: var(--gold); color: var(--gold);
   background: rgba(201,168,76,0.07);
 }
+.pd-size-btn-main { font-size: 10px; letter-spacing: 0.08em; }
+.pd-size-btn-sub {
+  font-size: 8px; letter-spacing: 0.06em; opacity: 0.6;
+  font-weight: 400;
+}
+.pd-size-btn:disabled {
+  opacity: 0.4; cursor: not-allowed; text-decoration: line-through;
+}
+.pd-size-btn:disabled:hover { border-color: var(--line); color: var(--ink-mute); }
 
 .pd-price { margin-bottom: 28px; }
 .pd-price-amount {
@@ -2618,6 +2647,22 @@
   font-size: 9px;
 }
 
+/* Variante Agotado — gris neutro, nunca dorado (no es una promo) */
+.vitrina-ribbon--agotado > span {
+  background: linear-gradient(90deg, #2A2620, #4A443A 55%, #2A2620);
+  color: #F2ECDE;
+  font-size: 10px;
+}
+
+/* Variante Verano — atardecer coral con resplandor turquesa (paleta de campaña) */
+.vitrina-ribbon--verano > span {
+  background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
+  color: #3A1300;
+  font-weight: 700;
+  font-size: 10px;
+  box-shadow: 0 2px 18px rgba(45,181,168,0.5), 0 2px 14px rgba(0,0,0,0.4);
+}
+
 
 /* Ribbon más grande en ProductDetail (imagen full-height) */
 @media (min-width: 768px) {
@@ -2631,6 +2676,9 @@
   }
   .pd-img-wrap .vitrina-ribbon--ddp > span {
     font-size: 11px;
+  }
+  .pd-img-wrap .vitrina-ribbon--verano > span {
+    font-size: 12px;
   }
 }
 
@@ -2703,6 +2751,27 @@
   transition: color .3s ease;
 }
 .vitrina-card:hover .vitrina-name { color: var(--gold); }
+
+/* Selector de tamaño — otras presentaciones (variantIds) */
+.vitrina-size-pills {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin: 2px 0 4px;
+}
+.vitrina-size-pill {
+  font-family: 'KikiGotham', sans-serif;
+  font-size: 10px; font-weight: 300; letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  background: transparent; color: var(--ink-faint);
+  cursor: pointer; transition: border-color .18s, color .18s, background .18s;
+  position: relative; z-index: 2;
+}
+.vitrina-size-pill:hover:not(:disabled) { border-color: var(--gold); color: var(--ink-mute); }
+.vitrina-size-pill.active {
+  border-color: var(--gold); color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  cursor: default;
+}
 
 .vitrina-rule {
   height: 1px;
@@ -2839,6 +2908,13 @@
 .vitrina-price-badge--ddp {
   background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72);
   color: #E8F0FF;
+}
+.vitrina-price-badge--verano {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
+  color: #3A1300;
+  box-shadow: 0 2px 14px rgba(45,181,168,0.45), 0 2px 8px rgba(255,122,69,0.3);
 }
 .vitrina-price-usd--big {
   font-size: 27px !important;
@@ -3914,7 +3990,7 @@
 [data-theme='warm'] .vitrina-price,
 [data-theme='warm'] .vitrina-price-usd { color: var(--gold-ink) !important; }
 [data-theme='warm'] .vitrina-meta { color: var(--ink-faint) !important; }
-[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp) {
+[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp):not(.vitrina-price-badge--verano) {
   background: var(--gold) !important;
   color: var(--gold-fill-ink) !important;
 }

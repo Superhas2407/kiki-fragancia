@@ -21,7 +21,19 @@ export default {
       name: 'id',
       title: 'ID',
       type: 'number',
+      description: 'Número único. Obligatorio: sin ID (o con un ID repetido de otro producto), el producto NO aparece en el sitio — se descarta en silencio, sin ningún error visible ahí. Al duplicar un producto en Studio, este campo queda vacío: hay que ponerle un número nuevo que no use ningún otro producto.',
       readOnly: ({ document }) => !document?._id?.startsWith('drafts.'),
+      validation: Rule => Rule.required().error('Sin ID, este producto no va a aparecer en el sitio.').custom(async (id, context) => {
+        if (id == null) return true // required() ya lo marca
+        const { document, getClient } = context
+        const client = getClient({ apiVersion: '2024-01-01' })
+        const publishedId = document._id.replace(/^drafts\./, '')
+        const count = await client.fetch(
+          `count(*[_type == "product" && id == $id && !(_id in [$pub, $draft])])`,
+          { id, pub: publishedId, draft: `drafts.${publishedId}` }
+        )
+        return count === 0 || 'Este ID ya lo está usando otro producto — tiene que ser único.'
+      }),
     },
     {
       name: 'house',
@@ -61,6 +73,28 @@ export default {
       type: 'number',
       description: 'Porcentaje de descuento activo (ej: 10 → 10%). Dejar vacío si no hay descuento.',
       validation: Rule => Rule.min(1).max(99),
+    },
+    {
+      name: 'agotado',
+      title: 'Agotado (sin stock)',
+      type: 'boolean',
+      description: 'Actívalo cuando no quede stock. El sitio muestra automáticamente un badge "Agotado" y desactiva el botón de compra — no requiere ningún otro cambio.',
+      initialValue: false,
+    },
+    {
+      name: 'promoVerano',
+      title: 'Promo Verano',
+      type: 'boolean',
+      description: 'Actívalo para marcar el producto como parte de la Promo Verano. El sitio muestra automáticamente la cinta "Promo Verano" y el filtro correspondiente en /tienda — no requiere ningún otro cambio.',
+      initialValue: false,
+    },
+    {
+      name: 'precioPromoVerano',
+      title: 'Precio Promo Verano (USD)',
+      type: 'number',
+      description: 'Precio especial mientras dure la Promo Verano. El precio de arriba (Precio USD) NO se toca — queda guardado como el precio normal. Mientras "Promo Verano" esté activo, el sitio muestra y cobra este precio; al desactivar "Promo Verano" (o borrar este campo), el sitio vuelve solo al precio normal automáticamente.',
+      hidden: ({ parent }) => !parent?.promoVerano,
+      validation: Rule => Rule.min(0),
     },
     {
       name: 'ml',
@@ -114,10 +148,20 @@ export default {
     },
     {
       name: 'variantIds',
-      title: 'IDs de variantes (200 ml)',
+      title: 'Otras presentaciones (variantes)',
       type: 'array',
-      of: [{ type: 'number' }],
-      description: 'Si este producto tiene variante 200ml, agrega el ID de esa variante aquí.',
+      of: [{
+        type: 'reference',
+        to: [{ type: 'product' }],
+        options: {
+          filter: ({ document }) => ({
+            filter: '_id != $id',
+            params: { id: (document?._id ?? '').replace(/^drafts\./, '') },
+          }),
+        },
+      }],
+      description: 'Otras presentaciones de este mismo perfume (distinto ml y/o concentración, ej: 90ml y 200ml). Buscá el producto por nombre — cada opción te muestra su marca, ml, concentración, precio y si está agotado, para que no tengas que adivinar IDs.',
+      validation: Rule => Rule.unique(),
     },
     // ── Descripción ─────────────────────────────────────────────────────
     {
@@ -214,8 +258,24 @@ export default {
   preview: {
     select: {
       title: 'name',
-      subtitle: 'house',
+      house: 'house',
       media: 'sanityImage',
+      ml: 'ml',
+      tipo: 'tipo',
+      precioUSD: 'precioUSD',
+      agotado: 'agotado',
+    },
+    prepare({ title, house, media, ml, tipo, precioUSD, agotado }) {
+      const tipoAbbr = {
+        'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC',
+        'Parfum': 'Parfum', 'Extrait de Parfum': 'Extrait', 'Elixir': 'Elixir',
+      }[tipo] ?? tipo
+      const parts = [house, ml ? `${ml}ml` : null, tipoAbbr, precioUSD ? `$${precioUSD}` : null].filter(Boolean)
+      return {
+        title,
+        subtitle: (agotado ? '⛔ Agotado · ' : '') + parts.join(' · '),
+        media,
+      }
     },
   },
 }

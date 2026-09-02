@@ -5,9 +5,11 @@ import { useIndexProducts } from '../context/SanityProductsContext'
 import VitrinaCard from '../components/VitrinaCard'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
+import { useAuth } from '../context/AuthContext'
 import { COLECCIONES, coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
+import { excludeVariantDuplicates } from '../lib/variants'
 
 const PAGE_SIZE = 48
 
@@ -178,8 +180,8 @@ function PriceRangeSlider({ min, max, value, onChange, step = 5 }) {
   )
 }
 
-function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds }) {
-  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false })
+function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloPromoVerano, setSoloPromoVerano }) {
+  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false, estado: true, verano: true })
   const toggle = k => setOpen(s => ({ ...s, [k]: !s[k] }))
 
   const marcas = useMemo(() => [...new Set(basePool.map(p => p.house))].sort(), [basePool])
@@ -251,6 +253,30 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
         ))}
       </SidebarSection>
 
+      {/* Promo Verano */}
+      {basePool.some(p => p.promoVerano) && (
+        <SidebarSection title="Promo Verano" open={open.verano} onToggle={() => toggle('verano')}>
+          <GoldCheckbox
+            label="Promo Verano"
+            checked={soloPromoVerano}
+            onToggle={() => setSoloPromoVerano(v => !v)}
+            count={basePool.filter(p => p.promoVerano).length}
+          />
+        </SidebarSection>
+      )}
+
+      {/* Estado — solo admin */}
+      {isAdmin && (
+        <SidebarSection title="Estado" open={open.estado} onToggle={() => toggle('estado')}>
+          <GoldCheckbox
+            label="Solo agotados"
+            checked={soloAgotados}
+            onToggle={() => setSoloAgotados(v => !v)}
+            count={basePool.filter(p => p.agotado).length}
+          />
+        </SidebarSection>
+      )}
+
       {/* Concentración */}
       <SidebarSection title="Concentración" open={open.concentracion} onToggle={() => toggle('concentracion')}>
         {TIPO_OPTIONS.filter(opt => basePool.some(p => p.tipo === opt.value)).map(opt => (
@@ -317,7 +343,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
   )
 }
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloPromoVerano, setSoloPromoVerano }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -483,6 +509,30 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
         ))}
       </div>
 
+      {productPool.some(p => p.promoVerano) && (
+        <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
+          {sectionLabel('Promo Verano')}
+          <GoldCheckbox
+            label="Promo Verano"
+            checked={soloPromoVerano}
+            onToggle={() => setSoloPromoVerano(v => !v)}
+            count={productPool.filter(p => p.promoVerano).length}
+          />
+        </div>
+      )}
+
+      {isAdmin && (
+        <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
+          {sectionLabel('Estado')}
+          <GoldCheckbox
+            label="Solo agotados"
+            checked={soloAgotados}
+            onToggle={() => setSoloAgotados(v => !v)}
+            count={productPool.filter(p => p.agotado).length}
+          />
+        </div>
+      )}
+
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
@@ -537,6 +587,8 @@ export default function Tienda() {
   const products = useIndexProducts()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const { session } = useAuth()
+  const isAdmin = !!session
   const isDark = theme === 'dark'
   const C = {
     bg:       isDark ? '#0A0A0A'               : '#EAE0CC',
@@ -556,6 +608,8 @@ export default function Tienda() {
   const [sortBy, setSortBy]           = useState('featured')
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [selectedTipos, setSelectedTipos]   = useState([])
+  const [soloAgotados, setSoloAgotados]     = useState(false)
+  const [soloPromoVerano, setSoloPromoVerano] = useState(false)
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
   const [priceRange, setPriceRange]   = useState(() => {
@@ -588,12 +642,12 @@ export default function Tienda() {
   const toggleTipo  = v => startTransition(() => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v])))
 
   const basePool = useMemo(() => {
-    let pool = products.filter(p => p.ml !== 200 || !p.variantIds)
+    let pool = excludeVariantDuplicates(products)
     if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
     if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
     return pool
-  }, [urlGenero, urlTipo, coleccionData])
+  }, [products, urlGenero, urlTipo, coleccionData])
 
   const priceBounds = useMemo(() => {
     const prices = basePool.map(p => p.precioUSD).filter(v => v > 0)
@@ -625,20 +679,22 @@ export default function Tienda() {
   }
 
   const isPriceFiltered = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1]
-  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered
+  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados || soloPromoVerano
   const clearFilters = () => {
-    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([])
+    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false); setSoloPromoVerano(false)
     setPriceRange(priceBounds)
     const params = new URLSearchParams(searchParams)
     params.delete('precioMin'); params.delete('precioMax')
     setSearchParams(params, { replace: true })
   }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0) + (soloPromoVerano ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...basePool]
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
+    if (isAdmin && soloAgotados) result = result.filter(p => p.agotado)
+    if (soloPromoVerano) result = result.filter(p => p.promoVerano)
     if (isPriceFiltered) result = result.filter(p => (p.precioUSD || 0) >= priceRange[0] && (p.precioUSD || 0) <= priceRange[1])
     if (searchQuery.trim()) {
       const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
@@ -657,7 +713,7 @@ export default function Tienda() {
     if (sortBy === 'price-asc')  result.sort((a, b) => (a.precioUSD || 9999) - (b.precioUSD || 9999))
     if (sortBy === 'price-desc') result.sort((a, b) => (b.precioUSD || 0) - (a.precioUSD || 0))
     return result
-  }, [basePool, selectedMarcas, selectedTipos, searchQuery, sortBy, priceRange, priceBounds])
+  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, soloPromoVerano, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
@@ -690,8 +746,8 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds }
-  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloPromoVerano, setSoloPromoVerano }
+  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloPromoVerano, setSoloPromoVerano }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
@@ -881,7 +937,8 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              ribbon={currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
+                              ribbon={product.promoVerano ? 'Promo Verano' : currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
+                              ribbonVariant={product.promoVerano ? 'verano' : null}
                             />
                           </div>
                         ))}

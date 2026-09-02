@@ -31,7 +31,7 @@ const client = createClient({
 
 const QUERY = `*[_type == "product"] | order(id asc) {
   id, house, name, image, sanityImage, familia, tipo, genero,
-  ml, precioUSD, descuento, categoria, variantIds, descripcion,
+  ml, precioUSD, descuento, agotado, promoVerano, precioPromoVerano, categoria, "variantIds": variantIds[]->id, descripcion,
   notasSalida, notasCorazon, notasFondo, acordes,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche
 }`
@@ -69,6 +69,17 @@ function toArr(val) {
   return val.split(',').map(n => n.trim()).filter(Boolean)
 }
 
+// Si la Promo Verano está activa y tiene un precio propio, ese precio pasa a
+// ser el precio efectivo (obj.precioUSD) y el original queda guardado aparte
+// en precioOriginalUSD. Al desactivar la promo (o borrar el precio promo en
+// Sanity), esto deja de aplicarse y el precio normal vuelve solo.
+function applyPromoVerano(p, obj) {
+  if (p.promoVerano && p.precioPromoVerano != null) {
+    obj.precioOriginalUSD = obj.precioUSD
+    obj.precioUSD = p.precioPromoVerano
+  }
+}
+
 // ── products-index.js ────────────────────────────────────────────────────────
 const indexProducts = raw.map(p => {
   const obj = {
@@ -83,8 +94,11 @@ const indexProducts = raw.map(p => {
     precioUSD: p.precioUSD ?? null,
     categoria: p.categoria ?? null,
   }
-  if (p.variantIds?.length) obj.variantIds = p.variantIds
-  if (p.descuento)          obj.descuento  = p.descuento
+  if (p.variantIds?.length) obj.variantIds  = p.variantIds
+  if (p.descuento)          obj.descuento   = p.descuento
+  if (p.agotado)            obj.agotado     = true
+  if (p.promoVerano)        obj.promoVerano = true
+  applyPromoVerano(p, obj)
   return obj
 })
 
@@ -124,8 +138,11 @@ const enrichedProducts = raw.map(p => {
     precioUSD: p.precioUSD ?? null,
     categoria: p.categoria ?? null,
   }
-  if (p.variantIds?.length) obj.variantIds = p.variantIds
-  if (p.descuento)          obj.descuento  = p.descuento
+  if (p.variantIds?.length) obj.variantIds  = p.variantIds
+  if (p.descuento)          obj.descuento   = p.descuento
+  if (p.agotado)            obj.agotado     = true
+  if (p.promoVerano)        obj.promoVerano = true
+  applyPromoVerano(p, obj)
   return obj
 })
 

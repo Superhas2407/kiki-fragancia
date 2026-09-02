@@ -63,6 +63,9 @@ Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `pr
 | `acordes` | array `{label, pct}` | Hasta 4 acordes — dropdown con 27 labels válidos. Si están en Sanity, reemplazan los hardcodeados. |
 | `cuandoEpocaSeca`, `cuandoLluviosa`, `cuandoDia`, `cuandoNoche` | boolean | Cuándo usar — si alguno está en Sanity, reemplaza el hardcodeado |
 | `descuento` | number | Porcentaje de descuento activo (1-99). Sanity tiene prioridad sobre el hardcodeado en `dia-del-padre.js`. Dejar vacío si no hay descuento. |
+| `agotado` | boolean | Sin stock — el sitio muestra badge "Agotado" y desactiva la compra. |
+| `promoVerano` | boolean | Marca el producto en la campaña Promo Verano — el sitio muestra automáticamente la cinta "Promo Verano" y habilita el filtro correspondiente en `/tienda`. Paleta propia de campaña (`vitrina-ribbon--verano` / `vitrina-price-badge--verano` / `pd-ddp-strip--verano`): gradiente atardecer coral→ámbar `#FF7A45 → #FFC15E` + resplandor turquesa `rgba(45,181,168,…)` + ícono de sol (`SunIcon` en `VitrinaCard.jsx`) — **excepción intencional a la regla gold-only**, igual que el azul de Día del Padre. No cambiar a dorado plano. |
+| `precioPromoVerano` | number | Precio especial mientras `promoVerano` esté activo. **No reemplaza `precioUSD`** — el precio normal queda guardado intacto. Mientras la promo esté activa, el sitio muestra y cobra `precioPromoVerano` (guardando el normal en `precioOriginalUSD` para el tachado); al desactivar `promoVerano` o borrar este campo, el precio normal vuelve solo, sin tocar nada más. Solo visible en Studio cuando `promoVerano` está activo. |
 
 ### Flujo para agregar o editar un producto
 1. En Studio: crear/editar el documento → **Publish**
@@ -265,7 +268,7 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 - **Desktop (≥1024px):** sidebar sticky 220px con acordeones: Género (DDP button + radio), **Precio**, Categoría, Concentración, Por ocasión, Marca. Topbar con conteo + select Ordenar.
 - **Mobile:** barra `Filtrar | Ordenar` (transparent select overlay). Drawer con Género incluido (radio DDP + opciones) + **Precio**.
 - **Barra de precio dual:** `PriceRangeSlider` — dos `<input type="range">` superpuestos sobre un track div. El relleno dorado (`.price-slider-fill`) se ajusta con `left: pct(lo)%` y `right: (100-pct(hi))%`. `priceBounds` se deriva de `basePool` vía `useMemo`; **CRÍTICO: `basePool` debe declararse antes que `priceBounds`** (temporal dead zone). `useEffect` sincroniza `priceRange` cuando `priceBounds` cambian.
-- **Productos 200ml:** se excluyen del grid si tienen `variantIds`. Filtro: `p.ml !== 200 || !p.variantIds`.
+- **Variantes (otras presentaciones):** un producto listado en el `variantIds` de otro se excluye del grid — solo se muestra el producto "canónico" (el que tiene `variantIds`), con un selector de tamaño (`.vitrina-size-pills` en `VitrinaCard`) para elegir entre sus presentaciones. Helper: `excludeVariantDuplicates()` en `src/lib/variants.js`, usado en `basePool` de `Tienda.jsx`.
 
 ## Slugs / URLs de productos
 - `src/lib/slugs.js` — `toSlug(house, name, ml)`:

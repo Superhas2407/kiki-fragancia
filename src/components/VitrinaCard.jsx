@@ -56,6 +56,21 @@ const CheckIcon = () => (
     <polyline points="20 6 9 17 4 12" />
   </svg>
 )
+export const SunIcon = ({ size = 10 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline', verticalAlign: '-1px', marginRight: 3 }}>
+    <circle cx="12" cy="12" r="4.5" />
+    <g stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4.5" />
+      <line x1="12" y1="19.5" x2="12" y2="22.5" />
+      <line x1="1.5" y1="12" x2="4.5" y2="12" />
+      <line x1="19.5" y1="12" x2="22.5" y2="12" />
+      <line x1="4.5" y1="4.5" x2="6.6" y2="6.6" />
+      <line x1="17.4" y1="17.4" x2="19.5" y2="19.5" />
+      <line x1="4.5" y1="19.5" x2="6.6" y2="17.4" />
+      <line x1="17.4" y1="6.6" x2="19.5" y2="4.5" />
+    </g>
+  </svg>
+)
 
 export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
@@ -68,6 +83,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   const [added, setAdded] = useState(false)
 
   const wishlisted = isWishlisted(product.id)
+  const agotado = !!product?.agotado
 
   function handleWishlist(e) {
     e.preventDefault()
@@ -98,6 +114,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   function handleAdd(e) {
     e.stopPropagation()
     e.preventDefault()
+    if (agotado) return
     addItem(product)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
@@ -124,6 +141,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               src={imgSrc}
               alt={`${product.house} ${product.name}`}
               className="vitrina-img"
+              style={agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : undefined}
             />
           ) : (
             <div className="vitrina-placeholder">
@@ -139,9 +157,17 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           <span className="badge-regalo">{badge}</span>
         )}
 
-        {ribbon && (
+        {agotado ? (
+          <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
+            <span>Agotado</span>
+          </div>
+        ) : ribbon ? (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
-            <span>{ribbon}</span>
+            <span>{ribbonVariant === 'verano' && <SunIcon />}{ribbon}</span>
+          </div>
+        ) : product?.promoVerano && (
+          <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
+            <span><SunIcon />Promo Verano</span>
           </div>
         )}
 
@@ -164,24 +190,26 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
         </button>
 
         {/* Quick-add CTA */}
-        <button
-          type="button"
-          className={`vitrina-quick-add${hover ? ' visible' : ''}${added ? ' added' : ''}`}
-          onClick={handleAdd}
-          aria-label={added ? 'Agregado al carrito' : 'Agregar al carrito'}
-        >
-          {added ? (
-            <>
-              <CheckIcon />
-              <span>Agregado</span>
-            </>
-          ) : (
-            <>
-              <PlusIcon />
-              <span>Carrito</span>
-            </>
-          )}
-        </button>
+        {!agotado && (
+          <button
+            type="button"
+            className={`vitrina-quick-add${hover ? ' visible' : ''}${added ? ' added' : ''}`}
+            onClick={handleAdd}
+            aria-label={added ? 'Agregado al carrito' : 'Agregar al carrito'}
+          >
+            {added ? (
+              <>
+                <CheckIcon />
+                <span>Agregado</span>
+              </>
+            ) : (
+              <>
+                <PlusIcon />
+                <span>Carrito</span>
+              </>
+            )}
+          </button>
+        )}
       </div>
 
       <div className="vitrina-info">
@@ -195,6 +223,23 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           </span>
         </div>
         <h3 className="vitrina-name">{displayName}</h3>
+        {variants.length > 0 && (
+          <div className="vitrina-size-pills">
+            {[product, ...variants]
+              .sort((a, b) => a.ml - b.ml)
+              .map(v => (
+                <button
+                  key={v.id}
+                  type="button"
+                  className={`vitrina-size-pill${v.id === product.id ? ' active' : ''}`}
+                  onClick={e => handleVariant(e, v.id)}
+                  disabled={v.id === product.id}
+                >
+                  {v.ml}ml
+                </button>
+              ))}
+          </div>
+        )}
         {(() => {
           const allPrices = variants.length > 1
             ? variants.map(v => v.precioUSD).filter(p => p > 0)
@@ -227,12 +272,19 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
+                ) : product.promoVerano ? (
+                  <span className="vitrina-price-badge vitrina-price-badge--verano"><SunIcon size={9} />Promo Verano</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
                   {hasRange ? 'Desde ' : ''}REF: {minPrice}
                 </span>
+                {!hasRange && product.precioOriginalUSD > minPrice && (
+                  <span style={{ fontSize: 12, opacity: 0.5, textDecoration: 'line-through', marginLeft: 6 }}>
+                    REF: {product.precioOriginalUSD}
+                  </span>
+                )}
               </div>
             </div>
           )
