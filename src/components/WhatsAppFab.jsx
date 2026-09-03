@@ -46,7 +46,7 @@ export default function WhatsAppFab() {
       aria-label="Consultar por WhatsApp"
       style={{
         position: 'fixed',
-        bottom: 'calc(60px + env(safe-area-inset-bottom) + 16px)',
+        bottom: 'calc(60px + env(safe-area-inset-bottom) + 16px + var(--odd-bar-h, 0px))',
         right: 20,
         zIndex: 200,
         width: 56,
