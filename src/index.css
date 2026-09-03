@@ -494,7 +494,7 @@
   .vitrina-ribbon--ddp > span {
     font-size: 7px;
   }
-  .vitrina-ribbon--verano > span {
+  .vitrina-ribbon--halloween > span {
     font-size: 7px;
   }
 }
@@ -1843,10 +1843,10 @@
     padding: 10px 16px;
     grid-column: 1 / -1;
   }
-  .pd-ddp-strip--verano {
-    background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
-    color: #3A1300;
-    box-shadow: inset 0 -2px 12px rgba(45,181,168,0.35);
+  .pd-ddp-strip--halloween {
+    background: linear-gradient(90deg, #FF7A18, #3D1766 60%, #FF7A18);
+    color: #FFF3E0;
+    box-shadow: inset 0 -2px 12px rgba(107,47,160,0.4);
   }
 }
 
@@ -2656,13 +2656,13 @@
   font-size: 10px;
 }
 
-/* Variante Verano — atardecer coral con resplandor turquesa (paleta de campaña) */
-.vitrina-ribbon--verano > span {
-  background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
-  color: #3A1300;
+/* Variante Halloween — naranja calabaza a morado medianoche (paleta de campaña, admin-only) */
+.vitrina-ribbon--halloween > span {
+  background: linear-gradient(90deg, #FF7A18, #3D1766 60%, #FF7A18);
+  color: #FFF3E0;
   font-weight: 700;
   font-size: 10px;
-  box-shadow: 0 2px 18px rgba(45,181,168,0.5), 0 2px 14px rgba(0,0,0,0.4);
+  box-shadow: 0 2px 18px rgba(107,47,160,0.5), 0 2px 14px rgba(0,0,0,0.4);
 }
 
 
@@ -2679,7 +2679,7 @@
   .pd-img-wrap .vitrina-ribbon--ddp > span {
     font-size: 11px;
   }
-  .pd-img-wrap .vitrina-ribbon--verano > span {
+  .pd-img-wrap .vitrina-ribbon--halloween > span {
     font-size: 12px;
   }
 }
@@ -2911,12 +2911,12 @@
   background: linear-gradient(90deg, #0A2D72, #1A52CC 55%, #0A2D72);
   color: #E8F0FF;
 }
-.vitrina-price-badge--verano {
+.vitrina-price-badge--halloween {
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45);
-  color: #3A1300;
-  box-shadow: 0 2px 14px rgba(45,181,168,0.45), 0 2px 8px rgba(255,122,69,0.3);
+  background: linear-gradient(90deg, #FF7A18, #3D1766 60%, #FF7A18);
+  color: #FFF3E0;
+  box-shadow: 0 2px 14px rgba(107,47,160,0.45), 0 2px 8px rgba(255,122,24,0.3);
 }
 .vitrina-price-usd--big {
   font-size: 27px !important;
@@ -3992,7 +3992,7 @@
 [data-theme='warm'] .vitrina-price,
 [data-theme='warm'] .vitrina-price-usd { color: var(--gold-ink) !important; }
 [data-theme='warm'] .vitrina-meta { color: var(--ink-faint) !important; }
-[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp):not(.vitrina-price-badge--verano) {
+[data-theme='warm'] .vitrina-price-badge:not(.vitrina-price-badge--ddp):not(.vitrina-price-badge--halloween) {
   background: var(--gold) !important;
   color: var(--gold-fill-ink) !important;
 }

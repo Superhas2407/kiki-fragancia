@@ -1,13 +1,21 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { products as localProducts } from '../data/products-index'
 import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
+import { useAuth } from './AuthContext'
 
-const QUERY = `*[_type == "product"] | order(id asc) {
-  id, precioUSD, descuento, agotado, promoVerano, precioPromoVerano, name, house, image, sanityImage, genero, familia,
+const BASE_FIELDS = `
+  id, precioUSD, descuento, agotado, name, house, image, sanityImage, genero, familia,
   tipo, categoria, ml, "variantIds": variantIds[]->id, acordes, descripcion,
   cuandoEpocaSeca, cuandoLluviosa, cuandoDia, cuandoNoche,
   notasSalida, notasCorazon, notasFondo
-}`
+`
+
+// promoHalloween / precioPromoHalloween solo se piden cuando hay sesión admin —
+// así ni siquiera viajan por la red hacia un visitante anónimo.
+function buildQuery(isAdmin) {
+  const adminFields = isAdmin ? ', promoHalloween, precioPromoHalloween' : ''
+  return `*[_type == "product"] | order(id asc) { ${BASE_FIELDS}${adminFields} }`
+}
 
 const Ctx = createContext(null)
 
@@ -22,9 +30,11 @@ export function resolveProductImage(p) {
 
 export function SanityProductsProvider({ children }) {
   const [indexProducts, setIndexProducts] = useState(localProducts)
+  const { session } = useAuth()
+  const isAdmin = !!session
 
   useEffect(() => {
-    sanityClient.fetch(QUERY)
+    sanityClient.fetch(buildQuery(isAdmin))
       .then(sanityProducts => {
         console.log('[Sanity] productos recibidos:', sanityProducts?.length)
         if (!sanityProducts?.length) return
@@ -42,15 +52,16 @@ export function SanityProductsProvider({ children }) {
             // variantIds: prefer local (already there) unless Sanity explicitly sets it
             variantIds: sp.variantIds?.length ? sp.variantIds : local.variantIds,
           }
-          // Promo Verano: mientras esté activa y tenga precio propio, ese precio
-          // pasa a ser el precio efectivo (precioUSD); el original queda en
-          // precioOriginalUSD. Al desactivar la promo en Sanity, esto deja de
-          // aplicarse solo — el precio normal vuelve sin tocar nada más.
-          if (sp.promoVerano && sp.precioPromoVerano != null) {
+          // Oferta Halloween — admin-only. isAdmin ya decide si estos campos
+          // siquiera vinieron en la respuesta de Sanity; esta es la segunda
+          // barrera: aunque llegaran, nunca se aplican ni se exponen sin sesión.
+          if (isAdmin && sp.promoHalloween && sp.precioPromoHalloween != null) {
             p.precioOriginalUSD = p.precioUSD
-            p.precioUSD = sp.precioPromoVerano
+            p.precioUSD = sp.precioPromoHalloween
           } else {
             delete p.precioOriginalUSD
+            delete p.promoHalloween
+            delete p.precioPromoHalloween
           }
           return p
         })
@@ -58,7 +69,7 @@ export function SanityProductsProvider({ children }) {
         setIndexProducts(merged.filter(p => p.id && p.name && p.house))
       })
       .catch((e) => console.error('[Sanity] fetch failed:', e))
-  }, [])
+  }, [isAdmin])
 
   return <Ctx.Provider value={indexProducts}>{children}</Ctx.Provider>
 }

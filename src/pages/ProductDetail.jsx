@@ -12,7 +12,7 @@ import { norm } from '../lib/search'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { SunIcon as VeranoSunIcon } from '../components/VitrinaCard'
+import { PumpkinIcon } from '../components/VitrinaCard'
 
 // SVG icons per note family — no emoji, consistent with luxury aesthetic
 const NOTE_ICONS = {
@@ -1198,7 +1198,7 @@ export default function ProductDetail() {
     notasFondo:     liveData?.notasFondo     ?? baseProduct.notasFondo,
     descuento:      liveData?.descuento      ?? baseProduct?.descuento ?? null,
     agotado:        liveData?.agotado        ?? baseProduct?.agotado ?? false,
-    promoVerano:    liveData?.promoVerano     ?? baseProduct?.promoVerano ?? false,
+    promoHalloween: liveData?.promoHalloween  ?? baseProduct?.promoHalloween ?? false,
     precioOriginalUSD: liveData?.precioOriginalUSD ?? baseProduct?.precioOriginalUSD ?? null,
     _sanityAcordes: liveData?.acordes?.length ? liveData.acordes : null,
     _sanityWhen: (liveData?.cuandoEpocaSeca != null || liveData?.cuandoLluviosa != null ||
@@ -1390,9 +1390,9 @@ export default function ProductDetail() {
                     <div className="vitrina-ribbon" aria-hidden="true">
                       <span>{product.descuento}% DESCUENTO</span>
                     </div>
-                  ) : product.promoVerano && (
-                    <div className="vitrina-ribbon vitrina-ribbon--verano" aria-hidden="true">
-                      <span><VeranoSunIcon />Promo Verano</span>
+                  ) : product.promoHalloween && (
+                    <div className="vitrina-ribbon vitrina-ribbon--halloween" aria-hidden="true">
+                      <span><PumpkinIcon />Oferta Halloween</span>
                     </div>
                   )}
 
@@ -1414,9 +1414,9 @@ export default function ProductDetail() {
                   {product.descuento}% DESCUENTO
                 </div>
               )}
-              {!product.agotado && currency === 'usd' && !product.descuento && product.promoVerano && product.precioOriginalUSD > product.precioUSD && (
-                <div className="pd-ddp-strip pd-ddp-strip--verano">
-                  <VeranoSunIcon size={11} /> PROMO VERANO
+              {!product.agotado && currency === 'usd' && !product.descuento && product.promoHalloween && product.precioOriginalUSD > product.precioUSD && (
+                <div className="pd-ddp-strip pd-ddp-strip--halloween">
+                  <PumpkinIcon size={11} /> OFERTA HALLOWEEN
                 </div>
               )}
 
@@ -1440,7 +1440,7 @@ export default function ProductDetail() {
                     )
                   }
                   const discPct = product.descuento
-                  const isVerano = !discPct && product.promoVerano && product.precioOriginalUSD > product.precioUSD
+                  const isHalloween = !discPct && product.promoHalloween && product.precioOriginalUSD > product.precioUSD
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
@@ -1448,11 +1448,11 @@ export default function ProductDetail() {
                     background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
                     padding: '4px 12px', display: 'inline-block',
                   }
-                  const veranoBadgeStyle = {
+                  const halloweenBadgeStyle = {
                     ...badgeStyle,
-                    color: '#3A1300',
-                    background: 'linear-gradient(90deg, #FF7A45, #FFC15E 50%, #FF7A45)',
-                    boxShadow: '0 2px 16px rgba(45,181,168,0.45), 0 2px 10px rgba(255,122,69,0.35)',
+                    color: '#FFF3E0',
+                    background: 'linear-gradient(90deg, #FF7A18, #3D1766 60%, #FF7A18)',
+                    boxShadow: '0 2px 16px rgba(107,47,160,0.5), 0 2px 10px rgba(255,122,24,0.35)',
                   }
                   return (
                     <div className="pd-price" style={rv(350)}>
@@ -1470,10 +1470,10 @@ export default function ProductDetail() {
                             · Solo en divisa
                           </span>
                         </>
-                      ) : isVerano ? (
+                      ) : isHalloween ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
-                            <span style={veranoBadgeStyle}><VeranoSunIcon size={11} /> PROMO VERANO</span>
+                            <span style={halloweenBadgeStyle}><PumpkinIcon size={11} /> OFERTA HALLOWEEN</span>
                           </div>
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}
