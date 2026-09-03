@@ -309,9 +309,7 @@ export default function OfertaDelDia() {
           gap: 10px;
           height: 56px;
           padding: 0 40px 0 10px;
-          background: rgba(16,12,4,0.94);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          background: rgba(16,12,4,0.97);
           border-top: 1px solid rgba(201,168,76,0.35);
           cursor: pointer;
           animation: oddBarSlideUp 0.4s cubic-bezier(.22,.68,0,1.2) both;

@@ -1103,6 +1103,7 @@
   transition: transform .36s cubic-bezier(.4,0,.2,1);
   pointer-events: none; display: flex; flex-direction: column;
   overflow-y: auto;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 .kiki-mobile-menu.open { transform: translateX(0); pointer-events: auto; }
 .mobile-menu-header {
@@ -4729,6 +4730,7 @@
   transform: translateX(100%);
   transition: transform .35s cubic-bezier(.4,0,.2,1);
   overflow: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 .wl-drawer.open { transform: translateX(0); }
 .wl-header {
@@ -5558,6 +5560,7 @@
   overflow-y: auto;
   box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.22);
   animation: kiki-search-fade 0.22s ease-out;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* ── Barra superior ── */
