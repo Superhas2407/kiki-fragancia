@@ -670,7 +670,9 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 41;
-  height: 40px;
+  height: calc(40px + env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  box-sizing: border-box;
   background: linear-gradient(90deg, #040E24, #0A2D72 50%, #040E24);
   display: flex;
   align-items: center;
@@ -678,7 +680,7 @@
 }
 .announcement-bar-close {
   position: absolute;
-  right: 0; top: 0; bottom: 0;
+  right: 0; top: env(safe-area-inset-top, 0px); bottom: 0;
   width: 52px;
   background: linear-gradient(to left, #040E24 60%, transparent);
   border: none;
