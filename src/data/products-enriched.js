@@ -142,10 +142,8 @@ export const products = [
       "Especias frescas"
     ],
     "ml": 90,
-    "precioUSD": 40,
-    "categoria": "arabes",
-    "promoVerano": true,
-    "precioOriginalUSD": 45
+    "precioUSD": 45,
+    "categoria": "arabes"
   },
   {
     "id": 6,
@@ -4425,10 +4423,8 @@ export const products = [
       "almizcle"
     ],
     "ml": 75,
-    "precioUSD": 45,
-    "categoria": "arabes",
-    "promoVerano": true,
-    "precioOriginalUSD": 60
+    "precioUSD": 60,
+    "categoria": "arabes"
   },
   {
     "id": 153,
@@ -4452,10 +4448,8 @@ export const products = [
       "Caramelo"
     ],
     "ml": 75,
-    "precioUSD": 45,
-    "categoria": "arabes",
-    "promoVerano": true,
-    "precioOriginalUSD": 60
+    "precioUSD": 60,
+    "categoria": "arabes"
   },
   {
     "id": 154,
@@ -4512,10 +4506,8 @@ export const products = [
       "Azúcar"
     ],
     "ml": 75,
-    "precioUSD": 45,
-    "categoria": "arabes",
-    "promoVerano": true,
-    "precioOriginalUSD": 60
+    "precioUSD": 60,
+    "categoria": "arabes"
   },
   {
     "id": 156,
@@ -8200,10 +8192,8 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 110,
-    "categoria": "disenador",
-    "promoVerano": true,
-    "precioOriginalUSD": 135
+    "precioUSD": 135,
+    "categoria": "disenador"
   },
   {
     "id": 286,
@@ -9872,14 +9862,12 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 35,
     "categoria": "disenador",
     "variantIds": [
       344
     ],
-    "descuento": 20,
-    "promoVerano": true,
-    "precioOriginalUSD": 35
+    "descuento": 20
   },
   {
     "id": 344,
@@ -9907,10 +9895,8 @@ export const products = [
       "Sándalo"
     ],
     "ml": 200,
-    "precioUSD": 40,
-    "categoria": "disenador",
-    "promoVerano": true,
-    "precioOriginalUSD": 45
+    "precioUSD": 45,
+    "categoria": "disenador"
   },
   {
     "id": 345,
@@ -12840,10 +12826,8 @@ export const products = [
       "pachulí"
     ],
     "ml": 80,
-    "precioUSD": 195,
-    "categoria": "disenador",
-    "promoVerano": true,
-    "precioOriginalUSD": 200
+    "precioUSD": 200,
+    "categoria": "disenador"
   },
   {
     "id": 445,

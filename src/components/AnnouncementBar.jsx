@@ -10,8 +10,10 @@ export default function AnnouncementBar() {
   })
   useEffect(() => {
     const root = document.documentElement
-    root.style.setProperty('--bar-h', barClosed ? '0px' : `${BAR_H}px`)
-    return () => root.style.setProperty('--bar-h', '0px')
+    root.style.setProperty('--bar-h', barClosed
+      ? 'env(safe-area-inset-top, 0px)'
+      : `calc(${BAR_H}px + env(safe-area-inset-top, 0px))`)
+    return () => root.style.setProperty('--bar-h', 'env(safe-area-inset-top, 0px)')
   }, [barClosed])
 
   function closeBar() {

@@ -23,11 +23,21 @@ export default function OfertaDelDia() {
   const products = useIndexProducts()
   const navigate = useNavigate()
   const { currency } = useCurrency()
-  const { tasa } = useTasaCambio()
+  const tasa = useTasaCambio()
   const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
   const [visible, setVisible] = useState(true)
 
   const product = products.find(p => p.id === OFERTA_ID)
+  const active = !!product && visible
+
+  useEffect(() => {
+    const root = document.documentElement
+    // Solo la barra móvil ocupa espacio junto al WhatsApp fab — la card
+    // desktop vive del lado izquierdo y no lo necesita, pero el offset
+    // extra ahí es inofensivo (solo sube un poco más el fab).
+    root.style.setProperty('--odd-bar-h', active ? '56px' : '0px')
+    return () => root.style.setProperty('--odd-bar-h', '0px')
+  }, [active])
 
   useEffect(() => {
     const tick = () => {
@@ -45,81 +55,100 @@ export default function OfertaDelDia() {
     return () => clearInterval(id)
   }, [])
 
-  if (!product || !visible) return null
+  if (!active) return null
 
   const precio = currency === 'bs' && tasa
     ? `${Math.round(product.precioUSD * tasa).toLocaleString('es-VE')} Bs`
     : `REF ${product.precioUSD}`
 
-  const slug = toSlug(product.house || 'lattafa', product.name, product.ml)
+  const slug = toSlug(product.house, product.name, product.ml)
+
+  function goToProduct() {
+    navigate(`/tienda/${slug}`)
+  }
+
+  function close(e) {
+    e.stopPropagation()
+    setVisible(false)
+  }
 
   return (
-    <div className="odd-wrapper">
-      <div className="odd-card">
-        {/* Botón cerrar */}
-        <button className="odd-close" onClick={() => setVisible(false)} aria-label="Cerrar">✕</button>
-
-        {/* Badge */}
-        <div className="odd-badge">🔥 OFERTA DEL DÍA</div>
-
-        {/* Imagen */}
-        <div className="odd-img-wrap" onClick={() => navigate(`/tienda/${slug}`)}>
-          <img
-            src={`/products/${product.image}`}
-            alt={product.name}
-            className="odd-img"
-          />
-        </div>
-
-        {/* Info */}
-        <div className="odd-info">
-          <p className="odd-house">Lattafa</p>
-          <h2 className="odd-name">Khamrah Dukhan</h2>
-          <p className="odd-sub">100ml · Oriental · Unisex</p>
-
-          <div className="odd-price-row">
-            <span className="odd-price">{precio}</span>
+    <>
+      {/* Desktop (≥1024px): card completa */}
+      <div className="odd-wrapper">
+        <div className="odd-card">
+          <button className="odd-close" onClick={() => setVisible(false)} aria-label="Cerrar">✕</button>
+          <div className="odd-badge">🔥 OFERTA DEL DÍA</div>
+          <div className="odd-img-wrap" onClick={goToProduct}>
+            <img src={`/products/${product.image}`} alt={product.name} className="odd-img" />
           </div>
-
-          {/* Countdown */}
-          <div className="odd-countdown">
-            <span className="odd-countdown-label">Termina en</span>
-            <div className="odd-timer">
-              <div className="odd-timer-block">
-                <span className="odd-timer-num">{pad(timeLeft.h)}</span>
-                <span className="odd-timer-unit">h</span>
-              </div>
-              <span className="odd-timer-sep">:</span>
-              <div className="odd-timer-block">
-                <span className="odd-timer-num">{pad(timeLeft.m)}</span>
-                <span className="odd-timer-unit">m</span>
-              </div>
-              <span className="odd-timer-sep">:</span>
-              <div className="odd-timer-block">
-                <span className="odd-timer-num">{pad(timeLeft.s)}</span>
-                <span className="odd-timer-unit">s</span>
+          <div className="odd-info">
+            <p className="odd-house">{product.house}</p>
+            <h2 className="odd-name">{product.name}</h2>
+            <p className="odd-sub">{product.ml ? `${product.ml}ml` : ''}{product.familia ? ` · ${product.familia}` : ''}{product.genero ? ` · ${product.genero}` : ''}</p>
+            <div className="odd-price-row">
+              <span className="odd-price">{precio}</span>
+            </div>
+            <div className="odd-countdown">
+              <span className="odd-countdown-label">Termina en</span>
+              <div className="odd-timer">
+                <div className="odd-timer-block">
+                  <span className="odd-timer-num">{pad(timeLeft.h)}</span>
+                  <span className="odd-timer-unit">h</span>
+                </div>
+                <span className="odd-timer-sep">:</span>
+                <div className="odd-timer-block">
+                  <span className="odd-timer-num">{pad(timeLeft.m)}</span>
+                  <span className="odd-timer-unit">m</span>
+                </div>
+                <span className="odd-timer-sep">:</span>
+                <div className="odd-timer-block">
+                  <span className="odd-timer-num">{pad(timeLeft.s)}</span>
+                  <span className="odd-timer-unit">s</span>
+                </div>
               </div>
             </div>
+            <button className="odd-cta" onClick={goToProduct}>Ver fragancia →</button>
           </div>
-
-          <button className="odd-cta" onClick={() => navigate(`/tienda/${slug}`)}>
-            Ver fragancia →
-          </button>
         </div>
       </div>
 
+      {/* Mobile (<1024px): barra delgada, no invasiva */}
+      <div
+        className="odd-bar"
+        onClick={goToProduct}
+        role="button"
+        tabIndex={0}
+        onKeyDown={e => { if (e.key === 'Enter') goToProduct() }}
+      >
+        <div className="odd-bar-thumb">
+          <img src={`/products/${product.image}`} alt={product.name} loading="lazy" />
+        </div>
+        <div className="odd-bar-info">
+          <span className="odd-bar-tag">🔥 Oferta del día</span>
+          <span className="odd-bar-name">{product.house} {product.name}</span>
+        </div>
+        <div className="odd-bar-right">
+          <span className="odd-bar-price">{precio}</span>
+          <span className="odd-bar-timer">{pad(timeLeft.h)}:{pad(timeLeft.m)}:{pad(timeLeft.s)}</span>
+        </div>
+        <span className="odd-bar-arrow" aria-hidden="true">→</span>
+        <button className="odd-bar-close" onClick={close} aria-label="Cerrar oferta del día">✕</button>
+      </div>
+
       <style>{`
+        /* ── Desktop: card completa (oculta por defecto, visible ≥1024px) ── */
         .odd-wrapper {
-          position: fixed;
-          bottom: 80px;
-          left: 12px;
-          z-index: 9990;
-          animation: oddSlideIn 0.5s cubic-bezier(.22,.68,0,1.2) both;
+          display: none;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           .odd-wrapper {
+            display: block;
+            position: fixed;
             bottom: 32px;
             left: 24px;
+            z-index: 9990;
+            animation: oddSlideIn 0.5s cubic-bezier(.22,.68,0,1.2) both;
           }
         }
         @keyframes oddSlideIn {
@@ -268,7 +297,108 @@ export default function OfertaDelDia() {
         .odd-cta:hover {
           background: #d4b660;
         }
+
+        /* ── Mobile (<1024px): barra delgada, no invasiva ── */
+        .odd-bar {
+          position: fixed;
+          left: 0; right: 0;
+          bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+          z-index: 45;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          height: 56px;
+          padding: 0 40px 0 10px;
+          background: rgba(16,12,4,0.97);
+          border-top: 1px solid rgba(201,168,76,0.35);
+          cursor: pointer;
+          animation: oddBarSlideUp 0.4s cubic-bezier(.22,.68,0,1.2) both;
+        }
+        @media (min-width: 1024px) {
+          .odd-bar { display: none; }
+        }
+        @keyframes oddBarSlideUp {
+          from { transform: translateY(100%); opacity: 0; }
+          to   { transform: translateY(0);    opacity: 1; }
+        }
+        .odd-bar-thumb {
+          flex-shrink: 0;
+          width: 40px;
+          height: 40px;
+          border-radius: 8px;
+          background: #0A0804;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .odd-bar-thumb img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+        .odd-bar-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2px;
+          min-width: 0;
+          flex: 1;
+        }
+        .odd-bar-tag {
+          color: #C9A84C;
+          font-size: 9.5px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+        .odd-bar-name {
+          color: #F7F2EA;
+          font-size: 12.5px;
+          font-weight: 600;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .odd-bar-right {
+          flex-shrink: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          gap: 2px;
+        }
+        .odd-bar-price {
+          color: #C9A84C;
+          font-size: 13.5px;
+          font-weight: 700;
+        }
+        .odd-bar-timer {
+          color: rgba(247,242,234,0.55);
+          font-size: 10px;
+          font-variant-numeric: tabular-nums;
+        }
+        .odd-bar-arrow {
+          flex-shrink: 0;
+          color: #C9A84C;
+          font-size: 15px;
+        }
+        .odd-bar-close {
+          position: absolute;
+          top: 0; bottom: 0;
+          right: 6px;
+          width: 30px;
+          background: none;
+          border: none;
+          color: rgba(247,242,234,0.45);
+          font-size: 13px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .odd-bar-close:hover { color: rgba(247,242,234,0.85); }
       `}</style>
-    </div>
+    </>
   )
 }

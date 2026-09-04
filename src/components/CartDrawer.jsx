@@ -109,6 +109,7 @@ export default function CartDrawer() {
           flexDirection: 'column',
           transform: drawerOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)',
+          paddingTop: 'env(safe-area-inset-top, 0px)',
         }}
       >
         {/* Header del drawer */}
