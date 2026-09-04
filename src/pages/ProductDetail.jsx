@@ -10,6 +10,7 @@ import { useSanityProduct, useIndexProducts, resolveProductImage } from '../cont
 import { toSlug } from '../lib/slugs'
 import { norm } from '../lib/search'
 import { NOTES_IMAGES } from '../data/notes-images'
+import { trackViewContent, trackAddToCart, trackContact } from '../lib/pixel'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { SunIcon as VeranoSunIcon } from '../components/VitrinaCard'
@@ -1224,6 +1225,10 @@ export default function ProductDetail() {
     if (currentSlug !== id) navigate(`/tienda/${currentSlug}`, { replace: true })
   }, [id, product, numericId])
 
+  useEffect(() => {
+    if (product) trackViewContent(product)
+  }, [product?.id])
+
   if (!product) {
     return (
       <>
@@ -1291,6 +1296,7 @@ export default function ProductDetail() {
 
   function handleAdd() {
     addItem(product, qty)
+    trackAddToCart(product, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
   }
@@ -1575,7 +1581,7 @@ export default function ProductDetail() {
                     style={{ transform: waHover ? 'translateY(-2px)' : 'translateY(0)' }}
                     onMouseEnter={() => setWaHover(true)}
                     onMouseLeave={() => setWaHover(false)}
-                    onClick={() => { if (window.fbq) window.fbq('track', 'Contact') }}
+                    onClick={trackContact}
                   >
                     <WhatsAppIcon />
                     Consultar por WhatsApp

@@ -8,6 +8,7 @@ import VitrinaCard from '../components/VitrinaCard'
 import { useCartContext } from '../context/CartContext'
 import GiftWrapOverlay, { useShowWraps } from '../components/GiftWrapOverlay'
 import { toSlug } from '../lib/slugs'
+import { trackAddToCart } from '../lib/pixel'
 
 const WA_NUMBER = '584149112002'
 const WA_MSG = encodeURIComponent(
@@ -257,7 +258,7 @@ const todosLosMasculinos = diaDeLPadreIds
                   </Link>
                   <button
                     className="ddp-btn-outline"
-                    onClick={() => addItem(featured)}
+                    onClick={() => { addItem(featured); trackAddToCart(featured) }}
                   >
                     Agregar al carrito
                   </button>

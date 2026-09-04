@@ -6,6 +6,7 @@ import { useIndexProducts, resolveProductImage } from '../context/SanityProducts
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
 import { toSlug } from '../lib/slugs'
+import { trackAddToCart } from '../lib/pixel'
 
 // ============================================================
 // VitrinaCard v2 — Museum gallery treatment of a product
@@ -116,6 +117,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
     e.preventDefault()
     if (agotado) return
     addItem(product)
+    trackAddToCart(product)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
   }

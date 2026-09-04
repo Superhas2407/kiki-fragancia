@@ -6,6 +6,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useAuth } from '../context/AuthContext'
+import { trackAddToCart } from '../lib/pixel'
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -32,7 +33,7 @@ export default function WishlistDrawer() {
   const products = allProducts.filter(p => ids.includes(p.id))
 
   function handleAddAll() {
-    products.forEach(p => addItem(p))
+    products.forEach(p => { addItem(p); trackAddToCart(p) })
     setDrawerOpen(false)
   }
 
@@ -157,7 +158,7 @@ export default function WishlistDrawer() {
                     </button>
                     <button
                       className="wl-item-cart-btn"
-                      onClick={() => addItem(product)}
+                      onClick={() => { addItem(product); trackAddToCart(product) }}
                       aria-label={`Agregar ${product.name} al carrito`}
                     >
                       + Carrito

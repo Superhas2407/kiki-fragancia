@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { toSlug } from '../lib/slugs'
 import { resolveProductImage } from '../context/SanityProductsContext'
+import { trackInitiateCheckout } from '../lib/pixel'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -67,7 +68,7 @@ export default function CartDrawer() {
   }, [])
 
   function handleWhatsApp() {
-    if (window.fbq) window.fbq('track', 'Contact')
+    trackInitiateCheckout(items, totalPrice)
     const message = buildMessage(items)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}&ref=carrito`
     window.open(url, '_blank', 'noopener,noreferrer')
