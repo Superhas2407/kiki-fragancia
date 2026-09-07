@@ -5623,5 +5623,41 @@ export const products = [
     "ml": 80,
     "precioUSD": 140,
     "categoria": "disenador"
+  },
+  {
+    "id": 450,
+    "house": "CAROLINA HERRERA",
+    "name": "Very Good Girl Elixir",
+    "image": null,
+    "familia": "Oriental",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": null,
+    "precioUSD": null,
+    "categoria": "disenador"
+  },
+  {
+    "id": 451,
+    "house": "DOLCE & GABBANA",
+    "name": "Light Blue Eau de Toilette",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Toilette",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": null,
+    "categoria": "disenador"
+  },
+  {
+    "id": 452,
+    "house": "VALENTINO",
+    "name": "Valentino Uomo Born in Roma",
+    "image": null,
+    "familia": "amadera especiada",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "ml": 100,
+    "precioUSD": 165,
+    "categoria": "disenador"
   }
 ]

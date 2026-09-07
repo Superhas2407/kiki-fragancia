@@ -451,5 +451,8 @@ export const notesLookup = {
   446: "azafrán, bergamota, resina de elemí, rosa búlgara, oud, lirio de los valles, haba tonka, ambar, almizcle blanco, musgo de roble",
   447: "melón, bergamota, menta, grosellas negras, agua de mar, manzana verde, capuchino, cardamomo, nuez moscada, notas amaderadas, ambar",
   448: "piña, melón, bergamota, manzana verde, toronja (pomelo), notas marinas, jazmin, cardamomo, neroli, vetiver, almizcle blanco, cedro, gamuza, ambar",
-  449: "champán, pimienta rosa, flor de albaricoquero, rosa, almizcle blanco, notas amaderadas"
+  449: "champán, pimienta rosa, flor de albaricoquero, rosa, almizcle blanco, notas amaderadas",
+  450: "cereza negra, almendra amarga, rosa, nardos, vainilla, cacao",
+  451: "limón, manzana granny smith, cedro, jazmín, bambú, rosa, cedro, almizcle, ambar",
+  452: "notas marinas, hojas de violeta, sal, salvia, jengibre, notas amaderadas, vetiver"
 }
