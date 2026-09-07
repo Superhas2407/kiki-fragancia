@@ -5875,6 +5875,19 @@
   overflow: hidden;
   background: #1a0a0f;
 }
+/* Cada lanzamiento es una slide apilada — crossfade vía opacity, ver .nlb-slide-active */
+.nlb-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+.nlb-slide-active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
+}
 .nlb-picture {
   position: absolute;
   inset: 0;
@@ -6016,25 +6029,53 @@
 }
 .nlb-btn-outline:hover { border-color: rgba(255,255,255,0.85); color: #fff; }
 
+.nlb-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.nlb-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.25);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+.nlb-dot.active {
+  background: var(--gold, #C9A84C);
+  border-color: var(--gold, #C9A84C);
+  transform: scale(1.2);
+}
+
 @media (max-width: 767px) {
-  /* Mobile: imagen natural + texto/botones al fondo con overlay */
+  /* Mobile: mismo alto/ancho intrínseco que el desktop (1536×2752) para
+     que las slides puedan apilarse (position:absolute) y crossfade entre sí. */
   .nlb-section {
     height: auto;
+    aspect-ratio: 1536 / 2752;
     min-height: unset;
     position: relative;
     overflow: hidden;
   }
   .nlb-picture {
-    position: relative;
-    inset: unset;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
   }
   .nlb-img {
     width: 100%;
-    height: auto;
-    object-fit: unset;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
   /* Overlay: gradiente fuerte en franja inferior */

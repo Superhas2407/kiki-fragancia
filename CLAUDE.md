@@ -227,7 +227,7 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 ## Landing — orden de secciones
 `src/pages/Landing.jsx` — orden actual:
 1. `<Hero />` — carrusel hero
-2. `<NewLaunchBanner />` — banner de nuevos lanzamientos
+2. `<NewLaunchBanner />` — carrusel de nuevos lanzamientos (ver sección propia)
 3. `<BestsellerRow />` — fila de bestsellers
 4. `<QuickGenero />` — 3 tiles de género (Para él / Para ella / Unisex)
 5. `<MustHaveMen />` — carrusel horizontal de fragancias masculinas
@@ -238,6 +238,22 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 10. `<Guarantee />` — garantías
 
 Eliminados de Landing en junio 2026: `BrandsMarquee` (×2), `ProductWall`, `ThreeDMarquee`, `ColeccionesSection`.
+
+## NewLaunchBanner (carrusel, no un solo producto)
+`src/components/NewLaunchBanner.jsx` — banner full-bleed (`.nlb-section`, 80vh desktop / aspect-ratio
+1536:2752 en móvil) que rota entre varios lanzamientos vía array `LAUNCHES` (`slug`, `house`, `name`,
+`desktop`, `mobile`). Crossfade con `opacity` (clase `.nlb-slide-active`) cada `AUTO_MS` (6s) + dots
+manuales abajo (`.nlb-dots`/`.nlb-dot`). Cada slide necesita su propio par de imágenes en
+`public/hero/`, **mismas proporciones que las demás** para que el crossfade no salte de tamaño:
+- Desktop: **2752×1536px** (16:9) — producto/props del lado izquierdo-centro, franja derecha ~40%
+  relativamente vacía/oscura para que se lea el texto (`.nlb-content` está `right: 48px`, alineado
+  a la derecha).
+- Mobile: **1536×2752px** (9:16) — producto en el tercio superior, el tercio inferior puede ser más
+  oscuro/simple porque ahí cae el overlay + el texto (`.nlb-content` está `bottom: 32px`).
+
+Para agregar un lanzamiento nuevo: generar el par desktop/mobile con esas proporciones, guardarlos en
+`public/hero/{algo}-desktop.webp` / `-mobile.webp`, y agregar una entrada a `LAUNCHES` con el `slug`
+real del producto (`toSlug(house, name, ml)`).
 
 ## Footer (rediseñado junio 2026)
 `src/components/Footer.jsx` — 5 columnas en desktop, stack en móvil. Clases `kf-*`.
@@ -344,7 +360,7 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 
 ## Componentes con punteros hardcodeados
 Cuando cambie el producto destacado, editar el archivo:
-- `NewLaunchBanner.jsx` — `PRODUCT_SLUG = 'carolina-herrera-la-bomba-80ml'`.
+- `NewLaunchBanner.jsx` — **ya no es un solo producto fijo**, ver sección propia abajo.
 - `MustHaveMen.jsx` / `MustHaveWomen.jsx` — arrays de IDs curados (ver secciones abajo).
 
 `OfertaDelDia.jsx` **ya NO usa un ID hardcodeado** — se gestiona desde `/kiki-desk` (ver sección
