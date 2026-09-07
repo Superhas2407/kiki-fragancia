@@ -1,6 +1,10 @@
 import { useState, useEffect, useMemo } from 'react'
 import { setTasaSanity, clearTasaSanity, getTasaSanityCache } from '../hooks/useTasaCambio'
-import { setOfertaDelDiaSanity, clearOfertaDelDiaSanity, getOfertaDelDiaCache, OFERTA_DURATION_MS } from '../hooks/useOfertaDelDia'
+import {
+  setOfertaDelDiaSanity, clearOfertaDelDiaSanity, getOfertaDelDiaCache,
+  fetchOfertaDelDiaHistory, OFERTA_DURATION_MS,
+} from '../hooks/useOfertaDelDia'
+import { setAgotadoSanity, setPrecioSanity } from '../hooks/useProductAdmin'
 import { sanityClient } from '../lib/sanityClient'
 import { supabase } from '../lib/supabaseClient'
 import { useIndexProducts } from '../context/SanityProductsContext'
@@ -18,18 +22,37 @@ function fmtCountdown(ms) {
   return `${h}h ${m}m restantes`
 }
 
+function searchProducts(products, query) {
+  const q = norm(query.trim())
+  if (q.length < 2) return []
+  return products
+    .filter(p => norm(`${p.house} ${p.name}`).includes(q))
+    .slice(0, 8)
+}
+
 export default function KikiDeskPage() {
+  const products = useIndexProducts()
+
+  // ── Tasa de cambio ────────────────────────────────────────────────────────
   const [input, setInput]   = useState('')
   const [info, setInfo]     = useState(() => getTasaSanityCache())
   const [saving, setSaving] = useState(false)
   const [msg, setMsg]       = useState(null)
 
-  const products = useIndexProducts()
+  // ── Oferta del día ────────────────────────────────────────────────────────
   const [ofertaQuery, setOfertaQuery]     = useState('')
   const [ofertaInfo, setOfertaInfo]       = useState(() => getOfertaDelDiaCache())
   const [ofertaSaving, setOfertaSaving]   = useState(false)
   const [ofertaMsg, setOfertaMsg]         = useState(null)
   const [ofertaStatus, setOfertaStatus]   = useState({ msLeft: 0, expired: false })
+  const [ofertaHistory, setOfertaHistory] = useState([])
+
+  // ── Gestión de productos (agotado / precio) ─────────────────────────────
+  const [prodQuery, setProdQuery]     = useState('')
+  const [selected, setSelected]       = useState(null) // copia local editable del producto elegido
+  const [precioInput, setPrecioInput] = useState('')
+  const [prodSaving, setProdSaving]   = useState(false)
+  const [prodMsg, setProdMsg]         = useState(null)
 
   // Fetch live value from Sanity on mount
   useEffect(() => {
@@ -41,6 +64,7 @@ export default function KikiDeskPage() {
         else setOfertaInfo(null)
       })
       .catch(() => {})
+    fetchOfertaDelDiaHistory().then(setOfertaHistory)
   }, [])
 
   // Countdown de la oferta activa — se recalcula en un efecto (no en el
@@ -60,13 +84,17 @@ export default function KikiDeskPage() {
   const ofertaProduct = ofertaInfo ? products.find(p => p.id === ofertaInfo.id) : null
   const { msLeft: ofertaMsLeft, expired: ofertaExpired } = ofertaStatus
 
-  const ofertaResults = useMemo(() => {
-    const q = norm(ofertaQuery.trim())
-    if (q.length < 2) return []
-    return products
-      .filter(p => norm(`${p.house} ${p.name}`).includes(q))
-      .slice(0, 8)
-  }, [ofertaQuery, products])
+  const ofertaResults = useMemo(() => searchProducts(products, ofertaQuery), [ofertaQuery, products])
+  const prodResults   = useMemo(() => searchProducts(products, prodQuery), [prodQuery, products])
+
+  // ── Resumen ───────────────────────────────────────────────────────────────
+  const stats = useMemo(() => {
+    const total     = products.length
+    const agotados  = products.filter(p => p.agotado).length
+    const conOferta = products.filter(p => p.descuento > 0).length
+    const marcas    = new Set(products.map(p => p.house)).size
+    return { total, agotados, conOferta, marcas }
+  }, [products])
 
   function flashOferta(text, ok = true) {
     setOfertaMsg({ text, ok })
@@ -77,7 +105,9 @@ export default function KikiDeskPage() {
     setOfertaSaving(true)
     try {
       await setOfertaDelDiaSanity(product.id)
-      setOfertaInfo({ id: product.id, setAt: new Date().toISOString() })
+      const setAt = new Date().toISOString()
+      setOfertaInfo({ id: product.id, setAt })
+      setOfertaHistory(h => [{ _key: `local-${Date.now()}`, id: product.id, setAt }, ...h].slice(0, 20))
       setOfertaQuery('')
       flashOferta(`Oferta del día activada: ${product.house} ${product.name} — dura 24h`)
     } catch {
@@ -139,6 +169,50 @@ export default function KikiDeskPage() {
     await supabase.auth.signOut()
   }
 
+  // ── Gestión de productos ─────────────────────────────────────────────────
+  function flashProd(text, ok = true) {
+    setProdMsg({ text, ok })
+    setTimeout(() => setProdMsg(null), 3500)
+  }
+
+  function selectProduct(p) {
+    setSelected(p)
+    setPrecioInput(String(p.precioUSD ?? ''))
+    setProdQuery('')
+  }
+
+  async function handleToggleAgotado() {
+    if (!selected) return
+    setProdSaving(true)
+    const next = !selected.agotado
+    try {
+      await setAgotadoSanity(selected.id, next)
+      setSelected(s => ({ ...s, agotado: next }))
+      flashProd(next ? 'Marcado como agotado' : 'Desmarcado — vuelve a mostrar stock')
+    } catch {
+      flashProd('Error al guardar en Sanity.', false)
+    } finally {
+      setProdSaving(false)
+    }
+  }
+
+  async function handleSavePrecio(e) {
+    e.preventDefault()
+    if (!selected) return
+    const val = parseFloat(precioInput.replace(',', '.'))
+    if (!val || val <= 0) { flashProd('Ingresa un precio válido', false); return }
+    setProdSaving(true)
+    try {
+      await setPrecioSanity(selected.id, val)
+      setSelected(s => ({ ...s, precioUSD: val }))
+      flashProd(`Precio actualizado a REF ${val}`)
+    } catch {
+      flashProd('Error al guardar en Sanity.', false)
+    } finally {
+      setProdSaving(false)
+    }
+  }
+
   return (
     <div style={styles.page}>
       <div style={styles.card}>
@@ -148,6 +222,29 @@ export default function KikiDeskPage() {
             Cerrar sesión
           </button>
         </div>
+        <h1 style={styles.title}>Resumen</h1>
+
+        <div style={styles.statsGrid}>
+          <div style={styles.statTile}>
+            <p style={styles.statTileNum}>{stats.total}</p>
+            <p style={styles.statTileLabel}>Productos</p>
+          </div>
+          <div style={styles.statTile}>
+            <p style={styles.statTileNum}>{stats.agotados}</p>
+            <p style={styles.statTileLabel}>Agotados</p>
+          </div>
+          <div style={styles.statTile}>
+            <p style={styles.statTileNum}>{stats.conOferta}</p>
+            <p style={styles.statTileLabel}>Con descuento</p>
+          </div>
+          <div style={styles.statTile}>
+            <p style={styles.statTileNum}>{stats.marcas}</p>
+            <p style={styles.statTileLabel}>Marcas</p>
+          </div>
+        </div>
+
+        <div style={styles.divider} />
+
         <h1 style={styles.title}>Tasa de cambio</h1>
 
         <div style={styles.statusBox}>
@@ -263,6 +360,87 @@ export default function KikiDeskPage() {
             {ofertaMsg.text}
           </p>
         )}
+
+        {ofertaHistory.length > 0 && (
+          <div style={{ marginTop: 20 }}>
+            <label style={styles.label}>Historial (últimas activaciones)</label>
+            <div style={styles.historyBox}>
+              {ofertaHistory.slice(0, 8).map(h => {
+                const p = products.find(pr => pr.id === h.id)
+                return (
+                  <div key={h._key} style={styles.historyItem}>
+                    <span style={styles.historyName}>{p ? `${p.house} ${p.name}` : `#${h.id}`}</span>
+                    <span style={styles.historyDate}>{fmt(new Date(h.setAt).getTime())}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
+        <div style={styles.divider} />
+
+        <h1 style={styles.title}>Gestión de productos</h1>
+
+        <label style={styles.label}>Buscar producto (casa o nombre)</label>
+        <input
+          type="text"
+          placeholder="ej: Kouros"
+          value={prodQuery}
+          onChange={e => setProdQuery(e.target.value)}
+          style={{ ...styles.input, width: '100%', marginBottom: prodResults.length ? 8 : 12 }}
+          autoComplete="off"
+        />
+
+        {prodResults.length > 0 && (
+          <div style={styles.resultsBox}>
+            {prodResults.map(p => (
+              <button key={p.id} onClick={() => selectProduct(p)} style={styles.resultItem}>
+                <span>{p.house} {p.name} {p.agotado ? '· agotado' : ''}</span>
+                <span style={styles.resultMeta}>{p.ml ? `${p.ml}ml` : ''} · REF {p.precioUSD}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {selected && (
+          <div style={styles.statusBox}>
+            <span style={styles.dot(selected.agotado ? '#E07070' : '#6B9B6B')} />
+            <div style={{ flex: 1 }}>
+              <p style={styles.statusLabel}>{selected.agotado ? 'Agotado' : 'En stock'}</p>
+              <p style={styles.statusValue}>{selected.house} {selected.name}</p>
+              <p style={styles.statusMeta}>{selected.ml ? `${selected.ml}ml` : ''} · REF {selected.precioUSD}</p>
+
+              <button
+                onClick={handleToggleAgotado}
+                disabled={prodSaving}
+                style={{ ...styles.btnGhost, width: 'auto', marginTop: 12, marginBottom: 0, padding: '8px 14px' }}
+              >
+                {selected.agotado ? 'Desmarcar agotado' : 'Marcar agotado'}
+              </button>
+
+              <form onSubmit={handleSavePrecio} style={{ ...styles.row, marginTop: 12 }}>
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={precioInput}
+                  onChange={e => setPrecioInput(e.target.value)}
+                  style={styles.input}
+                  autoComplete="off"
+                />
+                <button type="submit" style={styles.btnPrimary} disabled={prodSaving}>
+                  {prodSaving ? '…' : 'Guardar precio'}
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {prodMsg && (
+          <p style={{ ...styles.msg, color: prodMsg.ok ? 'var(--gold)' : '#E07070' }}>
+            {prodMsg.text}
+          </p>
+        )}
       </div>
     </div>
   )
@@ -272,14 +450,14 @@ const styles = {
   page: {
     minHeight: '100vh',
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
     background: 'var(--bg)',
-    padding: '24px 16px',
+    padding: '48px 16px',
   },
   card: {
     width: '100%',
-    maxWidth: 420,
+    maxWidth: 460,
+    height: 'fit-content',
     background: 'var(--raised)',
     border: '1px solid var(--line)',
     borderRadius: 4,
@@ -301,6 +479,33 @@ const styles = {
     fontWeight: 400,
     color: 'var(--ink)',
     margin: '0 0 28px',
+  },
+  statsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 8,
+    marginBottom: 28,
+  },
+  statTile: {
+    background: 'var(--chip)',
+    border: '1px solid var(--line2)',
+    borderRadius: 4,
+    padding: '12px 6px',
+    textAlign: 'center',
+  },
+  statTileNum: {
+    fontFamily: 'var(--font-d, serif)',
+    fontSize: 22,
+    color: 'var(--gold)',
+    margin: '0 0 2px',
+  },
+  statTileLabel: {
+    fontFamily: 'var(--font-s, sans-serif)',
+    fontSize: 9,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    color: 'var(--ink-faint)',
+    margin: 0,
   },
   statusBox: {
     display: 'flex',
@@ -436,5 +641,30 @@ const styles = {
     flexShrink: 0,
     fontSize: 10,
     color: 'var(--ink-faint)',
+  },
+  historyBox: {
+    border: '1px solid var(--line2)',
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  historyItem: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: 8,
+    padding: '8px 12px',
+    borderBottom: '1px solid var(--line2)',
+    fontFamily: 'var(--font-s, sans-serif)',
+    fontSize: 12,
+  },
+  historyName: {
+    color: 'var(--ink)',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+  historyDate: {
+    flexShrink: 0,
+    color: 'var(--ink-faint)',
+    fontSize: 10,
   },
 }

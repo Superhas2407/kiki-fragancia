@@ -15,6 +15,8 @@ let _data    = undefined // undefined = aún no se consultó, null = ninguna act
 
 // ── Sanity helpers ────────────────────────────────────────────────────────────
 
+const HISTORY_LIMIT = 20
+
 export async function setOfertaDelDiaSanity(productId) {
   const { sanityWriteClient } = await import('../lib/sanityClient')
   const id = Number(productId)
@@ -23,13 +25,30 @@ export async function setOfertaDelDiaSanity(productId) {
   // patch (no createOrReplace) para no pisar otros campos del singleton
   // (ej. tasaManual, que vive en el mismo documento kiki-ajustes)
   await sanityWriteClient.createIfNotExists({ _id: 'kiki-ajustes', _type: 'ajustes' })
+
+  // Antepone la nueva activación al historial (más reciente primero, tope 20)
+  const current = await sanityWriteClient.fetch(`*[_id == "kiki-ajustes"][0]{ ofertaDelDiaHistory }`)
+  const prevHistory = Array.isArray(current?.ofertaDelDiaHistory) ? current.ofertaDelDiaHistory : []
+  const entry = { _key: `oferta-${Date.now()}`, id, setAt }
+  const history = [entry, ...prevHistory].slice(0, HISTORY_LIMIT)
+
   await sanityWriteClient
     .patch('kiki-ajustes')
-    .set({ ofertaDelDiaId: id, ofertaDelDiaSetAt: setAt })
+    .set({ ofertaDelDiaId: id, ofertaDelDiaSetAt: setAt, ofertaDelDiaHistory: history })
     .commit()
   _data = { id, setAt }
   _promise = null
   try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ..._data, ts: Date.now() })) } catch {}
+}
+
+/** Últimas activaciones de la oferta del día, más reciente primero. */
+export async function fetchOfertaDelDiaHistory() {
+  try {
+    const doc = await sanityClient.fetch(`*[_id == "kiki-ajustes"][0]{ ofertaDelDiaHistory }`)
+    return Array.isArray(doc?.ofertaDelDiaHistory) ? doc.ofertaDelDiaHistory : []
+  } catch {
+    return []
+  }
 }
 
 export async function clearOfertaDelDiaSanity() {
