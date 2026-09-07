@@ -1,8 +1,9 @@
 /**
  * useOfertaDelDia — producto activo en el widget "Oferta del día"
- * Fuente: Sanity (kiki-ajustes.ofertaDelDiaId + ofertaDelDiaSetAt)
+ * Fuente: Sanity (kiki-ajustes.ofertaDelDiaId + ofertaDelDiaSetAt + ofertaDelDiaPrecio)
  * Expira automáticamente 24h después de activarse (ver DURATION_MS).
- * Mismo patrón de caché que useTasaCambio.js.
+ * `precio` es opcional: un precio especial solo para la duración de la oferta
+ * (no toca el precioUSD real del producto). Mismo patrón de caché que useTasaCambio.js.
  */
 import { sanityClient } from '../lib/sanityClient'
 
@@ -17,11 +18,18 @@ let _data    = undefined // undefined = aún no se consultó, null = ninguna act
 
 const HISTORY_LIMIT = 20
 
-export async function setOfertaDelDiaSanity(productId) {
+/**
+ * Activa la oferta. `precioPromo` es opcional: un precio especial que solo
+ * rige mientras dura esta oferta (no toca el precioUSD real del producto —
+ * mismo espíritu que precioPromoHalloween). Se limpia solo cuando la oferta
+ * se desactiva o expira.
+ */
+export async function setOfertaDelDiaSanity(productId, precioPromo) {
   const { sanityWriteClient } = await import('../lib/sanityClient')
   const id = Number(productId)
   if (!id) return
   const setAt = new Date().toISOString()
+  const precio = Number(precioPromo) > 0 ? Number(precioPromo) : null
   // patch (no createOrReplace) para no pisar otros campos del singleton
   // (ej. tasaManual, que vive en el mismo documento kiki-ajustes)
   await sanityWriteClient.createIfNotExists({ _id: 'kiki-ajustes', _type: 'ajustes' })
@@ -29,16 +37,30 @@ export async function setOfertaDelDiaSanity(productId) {
   // Antepone la nueva activación al historial (más reciente primero, tope 20)
   const current = await sanityWriteClient.fetch(`*[_id == "kiki-ajustes"][0]{ ofertaDelDiaHistory }`)
   const prevHistory = Array.isArray(current?.ofertaDelDiaHistory) ? current.ofertaDelDiaHistory : []
-  const entry = { _key: `oferta-${Date.now()}`, id, setAt }
+  const entry = { _key: `oferta-${Date.now()}`, id, setAt, precio: precio ?? undefined }
   const history = [entry, ...prevHistory].slice(0, HISTORY_LIMIT)
 
-  await sanityWriteClient
+  let patch = sanityWriteClient
     .patch('kiki-ajustes')
     .set({ ofertaDelDiaId: id, ofertaDelDiaSetAt: setAt, ofertaDelDiaHistory: history })
-    .commit()
-  _data = { id, setAt }
+  patch = precio ? patch.set({ ofertaDelDiaPrecio: precio }) : patch.unset(['ofertaDelDiaPrecio'])
+  await patch.commit()
+
+  _data = { id, setAt, precio }
   _promise = null
   try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ..._data, ts: Date.now() })) } catch {}
+}
+
+/** Cambia (o quita, si precioPromo es null/0) el precio promocional sin reiniciar el countdown. */
+export async function setOfertaDelDiaPrecioSanity(precioPromo) {
+  const { sanityWriteClient } = await import('../lib/sanityClient')
+  const precio = Number(precioPromo) > 0 ? Number(precioPromo) : null
+  const patch = sanityWriteClient.patch('kiki-ajustes')
+  await (precio ? patch.set({ ofertaDelDiaPrecio: precio }) : patch.unset(['ofertaDelDiaPrecio'])).commit()
+  if (_data) {
+    _data = { ..._data, precio }
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ..._data, ts: Date.now() })) } catch {}
+  }
 }
 
 /** Últimas activaciones de la oferta del día, más reciente primero. */
@@ -53,7 +75,7 @@ export async function fetchOfertaDelDiaHistory() {
 
 export async function clearOfertaDelDiaSanity() {
   const { sanityWriteClient } = await import('../lib/sanityClient')
-  await sanityWriteClient.patch('kiki-ajustes').unset(['ofertaDelDiaId', 'ofertaDelDiaSetAt']).commit()
+  await sanityWriteClient.patch('kiki-ajustes').unset(['ofertaDelDiaId', 'ofertaDelDiaSetAt', 'ofertaDelDiaPrecio']).commit()
   _data    = null
   _promise = null
   try { localStorage.removeItem(CACHE_KEY) } catch {}
@@ -71,7 +93,7 @@ export function getOfertaDelDiaCache() {
 function readCache() {
   try {
     const c = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null')
-    if (c && Date.now() - c.ts < CACHE_TTL) return { id: c.id, setAt: c.setAt }
+    if (c && Date.now() - c.ts < CACHE_TTL) return { id: c.id, setAt: c.setAt, precio: c.precio ?? null }
   } catch {}
   return null
 }
@@ -85,9 +107,11 @@ async function fetchOfertaDelDia() {
         if (cached) { _data = cached; return _data }
 
         const doc = await sanityClient.fetch(
-          `*[_id == "kiki-ajustes"][0]{ ofertaDelDiaId, ofertaDelDiaSetAt }`
+          `*[_id == "kiki-ajustes"][0]{ ofertaDelDiaId, ofertaDelDiaSetAt, ofertaDelDiaPrecio }`
         )
-        _data = doc?.ofertaDelDiaId ? { id: doc.ofertaDelDiaId, setAt: doc.ofertaDelDiaSetAt } : null
+        _data = doc?.ofertaDelDiaId
+          ? { id: doc.ofertaDelDiaId, setAt: doc.ofertaDelDiaSetAt, precio: doc.ofertaDelDiaPrecio ?? null }
+          : null
         if (_data) {
           try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ..._data, ts: Date.now() })) } catch {}
         }
@@ -104,7 +128,7 @@ async function fetchOfertaDelDia() {
 // ── Hook React ────────────────────────────────────────────────────────────────
 import { useState, useEffect } from 'react'
 
-/** Devuelve { id, setAt } mientras esté dentro de las 24h, o null si no hay/expiró. */
+/** Devuelve { id, setAt, precio } mientras esté dentro de las 24h, o null si no hay/expiró. */
 export function useOfertaDelDia() {
   const [data, setData]       = useState(() => readCache())
   const [expired, setExpired] = useState(false)

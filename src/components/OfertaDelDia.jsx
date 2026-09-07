@@ -51,9 +51,19 @@ export default function OfertaDelDia() {
 
   if (!active) return null
 
-  const precio = currency === 'bs' && tasa
-    ? `${Math.round(product.precioUSD * tasa).toLocaleString('es-VE')} Bs`
-    : `REF ${product.precioUSD}`
+  // precio promocional (opcional, seteado en /kiki-desk al activar la oferta o después) —
+  // no toca product.precioUSD, solo rige mientras dura esta oferta
+  const hasPromo   = oferta.precio > 0 && oferta.precio < product.precioUSD
+  const precioBase = hasPromo ? oferta.precio : product.precioUSD
+
+  function fmtPrecio(usd) {
+    return currency === 'bs' && tasa
+      ? `${Math.round(usd * tasa).toLocaleString('es-VE')} Bs`
+      : `REF ${usd}`
+  }
+
+  const precio         = fmtPrecio(precioBase)
+  const precioOriginal = hasPromo ? fmtPrecio(product.precioUSD) : null
 
   const slug = toSlug(product.house, product.name, product.ml)
 
@@ -81,6 +91,7 @@ export default function OfertaDelDia() {
             <h2 className="odd-name">{product.name}</h2>
             <p className="odd-sub">{product.ml ? `${product.ml}ml` : ''}{product.familia ? ` · ${product.familia}` : ''}{product.genero ? ` · ${product.genero}` : ''}</p>
             <div className="odd-price-row">
+              {precioOriginal && <span className="odd-price-original">{precioOriginal}</span>}
               <span className="odd-price">{precio}</span>
             </div>
             <div className="odd-countdown">
@@ -123,7 +134,10 @@ export default function OfertaDelDia() {
           <span className="odd-bar-name">{product.house} {product.name}</span>
         </div>
         <div className="odd-bar-right">
-          <span className="odd-bar-price">{precio}</span>
+          <span className="odd-bar-price">
+            {precioOriginal && <span className="odd-bar-price-original">{precioOriginal}</span>}
+            {precio}
+          </span>
           <span className="odd-bar-timer">{pad(timeLeft.h)}:{pad(timeLeft.m)}:{pad(timeLeft.s)}</span>
         </div>
         <span className="odd-bar-arrow" aria-hidden="true">→</span>
@@ -226,12 +240,20 @@ export default function OfertaDelDia() {
         }
         .odd-price-row {
           margin-bottom: 10px;
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
         }
         .odd-price {
           color: #C9A84C;
           font-size: 20px;
           font-weight: 700;
           letter-spacing: 0.02em;
+        }
+        .odd-price-original {
+          color: rgba(247,242,234,0.4);
+          font-size: 13px;
+          text-decoration: line-through;
         }
         .odd-countdown {
           margin-bottom: 12px;
@@ -366,6 +388,15 @@ export default function OfertaDelDia() {
           color: #C9A84C;
           font-size: 13.5px;
           font-weight: 700;
+          display: flex;
+          align-items: baseline;
+          gap: 5px;
+        }
+        .odd-bar-price-original {
+          color: rgba(247,242,234,0.4);
+          font-size: 10px;
+          font-weight: 400;
+          text-decoration: line-through;
         }
         .odd-bar-timer {
           color: rgba(247,242,234,0.55);
