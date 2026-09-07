@@ -1,19 +1,46 @@
 # Kiki Fragancia — Contexto del Proyecto
 
-Sitio web de tienda de perfumería de lujo. React + Vite. Dominio: **kikifragancia.com**
+Sitio web de tienda de perfumería de lujo. React 19 + Vite 8. Dominio: **kikifragancia.com**.
+Sin checkout propio — el cierre de compra es por WhatsApp (`584149112002`).
+
+## Stack
+React 19 · Vite 8 · Tailwind v4 (`@import "tailwindcss"` + `@theme {}`, **sin config file**) ·
+React Router v7 · framer-motion v12 (solo Tienda) · three.js (`ShaderAnimation`) ·
+`@sanity/client` v7 (CMS) · `@supabase/supabase-js` v2 (auth + wishlist) ·
+`@vercel/analytics` + `speed-insights` (en `main.jsx`).
 
 ## Comandos
 ```
-npm run dev    # servidor de desarrollo
-npm run build  # sync Sanity → local + sitemap + vite build + generate-product-pages
+npm run dev      # servidor de desarrollo (localhost:5173)
+npm run build    # sync-from-sanity → generate-sitemap → generate-meta-feed → vite build → generate-product-pages
+npm run lint     # eslint
+npm run preview  # sirve dist/
 ```
+
+## Lo que NO se toca
+
+- **`src/data/products-index.js`, `products-enriched.js`, `notes-lookup.js`** — generados por
+  `sync-from-sanity.mjs`. Se sobrescriben en cada `npm run build` y cada 2 h por CI. Editar en Sanity.
+- **`.env` / `.env.local` / `.env*`** — están en `.gitignore`. Nunca commitear tokens.
+- **Rutas `/kiki-login` y `/kiki-desk`** — admin por *security by obscurity*. No linkear en ninguna UI.
+- **Badge azul de Día del Padre** en `ProductDetail.jsx` (gradiente `#0A2D72 → #1A52CC`) — color de
+  campaña **intencional**, aunque viole la regla gold-only de `DESIGN.md`. No cambiar a dorado.
+- **Oferta Halloween** (paleta naranja→morado) — misma situación, excepción sancionada. Ver `DESIGN.md`.
+- **`ThemeContext` exporta `toggleTheme`** (no `toggle`). El default es `'warm'`, clave `kiki-theme-v2`,
+  atada al script anti-FOUC inline de `index.html`.
+- **Gating admin**: `isAdmin = !!session` en `SanityProductsContext.jsx` y `Tienda.jsx` — hoy es
+  *cualquier usuario logueado*, no un email específico. Si se necesita restringir a un correo, es un cambio aparte.
+- **`vercel.json`**: `{ "handle": "filesystem" }` debe ir antes del fallback SPA, para que las
+  páginas OG estáticas (`dist/tienda/[slug]/index.html`) se sirvan primero a los bots.
+- El `<noscript><img>` del Meta Pixel vive en `<body>` de `index.html` (no en `<head>` — rompe el parser).
 
 ## Arquitectura general
 - `App.jsx` — `HelmetProvider` > `BrowserRouter` > `AuthProvider` > `CartProvider` > `ErrorBoundary`. Rutas especiales (`/coming-soon`, `/kiki-login`, `/kiki-desk`) fuera del AppShell. Resto (`/*`) dentro de `SanityProductsProvider > WishlistProvider > CurrencyProvider > ThemeProvider > AppShell`.
-- `AppShell` — AnnouncementBar + Header + GlobalSidebar + Routes + CartDrawer + WishlistDrawer + WhatsAppFab + ConsentBanner + BottomNav
-- `AnnouncementBar.jsx` — barra dorada fija encima del header (z-index 41). Gestiona también el bottom sheet pop-up en móvil (<768px). Ambos usan `sessionStorage` para mostrarse solo una vez por sesión. Ajusta `--bar-h` en `:root` para bajar el header.
+- `AppShell` — CursorTrail (solo no-touch) + MetaPixel + ScrollToTop + AnnouncementBar + Header + GlobalSidebar + Routes + CartDrawer + WishlistDrawer + WhatsAppFab + ConsentBanner + InstallBanner + OfertaDelDia + BottomNav
+- `AnnouncementBar.jsx` — barra fija encima del header (`BAR_H = 40px`). Marquee genérico (`Fragancias 100% Originales ✦ Envíos en Venezuela ✦ Originales Verificadas`), sin campaña. `sessionStorage` clave `kiki-bar-closed` (una vez por sesión). Ajusta `--bar-h` = `calc(40px + env(safe-area-inset-top))` para bajar el header. El pop-up modal móvil de campaña fue eliminado.
+- `MetaPixel` — componente en `App.jsx` que inyecta `fbq` con guard `if (window.fbq) return`. El pixel también está inline en `index.html` (ese corre primero). El `<noscript>` fallback está en `<body>`.
 - `GlobalSidebar.jsx` — links por género y tipo (solo ≥1024px, oculto en móvil)
-- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito/wishlist/cuenta a la derecha. Logo siempre blanco (`.kiki-header .kiki-logo-img { filter: brightness(0) invert(1) }`). En modo warm fuera de landing, fondo `#140E06`. En landing/dark, transparente. **Mega menú desktop**: al hover en "Colección" abre panel con 6 tiles (Hombre/Mujer/Unisex/Árabes/Diseñador/Nicho) usando imágenes `public/silhouettes/mega-*.jpeg`. Switcher moneda REF/Bs. Sidebar móvil 290px. Escucha `kiki:open-search` desde BottomNav.
+- `Header.jsx` — logo centrado (grid 1fr auto 1fr), hamburger a la IZQUIERDA, búsqueda/carrito/wishlist/cuenta a la derecha. Logo por tema: `theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'`. En modo warm fuera de landing, fondo `#140E06`. En landing/dark, transparente. **Mega menú desktop**: al hover en "Colección" abre panel con 6 tiles (Hombre/Mujer/Unisex/Árabes/Diseñador/Nicho) usando imágenes `public/silhouettes/mega-*.jpeg`. Switcher moneda REF/Bs. Sidebar móvil 290px. Escucha `kiki:open-search` desde BottomNav. Las miniaturas del buscador usan `resolveProductImage` (ver § Búsqueda).
 - `BottomNav.jsx` — barra fija inferior en móvil (≤1023px): Inicio · Tienda · Buscar · Carrito. Buscar dispara `kiki:open-search`. WhatsAppFab flota en `bottom: calc(60px + safe-area + 16px)`.
 - `Hero.jsx` — carrusel: 1 video (`/hero.webm`) + 5 imágenes, crossfade CSS, `<picture>` desktop/mobile
 - `Tienda.jsx` — **Desktop**: layout grid `220px sidebar | 1fr main`. Sidebar fijo sticky con acordeones (Género, Categoría, Concentración, Por ocasión, Marca) + barra superior con conteo y select Ordenar. **Mobile**: barra `Filtrar | Ordenar` + drawer. Sin paginación — infinite scroll. Banner full-bleed al tope (ver sección Banners Tienda).
@@ -33,25 +60,43 @@ npm run build  # sync Sanity → local + sitemap + vite build + generate-product
 
 **Code splitting intencional:** `products-index` (ligero) para bundle principal. `ProductDetail` importa `products-enriched` directamente. `notes-lookup` está en el bundle principal para búsqueda inmediata.
 
-**Precios:** `precioUSD` en todos los productos. El sistema de bolívares está activo vía `CurrencyContext` + `useTasaCambio` (tasa paralelo de `ve.dolarapi.com`).
+**Precios:** `precioUSD` en todos los productos. El sistema de bolívares está activo vía `CurrencyContext` + `useTasaCambio` (tasa Sanity `kiki-ajustes.tasaManual` > paralelo de `ve.dolarapi.com`). Ver § Sistema de moneda.
 
 ## Sanity CMS
 Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `production`.
 
 ### Arquitectura
-- **Sanity es la fuente primaria de productos.** Los archivos locales son fallback de carga inicial y se regeneran en cada `npm run build`.
+- **Sanity es la fuente primaria de productos.** Es **la única forma** de agregar/editar perfumes.
+  Los archivos locales son fallback de carga inicial y se regeneran en cada `npm run build` y cada 2 h por CI.
 - Productos nuevos creados en Studio aparecen en /tienda sin tocar código (vía fetch del contexto).
-- `src/lib/sanityClient.js` — cliente público (`useCdn: true`). Exporta `sanityClient` y `sanityImageUrl(source)`. También exporta `sanityWriteClient` (usa `VITE_SANITY_WRITE_TOKEN`, `useCdn: false`) para escrituras desde el cliente.
+  Un producto sin `id` (o con `id` repetido) **se descarta en silencio** — no aparece y no da error.
+- `src/lib/sanityClient.js` — cliente público (`useCdn: true`, `apiVersion 2024-01-01`, projectId `7j25mwk7`, dataset `production`). Exporta `sanityClient` y `sanityImageUrl(source)`. También `sanityWriteClient` (`VITE_SANITY_WRITE_TOKEN`, `useCdn: false`) para escrituras desde el cliente (solo la tasa de cambio).
 - `src/context/SanityProductsContext.jsx` — provider + hooks:
-  - `<SanityProductsProvider>` — en `App.jsx` envuelve la app
-  - `useIndexProducts()` — array de productos fusionados (local + Sanity)
-  - `useSanityProduct(id)` — producto individual con todos los campos de Sanity
-  - `useLivePrice(id)` — precio en vivo por ID
-  - `resolveProductImage(product)` — resuelve la mejor imagen: `sanityImage` (CDN Sanity) > `/products/{image}` (local)
+  - `<SanityProductsProvider>` — envuelve la app; hace `sanityClient.fetch` de todos los productos al montar y en cada cambio de `isAdmin`.
+  - **Merge:** parte de `products-index.js` local (fallback), y encima aplica los campos **no-null** de Sanity. `variantIds` se prefiere de Sanity si viene con largo, si no del local. Filtra los que no tengan `id && name && house`.
+  - `useIndexProducts()` — array de productos fusionados
+  - `useSanityProduct(id)` / `useLivePrice(id)` — leen del array fusionado (no hacen fetch propio)
+  - `resolveProductImage(product)` — `sanityImage` (CDN Sanity, `.width(800).auto('format')`) > `/products/{image}` (local) > `null`. **Usarlo siempre** para imágenes de producto — lo usan VitrinaCard, ProductDetail y el buscador del Header (grilla "Destacados" + autocomplete).
+- **`isAdmin = !!session`** (Supabase) — cualquier usuario logueado. Gatea: campos `promoHalloween`/`precioPromoHalloween` (solo se piden a Sanity con sesión), filtros "Solo agotados" y "Oferta Halloween" en Tienda.
+
+### GitHub Actions
+| Workflow | Disparo | Qué hace |
+|---|---|---|
+| `sync-sanity.yml` | cron `0 */2 * * *` + manual | baja productos de Sanity → regenera los 3 archivos → commit `chore: sync products from Sanity [skip ci]` → `git pull --rebase` → push |
+| `deploy-studio.yml` | push a `studio/**` + manual | `npx sanity deploy` (usa `secrets.SANITY_TOKEN`) |
+| `set-agotado.yml` | manual (inputs `ids`, `value`) | corre `scripts/set-agotado.mjs` → marca/desmarca `agotado` en Sanity (usa `secrets.SANITY_SYNC`) |
+
+**Consecuencia del sync:** `origin/main` avanza solo cada 2 h. Antes de cualquier push local:
+`git fetch && git rebase origin/main` (o `git pull --rebase`).
 
 ### Schema de Sanity (campos editables desde Studio)
+`studio/schemas/product.js`. Enums: `genero` = Masculino/Femenino/Unisex/Niño ·
+`tipo` = Eau de Parfum/Eau de Toilette/Parfum/Extrait de Parfum/Elixir/Eau de Cologne ·
+`categoria` = arabes/disenador/nicho. `acordes`: 27 labels válidos (ver abajo).
+
 | Campo | Tipo | Descripción |
 |---|---|---|
+| `id` | number | **Único y obligatorio.** Validación en el schema. Al duplicar en Studio queda vacío → asignar uno nuevo. Sin ID válido el producto no aparece. |
 | `name`, `house` | string | Nombre y marca |
 | `precioUSD` | number | Precio — se refleja al instante en el sitio |
 | `sanityImage` | image | Foto subida directo al Studio (CDN Sanity, prioridad alta) |
@@ -251,7 +296,7 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
   - `norm(s)` — normaliza tildes (NFD + strip diacríticos) y pone en minúsculas. "cítrico" = "citrico".
   - `productMatchesQuery(terms, searchFields)` — todos los términos deben matchear algún campo (AND).
   - Fuzzy con Levenshtein: tolerancia 0 (≤3 chars), 1 (4-5 chars), 2 (≥6 chars).
-- **Header autocomplete:** min 2 chars, max 12 resultados. Campos: `name`, `house`, `familia`, `acordes`, **notas olfativas** (`notes-lookup.js`). Excluye 200ml con variantes.
+- **Header autocomplete:** min 2 chars, max 12 resultados. Campos: `name`, `house`, `familia`, `acordes`, **notas olfativas** (`notes-lookup.js`). Excluye 200ml con variantes. Las miniaturas (autocomplete + grilla "Destacados") usan `resolveProductImage(p)` → funcionan con foto solo-Sanity.
 - **Tienda:** mismos campos + notas. Todos normalizados con `norm()`.
 - ArrowDown/ArrowUp navega sugerencias, Enter navega al producto seleccionado.
 - **Overlay estilo panel** (no full-screen): `.kiki-search-backdrop` (fondo oscuro 30%, `z-index 299`) + `.kiki-search-overlay` (`position: fixed; top: 0; left: 0; right: 0; max-height: 82vh; z-index 300`). Clic en backdrop cierra.
@@ -288,19 +333,28 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 - Heart button: `rgba(10,8,4,0.72)` base con color `rgba(247,242,234,0.80)` — visible sobre ribbon dorado.
 - "Original Verificado" en ProductDetail: `bottom: 16px; left: 16px` con fondo `rgba(8,5,2,0.78)`.
 
-## Campaña Día del Padre 2026
-- **Ruta:** `/dia-del-padre` — `src/pages/DiaDeLPadrePage.jsx`
-- **Productos del grid:** 15 fragancias curadas — definidos en `src/data/dia-del-padre.js`
-- **Entrada homepage:** `DiaDeLPadrePromo.jsx` — **eliminado en junio 2026**. La campaña es accesible desde la ruta `/dia-del-padre` y el AnnouncementBar.
-- **AnnouncementBar:** marquee scrolling `10% OFF EN FRAGANCIAS DEL DÍA DEL PADRE` + popup modal en móvil
-- **Ribbon:** `ribbon="Día del Padre"` solo por `diaDeLPadreIds.includes(product.id)`
-- **Descuento:** Sanity (`p.descuento`) tiene prioridad sobre `diaDeLPadreDiscounts[p.id]` (hardcodeado). Solo en modo `$` (divisa).
-- **Badge DDP en ProductDetail:** gradiente azul `#0A2D72 → #1A52CC` con texto `#E8F0FF` — **color de campaña intencional**, no cambiar aunque viole la regla gold-only de DESIGN.md.
-- **WhatsApp:** mensaje pre-cargado específico + `ref=dia_del_padre`, número `584149112002`
-- **Teardown post-campaña (después del 21 de junio):** agregar en `vercel.json` antes de `{ "handle": "filesystem" }`:
-  ```json
-  { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
-  ```
+## Campaña Día del Padre 2026 (finalizada)
+- `/dia-del-padre` → redirect 302 a `/tienda?genero=Masculino` (`vercel.json`). La página, el promo
+  de homepage y el `GiftWrapOverlay` fueron retirados.
+- **Persiste:** `src/data/dia-del-padre.js` — exports `diaDeLPadreIds`, `diaDeLPadreDiscounts`,
+  `antoniobanderasIds`, `armafOdysseyIds`.
+- **Badge DDP en ProductDetail:** gradiente azul `#0A2D72 → #1A52CC`, texto `#E8F0FF` — sigue activo
+  para IDs en `diaDeLPadreIds`. **Color de campaña intencional**, no cambiar (memory del proyecto).
+- **Descuento:** Sanity `p.descuento` > `diaDeLPadreDiscounts[p.id]`, solo en modo `$`.
+
+## Componentes con punteros hardcodeados
+Cuando cambie el producto destacado, editar el archivo:
+- `OfertaDelDia.jsx` — `OFERTA_ID = 173` (Lattafa Khamrah Dukhan). Card desktop (izquierda) + barra
+  delgada móvil, countdown a fin del día. Setea `--odd-bar-h` (`56px`/`0`) para el offset del WhatsApp fab.
+- `NewLaunchBanner.jsx` — `PRODUCT_SLUG = 'carolina-herrera-la-bomba-80ml'`.
+- `MustHaveMen.jsx` / `MustHaveWomen.jsx` — arrays de IDs curados (ver secciones abajo).
+
+## PWA
+- `public/manifest.json` — `standalone`, theme `#C9A84C`, iconos `icon-192.png` / `icon-512.png` (any maskable), shortcut a `/tienda`.
+- `public/sw.js` — `CACHE_NAME = 'kiki-v1'`. Precache de `/`, `/tienda`, manifest, fuente, logo.
+  Estrategia: network-first con fallback a cache; solo GET same-origin. Registrado desde `index.html` en `load`.
+- `InstallBanner.jsx` — banner para instalar en iOS (instrucciones) y Android (`beforeinstallprompt`).
+- iOS PWA: `index.html` tiene metas `apple-mobile-web-app-*`; hay fixes de notch/status-bar en `src/index.css`.
 
 ## Supabase / Autenticación
 
@@ -326,9 +380,9 @@ Proyecto Supabase: `dgyjwztiwkricpbkxaxd.supabase.co`
 
 ## Sistema de moneda
 - `src/context/CurrencyContext.jsx` — `{ currency, setCurrency }` via `useCurrency()`. Valores: `'usd' | 'bs'`.
-- `src/hooks/useTasaCambio.js` — prioridad de fuentes:
-  1. **Sanity** (`kiki-ajustes.tasaManual`) con cache 5min en localStorage
-  2. **dolarapi** (`ve.dolarapi.com/v1/dolares/paralelo`) con cache 30min
+- `src/hooks/useTasaCambio.js` — **devuelve un número** (no un objeto — nunca destructurar, rompe el sitio). Prioridad de fuentes:
+  1. **Sanity** (`kiki-ajustes.tasaManual`) con cache 5min en `localStorage['kiki_tasa_sanity']`
+  2. **dolarapi** (`ve.dolarapi.com/v1/dolares/paralelo`, campo `data.promedio`) con cache 30min en `localStorage['kiki_tasa_bs']`
   - `setTasaSanity(rate)` — escribe tasa en Sanity vía `sanityWriteClient` (visible para todos los usuarios) + actualiza cache local
   - `clearTasaSanity()` — borra `tasaManual` de Sanity + limpia cache local
   - `getTasaSanityCache()` — devuelve `{ rate, ts }` del cache local o `null`
@@ -353,23 +407,26 @@ Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
 ## Scripts útiles
 | Script | Uso |
 |---|---|
-| `scripts/sync-from-sanity.mjs` | **Principal.** Sanity → products-index.js + products-enriched.js + notes-lookup.js. Corre en cada build. |
+| `scripts/sync-from-sanity.mjs` | **Principal.** Sanity → products-index.js + products-enriched.js + notes-lookup.js. Corre en cada build y cada 2 h por CI. |
 | `scripts/migrate-to-sanity.mjs` | Local → Sanity. Para migraciones masivas. Usa batches de 50. |
+| `scripts/migrate-images-to-sanity.mjs` | Sube las fotos locales de `public/products/` al campo `sanityImage`. |
 | `scripts/generate-notes-lookup.mjs` | Regenera notes-lookup.js desde products-enriched.js local (sin Sanity). |
-| `scripts/convert-to-webp.mjs` | Convierte jpg/png → webp con `.rotate()` EXIF. Requiere `sharp`. |
-| `scripts/add-new-products.mjs` | Agrega nuevos perfumes al catálogo local. |
-| `scripts/generate-sitemap.js` | Corre automáticamente en cada `npm run build`. URLs con slugs. |
-| `scripts/generate-product-pages.mjs` | Genera `dist/tienda/[slug]/index.html` por producto con OG tags correctos. Corre al final de cada `npm run build`. |
-| `scripts/sync-prices.mjs` | Sincroniza precios desde lista PDF → products-enriched.js + products-index.js. |
-| `scripts/export-prices.mjs` | Exporta todos los productos con precios a `precios.csv`. |
-| `scripts/import-prices.mjs` | Reimporta `precios.csv` editado → archivos locales. |
+| `scripts/convert-to-webp.mjs` | Convierte jpg/png → webp con `.rotate()` EXIF. Requiere `sharp` (+ `heic-convert` para HEIC). |
+| `scripts/add-new-products.mjs` | **Legacy** — agrega al catálogo local. Hoy usar Sanity (el build lo sobrescribe). |
+| `scripts/set-agotado.mjs` | Marca/desmarca `agotado` en Sanity por IDs. Lo llama el workflow `set-agotado.yml`. |
+| `scripts/check-missing-notes.mjs` | Lista productos sin notas olfativas. |
+| `scripts/download-notes.mjs` | Descarga imágenes de notas a `public/notes/`. |
+| `scripts/generate-sitemap.js` | Corre en cada `npm run build`. URLs con slugs → `public/sitemap.xml`. |
+| `scripts/generate-meta-feed.mjs` | Corre en cada `npm run build`. Genera `public/meta-product-feed.xml` (catálogo Meta/Facebook). |
+| `scripts/generate-product-pages.mjs` | Genera `dist/tienda/[slug]/index.html` por producto con OG tags. Al final de cada build. |
+| `scripts/sync-prices.mjs` / `export-prices.mjs` / `import-prices.mjs` | Sincroniza / exporta a `precios.csv` / reimporta precios. |
+| `scripts/cleanup-promo-verano.mjs` | Limpieza puntual de la promo de verano (histórico). |
 
 ## Pendiente
-- Teardown DDP post-21-junio (redirect en vercel.json):
-  ```json
-  { "src": "/dia-del-padre", "dest": "/tienda?genero=Masculino", "status": 302 }
-  ```
-  Agregar en `vercel.json` antes de `{ "handle": "filesystem" }` después del 21 de junio 2026.
+- (nada crítico abierto)
+
+**Hecho:** el teardown de Día del Padre ya está aplicado — `vercel.json` redirige
+`/dia-del-padre` → `/tienda?genero=Masculino` (302).
 
 ---
 

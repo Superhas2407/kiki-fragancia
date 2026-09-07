@@ -1,80 +1,101 @@
 # KiKi Fragancia
 
-Catálogo de perfumería venezolana de lujo. Landing page estática + tienda + detalle de producto. Sin backend — todo el proceso de compra es vía WhatsApp.
+Tienda de perfumería venezolana de lujo. Landing editorial + catálogo + detalle de producto.
+**Sin checkout propio:** todo el cierre de compra es por WhatsApp. Dominio: **kikifragancia.com**.
+
+> Contexto operativo completo (arquitectura, reglas, "lo que no se toca") → **`CLAUDE.md`**
+> Sistema de diseño (paleta, tipografía, reglas CSS) → **`DESIGN.md`**
+
+---
 
 ## Stack
 
-| Herramienta | Versión |
-|-------------|---------|
-| React | 19.2.6 |
-| Vite | 8.0.12 |
-| Tailwind CSS | v4.3 (`@import "tailwindcss"` + `@theme {}` — sin `tailwind.config.js`) |
-| React Router | v7.15 |
-| framer-motion | v12.38 (solo en Tienda y WheelPagination) |
+| Herramienta | Versión | Nota |
+|---|---|---|
+| React | 19 | |
+| Vite | 8 | |
+| Tailwind CSS | v4 | `@import "tailwindcss"` + `@theme {}` en `src/index.css` — **sin `tailwind.config.js`** |
+| React Router | v7 | |
+| framer-motion | v12 | solo en Tienda |
+| three.js | 0.184 | `ShaderAnimation` (fondo) |
+| @sanity/client | v7 | CMS de productos |
+| @supabase/supabase-js | v2 | auth + wishlist |
+| @vercel/analytics + speed-insights | v2 | montados en `main.jsx` |
 
 ## Desarrollo
 
 ```bash
 npm install
 npm run dev      # localhost:5173
-npm run build    # dist/
-npm run preview  # preview del build
+npm run build    # sync Sanity → sitemap → meta-feed → vite build → páginas OG
+npm run preview  # sirve dist/
+npm run lint     # eslint
 ```
+
+`npm run build` corre, en orden:
+`sync-from-sanity.mjs` → `generate-sitemap.js` → `generate-meta-feed.mjs` → `vite build` → `generate-product-pages.mjs`.
 
 ## Rutas
 
 ```
-/             → Landing (Hero, Catálogo, Familias, Marcas, BrandStory, Instagram, Footer)
-/tienda       → Catálogo completo (filtros, búsqueda, paginación)
-/tienda/:id   → Detalle de producto
+/                         Landing
+/tienda                   Catálogo (filtros + búsqueda, infinite scroll, sin paginación)
+/tienda/:slug             Detalle de producto (acepta slug o ID numérico legacy)
+/terminos-y-condiciones   Términos
+/dia-del-padre            → redirect 302 a /tienda?genero=Masculino (campaña 2026 finalizada)
+/coming-soon              Página standalone
+/kiki-login               Login admin (oscuro, no linkeado)
+/kiki-desk                Panel admin — protegido, gestiona la tasa de cambio
 ```
 
-## Arquitectura CSS
+`/kiki-login` y `/kiki-desk` viven **fuera** del AppShell (sin Header/Footer). El resto va dentro de
+`SanityProductsProvider > WishlistProvider > CurrencyProvider > ThemeProvider > AppShell`.
 
-Dos sistemas coexistiendo sin conflicto:
+## Datos de productos
 
-- **Landing + ProductDetail** → clases custom en `src/index.css` (`.kiki-container`, `.hero-section`, `.pd-layout`, etc.)
-- **Tienda + CartDrawer** → utilidades de Tailwind
-
-No mezclar en nuevos componentes. Ver `DESIGN.md` para las reglas completas.
-
-## Datos
-
-416+ productos en `src/data/products-enriched.js`. Cada producto tiene campo `precioUSD`. Imágenes en `public/products/`.
+**Sanity es la fuente primaria.** Los archivos locales (`src/data/products-*.js`) son fallback de
+carga inicial y **se regeneran en cada `npm run build`** y cada 2 h por CI. No editarlos a mano.
 
 | Archivo | Descripción |
 |---|---|
-| `src/data/products-enriched.js` | Fuente principal: 416+ productos con imagen, notas, descripción y precio |
-| `src/data/all-products.js` | Re-exporta products-enriched como `allProducts` |
-| `src/data/notes-images.js` | Mapeo nota → imagen (78 entradas, fotos reales de ingredientes) |
-| `src/data/dia-del-padre.js` | IDs de los 10 productos de la campaña Día del Padre 2026 |
+| `src/data/products-index.js` | Catálogo ligero (~454 productos) — **generado** |
+| `src/data/products-enriched.js` | Productos completos: notas, descripción, precio — **generado** |
+| `src/data/notes-lookup.js` | Mapeo id → notas para el buscador — **generado** |
+| `src/data/notes-images.js` | Mapeo nota → foto WebP (415 notas) |
+| `src/data/dia-del-padre.js` | IDs de la campaña Día del Padre 2026 (histórico) |
+
+Flujo para agregar/editar un producto: **Studio → Publish → `npm run build` → commit → push**
+(Vercel despliega). Ver `CLAUDE.md` § Sanity CMS.
+
+## Arquitectura CSS
+
+Dos sistemas coexistiendo, **no mezclar en componentes nuevos**:
+
+- **Landing + ProductDetail + editoriales** → clases custom `src/index.css` (`.kiki-*`, `.pd-*`, `.vitrina-*`, `.hero-*`)
+- **Tienda + drawers + filtros** → utilidades Tailwind
+
+## PWA
+
+`public/manifest.json` + `public/sw.js` (registrado en `index.html`). Cache-first para assets
+estáticos, network-first para el resto. `InstallBanner.jsx` ofrece instalar en iOS/Android.
+
+## CI (GitHub Actions)
+
+| Workflow | Disparo | Qué hace |
+|---|---|---|
+| `sync-sanity.yml` | cada 2 h + manual | baja productos de Sanity, commitea `chore: sync products from Sanity [skip ci]` |
+| `deploy-studio.yml` | push a `studio/**` | `sanity deploy` |
+| `set-agotado.yml` | manual (IDs) | marca/desmarca productos agotados en Sanity |
+
+> El sync automático hace que `origin/main` avance solo. Antes de push: `git pull --rebase`.
 
 ## Deployment
 
-Vercel — auto-deploy desde `Superhas2407/kiki-fragancia` (branch `main`).
+Vercel — auto-deploy desde `Superhas2407/kiki-fragancia`, branch `main`. `vercel.json` define
+headers de cache (1 año para `/products`, `/notes`, `/hero`), el redirect de `/dia-del-padre` y el
+fallback SPA a `index.html` (después de `{ "handle": "filesystem" }`, que sirve las páginas OG estáticas).
 
-## Rutas
+## Herramienta interna
 
-```
-/                → Landing
-/tienda          → Catálogo completo
-/tienda/:id      → Detalle de producto
-/dia-del-padre   → Landing campaña Día del Padre 2026
-```
-
-## Estado actual (2026-05-27)
-
-- 416+ productos con precios, notas y descripciones en `products-enriched.js`
-- Campaña Día del Padre 2026 activa: `/dia-del-padre`, AnnouncementBar, popup móvil
-- Selector de variantes de tamaño en ProductDetail (60ml / 100ml / 200ml)
-- Pirámide de notas con 78 fotos reales de ingredientes
-- ProductDetail: CTA (precio + botones) visible above the fold en todos los viewports
-- Bug fix: popup de AnnouncementBar solo aparece en homepage (no en todas las páginas)
-
-## Documentos del proyecto
-
-| Archivo | Contenido |
-|---------|-----------|
-| `DESIGN.md` | Sistema de diseño: paleta, tipografía, reglas de CSS, decisiones |
-| `PLAN.md` | Historial de mejoras y decisiones acumuladas |
-| `CONTEXT.md` | Contexto técnico completo (en `.gitignore`, solo local) |
+`tools/renamer-app/` — app Electron para renombrar fotos de productos. Fuera del sitio
+(`tools/` está en `.gitignore`). Ver `tools/renamer-app/CLAUDE.md`.
