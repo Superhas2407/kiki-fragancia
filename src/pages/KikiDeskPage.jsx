@@ -144,7 +144,7 @@ export default function KikiDeskPage() {
       <div style={styles.card}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 4 }}>
           <p style={styles.eyebrow}>kiki fragancia</p>
-          <button onClick={handleLogout} style={{ background: 'none', border: 'none', color: 'rgba(247,242,234,0.3)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer', padding: 0 }}>
+          <button onClick={handleLogout} style={{ background: 'none', border: 'none', color: 'var(--ink-faint)', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer', padding: 0 }}>
             Cerrar sesión
           </button>
         </div>
@@ -153,7 +153,7 @@ export default function KikiDeskPage() {
         <div style={styles.statusBox}>
           {info ? (
             <>
-              <span style={styles.dot('#C9A84C')} />
+              <span style={styles.dot('var(--gold)')} />
               <div>
                 <p style={styles.statusLabel}>Tasa manual activa</p>
                 <p style={styles.statusValue}>{info.rate.toLocaleString('es-VE')} <span style={styles.unit}>Bs/$</span></p>
@@ -196,7 +196,7 @@ export default function KikiDeskPage() {
         )}
 
         {msg && (
-          <p style={{ ...styles.msg, color: msg.ok ? '#C9A84C' : '#E07070' }}>
+          <p style={{ ...styles.msg, color: msg.ok ? 'var(--gold)' : '#E07070' }}>
             {msg.text}
           </p>
         )}
@@ -208,7 +208,7 @@ export default function KikiDeskPage() {
         <div style={styles.statusBox}>
           {ofertaInfo && ofertaProduct && !ofertaExpired ? (
             <>
-              <span style={styles.dot('#C9A84C')} />
+              <span style={styles.dot('var(--gold)')} />
               <div>
                 <p style={styles.statusLabel}>Activa</p>
                 <p style={styles.statusValue}>{ofertaProduct.house} {ofertaProduct.name}</p>
@@ -259,7 +259,7 @@ export default function KikiDeskPage() {
         )}
 
         {ofertaMsg && (
-          <p style={{ ...styles.msg, color: ofertaMsg.ok ? '#C9A84C' : '#E07070' }}>
+          <p style={{ ...styles.msg, color: ofertaMsg.ok ? 'var(--gold)' : '#E07070' }}>
             {ofertaMsg.text}
           </p>
         )}
@@ -274,23 +274,24 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'var(--bg, #0A0A0A)',
+    background: 'var(--bg)',
     padding: '24px 16px',
   },
   card: {
     width: '100%',
     maxWidth: 420,
-    background: 'var(--surface, #131310)',
-    border: '1px solid rgba(201,168,76,0.18)',
+    background: 'var(--raised)',
+    border: '1px solid var(--line)',
     borderRadius: 4,
     padding: '40px 36px',
+    boxShadow: 'var(--shadow)',
   },
   eyebrow: {
     fontFamily: 'var(--font-s, sans-serif)',
     fontSize: 10,
     letterSpacing: '0.22em',
     textTransform: 'uppercase',
-    color: 'var(--gold, #C9A84C)',
+    color: 'var(--gold)',
     margin: '0 0 12px',
   },
   title: {
@@ -298,15 +299,15 @@ const styles = {
     fontStyle: 'italic',
     fontSize: 28,
     fontWeight: 400,
-    color: 'var(--ink, #F7F2EA)',
+    color: 'var(--ink)',
     margin: '0 0 28px',
   },
   statusBox: {
     display: 'flex',
     alignItems: 'flex-start',
     gap: 12,
-    background: 'rgba(255,255,255,0.03)',
-    border: '1px solid rgba(255,255,255,0.06)',
+    background: 'var(--chip)',
+    border: '1px solid var(--line2)',
     borderRadius: 4,
     padding: '16px 18px',
     marginBottom: 28,
@@ -324,23 +325,23 @@ const styles = {
     fontSize: 10,
     letterSpacing: '0.15em',
     textTransform: 'uppercase',
-    color: 'var(--ink-faint, #7A7468)',
+    color: 'var(--ink-faint)',
     margin: '0 0 4px',
   },
   statusValue: {
     fontFamily: 'var(--font-d, serif)',
     fontSize: 22,
-    color: 'var(--ink, #F7F2EA)',
+    color: 'var(--ink)',
     margin: '0 0 2px',
   },
   unit: {
     fontSize: 14,
-    color: 'var(--ink-faint, #7A7468)',
+    color: 'var(--ink-faint)',
   },
   statusMeta: {
     fontFamily: 'var(--font-s, sans-serif)',
     fontSize: 11,
-    color: 'var(--ink-faint, #7A7468)',
+    color: 'var(--ink-faint)',
     margin: 0,
   },
   form: {
@@ -352,7 +353,7 @@ const styles = {
     fontSize: 10,
     letterSpacing: '0.15em',
     textTransform: 'uppercase',
-    color: 'var(--ink-faint, #7A7468)',
+    color: 'var(--ink-faint)',
     marginBottom: 8,
   },
   row: {
@@ -361,18 +362,18 @@ const styles = {
   },
   input: {
     flex: 1,
-    background: 'rgba(255,255,255,0.05)',
-    border: '1px solid rgba(201,168,76,0.25)',
+    background: 'var(--chip)',
+    border: '1px solid var(--line)',
     borderRadius: 3,
     padding: '10px 14px',
     fontFamily: 'var(--font-s, sans-serif)',
     fontSize: 15,
-    color: 'var(--ink, #F7F2EA)',
+    color: 'var(--ink)',
     outline: 'none',
   },
   btnPrimary: {
-    background: 'var(--gold, #C9A84C)',
-    color: '#0A0A0A',
+    background: 'var(--gold)',
+    color: 'var(--gold-fill-ink)',
     border: 'none',
     borderRadius: 3,
     padding: '10px 20px',
@@ -386,14 +387,14 @@ const styles = {
   btnGhost: {
     width: '100%',
     background: 'transparent',
-    border: '1px solid rgba(255,255,255,0.1)',
+    border: '1px solid var(--line2)',
     borderRadius: 3,
     padding: '10px 20px',
     fontFamily: 'var(--font-s, sans-serif)',
     fontSize: 10,
     letterSpacing: '0.15em',
     textTransform: 'uppercase',
-    color: 'var(--ink-faint, #7A7468)',
+    color: 'var(--ink-faint)',
     cursor: 'pointer',
     marginBottom: 12,
   },
@@ -406,11 +407,11 @@ const styles = {
   },
   divider: {
     height: 1,
-    background: 'rgba(255,255,255,0.08)',
+    background: 'var(--line2)',
     margin: '32px 0 28px',
   },
   resultsBox: {
-    border: '1px solid rgba(201,168,76,0.2)',
+    border: '1px solid var(--line)',
     borderRadius: 3,
     overflow: 'hidden',
     marginBottom: 12,
@@ -421,19 +422,19 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: 8,
-    background: 'rgba(255,255,255,0.03)',
+    background: 'var(--chip)',
     border: 'none',
-    borderBottom: '1px solid rgba(255,255,255,0.06)',
+    borderBottom: '1px solid var(--line2)',
     padding: '10px 14px',
     fontFamily: 'var(--font-s, sans-serif)',
     fontSize: 13,
-    color: 'var(--ink, #F7F2EA)',
+    color: 'var(--ink)',
     cursor: 'pointer',
     textAlign: 'left',
   },
   resultMeta: {
     flexShrink: 0,
     fontSize: 10,
-    color: 'var(--ink-faint, #7A7468)',
+    color: 'var(--ink-faint)',
   },
 }
