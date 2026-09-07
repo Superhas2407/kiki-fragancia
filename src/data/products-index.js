@@ -5774,11 +5774,35 @@ export const products = [
     "house": "BHARARA",
     "name": "Rome La Bomba ",
     "image": null,
-    "familia": null,
-    "tipo": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": null
+    "categoria": "disenador"
+  },
+  {
+    "id": 464,
+    "house": "LATTAFA",
+    "name": "Khamrah Waha",
+    "image": null,
+    "familia": "Aromático",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 100,
+    "precioUSD": 60,
+    "categoria": "arabes"
+  },
+  {
+    "id": 465,
+    "house": "FRENCH AVENUE",
+    "name": "Vulcan Feu",
+    "image": null,
+    "familia": "Floral",
+    "tipo": "Extrait de Parfum",
+    "genero": "Unisex",
+    "ml": 100,
+    "precioUSD": 60,
+    "categoria": "arabes"
   }
 ]
