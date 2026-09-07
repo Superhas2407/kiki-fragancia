@@ -364,6 +364,21 @@ siguiente).
   cambio: buscador de producto (casa/nombre) con `norm()`, click en un resultado activa la oferta
   (`setOfertaDelDiaSanity`) y arranca el countdown de 24h; botón "Desactivar oferta del día" la
   quita antes de tiempo. Muestra el producto activo y el tiempo restante en vivo.
+- **Historial** — `kiki-ajustes.ofertaDelDiaHistory` (array, tope 20, más reciente primero,
+  `{ _key, id, setAt }`). Cada `setOfertaDelDiaSanity()` lee el historial actual, antepone la nueva
+  entrada y lo vuelve a escribir en el mismo `.patch()`. `fetchOfertaDelDiaHistory()` lo lee para
+  mostrarlo. En `/kiki-desk` se ve debajo del botón "Desactivar oferta del día".
+
+## Gestión rápida de productos en /kiki-desk (agotado / precio)
+- `src/hooks/useProductAdmin.js` — `setAgotadoSanity(productId, value)` / `setPrecioSanity(productId, precioUSD)`.
+  Resuelven el `_id` del documento Sanity a partir del `id` numérico (`*[_type == "product" && id == $id][0]{ _id }`)
+  y hacen `.patch(docId).set({...}).commit()` — mismo mecanismo que `scripts/set-agotado.mjs`, pero desde el navegador.
+- Sección "Gestión de productos" en `KikiDeskPage.jsx` — buscador (casa/nombre), al elegir un resultado
+  queda "seleccionado" (copia local editable, no toca el contexto global `SanityProductsContext`): botón
+  Marcar/Desmarcar agotado + input de precio con botón Guardar. Los cambios se reflejan al instante en el
+  panel; el resto del sitio los ve en su próximo fetch normal a Sanity (no hay push en vivo).
+- Sección "Resumen" (arriba de todo, antes de "Tasa de cambio") — 4 tiles derivados de `useIndexProducts()`
+  sin escritura a Sanity: total de productos, agotados, con `descuento > 0`, marcas únicas.
 
 ## PWA
 - `public/manifest.json` — `standalone`, theme `#C9A84C`, iconos `icon-192.png` / `icon-512.png` (any maskable), shortcut a `/tienda`.
