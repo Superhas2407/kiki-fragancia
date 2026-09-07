@@ -15,6 +15,9 @@ const LAUNCHES = [
     mobile: '/hero/carolina-herrera-mobile.webp',
   },
   {
+    // slug estimado con toSlug() — French Avenue Vulcan Feu aún no está
+    // sincronizado desde Sanity en este checkout; verificar contra
+    // products-enriched.js una vez que corra el sync (o `/tienda`).
     slug: 'french-avenue-vulcan-feu-100ml',
     house: 'French Avenue',
     name: 'Vulcan Feu',
@@ -22,6 +25,8 @@ const LAUNCHES = [
     mobile: '/hero/vulcan-feu-mobile.webp',
   },
   {
+    // slug estimado con toSlug() — Lattafa Khamrah Waha aún no está
+    // sincronizado desde Sanity en este checkout; verificar igual que arriba.
     slug: 'lattafa-khamrah-waha-100ml',
     house: 'Lattafa',
     name: 'Khamrah Waha',
@@ -29,6 +34,7 @@ const LAUNCHES = [
     mobile: '/hero/khamrah-waha-mobile.webp',
   },
   {
+    // slug confirmado — id 463 en products-enriched.js (BHARARA, 100ml, $45)
     slug: 'bharara-rome-la-bomba-100ml',
     house: 'Bharara',
     name: 'Rome La Bomba',
