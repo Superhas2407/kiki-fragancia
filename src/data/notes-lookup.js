@@ -48,6 +48,7 @@ export const notesLookup = {
   45: "Limón, Bergamota, Mandarina, Jengibre, Pimienta rosa, Madera blanca, Almizcle",
   46: "Mandarina, Naranja, Azafrán, Salvia, Caramelo, Haba tonka, Cempasúchil, Ambroxan, Vetiver, Cedro",
   47: "Mandarina, Naranja, Bergamota, Lavanda, Cardamomo, Pimienta negra, Caramelo, Haba tonka, Pachulí, Incienso, Vainilla, Vetiver",
+  47: "Mandarina, Naranja, Bergamota, Lavanda, Cardamomo, Pimienta negra, Caramelo, Haba tonka, Pachulí, Incienso, Vainilla, Vetiver",
   48: "Naranja, Jengibre, Bergamota, Limón, Menta, Piña, Enebro de Virginia, Geranio, Salvia, Haba tonka, Almizcle, Cedro, Vetiver",
   49: "Piña, naranja, ciruela, chocolate, vainilla, cardamomo, haba tonka, pachulí",
   50: "Bergamota, Canela, Manzana, Flor de azahar, Lavanda, Lirio del valle, Haba tonka, Pachulí, Tabaco, Vainilla, Ámbar",
@@ -449,5 +450,6 @@ export const notesLookup = {
   445: "lavanda, bergamota, romero, notas marinas, geranio, salvia, ámbar, vetiver, musgo, cedro",
   446: "azafrán, bergamota, resina de elemí, rosa búlgara, oud, lirio de los valles, haba tonka, ambar, almizcle blanco, musgo de roble",
   447: "melón, bergamota, menta, grosellas negras, agua de mar, manzana verde, capuchino, cardamomo, nuez moscada, notas amaderadas, ambar",
-  448: "piña, melón, bergamota, manzana verde, toronja (pomelo), notas marinas, jazmin, cardamomo, neroli, vetiver, almizcle blanco, cedro, gamuza, ambar"
+  448: "piña, melón, bergamota, manzana verde, toronja (pomelo), notas marinas, jazmin, cardamomo, neroli, vetiver, almizcle blanco, cedro, gamuza, ambar",
+  449: "champán, pimienta rosa, flor de albaricoquero, rosa, almizcle blanco, notas amaderadas"
 }

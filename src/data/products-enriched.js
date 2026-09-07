@@ -1074,8 +1074,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 37,
@@ -1188,8 +1187,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 41,
@@ -1363,6 +1361,37 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
+    "categoria": "arabes"
+  },
+  {
+    "id": 47,
+    "house": "ARMAF",
+    "name": "Armaf Odyssey Mandarin Sky Elixir",
+    "image": "armaf-odyssey-mandarin-sky-elixir-100ml-u.webp",
+    "familia": "Oriental",
+    "tipo": "Elixir",
+    "genero": "Unisex",
+    "descripcion": "Una fragancia unisex vibrante y sofisticada, de perfil oriental amaderado con un giro dulce y especiado que resulta moderno y adictivo. Su apertura cítrica y aromática recuerda a una interpretación luminosa y gourmand, con un aire que puede gustar a quienes disfrutan de perfumes de diseñador de estilo contemporáneo.",
+    "description": "Una fragancia unisex vibrante y sofisticada, de perfil oriental amaderado con un giro dulce y especiado que resulta moderno y adictivo. Su apertura cítrica y aromática recuerda a una interpretación luminosa y gourmand, con un aire que puede gustar a quienes disfrutan de perfumes de diseñador de estilo contemporáneo.",
+    "notasSalida": "Mandarina, Naranja, Bergamota, Lavanda",
+    "notasCorazon": "Cardamomo, Pimienta negra, Caramelo, Haba tonka",
+    "notasFondo": "Pachulí, Incienso, Vainilla, Vetiver",
+    "notes": [
+      "Mandarina",
+      "Naranja",
+      "Bergamota",
+      "Lavanda",
+      "Cardamomo",
+      "Pimienta negra",
+      "Caramelo",
+      "Haba tonka",
+      "Pachulí",
+      "Incienso",
+      "Vainilla",
+      "Vetiver"
+    ],
+    "ml": 100,
+    "precioUSD": 55,
     "categoria": "arabes"
   },
   {
@@ -2147,8 +2176,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 74,
@@ -11286,8 +11314,7 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       447
-    ],
-    "agotado": true
+    ]
   },
   {
     "id": 392,
@@ -11825,8 +11852,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 411,
@@ -11882,8 +11908,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 413,
@@ -12916,7 +12941,8 @@ export const products = [
     ],
     "ml": 200,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 448,
@@ -12949,6 +12975,31 @@ export const products = [
     ],
     "ml": 200,
     "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 449,
+    "house": "CAROLINA HERRERA",
+    "name": "212 VIP Rosé NYC",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "212 VIP Rosé de Carolina Herrera es una fragancia floral y frutal para la mujer, fresca, sensual y dinámica, lanzada en 2014 como versión femenina del icónico 212 VIP. Abre con un acorde efervescente de vino rosado (champagne rosé) y pimienta rosa que estalla como un brindis, y da paso a un corazón coqueto de flor de durazno y un ramo de rosas. El fondo de Queenwood y almizcle deja una estela suave, cálida y adictiva. Es el perfume de la mujer que va a la fiesta y marca presencia: pensado para la noche, los planes con amigas y las celebraciones.",
+    "description": "212 VIP Rosé de Carolina Herrera es una fragancia floral y frutal para la mujer, fresca, sensual y dinámica, lanzada en 2014 como versión femenina del icónico 212 VIP. Abre con un acorde efervescente de vino rosado (champagne rosé) y pimienta rosa que estalla como un brindis, y da paso a un corazón coqueto de flor de durazno y un ramo de rosas. El fondo de Queenwood y almizcle deja una estela suave, cálida y adictiva. Es el perfume de la mujer que va a la fiesta y marca presencia: pensado para la noche, los planes con amigas y las celebraciones.",
+    "notasSalida": "champán, pimienta rosa",
+    "notasCorazon": "flor de albaricoquero, rosa",
+    "notasFondo": "almizcle blanco, notas amaderadas",
+    "notes": [
+      "champán",
+      "pimienta rosa",
+      "flor de albaricoquero",
+      "rosa",
+      "almizcle blanco",
+      "notas amaderadas"
+    ],
+    "ml": 80,
+    "precioUSD": 140,
     "categoria": "disenador"
   }
 ]

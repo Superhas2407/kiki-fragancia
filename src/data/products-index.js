@@ -446,8 +446,7 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 37,
@@ -495,8 +494,7 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 41,
@@ -568,6 +566,18 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 45,
+    "categoria": "arabes"
+  },
+  {
+    "id": 47,
+    "house": "ARMAF",
+    "name": "Armaf Odyssey Mandarin Sky Elixir",
+    "image": "armaf-odyssey-mandarin-sky-elixir-100ml-u.webp",
+    "familia": "Oriental",
+    "tipo": "Elixir",
+    "genero": "Unisex",
+    "ml": 100,
+    "precioUSD": 55,
     "categoria": "arabes"
   },
   {
@@ -902,8 +912,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 74,
@@ -4900,8 +4909,7 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       447
-    ],
-    "agotado": true
+    ]
   },
   {
     "id": 392,
@@ -5135,8 +5143,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 411,
@@ -5160,8 +5167,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 413,
@@ -5591,7 +5597,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 200,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 448,
@@ -5603,6 +5610,18 @@ export const products = [
     "genero": "Masculino",
     "ml": 200,
     "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 449,
+    "house": "CAROLINA HERRERA",
+    "name": "212 VIP Rosé NYC",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 80,
+    "precioUSD": 140,
     "categoria": "disenador"
   }
 ]
