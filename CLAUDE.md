@@ -344,10 +344,26 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 
 ## Componentes con punteros hardcodeados
 Cuando cambie el producto destacado, editar el archivo:
-- `OfertaDelDia.jsx` — `OFERTA_ID = 173` (Lattafa Khamrah Dukhan). Card desktop (izquierda) + barra
-  delgada móvil, countdown a fin del día. Setea `--odd-bar-h` (`56px`/`0`) para el offset del WhatsApp fab.
 - `NewLaunchBanner.jsx` — `PRODUCT_SLUG = 'carolina-herrera-la-bomba-80ml'`.
 - `MustHaveMen.jsx` / `MustHaveWomen.jsx` — arrays de IDs curados (ver secciones abajo).
+
+`OfertaDelDia.jsx` **ya NO usa un ID hardcodeado** — se gestiona desde `/kiki-desk` (ver sección
+siguiente).
+
+## Oferta del Día (gestionada desde /kiki-desk, sin tocar código)
+- `src/hooks/useOfertaDelDia.js` — fuente: Sanity `kiki-ajustes.ofertaDelDiaId` +
+  `ofertaDelDiaSetAt` (mismo documento singleton que `tasaManual`, escritos con `.patch()` para no
+  pisarse entre sí — nunca `createOrReplace` sobre `kiki-ajustes`). `useOfertaDelDia()` devuelve
+  `{ id, setAt }` o `null` si no hay oferta activa o si ya pasaron **24h** desde `ofertaDelDiaSetAt`
+  (`OFERTA_DURATION_MS`). Caché local 5min en `localStorage['kiki_oferta_dia_sanity']`.
+  `setOfertaDelDiaSanity(productId)` / `clearOfertaDelDiaSanity()` / `getOfertaDelDiaCache()`.
+- `OfertaDelDia.jsx` — lee `useOfertaDelDia()`; si no hay oferta activa el componente no renderiza
+  nada (`return null`) para nadie. El countdown (card desktop + barra móvil) cuenta hacia
+  `setAt + 24h` (ya no hacia medianoche) y el widget se auto-oculta solo al llegar a 0, sin reload.
+- **Panel en `/kiki-desk`** (`KikiDeskPage.jsx`) — sección "Oferta del día" debajo de la tasa de
+  cambio: buscador de producto (casa/nombre) con `norm()`, click en un resultado activa la oferta
+  (`setOfertaDelDiaSanity`) y arranca el countdown de 24h; botón "Desactivar oferta del día" la
+  quita antes de tiempo. Muestra el producto activo y el tiempo restante en vivo.
 
 ## PWA
 - `public/manifest.json` — `standalone`, theme `#C9A84C`, iconos `icon-192.png` / `icon-512.png` (any maskable), shortcut a `/tienda`.

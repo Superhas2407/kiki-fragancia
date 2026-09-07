@@ -3,20 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { useIndexProducts } from '../context/SanityProductsContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
+import { useOfertaDelDia, OFERTA_DURATION_MS } from '../hooks/useOfertaDelDia'
 import { toSlug } from '../lib/slugs'
-
-// ID del producto oferta del día
-const OFERTA_ID = 173
 
 function pad(n) {
   return String(n).padStart(2, '0')
-}
-
-function getEndOfDay() {
-  const now = new Date()
-  const end = new Date(now)
-  end.setHours(23, 59, 59, 999)
-  return end
 }
 
 export default function OfertaDelDia() {
@@ -24,10 +15,11 @@ export default function OfertaDelDia() {
   const navigate = useNavigate()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
+  const oferta = useOfertaDelDia() // { id, setAt } desde Sanity, o null si no hay/expiró — se elige en /kiki-desk
   const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
   const [visible, setVisible] = useState(true)
 
-  const product = products.find(p => p.id === OFERTA_ID)
+  const product = oferta ? products.find(p => p.id === oferta.id) : null
   const active = !!product && visible
 
   useEffect(() => {
@@ -40,20 +32,22 @@ export default function OfertaDelDia() {
   }, [active])
 
   useEffect(() => {
+    if (!oferta) return
+    const end = new Date(oferta.setAt).getTime() + OFERTA_DURATION_MS
     const tick = () => {
-      const now = new Date()
-      const end = getEndOfDay()
-      const diff = Math.max(0, end - now)
+      const diff = Math.max(0, end - Date.now())
       setTimeLeft({
         h: Math.floor(diff / 3600000),
         m: Math.floor((diff % 3600000) / 60000),
         s: Math.floor((diff % 60000) / 1000),
       })
+      // Se cumplieron las 24h — apagar el widget sin esperar a un remount
+      if (diff <= 0) setVisible(false)
     }
     tick()
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
-  }, [])
+  }, [oferta])
 
   if (!active) return null
 
