@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { setTasaSanity, clearTasaSanity, getTasaSanityCache } from '../hooks/useTasaCambio'
 import {
-  setOfertaDelDiaSanity, clearOfertaDelDiaSanity, getOfertaDelDiaCache,
+  setOfertaDelDiaSanity, clearOfertaDelDiaSanity, setOfertaDelDiaPrecioSanity, getOfertaDelDiaCache,
   fetchOfertaDelDiaHistory, OFERTA_DURATION_MS,
 } from '../hooks/useOfertaDelDia'
 import { setAgotadoSanity, setPrecioSanity } from '../hooks/useProductAdmin'
@@ -40,12 +40,14 @@ export default function KikiDeskPage() {
   const [msg, setMsg]       = useState(null)
 
   // ── Oferta del día ────────────────────────────────────────────────────────
-  const [ofertaQuery, setOfertaQuery]     = useState('')
-  const [ofertaInfo, setOfertaInfo]       = useState(() => getOfertaDelDiaCache())
-  const [ofertaSaving, setOfertaSaving]   = useState(false)
-  const [ofertaMsg, setOfertaMsg]         = useState(null)
-  const [ofertaStatus, setOfertaStatus]   = useState({ msLeft: 0, expired: false })
-  const [ofertaHistory, setOfertaHistory] = useState([])
+  const [ofertaQuery, setOfertaQuery]           = useState('')
+  const [ofertaInfo, setOfertaInfo]             = useState(() => getOfertaDelDiaCache())
+  const [ofertaSaving, setOfertaSaving]         = useState(false)
+  const [ofertaMsg, setOfertaMsg]               = useState(null)
+  const [ofertaStatus, setOfertaStatus]         = useState({ msLeft: 0, expired: false })
+  const [ofertaHistory, setOfertaHistory]       = useState([])
+  const [ofertaPrecioNuevo, setOfertaPrecioNuevo] = useState('') // precio promo al activar una oferta nueva
+  const [ofertaPrecioEdit, setOfertaPrecioEdit]   = useState('') // precio promo editable mientras ya está activa
 
   // ── Gestión de productos (agotado / precio) ─────────────────────────────
   const [prodQuery, setProdQuery]     = useState('')
@@ -56,16 +58,22 @@ export default function KikiDeskPage() {
 
   // Fetch live value from Sanity on mount
   useEffect(() => {
-    sanityClient.fetch(`*[_id == "kiki-ajustes"][0]{ tasaManual, updatedAt, ofertaDelDiaId, ofertaDelDiaSetAt }`)
+    sanityClient.fetch(`*[_id == "kiki-ajustes"][0]{ tasaManual, updatedAt, ofertaDelDiaId, ofertaDelDiaSetAt, ofertaDelDiaPrecio }`)
       .then(doc => {
         if (doc?.tasaManual > 0) setInfo({ rate: doc.tasaManual, ts: new Date(doc.updatedAt).getTime() })
         else setInfo(null)
-        if (doc?.ofertaDelDiaId) setOfertaInfo({ id: doc.ofertaDelDiaId, setAt: doc.ofertaDelDiaSetAt })
+        if (doc?.ofertaDelDiaId) setOfertaInfo({ id: doc.ofertaDelDiaId, setAt: doc.ofertaDelDiaSetAt, precio: doc.ofertaDelDiaPrecio ?? null })
         else setOfertaInfo(null)
       })
       .catch(() => {})
     fetchOfertaDelDiaHistory().then(setOfertaHistory)
   }, [])
+
+  // Refleja el precio promo actual en el input editable cada vez que cambia la oferta activa
+  useEffect(() => {
+    const sync = () => setOfertaPrecioEdit(ofertaInfo?.precio ? String(ofertaInfo.precio) : '')
+    sync()
+  }, [ofertaInfo])
 
   // Countdown de la oferta activa — se recalcula en un efecto (no en el
   // cuerpo del render) para no llamar Date.now() de forma impura.
@@ -104,12 +112,18 @@ export default function KikiDeskPage() {
   async function handleSetOferta(product) {
     setOfertaSaving(true)
     try {
-      await setOfertaDelDiaSanity(product.id)
+      const precio = parseFloat(ofertaPrecioNuevo.replace(',', '.')) || null
+      await setOfertaDelDiaSanity(product.id, precio)
       const setAt = new Date().toISOString()
-      setOfertaInfo({ id: product.id, setAt })
-      setOfertaHistory(h => [{ _key: `local-${Date.now()}`, id: product.id, setAt }, ...h].slice(0, 20))
+      setOfertaInfo({ id: product.id, setAt, precio })
+      setOfertaHistory(h => [{ _key: `local-${Date.now()}`, id: product.id, setAt, precio }, ...h].slice(0, 20))
       setOfertaQuery('')
-      flashOferta(`Oferta del día activada: ${product.house} ${product.name} — dura 24h`)
+      setOfertaPrecioNuevo('')
+      flashOferta(
+        precio
+          ? `Oferta del día activada: ${product.house} ${product.name} a REF ${precio} — dura 24h`
+          : `Oferta del día activada: ${product.house} ${product.name} — dura 24h`
+      )
     } catch {
       flashOferta('Error al guardar en Sanity. Revisa el token de escritura.', false)
     } finally {
@@ -125,6 +139,37 @@ export default function KikiDeskPage() {
       flashOferta('Oferta del día desactivada', true)
     } catch {
       flashOferta('Error al limpiar en Sanity.', false)
+    } finally {
+      setOfertaSaving(false)
+    }
+  }
+
+  async function handleSavePrecioPromo(e) {
+    e.preventDefault()
+    if (!ofertaInfo) return
+    const val = parseFloat(ofertaPrecioEdit.replace(',', '.'))
+    if (!val || val <= 0) { flashOferta('Ingresa un precio válido', false); return }
+    setOfertaSaving(true)
+    try {
+      await setOfertaDelDiaPrecioSanity(val)
+      setOfertaInfo(o => ({ ...o, precio: val }))
+      flashOferta(`Precio promocional actualizado a REF ${val}`)
+    } catch {
+      flashOferta('Error al guardar en Sanity.', false)
+    } finally {
+      setOfertaSaving(false)
+    }
+  }
+
+  async function handleClearPrecioPromo() {
+    setOfertaSaving(true)
+    try {
+      await setOfertaDelDiaPrecioSanity(null)
+      setOfertaInfo(o => ({ ...o, precio: null }))
+      setOfertaPrecioEdit('')
+      flashOferta('Precio promocional quitado — vuelve al precio normal', true)
+    } catch {
+      flashOferta('Error al guardar en Sanity.', false)
     } finally {
       setOfertaSaving(false)
     }
@@ -306,10 +351,39 @@ export default function KikiDeskPage() {
           {ofertaInfo && ofertaProduct && !ofertaExpired ? (
             <>
               <span style={styles.dot('var(--gold)')} />
-              <div>
+              <div style={{ flex: 1 }}>
                 <p style={styles.statusLabel}>Activa</p>
                 <p style={styles.statusValue}>{ofertaProduct.house} {ofertaProduct.name}</p>
-                <p style={styles.statusMeta}>Activada el {fmt(new Date(ofertaInfo.setAt).getTime())} · {fmtCountdown(ofertaMsLeft)}</p>
+                <p style={styles.statusMeta}>
+                  {ofertaInfo.precio
+                    ? <>Precio promo: <strong style={{ color: 'var(--gold)' }}>REF {ofertaInfo.precio}</strong> (normal REF {ofertaProduct.precioUSD}) · </>
+                    : `Precio normal REF ${ofertaProduct.precioUSD} · `}
+                  {fmtCountdown(ofertaMsLeft)}
+                </p>
+
+                <form onSubmit={handleSavePrecioPromo} style={{ ...styles.row, marginTop: 12 }}>
+                  <input
+                    type="text"
+                    inputMode="decimal"
+                    placeholder="Precio promo (ej: 25)"
+                    value={ofertaPrecioEdit}
+                    onChange={e => setOfertaPrecioEdit(e.target.value)}
+                    style={styles.input}
+                    autoComplete="off"
+                  />
+                  <button type="submit" style={styles.btnPrimary} disabled={ofertaSaving}>
+                    {ofertaSaving ? '…' : 'Guardar'}
+                  </button>
+                </form>
+                {ofertaInfo.precio && (
+                  <button
+                    onClick={handleClearPrecioPromo}
+                    disabled={ofertaSaving}
+                    style={{ background: 'none', border: 'none', color: 'var(--ink-faint)', fontSize: 10, letterSpacing: '0.08em', textTransform: 'uppercase', cursor: 'pointer', padding: 0, marginTop: 8 }}
+                  >
+                    Quitar precio promo (volver al normal)
+                  </button>
+                )}
               </div>
             </>
           ) : (
@@ -329,6 +403,15 @@ export default function KikiDeskPage() {
           placeholder="ej: Yara Moi"
           value={ofertaQuery}
           onChange={e => setOfertaQuery(e.target.value)}
+          style={{ ...styles.input, width: '100%', marginBottom: 8 }}
+          autoComplete="off"
+        />
+        <input
+          type="text"
+          inputMode="decimal"
+          placeholder="Precio promo (opcional, ej: 25) — si lo dejas vacío usa el precio normal"
+          value={ofertaPrecioNuevo}
+          onChange={e => setOfertaPrecioNuevo(e.target.value)}
           style={{ ...styles.input, width: '100%', marginBottom: ofertaResults.length ? 8 : 12 }}
           autoComplete="off"
         />
@@ -369,7 +452,10 @@ export default function KikiDeskPage() {
                 const p = products.find(pr => pr.id === h.id)
                 return (
                   <div key={h._key} style={styles.historyItem}>
-                    <span style={styles.historyName}>{p ? `${p.house} ${p.name}` : `#${h.id}`}</span>
+                    <span style={styles.historyName}>
+                      {p ? `${p.house} ${p.name}` : `#${h.id}`}
+                      {h.precio ? ` · REF ${h.precio}` : ''}
+                    </span>
                     <span style={styles.historyDate}>{fmt(new Date(h.setAt).getTime())}</span>
                   </div>
                 )

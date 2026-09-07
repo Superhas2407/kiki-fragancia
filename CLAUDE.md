@@ -352,20 +352,29 @@ siguiente).
 
 ## Oferta del Día (gestionada desde /kiki-desk, sin tocar código)
 - `src/hooks/useOfertaDelDia.js` — fuente: Sanity `kiki-ajustes.ofertaDelDiaId` +
-  `ofertaDelDiaSetAt` (mismo documento singleton que `tasaManual`, escritos con `.patch()` para no
-  pisarse entre sí — nunca `createOrReplace` sobre `kiki-ajustes`). `useOfertaDelDia()` devuelve
-  `{ id, setAt }` o `null` si no hay oferta activa o si ya pasaron **24h** desde `ofertaDelDiaSetAt`
-  (`OFERTA_DURATION_MS`). Caché local 5min en `localStorage['kiki_oferta_dia_sanity']`.
-  `setOfertaDelDiaSanity(productId)` / `clearOfertaDelDiaSanity()` / `getOfertaDelDiaCache()`.
+  `ofertaDelDiaSetAt` + `ofertaDelDiaPrecio` (mismo documento singleton que `tasaManual`, escritos
+  con `.patch()` para no pisarse entre sí — nunca `createOrReplace` sobre `kiki-ajustes`).
+  `useOfertaDelDia()` devuelve `{ id, setAt, precio }` o `null` si no hay oferta activa o si ya
+  pasaron **24h** desde `ofertaDelDiaSetAt` (`OFERTA_DURATION_MS`). Caché local 5min en
+  `localStorage['kiki_oferta_dia_sanity']`. `setOfertaDelDiaSanity(productId, precioPromo?)` /
+  `setOfertaDelDiaPrecioSanity(precioPromo)` (cambia solo el precio, sin reiniciar el countdown) /
+  `clearOfertaDelDiaSanity()` / `getOfertaDelDiaCache()`.
+- **Precio promocional (opcional)** — `precio` es un precio especial que rige *solo* mientras dura
+  la oferta; **no toca `precioUSD`** del producto (mismo espíritu que `precioPromoHalloween`). Se
+  limpia solo al desactivar/expirar la oferta. `OfertaDelDia.jsx` lo usa cuando está seteado y es
+  menor al precio normal — muestra el precio promo + el precio original tachado al lado
+  (`.odd-price-original` / `.odd-bar-price-original`). Si no hay precio promo, usa `precioUSD` normal.
 - `OfertaDelDia.jsx` — lee `useOfertaDelDia()`; si no hay oferta activa el componente no renderiza
   nada (`return null`) para nadie. El countdown (card desktop + barra móvil) cuenta hacia
   `setAt + 24h` (ya no hacia medianoche) y el widget se auto-oculta solo al llegar a 0, sin reload.
 - **Panel en `/kiki-desk`** (`KikiDeskPage.jsx`) — sección "Oferta del día" debajo de la tasa de
-  cambio: buscador de producto (casa/nombre) con `norm()`, click en un resultado activa la oferta
-  (`setOfertaDelDiaSanity`) y arranca el countdown de 24h; botón "Desactivar oferta del día" la
-  quita antes de tiempo. Muestra el producto activo y el tiempo restante en vivo.
+  cambio: buscador de producto (casa/nombre) con `norm()` + input opcional de precio promo, click en
+  un resultado activa la oferta (`setOfertaDelDiaSanity`) y arranca el countdown de 24h. Mientras
+  está activa, un form aparte (`handleSavePrecioPromo` / `handleClearPrecioPromo`) deja cambiar o
+  quitar el precio promo sin reiniciar el countdown. Botón "Desactivar oferta del día" la quita
+  antes de tiempo. Muestra el producto activo, precio (normal o promo) y tiempo restante en vivo.
 - **Historial** — `kiki-ajustes.ofertaDelDiaHistory` (array, tope 20, más reciente primero,
-  `{ _key, id, setAt }`). Cada `setOfertaDelDiaSanity()` lee el historial actual, antepone la nueva
+  `{ _key, id, setAt, precio? }`). Cada `setOfertaDelDiaSanity()` lee el historial actual, antepone la nueva
   entrada y lo vuelve a escribir en el mismo `.patch()`. `fetchOfertaDelDiaHistory()` lo lee para
   mostrarlo. En `/kiki-desk` se ve debajo del botón "Desactivar oferta del día".
 
