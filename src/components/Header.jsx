@@ -4,7 +4,7 @@ import { useCartContext } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { useIndexProducts } from '../context/SanityProductsContext'
+import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
 import { notesLookup } from '../data/notes-lookup'
@@ -506,10 +506,11 @@ export default function Header() {
                     <div className="kiki-search-grid">
                       {topProducts.map(p => {
                         const sale = p.descuento ? Math.round(p.precioUSD * (1 - p.descuento / 100)) : null
+                        const imgSrc = resolveProductImage(p)
                         return (
                           <div key={p.id} className="kiki-search-product" onClick={() => handleSuggestionClick(p)}>
                             <div className="kiki-search-product-img-bg">
-                              <img src={`/products/${p.image}`} alt={p.name} loading="lazy" className="kiki-search-product-img" />
+                              {imgSrc && <img src={imgSrc} alt={p.name} loading="lazy" className="kiki-search-product-img" />}
                             </div>
                             <p className="kiki-search-product-house">{p.house}</p>
                             <p className="kiki-search-product-name">{p.name}</p>
@@ -532,20 +533,23 @@ export default function Header() {
               </>
             ) : suggestions.length > 0 ? (
               <ul className="kiki-search-suggestions">
-                {suggestions.map((p, i) => (
+                {suggestions.map((p, i) => {
+                  const imgSrc = resolveProductImage(p)
+                  return (
                   <li key={p.id}
                     onClick={() => handleSuggestionClick(p)}
                     onMouseEnter={() => setActiveSuggestion(i)}
                     className={`kiki-search-suggestion${i === activeSuggestion ? ' active' : ''}`}
                   >
-                    {p.image && <img src={`/products/${p.image}`} alt="" loading="lazy" className="kiki-search-sug-img" />}
+                    {imgSrc && <img src={imgSrc} alt="" loading="lazy" className="kiki-search-sug-img" />}
                     <span className="kiki-search-sug-info">
                       <span className="kiki-search-sug-house">{p.house}</span>
                       <span className="kiki-search-sug-name">{p.name}</span>
                     </span>
                     <span className="kiki-search-sug-ml">{p.ml}ml</span>
                   </li>
-                ))}
+                  )
+                })}
               </ul>
             ) : (
               <p className="kiki-search-empty">Sin resultados para "{searchQuery}"</p>
