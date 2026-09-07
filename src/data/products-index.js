@@ -5633,7 +5633,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": null,
-    "precioUSD": null,
+    "precioUSD": 195,
     "categoria": "disenador"
   },
   {
@@ -5645,7 +5645,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": null,
+    "precioUSD": 90,
     "categoria": "disenador"
   },
   {
@@ -5659,5 +5659,126 @@ export const products = [
     "ml": 100,
     "precioUSD": 165,
     "categoria": "disenador"
+  },
+  {
+    "id": 453,
+    "house": "VERSACE",
+    "name": "Dylan Blue Pour Femme",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 95,
+    "categoria": "disenador",
+    "agotado": true
+  },
+  {
+    "id": 454,
+    "house": "RALPH LAUREN",
+    "name": "Polo Red Eau de Toilette",
+    "image": null,
+    "familia": "amadera especiada",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "ml": 125,
+    "precioUSD": 80,
+    "categoria": "disenador"
+  },
+  {
+    "id": 455,
+    "house": "JEAN PAUL GAULTIER",
+    "name": "Le Male",
+    "image": null,
+    "familia": "Oriental Fougère ",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "ml": 125,
+    "precioUSD": 130,
+    "categoria": "disenador"
+  },
+  {
+    "id": 456,
+    "house": "VERSACE",
+    "name": "Versace Pour Homme",
+    "image": null,
+    "familia": "Aromático",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "ml": 100,
+    "precioUSD": 80,
+    "categoria": "disenador"
+  },
+  {
+    "id": 457,
+    "house": "YVES SAINT LAURENT",
+    "name": "Kouros",
+    "image": null,
+    "familia": "Aromático",
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "ml": 100,
+    "precioUSD": 75,
+    "categoria": "disenador"
+  },
+  {
+    "id": 458,
+    "house": "TOM FORD",
+    "name": "Ombré Leather",
+    "image": null,
+    "familia": "Amaderado",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 100,
+    "precioUSD": 270,
+    "categoria": "disenador"
+  },
+  {
+    "id": 460,
+    "house": "GUESS",
+    "name": "Guess Seductive Kiss",
+    "image": null,
+    "familia": "Frutal",
+    "tipo": "Eau de Toilette",
+    "genero": "Femenino",
+    "ml": 75,
+    "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 461,
+    "house": "GUESS",
+    "name": "Bella Vita",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 45,
+    "categoria": "disenador"
+  },
+  {
+    "id": 462,
+    "house": "RABANNE",
+    "name": "Ultraviolet",
+    "image": null,
+    "familia": "Oriental",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 80,
+    "precioUSD": 65,
+    "categoria": "disenador"
+  },
+  {
+    "id": 463,
+    "house": "BHARARA",
+    "name": "Rome La Bomba ",
+    "image": null,
+    "familia": null,
+    "tipo": null,
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 45,
+    "categoria": null
   }
 ]
