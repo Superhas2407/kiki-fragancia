@@ -5804,5 +5804,65 @@ export const products = [
     "ml": 100,
     "precioUSD": 60,
     "categoria": "arabes"
+  },
+  {
+    "id": 466,
+    "house": "HUGO BOSS",
+    "name": "Boss Ma Vie",
+    "image": null,
+    "familia": "Floral",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 75,
+    "precioUSD": 50,
+    "categoria": "disenador"
+  },
+  {
+    "id": 467,
+    "house": "KATY PERRY",
+    "name": "Mad Potion",
+    "image": null,
+    "familia": "Oriental",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 40,
+    "categoria": "disenador"
+  },
+  {
+    "id": 468,
+    "house": "BRITNEY SPEARS",
+    "name": "Fantasy Intense",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 469,
+    "house": "ANTONIO BANDERAS",
+    "name": "The Icon Splendid Woman",
+    "image": null,
+    "familia": "Dulce",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 30,
+    "categoria": "disenador"
+  },
+  {
+    "id": 470,
+    "house": "BENETTON",
+    "name": "Colors Woman Rose ",
+    "image": null,
+    "familia": "Floral",
+    "tipo": "Eau de Toilette",
+    "genero": "Femenino",
+    "ml": 80,
+    "precioUSD": 25,
+    "categoria": "disenador"
   }
 ]
