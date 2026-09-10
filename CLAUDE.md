@@ -227,7 +227,7 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 ## Landing — orden de secciones
 `src/pages/Landing.jsx` — orden actual:
 1. `<Hero />` — carrusel hero
-2. `<NewLaunchBanner />` — banner de nuevos lanzamientos
+2. `<NewLaunchBanner />` — carrusel de nuevos lanzamientos (ver sección propia)
 3. `<BestsellerRow />` — fila de bestsellers
 4. `<QuickGenero />` — 3 tiles de género (Para él / Para ella / Unisex)
 5. `<MustHaveMen />` — carrusel horizontal de fragancias masculinas
@@ -238,6 +238,22 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 10. `<Guarantee />` — garantías
 
 Eliminados de Landing en junio 2026: `BrandsMarquee` (×2), `ProductWall`, `ThreeDMarquee`, `ColeccionesSection`.
+
+## NewLaunchBanner (carrusel, no un solo producto)
+`src/components/NewLaunchBanner.jsx` — banner full-bleed (`.nlb-section`, 80vh desktop / aspect-ratio
+1536:2752 en móvil) que rota entre varios lanzamientos vía array `LAUNCHES` (`slug`, `house`, `name`,
+`desktop`, `mobile`). Crossfade con `opacity` (clase `.nlb-slide-active`) cada `AUTO_MS` (6s) + dots
+manuales abajo (`.nlb-dots`/`.nlb-dot`). Cada slide necesita su propio par de imágenes en
+`public/hero/`, **mismas proporciones que las demás** para que el crossfade no salte de tamaño:
+- Desktop: **2752×1536px** (16:9) — producto/props del lado izquierdo-centro, franja derecha ~40%
+  relativamente vacía/oscura para que se lea el texto (`.nlb-content` está `right: 48px`, alineado
+  a la derecha).
+- Mobile: **1536×2752px** (9:16) — producto en el tercio superior, el tercio inferior puede ser más
+  oscuro/simple porque ahí cae el overlay + el texto (`.nlb-content` está `bottom: 32px`).
+
+Para agregar un lanzamiento nuevo: generar el par desktop/mobile con esas proporciones, guardarlos en
+`public/hero/{algo}-desktop.webp` / `-mobile.webp`, y agregar una entrada a `LAUNCHES` con el `slug`
+real del producto (`toSlug(house, name, ml)`).
 
 ## Footer (rediseñado junio 2026)
 `src/components/Footer.jsx` — 5 columnas en desktop, stack en móvil. Clases `kf-*`.
@@ -344,10 +360,50 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 
 ## Componentes con punteros hardcodeados
 Cuando cambie el producto destacado, editar el archivo:
-- `OfertaDelDia.jsx` — `OFERTA_ID = 173` (Lattafa Khamrah Dukhan). Card desktop (izquierda) + barra
-  delgada móvil, countdown a fin del día. Setea `--odd-bar-h` (`56px`/`0`) para el offset del WhatsApp fab.
-- `NewLaunchBanner.jsx` — `PRODUCT_SLUG = 'carolina-herrera-la-bomba-80ml'`.
+- `NewLaunchBanner.jsx` — **ya no es un solo producto fijo**, ver sección propia abajo.
 - `MustHaveMen.jsx` / `MustHaveWomen.jsx` — arrays de IDs curados (ver secciones abajo).
+
+`OfertaDelDia.jsx` **ya NO usa un ID hardcodeado** — se gestiona desde `/kiki-desk` (ver sección
+siguiente).
+
+## Oferta del Día (gestionada desde /kiki-desk, sin tocar código)
+- `src/hooks/useOfertaDelDia.js` — fuente: Sanity `kiki-ajustes.ofertaDelDiaId` +
+  `ofertaDelDiaSetAt` + `ofertaDelDiaPrecio` (mismo documento singleton que `tasaManual`, escritos
+  con `.patch()` para no pisarse entre sí — nunca `createOrReplace` sobre `kiki-ajustes`).
+  `useOfertaDelDia()` devuelve `{ id, setAt, precio }` o `null` si no hay oferta activa o si ya
+  pasaron **24h** desde `ofertaDelDiaSetAt` (`OFERTA_DURATION_MS`). Caché local 5min en
+  `localStorage['kiki_oferta_dia_sanity']`. `setOfertaDelDiaSanity(productId, precioPromo?)` /
+  `setOfertaDelDiaPrecioSanity(precioPromo)` (cambia solo el precio, sin reiniciar el countdown) /
+  `clearOfertaDelDiaSanity()` / `getOfertaDelDiaCache()`.
+- **Precio promocional (opcional)** — `precio` es un precio especial que rige *solo* mientras dura
+  la oferta; **no toca `precioUSD`** del producto (mismo espíritu que `precioPromoHalloween`). Se
+  limpia solo al desactivar/expirar la oferta. `OfertaDelDia.jsx` lo usa cuando está seteado y es
+  menor al precio normal — muestra el precio promo + el precio original tachado al lado
+  (`.odd-price-original` / `.odd-bar-price-original`). Si no hay precio promo, usa `precioUSD` normal.
+- `OfertaDelDia.jsx` — lee `useOfertaDelDia()`; si no hay oferta activa el componente no renderiza
+  nada (`return null`) para nadie. El countdown (card desktop + barra móvil) cuenta hacia
+  `setAt + 24h` (ya no hacia medianoche) y el widget se auto-oculta solo al llegar a 0, sin reload.
+- **Panel en `/kiki-desk`** (`KikiDeskPage.jsx`) — sección "Oferta del día" debajo de la tasa de
+  cambio: buscador de producto (casa/nombre) con `norm()` + input opcional de precio promo, click en
+  un resultado activa la oferta (`setOfertaDelDiaSanity`) y arranca el countdown de 24h. Mientras
+  está activa, un form aparte (`handleSavePrecioPromo` / `handleClearPrecioPromo`) deja cambiar o
+  quitar el precio promo sin reiniciar el countdown. Botón "Desactivar oferta del día" la quita
+  antes de tiempo. Muestra el producto activo, precio (normal o promo) y tiempo restante en vivo.
+- **Historial** — `kiki-ajustes.ofertaDelDiaHistory` (array, tope 20, más reciente primero,
+  `{ _key, id, setAt, precio? }`). Cada `setOfertaDelDiaSanity()` lee el historial actual, antepone la nueva
+  entrada y lo vuelve a escribir en el mismo `.patch()`. `fetchOfertaDelDiaHistory()` lo lee para
+  mostrarlo. En `/kiki-desk` se ve debajo del botón "Desactivar oferta del día".
+
+## Gestión rápida de productos en /kiki-desk (agotado / precio)
+- `src/hooks/useProductAdmin.js` — `setAgotadoSanity(productId, value)` / `setPrecioSanity(productId, precioUSD)`.
+  Resuelven el `_id` del documento Sanity a partir del `id` numérico (`*[_type == "product" && id == $id][0]{ _id }`)
+  y hacen `.patch(docId).set({...}).commit()` — mismo mecanismo que `scripts/set-agotado.mjs`, pero desde el navegador.
+- Sección "Gestión de productos" en `KikiDeskPage.jsx` — buscador (casa/nombre), al elegir un resultado
+  queda "seleccionado" (copia local editable, no toca el contexto global `SanityProductsContext`): botón
+  Marcar/Desmarcar agotado + input de precio con botón Guardar. Los cambios se reflejan al instante en el
+  panel; el resto del sitio los ve en su próximo fetch normal a Sanity (no hay push en vivo).
+- Sección "Resumen" (arriba de todo, antes de "Tasa de cambio") — 4 tiles derivados de `useIndexProducts()`
+  sin escritura a Sanity: total de productos, agotados, con `descuento > 0`, marcas únicas.
 
 ## PWA
 - `public/manifest.json` — `standalone`, theme `#C9A84C`, iconos `icon-192.png` / `icon-512.png` (any maskable), shortcut a `/tienda`.
@@ -387,7 +443,7 @@ Proyecto Supabase: `dgyjwztiwkricpbkxaxd.supabase.co`
   - `clearTasaSanity()` — borra `tasaManual` de Sanity + limpia cache local
   - `getTasaSanityCache()` — devuelve `{ rate, ts }` del cache local o `null`
   - En mount: fetcha Sanity en vivo (`*[_id == "kiki-ajustes"][0]{ tasaManual }`)
-- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente. Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.** Cuando hay tasa manual activa muestra "· Sanity · visible para todos".
+- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente y la Oferta del Día (ver su sección propia). Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.** Cuando hay tasa manual activa muestra "· Sanity · visible para todos". Está fuera del `AppShell`/`ThemeProvider`, pero **sí** hereda el tema global (`data-theme` vive en `<html>`, seteado por el script anti-FOUC) — sus estilos inline usan los tokens reales de `index.css` (`--bg`, `--raised`, `--ink`, `--ink-faint`, `--line`, `--line2`, `--chip`, `--gold`, `--gold-fill-ink`, `--shadow`), **nunca** un color fijo tipo `rgba(255,255,255,…)` o un fallback hardcodeado en el `var()` — eso rompe el contraste en modo claro (`warm`, el default del sitio). Ojo con `--surface`: no es un token real de `index.css` — para el fondo de la card usar `--raised`.
 - Switcher en Header: pill `REF` / `Bs` en desktop + sección MONEDA en menú móvil.
 - **Documento Sanity:** `kiki-ajustes` (singleton `_id: "kiki-ajustes"`). Campo `tasaManual: number`. La tasa de Sanity es global — cuando el admin la cambia, todos los usuarios la ven (con 5min de delay por cache).
 
