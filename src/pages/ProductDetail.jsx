@@ -5,6 +5,7 @@ import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
+import { useOfertaDelDia } from '../hooks/useOfertaDelDia'
 import { products } from '../data/products-enriched'
 import { useSanityProduct, useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
@@ -1135,6 +1136,7 @@ export default function ProductDetail() {
   const { theme } = useTheme()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
+  const oferta = useOfertaDelDia() // { id, setAt, precio } del producto activo en /kiki-desk, o null
 
   const indexProducts = useIndexProducts()
 
@@ -1188,7 +1190,7 @@ export default function ProductDetail() {
   }, [id])
 
   const baseProduct = localProduct ?? liveData ?? null
-  const product = baseProduct ? {
+  const rawProduct = baseProduct ? {
     ...baseProduct,
     precioUSD:      liveData?.precioUSD      ?? baseProduct.precioUSD,
     sanityImage:    liveData?.sanityImage    ?? null,
@@ -1215,6 +1217,21 @@ export default function ProductDetail() {
         }
       : null,
   } : null
+
+  // Oferta del Día: si este producto es el que está activo en /kiki-desk y tiene
+  // precio promocional, se refleja acá con el mismo precio que ya muestra el
+  // widget flotante (OfertaDelDia.jsx) — antes esta página seguía mostrando el
+  // precio normal aunque el widget prometiera uno más bajo.
+  const ofertaDelDiaActiva = !!(
+    rawProduct && oferta && oferta.id === rawProduct.id &&
+    oferta.precio > 0 && oferta.precio < rawProduct.precioUSD
+  )
+  const product = ofertaDelDiaActiva ? {
+    ...rawProduct,
+    precioOriginalUSD: rawProduct.precioUSD,
+    precioUSD: oferta.precio,
+    _ofertaDelDiaActiva: true,
+  } : rawProduct
 
   // Si el producto se resolvió por un slug viejo (nombre cambiado en Sanity), corrige
   // silenciosamente la URL a la canónica actual — sin recargar ni mostrar "no encontrado".
@@ -1409,12 +1426,17 @@ export default function ProductDetail() {
               </div>
 
               {/* Franja descuento — solo móvil, entre imagen e info */}
-              {!product.agotado && currency === 'usd' && product.descuento && (
+              {!product.agotado && currency === 'usd' && product._ofertaDelDiaActiva && (
+                <div className="pd-ddp-strip pd-ddp-strip--ofertadia">
+                  🔥 OFERTA DEL DÍA
+                </div>
+              )}
+              {!product.agotado && currency === 'usd' && !product._ofertaDelDiaActiva && product.descuento && (
                 <div className="pd-ddp-strip">
                   {product.descuento}% DESCUENTO
                 </div>
               )}
-              {!product.agotado && currency === 'usd' && !product.descuento && product.promoHalloween && product.precioOriginalUSD > product.precioUSD && (
+              {!product.agotado && currency === 'usd' && !product._ofertaDelDiaActiva && !product.descuento && product.promoHalloween && product.precioOriginalUSD > product.precioUSD && (
                 <div className="pd-ddp-strip pd-ddp-strip--halloween">
                   <PumpkinIcon size={11} /> OFERTA HALLOWEEN
                 </div>
@@ -1456,7 +1478,19 @@ export default function ProductDetail() {
                   }
                   return (
                     <div className="pd-price" style={rv(350)}>
-                      {discPct ? (
+                      {product._ofertaDelDiaActiva ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={badgeStyle}>🔥 OFERTA DEL DÍA</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                            REF: {product.precioOriginalUSD}
+                          </span>
+                        </>
+                      ) : discPct ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
                             <span style={badgeStyle}>

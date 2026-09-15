@@ -393,6 +393,16 @@ siguiente).
   `{ _key, id, setAt, precio? }`). Cada `setOfertaDelDiaSanity()` lee el historial actual, antepone la nueva
   entrada y lo vuelve a escribir en el mismo `.patch()`. `fetchOfertaDelDiaHistory()` lo lee para
   mostrarlo. En `/kiki-desk` se ve debajo del botón "Desactivar oferta del día".
+- **`ProductDetail.jsx` también refleja el precio promo** (fix sept 2026 — antes solo lo mostraba el
+  widget flotante, y quien entraba a la página del producto veía el precio normal, inconsistente con
+  lo que prometía el widget). Llama `useOfertaDelDia()`; si `oferta.id === product.id` y
+  `oferta.precio` es menor al `precioUSD` real, arma un `product` local con `precioUSD` = precio promo
+  y `precioOriginalUSD` = precio real + flag `_ofertaDelDiaActiva`. Esto alimenta automáticamente
+  TODO lo que ya lee `product.precioUSD` en esa página — bloque de precio (badge dorado "🔥 OFERTA DEL
+  DÍA" + precio tachado, mayor prioridad que `% DESCUENTO`/Halloween), franja mobile
+  (`.pd-ddp-strip--ofertadia`), mensaje de WhatsApp, share, JSON-LD, y el carrito (`addItem` recibe
+  este `product` ya con el precio promo). El `precioUSD` real en Sanity/`SanityProductsContext` nunca
+  se toca — este override vive solo en el render de esta página, igual que promoHalloween.
 
 ## Gestión rápida de productos en /kiki-desk (agotado / precio)
 - `src/hooks/useProductAdmin.js` — `setAgotadoSanity(productId, value)` / `setPrecioSanity(productId, precioUSD)`.
