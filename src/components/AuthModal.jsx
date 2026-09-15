@@ -76,7 +76,7 @@ export default function AuthModal({ open, onClose }) {
         }}
       >
         {/* Logo */}
-        <p style={{ color: '#C9A84C', fontSize: 9, letterSpacing: '0.3em', textTransform: 'uppercase', margin: '0 0 20px' }}>
+        <p style={{ color: 'var(--gold)', fontSize: 9, letterSpacing: '0.3em', textTransform: 'uppercase', margin: '0 0 20px' }}>
           KiKi Fragancia
         </p>
 
@@ -85,7 +85,7 @@ export default function AuthModal({ open, onClose }) {
           {['login', 'register'].map(t => (
             <button key={t} onClick={() => switchTab(t)} style={{
               flex: 1, padding: '10px 0', background: 'none', border: 'none',
-              borderBottom: tab === t ? '2px solid #C9A84C' : '2px solid transparent',
+              borderBottom: tab === t ? '2px solid var(--gold)' : '2px solid transparent',
               color: tab === t ? '#F7F2EA' : 'rgba(247,242,234,0.35)',
               fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
               cursor: 'pointer', transition: 'color 0.2s', marginBottom: -1,
@@ -119,7 +119,7 @@ export default function AuthModal({ open, onClose }) {
 
           <button type="submit" disabled={loading} style={{
             width: '100%', padding: '13px',
-            background: loading ? 'rgba(201,168,76,0.4)' : '#C9A84C',
+            background: loading ? 'rgba(201,168,76,0.4)' : 'var(--gold)',
             border: 'none', color: '#0A0806',
             fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase',
             cursor: loading ? 'not-allowed' : 'pointer', marginBottom: 16,

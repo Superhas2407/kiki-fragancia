@@ -1392,7 +1392,7 @@ export default function ProductDetail() {
                   )}
 
                   <div className="pd-img-badge">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                       <polyline points="9 12 11 14 15 10" />
                     </svg>
@@ -1740,7 +1740,7 @@ export default function ProductDetail() {
             </div>
             <div className="pd-acordes">
               {acordes.map(([nombre, pct]) => {
-                const color = ACORDE_COLOR[nombre] || '#C9A84C'
+                const color = ACORDE_COLOR[nombre] || 'var(--gold)'
                 return (
                   <div key={nombre} className="pd-acorde">
                     <div className="pd-acorde-meta">

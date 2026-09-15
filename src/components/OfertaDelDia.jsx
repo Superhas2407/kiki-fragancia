@@ -190,7 +190,7 @@ export default function OfertaDelDia() {
           justify-content: center;
         }
         .odd-badge {
-          background: linear-gradient(90deg, #B8860B, #C9A84C, #B8860B);
+          background: linear-gradient(90deg, #B8860B, var(--gold), #B8860B);
           color: #1A1208;
           font-size: 10px;
           font-weight: 800;
@@ -220,7 +220,7 @@ export default function OfertaDelDia() {
           padding: 12px 14px 14px;
         }
         .odd-house {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 10px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -245,7 +245,7 @@ export default function OfertaDelDia() {
           gap: 8px;
         }
         .odd-price {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 20px;
           font-weight: 700;
           letter-spacing: 0.02em;
@@ -281,7 +281,7 @@ export default function OfertaDelDia() {
           gap: 2px;
         }
         .odd-timer-num {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 16px;
           font-weight: 700;
           font-variant-numeric: tabular-nums;
@@ -292,14 +292,14 @@ export default function OfertaDelDia() {
           font-size: 9px;
         }
         .odd-timer-sep {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 14px;
           font-weight: 700;
           margin-bottom: 2px;
         }
         .odd-cta {
           width: 100%;
-          background: #C9A84C;
+          background: var(--gold);
           color: #1A1208;
           border: none;
           border-radius: 8px;
@@ -362,7 +362,7 @@ export default function OfertaDelDia() {
           flex: 1;
         }
         .odd-bar-tag {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 9.5px;
           font-weight: 700;
           letter-spacing: 0.06em;
@@ -385,7 +385,7 @@ export default function OfertaDelDia() {
           gap: 2px;
         }
         .odd-bar-price {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 13.5px;
           font-weight: 700;
           display: flex;
@@ -405,7 +405,7 @@ export default function OfertaDelDia() {
         }
         .odd-bar-arrow {
           flex-shrink: 0;
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 15px;
         }
         .odd-bar-close {

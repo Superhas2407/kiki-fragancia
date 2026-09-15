@@ -498,6 +498,30 @@ sitio). Un visitante normal nunca ve el botón ni puede activarlo.
   - Si algo más se ve "roto" (colores planos, sin contraste) en modo Halloween, sospechar primero de
     un componente que hardcodea color en vez de usar los tokens — es el mismo patrón que causó el bug
     del sidebar de `/tienda` (fix: septiembre 2026).
+
+**Propagación del token `--gold` (septiembre 2026):** casi todos los `#C9A84C` hardcodeados fuera de
+`Tienda.jsx` (que tiene su propio `TIENDA_PALETTES`, ver arriba) se reemplazaron por `var(--gold)` —
+`src/index.css` (~29 ocurrencias) y 9 componentes (`VitrinaCard.jsx`, `AuthModal.jsx`,
+`OfertaDelDia.jsx`, `Header.jsx`, `WishlistDrawer.jsx`, `InstallBanner.jsx`, `ProductDetail.jsx`,
+`AdminLoginPage.jsx`, `Tienda.jsx` — en este último solo fuera de `TIENDA_PALETTES`). También el
+shimmer `linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)` → `var(--gold)`/`var(--gold-ink)` en
+3 lugares (`.pd-ddp-strip--ofertadia`, `.vitrina-ribbon > span`, `.vitrina-price-badge`). Efecto: en
+tema Halloween, el dorado ahora se ve naranja vivo (`#FF7A18`) en prácticamente toda la web (badges,
+botones, bordes, hover states, currency pill REF/Bs) en vez de quedar "mustard" en algunos rincones.
+Motivado por bug crítico encontrado en el mismo pase: había un **segundo `--gold: #C9A84C;` duplicado**
+en un `:root {}` legado (bloque con `--ivory`, `--carbon`, `--amber`, etc. — esos SÍ siguen en uso, no
+tocar) que, por igual especificidad y orden de aparición posterior en el archivo, ganaba siempre sobre
+`[data-theme='halloween'] { --gold: ... }` y `[data-theme='warm'] { --gold: ... }` — eliminado (solo esa
+línea), lo cual de paso corrigió el dorado también en modo warm (antes resolvía a un tono distinto al
+esperado). **`ribbon`/badge copy Halloween-aware:** en `Tienda.jsx` y `VitrinaCard.jsx`, cuando
+`theme === 'halloween'` y no hay descuento/promoHalloween, el texto "PROMO DIVISA" cambia a "Precio
+embrujado" (mismo estilo `--halloween` del badge/ribbon, con `PumpkinIcon`). Se agregó
+`[data-theme='halloween'] .ann-cta { color: #B6FF3C; }` (verde tóxico) en `index.css` como variación
+de contraste para texto sobre fondo naranja del announcement bar — hoy es un no-op porque
+`AnnouncementBar.jsx` no renderiza ningún elemento con clase `.ann-cta`, queda como base si se agrega
+un CTA ahí más adelante. `rgba(201,168,76, X)` (dorado en RGB decimal, usado en varios `box-shadow`/
+`background` translúcidos) **no se tocó** — menor prioridad visual, candidato a un futuro
+`--gold-rgb` token si hace falta.
 - **Bug real encontrado y arreglado (sept 2026): `--gold` estaba definido DOS VECES en `:root`** — el
   bloque de tokens semánticos (arriba del todo) y un segundo `:root` legacy más abajo (el que también
   trae `--ivory`, `--carbon`, `--font-d`, `--font-s`, etc. — esos sí siguen en uso, no tocar). Como

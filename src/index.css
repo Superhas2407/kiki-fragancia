@@ -197,6 +197,13 @@
   opacity: 1;
 }
 
+/* Halloween: el centro de la barra queda naranja — un texto naranja ahí
+   encima se leería mal, así que este link puntual usa un verde tóxico en
+   vez del --gold del resto del sitio (visibilidad > consistencia acá). */
+[data-theme='halloween'] .ann-cta {
+  color: #B6FF3C;
+}
+
 /* ── Warm mode: texto en botones con fondo de acento (espresso) ── */
 [data-theme='warm'] .nav-pill-item:hover,
 [data-theme='warm'] .card-btn:hover,
@@ -221,8 +228,8 @@
   line-height: 1;
 }
 .theme-toggle-btn:hover {
-  border-color: #C9A84C;
-  color: #C9A84C;
+  border-color: var(--gold);
+  color: var(--gold);
 }
 [data-theme='warm'] .theme-toggle-btn {
   color: rgba(35,26,13,0.60);
@@ -420,7 +427,7 @@
   background: var(--chip);
 }
 .global-sidebar-link.active {
-  color: #C9A84C;
+  color: var(--gold);
   background: rgba(201,168,76,0.08);
   border-color: rgba(201,168,76,0.25);
   font-weight: 300;
@@ -813,7 +820,7 @@
   font-size: 10px; font-weight: 600;
   -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.28em; text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   margin: 0;
 }
 .ddp-sheet-body {
@@ -833,7 +840,7 @@
 }
 .ddp-popup-rule {
   width: 32px; height: 1px;
-  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
   margin: 0 auto 16px;
 }
 .ddp-popup-body {
@@ -1099,7 +1106,7 @@
   background: transparent; color: rgba(255,255,255,0.8);
   transition: background 0.18s, color 0.18s; line-height: 1;
 }
-.currency-btn.active { background: #C9A84C; color: #0A0A0A; }
+.currency-btn.active { background: var(--gold); color: #0A0A0A; }
 .currency-pill { border-color: rgba(255,255,255,0.3); }
 
 .btn-wa {
@@ -1196,7 +1203,7 @@
   text-transform: uppercase; padding: 6px 14px; cursor: pointer; border: none;
   background: transparent; color: var(--ink-mute); transition: background .18s, color .18s;
 }
-.mobile-currency-btn.active { background: #C9A84C; color: #0A0A0A; }
+.mobile-currency-btn.active { background: var(--gold); color: #0A0A0A; }
 
 @keyframes heroFadeIn {
   from { opacity: 0; }
@@ -1890,7 +1897,7 @@
     box-shadow: inset 0 -2px 12px rgba(107,47,160,0.4);
   }
   .pd-ddp-strip--ofertadia {
-    background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
+    background: linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold));
     color: #1A1208;
   }
 }
@@ -2659,7 +2666,7 @@
   left: 16px;
   z-index: 9;
   background: rgba(8,5,2,0.78);
-  color: #C9A84C;
+  color: var(--gold);
   font-size: 9px;
   font-family: var(--font-s, sans-serif);
   padding: 4px 9px;
@@ -2679,7 +2686,7 @@
   position: absolute; right: -52px; top: 44px;
   width: 220px; text-align: center;
   transform: rotate(45deg);
-  background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
+  background: linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold));
   color: #1A1208;
   font-family: var(--font-s); font-size: 11px;
   font-weight: 600; letter-spacing: 0.18em;
@@ -2949,7 +2956,7 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: #1A1208;
-  background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
+  background: linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold));
   padding: 4px 10px;
 }
 .vitrina-price-badge--ddp {
@@ -2995,7 +3002,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 9.5px; font-weight: 300;
   letter-spacing: 0.3em; text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   flex-shrink: 0;
 }
 
@@ -3039,7 +3046,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 9px; font-weight: 300;
   letter-spacing: 0.26em; text-transform: uppercase;
-  color: #C9A84C; margin-bottom: 6px;
+  color: var(--gold); margin-bottom: 6px;
 }
 .ddp-promo-persona-name {
   font-family: 'KikiGotham', sans-serif;
@@ -3055,7 +3062,7 @@
 .ddp-promo-persona-price {
   font-family: 'KikiGotham', sans-serif;
   font-size: 18px; font-weight: 300;
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 /* ── Tira de beneficios ── */
@@ -3205,7 +3212,7 @@
 }
 .ddp-cta-outline:hover {
   border-color: var(--line);
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-hero-editorial {
@@ -3242,7 +3249,7 @@
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   margin-bottom: 8px;
 }
 .ddp-editorial-caption-text {
@@ -3275,7 +3282,7 @@
 .ddp-count-num {
   font-size: 48px;
   font-weight: 300;
-  color: #C9A84C;
+  color: var(--gold);
   line-height: 1;
 }
 
@@ -3400,7 +3407,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   margin-bottom: 4px;
 }
 
@@ -3423,13 +3430,13 @@
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   border: 1px solid var(--line);
   padding: 9px 18px;
   transition: border-color 0.2s, background 0.2s;
 }
 .ddp-persona-link:hover {
-  border-color: #C9A84C;
+  border-color: var(--gold);
   background: rgba(201,168,76,0.07);
 }
 
@@ -3490,7 +3497,7 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-featured-brand {
@@ -3525,7 +3532,7 @@
 .ddp-featured-price-num {
   font-size: 32px;
   font-weight: 300;
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-featured-price-meta {
@@ -3571,7 +3578,7 @@
 }
 .ddp-btn-outline:hover {
   border-color: var(--line);
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-grid-section {
@@ -3610,7 +3617,7 @@
     align-items: center;
     gap: 16px;
     margin: 40px 0 32px;
-    color: #C9A84C;
+    color: var(--gold);
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -4589,7 +4596,7 @@
   color: #0A0A0A;
   border: none;
 }
-.cookie-btn--accept:hover { background: linear-gradient(135deg, #C9A84C, #F0C85A); }
+.cookie-btn--accept:hover { background: linear-gradient(135deg, var(--gold), #F0C85A); }
 .cookie-btn--reject {
   background: transparent;
   color: rgba(247,242,234,0.45);
@@ -4732,7 +4739,7 @@
 .vitrina-heart-btn:hover {
   background: rgba(10,8,4,0.90);
   border-color: rgba(201,168,76,0.55);
-  color: #C9A84C;
+  color: var(--gold);
   transform: scale(1.1);
 }
 .vitrina-heart-btn.active {
@@ -5311,7 +5318,7 @@
 .bottom-nav-item.active { color: var(--gold-ink); }
 .bottom-nav-badge {
   position: absolute; top: -4px; right: -6px;
-  background: #C9A84C; color: #0A0A0A;
+  background: var(--gold); color: #0A0A0A;
   font-size: 8px; font-weight: 700;
   font-family: 'KikiGotham', sans-serif;
   width: 14px; height: 14px; border-radius: 50%;

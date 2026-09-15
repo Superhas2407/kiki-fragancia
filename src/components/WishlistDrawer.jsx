@@ -100,7 +100,7 @@ export default function WishlistDrawer() {
               onClick={() => { setDrawerOpen(false); setAuthModalOpen(true) }}
               style={{
                 flexShrink: 0, padding: '7px 14px', background: 'none',
-                border: '1px solid rgba(201,168,76,0.5)', color: '#C9A84C',
+                border: '1px solid rgba(201,168,76,0.5)', color: 'var(--gold)',
                 fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer',
               }}
             >

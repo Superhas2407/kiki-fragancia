@@ -75,14 +75,14 @@ function CartButton() {
         justifyContent: 'center', padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
-      onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+      onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
       onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <CartIcon size={20} />
       {count > 0 && (
         <span style={{
           position: 'absolute', top: -2, right: -4,
-          background: '#C9A84C', color: '#0A0A0A',
+          background: 'var(--gold)', color: '#0A0A0A',
           fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-s)',
           width: 16, height: 16, borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -109,7 +109,7 @@ function WishlistButton() {
         justifyContent: 'center', padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
-      onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+      onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
       onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -118,7 +118,7 @@ function WishlistButton() {
       {count > 0 && (
         <span style={{
           position: 'absolute', top: -2, right: -4,
-          background: '#C9A84C', color: '#0A0A0A',
+          background: 'var(--gold)', color: '#0A0A0A',
           fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-s)',
           width: 16, height: 16, borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -302,7 +302,7 @@ export default function Header() {
             </div>
             <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn"
               style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, minWidth: 44, minHeight: 44, transition: 'color .2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
               onMouseLeave={e => e.currentTarget.style.color = ''}
             >
               <SearchIcon />
@@ -314,7 +314,7 @@ export default function Header() {
                 aria-label={session ? 'Mi cuenta' : 'Iniciar sesión'}
                 className="header-icon-btn"
                 style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4px', minHeight: 44, transition: 'color .2s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill={session ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
