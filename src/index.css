@@ -61,6 +61,11 @@
   --chip: rgba(255,122,24,0.08);
   --shadow: 0 24px 60px -28px rgba(61,23,102,0.65);
   --ink-rgb: 245, 233, 216;
+  /* Acento secundario verde tóxico — para texto/controles que necesitan distinguirse
+     del naranja dominante (ver botón 🎃 y HalloweenDecor). Ojo: NO usar como reemplazo
+     general de --gold, es solo para casos puntuales de contraste/variedad. */
+  --gold-alt: #B6FF3C;
+  --gold-alt-glow: rgba(182,255,60,0.55);
 }
 
 /* Ajustes globales para modo claro */
@@ -201,7 +206,19 @@
    encima se leería mal, así que este link puntual usa un verde tóxico en
    vez del --gold del resto del sitio (visibilidad > consistencia acá). */
 [data-theme='halloween'] .ann-cta {
-  color: #B6FF3C;
+  color: var(--gold-alt);
+}
+
+/* Botón 🎃 (admin-only, ver Header.jsx) — en tema Halloween usa el acento
+   verde en vez de --gold al hacer hover/focus, para no confundirse con el
+   toggle claro/oscuro de al lado (mismo componente, mismo hover dorado). */
+[data-theme='halloween'] .halloween-toggle-btn:hover,
+[data-theme='halloween'] .halloween-toggle-btn:focus-visible {
+  border-color: var(--gold-alt);
+  color: var(--gold-alt);
+}
+[data-theme='halloween'] .mobile-util-link.halloween-toggle-btn:hover {
+  color: var(--gold-alt);
 }
 
 /* ── Warm mode: texto en botones con fondo de acento (espresso) ── */

@@ -56,6 +56,13 @@ const Bat = ({ style }) => (
          C34 0, 27 2, 24 8 Z"
       fill="currentColor"
     />
+    {/* ojitos verde tóxico con glow — el único detalle en --gold-alt del murciélago, para
+        que no se pierda contra el naranja del fondo (el bicho es chico, así que el glow
+        ayuda a que el punto verde se note aunque el círculo mida menos de 1px renderizado) */}
+    <circle cx="21.5" cy="8" r="2.4" fill="var(--gold-alt)" opacity="0.45" />
+    <circle cx="26.5" cy="8" r="2.4" fill="var(--gold-alt)" opacity="0.45" />
+    <circle cx="21.5" cy="8" r="1" fill="var(--gold-alt)" />
+    <circle cx="26.5" cy="8" r="1" fill="var(--gold-alt)" />
   </svg>
 )
 

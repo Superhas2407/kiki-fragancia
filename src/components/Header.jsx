@@ -277,7 +277,7 @@ export default function Header() {
                 {theme === 'dark' ? '☀' : '☾'}
               </button>
               {isAdmin && (
-                <button onClick={toggleHalloween} className="theme-toggle-btn"
+                <button onClick={toggleHalloween} className="theme-toggle-btn halloween-toggle-btn"
                   title={theme === 'halloween' ? 'Salir del tema Halloween (solo vos lo ves)' : 'Previsualizar tema Halloween (solo vos lo ves)'}
                   aria-label={theme === 'halloween' ? 'Salir del tema Halloween' : 'Activar tema Halloween'}>
                   🎃
@@ -455,7 +455,7 @@ export default function Header() {
             {theme === 'dark' ? '☀ Modo claro' : '☾ Modo oscuro'}
           </button>
           {isAdmin && (
-            <button onClick={toggleHalloween} className="mobile-util-link">
+            <button onClick={toggleHalloween} className="mobile-util-link halloween-toggle-btn">
               {theme === 'halloween' ? '🎃 Salir de Halloween' : '🎃 Tema Halloween'}
             </button>
           )}

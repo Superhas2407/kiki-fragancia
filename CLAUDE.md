@@ -517,11 +517,27 @@ esperado). **`ribbon`/badge copy Halloween-aware:** en `Tienda.jsx` y `VitrinaCa
 `theme === 'halloween'` y no hay descuento/promoHalloween, el texto "PROMO DIVISA" cambia a "Precio
 embrujado" (mismo estilo `--halloween` del badge/ribbon, con `PumpkinIcon`). Se agregó
 `[data-theme='halloween'] .ann-cta { color: #B6FF3C; }` (verde tóxico) en `index.css` como variación
-de contraste para texto sobre fondo naranja del announcement bar — hoy es un no-op porque
-`AnnouncementBar.jsx` no renderiza ningún elemento con clase `.ann-cta`, queda como base si se agrega
-un CTA ahí más adelante. `rgba(201,168,76, X)` (dorado en RGB decimal, usado en varios `box-shadow`/
-`background` translúcidos) **no se tocó** — menor prioridad visual, candidato a un futuro
+de contraste para texto sobre fondo naranja del announcement bar — en ese momento era un no-op porque
+`AnnouncementBar.jsx` no renderiza ningún elemento con clase `.ann-cta` (sigue así, queda como base si
+se agrega un CTA ahí más adelante). `rgba(201,168,76, X)` (dorado en RGB decimal, usado en varios
+`box-shadow`/`background` translúcidos) **no se tocó** — menor prioridad visual, candidato a un futuro
 `--gold-rgb` token si hace falta.
+
+**Acento verde `--gold-alt` (segunda vuelta, mismo día)** — se formalizó un token propio
+`--gold-alt: #B6FF3C` / `--gold-alt-glow: rgba(182,255,60,0.55)` dentro del bloque
+`[data-theme='halloween']` en `index.css`, y `.ann-cta` pasó a usar `var(--gold-alt)` en vez del hex
+suelto. Se aplicó en 2 lugares reales (no decorativos-inertes):
+- **Botón 🎃 (`Header.jsx`)** — clase extra `halloween-toggle-btn` en el botón desktop y en el link
+  del menú móvil (además de `theme-toggle-btn`/`mobile-util-link`). Regla
+  `[data-theme='halloween'] .halloween-toggle-btn:hover/:focus-visible { border-color/color:
+  var(--gold-alt) }` en `index.css` — antes su hover usaba el mismo `var(--gold)` que el toggle
+  claro/oscuro de al lado, y en tema Halloween ambos se veían iguales (naranja) justo al lado de un
+  header ya lleno de naranja. Ahora el botón admin-only se distingue con verde al pasar el mouse.
+- **Ojos de los murciélagos (`HalloweenDecor.jsx`)** — el SVG `Bat` tiene 2 círculos chicos
+  `fill="var(--gold-alt)"` (con un halo semitransparente detrás para que no se pierdan, son solo
+  34px de ancho en pantalla) en vez de heredar `currentColor` (cream) como el resto del cuerpo.
+  Detalle puramente decorativo/estético, no resuelve un problema de contraste real, es la parte
+  "todo eso" del pedido de variar colores.
 - **Bug real encontrado y arreglado (sept 2026): `--gold` estaba definido DOS VECES en `:root`** — el
   bloque de tokens semánticos (arriba del todo) y un segundo `:root` legacy más abajo (el que también
   trae `--ivory`, `--carbon`, `--font-d`, `--font-s`, etc. — esos sí siguen en uso, no tocar). Como
