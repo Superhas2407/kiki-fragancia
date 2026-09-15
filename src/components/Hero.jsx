@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useTheme } from '../context/ThemeContext'
 
 const SLIDES = [
   { desktop: '/hero/ysl-desktop.webp',              mobile: '/hero/ysl-mobile.webp'              },
@@ -11,6 +12,7 @@ const SLIDES = [
 ]
 
 export default function Hero() {
+  const { theme } = useTheme()
   const [current, setCurrent] = useState(0)
   const [mounted, setMounted] = useState(false)
   const sectionRef = useRef(null)
@@ -94,6 +96,14 @@ export default function Hero() {
           <div className="hero-bg-gradient" style={{ zIndex: 2 }} />
         </div>
       ))}
+
+      {/* Niebla — solo tema Halloween, capa puramente decorativa */}
+      {theme === 'halloween' && (
+        <div className="hero-mist" aria-hidden="true">
+          <div className="hero-mist-layer hero-mist-1" />
+          <div className="hero-mist-layer hero-mist-2" />
+        </div>
+      )}
 
       {/* Contenido */}
       <div className="kiki-container" style={{ width: '100%', zIndex: 5 }}>

@@ -126,7 +126,7 @@ export default function CartDrawer() {
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '18px', color: ink(0.92), fontStyle: 'italic', fontWeight: 300, letterSpacing: '0.02em' }}>
-              Mi Carrito
+              {theme === 'halloween' ? '🎃 Carrito del Inframundo' : 'Mi Carrito'}
             </span>
             {totalItems > 0 && (
               <span style={{

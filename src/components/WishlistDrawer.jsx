@@ -71,7 +71,7 @@ export default function WishlistDrawer() {
         {/* Header */}
         <div className="wl-header">
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 0 }}>
-            <span className="wl-title">Lista de deseos</span>
+            <span className="wl-title">{theme === 'halloween' ? '💀 Lista de los Condenados' : 'Lista de deseos'}</span>
             {products.length > 0 && (
               <span className="wl-count">{products.length} {products.length === 1 ? 'fragancia' : 'fragancias'}</span>
             )}

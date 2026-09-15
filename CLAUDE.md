@@ -673,6 +673,46 @@ explícitamente que el verde no se quedara solo en bordes/acentos puntuales. Se 
   ser el color real de un tallo de calabaza). 2 de las 5 "uñas" de la `SkeletonHand` son círculos
   rellenos en verde (glow de descomposición) en vez de las 5 en cream parejo.
 
+**Ronda de "qué más le agregarías" (mismo día) — más atmósfera + nombres propios de campaña:**
+- **Nombres spooky** (solo `theme === 'halloween'`, el resto de los visitantes ve el texto normal):
+  - `CartDrawer.jsx` — título "Mi Carrito" → "🎃 Carrito del Inframundo".
+  - `WishlistDrawer.jsx` — título "Lista de deseos" → "💀 Lista de los Condenados".
+  - `ProductDetail.jsx` — botón principal "Agregar al carrito" → "🎃 Invocar al inframundo", estado
+    agregado "✓ Agregado" → "✓ Invocado". (La barra sticky móvil con el mismo texto no se tocó — está
+    `display: none` siempre, es código muerto, ver comentario existente en `index.css`.)
+- **Niebla en el Hero** (`Hero.jsx`, `.hero-mist`) — 2 capas `radial-gradient` (verde tóxico + naranja)
+  ancladas al tercio inferior, con drift horizontal lento (`heroMistDrift`, 22s/28s, direcciones opuestas)
+  y `filter: blur()`. `z-index: 3`, entre el fondo (`z-index: 2`) y el contenido (`z-index: 5`) —
+  nunca tapa el título. Ojo: hubo que subir bastante la opacidad de las capas (0.16/0.10 → 0.38/0.24)
+  porque contra el hero ya oscuro casi no se notaba — si se agrega niebla en otra sección más clara,
+  probablemente haya que bajarla de nuevo.
+- **WhatsAppFab con calabaza** (`WhatsAppFab.jsx`) — badge `🎃` chiquito (`position: absolute; top: -4;
+  right: -4`) sobre el ícono de WhatsApp normal cuando `theme === 'halloween'`. A propósito NO se
+  reemplazó el ícono de WhatsApp completo — sigue siendo reconocible como botón de WhatsApp (mismo
+  verde, misma posición), solo con un detalle de campaña encima.
+- **`CursorTrail.jsx` con chispas verdes — de paso, bug real encontrado y arreglado.** El trail
+  hardcodeaba `ctx.fillStyle = "rgba(var(--gold-rgb),...)"` (interpolando `p.life * 0.5` como alpha) desde el fix de
+  `--gold-rgb` de esta misma sesión (ver más arriba) — **canvas 2D no resuelve custom properties de
+  CSS**, así que ese `fillStyle` era inválido, el navegador lo ignoraba silenciosamente y el trail
+  quedaba pintando en negro (el valor por defecto) en vez de dorado, sin ningún error visible. Fix:
+  un mapa `TRAIL_RGB_BY_THEME` en JS con el RGB literal por tema (`dark`/`warm`: `'201,168,76'` ·
+  `halloween`: `'182,255,60'`, verde en vez de dorado — pedido explícito de "chispas verdes"), leído
+  una vez por `theme` (el `useEffect` principal ahora depende de `[theme]` en vez de `[]`, así se
+  reinicia con el color correcto cuando cambia el tema). **Regla general:** ningún canvas 2D puede usar
+  `var(--token)` en `fillStyle`/`strokeStyle` — siempre necesita el valor RGB ya resuelto en JS.
+- **Confeti de murciélagos al "Invocar al inframundo"** (`ProductDetail.jsx`, `.pd-bat-burst`) — al
+  hacer click en el botón principal con `theme === 'halloween'`, 3 `Bat` (ahora exportado desde
+  `HalloweenDecor.jsx`) salen volando del botón y se desvanecen en ~0.85s (`pdBatBurstLeft/Up/Right`).
+  Los murciélagos son oscuros (`#1A0E2E`) con `filter: drop-shadow(0 0 3px rgba(245,233,216,0.7))` —
+  sin el glow claro se pierden contra fondos oscuros, el silueteado blanco es lo que los hace legibles.
+- **Flash teatral al activar Halloween** (`Header.jsx` + `.hween-flash-overlay` en `index.css`) — al
+  tocar el botón 🎃 para ENTRAR al tema (no al salir), un overlay `position: fixed; inset: 0;
+  z-index: 99999` hace un flash negro→naranja→negro de 0.65s (`@keyframes hweenFlash`), como un
+  "portal abriéndose". Estado `hweenFlash` en `Header.jsx`, se automonta/desmonta con `setTimeout`
+  (no queda un listener ni nada colgado). Respeta `prefers-reduced-motion`.
+- **Guiño en el footer** (`Footer.jsx`, `.kf-copy`) — el copyright suma " · Boo! 🎃" al final solo en
+  Halloween.
+
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
 - Sección `#nosotros`, `.bs2-section` — 80vh desktop, auto en móvil

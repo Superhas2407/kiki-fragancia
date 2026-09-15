@@ -1,10 +1,26 @@
 import { useEffect, useRef } from 'react'
+import { useTheme } from '../context/ThemeContext'
+
+/* rgba(var(--gold-rgb),X) no sirve acá — canvas 2D no resuelve custom
+   properties de CSS en fillStyle (parsea el string de forma independiente
+   del CSSOM), así que el trail se quedaba pintando negro por defecto
+   (fillStyle inválido → el navegador ignora el set y mantiene el valor
+   anterior). Hay que pasarle un RGB literal — este mapa reemplaza al token
+   y de paso en Halloween el trail sale verde tóxico en vez de dorado
+   (chispas, no polvo de hadas dorado — pedido explícito del usuario). */
+const TRAIL_RGB_BY_THEME = {
+  dark: '201,168,76',
+  warm: '201,168,76',
+  halloween: '182,255,60',
+}
 
 export default function CursorTrail() {
+  const { theme } = useTheme()
   const canvasRef = useRef(null)
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
+    const rgb = TRAIL_RGB_BY_THEME[theme] || TRAIL_RGB_BY_THEME.dark
     const resize = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
@@ -35,7 +51,7 @@ export default function CursorTrail() {
         if (p.life <= 0) { points.splice(i, 1); continue }
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(var(--gold-rgb),${p.life * 0.5})`
+        ctx.fillStyle = `rgba(${rgb},${p.life * 0.5})`
         ctx.fill()
       }
       animId = requestAnimationFrame(tick)
@@ -46,7 +62,7 @@ export default function CursorTrail() {
       window.removeEventListener('mousemove', onMove)
       cancelAnimationFrame(animId)
     }
-  }, [])
+  }, [theme])
   return (
     <canvas
       ref={canvasRef}

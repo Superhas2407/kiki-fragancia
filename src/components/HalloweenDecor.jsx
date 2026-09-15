@@ -96,7 +96,8 @@ export const SlimeTopBorder = ({ style, className }) => {
 /* Silueta de murciélago clásica: cuerpo ovalado + orejas puntudas en el centro,
    dos alas por lado con lóbulos sólidos y bien definidos (a propósito, NADA de
    líneas finas radiales tipo araña — esa era la confusión con el diseño viejo). */
-const Bat = ({ style }) => (
+/* Exportado para el confeti de murciélagos al agregar al carrito (ver ProductDetail.jsx) */
+export const Bat = ({ style }) => (
   <svg viewBox="0 0 60 30" width="100%" height="100%" style={style} aria-hidden="true">
     {/* ala izquierda */}
     <path

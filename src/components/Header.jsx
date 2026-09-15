@@ -138,7 +138,16 @@ export default function Header() {
   const { session } = useAuth()
   const isAdmin = !!session
   // Tema Halloween: admin-only, ver ThemeContext.jsx / HalloweenDecor.jsx / CLAUDE.md
-  const toggleHalloween = () => setTheme(t => (t === 'halloween' ? 'warm' : 'halloween'))
+  const [hweenFlash, setHweenFlash] = useState(false)
+  const toggleHalloween = () => {
+    // Flash teatral (negro → naranja → negro) solo al ENTRAR a Halloween,
+    // como un "portal" abriéndose — salir es instantáneo, sin efecto.
+    if (theme !== 'halloween') {
+      setHweenFlash(true)
+      setTimeout(() => setHweenFlash(false), 650)
+    }
+    setTheme(t => (t === 'halloween' ? 'warm' : 'halloween'))
+  }
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
@@ -574,6 +583,7 @@ export default function Header() {
         </>
       )}
       <AuthModal open={authOpen || authModalOpen} onClose={() => { setAuthOpen(false); setAuthModalOpen(false) }} />
+      {hweenFlash && <div className="hween-flash-overlay" aria-hidden="true" />}
     </>
   )
 }

@@ -170,7 +170,9 @@ export default function Footer() {
             </a>
           </div>
           <span className="kf-copy">
-            © {new Date().getFullYear()} · KiKi Fragancia · Caracas, Venezuela
+            {theme === 'halloween'
+              ? <>© {new Date().getFullYear()} · KiKi Fragancia · Caracas, Venezuela · Boo! 🎃</>
+              : <>© {new Date().getFullYear()} · KiKi Fragancia · Caracas, Venezuela</>}
           </span>
           <div className="kf-trust">
             <span>✓ 100% originales</span>

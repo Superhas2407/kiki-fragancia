@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
-import { SlimeTopBorder } from '../components/HalloweenDecor'
+import { SlimeTopBorder, Bat } from '../components/HalloweenDecor'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useOfertaDelDia } from '../hooks/useOfertaDelDia'
@@ -1174,6 +1174,7 @@ export default function ProductDetail() {
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
+  const [batBurst,     setBatBurst]     = useState(false)
   const [imgHover,     setImgHover]     = useState(false)
   const [waHover,      setWaHover]      = useState(false)
   const [descExpanded, setDescExpanded] = useState(false)
@@ -1311,6 +1312,10 @@ export default function ProductDetail() {
     addItem(product, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
+    if (theme === 'halloween') {
+      setBatBurst(true)
+      setTimeout(() => setBatBurst(false), 900)
+    }
   }
 
   const pdCleanName = product.name.toLowerCase().startsWith(product.house.toLowerCase() + ' ')
@@ -1610,6 +1615,7 @@ export default function ProductDetail() {
                     onClick={product.agotado ? undefined : handleAdd}
                     disabled={product.agotado}
                     style={{
+                      position: 'relative',
                       fontFamily: 'var(--font-s)', fontSize: 'clamp(11px, 3vw, 12px)', fontWeight: 400, letterSpacing: '.2em',
                       textTransform: 'uppercase', padding: 'clamp(13px, 3vw, 16px) clamp(20px, 5vw, 32px)', width: '100%', minHeight: '46px',
                       cursor: product.agotado ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
@@ -1622,7 +1628,16 @@ export default function ProductDetail() {
                     onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold-shine)' }}
                     onMouseLeave={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold)' }}
                   >
-                    {product.agotado ? 'Agotado' : added ? '✓ Agregado' : 'Agregar al carrito'}
+                    {product.agotado ? 'Agotado' : added
+                      ? (theme === 'halloween' ? '✓ Invocado' : '✓ Agregado')
+                      : (theme === 'halloween' ? '🎃 Invocar al inframundo' : 'Agregar al carrito')}
+                    {batBurst && (
+                      <span className="pd-bat-burst" aria-hidden="true">
+                        <span className="pd-bat-burst-item pd-bat-burst-1"><Bat /></span>
+                        <span className="pd-bat-burst-item pd-bat-burst-2"><Bat /></span>
+                        <span className="pd-bat-burst-item pd-bat-burst-3"><Bat /></span>
+                      </span>
+                    )}
                   </button>
 
                   <a
