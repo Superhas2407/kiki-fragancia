@@ -48,7 +48,6 @@ export const notesLookup = {
   45: "Limón, Bergamota, Mandarina, Jengibre, Pimienta rosa, Madera blanca, Almizcle",
   46: "Mandarina, Naranja, Azafrán, Salvia, Caramelo, Haba tonka, Cempasúchil, Ambroxan, Vetiver, Cedro",
   47: "Mandarina, Naranja, Bergamota, Lavanda, Cardamomo, Pimienta negra, Caramelo, Haba tonka, Pachulí, Incienso, Vainilla, Vetiver",
-  47: "Mandarina, Naranja, Bergamota, Lavanda, Cardamomo, Pimienta negra, Caramelo, Haba tonka, Pachulí, Incienso, Vainilla, Vetiver",
   48: "Naranja, Jengibre, Bergamota, Limón, Menta, Piña, Enebro de Virginia, Geranio, Salvia, Haba tonka, Almizcle, Cedro, Vetiver",
   49: "Piña, naranja, ciruela, chocolate, vainilla, cardamomo, haba tonka, pachulí",
   50: "Bergamota, Canela, Manzana, Flor de azahar, Lavanda, Lirio del valle, Haba tonka, Pachulí, Tabaco, Vainilla, Ámbar",

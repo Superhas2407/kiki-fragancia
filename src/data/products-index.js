@@ -571,7 +571,7 @@ export const products = [
   {
     "id": 47,
     "house": "ARMAF",
-    "name": "Armaf Odyssey Mandarin Sky Elixir",
+    "name": "Odyssey Mandarin Sky Elixir",
     "image": "armaf-odyssey-mandarin-sky-elixir-100ml-u.webp",
     "familia": "Oriental",
     "tipo": "Elixir",
@@ -579,19 +579,6 @@ export const products = [
     "ml": 100,
     "precioUSD": 55,
     "categoria": "arabes"
-  },
-  {
-    "id": 47,
-    "house": "ARMAF",
-    "name": "Armaf Odyssey Mandarin Sky Elixir",
-    "image": "armaf-odyssey-mandarin-sky-elixir-100ml-u.webp",
-    "familia": "Oriental",
-    "tipo": "Elixir",
-    "genero": "Unisex",
-    "ml": 100,
-    "precioUSD": 55,
-    "categoria": "arabes",
-    "agotado": true
   },
   {
     "id": 48,
@@ -1395,8 +1382,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 113,
@@ -5057,8 +5043,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 125,
     "precioUSD": 55,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 404,

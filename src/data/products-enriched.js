@@ -1366,7 +1366,7 @@ export const products = [
   {
     "id": 47,
     "house": "ARMAF",
-    "name": "Armaf Odyssey Mandarin Sky Elixir",
+    "name": "Odyssey Mandarin Sky Elixir",
     "image": "armaf-odyssey-mandarin-sky-elixir-100ml-u.webp",
     "familia": "Oriental",
     "tipo": "Elixir",
@@ -1393,38 +1393,6 @@ export const products = [
     "ml": 100,
     "precioUSD": 55,
     "categoria": "arabes"
-  },
-  {
-    "id": 47,
-    "house": "ARMAF",
-    "name": "Armaf Odyssey Mandarin Sky Elixir",
-    "image": "armaf-odyssey-mandarin-sky-elixir-100ml-u.webp",
-    "familia": "Oriental",
-    "tipo": "Elixir",
-    "genero": "Unisex",
-    "descripcion": "Una fragancia unisex vibrante y sofisticada, de perfil oriental amaderado con un giro dulce y especiado que resulta moderno y adictivo. Su apertura cítrica y aromática recuerda a una interpretación luminosa y gourmand, con un aire que puede gustar a quienes disfrutan de perfumes de diseñador de estilo contemporáneo.",
-    "description": "Una fragancia unisex vibrante y sofisticada, de perfil oriental amaderado con un giro dulce y especiado que resulta moderno y adictivo. Su apertura cítrica y aromática recuerda a una interpretación luminosa y gourmand, con un aire que puede gustar a quienes disfrutan de perfumes de diseñador de estilo contemporáneo.",
-    "notasSalida": "Mandarina, Naranja, Bergamota, Lavanda",
-    "notasCorazon": "Cardamomo, Pimienta negra, Caramelo, Haba tonka",
-    "notasFondo": "Pachulí, Incienso, Vainilla, Vetiver",
-    "notes": [
-      "Mandarina",
-      "Naranja",
-      "Bergamota",
-      "Lavanda",
-      "Cardamomo",
-      "Pimienta negra",
-      "Caramelo",
-      "Haba tonka",
-      "Pachulí",
-      "Incienso",
-      "Vainilla",
-      "Vetiver"
-    ],
-    "ml": 100,
-    "precioUSD": 55,
-    "categoria": "arabes",
-    "agotado": true
   },
   {
     "id": 48,
@@ -3329,8 +3297,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 113,
@@ -11654,8 +11621,7 @@ export const products = [
     ],
     "ml": 125,
     "precioUSD": 55,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 404,
