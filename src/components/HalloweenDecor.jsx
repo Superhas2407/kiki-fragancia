@@ -44,6 +44,55 @@ export const SlimeDrip = ({ style, className }) => {
   )
 }
 
+/* Variante "franja" del slime — pensada para los marcos de foto de producto
+   (ProductDetail, VitrinaCard): en vez de quedarse en una sola esquina, ocupa
+   TODO el ancho del borde superior (feedback: "los slime pueden ocupar todo
+   el marco de arriba sin tapar el perfume"). `preserveAspectRatio="none"` +
+   `width="100%"` para que se estire al ancho real del contenedor (una card de
+   Tienda angosta en mobile o el display grande de ProductDetail) sin
+   deformarse de forma rara — los chorretones son cortos a propósito para no
+   llegar a tapar el frasco, que siempre queda más abajo/centrado en la foto. */
+export const SlimeTopBorder = ({ style, className }) => {
+  const gradId = `slime-top-grad-${useId()}`
+  return (
+    <svg
+      viewBox="0 0 400 70" width="100%" height="100%" preserveAspectRatio="none"
+      style={style} className={className} aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--gold-alt)" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="var(--gold-alt)" stopOpacity="0.5" />
+        </linearGradient>
+      </defs>
+      {/* banda ondulada pegada a todo el borde superior */}
+      <path
+        d="M0,0 L400,0 L400,9 C385,17 372,5 358,13 C344,19 330,7 316,15 C302,9 288,17 274,9
+           C260,15 246,5 232,13 C218,19 204,7 190,15 C176,9 162,17 148,9
+           C134,15 120,5 106,13 C92,19 78,7 64,15 C50,9 36,17 22,9 C12,14 4,6 0,11 Z"
+        fill={`url(#${gradId})`}
+      />
+      {/* chorretones cortos, repartidos por todo el ancho — nunca bajan más de ~1/3
+          del alto del viewBox, así el frasco (siempre más al centro/abajo) queda libre */}
+      <path d="M20,13 C16,20 16,26 20,30 C24,26 24,20 20,13 Z" fill={`url(#${gradId})`} />
+      <path d="M55,11 C50,22 50,32 55,38 C60,32 60,22 55,11 Z" fill={`url(#${gradId})`} />
+      <circle cx="55" cy="43" r="3" fill="var(--gold-alt)" opacity="0.6" />
+      <path d="M100,13 C96,19 96,25 100,29 C104,25 104,19 100,13 Z" fill={`url(#${gradId})`} />
+      <path d="M150,11 C145,21 145,30 150,36 C155,30 155,21 150,11 Z" fill={`url(#${gradId})`} />
+      <path d="M195,13 C191,19 191,25 195,29 C199,25 199,19 195,13 Z" fill={`url(#${gradId})`} />
+      <path d="M245,11 C240,22 240,32 245,38 C250,32 250,22 245,11 Z" fill={`url(#${gradId})`} />
+      <circle cx="245" cy="43" r="3" fill="var(--gold-alt)" opacity="0.6" />
+      <path d="M290,13 C286,19 286,25 290,29 C294,25 294,19 290,13 Z" fill={`url(#${gradId})`} />
+      <path d="M335,11 C330,21 330,30 335,36 C340,30 340,21 335,11 Z" fill={`url(#${gradId})`} />
+      <path d="M378,13 C374,20 374,26 378,30 C382,26 382,20 378,13 Z" fill={`url(#${gradId})`} />
+      {/* brillos gelatinosos, sueltos a lo largo de la franja */}
+      <ellipse cx="35" cy="5" rx="9" ry="2.6" fill="rgba(255,255,255,0.5)" transform="rotate(-8 35 5)" />
+      <ellipse cx="180" cy="6" rx="8" ry="2.4" fill="rgba(255,255,255,0.4)" transform="rotate(-6 180 6)" />
+      <ellipse cx="320" cy="5" rx="8" ry="2.4" fill="rgba(255,255,255,0.45)" transform="rotate(-8 320 5)" />
+    </svg>
+  )
+}
+
 /* Silueta de murciélago clásica: cuerpo ovalado + orejas puntudas en el centro,
    dos alas por lado con lóbulos sólidos y bien definidos (a propósito, NADA de
    líneas finas radiales tipo araña — esa era la confusión con el diseño viejo). */

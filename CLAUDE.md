@@ -629,6 +629,23 @@ correctamente emparejados con `--gold-fill-ink` (texto claro).
     `hwd-slime(-br)`.
   - `.pd-img-slime` en `ProductDetail.jsx` (esquina del display de producto) — antes `.pd-img-cobweb`.
   - `.vitrina-slime` en `VitrinaCard.jsx` (esquina de cada card de Tienda) — antes `.vitrina-cobweb`.
+
+**`SlimeTopBorder` (segunda vuelta, mismo día — feedback "los slime pueden ocupar todo el marco de
+arriba sin tapar el perfume").** Los dos usos sobre foto de producto (`.pd-img-slime` en
+`ProductDetail.jsx` y `.vitrina-slime` en `VitrinaCard.jsx`) dejaron de usar `SlimeDrip` (una sola
+esquina) y pasaron a un componente nuevo, `export const SlimeTopBorder` en `HalloweenDecor.jsx`: una
+franja ondulada de slime que corre por **todo el ancho** del borde superior de la foto, con varios
+chorretones cortos repartidos a lo largo (nunca bajan más de ~1/3 del alto del SVG, a propósito, para
+no tapar el frasco que siempre queda más centrado/abajo en la foto). `viewBox="0 0 400 70"` +
+`preserveAspectRatio="none"` + `width="100%" height="100%"` para que se estire al ancho real del
+contenedor (una card angosta de 130px en mobile o el display grande de `ProductDetail`) sin verse
+distorsionado — mismo patrón `useId()` que `SlimeDrip` para el `<linearGradient>`. CSS: `.pd-img-slime`
+pasó de `90×90px` fijo a `width: 100%; height: 70px` (`44px` en mobile), `.vitrina-slime` de `52×52px`
+a `width: 100%; height: 34px`. La capa global de esquinas de página (`HalloweenDecor.jsx` — no toca
+fotos de producto) **sigue usando `SlimeDrip`** sin cambios, porque ahí no hay riesgo de "tapar el
+perfume" y el efecto de esquina funciona bien para el chrome general de la página. Si se pide extender
+la franja completa también a la capa global, el patrón es el mismo: `SlimeTopBorder` con
+`position: absolute/fixed; top: 0; left: 0; right: 0`.
   Todas `theme === 'halloween'`-gated igual que antes. Si se vuelve a pedir "menos slime, más
   telaraña" o cualquier otro estilo de marco, el patrón a seguir es el mismo: un componente exportado
   en `HalloweenDecor.jsx`, reusado por className en los 3 puntos de arriba.
