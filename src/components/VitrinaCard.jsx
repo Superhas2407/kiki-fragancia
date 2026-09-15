@@ -6,7 +6,7 @@ import { useIndexProducts, resolveProductImage } from '../context/SanityProducts
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTheme } from '../context/ThemeContext'
-import { Cobweb } from './HalloweenDecor'
+import { SlimeDrip } from './HalloweenDecor'
 import { toSlug } from '../lib/slugs'
 
 // ============================================================
@@ -131,7 +131,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
     >
       <div className="vitrina-display">
         {theme === 'halloween' && (
-          <Cobweb className="vitrina-cobweb" style={{ position: 'absolute', top: 0, left: 0, zIndex: 3, pointerEvents: 'none' }} aria-hidden="true" />
+          <SlimeDrip className="vitrina-slime" style={{ position: 'absolute', top: 0, left: 0, zIndex: 3, pointerEvents: 'none' }} aria-hidden="true" />
         )}
 
         <div

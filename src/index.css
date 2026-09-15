@@ -1895,13 +1895,13 @@
   position: relative; overflow: hidden; background: #0D0A07;
   height: 100%;
 }
-/* Telaraña en la esquina del display de producto — solo tema Halloween (ver ProductDetail.jsx) */
-.pd-img-cobweb {
+/* Chorretón de slime en la esquina del display de producto — solo tema Halloween (ver ProductDetail.jsx) */
+.pd-img-slime {
   width: 90px; height: 90px;
-  opacity: 0.5;
+  opacity: 0.65;
 }
 @media (max-width: 767px) {
-  .pd-img-cobweb { width: 56px; height: 56px; }
+  .pd-img-slime { width: 56px; height: 56px; }
 }
 .pd-img-placeholder {
   width: 100%; height: 100%;
@@ -2557,10 +2557,10 @@
 [data-theme='warm'] .vitrina-display {
   background: #F5EEE0;
 }
-/* Telaraña en la esquina de la card — solo tema Halloween (ver VitrinaCard.jsx) */
-.vitrina-cobweb {
+/* Chorretón de slime en la esquina de la card — solo tema Halloween (ver VitrinaCard.jsx) */
+.vitrina-slime {
   width: 52px; height: 52px;
-  opacity: 0.45;
+  opacity: 0.6;
 }
 .vitrina-card:hover .vitrina-display {
   border-color: rgba(var(--gold-rgb),0.35);
@@ -6214,7 +6214,7 @@
   pointer-events: none;
   overflow: hidden;
 }
-.hwd-cobweb-br {
+.hwd-slime-br {
   opacity: 0.6;
 }
 .hwd-moon {
@@ -6295,6 +6295,6 @@
   .hwd-bat { display: none; }
 }
 @media (max-width: 640px) {
-  .hwd-cobweb { width: 84px; height: 84px; }
+  .hwd-slime { width: 84px; height: 84px; }
   .hwd-skeleton-hand { width: 64px; height: 78px; left: 10px !important; bottom: -6px !important; }
 }

@@ -1,43 +1,48 @@
+import { useId } from 'react'
 import { useTheme } from '../context/ThemeContext'
 
 /**
  * HalloweenDecor — capa decorativa del tema 🎃 (admin-only, ver ThemeContext.jsx
- * y el botón 🎃 en Header.jsx). Telarañas en las esquinas, murciélagos flotando
+ * y el botón 🎃 en Header.jsx). Slime en las esquinas, murciélagos flotando
  * y una mano esquelética asomando abajo. Todo `pointer-events: none` y
  * `aria-hidden` — nunca bloquea clicks ni interfiere con lectores de pantalla.
  * Se auto-oculta (`return null`) salvo que `theme === 'halloween'`.
  */
 
-/* Exportada para poder clavar una telaraña puntual en otros componentes
-   (ProductDetail, VitrinaCard) cuando theme === 'halloween', sin duplicar el SVG. */
-export const Cobweb = ({ style, className }) => (
-  <svg viewBox="0 0 140 140" width="140" height="140" style={style} className={className} aria-hidden="true">
-    <g fill="none" stroke="rgba(245,233,216,0.38)" strokeWidth="1">
-      {/* radios */}
-      <path d="M0 0 L140 140" />
-      <path d="M0 46 L94 140" />
-      <path d="M0 93 L47 140" />
-      <path d="M46 0 L140 94" />
-      <path d="M93 0 L140 47" />
-      <path d="M0 0 L140 0" opacity="0" />
-      {/* arcos concéntricos */}
-      <path d="M14 0 C14 8, 8 14, 0 14" />
-      <path d="M34 0 C34 20, 20 34, 0 34" />
-      <path d="M58 0 C58 34, 34 58, 0 58" />
-      <path d="M86 0 C86 50, 50 86, 0 86" />
-      <path d="M116 0 C116 68, 68 116, 0 116" />
-    </g>
-    {/* araña chiquita — cuerpo relleno en verde tóxico, no solo cream (pedido explícito:
-        el verde también como relleno, no solo líneas/bordes) */}
-    <g transform="translate(30,30)" fill="var(--gold-alt)" opacity="0.75">
-      <circle r="3.4" />
-      <circle cy="-4.6" r="2.2" />
-      <g stroke="var(--gold-alt)" strokeWidth="0.8">
-        <path d="M-3 -1 L-7 -3 M3 -1 L7 -3 M-3 1 L-7 3 M3 1 L7 3 M-2.5 -2.5 L-5 -6 M2.5 -2.5 L5 -6" />
-      </g>
-    </g>
-  </svg>
-)
+/* Exportado para poder clavar un chorretón de slime puntual en otros componentes
+   (ProductDetail, VitrinaCard) cuando theme === 'halloween', sin duplicar el SVG.
+   Reemplaza el diseño viejo de telaraña (feedback: "no me convencen las
+   telarañas, algo tipo slime"). `useId()` evita que el <linearGradient>
+   choque cuando el componente se repite muchas veces en una misma página
+   (ej. una telaraña—ahora slime—por card en la grilla de Tienda). */
+export const SlimeDrip = ({ style, className }) => {
+  const gradId = `slime-grad-${useId()}`
+  return (
+    <svg viewBox="0 0 140 140" width="140" height="140" style={style} className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="var(--gold-alt)" stopOpacity="0.9" />
+          <stop offset="100%" stopColor="var(--gold-alt)" stopOpacity="0.5" />
+        </linearGradient>
+      </defs>
+      {/* masa de slime pegada a la esquina */}
+      <path
+        d="M0,0 L60,0 C65,7 58,16 49,13 C52,22 41,27 34,20 C32,29 19,29 15,20 C9,27 1,22 0,15 Z"
+        fill={`url(#${gradId})`}
+      />
+      {/* chorretones colgando, largos distintos */}
+      <path d="M9,17 C4,28 4,44 9,53 C14,44 14,28 9,17 Z" fill={`url(#${gradId})`} />
+      <path d="M24,21 C18,37 18,60 24,71 C30,60 30,37 24,21 Z" fill={`url(#${gradId})`} />
+      <circle cx="24" cy="80" r="4.5" fill="var(--gold-alt)" opacity="0.65" />
+      <path d="M41,14 C36,24 36,35 41,42 C46,35 46,24 41,14 Z" fill={`url(#${gradId})`} />
+      <path d="M56,3 C51,12 51,23 56,30 C61,23 61,12 56,3 Z" fill={`url(#${gradId})`} />
+      <circle cx="56" cy="37" r="3.5" fill="var(--gold-alt)" opacity="0.6" />
+      {/* brillo gelatinoso */}
+      <ellipse cx="15" cy="7" rx="7" ry="3" fill="rgba(255,255,255,0.55)" transform="rotate(-28 15 7)" />
+      <ellipse cx="24" cy="30" rx="2.2" ry="6" fill="rgba(255,255,255,0.35)" />
+    </svg>
+  )
+}
 
 /* Silueta de murciélago clásica: cuerpo ovalado + orejas puntudas en el centro,
    dos alas por lado con lóbulos sólidos y bien definidos (a propósito, NADA de
@@ -124,9 +129,9 @@ export default function HalloweenDecor() {
 
   return (
     <div className="hwd-layer" aria-hidden="true">
-      <Cobweb className="hwd-cobweb" style={{ position: 'fixed', top: 0, left: 0 }} />
-      <Cobweb className="hwd-cobweb" style={{ position: 'fixed', top: 0, right: 0, transform: 'scaleX(-1)' }} />
-      <Cobweb className="hwd-cobweb hwd-cobweb-br" style={{ position: 'fixed', bottom: 0, right: 0, transform: 'rotate(180deg)' }} />
+      <SlimeDrip className="hwd-slime" style={{ position: 'fixed', top: 0, left: 0 }} />
+      <SlimeDrip className="hwd-slime" style={{ position: 'fixed', top: 0, right: 0, transform: 'scaleX(-1)' }} />
+      <SlimeDrip className="hwd-slime hwd-slime-br" style={{ position: 'fixed', bottom: 0, right: 0, transform: 'rotate(180deg)' }} />
 
       <Moon className="hwd-moon" style={{ position: 'fixed', top: '6%', right: '8%' }} />
       <Pumpkin className="hwd-pumpkin" style={{ position: 'fixed', bottom: -4, right: 16 }} />

@@ -614,12 +614,24 @@ correctamente emparejados con `--gold-fill-ink` (texto claro).
   principal, antes `34×17px`) y más opacos (`0.85` base, pico `0.92` en vuelo — antes `0.55`/`0.7`) para
   que se noten. Se agregó un 4º murciélago (`.hwd-bat-4`). Ojos verde tóxico (`var(--gold-alt)`) con
   halo, el único detalle en ese color.
-- **`Cobweb` ahora se exporta** (`export const Cobweb` en `HalloweenDecor.jsx`) para reusarlo puntual
-  en otros componentes sin duplicar el SVG — hay una telaraña de más (esquina inferior derecha,
-  `.hwd-cobweb-br`) en la capa global, y además una telaraña chica en la esquina de **cada** display de
-  producto: `.pd-img-cobweb` en `ProductDetail.jsx` y `.vitrina-cobweb` en `VitrinaCard.jsx`, ambas
-  `theme === 'halloween'`-gated — es el "marco tipo telaraña" que pidió el usuario para los frames de
-  producto en Tienda/ProductDetail.
+- **`Cobweb` → `SlimeDrip` (reemplazo completo, mismo día, feedback "las telarañas no me convencen,
+  algo tipo slime")** — el componente de telaraña se borró por completo y se reemplazó por
+  `export const SlimeDrip` en `HalloweenDecor.jsx`: una masa de slime pegada a la esquina con varios
+  chorretones colgando de largo distinto (`<path>` tipo gota, terminados a veces en una gotita suelta
+  `<circle>`), gradiente `var(--gold-alt)` (verde tóxico, opacidad 0.9→0.5 de arriba a abajo vía
+  `<linearGradient>`) + 2 brillos `<ellipse>` semitransparentes blancos para efecto gelatinoso. **Usa
+  `useId()` de React para generar el `id` del `<linearGradient>`** — crítico porque `SlimeDrip` se
+  renderiza muchas veces en la misma página (una por card en la grilla de Tienda); un `id` fijo
+  duplicado en el DOM rompe la referencia `url(#...)` en algunos navegadores. Reusado igual que antes
+  (sin duplicar el SVG) en 3 puntos:
+  - Capa global (`HalloweenDecor.jsx`) — esquina superior izquierda, superior derecha (espejada) e
+    inferior derecha (rotada 180°, clase `.hwd-slime-br`) — clases renombradas de `hwd-cobweb(-br)` a
+    `hwd-slime(-br)`.
+  - `.pd-img-slime` en `ProductDetail.jsx` (esquina del display de producto) — antes `.pd-img-cobweb`.
+  - `.vitrina-slime` en `VitrinaCard.jsx` (esquina de cada card de Tienda) — antes `.vitrina-cobweb`.
+  Todas `theme === 'halloween'`-gated igual que antes. Si se vuelve a pedir "menos slime, más
+  telaraña" o cualquier otro estilo de marco, el patrón a seguir es el mismo: un componente exportado
+  en `HalloweenDecor.jsx`, reusado por className en los 3 puntos de arriba.
 - **`Moon`** — luna creciente verde tóxico (`var(--gold-alt)`, glow a juego), fija arriba a la derecha
   del header, estática (no anima).
 - **`Pumpkin`** — calabaza tallada abajo a la derecha (dorada, cara/ojos en verde tóxico), simétrica a

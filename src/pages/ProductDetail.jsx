@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
-import { Cobweb } from '../components/HalloweenDecor'
+import { SlimeDrip } from '../components/HalloweenDecor'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useOfertaDelDia } from '../hooks/useOfertaDelDia'
@@ -1377,8 +1377,8 @@ export default function ProductDetail() {
                   transition: 'box-shadow .5s ease',
                 }}>
                   {theme === 'halloween' && (
-                    <Cobweb
-                      className="pd-img-cobweb"
+                    <SlimeDrip
+                      className="pd-img-slime"
                       style={{ position: 'absolute', top: 0, left: 0, zIndex: 3, pointerEvents: 'none' }}
                       aria-hidden="true"
                     />
