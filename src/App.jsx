@@ -18,6 +18,7 @@ import AnnouncementBar from './components/AnnouncementBar'
 import ConsentBanner from './components/ConsentBanner'
 import InstallBanner from './components/InstallBanner'
 import OfertaDelDia from './components/OfertaDelDia'
+import HalloweenDecor from './components/HalloweenDecor'
 const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
@@ -92,6 +93,7 @@ function AppShell() {
   return (
     <>
       {!isTouch && <CursorTrail />}
+      <HalloweenDecor />
       <MetaPixel />
       <ScrollToTop />
       <AnnouncementBar />

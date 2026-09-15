@@ -38,6 +38,31 @@
   --ink-rgb: 22, 14, 4;
 }
 
+/* Halloween 🎃 — tema especial ADMIN-ONLY (ver ThemeContext.jsx, Header.jsx,
+   HalloweenDecor.jsx). No lo elige el público — se activa manualmente desde
+   el botón 🎃 del Header, solo visible con sesión admin. Reusa los mismos
+   tokens semánticos que warm/dark, así que TODO el sitio (botones, cards,
+   fondos, sombras) hereda la paleta automáticamente sin tocar componente
+   por componente. */
+[data-theme='halloween'] {
+  --bg: #0D0616;
+  --bg2: #150A22;
+  --bg-warm: #1A0E2E;
+  --raised: #1C0F2B;
+  --ink: #F5E9D8;
+  --ink-mute: rgba(245,233,216,0.65);
+  --ink-faint: rgba(245,233,216,0.35);
+  --line: rgba(255,122,24,0.35);
+  --line2: rgba(245,233,216,0.12);
+  --gold: #FF7A18;
+  --gold-ink: #FFB347;
+  --gold-fill-ink: #1A0E2E;
+  --photo-floor: rgba(20,10,30,0.70);
+  --chip: rgba(255,122,24,0.08);
+  --shadow: 0 24px 60px -28px rgba(61,23,102,0.65);
+  --ink-rgb: 245, 233, 216;
+}
+
 /* Ajustes globales para modo claro */
 [data-theme='warm'] body {
   background: var(--bg);
@@ -694,6 +719,14 @@
   transition: color .2s;
 }
 .announcement-bar-close:hover { color: #fff; }
+
+/* ── Halloween mode: mismo degradado naranja→morado que la promo de producto ── */
+[data-theme='halloween'] .announcement-bar {
+  background: linear-gradient(90deg, #3D1766, #FF7A18 50%, #3D1766);
+}
+[data-theme='halloween'] .announcement-bar-close {
+  background: linear-gradient(to left, #3D1766 60%, transparent);
+}
 
 
 
@@ -6085,3 +6118,72 @@
   .nlb-ctas { justify-content: center; }
 }
 
+
+/* ══ Halloween decor — capa admin-only (HalloweenDecor.jsx) ══ */
+.hwd-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hwd-bat {
+  position: fixed;
+  width: 34px;
+  height: 17px;
+  color: rgba(245,233,216,0.55);
+  opacity: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.hwd-bat-flap {
+  width: 100%;
+  height: 100%;
+  animation: hwdFlap 0.5s linear infinite;
+}
+.hwd-bat-1 {
+  top: 18%;
+  animation-name: hwdFlyRight;
+  animation-duration: 22s;
+}
+.hwd-bat-2 {
+  top: 34%;
+  width: 24px; height: 12px;
+  animation-name: hwdFlyLeft;
+  animation-duration: 28s;
+  animation-delay: 4s;
+}
+.hwd-bat-2 .hwd-bat-flap { animation-duration: 0.4s; }
+.hwd-bat-3 {
+  top: 12%;
+  width: 20px; height: 10px;
+  animation-name: hwdFlyRight;
+  animation-duration: 18s;
+  animation-delay: 9s;
+}
+.hwd-bat-3 .hwd-bat-flap { animation-duration: 0.35s; }
+@keyframes hwdFlyRight {
+  0%   { left: -8%;  opacity: 0; transform: translateY(0); }
+  8%   { opacity: 0.7; }
+  50%  { transform: translateY(-40px); }
+  92%  { opacity: 0.7; }
+  100% { left: 108%; opacity: 0; transform: translateY(10px); }
+}
+@keyframes hwdFlyLeft {
+  0%   { left: 108%; opacity: 0; transform: translateY(0); }
+  8%   { opacity: 0.6; }
+  50%  { transform: translateY(30px); }
+  92%  { opacity: 0.6; }
+  100% { left: -8%;  opacity: 0; transform: translateY(-15px); }
+}
+@keyframes hwdFlap {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hwd-bat { display: none; }
+}
+@media (max-width: 640px) {
+  .hwd-cobweb { width: 84px; height: 84px; }
+  .hwd-skeleton-hand { width: 64px; height: 78px; left: 10px !important; bottom: -6px !important; }
+}

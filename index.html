@@ -68,6 +68,12 @@
       if (t === 'dark') {
         document.documentElement.style.background = '#0A0A0A';
         document.documentElement.style.color = '#F7F2EA';
+      } else if (t === 'halloween') {
+        // Tema especial admin-only (ver ThemeContext.jsx / HalloweenDecor.jsx) —
+        // mismo anti-FOUC que 'dark', para que no destelle warm antes de hidratar.
+        document.documentElement.setAttribute('data-theme', 'halloween');
+        document.documentElement.style.background = '#0D0616';
+        document.documentElement.style.color = '#F5E9D8';
       } else {
         document.documentElement.setAttribute('data-theme', 'warm');
       }

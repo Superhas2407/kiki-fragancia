@@ -589,19 +589,31 @@ export default function Tienda() {
   const { currency } = useCurrency()
   const { session } = useAuth()
   const isAdmin = !!session
-  const isDark = theme === 'dark'
-  const C = {
-    bg:       isDark ? '#0A0A0A'               : '#EAE0CC',
-    bg2:      isDark ? '#0E0C08'               : '#F2E9D6',
-    ink:      isDark ? '#F7F2EA'               : '#1A1208',
-    inkMute:  isDark ? 'rgba(247,242,234,0.5)' : 'rgba(35,26,13,0.80)',
-    inkFaint: isDark ? 'rgba(247,242,234,0.3)' : 'rgba(35,26,13,0.58)',
-    line:     isDark ? 'rgba(201,168,76,0.18)' : 'rgba(150,118,52,0.38)',
-    line2:    isDark ? 'rgba(247,242,234,0.07)': 'rgba(35,26,13,0.15)',
-    gold:     '#C9A84C',
-    goldInk:  isDark ? '#E8C96A'               : '#6B5010',
-    chip:     isDark ? 'rgba(247,242,234,0.05)': 'rgba(35,26,13,0.07)',
+  // Tienda tiene su propia paleta hardcodeada en JS (no los tokens --bg/--ink de
+  // index.css) — antes solo contemplaba dark/warm vía un ternario binario, así que
+  // el tema 'halloween' (admin-only, ver ThemeContext.jsx) caía siempre a warm por
+  // no ser 'dark'. Ahora es un lookup por los 3 valores posibles de theme.
+  const TIENDA_PALETTES = {
+    dark: {
+      bg: '#0A0A0A', bg2: '#0E0C08', ink: '#F7F2EA',
+      inkMute: 'rgba(247,242,234,0.5)', inkFaint: 'rgba(247,242,234,0.3)',
+      line: 'rgba(201,168,76,0.18)', line2: 'rgba(247,242,234,0.07)',
+      gold: '#C9A84C', goldInk: '#E8C96A', chip: 'rgba(247,242,234,0.05)',
+    },
+    warm: {
+      bg: '#EAE0CC', bg2: '#F2E9D6', ink: '#1A1208',
+      inkMute: 'rgba(35,26,13,0.80)', inkFaint: 'rgba(35,26,13,0.58)',
+      line: 'rgba(150,118,52,0.38)', line2: 'rgba(35,26,13,0.15)',
+      gold: '#C9A84C', goldInk: '#6B5010', chip: 'rgba(35,26,13,0.07)',
+    },
+    halloween: {
+      bg: '#0D0616', bg2: '#150A22', ink: '#F5E9D8',
+      inkMute: 'rgba(245,233,216,0.65)', inkFaint: 'rgba(245,233,216,0.35)',
+      line: 'rgba(255,122,24,0.35)', line2: 'rgba(245,233,216,0.12)',
+      gold: '#FF7A18', goldInk: '#FFB347', chip: 'rgba(255,122,24,0.08)',
+    },
   }
+  const C = TIENDA_PALETTES[theme] ?? TIENDA_PALETTES.warm
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const [, startTransition] = useTransition()

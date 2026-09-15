@@ -460,9 +460,44 @@ Proyecto Supabase: `dgyjwztiwkricpbkxaxd.supabase.co`
 - **Documento Sanity:** `kiki-ajustes` (singleton `_id: "kiki-ajustes"`). Campo `tasaManual: number`. La tasa de Sanity es global — cuando el admin la cambia, todos los usuarios la ven (con 5min de delay por cache).
 
 ## Tema
-- `src/context/ThemeContext.jsx` — `{ theme, toggleTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`).
+- `src/context/ThemeContext.jsx` — `{ theme, toggleTheme, setTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`); `setTheme` es el setState crudo, para setear un valor arbitrario (lo usa el toggle de Halloween en Header.jsx).
 - Persiste en `localStorage` clave **`kiki-theme-v2`** (v2 forzó reset de sesiones que tenían el tema oscuro guardado). Default: `'warm'` (no sigue preferencia del sistema).
-- Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`.
+- Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`. Halloween: `data-theme="halloween"` (ver abajo).
+- `toggleTheme()` alterna dark↔warm (`t === 'dark' ? 'warm' : 'dark'`) — si venías de `'halloween'`, también te saca de ahí (cae a `'dark'` porque `t !== 'dark'`).
+
+### Tema Halloween 🎃 (admin-only, NO lo ve el público)
+Tercer valor de `theme`, activado manualmente desde un botón 🎃 en el Header — **solo visible con
+sesión admin** (`isAdmin = !!session`, mismo patrón que el resto de las features admin-only del
+sitio). Un visitante normal nunca ve el botón ni puede activarlo.
+
+- **Paleta** — `[data-theme='halloween']` en `index.css` (justo después del bloque `[data-theme='warm']`)
+  redefine los mismos tokens semánticos que ya usa todo el sitio (`--bg`, `--raised`, `--ink`, `--gold`,
+  `--line`, `--chip`, etc.) con una paleta morada/naranja (`--gold: #FF7A18`). Como el resto del sitio
+  ya está construido sobre estos tokens, **la mayoría de los componentes se reskinean solos** sin tocarlos
+  — la excepción son componentes que hardcodean color en vez de usar `var(--token)` (ver más abajo).
+- **Anti-FOUC**: `index.html` tiene una tercera rama en el script inline (`t === 'halloween'`) para no
+  destellar warm antes de hidratar, igual que ya hacía con `'dark'`.
+- **`HalloweenDecor.jsx`** — capa decorativa fixed (`z-index: 9998`, `pointer-events: none`,
+  `aria-hidden`), montada en `AppShell` (`App.jsx`), se auto-oculta (`return null`) salvo
+  `theme === 'halloween'`: telarañas en las esquinas superiores (`.hwd-cobweb`), 3 murciélagos
+  volando con trayectoria + aleteo vía CSS keyframes (`.hwd-bat`/`.hwd-bat-flap` — **dos animaciones
+  separadas porque ambas tocan `transform`; si comparten el mismo elemento se pisan entre sí**), y una
+  mano esquelética asomando abajo a la izquierda (`.hwd-skeleton-hand`). Todo puramente decorativo,
+  nunca bloquea clics. Respeta `prefers-reduced-motion` (oculta los murciélagos).
+- **Botón 🎃** — en `Header.jsx`, junto al toggle claro/oscuro (desktop) y en el menú móvil, solo
+  renderizado si `isAdmin`. `toggleHalloween = () => setTheme(t => t === 'halloween' ? 'warm' : 'halloween')`.
+- **Componentes que NO heredan los tokens automáticamente** (hardcodean su propia paleta en JS/CSS,
+  hay que extenderlos a mano si el reskin de Halloween los toca):
+  - `Tienda.jsx` — tiene su propio objeto `TIENDA_PALETTES` (dark/warm/halloween) en vez de usar
+    `var(--bg)` etc.; si se agrega un cuarto tema hay que sumarlo ahí también.
+  - `.announcement-bar` (barra superior) — color base hardcodeado (`#040E24, #0A2D72`, azul), con
+    overrides explícitos por tema (`[data-theme='warm'] .announcement-bar`,
+    `[data-theme='halloween'] .announcement-bar`) en vez de tokens.
+  - `ProductCard.jsx` / `Catalog.jsx` — tienen el mismo patrón `theme === 'dark'` pero son **archivos
+    muertos, no los importa nada** (confirmado por grep) — no hace falta tocarlos.
+  - Si algo más se ve "roto" (colores planos, sin contraste) en modo Halloween, sospechar primero de
+    un componente que hardcodea color en vez de usar los tokens — es el mismo patrón que causó el bug
+    del sidebar de `/tienda` (fix: septiembre 2026).
 
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
