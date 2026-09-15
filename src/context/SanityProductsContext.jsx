@@ -55,9 +55,17 @@ export function SanityProductsProvider({ children }) {
           // Oferta Halloween — admin-only. isAdmin ya decide si estos campos
           // siquiera vinieron en la respuesta de Sanity; esta es la segunda
           // barrera: aunque llegaran, nunca se aplican ni se exponen sin sesión.
-          if (isAdmin && sp.promoHalloween && sp.precioPromoHalloween != null) {
-            p.precioOriginalUSD = p.precioUSD
-            p.precioUSD = sp.precioPromoHalloween
+          // El flag (cinta/badge/filtro) es independiente del precio promo: marcar
+          // el checkbox en Studio ya alcanza para previsualizar la campaña, no
+          // hace falta cargar un precio para que aparezca.
+          if (isAdmin && sp.promoHalloween) {
+            p.promoHalloween = true
+            if (sp.precioPromoHalloween != null) {
+              p.precioOriginalUSD = p.precioUSD
+              p.precioUSD = sp.precioPromoHalloween
+            } else {
+              delete p.precioOriginalUSD
+            }
           } else {
             delete p.precioOriginalUSD
             delete p.promoHalloween

@@ -1436,7 +1436,7 @@ export default function ProductDetail() {
                   {product.descuento}% DESCUENTO
                 </div>
               )}
-              {!product.agotado && currency === 'usd' && !product._ofertaDelDiaActiva && !product.descuento && product.promoHalloween && product.precioOriginalUSD > product.precioUSD && (
+              {!product.agotado && currency === 'usd' && !product._ofertaDelDiaActiva && !product.descuento && product.promoHalloween && (
                 <div className="pd-ddp-strip pd-ddp-strip--halloween">
                   <PumpkinIcon size={11} /> OFERTA HALLOWEEN
                 </div>
@@ -1462,7 +1462,9 @@ export default function ProductDetail() {
                     )
                   }
                   const discPct = product.descuento
-                  const isHalloween = !discPct && product.promoHalloween && product.precioOriginalUSD > product.precioUSD
+                  // El badge no depende de que haya un precio promo cargado — marcar el
+                  // checkbox en Studio ya alcanza para previsualizarlo (ver SanityProductsContext).
+                  const isHalloween = !discPct && product.promoHalloween
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
@@ -1512,9 +1514,11 @@ export default function ProductDetail() {
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}
                           </span>
-                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
-                            REF: {product.precioOriginalUSD}
-                          </span>
+                          {product.precioOriginalUSD > product.precioUSD && (
+                            <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                              REF: {product.precioOriginalUSD}
+                            </span>
+                          )}
                         </>
                       ) : (
                         <>
