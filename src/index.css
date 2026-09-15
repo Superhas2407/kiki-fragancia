@@ -6298,7 +6298,11 @@
 .hwd-layer {
   position: fixed;
   inset: 0;
-  z-index: 9998;
+  /* Antes 9998 — quedaba por ENCIMA de los drawers de carrito/wishlist
+     (z-index 9990-9991) y se veía la calabaza/mano encima de sus botones.
+     60 alcanza para flotar sobre el header (40) y el BottomNav (50), pero
+     cualquier drawer/modal (70+) lo tapa como corresponde. */
+  z-index: 60;
   pointer-events: none;
   overflow: hidden;
 }
@@ -6316,6 +6320,15 @@
 @media (max-width: 767px) {
   .hwd-moon { width: 42px; height: 42px; top: 8% !important; right: 6% !important; }
   .hwd-pumpkin { width: 54px; height: 51px; }
+}
+/* En mobile/tablet el BottomNav (fijo, ver .bottom-nav) tapa la esquina inferior
+   — sin este ajuste la calabaza y la mano quedaban literalmente encima de
+   "ENTRAR"/"INICIO". Se suben por encima de la barra + safe-area, mismo
+   cálculo que ya usa WhatsAppFab. */
+@media (max-width: 1023px) {
+  .hwd-pumpkin { bottom: calc(60px + env(safe-area-inset-bottom, 0px) + 6px) !important; }
+  .hwd-skeleton-hand { bottom: calc(60px + env(safe-area-inset-bottom, 0px) - 10px) !important; }
+  .hwd-slime-br { bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important; }
 }
 .hwd-bat {
   position: fixed;
@@ -6384,5 +6397,8 @@
 }
 @media (max-width: 640px) {
   .hwd-slime { width: 84px; height: 84px; }
-  .hwd-skeleton-hand { width: 64px; height: 78px; left: 10px !important; bottom: -6px !important; }
+  /* bottom se resuelve en el media query de 1023px más arriba, para no
+     tapar el BottomNav — no repetirlo acá (el orden de aparición en el
+     archivo importa: esta regla viene después y con !important ganaría). */
+  .hwd-skeleton-hand { width: 64px; height: 78px; left: 10px !important; }
 }

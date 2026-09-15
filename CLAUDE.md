@@ -713,6 +713,34 @@ explícitamente que el verde no se quedara solo en bordes/acentos puntuales. Se 
 - **Guiño en el footer** (`Footer.jsx`, `.kf-copy`) — el copyright suma " · Boo! 🎃" al final solo en
   Halloween.
 
+**QA de mobile (mismo día) — 2 bugs reales encontrados con capturas ≤767px y arreglados:**
+- **`.hwd-pumpkin`, `.hwd-skeleton-hand` y `.hwd-slime-br` tapaban el `BottomNav`.** Las 3 son
+  `position: fixed` ancladas cerca del borde inferior de la pantalla (pensadas para desktop, donde no
+  hay barra inferior). En mobile (`≤1023px`, el breakpoint del propio `.bottom-nav`) quedaban
+  literalmente encima de "INICIO"/"ENTRAR". Fix: nuevo `@media (max-width: 1023px)` en `index.css`
+  que sube `bottom` de las 3 a `calc(60px + env(safe-area-inset-bottom, 0px) + X)` — mismo cálculo que
+  ya usa `WhatsAppFab` para flotar sobre el `BottomNav`. Ojo con el orden de las reglas: había un
+  `@media (max-width: 640px) { .hwd-skeleton-hand { bottom: -6px !important } }` **más abajo en el
+  archivo** que, por venir después en el orden de aparición (misma especificidad + `!important`),
+  pisaba el fix nuevo — se le quitó esa línea a esa regla vieja, dejando el `bottom` resuelto en un
+  solo lugar.
+- **`.hwd-layer` (`z-index: 9998`) tapaba los drawers de carrito/wishlist** (`z-index: 9990`/`9991` en
+  `.wl-drawer`) — con la wishlist abierta, la calabaza y la mano se veían encima del botón "AGREGAR
+  TODO AL CARRITO". Fix: `.hwd-layer` bajó a `z-index: 60` — sigue flotando sobre `.kiki-header` (40)
+  y `.bottom-nav` (50), pero cualquier drawer/modal real (70+) lo tapa como corresponde. **Regla
+  general:** cualquier capa decorativa `position: fixed` de página completa debe quedar con un
+  `z-index` bajo (<70) para no competir con drawers/modales — reservar `9990+` solo para UI real
+  (carrito, wishlist, auth). El flash `.hween-flash-overlay` (`z-index: 99999`) es la única excepción
+  intencional — es un efecto de transición de un solo uso, pensado para tapar literalmente todo.
+- **Confirmado sin overflow horizontal** (`scrollWidth === innerWidth`, viewport 390px) en landing,
+  Tienda, ProductDetail, menú móvil, drawers de carrito/wishlist y footer, en warm y en Halloween.
+- Nota sobre QA con Playwright en este proyecto: `.pd-sticky-bar`/`.pd-sticky-btn` (el segundo botón
+  "Agregar al carrito" — ver comentario existente en `index.css`, siempre `display: none`) puede
+  hacer que un selector ambiguo tipo `page.$('button:has-text("Agregar al carrito")')` matchee el
+  botón muerto en vez del real y dé resultados sin sentido al clickear con `force: true` (dispara el
+  evento en coordenadas fantasma). Usar `page.locator(...).first()` o un selector más específico
+  (`.pd-actions button`) para evitar el ambiguo.
+
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
 - Sección `#nosotros`, `.bs2-section` — 80vh desktop, auto en móvil
