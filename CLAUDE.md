@@ -562,15 +562,29 @@ el tema activo. Esto es justo lo que el usuario reportó como "la pirámide, aco
 veces se ven dorado como siempre" y "los marcos en Tienda/ProductDetail heredan el modo normal": el
 marco circular de cada nota olfativa (`NoteIcon` en `ProductDetail.jsx`), el borde de `.vitrina-display`
 (el marco de cada card en Tienda), el glow de "cuándo usarlo" activo, etc. — todos usaban ese RGB fijo.
-**Fix:** se agregó `--gold-rgb` a los 3 bloques de tema en `index.css` (`201, 168, 76` dark ·
-`154, 104, 32` warm · `255, 122, 24` halloween — mismo valor que el hex de `--gold` de cada tema, solo
-en formato decimal) y se reemplazaron las 102 ocurrencias de `rgba(201,168,76,` por
-`rgba(var(--gold-rgb),` en `index.css` + `ProductDetail.jsx`, `Tienda.jsx`, `VitrinaCard.jsx` (vía
-`.vitrina-display`), `Header.jsx`, `AuthModal.jsx`, `OfertaDelDia.jsx`, `WishlistDrawer.jsx`,
-`InstallBanner.jsx`, `AdminLoginPage.jsx`, `DiaDeLPadrePage.jsx`, `CursorTrail.jsx`. **No se tocaron**
-`ProductCard.jsx`/`Catalog.jsx` (archivos muertos, confirmado). Si en el futuro aparece un dorado
-translúcido (`rgba(...)`) que no reacciona al tema, es casi seguro el mismo patrón: buscar el RGB
-literal y cambiarlo por `rgba(var(--gold-rgb), X)`.
+**Fix:** se agregó `--gold-rgb` a los 3 bloques de tema en `index.css` y se reemplazaron las 102
+ocurrencias de `rgba(201,168,76,` por `rgba(var(--gold-rgb),` en `index.css` + `ProductDetail.jsx`,
+`Tienda.jsx`, `VitrinaCard.jsx` (vía `.vitrina-display`), `Header.jsx`, `AuthModal.jsx`,
+`OfertaDelDia.jsx`, `WishlistDrawer.jsx`, `InstallBanner.jsx`, `AdminLoginPage.jsx`,
+`DiaDeLPadrePage.jsx`, `CursorTrail.jsx`. **No se tocaron** `ProductCard.jsx`/`Catalog.jsx` (archivos
+muertos, confirmado). Si en el futuro aparece un dorado translúcido (`rgba(...)`) que no reacciona al
+tema, es casi seguro el mismo patrón: buscar el RGB literal y cambiarlo por `rgba(var(--gold-rgb), X)`.
+
+**Corrección inmediata (mismo día): el valor de `--gold-rgb` para warm rompió el look de todo el modo
+claro.** `--gold-rgb` no es solo para Halloween — alimenta **~70 reglas** `rgba(var(--gold-rgb),X)` en
+`index.css` en TODO el sitio (bordes, dividers, hovers, scrollbar thumb, `::selection`, glows de
+"cuándo usarlo", etc.), no solo las 102 del fix de arriba. Al principio se puso `--gold-rgb: 154, 104,
+32` para warm (el RGB exacto de `--gold` de warm, `#9A6820`) por "corrección" — pero antes del fix,
+**todas esas ~70 reglas ya venían usando el mismo `201,168,76` fijo en los 3 temas** (el bug), así que
+ese tono más claro/dorado es como el modo claro se vio *siempre*, no un color roto. Poner el RGB
+"correcto" y más oscuro de warm ahí cambiaba visiblemente casi todos los bordes/hovers/glows sutiles
+del sitio entero en modo claro de un dorado claro a un marrón oscuro — el usuario lo notó de inmediato
+("el modo claro se rompió, ya no es igual que antes"). **Se revirtió `--gold-rgb` de warm a
+`201, 168, 76`** (igual que dark) — dark y halloween mantienen su fix intacto (`201,168,76` y
+`255,122,24` respectivamente, que sí eran el problema real que el usuario pidió arreglar). Ver el
+comentario en el bloque `[data-theme='warm']` de `index.css` — **no** volver a igualar `--gold-rgb` de
+warm al RGB de su propio `--gold` sin verificar visualmente el sitio completo primero (idealmente con
+capturas antes/después de Tienda, ProductDetail y la pirámide de notas).
 
 **Más esencia Halloween (mismo día) — `HalloweenDecor.jsx` rediseñado y ampliado:**
 - **Murciélagos rediseñados** — la silueta vieja (una curva tipo "M" continua) se leía como araña, no

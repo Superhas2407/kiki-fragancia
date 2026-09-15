@@ -37,7 +37,17 @@
   --chip: rgba(22,14,4,0.06);
   --shadow: 0 24px 50px -30px rgba(80,60,20,0.38);
   --ink-rgb: 22, 14, 4;
-  --gold-rgb: 154, 104, 32;
+  /* OJO: intencionalmente NO es el RGB de --gold (154,104,32) de este mismo bloque.
+     --gold-rgb alimenta ~70 reglas rgba(var(--gold-rgb),X) en todo el sitio (bordes,
+     dividers, hovers, scrollbar, ::selection, etc.) — antes del fix de septiembre 2026
+     TODAS esas reglas usaban por bug un 201,168,76 fijo (el RGB del --gold de modo
+     oscuro) sin importar el tema, así que ese es el tono con el que el modo claro
+     siempre se vio. Igualarlo al --gold propio de warm (154,104,32, más oscuro/marrón)
+     era "más correcto" pero cambiaba visiblemente el sitio entero en modo claro — se
+     revirtió a 201,168,76 para que warm se vea igual que siempre. Si hace falta un
+     verdadero --gold-rgb "correcto" para warm en el futuro, agregar un token nuevo en
+     vez de tocar este. */
+  --gold-rgb: 201, 168, 76;
 }
 
 /* Halloween 🎃 — tema especial ADMIN-ONLY (ver ThemeContext.jsx, Header.jsx,
