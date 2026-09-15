@@ -1477,7 +1477,7 @@ export default function ProductDetail() {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
                     color: '#1A1208',
-                    background: 'linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold))',
+                    background: 'linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold))',
                     padding: '4px 12px', display: 'inline-block',
                   }
                   const halloweenBadgeStyle = {
@@ -1619,7 +1619,7 @@ export default function ProductDetail() {
                       opacity: product.agotado ? 0.6 : 1,
                       transition: 'background .25s ease, border-color .25s ease, color .25s ease',
                     }}
-                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold-ink)' }}
+                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold-shine)' }}
                     onMouseLeave={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold)' }}
                   >
                     {product.agotado ? 'Agotado' : added ? '✓ Agregado' : 'Agregar al carrito'}

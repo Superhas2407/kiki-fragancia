@@ -586,6 +586,27 @@ comentario en el bloque `[data-theme='warm']` de `index.css` — **no** volver a
 warm al RGB de su propio `--gold` sin verificar visualmente el sitio completo primero (idealmente con
 capturas antes/después de Tienda, ProductDetail y la pirámide de notas).
 
+**Segunda regresión relacionada, encontrada en la misma revisión: el shimmer de badges/ribbons quedó
+sin contraste en warm — nuevo token `--gold-shine`.** Además del `--gold-rgb` de arriba, el fix
+original de "propagar `--gold`" (ver más arriba en esta misma sección) había convertido el shimmer
+`linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)` (fijo, siempre claro en los 3 temas) a
+`linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold))`. Eso funciona en dark/halloween
+(`--gold-ink` es claro ahí), pero **en warm `--gold-ink` es oscuro a propósito** (`#5E3A0E` — pensado
+para texto/hover legible sobre fondo claro, no para ser fondo). El texto de estos badges/ribbons es
+`#1A1208` (casi negro) fijo — con `--gold-ink` oscuro de fondo, el badge se veía un bloque marrón plano
+sin brillo ni contraste ("PROMO DIVISA" y el ribbon diagonal en Tienda/ProductDetail). Reportado por el
+usuario con captura: *"sigue viendose oscuro"*. **Fix:** se agregó un token nuevo `--gold-shine`
+(SIEMPRE claro en los 3 temas: `#E8C96A` dark · `#D9AE4E` warm · `#FFB347` halloween — a diferencia de
+`--gold-ink` que varía a propósito) y se usa *solo* en gradientes de fondo con texto oscuro encima:
+`.vitrina-price-badge`, `.vitrina-ribbon > span`, `.pd-ddp-strip--ofertadia` (los 3 en `index.css`), el
+`badgeStyle` inline de `ProductDetail.jsx`, y el hover del botón "Agregar al carrito" (antes usaba
+`var(--gold-ink)` en el `onMouseEnter`, mismo problema). **Regla general:** `--gold-ink` es para texto/
+borde sobre fondo neutro (documentado, no tocar su valor oscuro en warm); cualquier gradiente de FONDO
+con texto oscuro fijo encima debe usar `--gold-shine`, no `--gold-ink`. Se verificó que no quedan más
+instancias de `var(--gold-ink)` como `background` sin texto claro emparejado (`--gold-fill-ink`) — el
+resto de los usos de `--gold-ink` en el sitio son `color`/`border-color` (correctos) o `background`
+correctamente emparejados con `--gold-fill-ink` (texto claro).
+
 **Más esencia Halloween (mismo día) — `HalloweenDecor.jsx` rediseñado y ampliado:**
 - **Murciélagos rediseñados** — la silueta vieja (una curva tipo "M" continua) se leía como araña, no
   como murciélago. Ahora `Bat` tiene cuerpo ovalado + 2 orejas puntudas en el centro y 2 alas por lado

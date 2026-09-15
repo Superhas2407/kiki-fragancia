@@ -11,6 +11,7 @@
   --line2: rgba(247,242,234,0.10);
   --gold: #C9A84C;
   --gold-ink: #E8C96A;
+  --gold-shine: #E8C96A;
   --gold-fill-ink: #0A0A0A;
   --photo-floor: rgba(8,5,2,0.55);
   --chip: rgba(247,242,234,0.05);
@@ -32,6 +33,17 @@
   --line2: rgba(22,14,4,0.18);
   --gold: #9A6820;
   --gold-ink: #5E3A0E;
+  /* --gold-shine: SIEMPRE claro, a diferencia de --gold-ink (que en warm es oscuro
+     a propósito, para texto/hover legible sobre fondo claro). Se usa solo como
+     color de "brillo" en gradientes de fondo de badges/ribbons con texto oscuro
+     encima (.vitrina-price-badge, .vitrina-ribbon > span, .pd-ddp-strip--ofertadia,
+     badgeStyle en ProductDetail.jsx) — si esos usaran --gold-ink acá, el fondo
+     quedaría casi tan oscuro como el texto (#1A1208) y el badge se ve un bloque
+     marrón plano en vez de una cinta dorada brillante. Bug real de sept 2026: se
+     habían convertido esos gradientes de un hex fijo (#E8C96A) a var(--gold-ink)
+     "para que reaccionen a Halloween" sin darse cuenta de que --gold-ink en warm
+     es oscuro por diseño — rompió el contraste ahí. */
+  --gold-shine: #D9AE4E;
   --gold-fill-ink: #FAF0E0;
   --photo-floor: rgba(60,42,16,0.30);
   --chip: rgba(22,14,4,0.06);
@@ -68,6 +80,7 @@
   --line2: rgba(245,233,216,0.12);
   --gold: #FF7A18;
   --gold-ink: #FFB347;
+  --gold-shine: #FFB347;
   --gold-fill-ink: #1A0E2E;
   --photo-floor: rgba(20,10,30,0.70);
   --chip: rgba(255,122,24,0.08);
@@ -1952,7 +1965,7 @@
     box-shadow: inset 0 -2px 12px rgba(107,47,160,0.4);
   }
   .pd-ddp-strip--ofertadia {
-    background: linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold));
+    background: linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold));
     color: #1A1208;
   }
 }
@@ -2746,7 +2759,7 @@
   position: absolute; right: -52px; top: 44px;
   width: 220px; text-align: center;
   transform: rotate(45deg);
-  background: linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold));
+  background: linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold));
   color: #1A1208;
   font-family: var(--font-s); font-size: 11px;
   font-weight: 600; letter-spacing: 0.18em;
@@ -3016,7 +3029,7 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: #1A1208;
-  background: linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold));
+  background: linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold));
   padding: 4px 10px;
 }
 .vitrina-price-badge--ddp {
