@@ -35,7 +35,7 @@ export default function CursorTrail() {
         if (p.life <= 0) { points.splice(i, 1); continue }
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r * p.life, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(201,168,76,${p.life * 0.5})`
+        ctx.fillStyle = `rgba(var(--gold-rgb),${p.life * 0.5})`
         ctx.fill()
       }
       animId = requestAnimationFrame(tick)

@@ -113,7 +113,7 @@ export default function InstallBanner() {
         }
         .install-banner-inner {
           background: #1A1208;
-          border: 1px solid rgba(201,168,76,0.35);
+          border: 1px solid rgba(var(--gold-rgb),0.35);
           border-radius: 16px;
           padding: 14px 16px;
           display: flex;

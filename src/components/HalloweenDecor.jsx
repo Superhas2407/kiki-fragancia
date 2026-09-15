@@ -8,7 +8,9 @@ import { useTheme } from '../context/ThemeContext'
  * Se auto-oculta (`return null`) salvo que `theme === 'halloween'`.
  */
 
-const Cobweb = ({ style, className }) => (
+/* Exportada para poder clavar una telaraña puntual en otros componentes
+   (ProductDetail, VitrinaCard) cuando theme === 'halloween', sin duplicar el SVG. */
+export const Cobweb = ({ style, className }) => (
   <svg viewBox="0 0 140 140" width="140" height="140" style={style} className={className} aria-hidden="true">
     <g fill="none" stroke="rgba(245,233,216,0.38)" strokeWidth="1">
       {/* radios */}
@@ -36,33 +38,59 @@ const Cobweb = ({ style, className }) => (
   </svg>
 )
 
+/* Silueta de murciélago clásica: cuerpo ovalado + orejas puntudas en el centro,
+   dos alas por lado con lóbulos sólidos y bien definidos (a propósito, NADA de
+   líneas finas radiales tipo araña — esa era la confusión con el diseño viejo). */
 const Bat = ({ style }) => (
-  <svg viewBox="0 0 48 24" width="100%" height="100%" style={style} aria-hidden="true">
+  <svg viewBox="0 0 60 30" width="100%" height="100%" style={style} aria-hidden="true">
+    {/* ala izquierda */}
     <path
-      d="M24 8
-         C21 2, 14 0, 8 3
-         C11 5, 13 7, 14 9
-         C9 7, 3 6, 0 9
-         C4 10, 9 12, 13 12
-         C9 14, 5 17, 4 21
-         C9 18, 14 15, 18 14
-         C20 16, 22 17, 24 17
-         C26 17, 28 16, 30 14
-         C34 15, 39 18, 44 21
-         C43 17, 39 14, 35 12
-         C39 12, 44 10, 48 9
-         C45 6, 39 7, 34 9
-         C35 7, 37 5, 40 3
-         C34 0, 27 2, 24 8 Z"
+      d="M27,15 C20,8 10,4 2,2 C8,10 13,13 13,16 C7,17 2,19 0,23 C10,22 19,19 26,18 Z"
       fill="currentColor"
     />
-    {/* ojitos verde tóxico con glow — el único detalle en --gold-alt del murciélago, para
-        que no se pierda contra el naranja del fondo (el bicho es chico, así que el glow
-        ayuda a que el punto verde se note aunque el círculo mida menos de 1px renderizado) */}
-    <circle cx="21.5" cy="8" r="2.4" fill="var(--gold-alt)" opacity="0.45" />
-    <circle cx="26.5" cy="8" r="2.4" fill="var(--gold-alt)" opacity="0.45" />
-    <circle cx="21.5" cy="8" r="1" fill="var(--gold-alt)" />
-    <circle cx="26.5" cy="8" r="1" fill="var(--gold-alt)" />
+    {/* ala derecha (espejo) */}
+    <path
+      d="M33,15 C40,8 50,4 58,2 C52,10 47,13 47,16 C53,17 58,19 60,23 C50,22 41,19 34,18 Z"
+      fill="currentColor"
+    />
+    {/* cuerpo */}
+    <ellipse cx="30" cy="17" rx="3.2" ry="6" fill="currentColor" />
+    {/* orejas */}
+    <path d="M26.5,13 L27.5,6 L30,12 Z" fill="currentColor" />
+    <path d="M33.5,13 L32.5,6 L30,12 Z" fill="currentColor" />
+    {/* ojitos verde tóxico con glow — único detalle en --gold-alt, para que no se
+        pierda contra el naranja del fondo aunque el bicho sea chico en pantalla */}
+    <circle cx="28.3" cy="15.5" r="2.6" fill="var(--gold-alt)" opacity="0.45" />
+    <circle cx="31.7" cy="15.5" r="2.6" fill="var(--gold-alt)" opacity="0.45" />
+    <circle cx="28.3" cy="15.5" r="1.1" fill="var(--gold-alt)" />
+    <circle cx="31.7" cy="15.5" r="1.1" fill="var(--gold-alt)" />
+  </svg>
+)
+
+const Moon = ({ style, className }) => (
+  <svg viewBox="0 0 60 60" width="60" height="60" style={style} className={className} aria-hidden="true">
+    <path
+      d="M38 6 C24 6 12 18 12 32 C12 46 24 58 38 58 C28 54 21 44 21 32 C21 20 28 10 38 6 Z"
+      fill="var(--gold-alt)"
+      opacity="0.55"
+    />
+  </svg>
+)
+
+const Pumpkin = ({ style, className }) => (
+  <svg viewBox="0 0 80 76" width="80" height="76" style={style} className={className} aria-hidden="true">
+    {/* tallo */}
+    <path d="M38 10 C36 4 42 2 44 6 C45 9 41 12 38 10 Z" fill="rgba(120,80,30,0.6)" />
+    {/* cuerpo — 3 gajos superpuestos */}
+    <ellipse cx="24" cy="42" rx="15" ry="24" fill="var(--gold)" opacity="0.5" />
+    <ellipse cx="56" cy="42" rx="15" ry="24" fill="var(--gold)" opacity="0.5" />
+    <ellipse cx="40" cy="42" rx="17" ry="26" fill="var(--gold)" opacity="0.75" />
+    {/* cara tallada — glow verde */}
+    <g fill="var(--gold-alt)">
+      <path d="M31 36 L37 36 L34 44 Z" opacity="0.9" />
+      <path d="M43 36 L49 36 L46 44 Z" opacity="0.9" />
+      <path d="M27 54 C33 60 47 60 53 54 C48 58 32 58 27 54 Z" opacity="0.9" />
+    </g>
   </svg>
 )
 
@@ -96,10 +124,15 @@ export default function HalloweenDecor() {
     <div className="hwd-layer" aria-hidden="true">
       <Cobweb className="hwd-cobweb" style={{ position: 'fixed', top: 0, left: 0 }} />
       <Cobweb className="hwd-cobweb" style={{ position: 'fixed', top: 0, right: 0, transform: 'scaleX(-1)' }} />
+      <Cobweb className="hwd-cobweb hwd-cobweb-br" style={{ position: 'fixed', bottom: 0, right: 0, transform: 'rotate(180deg)' }} />
+
+      <Moon className="hwd-moon" style={{ position: 'fixed', top: '6%', right: '8%' }} />
+      <Pumpkin className="hwd-pumpkin" style={{ position: 'fixed', bottom: -4, right: 16 }} />
 
       <div className="hwd-bat hwd-bat-1"><div className="hwd-bat-flap"><Bat /></div></div>
       <div className="hwd-bat hwd-bat-2"><div className="hwd-bat-flap"><Bat /></div></div>
       <div className="hwd-bat hwd-bat-3"><div className="hwd-bat-flap"><Bat /></div></div>
+      <div className="hwd-bat hwd-bat-4"><div className="hwd-bat-flap"><Bat /></div></div>
 
       <SkeletonHand className="hwd-skeleton-hand" style={{ position: 'fixed', bottom: -8, left: 18 }} />
     </div>

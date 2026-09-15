@@ -70,7 +70,7 @@ export default function AuthModal({ open, onClose }) {
         style={{
           width: '100%', maxWidth: 380,
           background: '#0F0D0A',
-          border: '1px solid rgba(201,168,76,0.18)',
+          border: '1px solid rgba(var(--gold-rgb),0.18)',
           padding: '36px 32px',
           fontFamily: 'var(--font-s, sans-serif)',
         }}
@@ -81,7 +81,7 @@ export default function AuthModal({ open, onClose }) {
         </p>
 
         {/* Tabs */}
-        <div style={{ display: 'flex', gap: 0, marginBottom: 28, borderBottom: '1px solid rgba(201,168,76,0.12)' }}>
+        <div style={{ display: 'flex', gap: 0, marginBottom: 28, borderBottom: '1px solid rgba(var(--gold-rgb),0.12)' }}>
           {['login', 'register'].map(t => (
             <button key={t} onClick={() => switchTab(t)} style={{
               flex: 1, padding: '10px 0', background: 'none', border: 'none',
@@ -119,7 +119,7 @@ export default function AuthModal({ open, onClose }) {
 
           <button type="submit" disabled={loading} style={{
             width: '100%', padding: '13px',
-            background: loading ? 'rgba(201,168,76,0.4)' : 'var(--gold)',
+            background: loading ? 'rgba(var(--gold-rgb),0.4)' : 'var(--gold)',
             border: 'none', color: '#0A0806',
             fontSize: 10, fontWeight: 700, letterSpacing: '0.25em', textTransform: 'uppercase',
             cursor: loading ? 'not-allowed' : 'pointer', marginBottom: 16,
@@ -129,9 +129,9 @@ export default function AuthModal({ open, onClose }) {
         </form>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-          <div style={{ flex: 1, height: 1, background: 'rgba(201,168,76,0.12)' }} />
+          <div style={{ flex: 1, height: 1, background: 'rgba(var(--gold-rgb),0.12)' }} />
           <span style={{ color: 'rgba(247,242,234,0.3)', fontSize: 10 }}>o</span>
-          <div style={{ flex: 1, height: 1, background: 'rgba(201,168,76,0.12)' }} />
+          <div style={{ flex: 1, height: 1, background: 'rgba(var(--gold-rgb),0.12)' }} />
         </div>
 
         <button onClick={handleGoogle} style={{
@@ -155,6 +155,6 @@ const labelStyle = {
 
 const inputStyle = {
   width: '100%', padding: '11px 13px', marginBottom: 16, boxSizing: 'border-box',
-  background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(201,168,76,0.18)',
+  background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(var(--gold-rgb),0.18)',
   color: '#F7F2EA', fontSize: 13, outline: 'none', fontFamily: 'inherit',
 }

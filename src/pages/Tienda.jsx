@@ -230,7 +230,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
                 width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
                 background: active ? 'var(--gold)' : 'transparent',
                 border: `1px solid ${active ? 'var(--gold)' : 'var(--line)'}`,
-                boxShadow: active ? '0 0 0 2px rgba(201,168,76,0.18)' : 'none',
+                boxShadow: active ? '0 0 0 2px rgba(var(--gold-rgb),0.18)' : 'none',
               }} />
               <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em', transition: 'color 0.18s' }}>
                 {label}
@@ -597,7 +597,7 @@ export default function Tienda() {
     dark: {
       bg: '#0A0A0A', bg2: '#0E0C08', ink: '#F7F2EA',
       inkMute: 'rgba(247,242,234,0.5)', inkFaint: 'rgba(247,242,234,0.3)',
-      line: 'rgba(201,168,76,0.18)', line2: 'rgba(247,242,234,0.07)',
+      line: 'rgba(var(--gold-rgb),0.18)', line2: 'rgba(247,242,234,0.07)',
       gold: '#C9A84C', goldInk: '#E8C96A', chip: 'rgba(247,242,234,0.05)',
     },
     warm: {
@@ -881,7 +881,7 @@ export default function Tienda() {
               >
                 <div style={{
                   display: 'flex', alignItems: 'center',
-                  border: `1px solid ${searchFocused ? 'var(--gold)' : 'rgba(201,168,76,0.3)'}`,
+                  border: `1px solid ${searchFocused ? 'var(--gold)' : 'rgba(var(--gold-rgb),0.3)'}`,
                   background: 'var(--raised)', padding: '0 16px', gap: 12,
                   transition: 'border-color 0.2s',
                 }}>
@@ -929,7 +929,7 @@ export default function Tienda() {
                         fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
                         letterSpacing: '0.15em', textTransform: 'uppercase',
                         color: 'var(--gold)', background: 'none',
-                        border: '1px solid rgba(201,168,76,0.35)', padding: '10px 20px', cursor: 'pointer',
+                        border: '1px solid rgba(var(--gold-rgb),0.35)', padding: '10px 20px', cursor: 'pointer',
                       }}
                     >
                       Ver todas

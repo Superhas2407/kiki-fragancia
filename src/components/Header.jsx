@@ -325,13 +325,13 @@ export default function Header() {
               {userMenuOpen && session && (
                 <div style={{
                   position: 'absolute', top: '100%', right: 0, marginTop: 8,
-                  background: '#0F0D0A', border: '1px solid rgba(201,168,76,0.15)',
+                  background: '#0F0D0A', border: '1px solid rgba(var(--gold-rgb),0.15)',
                   padding: '8px 0', minWidth: 180, zIndex: 50,
                 }}>
                   <p style={{ padding: '8px 16px', color: 'rgba(247,242,234,0.45)', fontSize: 10, letterSpacing: '0.1em' }}>
                     {session.user.email}
                   </p>
-                  <div style={{ height: 1, background: 'rgba(201,168,76,0.1)', margin: '4px 0' }} />
+                  <div style={{ height: 1, background: 'rgba(var(--gold-rgb),0.1)', margin: '4px 0' }} />
                   <button onClick={async () => { await supabase.auth.signOut(); setUserMenuOpen(false) }} style={{
                     width: '100%', padding: '8px 16px', background: 'none', border: 'none',
                     color: '#F7F2EA', fontSize: 11, textAlign: 'left', cursor: 'pointer',

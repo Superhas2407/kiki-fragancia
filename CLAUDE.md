@@ -554,6 +554,45 @@ suelto. Se aplicó en 2 lugares reales (no decorativos-inertes):
   usaba el badge real de Oferta Halloween. Tocado en `VitrinaCard.jsx` (badge de precio), `Tienda.jsx`
   (cinta del grid) y `ProductDetail.jsx` (badge del detalle) — los 3 chequean `theme === 'halloween'`.
 
+**Bug real #2 encontrado y arreglado (mismo día): `rgba(201,168,76, X)` (dorado en RGB decimal) estaba
+hardcodeado en 102 lugares y NUNCA reaccionaba al tema** — a diferencia de `var(--gold)` (hex), los
+`box-shadow`/`background`/`border` que necesitaban un dorado *translúcido* usaban el RGB literal del
+dorado de modo oscuro directo en el `rgba(...)`, así que se quedaban en `rgb(201,168,76)` sin importar
+el tema activo. Esto es justo lo que el usuario reportó como "la pirámide, acordes y cuándo-usarlo a
+veces se ven dorado como siempre" y "los marcos en Tienda/ProductDetail heredan el modo normal": el
+marco circular de cada nota olfativa (`NoteIcon` en `ProductDetail.jsx`), el borde de `.vitrina-display`
+(el marco de cada card en Tienda), el glow de "cuándo usarlo" activo, etc. — todos usaban ese RGB fijo.
+**Fix:** se agregó `--gold-rgb` a los 3 bloques de tema en `index.css` (`201, 168, 76` dark ·
+`154, 104, 32` warm · `255, 122, 24` halloween — mismo valor que el hex de `--gold` de cada tema, solo
+en formato decimal) y se reemplazaron las 102 ocurrencias de `rgba(201,168,76,` por
+`rgba(var(--gold-rgb),` en `index.css` + `ProductDetail.jsx`, `Tienda.jsx`, `VitrinaCard.jsx` (vía
+`.vitrina-display`), `Header.jsx`, `AuthModal.jsx`, `OfertaDelDia.jsx`, `WishlistDrawer.jsx`,
+`InstallBanner.jsx`, `AdminLoginPage.jsx`, `DiaDeLPadrePage.jsx`, `CursorTrail.jsx`. **No se tocaron**
+`ProductCard.jsx`/`Catalog.jsx` (archivos muertos, confirmado). Si en el futuro aparece un dorado
+translúcido (`rgba(...)`) que no reacciona al tema, es casi seguro el mismo patrón: buscar el RGB
+literal y cambiarlo por `rgba(var(--gold-rgb), X)`.
+
+**Más esencia Halloween (mismo día) — `HalloweenDecor.jsx` rediseñado y ampliado:**
+- **Murciélagos rediseñados** — la silueta vieja (una curva tipo "M" continua) se leía como araña, no
+  como murciélago. Ahora `Bat` tiene cuerpo ovalado + 2 orejas puntudas en el centro y 2 alas por lado
+  con lóbulos sólidos bien definidos (nada de líneas finas radiales). Más grandes (`54×27px` el
+  principal, antes `34×17px`) y más opacos (`0.85` base, pico `0.92` en vuelo — antes `0.55`/`0.7`) para
+  que se noten. Se agregó un 4º murciélago (`.hwd-bat-4`). Ojos verde tóxico (`var(--gold-alt)`) con
+  halo, el único detalle en ese color.
+- **`Cobweb` ahora se exporta** (`export const Cobweb` en `HalloweenDecor.jsx`) para reusarlo puntual
+  en otros componentes sin duplicar el SVG — hay una telaraña de más (esquina inferior derecha,
+  `.hwd-cobweb-br`) en la capa global, y además una telaraña chica en la esquina de **cada** display de
+  producto: `.pd-img-cobweb` en `ProductDetail.jsx` y `.vitrina-cobweb` en `VitrinaCard.jsx`, ambas
+  `theme === 'halloween'`-gated — es el "marco tipo telaraña" que pidió el usuario para los frames de
+  producto en Tienda/ProductDetail.
+- **`Moon`** — luna creciente verde tóxico (`var(--gold-alt)`, glow a juego), fija arriba a la derecha
+  del header, estática (no anima).
+- **`Pumpkin`** — calabaza tallada abajo a la derecha (dorada, cara/ojos en verde tóxico), simétrica a
+  la mano esquelética de la izquierda.
+- **Línea verde bajo el nav** — `.header-cat-nav` (la barra negra donde viven Colección/Nosotros/
+  Instagram) tiene `border-top` + `box-shadow` en `var(--gold-alt)` cuando `theme === 'halloween'`, en
+  vez del borde gris sutil de siempre.
+
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
 - Sección `#nosotros`, `.bs2-section` — 80vh desktop, auto en móvil

@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
+import { Cobweb } from '../components/HalloweenDecor'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useOfertaDelDia } from '../hooks/useOfertaDelDia'
@@ -105,8 +106,8 @@ function NoteIcon({ nota, size = 22 }) {
       <span style={{
         display: 'inline-flex', width: size, height: size,
         borderRadius: '50%', flexShrink: 0,
-        background: 'rgba(201,168,76,0.12)',
-        border: '1px solid rgba(201,168,76,0.25)',
+        background: 'rgba(var(--gold-rgb),0.12)',
+        border: '1px solid rgba(var(--gold-rgb),0.25)',
         overflow: 'hidden',
       }}>
         <img
@@ -123,10 +124,10 @@ function NoteIcon({ nota, size = 22 }) {
     <span style={{
       display: 'inline-flex', width: size, height: size,
       borderRadius: '50%', flexShrink: 0,
-      background: 'rgba(201,168,76,0.08)',
-      border: '1px solid rgba(201,168,76,0.2)',
+      background: 'rgba(var(--gold-rgb),0.08)',
+      border: '1px solid rgba(var(--gold-rgb),0.2)',
       alignItems: 'center', justifyContent: 'center',
-      color: 'rgba(201,168,76,0.6)',
+      color: 'rgba(var(--gold-rgb),0.6)',
     }}>
       {React.cloneElement(getNoteIcon(nota), { width: svgSize, height: svgSize })}
     </span>
@@ -1375,6 +1376,13 @@ export default function ProductDetail() {
                     : (imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)'),
                   transition: 'box-shadow .5s ease',
                 }}>
+                  {theme === 'halloween' && (
+                    <Cobweb
+                      className="pd-img-cobweb"
+                      style={{ position: 'absolute', top: 0, left: 0, zIndex: 3, pointerEvents: 'none' }}
+                      aria-hidden="true"
+                    />
+                  )}
                   {resolvedImg ? (
                     <img
                       className="pd-img-photo"
@@ -1469,7 +1477,7 @@ export default function ProductDetail() {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
                     color: '#1A1208',
-                    background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
+                    background: 'linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold))',
                     padding: '4px 12px', display: 'inline-block',
                   }
                   const halloweenBadgeStyle = {
@@ -1611,7 +1619,7 @@ export default function ProductDetail() {
                       opacity: product.agotado ? 0.6 : 1,
                       transition: 'background .25s ease, border-color .25s ease, color .25s ease',
                     }}
-                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = '#E8C96A' }}
+                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold-ink)' }}
                     onMouseLeave={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold)' }}
                   >
                     {product.agotado ? 'Agotado' : added ? '✓ Agregado' : 'Agregar al carrito'}
@@ -1780,7 +1788,7 @@ export default function ProductDetail() {
                           <span className="pd-cuando-icon" style={{
                             opacity: activo ? 1 : 0.22,
                             color: activo ? 'var(--gold)' : (theme === 'warm' ? 'rgba(35,26,13,0.30)' : 'rgba(247,242,234,.4)'),
-                            boxShadow: activo ? '0 0 22px rgba(201,168,76,.25)' : 'none',
+                            boxShadow: activo ? '0 0 22px rgba(var(--gold-rgb),.25)' : 'none',
                           }}>
                             {Icon && <Icon />}
                           </span>

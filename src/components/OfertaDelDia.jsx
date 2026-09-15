@@ -165,7 +165,7 @@ export default function OfertaDelDia() {
         }
         .odd-card {
           background: #100C04;
-          border: 1px solid rgba(201,168,76,0.4);
+          border: 1px solid rgba(var(--gold-rgb),0.4);
           border-radius: 18px;
           width: 220px;
           overflow: hidden;
@@ -272,8 +272,8 @@ export default function OfertaDelDia() {
           gap: 4px;
         }
         .odd-timer-block {
-          background: rgba(201,168,76,0.12);
-          border: 1px solid rgba(201,168,76,0.25);
+          background: rgba(var(--gold-rgb),0.12);
+          border: 1px solid rgba(var(--gold-rgb),0.25);
           border-radius: 6px;
           padding: 4px 7px;
           display: flex;
@@ -288,7 +288,7 @@ export default function OfertaDelDia() {
           line-height: 1;
         }
         .odd-timer-unit {
-          color: rgba(201,168,76,0.6);
+          color: rgba(var(--gold-rgb),0.6);
           font-size: 9px;
         }
         .odd-timer-sep {
@@ -326,7 +326,7 @@ export default function OfertaDelDia() {
           height: 56px;
           padding: 0 40px 0 10px;
           background: rgba(16,12,4,0.97);
-          border-top: 1px solid rgba(201,168,76,0.35);
+          border-top: 1px solid rgba(var(--gold-rgb),0.35);
           cursor: pointer;
           animation: oddBarSlideUp 0.4s cubic-bezier(.22,.68,0,1.2) both;
         }
