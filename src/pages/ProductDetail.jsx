@@ -1520,6 +1520,18 @@ export default function ProductDetail() {
                             </span>
                           )}
                         </>
+                      ) : theme === 'halloween' ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={halloweenBadgeStyle}><PumpkinIcon size={11} /> PRECIO EMBRUJADO</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 300, color: 'var(--ink-faint)', marginLeft: 6 }}>
+                            · Solo en divisa
+                          </span>
+                        </>
                       ) : (
                         <>
                           <div style={{ marginBottom: 8 }}>

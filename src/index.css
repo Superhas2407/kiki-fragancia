@@ -264,7 +264,14 @@
   --ivory:    #F7F2EA;
   --ivory-2:  #EDE5D8;
   --carbon:   #1A1208;
-  --gold:     #C9A84C;
+  /* --gold NO va acá — ya está definido por tema (dark/warm/halloween) en el
+     bloque de tokens semánticos arriba. Este :root tiene la MISMA especificidad
+     que [data-theme='...'] y viene después en el archivo, así que redefinirlo
+     acá le ganaba al tema activo y siempre dejaba el gold de dark fijo (bug
+     encontrado en sept 2026 con el tema Halloween: el botón "Agregar al
+     carrito" y otros usos de var(--gold) se quedaban en #C9A84C sin importar
+     el tema). Si hace falta un dorado fijo puntual, usar el hex directo, no
+     este token. */
   --amber:    #C4781A;
   --terracota: #8B4A2F;
   --warm-dark: #251A0E;

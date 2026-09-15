@@ -498,6 +498,21 @@ sitio). Un visitante normal nunca ve el botón ni puede activarlo.
   - Si algo más se ve "roto" (colores planos, sin contraste) en modo Halloween, sospechar primero de
     un componente que hardcodea color en vez de usar los tokens — es el mismo patrón que causó el bug
     del sidebar de `/tienda` (fix: septiembre 2026).
+- **Bug real encontrado y arreglado (sept 2026): `--gold` estaba definido DOS VECES en `:root`** — el
+  bloque de tokens semánticos (arriba del todo) y un segundo `:root` legacy más abajo (el que también
+  trae `--ivory`, `--carbon`, `--font-d`, `--font-s`, etc. — esos sí siguen en uso, no tocar). Como
+  ambos son `:root` (misma especificidad que `[data-theme='...']`) y el segundo viene después en el
+  archivo, **siempre ganaba** y dejaba `var(--gold)` fijo en `#C9A84C` sin importar el tema — afectaba
+  a CUALQUIER componente que usara `var(--gold)` directo (ej. el botón "Agregar al carrito" de
+  `ProductDetail.jsx`), no solo Halloween: en modo `warm` también mostraba el gold oscuro en vez del
+  `#9A6820` correcto. Se quitó la línea `--gold` de ese segundo bloque — `--gold` ahora vive *solo* en
+  los 3 bloques de tema (dark/warm/halloween). Si en el futuro `var(--gold)` se ve "apagado"/incorrecto
+  en cualquier tema, revisar que no haya un tercer `:root` sumándose por ahí.
+- **Copy "PROMO DIVISA" / "Promo en divisa"** (badge/cinta por defecto cuando no hay descuento ni
+  promoHalloween) — en modo Halloween usa texto y estilo propios en vez del gold plano de siempre:
+  "🎃 Precio embrujado" / "PRECIO EMBRUJADO", con la misma clase `--halloween` (naranja→morado) que ya
+  usaba el badge real de Oferta Halloween. Tocado en `VitrinaCard.jsx` (badge de precio), `Tienda.jsx`
+  (cinta del grid) y `ProductDetail.jsx` (badge del detalle) — los 3 chequean `theme === 'halloween'`.
 
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):

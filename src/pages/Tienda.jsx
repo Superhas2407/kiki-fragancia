@@ -949,8 +949,16 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              ribbon={product.promoHalloween ? 'Oferta Halloween' : currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
-                              ribbonVariant={product.promoHalloween ? 'halloween' : null}
+                              ribbon={
+                                product.promoHalloween ? 'Oferta Halloween'
+                                : currency === 'usd' && product.precioUSD > 0
+                                  ? (theme === 'halloween' ? 'Precio embrujado' : 'Promo en divisa')
+                                  : null
+                              }
+                              ribbonVariant={
+                                product.promoHalloween || (theme === 'halloween' && currency === 'usd' && product.precioUSD > 0)
+                                  ? 'halloween' : null
+                              }
                             />
                           </div>
                         ))}

@@ -5,6 +5,7 @@ import { useWishlist } from '../context/WishlistContext'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
+import { useTheme } from '../context/ThemeContext'
 import { toSlug } from '../lib/slugs'
 
 // ============================================================
@@ -100,6 +101,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
   const tasa = useTasaCambio()
   const { currency } = useCurrency()
+  const { theme } = useTheme()
   const imgSrc = resolveProductImage(product)
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
@@ -270,6 +272,8 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
                 ) : product.promoHalloween ? (
                   <span className="vitrina-price-badge vitrina-price-badge--halloween"><PumpkinIcon size={9} />Oferta Halloween</span>
+                ) : theme === 'halloween' ? (
+                  <span className="vitrina-price-badge vitrina-price-badge--halloween"><PumpkinIcon size={9} />Precio embrujado</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}
