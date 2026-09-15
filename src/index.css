@@ -214,11 +214,15 @@
 
 /* Botón 🎃 (admin-only, ver Header.jsx) — en tema Halloween usa el acento
    verde en vez de --gold al hacer hover/focus, para no confundirse con el
-   toggle claro/oscuro de al lado (mismo componente, mismo hover dorado). */
+   toggle claro/oscuro de al lado (mismo componente, mismo hover dorado).
+   Relleno sólido, no solo borde/texto — mismo pedido de "verde también
+   como fill, no solo líneas". */
 [data-theme='halloween'] .halloween-toggle-btn:hover,
 [data-theme='halloween'] .halloween-toggle-btn:focus-visible {
   border-color: var(--gold-alt);
-  color: var(--gold-alt);
+  background: var(--gold-alt);
+  color: #0D2E00;
+  box-shadow: 0 0 16px var(--gold-alt-glow);
 }
 [data-theme='halloween'] .mobile-util-link.halloween-toggle-btn:hover {
   color: var(--gold-alt);
@@ -1008,11 +1012,16 @@
 .header-cat-sep { width: 1px; height: 14px; background: var(--line2); flex-shrink: 0; margin: 0 4px; }
 
 /* Halloween: la línea negra bajo el header (Colección · Nosotros · Instagram)
-   pasa a verde tóxico — queda mucho más "de campaña" que un borde gris sutil,
-   y varía respecto al naranja dominante del resto del chrome. */
+   pasa a verde tóxico — no solo el borde, también el relleno (background) de
+   la barra completa lleva un tinte verde en vez de negro plano puro, para que
+   el verde no quede limitado a líneas/acentos sueltos. */
 [data-theme='halloween'] .header-cat-nav {
   border-top: 1px solid var(--gold-alt);
   box-shadow: 0 1px 14px var(--gold-alt-glow);
+  background: linear-gradient(90deg, rgba(182,255,60,0.16), rgba(0,0,0,0.82) 30%, rgba(0,0,0,0.82) 70%, rgba(182,255,60,0.16));
+}
+[data-theme='halloween'] .header-cat-link.active {
+  color: var(--gold-alt);
 }
 
 /* ── Mega-menu marcas ──────────────────────────────────────── */

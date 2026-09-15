@@ -593,6 +593,22 @@ literal y cambiarlo por `rgba(var(--gold-rgb), X)`.
   Instagram) tiene `border-top` + `box-shadow` en `var(--gold-alt)` cuando `theme === 'halloween'`, en
   vez del borde gris sutil de siempre.
 
+**Verde también como relleno, no solo líneas (mismo día, tercera vuelta)** — el usuario pidió
+explícitamente que el verde no se quedara solo en bordes/acentos puntuales. Se agregaron rellenos
+(`fill`/`background`, no `border`/`color`) en varios puntos:
+- `.header-cat-nav` — además del `border-top` verde, ahora el fondo de la barra completa es un
+  `linear-gradient(90deg, rgba(182,255,60,0.16), rgba(0,0,0,0.82) 30%, rgba(0,0,0,0.82) 70%,
+  rgba(182,255,60,0.16))` (tinte verde en los extremos, negro en el centro) en vez de negro plano.
+  `.header-cat-link.active` también pasa a `var(--gold-alt)` en Halloween (antes seguía en
+  `var(--gold-ink)` aunque el resto del chrome ya fuera verde/naranja).
+- **Botón 🎃 (`halloween-toggle-btn`)** — el hover ya no es solo borde+texto verde, ahora es
+  `background: var(--gold-alt)` sólido con texto oscuro (`#0D2E00`) encima + glow — el mismo patrón
+  que un botón primario relleno, no un outline.
+- **`HalloweenDecor.jsx`** — la araña chiquita del `Cobweb` pasa de cream a `fill="var(--gold-alt)"`
+  (cuerpo relleno, no solo trazo). El tallo de la `Pumpkin` pasa de marrón a verde relleno (además de
+  ser el color real de un tallo de calabaza). 2 de las 5 "uñas" de la `SkeletonHand` son círculos
+  rellenos en verde (glow de descomposición) en vez de las 5 en cream parejo.
+
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):
 - Sección `#nosotros`, `.bs2-section` — 80vh desktop, auto en móvil

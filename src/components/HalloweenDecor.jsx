@@ -27,11 +27,12 @@ export const Cobweb = ({ style, className }) => (
       <path d="M86 0 C86 50, 50 86, 0 86" />
       <path d="M116 0 C116 68, 68 116, 0 116" />
     </g>
-    {/* araña chiquita */}
-    <g transform="translate(30,30)" fill="rgba(245,233,216,0.5)">
+    {/* araña chiquita — cuerpo relleno en verde tóxico, no solo cream (pedido explícito:
+        el verde también como relleno, no solo líneas/bordes) */}
+    <g transform="translate(30,30)" fill="var(--gold-alt)" opacity="0.75">
       <circle r="3.4" />
       <circle cy="-4.6" r="2.2" />
-      <g stroke="rgba(245,233,216,0.5)" strokeWidth="0.8">
+      <g stroke="var(--gold-alt)" strokeWidth="0.8">
         <path d="M-3 -1 L-7 -3 M3 -1 L7 -3 M-3 1 L-7 3 M3 1 L7 3 M-2.5 -2.5 L-5 -6 M2.5 -2.5 L5 -6" />
       </g>
     </g>
@@ -79,8 +80,8 @@ const Moon = ({ style, className }) => (
 
 const Pumpkin = ({ style, className }) => (
   <svg viewBox="0 0 80 76" width="80" height="76" style={style} className={className} aria-hidden="true">
-    {/* tallo */}
-    <path d="M38 10 C36 4 42 2 44 6 C45 9 41 12 38 10 Z" fill="rgba(120,80,30,0.6)" />
+    {/* tallo — relleno verde (color natural de tallo de calabaza, de paso suma más verde-relleno) */}
+    <path d="M38 10 C36 4 42 2 44 6 C45 9 41 12 38 10 Z" fill="var(--gold-alt)" opacity="0.65" />
     {/* cuerpo — 3 gajos superpuestos */}
     <ellipse cx="24" cy="42" rx="15" ry="24" fill="var(--gold)" opacity="0.5" />
     <ellipse cx="56" cy="42" rx="15" ry="24" fill="var(--gold)" opacity="0.5" />
@@ -101,15 +102,16 @@ const SkeletonHand = ({ style, className }) => (
       <path d="M50 120 L50 78" />
       <path d="M36 120 L38 80" />
       <path d="M64 120 L62 80" />
-      {/* dedos */}
+      {/* dedos — 2 de las 5 "uñas" en verde tóxico relleno (glow de descomposición),
+          el resto se queda cream para no perder legibilidad de la silueta */}
       <path d="M50 78 C50 60, 46 48, 44 30" />
-      <circle cx="44" cy="30" r="3" fill="rgba(245,233,216,0.55)" stroke="none" />
+      <circle cx="44" cy="30" r="3.4" fill="var(--gold-alt)" stroke="none" opacity="0.85" />
       <path d="M38 80 C34 64, 32 50, 28 36" />
       <circle cx="28" cy="36" r="3" fill="rgba(245,233,216,0.55)" stroke="none" />
       <path d="M62 80 C64 64, 66 50, 68 34" />
       <circle cx="68" cy="34" r="3" fill="rgba(245,233,216,0.55)" stroke="none" />
       <path d="M28 82 C20 70, 16 60, 12 50" />
-      <circle cx="12" cy="50" r="3" fill="rgba(245,233,216,0.55)" stroke="none" />
+      <circle cx="12" cy="50" r="3.4" fill="var(--gold-alt)" stroke="none" opacity="0.85" />
       <path d="M72 82 C80 72, 84 64, 88 56" />
       <circle cx="88" cy="56" r="3" fill="rgba(245,233,216,0.55)" stroke="none" />
     </g>
