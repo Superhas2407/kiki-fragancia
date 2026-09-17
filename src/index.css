@@ -7,15 +7,17 @@
   --ink: #F7F2EA;
   --ink-mute: rgba(247,242,234,0.60);
   --ink-faint: rgba(247,242,234,0.30);
-  --line: rgba(201,168,76,0.18);
+  --line: rgba(var(--gold-rgb),0.18);
   --line2: rgba(247,242,234,0.10);
   --gold: #C9A84C;
   --gold-ink: #E8C96A;
+  --gold-shine: #E8C96A;
   --gold-fill-ink: #0A0A0A;
   --photo-floor: rgba(8,5,2,0.55);
   --chip: rgba(247,242,234,0.05);
   --shadow: 0 24px 60px -28px rgba(0,0,0,0.8);
   --ink-rgb: 247, 242, 234;
+  --gold-rgb: 201, 168, 76;
 }
 
 /* Claro cálido (boutique) */
@@ -31,11 +33,65 @@
   --line2: rgba(22,14,4,0.18);
   --gold: #9A6820;
   --gold-ink: #5E3A0E;
+  /* --gold-shine: SIEMPRE claro, a diferencia de --gold-ink (que en warm es oscuro
+     a propósito, para texto/hover legible sobre fondo claro). Se usa solo como
+     color de "brillo" en gradientes de fondo de badges/ribbons con texto oscuro
+     encima (.vitrina-price-badge, .vitrina-ribbon > span, .pd-ddp-strip--ofertadia,
+     badgeStyle en ProductDetail.jsx) — si esos usaran --gold-ink acá, el fondo
+     quedaría casi tan oscuro como el texto (#1A1208) y el badge se ve un bloque
+     marrón plano en vez de una cinta dorada brillante. Bug real de sept 2026: se
+     habían convertido esos gradientes de un hex fijo (#E8C96A) a var(--gold-ink)
+     "para que reaccionen a Halloween" sin darse cuenta de que --gold-ink en warm
+     es oscuro por diseño — rompió el contraste ahí. */
+  --gold-shine: #D9AE4E;
   --gold-fill-ink: #FAF0E0;
   --photo-floor: rgba(60,42,16,0.30);
   --chip: rgba(22,14,4,0.06);
   --shadow: 0 24px 50px -30px rgba(80,60,20,0.38);
   --ink-rgb: 22, 14, 4;
+  /* OJO: intencionalmente NO es el RGB de --gold (154,104,32) de este mismo bloque.
+     --gold-rgb alimenta ~70 reglas rgba(var(--gold-rgb),X) en todo el sitio (bordes,
+     dividers, hovers, scrollbar, ::selection, etc.) — antes del fix de septiembre 2026
+     TODAS esas reglas usaban por bug un 201,168,76 fijo (el RGB del --gold de modo
+     oscuro) sin importar el tema, así que ese es el tono con el que el modo claro
+     siempre se vio. Igualarlo al --gold propio de warm (154,104,32, más oscuro/marrón)
+     era "más correcto" pero cambiaba visiblemente el sitio entero en modo claro — se
+     revirtió a 201,168,76 para que warm se vea igual que siempre. Si hace falta un
+     verdadero --gold-rgb "correcto" para warm en el futuro, agregar un token nuevo en
+     vez de tocar este. */
+  --gold-rgb: 201, 168, 76;
+}
+
+/* Halloween 🎃 — tema especial ADMIN-ONLY (ver ThemeContext.jsx, Header.jsx,
+   HalloweenDecor.jsx). No lo elige el público — se activa manualmente desde
+   el botón 🎃 del Header, solo visible con sesión admin. Reusa los mismos
+   tokens semánticos que warm/dark, así que TODO el sitio (botones, cards,
+   fondos, sombras) hereda la paleta automáticamente sin tocar componente
+   por componente. */
+[data-theme='halloween'] {
+  --bg: #0D0616;
+  --bg2: #150A22;
+  --bg-warm: #1A0E2E;
+  --raised: #1C0F2B;
+  --ink: #F5E9D8;
+  --ink-mute: rgba(245,233,216,0.65);
+  --ink-faint: rgba(245,233,216,0.35);
+  --line: rgba(255,122,24,0.35);
+  --line2: rgba(245,233,216,0.12);
+  --gold: #FF7A18;
+  --gold-ink: #FFB347;
+  --gold-shine: #FFB347;
+  --gold-fill-ink: #1A0E2E;
+  --photo-floor: rgba(20,10,30,0.70);
+  --chip: rgba(255,122,24,0.08);
+  --shadow: 0 24px 60px -28px rgba(61,23,102,0.65);
+  --ink-rgb: 245, 233, 216;
+  --gold-rgb: 255, 122, 24;
+  /* Acento secundario verde tóxico — para texto/controles que necesitan distinguirse
+     del naranja dominante (ver botón 🎃 y HalloweenDecor). Ojo: NO usar como reemplazo
+     general de --gold, es solo para casos puntuales de contraste/variedad. */
+  --gold-alt: #B6FF3C;
+  --gold-alt-glow: rgba(182,255,60,0.55);
 }
 
 /* Ajustes globales para modo claro */
@@ -172,6 +228,29 @@
   opacity: 1;
 }
 
+/* Halloween: el centro de la barra queda naranja — un texto naranja ahí
+   encima se leería mal, así que este link puntual usa un verde tóxico en
+   vez del --gold del resto del sitio (visibilidad > consistencia acá). */
+[data-theme='halloween'] .ann-cta {
+  color: var(--gold-alt);
+}
+
+/* Botón 🎃 (admin-only, ver Header.jsx) — en tema Halloween usa el acento
+   verde en vez de --gold al hacer hover/focus, para no confundirse con el
+   toggle claro/oscuro de al lado (mismo componente, mismo hover dorado).
+   Relleno sólido, no solo borde/texto — mismo pedido de "verde también
+   como fill, no solo líneas". */
+[data-theme='halloween'] .halloween-toggle-btn:hover,
+[data-theme='halloween'] .halloween-toggle-btn:focus-visible {
+  border-color: var(--gold-alt);
+  background: var(--gold-alt);
+  color: #0D2E00;
+  box-shadow: 0 0 16px var(--gold-alt-glow);
+}
+[data-theme='halloween'] .mobile-util-link.halloween-toggle-btn:hover {
+  color: var(--gold-alt);
+}
+
 /* ── Warm mode: texto en botones con fondo de acento (espresso) ── */
 [data-theme='warm'] .nav-pill-item:hover,
 [data-theme='warm'] .card-btn:hover,
@@ -196,8 +275,8 @@
   line-height: 1;
 }
 .theme-toggle-btn:hover {
-  border-color: #C9A84C;
-  color: #C9A84C;
+  border-color: var(--gold);
+  color: var(--gold);
 }
 [data-theme='warm'] .theme-toggle-btn {
   color: rgba(35,26,13,0.60);
@@ -239,7 +318,14 @@
   --ivory:    #F7F2EA;
   --ivory-2:  #EDE5D8;
   --carbon:   #1A1208;
-  --gold:     #C9A84C;
+  /* --gold NO va acá — ya está definido por tema (dark/warm/halloween) en el
+     bloque de tokens semánticos arriba. Este :root tiene la MISMA especificidad
+     que [data-theme='...'] y viene después en el archivo, así que redefinirlo
+     acá le ganaba al tema activo y siempre dejaba el gold de dark fijo (bug
+     encontrado en sept 2026 con el tema Halloween: el botón "Agregar al
+     carrito" y otros usos de var(--gold) se quedaban en #C9A84C sin importar
+     el tema). Si hace falta un dorado fijo puntual, usar el hex directo, no
+     este token. */
   --amber:    #C4781A;
   --terracota: #8B4A2F;
   --warm-dark: #251A0E;
@@ -388,9 +474,9 @@
   background: var(--chip);
 }
 .global-sidebar-link.active {
-  color: #C9A84C;
-  background: rgba(201,168,76,0.08);
-  border-color: rgba(201,168,76,0.25);
+  color: var(--gold);
+  background: rgba(var(--gold-rgb),0.08);
+  border-color: rgba(var(--gold-rgb),0.25);
   font-weight: 300;
 }
 .global-sidebar-icon {
@@ -695,6 +781,14 @@
 }
 .announcement-bar-close:hover { color: #fff; }
 
+/* ── Halloween mode: mismo degradado naranja→morado que la promo de producto ── */
+[data-theme='halloween'] .announcement-bar {
+  background: linear-gradient(90deg, #3D1766, #FF7A18 50%, #3D1766);
+}
+[data-theme='halloween'] .announcement-bar-close {
+  background: linear-gradient(to left, #3D1766 60%, transparent);
+}
+
 
 
 /* Pop-up móvil — bottom sheet */
@@ -773,7 +867,7 @@
   font-size: 10px; font-weight: 600;
   -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.28em; text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   margin: 0;
 }
 .ddp-sheet-body {
@@ -793,7 +887,7 @@
 }
 .ddp-popup-rule {
   width: 32px; height: 1px;
-  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
   margin: 0 auto 16px;
 }
 .ddp-popup-body {
@@ -940,6 +1034,19 @@
 .header-cat-ddp.active { color: #6B9EFF; opacity: 0.85; }
 .header-cat-sep { width: 1px; height: 14px; background: var(--line2); flex-shrink: 0; margin: 0 4px; }
 
+/* Halloween: la línea negra bajo el header (Colección · Nosotros · Instagram)
+   pasa a verde tóxico — no solo el borde, también el relleno (background) de
+   la barra completa lleva un tinte verde en vez de negro plano puro, para que
+   el verde no quede limitado a líneas/acentos sueltos. */
+[data-theme='halloween'] .header-cat-nav {
+  border-top: 1px solid var(--gold-alt);
+  box-shadow: 0 1px 14px var(--gold-alt-glow);
+  background: linear-gradient(90deg, rgba(182,255,60,0.16), rgba(0,0,0,0.82) 30%, rgba(0,0,0,0.82) 70%, rgba(182,255,60,0.16));
+}
+[data-theme='halloween'] .header-cat-link.active {
+  color: var(--gold-alt);
+}
+
 /* ── Mega-menu marcas ──────────────────────────────────────── */
 .header-mega-wrap {
   position: relative;
@@ -963,8 +1070,8 @@
   left: 0;
   right: 0;
   background: #0D0906;
-  border-top: 1px solid rgba(201,168,76,0.12);
-  border-bottom: 1px solid rgba(201,168,76,0.12);
+  border-top: 1px solid rgba(var(--gold-rgb),0.12);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.12);
   padding: 36px 48px 28px;
   z-index: 38;
   animation: megaFadeIn 0.18s ease;
@@ -990,7 +1097,7 @@
   border-radius: 4px;
   transition: background 0.15s;
 }
-.header-mega-brand:hover { background: rgba(201,168,76,0.07); }
+.header-mega-brand:hover { background: rgba(var(--gold-rgb),0.07); }
 .header-mega-img-wrap {
   width: 80px;
   height: 110px;
@@ -1030,7 +1137,7 @@
   transition: color 0.15s;
 }
 .header-mega-brand:hover .header-mega-label { color: var(--gold); }
-.header-mega-brand:hover .header-mega-sub   { color: rgba(201,168,76,0.6); }
+.header-mega-brand:hover .header-mega-sub   { color: rgba(var(--gold-rgb),0.6); }
 
 
 .nav-pill {
@@ -1051,7 +1158,7 @@
 .currency-pill {
   display: flex; align-items: center;
   border-radius: 2px; overflow: hidden;
-  border: 1px solid rgba(201,168,76,0.35);
+  border: 1px solid rgba(var(--gold-rgb),0.35);
 }
 .currency-btn {
   font-family: 'KikiGotham', sans-serif; font-size: 10px; letter-spacing: 0.1em;
@@ -1059,7 +1166,7 @@
   background: transparent; color: rgba(255,255,255,0.8);
   transition: background 0.18s, color 0.18s; line-height: 1;
 }
-.currency-btn.active { background: #C9A84C; color: #0A0A0A; }
+.currency-btn.active { background: var(--gold); color: #0A0A0A; }
 .currency-pill { border-color: rgba(255,255,255,0.3); }
 
 .btn-wa {
@@ -1071,7 +1178,7 @@
   padding: 7px 14px; border-radius: 9999px;
   transition: border-color .25s ease, background .25s ease;
 }
-.btn-wa:hover { border-color: var(--gold); background: rgba(201,168,76,0.07); }
+.btn-wa:hover { border-color: var(--gold); background: rgba(var(--gold-rgb),0.07); }
 
 /* Tema y wishlist se ocultan del header en mobile — accesibles desde el menú hamburguesa */
 .header-mobile-hide { display: none; }
@@ -1156,7 +1263,7 @@
   text-transform: uppercase; padding: 6px 14px; cursor: pointer; border: none;
   background: transparent; color: var(--ink-mute); transition: background .18s, color .18s;
 }
-.mobile-currency-btn.active { background: #C9A84C; color: #0A0A0A; }
+.mobile-currency-btn.active { background: var(--gold); color: #0A0A0A; }
 
 @keyframes heroFadeIn {
   from { opacity: 0; }
@@ -1394,6 +1501,38 @@
   transition: color .25s, border-color .25s;
 }
 .hero-search-link:hover { color: var(--gold); border-color: var(--line); }
+
+/* Niebla del Hero — solo tema Halloween (ver Hero.jsx). 2 capas radiales que
+   derivan lentamente de lado a lado, ancladas al tercio inferior para que
+   nunca tapen el título. Puramente decorativo, pointer-events: none. */
+.hero-mist {
+  position: absolute; inset: 0; z-index: 3;
+  overflow: hidden; pointer-events: none;
+}
+.hero-mist-layer {
+  position: absolute;
+  left: -20%; right: -20%; bottom: -10%;
+  height: 55%;
+  background: radial-gradient(ellipse 60% 100% at 50% 100%, rgba(182,255,60,0.38), transparent 68%);
+  filter: blur(3px);
+  animation: heroMistDrift 22s ease-in-out infinite;
+}
+.hero-mist-2 {
+  bottom: -16%;
+  height: 46%;
+  background: radial-gradient(ellipse 50% 100% at 50% 100%, rgba(255,122,24,0.24), transparent 68%);
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+@keyframes heroMistDrift {
+  0%   { transform: translateX(-4%); }
+  50%  { transform: translateX(4%); }
+  100% { transform: translateX(-4%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-mist-layer { animation: none; }
+}
+
 /* Barra inferior: @handle · dots · scroll, todos en una fila */
 .hero-bottom-bar {
   position: absolute; left: 0; right: 0; bottom: 0;
@@ -1418,7 +1557,7 @@
   color: var(--ink-mute);
 }
 .scroll-line-wrap {
-  width: 1px; height: 56px; background: rgba(201,168,76,0.07);
+  width: 1px; height: 56px; background: rgba(var(--gold-rgb),0.07);
   position: relative; overflow: hidden;
 }
 .scroll-line-drop {
@@ -1437,8 +1576,8 @@
   display: inline-flex; align-items: center; gap: 12px;
   font-family: var(--font-s); font-size: 10px; font-weight: 300;
   letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
-  color: var(--ink); background: rgba(201,168,76,0.03);
-  border: 1px solid rgba(201,168,76,0.75); padding: 15px 40px;
+  color: var(--ink); background: rgba(var(--gold-rgb),0.03);
+  border: 1px solid rgba(var(--gold-rgb),0.75); padding: 15px 40px;
   position: relative; overflow: hidden;
   transition: color .3s ease, background .3s ease, border-color .3s ease;
 }
@@ -1448,7 +1587,7 @@
 
 .btn-shimmer-kiki::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(105deg, transparent 35%, rgba(201,168,76,0.18) 50%, transparent 65%);
+  background: linear-gradient(105deg, transparent 35%, rgba(var(--gold-rgb),0.18) 50%, transparent 65%);
   background-size: 250% 100%; background-position: 200% center;
   transition: background-position 0s; pointer-events: none;
 }
@@ -1514,14 +1653,14 @@
 .kiki-product-card-dark:hover  { border-color: var(--line); }
 .kiki-product-card-light:hover { border-color: rgba(196,120,26,.4); }
 @media (hover: none) {
-  .kiki-product-card-dark:active  { border-color: var(--line); background: rgba(201,168,76,0.07); }
+  .kiki-product-card-dark:active  { border-color: var(--line); background: rgba(var(--gold-rgb),0.07); }
   .kiki-product-card-light:active { border-color: rgba(196,120,26,.6); }
 }
 
 .card-ripple {
   position: absolute; width: 0; height: 0;
   border-radius: 50%; pointer-events: none; z-index: 5;
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
   transform: translate(-50%, -50%);
   animation: rippleExpand .7s ease-out forwards;
 }
@@ -1536,7 +1675,7 @@
   background: var(--bg2);
   background-image: repeating-linear-gradient(
     45deg,
-    rgba(201,168,76,0.18) 0px, rgba(201,168,76,0.18) 1px,
+    rgba(var(--gold-rgb),0.18) 0px, rgba(var(--gold-rgb),0.18) 1px,
     transparent 1px, transparent 13px
   );
   display: flex; align-items: center; justify-content: center; padding: 16px;
@@ -1578,7 +1717,7 @@
   display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
 }
 .kiki-product-card-light .card-name { color: var(--carbon); }
-.card-divider { height: 1px; background: rgba(201,168,76,0.07); margin: 8px 0; }
+.card-divider { height: 1px; background: rgba(var(--gold-rgb),0.07); margin: 8px 0; }
 .kiki-product-card-light .card-divider { background: rgba(26,18,8,.1); }
 .card-meta { display: flex; justify-content: space-between; align-items: center; }
 .card-familia { font-family: var(--font-s); font-size: 11px; color: var(--ink-mute); }
@@ -1644,7 +1783,7 @@
   display: flex; align-items: center; justify-content: center; font-size: 15px;
   transition: border-color .2s ease, color .2s ease, background .2s ease;
 }
-.familias-arrow:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.07); }
+.familias-arrow:hover { border-color: var(--gold); color: var(--gold); background: rgba(var(--gold-rgb),0.07); }
 
 /* â”€â”€ GENDER PILLS (mobile only) â”€â”€ */
 .gender-pills-bar {
@@ -1676,7 +1815,7 @@
 .gender-pill:hover, .gender-pill:active {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
 }
 @media (min-width: 1024px) {
   .gender-pills-bar { display: none; }
@@ -1707,7 +1846,7 @@
   font-family: var(--font-s); font-size: 9px; font-weight: 600;
   -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.32em; text-transform: uppercase;
-  color: rgba(201,168,76,0.8); margin: 0 0 20px;
+  color: rgba(var(--gold-rgb),0.8); margin: 0 0 20px;
 }
 .bs2-quote {
   font-family: var(--font-d); font-style: italic;
@@ -1788,11 +1927,19 @@
   position: relative; overflow: hidden; background: #0D0A07;
   height: 100%;
 }
+/* Chorretón de slime en la esquina del display de producto — solo tema Halloween (ver ProductDetail.jsx) */
+.pd-img-slime {
+  width: 100%; height: 70px;
+  opacity: 0.7;
+}
+@media (max-width: 767px) {
+  .pd-img-slime { height: 44px; }
+}
 .pd-img-placeholder {
   width: 100%; height: 100%;
   background: #0D0A07;
   background-image: repeating-linear-gradient(
-    45deg, rgba(201,168,76,0.12) 0px, rgba(201,168,76,0.12) 1px,
+    45deg, rgba(var(--gold-rgb),0.12) 0px, rgba(var(--gold-rgb),0.12) 1px,
     transparent 1px, transparent 13px
   );
   display: flex; align-items: center; justify-content: center;
@@ -1849,6 +1996,10 @@
     color: #FFF3E0;
     box-shadow: inset 0 -2px 12px rgba(107,47,160,0.4);
   }
+  .pd-ddp-strip--ofertadia {
+    background: linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold));
+    color: #1A1208;
+  }
 }
 
 /* Barra sticky móvil — desactivada, botón vive en pd-actions */
@@ -1878,7 +2029,7 @@
   font-family: var(--font-s); font-size: 12px; font-weight: 300;
   color: var(--ink-mute); letter-spacing: .08em; margin: 0 0 28px;
 }
-.pd-divider { height: 1px; background: rgba(201,168,76,0.07); margin: 0 0 26px; }
+.pd-divider { height: 1px; background: rgba(var(--gold-rgb),0.07); margin: 0 0 26px; }
 
 .pd-desc-wrap { margin-bottom: 28px; }
 .pd-desc {
@@ -1936,7 +2087,7 @@
 .pd-size-btn:hover { border-color: var(--line); color: var(--ink-mute); }
 .pd-size-btn.active {
   border-color: var(--gold); color: var(--gold);
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
 }
 .pd-size-btn-main { font-size: 10px; letter-spacing: 0.08em; }
 .pd-size-btn-sub {
@@ -2013,12 +2164,12 @@
   font-family: var(--font-d); font-size: clamp(22px, 3vw, 34px);
   font-weight: 300; font-style: italic; color: var(--ivory); margin: 0;
 }
-.pd-sep { height: 1px; background: rgba(201,168,76,0.07); margin: 56px 0; }
+.pd-sep { height: 1px; background: rgba(var(--gold-rgb),0.07); margin: 56px 0; }
 
 .pd-pyramid { position: relative; padding-left: 24px; }
 .pd-pyramid-line {
   position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-  background: linear-gradient(to bottom, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0.18) 65%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(var(--gold-rgb),0.18) 0%, rgba(var(--gold-rgb),0.18) 65%, transparent 100%);
 }
 .pd-pyramid-layers { display: flex; flex-direction: column; gap: 32px; }
 .pd-pyramid-layer-head {
@@ -2063,7 +2214,7 @@
   display: block;
   height: 1px;
   margin-top: 20px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.18), transparent);
+  background: linear-gradient(to right, transparent, rgba(var(--gold-rgb),0.18), transparent);
   width: 100%;
 }
 .pd-pyr-tier:last-of-type::after { display: none; }
@@ -2150,7 +2301,7 @@
 @media (max-width: 640px) { .pd-cuando-grid { grid-template-columns: 1fr; } }
 .pd-cuando-card {
   border: 1px solid var(--line);
-  padding: 28px 24px; background: rgba(201,168,76,0.07);
+  padding: 28px 24px; background: rgba(var(--gold-rgb),0.07);
 }
 .pd-cuando-label {
   font-family: var(--font-s); font-size: 9px; letter-spacing: .22em;
@@ -2329,7 +2480,7 @@
   outline: none; transition: border-color .2s;
   box-sizing: border-box;
 }
-.kf-newsletter-input:focus { border-color: rgba(201,168,76,0.4); }
+.kf-newsletter-input:focus { border-color: rgba(var(--gold-rgb),0.4); }
 .kf-newsletter-input::placeholder { color: var(--ink-faint); }
 .kf-newsletter-btn {
   padding: 11px 16px;
@@ -2383,9 +2534,9 @@
 /* â”€â”€ SCROLLBAR â”€â”€ */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
-::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.07); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.07); }
-::selection { background: rgba(201,168,76,0.07); color: var(--ink); }
+::-webkit-scrollbar-thumb { background: rgba(var(--gold-rgb),0.07); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(var(--gold-rgb),0.07); }
+::selection { background: rgba(var(--gold-rgb),0.07); color: var(--ink); }
 /* ============================================================
    VITRINA CARD STYLES v2 â€” append to end of src/index.css
    GalerÃ­a museo: marco con corner brackets, pedestal restaurado,
@@ -2432,14 +2583,19 @@
   overflow: hidden;
   isolation: isolate;
   background: #1E1916;
-  border: 1px solid rgba(201,168,76,0.12);
+  border: 1px solid rgba(var(--gold-rgb),0.12);
   transition: border-color .35s ease, box-shadow .35s ease;
 }
 [data-theme='warm'] .vitrina-display {
   background: #F5EEE0;
 }
+/* Chorretón de slime en la esquina de la card — solo tema Halloween (ver VitrinaCard.jsx) */
+.vitrina-slime {
+  width: 100%; height: 34px;
+  opacity: 0.65;
+}
 .vitrina-card:hover .vitrina-display {
-  border-color: rgba(201,168,76,0.35);
+  border-color: rgba(var(--gold-rgb),0.35);
   box-shadow: 0 8px 32px rgba(0,0,0,0.12);
 }
 
@@ -2541,7 +2697,7 @@
 .vitrina-num-line {
   display: block;
   width: 28px; height: 1px;
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
   transition: width .35s ease;
 }
 .vitrina-card:hover .vitrina-num-line { width: 42px; }
@@ -2615,7 +2771,7 @@
   left: 16px;
   z-index: 9;
   background: rgba(8,5,2,0.78);
-  color: #C9A84C;
+  color: var(--gold);
   font-size: 9px;
   font-family: var(--font-s, sans-serif);
   padding: 4px 9px;
@@ -2635,7 +2791,7 @@
   position: absolute; right: -52px; top: 44px;
   width: 220px; text-align: center;
   transform: rotate(45deg);
-  background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
+  background: linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold));
   color: #1A1208;
   font-family: var(--font-s); font-size: 11px;
   font-weight: 600; letter-spacing: 0.18em;
@@ -2704,7 +2860,7 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(201,168,76,0.40) 20%, rgba(201,168,76,0.40) 80%, transparent);
+  background: linear-gradient(to right, transparent, rgba(var(--gold-rgb),0.40) 20%, rgba(var(--gold-rgb),0.40) 80%, transparent);
 }
 [data-theme='warm'] .vitrina-info-row::after {
   background: linear-gradient(to right, transparent, rgba(154,104,32,0.50) 20%, rgba(154,104,32,0.50) 80%, transparent);
@@ -2772,13 +2928,13 @@
 .vitrina-size-pill:hover:not(:disabled) { border-color: var(--gold); color: var(--ink-mute); }
 .vitrina-size-pill.active {
   border-color: var(--gold); color: var(--gold);
-  background: rgba(201,168,76,0.08);
+  background: rgba(var(--gold-rgb),0.08);
   cursor: default;
 }
 
 .vitrina-rule {
   height: 1px;
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
   margin: 2px 0;
 }
 
@@ -2846,7 +3002,7 @@
 .vitrina-variant-btn.active {
   border-color: var(--gold, #C9A84C);
   color: var(--gold, #C9A84C);
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
 }
 
 /* Price display */
@@ -2905,7 +3061,7 @@
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: #1A1208;
-  background: linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F);
+  background: linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold));
   padding: 4px 10px;
 }
 .vitrina-price-badge--ddp {
@@ -2951,7 +3107,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 9.5px; font-weight: 300;
   letter-spacing: 0.3em; text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   flex-shrink: 0;
 }
 
@@ -2995,7 +3151,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 9px; font-weight: 300;
   letter-spacing: 0.26em; text-transform: uppercase;
-  color: #C9A84C; margin-bottom: 6px;
+  color: var(--gold); margin-bottom: 6px;
 }
 .ddp-promo-persona-name {
   font-family: 'KikiGotham', sans-serif;
@@ -3011,7 +3167,7 @@
 .ddp-promo-persona-price {
   font-family: 'KikiGotham', sans-serif;
   font-size: 18px; font-weight: 300;
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 /* ── Tira de beneficios ── */
@@ -3095,7 +3251,7 @@
   padding: calc(var(--bar-h, 0px) + 100px) 48px 80px;
   gap: 48px;
   align-items: center;
-  background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.18) 0%, transparent 60%), #0A0A0A;
+  background: radial-gradient(ellipse at 30% 60%, rgba(var(--gold-rgb),0.18) 0%, transparent 60%), #0A0A0A;
 }
 
 .ddp-hero-left {
@@ -3161,7 +3317,7 @@
 }
 .ddp-cta-outline:hover {
   border-color: var(--line);
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-hero-editorial {
@@ -3198,7 +3354,7 @@
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   margin-bottom: 8px;
 }
 .ddp-editorial-caption-text {
@@ -3217,7 +3373,7 @@
   padding: 32px 48px;
   border-top: 1px solid var(--line2);
   border-bottom: 1px solid var(--line2);
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
 }
 
 .ddp-countdown-item {
@@ -3231,7 +3387,7 @@
 .ddp-count-num {
   font-size: 48px;
   font-weight: 300;
-  color: #C9A84C;
+  color: var(--gold);
   line-height: 1;
 }
 
@@ -3308,7 +3464,7 @@
 .ddp-persona-img {
   position: relative;
   height: 220px;
-  background: linear-gradient(135deg, rgba(201,168,76,0.18), rgba(10,10,10,0.8));
+  background: linear-gradient(135deg, rgba(var(--gold-rgb),0.18), rgba(10,10,10,0.8));
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -3356,7 +3512,7 @@
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   margin-bottom: 4px;
 }
 
@@ -3379,19 +3535,19 @@
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
   border: 1px solid var(--line);
   padding: 9px 18px;
   transition: border-color 0.2s, background 0.2s;
 }
 .ddp-persona-link:hover {
-  border-color: #C9A84C;
-  background: rgba(201,168,76,0.07);
+  border-color: var(--gold);
+  background: rgba(var(--gold-rgb),0.07);
 }
 
 .ddp-featured {
   padding: 80px 0;
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
   border-top: 1px solid var(--line2);
   border-bottom: 1px solid var(--line2);
 }
@@ -3446,7 +3602,7 @@
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-featured-brand {
@@ -3468,7 +3624,7 @@
   line-height: 1.7;
   color: var(--ink-mute);
   font-style: italic;
-  border-left: 2px solid rgba(201,168,76,0.5);
+  border-left: 2px solid rgba(var(--gold-rgb),0.5);
   padding-left: 16px;
 }
 
@@ -3481,7 +3637,7 @@
 .ddp-featured-price-num {
   font-size: 32px;
   font-weight: 300;
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-featured-price-meta {
@@ -3527,7 +3683,7 @@
 }
 .ddp-btn-outline:hover {
   border-color: var(--line);
-  color: #C9A84C;
+  color: var(--gold);
 }
 
 .ddp-grid-section {
@@ -3566,7 +3722,7 @@
     align-items: center;
     gap: 16px;
     margin: 40px 0 32px;
-    color: #C9A84C;
+    color: var(--gold);
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -3576,7 +3732,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: rgba(201,168,76,0.07);
+    background: rgba(var(--gold-rgb),0.07);
   }
 
 /* DDP mobile */
@@ -3604,7 +3760,7 @@
 
 .ddp-wa-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, rgba(201,168,76,0.18) 0%, rgba(10,10,10,0) 60%);
+  background: linear-gradient(135deg, rgba(var(--gold-rgb),0.18) 0%, rgba(10,10,10,0) 60%);
   border-top: 1px solid var(--line);
 }
 
@@ -3663,7 +3819,7 @@
   .ddp-hero-editorial {
     height: 320px;
     margin: 40px 0 0;
-    border: 1.5px solid rgba(201,168,76,0.45);
+    border: 1.5px solid rgba(var(--gold-rgb),0.45);
   }
   .ddp-personas { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .ddp-featured-card { grid-template-columns: 1fr; gap: 40px; }
@@ -3932,7 +4088,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(201,168,76,0.15);
+  background: rgba(var(--gold-rgb),0.15);
   border: 1px solid var(--gold);
   display: flex;
   align-items: center;
@@ -4064,7 +4220,7 @@
 /* ── DDP Campaña Variante B ── */
 .ddp-campaign { padding: 46px 0 64px; background: linear-gradient(135deg, #1d1206 0%, #0A0A0A 60%); }
 .ddp-urgency-row { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; margin-bottom: 34px; }
-.ddp-countdown-box { padding: 18px 26px; border: 1px solid var(--gold); background: rgba(201,168,76,0.07); text-align: center; }
+.ddp-countdown-box { padding: 18px 26px; border: 1px solid var(--gold); background: rgba(var(--gold-rgb),0.07); text-align: center; }
 .ddp-countdown-num { font-family: 'KikiGotham', sans-serif; font-size: 76px; font-weight: 300; font-style: italic; color: var(--gold-ink); line-height: 0.9; letter-spacing: -0.02em; }
 .ddp-countdown-label { font-size: 9px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute); }
 .ddp-deadline { font-family: 'KikiGotham', sans-serif; font-size: 22px; font-weight: 300; font-style: italic; color: var(--gold-ink); line-height: 1.3; }
@@ -4130,7 +4286,7 @@
 [data-theme='warm'] ::-webkit-scrollbar-thumb:hover { background: rgba(150,118,52,0.50); }
 
 /* ── Selection ── */
-[data-theme='warm'] ::selection { background: rgba(201,168,76,0.25); color: var(--ink); }
+[data-theme='warm'] ::selection { background: rgba(var(--gold-rgb),0.25); color: var(--ink); }
 
 /* ── ProductDetail dark sections (warm mode) ── */
 [data-theme='warm'] .pd-dark { background: var(--bg-warm) !important; }
@@ -4505,7 +4661,7 @@
   padding: 14px 24px;
   background: rgba(14,12,8,0.96);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(201,168,76,0.18);
+  border-top: 1px solid rgba(var(--gold-rgb),0.18);
   box-shadow: 0 -4px 30px rgba(0,0,0,0.4);
 }
 .cookie-banner-text {
@@ -4520,7 +4676,7 @@
 .cookie-banner-link {
   color: var(--gold-ink);
   text-decoration: none;
-  border-bottom: 1px solid rgba(201,168,76,0.35);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.35);
   transition: border-color .2s;
 }
 .cookie-banner-link:hover { border-color: var(--gold-ink); }
@@ -4545,7 +4701,7 @@
   color: #0A0A0A;
   border: none;
 }
-.cookie-btn--accept:hover { background: linear-gradient(135deg, #C9A84C, #F0C85A); }
+.cookie-btn--accept:hover { background: linear-gradient(135deg, var(--gold), #F0C85A); }
 .cookie-btn--reject {
   background: transparent;
   color: rgba(247,242,234,0.45);
@@ -4579,7 +4735,7 @@
 .footer-terms-link {
   text-decoration: none;
   transition: color .2s;
-  border-bottom: 1px solid rgba(201,168,76,0.25);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.25);
 }
 .footer-terms-link:hover { color: var(--gold-ink); border-bottom-color: var(--gold-ink); }
 [data-theme='warm'] .footer-terms-link { border-bottom-color: rgba(154,104,32,0.30); }
@@ -4662,7 +4818,7 @@
 .terminos-wa-link {
   color: var(--gold-ink);
   text-decoration: none;
-  border-bottom: 1px solid rgba(201,168,76,0.35);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.35);
 }
 .terminos-wa-link:hover { border-color: var(--gold-ink); }
 
@@ -4674,7 +4830,7 @@
   top: 10px; right: 10px;
   z-index: 10;
   background: rgba(10,8,4,0.72);
-  border: 1px solid rgba(201,168,76,0.25);
+  border: 1px solid rgba(var(--gold-rgb),0.25);
   border-radius: 50%;
   width: 32px; height: 32px;
   display: flex; align-items: center; justify-content: center;
@@ -4687,13 +4843,13 @@
 }
 .vitrina-heart-btn:hover {
   background: rgba(10,8,4,0.90);
-  border-color: rgba(201,168,76,0.55);
-  color: #C9A84C;
+  border-color: rgba(var(--gold-rgb),0.55);
+  color: var(--gold);
   transform: scale(1.1);
 }
 .vitrina-heart-btn.active {
   background: rgba(10,8,4,0.82);
-  border-color: rgba(201,168,76,0.65);
+  border-color: rgba(var(--gold-rgb),0.65);
 }
 [data-theme='warm'] .vitrina-heart-btn {
   background: rgba(240,230,210,0.75);
@@ -4854,7 +5010,7 @@
   font-family: var(--font-s); font-size: 10px;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--gold-ink); text-decoration: none;
-  border-bottom: 1px solid rgba(201,168,76,0.35);
+  border-bottom: 1px solid rgba(var(--gold-rgb),0.35);
   padding-bottom: 2px; transition: border-color .2s;
 }
 .wl-empty-link:hover { border-color: var(--gold-ink); }
@@ -4864,8 +5020,8 @@
 .tienda-coleccion-banner {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 16px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.25);
+  background: rgba(var(--gold-rgb),0.08);
+  border: 1px solid rgba(var(--gold-rgb),0.25);
   margin-bottom: 20px;
   font-family: var(--font-s); font-size: 11px;
   letter-spacing: 0.08em; color: var(--gold-ink);
@@ -5133,12 +5289,12 @@
   aspect-ratio: 3/4;
   overflow: hidden;
   background: #1E1916;
-  border: 1px solid rgba(201,168,76,0.12);
+  border: 1px solid rgba(var(--gold-rgb),0.12);
   margin-bottom: 14px;
   transition: border-color .35s ease;
 }
 [data-theme='warm'] .bs-card-img-wrap { background: #F5EEE0; }
-.bs-card:hover .bs-card-img-wrap { border-color: rgba(201,168,76,0.30); }
+.bs-card:hover .bs-card-img-wrap { border-color: rgba(var(--gold-rgb),0.30); }
 .bs-card-img {
   width: 100%;
   height: 100%;
@@ -5196,7 +5352,7 @@
 }
 
 /* Warm theme */
-[data-theme='warm'] .quick-genero-tile:hover { background: rgba(201,168,76,0.07); }
+[data-theme='warm'] .quick-genero-tile:hover { background: rgba(var(--gold-rgb),0.07); }
 
 /* ══ Tienda — selector "Por ocasión" ══ */
 .tienda-ocasion-row {
@@ -5223,7 +5379,7 @@
 .tienda-ocasion-select.active {
   border-color: var(--gold);
   color: var(--gold);
-  background: rgba(201,168,76,0.07);
+  background: rgba(var(--gold-rgb),0.07);
 }
 .tienda-ocasion-select option {
   font-family: 'KikiGotham', sans-serif;
@@ -5267,7 +5423,7 @@
 .bottom-nav-item.active { color: var(--gold-ink); }
 .bottom-nav-badge {
   position: absolute; top: -4px; right: -6px;
-  background: #C9A84C; color: #0A0A0A;
+  background: var(--gold); color: #0A0A0A;
   font-size: 8px; font-weight: 700;
   font-family: 'KikiGotham', sans-serif;
   width: 14px; height: 14px; border-radius: 50%;
@@ -5875,6 +6031,19 @@
   overflow: hidden;
   background: #1a0a0f;
 }
+/* Cada lanzamiento es una slide apilada — crossfade vía opacity, ver .nlb-slide-active */
+.nlb-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+.nlb-slide-active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto;
+}
 .nlb-picture {
   position: absolute;
   inset: 0;
@@ -5965,41 +6134,6 @@
 }
 .nlb-btn-primary:hover { background: #b8902e; border-color: #b8902e; transform: translateY(-1px); }
 
-.nlb-btn-pink {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 20px 48px;
-  background: linear-gradient(135deg, #C4366A, #E0507E);
-  border: none;
-  color: #fff;
-  font-family: var(--font-s);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  -webkit-text-stroke: 0.4px currentColor;
-  box-shadow: 0 6px 28px rgba(196,54,106,0.5), 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
-}
-.nlb-btn-pink:hover {
-  background: linear-gradient(135deg, #B02E5E, #D04472);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(196,54,106,0.6), 0 3px 10px rgba(0,0,0,0.25);
-}
-.nlb-btn-flower-wrap {
-  position: relative;
-  display: inline-block;
-}
-.nlb-floral-frame {
-  position: absolute;
-  inset: -14px;
-  width: calc(100% + 28px);
-  height: calc(100% + 28px);
-  pointer-events: none;
-  overflow: visible;
-}
 .nlb-btn-outline {
   display: inline-block;
   padding: 12px 28px;
@@ -6016,25 +6150,53 @@
 }
 .nlb-btn-outline:hover { border-color: rgba(255,255,255,0.85); color: #fff; }
 
+.nlb-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.nlb-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.25);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.25s;
+}
+.nlb-dot.active {
+  background: var(--gold, #C9A84C);
+  border-color: var(--gold, #C9A84C);
+  transform: scale(1.2);
+}
+
 @media (max-width: 767px) {
-  /* Mobile: imagen natural + texto/botones al fondo con overlay */
+  /* Mobile: mismo alto/ancho intrínseco que el desktop (1536×2752) para
+     que las slides puedan apilarse (position:absolute) y crossfade entre sí. */
   .nlb-section {
     height: auto;
+    aspect-ratio: 1536 / 2752;
     min-height: unset;
     position: relative;
     overflow: hidden;
   }
   .nlb-picture {
-    position: relative;
-    inset: unset;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
   }
   .nlb-img {
     width: 100%;
-    height: auto;
-    object-fit: unset;
+    height: 100%;
+    object-fit: cover;
     display: block;
   }
   /* Overlay: gradiente fuerte en franja inferior */
@@ -6075,3 +6237,168 @@
   .nlb-ctas { justify-content: center; }
 }
 
+
+/* Confeti de murciélagos al "Invocar al inframundo" (ver handleAdd en
+   ProductDetail.jsx) — 3 murciélagos chiquitos salen volando desde el botón
+   y se desvanecen. Solo se monta ~900ms, position: relative en el botón
+   padre hace de contenedor. */
+.pd-bat-burst {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.pd-bat-burst-item {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 32px; height: 16px;
+  margin: -8px 0 0 -16px;
+  color: #1A0E2E;
+  filter: drop-shadow(0 0 3px rgba(245,233,216,0.7));
+  animation: pdBatBurst 0.85s cubic-bezier(.2,.8,.3,1) forwards;
+}
+.pd-bat-burst-1 { animation-name: pdBatBurstLeft; }
+.pd-bat-burst-2 { animation-name: pdBatBurstUp; animation-delay: 0.06s; }
+.pd-bat-burst-3 { animation-name: pdBatBurstRight; animation-delay: 0.03s; }
+@keyframes pdBatBurstLeft {
+  0%   { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(0.6); }
+  100% { opacity: 0; transform: translate(-70px, -46px) rotate(-25deg) scale(1); }
+}
+@keyframes pdBatBurstUp {
+  0%   { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(0.6); }
+  100% { opacity: 0; transform: translate(4px, -64px) rotate(6deg) scale(1); }
+}
+@keyframes pdBatBurstRight {
+  0%   { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(0.6); }
+  100% { opacity: 0; transform: translate(70px, -46px) rotate(25deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pd-bat-burst { display: none; }
+}
+
+/* Flash teatral al ENTRAR al tema Halloween (ver toggleHalloween en Header.jsx) —
+   "portal abriéndose": negro → naranja → negro, ~650ms, un solo uso por toggle
+   (el componente se desmonta solo via setTimeout). Por encima de todo, incluso
+   de .hwd-layer (9998). */
+@keyframes hweenFlash {
+  0%   { opacity: 0; background: #000; }
+  15%  { opacity: 1;    background: #000; }
+  38%  { opacity: 0.88; background: #FF7A18; }
+  65%  { opacity: 0.45; background: #000; }
+  100% { opacity: 0;    background: #000; }
+}
+.hween-flash-overlay {
+  position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+  animation: hweenFlash 0.65s ease-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hween-flash-overlay { display: none; }
+}
+
+/* ══ Halloween decor — capa admin-only (HalloweenDecor.jsx) ══ */
+.hwd-layer {
+  position: fixed;
+  inset: 0;
+  /* Antes 9998 — quedaba por ENCIMA de los drawers de carrito/wishlist
+     (z-index 9990-9991) y se veía la calabaza/mano encima de sus botones.
+     60 alcanza para flotar sobre el header (40) y el BottomNav (50), pero
+     cualquier drawer/modal (70+) lo tapa como corresponde. */
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hwd-slime-br {
+  opacity: 0.6;
+}
+.hwd-moon {
+  opacity: 0.85;
+  filter: drop-shadow(0 0 18px var(--gold-alt-glow));
+}
+.hwd-pumpkin {
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 22px rgba(255,122,24,0.35));
+}
+@media (max-width: 767px) {
+  .hwd-moon { width: 42px; height: 42px; top: 8% !important; right: 6% !important; }
+  .hwd-pumpkin { width: 54px; height: 51px; }
+}
+/* En mobile/tablet el BottomNav (fijo, ver .bottom-nav) tapa la esquina inferior
+   — sin este ajuste la calabaza y la mano quedaban literalmente encima de
+   "ENTRAR"/"INICIO". Se suben por encima de la barra + safe-area, mismo
+   cálculo que ya usa WhatsAppFab. */
+@media (max-width: 1023px) {
+  .hwd-pumpkin { bottom: calc(60px + env(safe-area-inset-bottom, 0px) + 6px) !important; }
+  .hwd-skeleton-hand { bottom: calc(60px + env(safe-area-inset-bottom, 0px) - 10px) !important; }
+  .hwd-slime-br { bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important; }
+}
+.hwd-bat {
+  position: fixed;
+  width: 54px;
+  height: 27px;
+  color: rgba(245,233,216,0.85);
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.6));
+  opacity: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.hwd-bat-flap {
+  width: 100%;
+  height: 100%;
+  animation: hwdFlap 0.5s linear infinite;
+}
+.hwd-bat-1 {
+  top: 16%;
+  animation-name: hwdFlyRight;
+  animation-duration: 22s;
+}
+.hwd-bat-2 {
+  top: 32%;
+  width: 40px; height: 20px;
+  animation-name: hwdFlyLeft;
+  animation-duration: 28s;
+  animation-delay: 4s;
+}
+.hwd-bat-2 .hwd-bat-flap { animation-duration: 0.4s; }
+.hwd-bat-3 {
+  top: 9%;
+  width: 32px; height: 16px;
+  animation-name: hwdFlyRight;
+  animation-duration: 18s;
+  animation-delay: 9s;
+}
+.hwd-bat-3 .hwd-bat-flap { animation-duration: 0.35s; }
+.hwd-bat-4 {
+  top: 46%;
+  width: 46px; height: 23px;
+  animation-name: hwdFlyLeft;
+  animation-duration: 25s;
+  animation-delay: 13s;
+}
+.hwd-bat-4 .hwd-bat-flap { animation-duration: 0.45s; }
+@keyframes hwdFlyRight {
+  0%   { left: -8%;  opacity: 0; transform: translateY(0); }
+  8%   { opacity: 0.92; }
+  50%  { transform: translateY(-40px); }
+  92%  { opacity: 0.92; }
+  100% { left: 108%; opacity: 0; transform: translateY(10px); }
+}
+@keyframes hwdFlyLeft {
+  0%   { left: 108%; opacity: 0; transform: translateY(0); }
+  8%   { opacity: 0.85; }
+  50%  { transform: translateY(30px); }
+  92%  { opacity: 0.85; }
+  100% { left: -8%;  opacity: 0; transform: translateY(-15px); }
+}
+@keyframes hwdFlap {
+  0%, 100% { transform: scaleY(1); }
+  50%      { transform: scaleY(0.55); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hwd-bat { display: none; }
+}
+@media (max-width: 640px) {
+  .hwd-slime { width: 84px; height: 84px; }
+  /* bottom se resuelve en el media query de 1023px más arriba, para no
+     tapar el BottomNav — no repetirlo acá (el orden de aparición en el
+     archivo importa: esta regla viene después y con !important ganaría). */
+  .hwd-skeleton-hand { width: 64px; height: 78px; left: 10px !important; }
+}

@@ -3,20 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { useIndexProducts } from '../context/SanityProductsContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
+import { useOfertaDelDia, OFERTA_DURATION_MS } from '../hooks/useOfertaDelDia'
 import { toSlug } from '../lib/slugs'
-
-// ID del producto oferta del día
-const OFERTA_ID = 173
 
 function pad(n) {
   return String(n).padStart(2, '0')
-}
-
-function getEndOfDay() {
-  const now = new Date()
-  const end = new Date(now)
-  end.setHours(23, 59, 59, 999)
-  return end
 }
 
 export default function OfertaDelDia() {
@@ -24,10 +15,11 @@ export default function OfertaDelDia() {
   const navigate = useNavigate()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
+  const oferta = useOfertaDelDia() // { id, setAt } desde Sanity, o null si no hay/expiró — se elige en /kiki-desk
   const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 })
   const [visible, setVisible] = useState(true)
 
-  const product = products.find(p => p.id === OFERTA_ID)
+  const product = oferta ? products.find(p => p.id === oferta.id) : null
   const active = !!product && visible
 
   useEffect(() => {
@@ -40,26 +32,38 @@ export default function OfertaDelDia() {
   }, [active])
 
   useEffect(() => {
+    if (!oferta) return
+    const end = new Date(oferta.setAt).getTime() + OFERTA_DURATION_MS
     const tick = () => {
-      const now = new Date()
-      const end = getEndOfDay()
-      const diff = Math.max(0, end - now)
+      const diff = Math.max(0, end - Date.now())
       setTimeLeft({
         h: Math.floor(diff / 3600000),
         m: Math.floor((diff % 3600000) / 60000),
         s: Math.floor((diff % 60000) / 1000),
       })
+      // Se cumplieron las 24h — apagar el widget sin esperar a un remount
+      if (diff <= 0) setVisible(false)
     }
     tick()
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
-  }, [])
+  }, [oferta])
 
   if (!active) return null
 
-  const precio = currency === 'bs' && tasa
-    ? `${Math.round(product.precioUSD * tasa).toLocaleString('es-VE')} Bs`
-    : `REF ${product.precioUSD}`
+  // precio promocional (opcional, seteado en /kiki-desk al activar la oferta o después) —
+  // no toca product.precioUSD, solo rige mientras dura esta oferta
+  const hasPromo   = oferta.precio > 0 && oferta.precio < product.precioUSD
+  const precioBase = hasPromo ? oferta.precio : product.precioUSD
+
+  function fmtPrecio(usd) {
+    return currency === 'bs' && tasa
+      ? `${Math.round(usd * tasa).toLocaleString('es-VE')} Bs`
+      : `REF ${usd}`
+  }
+
+  const precio         = fmtPrecio(precioBase)
+  const precioOriginal = hasPromo ? fmtPrecio(product.precioUSD) : null
 
   const slug = toSlug(product.house, product.name, product.ml)
 
@@ -87,6 +91,7 @@ export default function OfertaDelDia() {
             <h2 className="odd-name">{product.name}</h2>
             <p className="odd-sub">{product.ml ? `${product.ml}ml` : ''}{product.familia ? ` · ${product.familia}` : ''}{product.genero ? ` · ${product.genero}` : ''}</p>
             <div className="odd-price-row">
+              {precioOriginal && <span className="odd-price-original">{precioOriginal}</span>}
               <span className="odd-price">{precio}</span>
             </div>
             <div className="odd-countdown">
@@ -129,7 +134,10 @@ export default function OfertaDelDia() {
           <span className="odd-bar-name">{product.house} {product.name}</span>
         </div>
         <div className="odd-bar-right">
-          <span className="odd-bar-price">{precio}</span>
+          <span className="odd-bar-price">
+            {precioOriginal && <span className="odd-bar-price-original">{precioOriginal}</span>}
+            {precio}
+          </span>
           <span className="odd-bar-timer">{pad(timeLeft.h)}:{pad(timeLeft.m)}:{pad(timeLeft.s)}</span>
         </div>
         <span className="odd-bar-arrow" aria-hidden="true">→</span>
@@ -157,7 +165,7 @@ export default function OfertaDelDia() {
         }
         .odd-card {
           background: #100C04;
-          border: 1px solid rgba(201,168,76,0.4);
+          border: 1px solid rgba(var(--gold-rgb),0.4);
           border-radius: 18px;
           width: 220px;
           overflow: hidden;
@@ -182,7 +190,7 @@ export default function OfertaDelDia() {
           justify-content: center;
         }
         .odd-badge {
-          background: linear-gradient(90deg, #B8860B, #C9A84C, #B8860B);
+          background: linear-gradient(90deg, #B8860B, var(--gold), #B8860B);
           color: #1A1208;
           font-size: 10px;
           font-weight: 800;
@@ -212,7 +220,7 @@ export default function OfertaDelDia() {
           padding: 12px 14px 14px;
         }
         .odd-house {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 10px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
@@ -232,12 +240,20 @@ export default function OfertaDelDia() {
         }
         .odd-price-row {
           margin-bottom: 10px;
+          display: flex;
+          align-items: baseline;
+          gap: 8px;
         }
         .odd-price {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 20px;
           font-weight: 700;
           letter-spacing: 0.02em;
+        }
+        .odd-price-original {
+          color: rgba(247,242,234,0.4);
+          font-size: 13px;
+          text-decoration: line-through;
         }
         .odd-countdown {
           margin-bottom: 12px;
@@ -256,8 +272,8 @@ export default function OfertaDelDia() {
           gap: 4px;
         }
         .odd-timer-block {
-          background: rgba(201,168,76,0.12);
-          border: 1px solid rgba(201,168,76,0.25);
+          background: rgba(var(--gold-rgb),0.12);
+          border: 1px solid rgba(var(--gold-rgb),0.25);
           border-radius: 6px;
           padding: 4px 7px;
           display: flex;
@@ -265,25 +281,25 @@ export default function OfertaDelDia() {
           gap: 2px;
         }
         .odd-timer-num {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 16px;
           font-weight: 700;
           font-variant-numeric: tabular-nums;
           line-height: 1;
         }
         .odd-timer-unit {
-          color: rgba(201,168,76,0.6);
+          color: rgba(var(--gold-rgb),0.6);
           font-size: 9px;
         }
         .odd-timer-sep {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 14px;
           font-weight: 700;
           margin-bottom: 2px;
         }
         .odd-cta {
           width: 100%;
-          background: #C9A84C;
+          background: var(--gold);
           color: #1A1208;
           border: none;
           border-radius: 8px;
@@ -310,7 +326,7 @@ export default function OfertaDelDia() {
           height: 56px;
           padding: 0 40px 0 10px;
           background: rgba(16,12,4,0.97);
-          border-top: 1px solid rgba(201,168,76,0.35);
+          border-top: 1px solid rgba(var(--gold-rgb),0.35);
           cursor: pointer;
           animation: oddBarSlideUp 0.4s cubic-bezier(.22,.68,0,1.2) both;
         }
@@ -346,7 +362,7 @@ export default function OfertaDelDia() {
           flex: 1;
         }
         .odd-bar-tag {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 9.5px;
           font-weight: 700;
           letter-spacing: 0.06em;
@@ -369,9 +385,18 @@ export default function OfertaDelDia() {
           gap: 2px;
         }
         .odd-bar-price {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 13.5px;
           font-weight: 700;
+          display: flex;
+          align-items: baseline;
+          gap: 5px;
+        }
+        .odd-bar-price-original {
+          color: rgba(247,242,234,0.4);
+          font-size: 10px;
+          font-weight: 400;
+          text-decoration: line-through;
         }
         .odd-bar-timer {
           color: rgba(247,242,234,0.55);
@@ -380,7 +405,7 @@ export default function OfertaDelDia() {
         }
         .odd-bar-arrow {
           flex-shrink: 0;
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 15px;
         }
         .odd-bar-close {

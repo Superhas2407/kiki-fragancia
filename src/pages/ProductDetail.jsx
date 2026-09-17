@@ -3,8 +3,10 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
+import { SlimeTopBorder, Bat } from '../components/HalloweenDecor'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
+import { useOfertaDelDia } from '../hooks/useOfertaDelDia'
 import { products } from '../data/products-enriched'
 import { useSanityProduct, useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
@@ -104,8 +106,8 @@ function NoteIcon({ nota, size = 22 }) {
       <span style={{
         display: 'inline-flex', width: size, height: size,
         borderRadius: '50%', flexShrink: 0,
-        background: 'rgba(201,168,76,0.12)',
-        border: '1px solid rgba(201,168,76,0.25)',
+        background: 'rgba(var(--gold-rgb),0.12)',
+        border: '1px solid rgba(var(--gold-rgb),0.25)',
         overflow: 'hidden',
       }}>
         <img
@@ -122,10 +124,10 @@ function NoteIcon({ nota, size = 22 }) {
     <span style={{
       display: 'inline-flex', width: size, height: size,
       borderRadius: '50%', flexShrink: 0,
-      background: 'rgba(201,168,76,0.08)',
-      border: '1px solid rgba(201,168,76,0.2)',
+      background: 'rgba(var(--gold-rgb),0.08)',
+      border: '1px solid rgba(var(--gold-rgb),0.2)',
       alignItems: 'center', justifyContent: 'center',
-      color: 'rgba(201,168,76,0.6)',
+      color: 'rgba(var(--gold-rgb),0.6)',
     }}>
       {React.cloneElement(getNoteIcon(nota), { width: svgSize, height: svgSize })}
     </span>
@@ -1135,6 +1137,7 @@ export default function ProductDetail() {
   const { theme } = useTheme()
   const { currency } = useCurrency()
   const tasa = useTasaCambio()
+  const oferta = useOfertaDelDia() // { id, setAt, precio } del producto activo en /kiki-desk, o null
 
   const indexProducts = useIndexProducts()
 
@@ -1171,6 +1174,7 @@ export default function ProductDetail() {
   const [mounted,      setMounted]      = useState(false)
   const [barsReady,    setBarsReady]    = useState(false)
   const [added,        setAdded]        = useState(false)
+  const [batBurst,     setBatBurst]     = useState(false)
   const [imgHover,     setImgHover]     = useState(false)
   const [waHover,      setWaHover]      = useState(false)
   const [descExpanded, setDescExpanded] = useState(false)
@@ -1188,7 +1192,7 @@ export default function ProductDetail() {
   }, [id])
 
   const baseProduct = localProduct ?? liveData ?? null
-  const product = baseProduct ? {
+  const rawProduct = baseProduct ? {
     ...baseProduct,
     precioUSD:      liveData?.precioUSD      ?? baseProduct.precioUSD,
     sanityImage:    liveData?.sanityImage    ?? null,
@@ -1215,6 +1219,21 @@ export default function ProductDetail() {
         }
       : null,
   } : null
+
+  // Oferta del Día: si este producto es el que está activo en /kiki-desk y tiene
+  // precio promocional, se refleja acá con el mismo precio que ya muestra el
+  // widget flotante (OfertaDelDia.jsx) — antes esta página seguía mostrando el
+  // precio normal aunque el widget prometiera uno más bajo.
+  const ofertaDelDiaActiva = !!(
+    rawProduct && oferta && oferta.id === rawProduct.id &&
+    oferta.precio > 0 && oferta.precio < rawProduct.precioUSD
+  )
+  const product = ofertaDelDiaActiva ? {
+    ...rawProduct,
+    precioOriginalUSD: rawProduct.precioUSD,
+    precioUSD: oferta.precio,
+    _ofertaDelDiaActiva: true,
+  } : rawProduct
 
   // Si el producto se resolvió por un slug viejo (nombre cambiado en Sanity), corrige
   // silenciosamente la URL a la canónica actual — sin recargar ni mostrar "no encontrado".
@@ -1293,6 +1312,10 @@ export default function ProductDetail() {
     addItem(product, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1800)
+    if (theme === 'halloween') {
+      setBatBurst(true)
+      setTimeout(() => setBatBurst(false), 900)
+    }
   }
 
   const pdCleanName = product.name.toLowerCase().startsWith(product.house.toLowerCase() + ' ')
@@ -1358,6 +1381,13 @@ export default function ProductDetail() {
                     : (imgHover ? '0 32px 64px rgba(0,0,0,.5)' : '0 8px 32px rgba(0,0,0,.3)'),
                   transition: 'box-shadow .5s ease',
                 }}>
+                  {theme === 'halloween' && (
+                    <SlimeTopBorder
+                      className="pd-img-slime"
+                      style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, pointerEvents: 'none' }}
+                      aria-hidden="true"
+                    />
+                  )}
                   {resolvedImg ? (
                     <img
                       className="pd-img-photo"
@@ -1375,7 +1405,7 @@ export default function ProductDetail() {
                   )}
 
                   <div className="pd-img-badge">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                       <polyline points="9 12 11 14 15 10" />
                     </svg>
@@ -1409,12 +1439,17 @@ export default function ProductDetail() {
               </div>
 
               {/* Franja descuento — solo móvil, entre imagen e info */}
-              {!product.agotado && currency === 'usd' && product.descuento && (
+              {!product.agotado && currency === 'usd' && product._ofertaDelDiaActiva && (
+                <div className="pd-ddp-strip pd-ddp-strip--ofertadia">
+                  🔥 OFERTA DEL DÍA
+                </div>
+              )}
+              {!product.agotado && currency === 'usd' && !product._ofertaDelDiaActiva && product.descuento && (
                 <div className="pd-ddp-strip">
                   {product.descuento}% DESCUENTO
                 </div>
               )}
-              {!product.agotado && currency === 'usd' && !product.descuento && product.promoHalloween && product.precioOriginalUSD > product.precioUSD && (
+              {!product.agotado && currency === 'usd' && !product._ofertaDelDiaActiva && !product.descuento && product.promoHalloween && (
                 <div className="pd-ddp-strip pd-ddp-strip--halloween">
                   <PumpkinIcon size={11} /> OFERTA HALLOWEEN
                 </div>
@@ -1440,12 +1475,14 @@ export default function ProductDetail() {
                     )
                   }
                   const discPct = product.descuento
-                  const isHalloween = !discPct && product.promoHalloween && product.precioOriginalUSD > product.precioUSD
+                  // El badge no depende de que haya un precio promo cargado — marcar el
+                  // checkbox en Studio ya alcanza para previsualizarlo (ver SanityProductsContext).
+                  const isHalloween = !discPct && product.promoHalloween
                   const badgeStyle = {
                     fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.10em', textTransform: 'uppercase',
                     color: '#1A1208',
-                    background: 'linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)',
+                    background: 'linear-gradient(90deg, var(--gold), var(--gold-shine) 55%, var(--gold))',
                     padding: '4px 12px', display: 'inline-block',
                   }
                   const halloweenBadgeStyle = {
@@ -1456,7 +1493,19 @@ export default function ProductDetail() {
                   }
                   return (
                     <div className="pd-price" style={rv(350)}>
-                      {discPct ? (
+                      {product._ofertaDelDiaActiva ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={badgeStyle}>🔥 OFERTA DEL DÍA</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                            REF: {product.precioOriginalUSD}
+                          </span>
+                        </>
+                      ) : discPct ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
                             <span style={badgeStyle}>
@@ -1478,8 +1527,22 @@ export default function ProductDetail() {
                           <span className="pd-price-amount">
                             REF: {product.precioUSD}
                           </span>
-                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
-                            REF: {product.precioOriginalUSD}
+                          {product.precioOriginalUSD > product.precioUSD && (
+                            <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, fontWeight: 300, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                              REF: {product.precioOriginalUSD}
+                            </span>
+                          )}
+                        </>
+                      ) : theme === 'halloween' ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={halloweenBadgeStyle}><PumpkinIcon size={11} /> PRECIO EMBRUJADO</span>
+                          </div>
+                          <span className="pd-price-amount">
+                            REF: {product.precioUSD}
+                          </span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 11, fontWeight: 300, color: 'var(--ink-faint)', marginLeft: 6 }}>
+                            · Solo en divisa
                           </span>
                         </>
                       ) : (
@@ -1552,6 +1615,7 @@ export default function ProductDetail() {
                     onClick={product.agotado ? undefined : handleAdd}
                     disabled={product.agotado}
                     style={{
+                      position: 'relative',
                       fontFamily: 'var(--font-s)', fontSize: 'clamp(11px, 3vw, 12px)', fontWeight: 400, letterSpacing: '.2em',
                       textTransform: 'uppercase', padding: 'clamp(13px, 3vw, 16px) clamp(20px, 5vw, 32px)', width: '100%', minHeight: '46px',
                       cursor: product.agotado ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
@@ -1561,10 +1625,19 @@ export default function ProductDetail() {
                       opacity: product.agotado ? 0.6 : 1,
                       transition: 'background .25s ease, border-color .25s ease, color .25s ease',
                     }}
-                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = '#E8C96A' }}
+                    onMouseEnter={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold-shine)' }}
                     onMouseLeave={e => { if (!added && !product.agotado) e.currentTarget.style.background = 'var(--gold)' }}
                   >
-                    {product.agotado ? 'Agotado' : added ? '✓ Agregado' : 'Agregar al carrito'}
+                    {product.agotado ? 'Agotado' : added
+                      ? (theme === 'halloween' ? '✓ Invocado' : '✓ Agregado')
+                      : (theme === 'halloween' ? '🎃 Invocar al inframundo' : 'Agregar al carrito')}
+                    {batBurst && (
+                      <span className="pd-bat-burst" aria-hidden="true">
+                        <span className="pd-bat-burst-item pd-bat-burst-1"><Bat /></span>
+                        <span className="pd-bat-burst-item pd-bat-burst-2"><Bat /></span>
+                        <span className="pd-bat-burst-item pd-bat-burst-3"><Bat /></span>
+                      </span>
+                    )}
                   </button>
 
                   <a
@@ -1690,7 +1763,7 @@ export default function ProductDetail() {
             </div>
             <div className="pd-acordes">
               {acordes.map(([nombre, pct]) => {
-                const color = ACORDE_COLOR[nombre] || '#C9A84C'
+                const color = ACORDE_COLOR[nombre] || 'var(--gold)'
                 return (
                   <div key={nombre} className="pd-acorde">
                     <div className="pd-acorde-meta">
@@ -1730,7 +1803,7 @@ export default function ProductDetail() {
                           <span className="pd-cuando-icon" style={{
                             opacity: activo ? 1 : 0.22,
                             color: activo ? 'var(--gold)' : (theme === 'warm' ? 'rgba(35,26,13,0.30)' : 'rgba(247,242,234,.4)'),
-                            boxShadow: activo ? '0 0 22px rgba(201,168,76,.25)' : 'none',
+                            boxShadow: activo ? '0 0 22px rgba(var(--gold-rgb),.25)' : 'none',
                           }}>
                             {Icon && <Icon />}
                           </span>

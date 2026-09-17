@@ -80,10 +80,10 @@ const CornerBracket = ({ pos }) => {
       [isTop ? 'top' : 'bottom']: 16,
       [isLeft ? 'left' : 'right']: 16,
       width: 22, height: 22,
-      borderTop: isTop ? '1.5px solid rgba(201,168,76,.7)' : 'none',
-      borderBottom: !isTop ? '1.5px solid rgba(201,168,76,.7)' : 'none',
-      borderLeft: isLeft ? '1.5px solid rgba(201,168,76,.7)' : 'none',
-      borderRight: !isLeft ? '1.5px solid rgba(201,168,76,.7)' : 'none',
+      borderTop: isTop ? '1.5px solid rgba(var(--gold-rgb),.7)' : 'none',
+      borderBottom: !isTop ? '1.5px solid rgba(var(--gold-rgb),.7)' : 'none',
+      borderLeft: isLeft ? '1.5px solid rgba(var(--gold-rgb),.7)' : 'none',
+      borderRight: !isLeft ? '1.5px solid rgba(var(--gold-rgb),.7)' : 'none',
     }} />
   )
 }

@@ -113,7 +113,7 @@ export default function InstallBanner() {
         }
         .install-banner-inner {
           background: #1A1208;
-          border: 1px solid rgba(201,168,76,0.35);
+          border: 1px solid rgba(var(--gold-rgb),0.35);
           border-radius: 16px;
           padding: 14px 16px;
           display: flex;
@@ -143,7 +143,7 @@ export default function InstallBanner() {
           min-width: 0;
         }
         .install-banner-title {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.04em;
@@ -172,7 +172,7 @@ export default function InstallBanner() {
           color: #F7F2EA;
         }
         .install-step-icon {
-          background: #C9A84C;
+          background: var(--gold);
           color: #1A1208;
           border-radius: 50%;
           width: 16px;
@@ -185,14 +185,14 @@ export default function InstallBanner() {
           flex-shrink: 0;
         }
         .install-step-arrow {
-          color: #C9A84C;
+          color: var(--gold);
           font-size: 12px;
         }
         .install-icon-share {
           font-size: 14px;
         }
         .install-banner-btn {
-          background: #C9A84C;
+          background: var(--gold);
           color: #1A1208;
           border: none;
           border-radius: 8px;

@@ -112,7 +112,9 @@ Studio en **kiki-fragancia.sanity.studio** — projectId `7j25mwk7`, dataset `pr
 | `promoHalloween` | boolean | Marca el producto en la Oferta Halloween 🎃. **Admin-only**: el sitio SOLO muestra la cinta, el badge de precio y el filtro de `/tienda` cuando el visitante está logueado como admin (mismo `useAuth()`/`session` que gatea "Solo agotados" en Tienda). Cualquier visitante o cliente normal no ve absolutamente nada de esto — ni el ribbon, ni el precio promocional, ni el filtro. Pensado para preparar/probar la campaña antes de lanzarla al público. Paleta propia (`vitrina-ribbon--halloween` / `vitrina-price-badge--halloween` / `pd-ddp-strip--halloween`): gradiente naranja calabaza → morado medianoche `#FF7A18 → #3D1766` + ícono de calabaza (`PumpkinIcon` en `VitrinaCard.jsx`) — **excepción intencional a la regla gold-only**, igual que el azul de Día del Padre. No cambiar a dorado plano. |
 | `precioPromoHalloween` | number | Precio especial mientras `promoHalloween` esté activo — solo se aplica y se ve con sesión admin. **No reemplaza `precioUSD`** — el precio normal queda guardado intacto para todos los demás. Solo visible en Studio cuando `promoHalloween` está activo. |
 
-**Cómo funciona el gating admin-only:** `SanityProductsContext.jsx` arma la query GROQ dinámicamente — `promoHalloween`/`precioPromoHalloween` solo se piden a Sanity cuando hay `session` (así ni siquiera viajan por la red hacia un visitante anónimo), y el merge solo aplica el precio promocional y expone el flag cuando `isAdmin` es true. `scripts/sync-from-sanity.mjs` (el build público) NO incluye estos campos en absoluto — el bundle estático que se sirve a todos los visitantes nunca los lleva.
+**Cómo funciona el gating admin-only:** `SanityProductsContext.jsx` arma la query GROQ dinámicamente — `promoHalloween`/`precioPromoHalloween` solo se piden a Sanity cuando hay `session` (así ni siquiera viajan por la red hacia un visitante anónimo), y el merge solo expone el flag y aplica el precio promocional cuando `isAdmin` es true. `scripts/sync-from-sanity.mjs` (el build público) NO incluye estos campos en absoluto — el bundle estático que se sirve a todos los visitantes nunca los lleva.
+
+**El flag `promoHalloween` es independiente del precio** (fix sept 2026 — antes, si marcabas el checkbox en Studio pero no cargabas `precioPromoHalloween`, el merge en `SanityProductsContext.jsx` borraba `promoHalloween` por completo y no aparecía nada, ni cinta ni badge ni filtro). Ahora: `isAdmin && sp.promoHalloween` alcanza para que `promoHalloween` se exponga (cinta/badge/filtro), y el precio solo se swapea (`precioOriginalUSD`/`precioUSD`) si además `precioPromoHalloween != null`. `ProductDetail.jsx` sigue el mismo criterio — el badge "OFERTA HALLOWEEN" y la franja mobile no exigen que haya precio promo cargado; el precio tachado solo se muestra si `precioOriginalUSD > precioUSD`.
 
 ### Flujo para agregar o editar un producto
 1. En Studio: crear/editar el documento → **Publish**
@@ -227,7 +229,7 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 ## Landing — orden de secciones
 `src/pages/Landing.jsx` — orden actual:
 1. `<Hero />` — carrusel hero
-2. `<NewLaunchBanner />` — banner de nuevos lanzamientos
+2. `<NewLaunchBanner />` — carrusel de nuevos lanzamientos (ver sección propia)
 3. `<BestsellerRow />` — fila de bestsellers
 4. `<QuickGenero />` — 3 tiles de género (Para él / Para ella / Unisex)
 5. `<MustHaveMen />` — carrusel horizontal de fragancias masculinas
@@ -238,6 +240,22 @@ Los siguientes archivos fueron borrados — no existen en el repo:
 10. `<Guarantee />` — garantías
 
 Eliminados de Landing en junio 2026: `BrandsMarquee` (×2), `ProductWall`, `ThreeDMarquee`, `ColeccionesSection`.
+
+## NewLaunchBanner (carrusel, no un solo producto)
+`src/components/NewLaunchBanner.jsx` — banner full-bleed (`.nlb-section`, 80vh desktop / aspect-ratio
+1536:2752 en móvil) que rota entre varios lanzamientos vía array `LAUNCHES` (`slug`, `house`, `name`,
+`desktop`, `mobile`). Crossfade con `opacity` (clase `.nlb-slide-active`) cada `AUTO_MS` (6s) + dots
+manuales abajo (`.nlb-dots`/`.nlb-dot`). Cada slide necesita su propio par de imágenes en
+`public/hero/`, **mismas proporciones que las demás** para que el crossfade no salte de tamaño:
+- Desktop: **2752×1536px** (16:9) — producto/props del lado izquierdo-centro, franja derecha ~40%
+  relativamente vacía/oscura para que se lea el texto (`.nlb-content` está `right: 48px`, alineado
+  a la derecha).
+- Mobile: **1536×2752px** (9:16) — producto en el tercio superior, el tercio inferior puede ser más
+  oscuro/simple porque ahí cae el overlay + el texto (`.nlb-content` está `bottom: 32px`).
+
+Para agregar un lanzamiento nuevo: generar el par desktop/mobile con esas proporciones, guardarlos en
+`public/hero/{algo}-desktop.webp` / `-mobile.webp`, y agregar una entrada a `LAUNCHES` con el `slug`
+real del producto (`toSlug(house, name, ml)`).
 
 ## Footer (rediseñado junio 2026)
 `src/components/Footer.jsx` — 5 columnas en desktop, stack en móvil. Clases `kf-*`.
@@ -344,10 +362,60 @@ Carrusel horizontal de fragancias femeninas. IDs: `[107, 108, 240, 241, 87, 131,
 
 ## Componentes con punteros hardcodeados
 Cuando cambie el producto destacado, editar el archivo:
-- `OfertaDelDia.jsx` — `OFERTA_ID = 173` (Lattafa Khamrah Dukhan). Card desktop (izquierda) + barra
-  delgada móvil, countdown a fin del día. Setea `--odd-bar-h` (`56px`/`0`) para el offset del WhatsApp fab.
-- `NewLaunchBanner.jsx` — `PRODUCT_SLUG = 'carolina-herrera-la-bomba-80ml'`.
+- `NewLaunchBanner.jsx` — **ya no es un solo producto fijo**, ver sección propia abajo.
 - `MustHaveMen.jsx` / `MustHaveWomen.jsx` — arrays de IDs curados (ver secciones abajo).
+
+`OfertaDelDia.jsx` **ya NO usa un ID hardcodeado** — se gestiona desde `/kiki-desk` (ver sección
+siguiente).
+
+## Oferta del Día (gestionada desde /kiki-desk, sin tocar código)
+- `src/hooks/useOfertaDelDia.js` — fuente: Sanity `kiki-ajustes.ofertaDelDiaId` +
+  `ofertaDelDiaSetAt` + `ofertaDelDiaPrecio` (mismo documento singleton que `tasaManual`, escritos
+  con `.patch()` para no pisarse entre sí — nunca `createOrReplace` sobre `kiki-ajustes`).
+  `useOfertaDelDia()` devuelve `{ id, setAt, precio }` o `null` si no hay oferta activa o si ya
+  pasaron **24h** desde `ofertaDelDiaSetAt` (`OFERTA_DURATION_MS`). Caché local 5min en
+  `localStorage['kiki_oferta_dia_sanity']`. `setOfertaDelDiaSanity(productId, precioPromo?)` /
+  `setOfertaDelDiaPrecioSanity(precioPromo)` (cambia solo el precio, sin reiniciar el countdown) /
+  `clearOfertaDelDiaSanity()` / `getOfertaDelDiaCache()`.
+- **Precio promocional (opcional)** — `precio` es un precio especial que rige *solo* mientras dura
+  la oferta; **no toca `precioUSD`** del producto (mismo espíritu que `precioPromoHalloween`). Se
+  limpia solo al desactivar/expirar la oferta. `OfertaDelDia.jsx` lo usa cuando está seteado y es
+  menor al precio normal — muestra el precio promo + el precio original tachado al lado
+  (`.odd-price-original` / `.odd-bar-price-original`). Si no hay precio promo, usa `precioUSD` normal.
+- `OfertaDelDia.jsx` — lee `useOfertaDelDia()`; si no hay oferta activa el componente no renderiza
+  nada (`return null`) para nadie. El countdown (card desktop + barra móvil) cuenta hacia
+  `setAt + 24h` (ya no hacia medianoche) y el widget se auto-oculta solo al llegar a 0, sin reload.
+- **Panel en `/kiki-desk`** (`KikiDeskPage.jsx`) — sección "Oferta del día" debajo de la tasa de
+  cambio: buscador de producto (casa/nombre) con `norm()` + input opcional de precio promo, click en
+  un resultado activa la oferta (`setOfertaDelDiaSanity`) y arranca el countdown de 24h. Mientras
+  está activa, un form aparte (`handleSavePrecioPromo` / `handleClearPrecioPromo`) deja cambiar o
+  quitar el precio promo sin reiniciar el countdown. Botón "Desactivar oferta del día" la quita
+  antes de tiempo. Muestra el producto activo, precio (normal o promo) y tiempo restante en vivo.
+- **Historial** — `kiki-ajustes.ofertaDelDiaHistory` (array, tope 20, más reciente primero,
+  `{ _key, id, setAt, precio? }`). Cada `setOfertaDelDiaSanity()` lee el historial actual, antepone la nueva
+  entrada y lo vuelve a escribir en el mismo `.patch()`. `fetchOfertaDelDiaHistory()` lo lee para
+  mostrarlo. En `/kiki-desk` se ve debajo del botón "Desactivar oferta del día".
+- **`ProductDetail.jsx` también refleja el precio promo** (fix sept 2026 — antes solo lo mostraba el
+  widget flotante, y quien entraba a la página del producto veía el precio normal, inconsistente con
+  lo que prometía el widget). Llama `useOfertaDelDia()`; si `oferta.id === product.id` y
+  `oferta.precio` es menor al `precioUSD` real, arma un `product` local con `precioUSD` = precio promo
+  y `precioOriginalUSD` = precio real + flag `_ofertaDelDiaActiva`. Esto alimenta automáticamente
+  TODO lo que ya lee `product.precioUSD` en esa página — bloque de precio (badge dorado "🔥 OFERTA DEL
+  DÍA" + precio tachado, mayor prioridad que `% DESCUENTO`/Halloween), franja mobile
+  (`.pd-ddp-strip--ofertadia`), mensaje de WhatsApp, share, JSON-LD, y el carrito (`addItem` recibe
+  este `product` ya con el precio promo). El `precioUSD` real en Sanity/`SanityProductsContext` nunca
+  se toca — este override vive solo en el render de esta página, igual que promoHalloween.
+
+## Gestión rápida de productos en /kiki-desk (agotado / precio)
+- `src/hooks/useProductAdmin.js` — `setAgotadoSanity(productId, value)` / `setPrecioSanity(productId, precioUSD)`.
+  Resuelven el `_id` del documento Sanity a partir del `id` numérico (`*[_type == "product" && id == $id][0]{ _id }`)
+  y hacen `.patch(docId).set({...}).commit()` — mismo mecanismo que `scripts/set-agotado.mjs`, pero desde el navegador.
+- Sección "Gestión de productos" en `KikiDeskPage.jsx` — buscador (casa/nombre), al elegir un resultado
+  queda "seleccionado" (copia local editable, no toca el contexto global `SanityProductsContext`): botón
+  Marcar/Desmarcar agotado + input de precio con botón Guardar. Los cambios se reflejan al instante en el
+  panel; el resto del sitio los ve en su próximo fetch normal a Sanity (no hay push en vivo).
+- Sección "Resumen" (arriba de todo, antes de "Tasa de cambio") — 4 tiles derivados de `useIndexProducts()`
+  sin escritura a Sanity: total de productos, agotados, con `descuento > 0`, marcas únicas.
 
 ## PWA
 - `public/manifest.json` — `standalone`, theme `#C9A84C`, iconos `icon-192.png` / `icon-512.png` (any maskable), shortcut a `/tienda`.
@@ -387,14 +455,291 @@ Proyecto Supabase: `dgyjwztiwkricpbkxaxd.supabase.co`
   - `clearTasaSanity()` — borra `tasaManual` de Sanity + limpia cache local
   - `getTasaSanityCache()` — devuelve `{ rate, ts }` del cache local o `null`
   - En mount: fetcha Sanity en vivo (`*[_id == "kiki-ajustes"][0]{ tasaManual }`)
-- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente. Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.** Cuando hay tasa manual activa muestra "· Sanity · visible para todos".
+- **Admin `/kiki-desk`** — `src/pages/KikiDeskPage.jsx`. Página standalone (sin Header/Footer) para gestionar la tasa manualmente y la Oferta del Día (ver su sección propia). Ruta intencionalmente oscura (security by obscurity). **No linkear en ningún lugar del UI.** Cuando hay tasa manual activa muestra "· Sanity · visible para todos". Está fuera del `AppShell`/`ThemeProvider`, pero **sí** hereda el tema global (`data-theme` vive en `<html>`, seteado por el script anti-FOUC) — sus estilos inline usan los tokens reales de `index.css` (`--bg`, `--raised`, `--ink`, `--ink-faint`, `--line`, `--line2`, `--chip`, `--gold`, `--gold-fill-ink`, `--shadow`), **nunca** un color fijo tipo `rgba(255,255,255,…)` o un fallback hardcodeado en el `var()` — eso rompe el contraste en modo claro (`warm`, el default del sitio). Ojo con `--surface`: no es un token real de `index.css` — para el fondo de la card usar `--raised`.
 - Switcher en Header: pill `REF` / `Bs` en desktop + sección MONEDA en menú móvil.
 - **Documento Sanity:** `kiki-ajustes` (singleton `_id: "kiki-ajustes"`). Campo `tasaManual: number`. La tasa de Sanity es global — cuando el admin la cambia, todos los usuarios la ven (con 5min de delay por cache).
 
 ## Tema
-- `src/context/ThemeContext.jsx` — `{ theme, toggleTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`).
+- `src/context/ThemeContext.jsx` — `{ theme, toggleTheme, setTheme }` via `useTheme()`. **El export es `toggleTheme`** (no `toggle`); `setTheme` es el setState crudo, para setear un valor arbitrario (lo usa el toggle de Halloween en Header.jsx).
 - Persiste en `localStorage` clave **`kiki-theme-v2`** (v2 forzó reset de sesiones que tenían el tema oscuro guardado). Default: `'warm'` (no sigue preferencia del sistema).
-- Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`.
+- Dark: sin `data-theme` attribute. Warm: `data-theme="warm"` en `<html>`. Halloween: `data-theme="halloween"` (ver abajo).
+- `toggleTheme()` alterna dark↔warm (`t === 'dark' ? 'warm' : 'dark'`) — si venías de `'halloween'`, también te saca de ahí (cae a `'dark'` porque `t !== 'dark'`).
+
+### Tema Halloween 🎃 (admin-only, NO lo ve el público)
+Tercer valor de `theme`, activado manualmente desde un botón 🎃 en el Header — **solo visible con
+sesión admin** (`isAdmin = !!session`, mismo patrón que el resto de las features admin-only del
+sitio). Un visitante normal nunca ve el botón ni puede activarlo.
+
+- **Paleta** — `[data-theme='halloween']` en `index.css` (justo después del bloque `[data-theme='warm']`)
+  redefine los mismos tokens semánticos que ya usa todo el sitio (`--bg`, `--raised`, `--ink`, `--gold`,
+  `--line`, `--chip`, etc.) con una paleta morada/naranja (`--gold: #FF7A18`). Como el resto del sitio
+  ya está construido sobre estos tokens, **la mayoría de los componentes se reskinean solos** sin tocarlos
+  — la excepción son componentes que hardcodean color en vez de usar `var(--token)` (ver más abajo).
+- **Anti-FOUC**: `index.html` tiene una tercera rama en el script inline (`t === 'halloween'`) para no
+  destellar warm antes de hidratar, igual que ya hacía con `'dark'`.
+- **`HalloweenDecor.jsx`** — capa decorativa fixed (`z-index: 9998`, `pointer-events: none`,
+  `aria-hidden`), montada en `AppShell` (`App.jsx`), se auto-oculta (`return null`) salvo
+  `theme === 'halloween'`: telarañas en las esquinas superiores (`.hwd-cobweb`), 3 murciélagos
+  volando con trayectoria + aleteo vía CSS keyframes (`.hwd-bat`/`.hwd-bat-flap` — **dos animaciones
+  separadas porque ambas tocan `transform`; si comparten el mismo elemento se pisan entre sí**), y una
+  mano esquelética asomando abajo a la izquierda (`.hwd-skeleton-hand`). Todo puramente decorativo,
+  nunca bloquea clics. Respeta `prefers-reduced-motion` (oculta los murciélagos).
+- **Botón 🎃** — en `Header.jsx`, junto al toggle claro/oscuro (desktop) y en el menú móvil, solo
+  renderizado si `isAdmin`. `toggleHalloween = () => setTheme(t => t === 'halloween' ? 'warm' : 'halloween')`.
+- **Componentes que NO heredan los tokens automáticamente** (hardcodean su propia paleta en JS/CSS,
+  hay que extenderlos a mano si el reskin de Halloween los toca):
+  - `Tienda.jsx` — tiene su propio objeto `TIENDA_PALETTES` (dark/warm/halloween) en vez de usar
+    `var(--bg)` etc.; si se agrega un cuarto tema hay que sumarlo ahí también.
+  - `.announcement-bar` (barra superior) — color base hardcodeado (`#040E24, #0A2D72`, azul), con
+    overrides explícitos por tema (`[data-theme='warm'] .announcement-bar`,
+    `[data-theme='halloween'] .announcement-bar`) en vez de tokens.
+  - `ProductCard.jsx` / `Catalog.jsx` — tienen el mismo patrón `theme === 'dark'` pero son **archivos
+    muertos, no los importa nada** (confirmado por grep) — no hace falta tocarlos.
+  - Si algo más se ve "roto" (colores planos, sin contraste) en modo Halloween, sospechar primero de
+    un componente que hardcodea color en vez de usar los tokens — es el mismo patrón que causó el bug
+    del sidebar de `/tienda` (fix: septiembre 2026).
+
+**Propagación del token `--gold` (septiembre 2026):** casi todos los `#C9A84C` hardcodeados fuera de
+`Tienda.jsx` (que tiene su propio `TIENDA_PALETTES`, ver arriba) se reemplazaron por `var(--gold)` —
+`src/index.css` (~29 ocurrencias) y 9 componentes (`VitrinaCard.jsx`, `AuthModal.jsx`,
+`OfertaDelDia.jsx`, `Header.jsx`, `WishlistDrawer.jsx`, `InstallBanner.jsx`, `ProductDetail.jsx`,
+`AdminLoginPage.jsx`, `Tienda.jsx` — en este último solo fuera de `TIENDA_PALETTES`). También el
+shimmer `linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)` → `var(--gold)`/`var(--gold-ink)` en
+3 lugares (`.pd-ddp-strip--ofertadia`, `.vitrina-ribbon > span`, `.vitrina-price-badge`). Efecto: en
+tema Halloween, el dorado ahora se ve naranja vivo (`#FF7A18`) en prácticamente toda la web (badges,
+botones, bordes, hover states, currency pill REF/Bs) en vez de quedar "mustard" en algunos rincones.
+Motivado por bug crítico encontrado en el mismo pase: había un **segundo `--gold: #C9A84C;` duplicado**
+en un `:root {}` legado (bloque con `--ivory`, `--carbon`, `--amber`, etc. — esos SÍ siguen en uso, no
+tocar) que, por igual especificidad y orden de aparición posterior en el archivo, ganaba siempre sobre
+`[data-theme='halloween'] { --gold: ... }` y `[data-theme='warm'] { --gold: ... }` — eliminado (solo esa
+línea), lo cual de paso corrigió el dorado también en modo warm (antes resolvía a un tono distinto al
+esperado). **`ribbon`/badge copy Halloween-aware:** en `Tienda.jsx` y `VitrinaCard.jsx`, cuando
+`theme === 'halloween'` y no hay descuento/promoHalloween, el texto "PROMO DIVISA" cambia a "Precio
+embrujado" (mismo estilo `--halloween` del badge/ribbon, con `PumpkinIcon`). Se agregó
+`[data-theme='halloween'] .ann-cta { color: #B6FF3C; }` (verde tóxico) en `index.css` como variación
+de contraste para texto sobre fondo naranja del announcement bar — en ese momento era un no-op porque
+`AnnouncementBar.jsx` no renderiza ningún elemento con clase `.ann-cta` (sigue así, queda como base si
+se agrega un CTA ahí más adelante). `rgba(201,168,76, X)` (dorado en RGB decimal, usado en varios
+`box-shadow`/`background` translúcidos) **no se tocó** — menor prioridad visual, candidato a un futuro
+`--gold-rgb` token si hace falta.
+
+**Acento verde `--gold-alt` (segunda vuelta, mismo día)** — se formalizó un token propio
+`--gold-alt: #B6FF3C` / `--gold-alt-glow: rgba(182,255,60,0.55)` dentro del bloque
+`[data-theme='halloween']` en `index.css`, y `.ann-cta` pasó a usar `var(--gold-alt)` en vez del hex
+suelto. Se aplicó en 2 lugares reales (no decorativos-inertes):
+- **Botón 🎃 (`Header.jsx`)** — clase extra `halloween-toggle-btn` en el botón desktop y en el link
+  del menú móvil (además de `theme-toggle-btn`/`mobile-util-link`). Regla
+  `[data-theme='halloween'] .halloween-toggle-btn:hover/:focus-visible { border-color/color:
+  var(--gold-alt) }` en `index.css` — antes su hover usaba el mismo `var(--gold)` que el toggle
+  claro/oscuro de al lado, y en tema Halloween ambos se veían iguales (naranja) justo al lado de un
+  header ya lleno de naranja. Ahora el botón admin-only se distingue con verde al pasar el mouse.
+- **Ojos de los murciélagos (`HalloweenDecor.jsx`)** — el SVG `Bat` tiene 2 círculos chicos
+  `fill="var(--gold-alt)"` (con un halo semitransparente detrás para que no se pierdan, son solo
+  34px de ancho en pantalla) en vez de heredar `currentColor` (cream) como el resto del cuerpo.
+  Detalle puramente decorativo/estético, no resuelve un problema de contraste real, es la parte
+  "todo eso" del pedido de variar colores.
+- **Bug real encontrado y arreglado (sept 2026): `--gold` estaba definido DOS VECES en `:root`** — el
+  bloque de tokens semánticos (arriba del todo) y un segundo `:root` legacy más abajo (el que también
+  trae `--ivory`, `--carbon`, `--font-d`, `--font-s`, etc. — esos sí siguen en uso, no tocar). Como
+  ambos son `:root` (misma especificidad que `[data-theme='...']`) y el segundo viene después en el
+  archivo, **siempre ganaba** y dejaba `var(--gold)` fijo en `#C9A84C` sin importar el tema — afectaba
+  a CUALQUIER componente que usara `var(--gold)` directo (ej. el botón "Agregar al carrito" de
+  `ProductDetail.jsx`), no solo Halloween: en modo `warm` también mostraba el gold oscuro en vez del
+  `#9A6820` correcto. Se quitó la línea `--gold` de ese segundo bloque — `--gold` ahora vive *solo* en
+  los 3 bloques de tema (dark/warm/halloween). Si en el futuro `var(--gold)` se ve "apagado"/incorrecto
+  en cualquier tema, revisar que no haya un tercer `:root` sumándose por ahí.
+- **Copy "PROMO DIVISA" / "Promo en divisa"** (badge/cinta por defecto cuando no hay descuento ni
+  promoHalloween) — en modo Halloween usa texto y estilo propios en vez del gold plano de siempre:
+  "🎃 Precio embrujado" / "PRECIO EMBRUJADO", con la misma clase `--halloween` (naranja→morado) que ya
+  usaba el badge real de Oferta Halloween. Tocado en `VitrinaCard.jsx` (badge de precio), `Tienda.jsx`
+  (cinta del grid) y `ProductDetail.jsx` (badge del detalle) — los 3 chequean `theme === 'halloween'`.
+
+**Bug real #2 encontrado y arreglado (mismo día): `rgba(201,168,76, X)` (dorado en RGB decimal) estaba
+hardcodeado en 102 lugares y NUNCA reaccionaba al tema** — a diferencia de `var(--gold)` (hex), los
+`box-shadow`/`background`/`border` que necesitaban un dorado *translúcido* usaban el RGB literal del
+dorado de modo oscuro directo en el `rgba(...)`, así que se quedaban en `rgb(201,168,76)` sin importar
+el tema activo. Esto es justo lo que el usuario reportó como "la pirámide, acordes y cuándo-usarlo a
+veces se ven dorado como siempre" y "los marcos en Tienda/ProductDetail heredan el modo normal": el
+marco circular de cada nota olfativa (`NoteIcon` en `ProductDetail.jsx`), el borde de `.vitrina-display`
+(el marco de cada card en Tienda), el glow de "cuándo usarlo" activo, etc. — todos usaban ese RGB fijo.
+**Fix:** se agregó `--gold-rgb` a los 3 bloques de tema en `index.css` y se reemplazaron las 102
+ocurrencias de `rgba(201,168,76,` por `rgba(var(--gold-rgb),` en `index.css` + `ProductDetail.jsx`,
+`Tienda.jsx`, `VitrinaCard.jsx` (vía `.vitrina-display`), `Header.jsx`, `AuthModal.jsx`,
+`OfertaDelDia.jsx`, `WishlistDrawer.jsx`, `InstallBanner.jsx`, `AdminLoginPage.jsx`,
+`DiaDeLPadrePage.jsx`, `CursorTrail.jsx`. **No se tocaron** `ProductCard.jsx`/`Catalog.jsx` (archivos
+muertos, confirmado). Si en el futuro aparece un dorado translúcido (`rgba(...)`) que no reacciona al
+tema, es casi seguro el mismo patrón: buscar el RGB literal y cambiarlo por `rgba(var(--gold-rgb), X)`.
+
+**Corrección inmediata (mismo día): el valor de `--gold-rgb` para warm rompió el look de todo el modo
+claro.** `--gold-rgb` no es solo para Halloween — alimenta **~70 reglas** `rgba(var(--gold-rgb),X)` en
+`index.css` en TODO el sitio (bordes, dividers, hovers, scrollbar thumb, `::selection`, glows de
+"cuándo usarlo", etc.), no solo las 102 del fix de arriba. Al principio se puso `--gold-rgb: 154, 104,
+32` para warm (el RGB exacto de `--gold` de warm, `#9A6820`) por "corrección" — pero antes del fix,
+**todas esas ~70 reglas ya venían usando el mismo `201,168,76` fijo en los 3 temas** (el bug), así que
+ese tono más claro/dorado es como el modo claro se vio *siempre*, no un color roto. Poner el RGB
+"correcto" y más oscuro de warm ahí cambiaba visiblemente casi todos los bordes/hovers/glows sutiles
+del sitio entero en modo claro de un dorado claro a un marrón oscuro — el usuario lo notó de inmediato
+("el modo claro se rompió, ya no es igual que antes"). **Se revirtió `--gold-rgb` de warm a
+`201, 168, 76`** (igual que dark) — dark y halloween mantienen su fix intacto (`201,168,76` y
+`255,122,24` respectivamente, que sí eran el problema real que el usuario pidió arreglar). Ver el
+comentario en el bloque `[data-theme='warm']` de `index.css` — **no** volver a igualar `--gold-rgb` de
+warm al RGB de su propio `--gold` sin verificar visualmente el sitio completo primero (idealmente con
+capturas antes/después de Tienda, ProductDetail y la pirámide de notas).
+
+**Segunda regresión relacionada, encontrada en la misma revisión: el shimmer de badges/ribbons quedó
+sin contraste en warm — nuevo token `--gold-shine`.** Además del `--gold-rgb` de arriba, el fix
+original de "propagar `--gold`" (ver más arriba en esta misma sección) había convertido el shimmer
+`linear-gradient(90deg, #B8902F, #E8C96A 55%, #B8902F)` (fijo, siempre claro en los 3 temas) a
+`linear-gradient(90deg, var(--gold), var(--gold-ink) 55%, var(--gold))`. Eso funciona en dark/halloween
+(`--gold-ink` es claro ahí), pero **en warm `--gold-ink` es oscuro a propósito** (`#5E3A0E` — pensado
+para texto/hover legible sobre fondo claro, no para ser fondo). El texto de estos badges/ribbons es
+`#1A1208` (casi negro) fijo — con `--gold-ink` oscuro de fondo, el badge se veía un bloque marrón plano
+sin brillo ni contraste ("PROMO DIVISA" y el ribbon diagonal en Tienda/ProductDetail). Reportado por el
+usuario con captura: *"sigue viendose oscuro"*. **Fix:** se agregó un token nuevo `--gold-shine`
+(SIEMPRE claro en los 3 temas: `#E8C96A` dark · `#D9AE4E` warm · `#FFB347` halloween — a diferencia de
+`--gold-ink` que varía a propósito) y se usa *solo* en gradientes de fondo con texto oscuro encima:
+`.vitrina-price-badge`, `.vitrina-ribbon > span`, `.pd-ddp-strip--ofertadia` (los 3 en `index.css`), el
+`badgeStyle` inline de `ProductDetail.jsx`, y el hover del botón "Agregar al carrito" (antes usaba
+`var(--gold-ink)` en el `onMouseEnter`, mismo problema). **Regla general:** `--gold-ink` es para texto/
+borde sobre fondo neutro (documentado, no tocar su valor oscuro en warm); cualquier gradiente de FONDO
+con texto oscuro fijo encima debe usar `--gold-shine`, no `--gold-ink`. Se verificó que no quedan más
+instancias de `var(--gold-ink)` como `background` sin texto claro emparejado (`--gold-fill-ink`) — el
+resto de los usos de `--gold-ink` en el sitio son `color`/`border-color` (correctos) o `background`
+correctamente emparejados con `--gold-fill-ink` (texto claro).
+
+**Más esencia Halloween (mismo día) — `HalloweenDecor.jsx` rediseñado y ampliado:**
+- **Murciélagos rediseñados** — la silueta vieja (una curva tipo "M" continua) se leía como araña, no
+  como murciélago. Ahora `Bat` tiene cuerpo ovalado + 2 orejas puntudas en el centro y 2 alas por lado
+  con lóbulos sólidos bien definidos (nada de líneas finas radiales). Más grandes (`54×27px` el
+  principal, antes `34×17px`) y más opacos (`0.85` base, pico `0.92` en vuelo — antes `0.55`/`0.7`) para
+  que se noten. Se agregó un 4º murciélago (`.hwd-bat-4`). Ojos verde tóxico (`var(--gold-alt)`) con
+  halo, el único detalle en ese color.
+- **`Cobweb` → `SlimeDrip` (reemplazo completo, mismo día, feedback "las telarañas no me convencen,
+  algo tipo slime")** — el componente de telaraña se borró por completo y se reemplazó por
+  `export const SlimeDrip` en `HalloweenDecor.jsx`: una masa de slime pegada a la esquina con varios
+  chorretones colgando de largo distinto (`<path>` tipo gota, terminados a veces en una gotita suelta
+  `<circle>`), gradiente `var(--gold-alt)` (verde tóxico, opacidad 0.9→0.5 de arriba a abajo vía
+  `<linearGradient>`) + 2 brillos `<ellipse>` semitransparentes blancos para efecto gelatinoso. **Usa
+  `useId()` de React para generar el `id` del `<linearGradient>`** — crítico porque `SlimeDrip` se
+  renderiza muchas veces en la misma página (una por card en la grilla de Tienda); un `id` fijo
+  duplicado en el DOM rompe la referencia `url(#...)` en algunos navegadores. Reusado igual que antes
+  (sin duplicar el SVG) en 3 puntos:
+  - Capa global (`HalloweenDecor.jsx`) — esquina superior izquierda, superior derecha (espejada) e
+    inferior derecha (rotada 180°, clase `.hwd-slime-br`) — clases renombradas de `hwd-cobweb(-br)` a
+    `hwd-slime(-br)`.
+  - `.pd-img-slime` en `ProductDetail.jsx` (esquina del display de producto) — antes `.pd-img-cobweb`.
+  - `.vitrina-slime` en `VitrinaCard.jsx` (esquina de cada card de Tienda) — antes `.vitrina-cobweb`.
+
+**`SlimeTopBorder` (segunda vuelta, mismo día — feedback "los slime pueden ocupar todo el marco de
+arriba sin tapar el perfume").** Los dos usos sobre foto de producto (`.pd-img-slime` en
+`ProductDetail.jsx` y `.vitrina-slime` en `VitrinaCard.jsx`) dejaron de usar `SlimeDrip` (una sola
+esquina) y pasaron a un componente nuevo, `export const SlimeTopBorder` en `HalloweenDecor.jsx`: una
+franja ondulada de slime que corre por **todo el ancho** del borde superior de la foto, con varios
+chorretones cortos repartidos a lo largo (nunca bajan más de ~1/3 del alto del SVG, a propósito, para
+no tapar el frasco que siempre queda más centrado/abajo en la foto). `viewBox="0 0 400 70"` +
+`preserveAspectRatio="none"` + `width="100%" height="100%"` para que se estire al ancho real del
+contenedor (una card angosta de 130px en mobile o el display grande de `ProductDetail`) sin verse
+distorsionado — mismo patrón `useId()` que `SlimeDrip` para el `<linearGradient>`. CSS: `.pd-img-slime`
+pasó de `90×90px` fijo a `width: 100%; height: 70px` (`44px` en mobile), `.vitrina-slime` de `52×52px`
+a `width: 100%; height: 34px`. La capa global de esquinas de página (`HalloweenDecor.jsx` — no toca
+fotos de producto) **sigue usando `SlimeDrip`** sin cambios, porque ahí no hay riesgo de "tapar el
+perfume" y el efecto de esquina funciona bien para el chrome general de la página. Si se pide extender
+la franja completa también a la capa global, el patrón es el mismo: `SlimeTopBorder` con
+`position: absolute/fixed; top: 0; left: 0; right: 0`.
+  Todas `theme === 'halloween'`-gated igual que antes. Si se vuelve a pedir "menos slime, más
+  telaraña" o cualquier otro estilo de marco, el patrón a seguir es el mismo: un componente exportado
+  en `HalloweenDecor.jsx`, reusado por className en los 3 puntos de arriba.
+- **`Moon`** — luna creciente verde tóxico (`var(--gold-alt)`, glow a juego), fija arriba a la derecha
+  del header, estática (no anima).
+- **`Pumpkin`** — calabaza tallada abajo a la derecha (dorada, cara/ojos en verde tóxico), simétrica a
+  la mano esquelética de la izquierda.
+- **Línea verde bajo el nav** — `.header-cat-nav` (la barra negra donde viven Colección/Nosotros/
+  Instagram) tiene `border-top` + `box-shadow` en `var(--gold-alt)` cuando `theme === 'halloween'`, en
+  vez del borde gris sutil de siempre.
+
+**Verde también como relleno, no solo líneas (mismo día, tercera vuelta)** — el usuario pidió
+explícitamente que el verde no se quedara solo en bordes/acentos puntuales. Se agregaron rellenos
+(`fill`/`background`, no `border`/`color`) en varios puntos:
+- `.header-cat-nav` — además del `border-top` verde, ahora el fondo de la barra completa es un
+  `linear-gradient(90deg, rgba(182,255,60,0.16), rgba(0,0,0,0.82) 30%, rgba(0,0,0,0.82) 70%,
+  rgba(182,255,60,0.16))` (tinte verde en los extremos, negro en el centro) en vez de negro plano.
+  `.header-cat-link.active` también pasa a `var(--gold-alt)` en Halloween (antes seguía en
+  `var(--gold-ink)` aunque el resto del chrome ya fuera verde/naranja).
+- **Botón 🎃 (`halloween-toggle-btn`)** — el hover ya no es solo borde+texto verde, ahora es
+  `background: var(--gold-alt)` sólido con texto oscuro (`#0D2E00`) encima + glow — el mismo patrón
+  que un botón primario relleno, no un outline.
+- **`HalloweenDecor.jsx`** — la araña chiquita del `Cobweb` pasa de cream a `fill="var(--gold-alt)"`
+  (cuerpo relleno, no solo trazo). El tallo de la `Pumpkin` pasa de marrón a verde relleno (además de
+  ser el color real de un tallo de calabaza). 2 de las 5 "uñas" de la `SkeletonHand` son círculos
+  rellenos en verde (glow de descomposición) en vez de las 5 en cream parejo.
+
+**Ronda de "qué más le agregarías" (mismo día) — más atmósfera + nombres propios de campaña:**
+- **Nombres spooky** (solo `theme === 'halloween'`, el resto de los visitantes ve el texto normal):
+  - `CartDrawer.jsx` — título "Mi Carrito" → "🎃 Carrito del Inframundo".
+  - `WishlistDrawer.jsx` — título "Lista de deseos" → "💀 Lista de los Condenados".
+  - `ProductDetail.jsx` — botón principal "Agregar al carrito" → "🎃 Invocar al inframundo", estado
+    agregado "✓ Agregado" → "✓ Invocado". (La barra sticky móvil con el mismo texto no se tocó — está
+    `display: none` siempre, es código muerto, ver comentario existente en `index.css`.)
+- **Niebla en el Hero** (`Hero.jsx`, `.hero-mist`) — 2 capas `radial-gradient` (verde tóxico + naranja)
+  ancladas al tercio inferior, con drift horizontal lento (`heroMistDrift`, 22s/28s, direcciones opuestas)
+  y `filter: blur()`. `z-index: 3`, entre el fondo (`z-index: 2`) y el contenido (`z-index: 5`) —
+  nunca tapa el título. Ojo: hubo que subir bastante la opacidad de las capas (0.16/0.10 → 0.38/0.24)
+  porque contra el hero ya oscuro casi no se notaba — si se agrega niebla en otra sección más clara,
+  probablemente haya que bajarla de nuevo.
+- **WhatsAppFab con calabaza** (`WhatsAppFab.jsx`) — badge `🎃` chiquito (`position: absolute; top: -4;
+  right: -4`) sobre el ícono de WhatsApp normal cuando `theme === 'halloween'`. A propósito NO se
+  reemplazó el ícono de WhatsApp completo — sigue siendo reconocible como botón de WhatsApp (mismo
+  verde, misma posición), solo con un detalle de campaña encima.
+- **`CursorTrail.jsx` con chispas verdes — de paso, bug real encontrado y arreglado.** El trail
+  hardcodeaba `ctx.fillStyle = "rgba(var(--gold-rgb),...)"` (interpolando `p.life * 0.5` como alpha) desde el fix de
+  `--gold-rgb` de esta misma sesión (ver más arriba) — **canvas 2D no resuelve custom properties de
+  CSS**, así que ese `fillStyle` era inválido, el navegador lo ignoraba silenciosamente y el trail
+  quedaba pintando en negro (el valor por defecto) en vez de dorado, sin ningún error visible. Fix:
+  un mapa `TRAIL_RGB_BY_THEME` en JS con el RGB literal por tema (`dark`/`warm`: `'201,168,76'` ·
+  `halloween`: `'182,255,60'`, verde en vez de dorado — pedido explícito de "chispas verdes"), leído
+  una vez por `theme` (el `useEffect` principal ahora depende de `[theme]` en vez de `[]`, así se
+  reinicia con el color correcto cuando cambia el tema). **Regla general:** ningún canvas 2D puede usar
+  `var(--token)` en `fillStyle`/`strokeStyle` — siempre necesita el valor RGB ya resuelto en JS.
+- **Confeti de murciélagos al "Invocar al inframundo"** (`ProductDetail.jsx`, `.pd-bat-burst`) — al
+  hacer click en el botón principal con `theme === 'halloween'`, 3 `Bat` (ahora exportado desde
+  `HalloweenDecor.jsx`) salen volando del botón y se desvanecen en ~0.85s (`pdBatBurstLeft/Up/Right`).
+  Los murciélagos son oscuros (`#1A0E2E`) con `filter: drop-shadow(0 0 3px rgba(245,233,216,0.7))` —
+  sin el glow claro se pierden contra fondos oscuros, el silueteado blanco es lo que los hace legibles.
+- **Flash teatral al activar Halloween** (`Header.jsx` + `.hween-flash-overlay` en `index.css`) — al
+  tocar el botón 🎃 para ENTRAR al tema (no al salir), un overlay `position: fixed; inset: 0;
+  z-index: 99999` hace un flash negro→naranja→negro de 0.65s (`@keyframes hweenFlash`), como un
+  "portal abriéndose". Estado `hweenFlash` en `Header.jsx`, se automonta/desmonta con `setTimeout`
+  (no queda un listener ni nada colgado). Respeta `prefers-reduced-motion`.
+- **Guiño en el footer** (`Footer.jsx`, `.kf-copy`) — el copyright suma " · Boo! 🎃" al final solo en
+  Halloween.
+
+**QA de mobile (mismo día) — 2 bugs reales encontrados con capturas ≤767px y arreglados:**
+- **`.hwd-pumpkin`, `.hwd-skeleton-hand` y `.hwd-slime-br` tapaban el `BottomNav`.** Las 3 son
+  `position: fixed` ancladas cerca del borde inferior de la pantalla (pensadas para desktop, donde no
+  hay barra inferior). En mobile (`≤1023px`, el breakpoint del propio `.bottom-nav`) quedaban
+  literalmente encima de "INICIO"/"ENTRAR". Fix: nuevo `@media (max-width: 1023px)` en `index.css`
+  que sube `bottom` de las 3 a `calc(60px + env(safe-area-inset-bottom, 0px) + X)` — mismo cálculo que
+  ya usa `WhatsAppFab` para flotar sobre el `BottomNav`. Ojo con el orden de las reglas: había un
+  `@media (max-width: 640px) { .hwd-skeleton-hand { bottom: -6px !important } }` **más abajo en el
+  archivo** que, por venir después en el orden de aparición (misma especificidad + `!important`),
+  pisaba el fix nuevo — se le quitó esa línea a esa regla vieja, dejando el `bottom` resuelto en un
+  solo lugar.
+- **`.hwd-layer` (`z-index: 9998`) tapaba los drawers de carrito/wishlist** (`z-index: 9990`/`9991` en
+  `.wl-drawer`) — con la wishlist abierta, la calabaza y la mano se veían encima del botón "AGREGAR
+  TODO AL CARRITO". Fix: `.hwd-layer` bajó a `z-index: 60` — sigue flotando sobre `.kiki-header` (40)
+  y `.bottom-nav` (50), pero cualquier drawer/modal real (70+) lo tapa como corresponde. **Regla
+  general:** cualquier capa decorativa `position: fixed` de página completa debe quedar con un
+  `z-index` bajo (<70) para no competir con drawers/modales — reservar `9990+` solo para UI real
+  (carrito, wishlist, auth). El flash `.hween-flash-overlay` (`z-index: 99999`) es la única excepción
+  intencional — es un efecto de transición de un solo uso, pensado para tapar literalmente todo.
+- **Confirmado sin overflow horizontal** (`scrollWidth === innerWidth`, viewport 390px) en landing,
+  Tienda, ProductDetail, menú móvil, drawers de carrito/wishlist y footer, en warm y en Halloween.
+- Nota sobre QA con Playwright en este proyecto: `.pd-sticky-bar`/`.pd-sticky-btn` (el segundo botón
+  "Agregar al carrito" — ver comentario existente en `index.css`, siempre `display: none`) puede
+  hacer que un selector ambiguo tipo `page.$('button:has-text("Agregar al carrito")')` matchee el
+  botón muerto en vez del real y dé resultados sin sentido al clickear con `force: true` (dispara el
+  evento en coordenadas fantasma). Usar `page.locator(...).first()` o un selector más específico
+  (`.pd-actions button`) para evitar el ambiguo.
 
 ## BrandStory
 Rediseñada en junio 2026 a estilo full-bleed (clases `bs2-*`):

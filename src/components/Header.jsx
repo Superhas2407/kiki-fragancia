@@ -75,14 +75,14 @@ function CartButton() {
         justifyContent: 'center', padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
-      onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+      onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
       onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <CartIcon size={20} />
       {count > 0 && (
         <span style={{
           position: 'absolute', top: -2, right: -4,
-          background: '#C9A84C', color: '#0A0A0A',
+          background: 'var(--gold)', color: '#0A0A0A',
           fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-s)',
           width: 16, height: 16, borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -109,7 +109,7 @@ function WishlistButton() {
         justifyContent: 'center', padding: '4px', minHeight: 44,
         transition: 'color .2s',
       }}
-      onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+      onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
       onMouseLeave={e => e.currentTarget.style.color = ''}
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -118,7 +118,7 @@ function WishlistButton() {
       {count > 0 && (
         <span style={{
           position: 'absolute', top: -2, right: -4,
-          background: '#C9A84C', color: '#0A0A0A',
+          background: 'var(--gold)', color: '#0A0A0A',
           fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-s)',
           width: 16, height: 16, borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -132,10 +132,22 @@ function WishlistButton() {
 
 export default function Header() {
   const allProducts = useIndexProducts()
-  const { theme, toggleTheme: toggle } = useTheme()
+  const { theme, toggleTheme: toggle, setTheme } = useTheme()
   const { currency, setCurrency } = useCurrency()
   const { ids: wishlistIds, setDrawerOpen: openWishlist, authModalOpen, setAuthModalOpen } = useWishlist()
   const { session } = useAuth()
+  const isAdmin = !!session
+  // Tema Halloween: admin-only, ver ThemeContext.jsx / HalloweenDecor.jsx / CLAUDE.md
+  const [hweenFlash, setHweenFlash] = useState(false)
+  const toggleHalloween = () => {
+    // Flash teatral (negro → naranja → negro) solo al ENTRAR a Halloween,
+    // como un "portal" abriéndose — salir es instantáneo, sin efecto.
+    if (theme !== 'halloween') {
+      setHweenFlash(true)
+      setTimeout(() => setHweenFlash(false), 650)
+    }
+    setTheme(t => (t === 'halloween' ? 'warm' : 'halloween'))
+  }
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
@@ -273,6 +285,13 @@ export default function Header() {
                 aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
                 {theme === 'dark' ? '☀' : '☾'}
               </button>
+              {isAdmin && (
+                <button onClick={toggleHalloween} className="theme-toggle-btn halloween-toggle-btn"
+                  title={theme === 'halloween' ? 'Salir del tema Halloween (solo vos lo ves)' : 'Previsualizar tema Halloween (solo vos lo ves)'}
+                  aria-label={theme === 'halloween' ? 'Salir del tema Halloween' : 'Activar tema Halloween'}>
+                  🎃
+                </button>
+              )}
             </span>
           </div>
 
@@ -292,7 +311,7 @@ export default function Header() {
             </div>
             <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn"
               style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, minWidth: 44, minHeight: 44, transition: 'color .2s' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
               onMouseLeave={e => e.currentTarget.style.color = ''}
             >
               <SearchIcon />
@@ -304,7 +323,7 @@ export default function Header() {
                 aria-label={session ? 'Mi cuenta' : 'Iniciar sesión'}
                 className="header-icon-btn"
                 style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4px', minHeight: 44, transition: 'color .2s' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#C9A84C'}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
                 onMouseLeave={e => e.currentTarget.style.color = ''}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill={session ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -315,13 +334,13 @@ export default function Header() {
               {userMenuOpen && session && (
                 <div style={{
                   position: 'absolute', top: '100%', right: 0, marginTop: 8,
-                  background: '#0F0D0A', border: '1px solid rgba(201,168,76,0.15)',
+                  background: '#0F0D0A', border: '1px solid rgba(var(--gold-rgb),0.15)',
                   padding: '8px 0', minWidth: 180, zIndex: 50,
                 }}>
                   <p style={{ padding: '8px 16px', color: 'rgba(247,242,234,0.45)', fontSize: 10, letterSpacing: '0.1em' }}>
                     {session.user.email}
                   </p>
-                  <div style={{ height: 1, background: 'rgba(201,168,76,0.1)', margin: '4px 0' }} />
+                  <div style={{ height: 1, background: 'rgba(var(--gold-rgb),0.1)', margin: '4px 0' }} />
                   <button onClick={async () => { await supabase.auth.signOut(); setUserMenuOpen(false) }} style={{
                     width: '100%', padding: '8px 16px', background: 'none', border: 'none',
                     color: '#F7F2EA', fontSize: 11, textAlign: 'left', cursor: 'pointer',
@@ -444,6 +463,11 @@ export default function Header() {
           <button onClick={toggle} className="mobile-util-link">
             {theme === 'dark' ? '☀ Modo claro' : '☾ Modo oscuro'}
           </button>
+          {isAdmin && (
+            <button onClick={toggleHalloween} className="mobile-util-link halloween-toggle-btn">
+              {theme === 'halloween' ? '🎃 Salir de Halloween' : '🎃 Tema Halloween'}
+            </button>
+          )}
           <div className="mobile-currency-row">
             {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => (
               <button key={val} onClick={() => setCurrency(val)} className={`mobile-currency-btn${currency === val ? ' active' : ''}`}>
@@ -559,6 +583,7 @@ export default function Header() {
         </>
       )}
       <AuthModal open={authOpen || authModalOpen} onClose={() => { setAuthOpen(false); setAuthModalOpen(false) }} />
+      {hweenFlash && <div className="hween-flash-overlay" aria-hidden="true" />}
     </>
   )
 }

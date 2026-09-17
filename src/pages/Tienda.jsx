@@ -76,8 +76,8 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
     >
       <span style={{
         width: 15, height: 15, flexShrink: 0,
-        border: checked ? '1px solid #C9A84C' : '1px solid var(--line)',
-        background: checked ? '#C9A84C' : 'transparent',
+        border: checked ? '1px solid var(--gold)' : '1px solid var(--line)',
+        background: checked ? 'var(--gold)' : 'transparent',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.18s, border-color 0.18s',
       }}>
@@ -97,7 +97,7 @@ function GoldCheckbox({ label, checked, onToggle, count }) {
       {count !== undefined && (
         <span style={{
           fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
-          color: checked ? '#C9A84C' : 'var(--ink-faint)', transition: 'color 0.18s',
+          color: checked ? 'var(--gold)' : 'var(--ink-faint)', transition: 'color 0.18s',
         }}>
           {count}
         </span>
@@ -210,7 +210,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
           Filtrar
         </span>
         {hasFilters && (
-          <button onClick={clearFilters} style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+          <button onClick={clearFilters} style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             Limpiar
           </button>
         )}
@@ -228,9 +228,9 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
             >
               <span style={{
                 width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
-                background: active ? '#C9A84C' : 'transparent',
-                border: `1px solid ${active ? '#C9A84C' : 'var(--line)'}`,
-                boxShadow: active ? '0 0 0 2px rgba(201,168,76,0.18)' : 'none',
+                background: active ? 'var(--gold)' : 'transparent',
+                border: `1px solid ${active ? 'var(--gold)' : 'var(--line)'}`,
+                boxShadow: active ? '0 0 0 2px rgba(var(--gold-rgb),0.18)' : 'none',
               }} />
               <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em', transition: 'color 0.18s' }}>
                 {label}
@@ -378,11 +378,11 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
       >
         <span style={{
           width: 15, height: 15, flexShrink: 0,
-          border: active ? '1px solid #C9A84C' : '1px solid var(--line)',
+          border: active ? '1px solid var(--gold)' : '1px solid var(--line)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'border-color 0.18s',
         }}>
-          {active && <span style={{ width: 6, height: 6, background: '#C9A84C' }}/>}
+          {active && <span style={{ width: 6, height: 6, background: 'var(--gold)' }}/>}
         </span>
         <span style={{
           fontFamily: "'KikiGotham', sans-serif", fontSize: 12, fontWeight: active ? 400 : 300,
@@ -396,8 +396,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
   const sectionLabel = (text) => (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-      <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-      <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+      <span style={{ width: 18, height: 1, background: 'var(--gold)', flexShrink: 0 }}/>
+      <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--gold)' }}>
         {text}
       </span>
     </div>
@@ -416,7 +416,7 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           <button onClick={clearFilters} style={{
             fontFamily: "'KikiGotham', sans-serif", fontSize: 9,
             letterSpacing: '0.15em', textTransform: 'uppercase',
-            color: '#C9A84C', background: 'none', border: 'none', cursor: 'pointer', padding: 0,
+            color: 'var(--gold)', background: 'none', border: 'none', cursor: 'pointer', padding: 0,
           }}>
             Limpiar
           </button>
@@ -433,8 +433,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
               style={{ display: 'flex', alignItems: 'center', gap: 12, width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '8px 0' }}>
               <span style={{
                 width: 7, height: 7, borderRadius: '50%', flexShrink: 0, transition: 'all 0.18s',
-                background: active ? '#C9A84C' : 'transparent',
-                border: `1px solid ${active ? '#C9A84C' : 'var(--line)'}`,
+                background: active ? 'var(--gold)' : 'transparent',
+                border: `1px solid ${active ? 'var(--gold)' : 'var(--line)'}`,
               }} />
               <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, fontWeight: active ? 400 : 300, color: active ? 'var(--ink)' : 'var(--ink-mute)', letterSpacing: '0.03em' }}>
                 {label}
@@ -451,8 +451,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          <span style={{ width: 18, height: 1, background: 'var(--gold)', flexShrink: 0 }}/>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--gold)' }}>
             Por ocasión
           </span>
         </div>
@@ -483,8 +483,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          <span style={{ width: 18, height: 1, background: 'var(--gold)', flexShrink: 0 }}/>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--gold)' }}>
             Categoría
           </span>
         </div>
@@ -535,8 +535,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          <span style={{ width: 18, height: 1, background: 'var(--gold)', flexShrink: 0 }}/>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--gold)' }}>
             Concentración
           </span>
         </div>
@@ -564,8 +564,8 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
 
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
-          <span style={{ width: 18, height: 1, background: '#C9A84C', flexShrink: 0 }}/>
-          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          <span style={{ width: 18, height: 1, background: 'var(--gold)', flexShrink: 0 }}/>
+          <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--gold)' }}>
             Marca
           </span>
         </div>
@@ -589,19 +589,31 @@ export default function Tienda() {
   const { currency } = useCurrency()
   const { session } = useAuth()
   const isAdmin = !!session
-  const isDark = theme === 'dark'
-  const C = {
-    bg:       isDark ? '#0A0A0A'               : '#EAE0CC',
-    bg2:      isDark ? '#0E0C08'               : '#F2E9D6',
-    ink:      isDark ? '#F7F2EA'               : '#1A1208',
-    inkMute:  isDark ? 'rgba(247,242,234,0.5)' : 'rgba(35,26,13,0.80)',
-    inkFaint: isDark ? 'rgba(247,242,234,0.3)' : 'rgba(35,26,13,0.58)',
-    line:     isDark ? 'rgba(201,168,76,0.18)' : 'rgba(150,118,52,0.38)',
-    line2:    isDark ? 'rgba(247,242,234,0.07)': 'rgba(35,26,13,0.15)',
-    gold:     '#C9A84C',
-    goldInk:  isDark ? '#E8C96A'               : '#6B5010',
-    chip:     isDark ? 'rgba(247,242,234,0.05)': 'rgba(35,26,13,0.07)',
+  // Tienda tiene su propia paleta hardcodeada en JS (no los tokens --bg/--ink de
+  // index.css) — antes solo contemplaba dark/warm vía un ternario binario, así que
+  // el tema 'halloween' (admin-only, ver ThemeContext.jsx) caía siempre a warm por
+  // no ser 'dark'. Ahora es un lookup por los 3 valores posibles de theme.
+  const TIENDA_PALETTES = {
+    dark: {
+      bg: '#0A0A0A', bg2: '#0E0C08', ink: '#F7F2EA',
+      inkMute: 'rgba(247,242,234,0.5)', inkFaint: 'rgba(247,242,234,0.3)',
+      line: 'rgba(var(--gold-rgb),0.18)', line2: 'rgba(247,242,234,0.07)',
+      gold: '#C9A84C', goldInk: '#E8C96A', chip: 'rgba(247,242,234,0.05)',
+    },
+    warm: {
+      bg: '#EAE0CC', bg2: '#F2E9D6', ink: '#1A1208',
+      inkMute: 'rgba(35,26,13,0.80)', inkFaint: 'rgba(35,26,13,0.58)',
+      line: 'rgba(150,118,52,0.38)', line2: 'rgba(35,26,13,0.15)',
+      gold: '#C9A84C', goldInk: '#6B5010', chip: 'rgba(35,26,13,0.07)',
+    },
+    halloween: {
+      bg: '#0D0616', bg2: '#150A22', ink: '#F5E9D8',
+      inkMute: 'rgba(245,233,216,0.65)', inkFaint: 'rgba(245,233,216,0.35)',
+      line: 'rgba(255,122,24,0.35)', line2: 'rgba(245,233,216,0.12)',
+      gold: '#FF7A18', goldInk: '#FFB347', chip: 'rgba(255,122,24,0.08)',
+    },
   }
+  const C = TIENDA_PALETTES[theme] ?? TIENDA_PALETTES.warm
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const [, startTransition] = useTransition()
@@ -869,11 +881,11 @@ export default function Tienda() {
               >
                 <div style={{
                   display: 'flex', alignItems: 'center',
-                  border: `1px solid ${searchFocused ? '#C9A84C' : 'rgba(201,168,76,0.3)'}`,
+                  border: `1px solid ${searchFocused ? 'var(--gold)' : 'rgba(var(--gold-rgb),0.3)'}`,
                   background: 'var(--raised)', padding: '0 16px', gap: 12,
                   transition: 'border-color 0.2s',
                 }}>
-                  <span style={{ color: searchFocused ? '#C9A84C' : 'var(--ink-faint)', display: 'flex', flexShrink: 0, transition: 'color 0.2s' }}>
+                  <span style={{ color: searchFocused ? 'var(--gold)' : 'var(--ink-faint)', display: 'flex', flexShrink: 0, transition: 'color 0.2s' }}>
                     <SearchIcon />
                   </span>
                   <input
@@ -916,8 +928,8 @@ export default function Tienda() {
                       style={{
                         fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
                         letterSpacing: '0.15em', textTransform: 'uppercase',
-                        color: '#C9A84C', background: 'none',
-                        border: '1px solid rgba(201,168,76,0.35)', padding: '10px 20px', cursor: 'pointer',
+                        color: 'var(--gold)', background: 'none',
+                        border: '1px solid rgba(var(--gold-rgb),0.35)', padding: '10px 20px', cursor: 'pointer',
                       }}
                     >
                       Ver todas
@@ -937,8 +949,16 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              ribbon={product.promoHalloween ? 'Oferta Halloween' : currency === 'usd' && product.precioUSD > 0 ? 'Promo en divisa' : null}
-                              ribbonVariant={product.promoHalloween ? 'halloween' : null}
+                              ribbon={
+                                product.promoHalloween ? 'Oferta Halloween'
+                                : currency === 'usd' && product.precioUSD > 0
+                                  ? (theme === 'halloween' ? 'Precio embrujado' : 'Promo en divisa')
+                                  : null
+                              }
+                              ribbonVariant={
+                                product.promoHalloween || (theme === 'halloween' && currency === 'usd' && product.precioUSD > 0)
+                                  ? 'halloween' : null
+                              }
                             />
                           </div>
                         ))}
@@ -1012,7 +1032,7 @@ export default function Tienda() {
           <button
             onClick={() => setDrawerOpen(false)}
             style={{
-              width: '100%', background: '#C9A84C', color: '#0A0A0A', border: 'none',
+              width: '100%', background: 'var(--gold)', color: '#0A0A0A', border: 'none',
               padding: 14, fontFamily: "'KikiGotham', sans-serif",
               fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
               fontWeight: 300, cursor: 'pointer',

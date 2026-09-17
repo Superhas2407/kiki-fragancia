@@ -5,6 +5,8 @@ import { useWishlist } from '../context/WishlistContext'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
+import { useTheme } from '../context/ThemeContext'
+import { SlimeTopBorder } from './HalloweenDecor'
 import { toSlug } from '../lib/slugs'
 
 // ============================================================
@@ -100,6 +102,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
   const tasa = useTasaCambio()
   const { currency } = useCurrency()
+  const { theme } = useTheme()
   const imgSrc = resolveProductImage(product)
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
@@ -127,6 +130,9 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
       aria-label={`${product.house} ${product.name}`}
     >
       <div className="vitrina-display">
+        {theme === 'halloween' && (
+          <SlimeTopBorder className="vitrina-slime" style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, pointerEvents: 'none' }} aria-hidden="true" />
+        )}
 
         <div
           className="vitrina-spotlight"
@@ -175,7 +181,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           aria-label={wishlisted ? 'Quitar de lista de deseos' : 'Agregar a lista de deseos'}
         >
           {wishlisted ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#C9A84C" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
             </svg>
           ) : (
@@ -270,6 +276,8 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
                 ) : product.promoHalloween ? (
                   <span className="vitrina-price-badge vitrina-price-badge--halloween"><PumpkinIcon size={9} />Oferta Halloween</span>
+                ) : theme === 'halloween' ? (
+                  <span className="vitrina-price-badge vitrina-price-badge--halloween"><PumpkinIcon size={9} />Precio embrujado</span>
                 ) : (
                   <span className="vitrina-price-badge">PROMO DIVISA</span>
                 )}

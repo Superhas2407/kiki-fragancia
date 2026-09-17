@@ -71,7 +71,7 @@ export default function WishlistDrawer() {
         {/* Header */}
         <div className="wl-header">
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 0 }}>
-            <span className="wl-title">Lista de deseos</span>
+            <span className="wl-title">{theme === 'halloween' ? '💀 Lista de los Condenados' : 'Lista de deseos'}</span>
             {products.length > 0 && (
               <span className="wl-count">{products.length} {products.length === 1 ? 'fragancia' : 'fragancias'}</span>
             )}
@@ -89,8 +89,8 @@ export default function WishlistDrawer() {
         {!session && products.length > 0 && (
           <div style={{
             margin: '0 0 0 0', padding: '12px 20px',
-            background: 'rgba(201,168,76,0.07)',
-            borderBottom: '1px solid rgba(201,168,76,0.12)',
+            background: 'rgba(var(--gold-rgb),0.07)',
+            borderBottom: '1px solid rgba(var(--gold-rgb),0.12)',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
           }}>
             <p style={{ margin: 0, fontSize: 11, color: 'rgba(247,242,234,0.65)', lineHeight: 1.4 }}>
@@ -100,7 +100,7 @@ export default function WishlistDrawer() {
               onClick={() => { setDrawerOpen(false); setAuthModalOpen(true) }}
               style={{
                 flexShrink: 0, padding: '7px 14px', background: 'none',
-                border: '1px solid rgba(201,168,76,0.5)', color: '#C9A84C',
+                border: '1px solid rgba(var(--gold-rgb),0.5)', color: 'var(--gold)',
                 fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', cursor: 'pointer',
               }}
             >

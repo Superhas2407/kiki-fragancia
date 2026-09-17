@@ -39,11 +39,14 @@ export function ThemeProvider({ children }) {
   }, [])
 
   function toggleTheme() {
+    // Alterna entre claro/oscuro. Si venías de 'halloween' (theme especial,
+    // admin-only), esto también te saca de ahí — cae a 'dark' porque
+    // t !== 'dark' en ese caso, igual que si vinieras de 'warm'.
     setTheme(t => (t === 'dark' ? 'warm' : 'dark'))
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   )
