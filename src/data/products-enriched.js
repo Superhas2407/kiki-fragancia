@@ -13541,5 +13541,58 @@ export const products = [
     "ml": 80,
     "precioUSD": 25,
     "categoria": "disenador"
+  },
+  {
+    "id": 471,
+    "house": "MACARENA",
+    "name": "Bitcoin for Women Eau de Parfum",
+    "image": null,
+    "familia": "Floral",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "Bitcoin for Women Eau de Parfum (100ml) es una fragancia moderna y magnética diseñada para la mujer vanguardista y segura de sí misma. Perteneciente a la familia olfativa Floral-Frutal, este aroma abre con una vibrante y jugosa combinación de fresa, manzana roja y grosella negra. En su corazón, la delicadeza del jazmín, la rosa y la fresia aportan una elegancia ultrafemenina, mientras que su fondo cálido de sándalo, ámbar y un toque de frambuesa garantiza una estela duradera y sofisticada. Es la alternativa perfecta, lujosa y accesible, para quienes buscan un aroma dulce, versátil y lleno de personalidad para el día a día o noches especiales.\n",
+    "description": "Bitcoin for Women Eau de Parfum (100ml) es una fragancia moderna y magnética diseñada para la mujer vanguardista y segura de sí misma. Perteneciente a la familia olfativa Floral-Frutal, este aroma abre con una vibrante y jugosa combinación de fresa, manzana roja y grosella negra. En su corazón, la delicadeza del jazmín, la rosa y la fresia aportan una elegancia ultrafemenina, mientras que su fondo cálido de sándalo, ámbar y un toque de frambuesa garantiza una estela duradera y sofisticada. Es la alternativa perfecta, lujosa y accesible, para quienes buscan un aroma dulce, versátil y lleno de personalidad para el día a día o noches especiales.\n",
+    "notasSalida": "fresa, grosella negra, manzana roja",
+    "notasCorazon": "fresia, jazmín, rosa",
+    "notasFondo": "frambuesa, almizcle, sandalo, ambar",
+    "notes": [
+      "fresa",
+      "grosella negra",
+      "manzana roja",
+      "fresia",
+      "jazmín",
+      "rosa",
+      "frambuesa",
+      "almizcle",
+      "sandalo",
+      "ambar"
+    ],
+    "ml": 100,
+    "precioUSD": 30,
+    "categoria": "disenador",
+    "agotado": true
+  },
+  {
+    "id": 472,
+    "house": "BENETTON",
+    "name": "Sisterland Golden Vanilla",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "Sisterland Golden Vanilla de Benetton es una fragancia de la familia olfativa Floral Frutal Gourmand para Mujeres. Sisterland Golden Vanilla se lanzó en 2024. Las Notas de Salida son pera, bergamota, neroli y pimienta rosa; las Notas de Corazón son lavanda, jazmín sambac (sampaguita) y rosa; las Notas de Fondo son vainilla, caramelo, sándalo y almizcle.",
+    "description": "Sisterland Golden Vanilla de Benetton es una fragancia de la familia olfativa Floral Frutal Gourmand para Mujeres. Sisterland Golden Vanilla se lanzó en 2024. Las Notas de Salida son pera, bergamota, neroli y pimienta rosa; las Notas de Corazón son lavanda, jazmín sambac (sampaguita) y rosa; las Notas de Fondo son vainilla, caramelo, sándalo y almizcle.",
+    "notasSalida": "pera, bergamota, neroli, pimienta rosa",
+    "notasCorazon": null,
+    "notasFondo": null,
+    "notes": [
+      "pera",
+      "bergamota",
+      "neroli",
+      "pimienta rosa"
+    ],
+    "ml": 80,
+    "precioUSD": 30,
+    "categoria": "disenador"
   }
 ]

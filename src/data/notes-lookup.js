@@ -470,5 +470,7 @@ export const notesLookup = {
   467: "orquídea de vainilla, manzana, peonia, vainilla bourbon, almizcle, jazmín, vainilla, almizcle, ambar",
   468: "lichi, pera, kiwi, quequito, chocolate blanco, jazmín, orquídea, pachulí, notas amaderadas, almizcle, raíz de lirio",
   469: "pera, naranja, pimienta negra, peonía, flor de azahar del naranjo, madera de guayaco, praliné, vainilla, sandalo",
-  470: "madreselva, bergamota, naranja, jazmín, frangipani, ylang-ylang, leche, almizcle, notas amaderadas"
+  470: "madreselva, bergamota, naranja, jazmín, frangipani, ylang-ylang, leche, almizcle, notas amaderadas",
+  471: "fresa, grosella negra, manzana roja, fresia, jazmín, rosa, frambuesa, almizcle, sandalo, ambar",
+  472: "pera, bergamota, neroli, pimienta rosa"
 }
