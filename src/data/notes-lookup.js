@@ -293,7 +293,6 @@ export const notesLookup = {
   291: "Cardamomo, Lavanda, Bergamota, Tabaco, Haba tonka, Pimienta negra, Cedro, Ámbar, Vainilla",
   292: "Fresa, Mandarina, Flor de cerezo, Orquídea, Rosa, Jazmín, Almizcle, Vainilla, Cachemira",
   293: "Pera, Frambuesa, Bergamota, Rosa, Jazmín, Orquídea, Almizcle blanco, Vainilla, Cachemira",
-  293: "Pera, Frambuesa, Bergamota, Rosa, Jazmín, Orquídea, Almizcle blanco, Vainilla, Cachemira",
   294: "Mandarina, Pomelo, Canela, Salvia, Geranio, Rosa, Cedro, Ámbar, Sándalo",
   295: "Bergamota, Pomelo, Menta, Lavanda, Geranio, Cedro, Almizcle, Ámbar, Madera",
   296: "Bergamota, Limón, Cardamomo, Iris, Rosa, Vetiver, Oud, Ámbar, Almizcle",
@@ -472,5 +471,6 @@ export const notesLookup = {
   469: "pera, naranja, pimienta negra, peonía, flor de azahar del naranjo, madera de guayaco, praliné, vainilla, sandalo",
   470: "madreselva, bergamota, naranja, jazmín, frangipani, ylang-ylang, leche, almizcle, notas amaderadas",
   471: "fresa, grosella negra, manzana roja, fresia, jazmín, rosa, frambuesa, almizcle, sandalo, ambar",
-  472: "pera, bergamota, neroli, pimienta rosa"
+  472: "pera, bergamota, neroli, pimienta rosa",
+  473: ""
 }
