@@ -1,7 +1,6 @@
-export const productFilters = {
-  agotados: '_type == "product" && agotado == true',
-  disponibles: '_type == "product" && coalesce(agotado, false) == false',
-}
+import QuickStock from './components/QuickStock'
+
+import { productFilters } from './lib/productFilters'
 
 export const structure = (S) => {
   const filteredProducts = (id, title) =>
@@ -22,6 +21,9 @@ export const structure = (S) => {
     .items([
       // Keep the existing product route and creation/search actions.
       S.documentTypeListItem('product').title('Todos los perfumes'),
+      S.listItem().id('stock-rapido').title('Stock rápido').child(
+        S.component().id('stock-rapido').title('Stock rápido').component(QuickStock),
+      ),
       filteredProducts('agotados', 'Agotados'),
       filteredProducts('disponibles', 'Disponibles'),
       ...S.documentTypeListItems().filter((item) => item.getId() !== 'product'),
