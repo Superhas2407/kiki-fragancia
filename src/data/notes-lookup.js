@@ -582,5 +582,6 @@ export const notesLookup = {
   579: "cardamomo, mandarina, bergamota, lavanda, Hoja de violeta, salvia, benjuí, cedro, pachulí",
   580: "bergamota, limón, rosa, peonía, almizcle blanco, vainilla, cedro",
   581: "Hojas cítricas, notas verdes, gardenia, sándalo",
-  582: "ruibarbo, narciso, Leche de almendras, cedro, cashmeran"
+  582: "ruibarbo, narciso, Leche de almendras, cedro, cashmeran",
+  583: "Flor de la pasión, Amapola roja, Peonía, Chocolate mexicano, Zarzamora, Narciso, Jazmín, Vainilla, Almizcle, Ámbar, Pachulí"
 }
