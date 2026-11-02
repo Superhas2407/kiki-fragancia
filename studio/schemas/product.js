@@ -1,3 +1,6 @@
+import { createElement } from 'react'
+import { ProductImagePreview, LegacyImageInput } from '../components/ProductImagePreview'
+import { legacyImageUrl } from '../lib/productImage'
 import notesList from './notes-list.json'
 import { NotesInput } from '../components/NotesInput'
 
@@ -59,6 +62,7 @@ export default {
       name: 'image',
       title: 'Foto (nombre de archivo)',
       type: 'string',
+      components: { input: LegacyImageInput },
       description: 'Ej: lattafa-hayaati-100ml-m.webp — el archivo debe estar en /public/products/',
     },
     // ── Precio y datos de catálogo ──────────────────────────────────────
@@ -260,12 +264,13 @@ export default {
       title: 'name',
       house: 'house',
       media: 'sanityImage',
+      legacyImage: 'image',
       ml: 'ml',
       tipo: 'tipo',
       precioUSD: 'precioUSD',
       agotado: 'agotado',
     },
-    prepare({ title, house, media, ml, tipo, precioUSD, agotado }) {
+    prepare({ title, house, media, legacyImage, ml, tipo, precioUSD, agotado }) {
       const tipoAbbr = {
         'Eau de Parfum': 'EDP', 'Eau de Toilette': 'EDT', 'Eau de Cologne': 'EDC',
         'Parfum': 'Parfum', 'Extrait de Parfum': 'Extrait', 'Elixir': 'Elixir',
@@ -274,7 +279,10 @@ export default {
       return {
         title,
         subtitle: (agotado ? '⛔ Agotado · ' : '') + parts.join(' · '),
-        media,
+        media: media?.asset ? media : (() => {
+          const src = legacyImageUrl(legacyImage)
+          return src ? createElement(ProductImagePreview, { key: src, src }) : undefined
+        })(),
       }
     },
   },

@@ -2,6 +2,7 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import product from './schemas/product'
+import { structure } from './structure'
 
 export default defineConfig({
   name: 'kiki-fragancia',
@@ -9,7 +10,7 @@ export default defineConfig({
   projectId: '7j25mwk7',
   dataset: 'production',
   plugins: [
-    structureTool(),
+    structureTool({ structure }),
     visionTool(),
   ],
   schema: {
