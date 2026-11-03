@@ -1,3 +1,4 @@
+import { responsiveImage, responsiveSrcSet } from '../lib/responsiveImages'
 import { Link } from 'react-router-dom'
 
 const GENEROS = [
@@ -30,8 +31,8 @@ export default function QuickGenero() {
       {GENEROS.map(g => (
         <Link key={g.key} to={g.href} className="qg-tile">
           <picture className="qg-picture">
-            <source media="(max-width: 767px)" srcSet={g.imgMobile} type="image/webp" />
-            <img src={g.img} alt={g.label} className="qg-img" loading="lazy" />
+            <source media="(max-width: 767px)" srcSet={responsiveSrcSet(g.imgMobile) || g.imgMobile} sizes="(max-width: 767px) 50vw, 33vw" type="image/webp" />
+            <img src={responsiveImage(g.img)} srcSet={responsiveSrcSet(g.img)} sizes="(max-width: 767px) 50vw, 33vw" decoding="async" alt={g.label} className="qg-img" loading="lazy" />
           </picture>
           <div className="qg-overlay" />
           <div className="qg-label-wrap">

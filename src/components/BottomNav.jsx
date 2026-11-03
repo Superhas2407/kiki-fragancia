@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useAuth } from '../context/AuthContext'
 import { useWishlist } from '../context/WishlistContext'
-import { supabase } from '../lib/supabaseClient'
+const getSupabase = () => import('../lib/supabaseClient').then(m => m.supabase)
 
 const HomeIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -83,7 +83,7 @@ export default function BottomNav() {
 
       <button
         className="bottom-nav-item"
-        onClick={() => session ? supabase.auth.signOut() : setAuthModalOpen(true)}
+        onClick={() => session ? getSupabase().then(s => s.auth.signOut()) : setAuthModalOpen(true)}
       >
         <UserIcon filled={!!session} />
         <span>{session ? 'Cuenta' : 'Entrar'}</span>

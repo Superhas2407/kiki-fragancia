@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
+import { useIndexProducts, resolveProductImage, productImageSrcSet } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
@@ -18,11 +18,11 @@ function PriceTag({ product }) {
 }
 
 function Card({ product }) {
-  const img = resolveProductImage(product)
+  const img = resolveProductImage(product, 320)
   return (
     <Link to={`/tienda/${toSlug(product.house, product.name, product.ml)}`} className="bs-card">
       <div className="bs-card-img-wrap">
-        <img src={img} alt={product.name} className="bs-card-img" loading="lazy" />
+        <img srcSet={productImageSrcSet(product)} sizes="(max-width: 767px) 170px, 20vw" decoding="async" src={img} alt={product.name} className="bs-card-img" loading="lazy" />
       </div>
       <div className="bs-card-body">
         <p className="bs-card-house">{product.house}</p>

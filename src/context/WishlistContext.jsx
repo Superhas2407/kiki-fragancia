@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-import { supabase } from '../lib/supabaseClient'
+const getSupabase = () => import('../lib/supabaseClient').then(m => m.supabase)
 import { useAuth } from './AuthContext'
 
 const WishlistContext = createContext(null)
@@ -16,26 +16,28 @@ export function WishlistProvider({ children }) {
   // Cuando el usuario inicia sesión: fusionar wishlist local con la de Supabase
   useEffect(() => {
     if (!session) return
-    supabase
+    let cancelled = false
+    getSupabase().then(supabase => supabase
       .from('wishlists')
       .select('product_id')
       .eq('user_id', session.user.id)
       .then(({ data }) => {
-        if (!data) return
+        if (cancelled || !data) return
         const remoteIds = data.map(r => r.product_id)
         setIds(prev => {
           const merged = [...new Set([...prev, ...remoteIds])]
           // Subir a Supabase los items que solo están en local
           const localOnly = prev.filter(id => !remoteIds.includes(id))
           if (localOnly.length > 0) {
-            supabase.from('wishlists').upsert(
+            getSupabase().then(supabase => supabase.from('wishlists').upsert(
               localOnly.map(id => ({ user_id: session.user.id, product_id: id }))
-            )
+            ))
           }
           try { localStorage.setItem('kiki-wishlist', JSON.stringify(merged)) } catch {}
           return merged
         })
-      })
+      }))
+    return () => { cancelled = true }
   }, [session])
 
   function toggle(id) {
@@ -45,10 +47,10 @@ export function WishlistProvider({ children }) {
       try { localStorage.setItem('kiki-wishlist', JSON.stringify(next)) } catch {}
       if (session) {
         if (adding) {
-          supabase.from('wishlists').insert({ user_id: session.user.id, product_id: id })
+          getSupabase().then(supabase => supabase.from('wishlists').insert({ user_id: session.user.id, product_id: id }))
         } else {
-          supabase.from('wishlists').delete()
-            .eq('user_id', session.user.id).eq('product_id', id)
+          getSupabase().then(supabase => supabase.from('wishlists').delete()
+            .eq('user_id', session.user.id).eq('product_id', id))
         }
       }
       return next

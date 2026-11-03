@@ -4,16 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules/framer-motion')) return 'motion'
-          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom') || id.includes('node_modules/react/')) return 'vendor'
-          if (id.includes('node_modules/@sanity') || id.includes('node_modules/@sanity-typed') || id.includes('node_modules/sanity')) return 'sanity'
-          if (id.includes('node_modules/react-helmet-async')) return 'vendor'
-        },
-      },
-    },
-  },
+  // Let Vite keep shared React code separate from lazily imported libraries.
+  // Manual motion chunks also pulled React into motion, forcing it on home.
 })

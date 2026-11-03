@@ -1,3 +1,4 @@
+import { responsiveImage, responsiveSrcSet } from '../lib/responsiveImages'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
@@ -13,8 +14,10 @@ const SLIDES = [
 
 export default function Hero() {
   const { theme } = useTheme()
-  const [current, setCurrent] = useState(0)
+  const [{ current, visited }, setSlides] = useState(() => ({ current: 0, visited: new Set([0]) }))
   const [mounted, setMounted] = useState(false)
+  const [videoEnabled, setVideoEnabled] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 768px)').matches)
   const sectionRef = useRef(null)
   const videoRef = useRef(null)
 
@@ -24,8 +27,23 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setCurrent(c => (c + 1) % SLIDES.length), 7000)
+    const id = setInterval(() => setSlides(prev => { const current = (prev.current + 1) % SLIDES.length; return { current, visited: new Set([...prev.visited, current]) } }), 7000)
     return () => clearInterval(id)
+  }, [])
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)')
+    let timer
+    const update = () => {
+      clearTimeout(timer)
+      setIsDesktop(window.matchMedia('(min-width: 768px)').matches)
+      const allowed = media.matches && !navigator.connection?.saveData
+      if (!allowed) setVideoEnabled(false)
+      else timer = setTimeout(() => setVideoEnabled(true), 1500)
+    }
+    update()
+    media.addEventListener('change', update)
+    return () => { clearTimeout(timer); media.removeEventListener('change', update) }
   }, [])
 
   // Parallax del video de fondo — solo desktop, throttled con rAF
@@ -36,8 +54,7 @@ export default function Hero() {
     const update = () => {
       ticking = false
       if (!mq.matches || !sectionRef.current || !videoRef.current) return
-      const rect = sectionRef.current.getBoundingClientRect()
-      const offset = -rect.top * 0.3
+      const offset = window.scrollY * 0.3
       videoRef.current.style.transform = `translateY(${offset}px)`
     }
 
@@ -63,29 +80,29 @@ export default function Hero() {
   return (
     <section className="hero-section" ref={sectionRef}>
       {/* Video parallax — solo desktop */}
-      <div className="hero-video-bg">
-        <video
+      <div className="hero-video-bg" style={{ backgroundImage: `url(${responsiveImage(SLIDES[0].desktop, 1600)})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        {videoEnabled && <video
           ref={videoRef}
-          autoPlay muted loop playsInline
+          autoPlay muted loop playsInline preload="none"
           className="hero-video-fixed"
         >
-          <source src="/hero/hero-parallax.mp4" type="video/mp4" />
-        </video>
+          <source src="/hero/hero-parallax-optimized.mp4" type="video/mp4" />
+        </video>}
         <div className="hero-bg-gradient" style={{ zIndex: 2 }} />
       </div>
 
       {/* Slides de imágenes — solo mobile */}
-      {SLIDES.map((slide, i) => (
+      {!isDesktop && SLIDES.map((slide, i) => (
         <div
           key={i}
           className="hero-bg hero-bg-mobile-only"
           style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, transition: 'opacity 0.85s ease', zIndex: i === current ? 1 : 0 }}
         >
           <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
-            <source media="(max-width: 767px)" srcSet={slide.mobile} type="image/webp" />
-            <source srcSet={slide.desktop} type="image/webp" />
+            <source media="(max-width: 767px)" srcSet={visited.has(i) ? responsiveSrcSet(slide.mobile) || slide.mobile : undefined} sizes="100vw" type="image/webp" />
+            <source srcSet={visited.has(i) ? responsiveSrcSet(slide.desktop) || slide.desktop : undefined} sizes="100vw" type="image/webp" />
             <img
-              src={slide.desktop}
+              src={visited.has(i) ? responsiveImage(slide.desktop, 960) : undefined} srcSet={visited.has(i) ? responsiveSrcSet(slide.desktop) : undefined} sizes="100vw" decoding="async"
               alt=""
               aria-hidden="true"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
@@ -136,7 +153,7 @@ export default function Hero() {
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => setCurrent(i)}
+              onClick={() => setSlides(prev => ({ current: i, visited: new Set([...prev.visited, i]) }))}
               className={`hero-dot${i === current ? ' active' : ''}`}
               aria-label={`Slide ${i + 1}`}
             />

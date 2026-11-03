@@ -1,3 +1,4 @@
+import DeferredSection from '../components/DeferredSection'
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
@@ -67,24 +68,24 @@ export default function Landing() {
         <NewLaunchBanner />
         <BestsellerRow />
         <QuickGenero />
-        <Suspense fallback={<SectionFallback />}>
+        <DeferredSection><Suspense fallback={<SectionFallback />}>
           <MustHaveMen />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
+        </Suspense></DeferredSection>
+        <DeferredSection><Suspense fallback={<SectionFallback />}>
           <QuickOcasion />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
+        </Suspense></DeferredSection>
+        <DeferredSection><Suspense fallback={<SectionFallback />}>
           <MustHaveWomen />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
+        </Suspense></DeferredSection>
+        <DeferredSection><Suspense fallback={<SectionFallback />}>
           <BrandStory />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
+        </Suspense></DeferredSection>
+        <DeferredSection><Suspense fallback={<SectionFallback />}>
           <Testimonials />
-        </Suspense>
-        <Suspense fallback={<SectionFallback />}>
+        </Suspense></DeferredSection>
+        <DeferredSection><Suspense fallback={<SectionFallback />}>
           <Guarantee />
-        </Suspense>
+        </Suspense></DeferredSection>
       </main>
       <Suspense fallback={null}>
         <Footer />

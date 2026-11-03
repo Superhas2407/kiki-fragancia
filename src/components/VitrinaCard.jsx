@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
-import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
+import { useIndexProducts, resolveProductImage, productImageSrcSet } from '../context/SanityProductsContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
 import { useTheme } from '../context/ThemeContext'
@@ -103,7 +103,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
   const tasa = useTasaCambio()
   const { currency } = useCurrency()
   const { theme } = useTheme()
-  const imgSrc = resolveProductImage(product)
+  const imgSrc = resolveProductImage(product, 640)
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
   const displayName = product.name.toLowerCase().startsWith(product.house.toLowerCase() + ' ')
@@ -141,6 +141,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           {imgSrc ? (
             <img
               src={imgSrc}
+              srcSet={productImageSrcSet(product)} sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw" loading="lazy" decoding="async"
               alt={`${product.house} ${product.name}`}
               className="vitrina-img"
               style={agotado ? { opacity: 0.5, filter: 'grayscale(0.6)' } : undefined}

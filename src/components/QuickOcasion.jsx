@@ -1,3 +1,4 @@
+import { responsiveImage, responsiveSrcSet } from '../lib/responsiveImages'
 import { Link } from 'react-router-dom'
 
 const OCASIONES = [
@@ -39,8 +40,8 @@ export default function QuickOcasion() {
       {OCASIONES.map(o => (
         <Link key={o.key} to={o.href} className="qg-tile">
           <picture className="qg-picture">
-            <source media="(max-width: 767px)" srcSet={o.imgMobile} type="image/webp" />
-            <img src={o.img} alt={o.label} className="qg-img" loading="lazy" style={o.objPos ? { objectPosition: o.objPos } : undefined} />
+            <source media="(max-width: 767px)" srcSet={responsiveSrcSet(o.imgMobile) || o.imgMobile} sizes="(max-width: 767px) 50vw, 25vw" type="image/webp" />
+            <img src={responsiveImage(o.img)} srcSet={responsiveSrcSet(o.img)} sizes="(max-width: 767px) 50vw, 25vw" decoding="async" alt={o.label} className="qg-img" loading="lazy" style={o.objPos ? { objectPosition: o.objPos } : undefined} />
           </picture>
           <div className="qg-overlay" />
           <div className="qg-label-wrap">

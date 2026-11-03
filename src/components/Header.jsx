@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { lazy, Suspense, useState, useEffect, useRef, useMemo } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { useWishlist } from '../context/WishlistContext'
@@ -6,12 +6,12 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useAuth } from '../context/AuthContext'
-import { supabase } from '../lib/supabaseClient'
+const getSupabase = () => import('../lib/supabaseClient').then(m => m.supabase)
 import { notesLookup } from '../data/notes-lookup'
 import { acordesByProduct } from '../data/acordes-index'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 import { toSlug } from '../lib/slugs'
-import AuthModal from './AuthModal'
+const AuthModal = lazy(() => import('./AuthModal'))
 
 const NAV_LINKS = [
   { label: 'Colección', to: '/tienda',                              type: 'route'    },
@@ -341,7 +341,7 @@ export default function Header() {
                     {session.user.email}
                   </p>
                   <div style={{ height: 1, background: 'rgba(var(--gold-rgb),0.1)', margin: '4px 0' }} />
-                  <button onClick={async () => { await supabase.auth.signOut(); setUserMenuOpen(false) }} style={{
+                  <button onClick={async () => { await (await getSupabase()).auth.signOut(); setUserMenuOpen(false) }} style={{
                     width: '100%', padding: '8px 16px', background: 'none', border: 'none',
                     color: '#F7F2EA', fontSize: 11, textAlign: 'left', cursor: 'pointer',
                     letterSpacing: '0.05em',
@@ -452,7 +452,7 @@ export default function Header() {
             ♡ Deseos{wishlistIds.length > 0 ? ` (${wishlistIds.length})` : ''}
           </button>
           {session ? (
-            <button onClick={async () => { await supabase.auth.signOut(); setMenuOpen(false) }} className="mobile-util-link">
+            <button onClick={async () => { await (await getSupabase()).auth.signOut(); setMenuOpen(false) }} className="mobile-util-link">
               ○ Cerrar sesión
             </button>
           ) : (
@@ -582,7 +582,7 @@ export default function Header() {
         </div>
         </>
       )}
-      <AuthModal open={authOpen || authModalOpen} onClose={() => { setAuthOpen(false); setAuthModalOpen(false) }} />
+      {(authOpen || authModalOpen) && <Suspense fallback={null}><AuthModal open onClose={() => { setAuthOpen(false); setAuthModalOpen(false) }} /></Suspense>}
       {hweenFlash && <div className="hween-flash-overlay" aria-hidden="true" />}
     </>
   )

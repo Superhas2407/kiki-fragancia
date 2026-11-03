@@ -1,3 +1,4 @@
+import { responsiveImage, responsiveSrcSet } from '../lib/responsiveImages'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -58,10 +59,10 @@ export default function NewLaunchBanner() {
       {LAUNCHES.map((launch, i) => (
         <div key={launch.slug} className={`nlb-slide${i === current ? ' nlb-slide-active' : ''}`} aria-hidden={i !== current}>
           <picture className="nlb-picture">
-            <source media="(max-width: 767px)" srcSet={launch.mobile} type="image/webp" />
-            <source srcSet={launch.desktop} type="image/webp" />
+            <source media="(max-width: 767px)" srcSet={responsiveSrcSet(launch.mobile) || launch.mobile} sizes="100vw" type="image/webp" />
+            <source srcSet={responsiveSrcSet(launch.desktop) || launch.desktop} sizes="100vw" type="image/webp" />
             <img
-              src={launch.desktop}
+              src={responsiveImage(launch.desktop)} srcSet={responsiveSrcSet(launch.desktop)} sizes="100vw" decoding="async"
               alt={`Nuevo lanzamiento — ${launch.house} ${launch.name}`}
               className="nlb-img"
               loading={i === 0 ? 'eager' : 'lazy'}

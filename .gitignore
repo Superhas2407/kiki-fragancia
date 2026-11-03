@@ -46,3 +46,7 @@ design-audit-*/
 
 .vercel
 .env*
+
+# Generated responsive assets
+public/responsive/
+src/data/responsive-images.json

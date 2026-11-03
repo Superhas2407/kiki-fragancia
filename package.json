@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "node scripts/sync-from-sanity.mjs && node scripts/generate-sitemap.js && node scripts/generate-meta-feed.mjs && vite build && node scripts/generate-product-pages.mjs",
+    "dev": "node scripts/optimize-images.mjs && vite",
+    "build": "node scripts/sync-from-sanity.mjs && node scripts/generate-sitemap.js && node scripts/generate-meta-feed.mjs && node scripts/optimize-images.mjs && vite build && node scripts/generate-product-pages.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "renamer:build": "pkg tools/renamer-server.cjs --targets node18-win-x64 --output tools/Renombrador.exe --assets tools/renamer.html"

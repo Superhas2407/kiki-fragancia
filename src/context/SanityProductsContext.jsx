@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { products as localProducts } from '../data/products-index'
 import { sanityClient, sanityImageUrl } from '../lib/sanityClient'
+import { responsiveImage, responsiveSrcSet } from '../lib/responsiveImages'
 import { useAuth } from './AuthContext'
 
 const BASE_FIELDS = `
@@ -20,12 +21,17 @@ function buildQuery(isAdmin) {
 const Ctx = createContext(null)
 
 // Resolves the best image URL for a product from Sanity data
-export function resolveProductImage(p) {
+export function resolveProductImage(p, width = 800) {
   if (p.sanityImage?.asset) {
-    return sanityImageUrl(p.sanityImage).width(800).auto('format').url()
+    return sanityImageUrl(p.sanityImage).width(width).auto('format').url()
   }
-  if (p.image) return `/products/${p.image}`
+  if (p.image) return responsiveImage(`/products/${p.image}`, width)
   return null
+}
+
+export function productImageSrcSet(p) {
+  if (p.sanityImage?.asset) return [320, 640, 1280].map(w => `${resolveProductImage(p, w)} ${w}w`).join(', ')
+  return p.image ? responsiveSrcSet(`/products/${p.image}`) : undefined
 }
 
 export function SanityProductsProvider({ children }) {
