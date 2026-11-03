@@ -146,8 +146,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 65,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 12,
@@ -698,8 +697,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 57,
@@ -1391,7 +1389,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 113,
@@ -3704,7 +3703,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 125,
     "precioUSD": 185,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 299,
@@ -4813,7 +4813,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 386,
@@ -5535,7 +5536,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 70,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 444,
