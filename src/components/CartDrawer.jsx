@@ -5,7 +5,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { toSlug } from '../lib/slugs'
 import { resolveProductImage } from '../context/SanityProductsContext'
 
-const WHATSAPP_NUMBER = '584149112002'
+const WHATSAPP_NUMBER = '584221221983'
 
 const CloseIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
