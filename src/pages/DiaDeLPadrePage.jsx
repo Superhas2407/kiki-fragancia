@@ -9,7 +9,7 @@ import { useCartContext } from '../context/CartContext'
 import GiftWrapOverlay, { useShowWraps } from '../components/GiftWrapOverlay'
 import { toSlug } from '../lib/slugs'
 
-const WA_NUMBER = '584149112002'
+const WA_NUMBER = '584221221983'
 const WA_MSG = encodeURIComponent(
   'Hola! Quiero regalarle una fragancia a mi papá para el Día del Padre. ¿Cuál me recomiendan?'
 )
