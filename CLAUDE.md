@@ -1,7 +1,7 @@
 # Kiki Fragancia — Contexto del Proyecto
 
 Sitio web de tienda de perfumería de lujo. React 19 + Vite 8. Dominio: **kikifragancia.com**.
-Sin checkout propio — el cierre de compra es por WhatsApp (`584149112002`).
+Sin checkout propio — el cierre de compra es por WhatsApp (`584221221983`).
 
 ## Stack
 React 19 · Vite 8 · Tailwind v4 (`@import "tailwindcss"` + `@theme {}`, **sin config file**) ·
