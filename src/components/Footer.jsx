@@ -96,7 +96,7 @@ export default function Footer() {
             <span className="kf-label">Atención al cliente</span>
             <nav className="kf-nav">
               <a
-                href="https://wa.me/584149112002?text=Hola%20KiKi%20Fragancia%2C%20tengo%20una%20consulta&ref=footer"
+                href="https://wa.me/584221221983?text=Hola%20KiKi%20Fragancia%2C%20tengo%20una%20consulta&ref=footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="kf-link kf-link-icon"
@@ -162,7 +162,7 @@ export default function Footer() {
             <a href="https://instagram.com/kiki_fragancia" target="_blank" rel="noopener noreferrer" className="kf-social-icon" aria-label="Instagram">
               <IGIcon />
             </a>
-            <a href="https://wa.me/584149112002" target="_blank" rel="noopener noreferrer" className="kf-social-icon" aria-label="WhatsApp">
+            <a href="https://wa.me/584221221983" target="_blank" rel="noopener noreferrer" className="kf-social-icon" aria-label="WhatsApp">
               <WAIcon />
             </a>
             <a href="https://tiktok.com/@kiki_fragancia" target="_blank" rel="noopener noreferrer" className="kf-social-icon" aria-label="TikTok">
