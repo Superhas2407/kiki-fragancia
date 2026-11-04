@@ -5,8 +5,6 @@ import { useWishlist } from '../context/WishlistContext'
 import { useIndexProducts, resolveProductImage, productImageSrcSet } from '../context/SanityProductsContext'
 import { useTasaCambio } from '../hooks/useTasaCambio'
 import { useCurrency } from '../context/CurrencyContext'
-import { useTheme } from '../context/ThemeContext'
-import { SlimeTopBorder } from './HalloweenDecor'
 import { toSlug } from '../lib/slugs'
 
 // ============================================================
@@ -58,17 +56,7 @@ const CheckIcon = () => (
     <polyline points="20 6 9 17 4 12" />
   </svg>
 )
-export const PumpkinIcon = ({ size = 10 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" style={{ display: 'inline', verticalAlign: '-1px', marginRight: 3 }}>
-    <rect x="10.9" y="1.6" width="2.2" height="3.4" rx="1" fill="currentColor" />
-    <path d="M12 4.2c-4.1 0-7.4 3.1-7.4 7.9 0 4.6 3.2 8.4 7.4 8.4s7.4-3.8 7.4-8.4c0-4.8-3.3-7.9-7.4-7.9z" fill="currentColor" />
-    <g fill="#1A1208" opacity="0.55">
-      <path d="M9 11.5c0-1 .8-1.8 1.6-1.8s1.6.8 1.6 1.8-.8 1.1-1.6 1.1S9 12.5 9 11.5z" />
-      <path d="M13.8 11.5c0-1 .8-1.8 1.6-1.8s1.6.8 1.6 1.8-.8 1.1-1.6 1.1-1.6-.1-1.6-1.1z" />
-      <path d="M9.5 15.8c1 .9 4 .9 5 0-.3 1.6-1.7 2.4-2.5 2.4s-2.2-.8-2.5-2.4z" />
-    </g>
-  </svg>
-)
+
 
 export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
@@ -102,7 +90,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
   const tasa = useTasaCambio()
   const { currency } = useCurrency()
-  const { theme } = useTheme()
   const imgSrc = resolveProductImage(product, 640)
   const genderDot = GENDER_DOT[product.genero] || GENDER_DOT.Unisex
 
@@ -130,10 +117,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
       aria-label={`${product.house} ${product.name}`}
     >
       <div className="vitrina-display">
-        {theme === 'halloween' && (
-          <SlimeTopBorder className="vitrina-slime" style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, pointerEvents: 'none' }} aria-hidden="true" />
-        )}
-
         <div
           className="vitrina-spotlight"
           style={{ transform: hover ? 'translate(-50%, -50%) translateY(-8px)' : 'translate(-50%, -50%)' }}
@@ -166,13 +149,9 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           </div>
         ) : ribbon ? (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
-            <span>{ribbonVariant === 'halloween' && <PumpkinIcon />}{ribbon}</span>
+            <span>{ribbon}</span>
           </div>
-        ) : product?.promoHalloween && (
-          <div className="vitrina-ribbon vitrina-ribbon--halloween" aria-hidden="true">
-            <span><PumpkinIcon />Oferta Halloween</span>
-          </div>
-        )}
+        ) : false}
 
         {/* Wishlist heart button */}
         <button
@@ -275,13 +254,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
-                ) : product.promoHalloween ? (
-                  <span className="vitrina-price-badge vitrina-price-badge--halloween"><PumpkinIcon size={9} />Oferta Halloween</span>
-                ) : theme === 'halloween' ? (
-                  <span className="vitrina-price-badge vitrina-price-badge--halloween"><PumpkinIcon size={9} />Precio embrujado</span>
-                ) : (
-                  <span className="vitrina-price-badge">PROMO DIVISA</span>
-                )}
+                ) : <span className="vitrina-price-badge">PROMO DIVISA</span>}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
                   {hasRange ? 'Desde ' : ''}REF: {minPrice}
                 </span>

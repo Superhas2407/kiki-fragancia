@@ -1,3 +1,4 @@
+import BlackFridaySection from '../components/BlackFridaySection'
 import DeferredSection from '../components/DeferredSection'
 import { useState, useEffect, lazy, Suspense } from 'react'
 import { Link } from 'react-router-dom'
@@ -65,6 +66,7 @@ export default function Landing() {
 
       <main>
         <Hero />
+        <BlackFridaySection />
         <NewLaunchBanner />
         <BestsellerRow />
         <QuickGenero />

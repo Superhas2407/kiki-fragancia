@@ -1,7 +1,6 @@
 import { responsiveImage, responsiveSrcSet } from '../lib/responsiveImages'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { useTheme } from '../context/ThemeContext'
 
 const SLIDES = [
   { desktop: '/hero/ysl-desktop.webp',              mobile: '/hero/ysl-mobile.webp'              },
@@ -13,7 +12,6 @@ const SLIDES = [
 ]
 
 export default function Hero() {
-  const { theme } = useTheme()
   const [{ current, visited }, setSlides] = useState(() => ({ current: 0, visited: new Set([0]) }))
   const [mounted, setMounted] = useState(false)
   const [videoEnabled, setVideoEnabled] = useState(false)
@@ -113,15 +111,6 @@ export default function Hero() {
           <div className="hero-bg-gradient" style={{ zIndex: 2 }} />
         </div>
       ))}
-
-      {/* Niebla — solo tema Halloween, capa puramente decorativa */}
-      {theme === 'halloween' && (
-        <div className="hero-mist" aria-hidden="true">
-          <div className="hero-mist-layer hero-mist-1" />
-          <div className="hero-mist-layer hero-mist-2" />
-        </div>
-      )}
-
       {/* Contenido */}
       <div className="kiki-container" style={{ width: '100%', zIndex: 5 }}>
         <div className="hero-content-wrap">

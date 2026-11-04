@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const BAR_H = 40
 
@@ -29,7 +29,7 @@ export default function AnnouncementBar() {
           <div className="ann-marquee-track">
             {[0, 1, 2, 3, 4, 5].map(i => (
               <div key={i} className="ann-marquee-content" aria-hidden={i > 0}>
-                <span className="ann-label">Fragancias 100% Originales</span>
+                <Link to="/#promociones" className="ann-label">Black Friday en Kiki · Ver promos ↗</Link>
                 <span className="ann-dot">✦</span>
                 <span className="ann-label">Envíos en Venezuela</span>
                 <span className="ann-dot">✦</span>

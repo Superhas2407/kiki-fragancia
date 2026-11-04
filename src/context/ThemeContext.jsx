@@ -2,16 +2,11 @@ import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext(null)
 
-function getSystemTheme() {
-  try { return window.matchMedia('(prefers-color-scheme: light)').matches ? 'warm' : 'dark' }
-  catch { return 'dark' }
-}
-
 const THEME_KEY = 'kiki-theme-v2'
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    try { return localStorage.getItem(THEME_KEY) || 'warm' }
+    try { return localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'warm' }
     catch { return 'warm' }
   })
 
@@ -39,9 +34,6 @@ export function ThemeProvider({ children }) {
   }, [])
 
   function toggleTheme() {
-    // Alterna entre claro/oscuro. Si venías de 'halloween' (theme especial,
-    // admin-only), esto también te saca de ahí — cae a 'dark' porque
-    // t !== 'dark' en ese caso, igual que si vinieras de 'warm'.
     setTheme(t => (t === 'dark' ? 'warm' : 'dark'))
   }
 

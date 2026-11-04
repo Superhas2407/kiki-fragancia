@@ -132,22 +132,10 @@ function WishlistButton() {
 
 export default function Header() {
   const allProducts = useIndexProducts()
-  const { theme, toggleTheme: toggle, setTheme } = useTheme()
+  const { theme, toggleTheme: toggle } = useTheme()
   const { currency, setCurrency } = useCurrency()
   const { ids: wishlistIds, setDrawerOpen: openWishlist, authModalOpen, setAuthModalOpen } = useWishlist()
   const { session } = useAuth()
-  const isAdmin = !!session
-  // Tema Halloween: admin-only, ver ThemeContext.jsx / HalloweenDecor.jsx / CLAUDE.md
-  const [hweenFlash, setHweenFlash] = useState(false)
-  const toggleHalloween = () => {
-    // Flash teatral (negro → naranja → negro) solo al ENTRAR a Halloween,
-    // como un "portal" abriéndose — salir es instantáneo, sin efecto.
-    if (theme !== 'halloween') {
-      setHweenFlash(true)
-      setTimeout(() => setHweenFlash(false), 650)
-    }
-    setTheme(t => (t === 'halloween' ? 'warm' : 'halloween'))
-  }
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
@@ -285,13 +273,6 @@ export default function Header() {
                 aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}>
                 {theme === 'dark' ? '☀' : '☾'}
               </button>
-              {isAdmin && (
-                <button onClick={toggleHalloween} className="theme-toggle-btn halloween-toggle-btn"
-                  title={theme === 'halloween' ? 'Salir del tema Halloween (solo vos lo ves)' : 'Previsualizar tema Halloween (solo vos lo ves)'}
-                  aria-label={theme === 'halloween' ? 'Salir del tema Halloween' : 'Activar tema Halloween'}>
-                  🎃
-                </button>
-              )}
             </span>
           </div>
 
@@ -463,11 +444,6 @@ export default function Header() {
           <button onClick={toggle} className="mobile-util-link">
             {theme === 'dark' ? '☀ Modo claro' : '☾ Modo oscuro'}
           </button>
-          {isAdmin && (
-            <button onClick={toggleHalloween} className="mobile-util-link halloween-toggle-btn">
-              {theme === 'halloween' ? '🎃 Salir de Halloween' : '🎃 Tema Halloween'}
-            </button>
-          )}
           <div className="mobile-currency-row">
             {[{ val: 'usd', label: 'REF' }, { val: 'bs', label: 'Bs' }].map(({ val, label }) => (
               <button key={val} onClick={() => setCurrency(val)} className={`mobile-currency-btn${currency === val ? ' active' : ''}`}>
@@ -583,7 +559,6 @@ export default function Header() {
         </>
       )}
       {(authOpen || authModalOpen) && <Suspense fallback={null}><AuthModal open onClose={() => { setAuthOpen(false); setAuthModalOpen(false) }} /></Suspense>}
-      {hweenFlash && <div className="hween-flash-overlay" aria-hidden="true" />}
     </>
   )
 }

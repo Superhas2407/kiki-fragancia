@@ -11,7 +11,6 @@ import { useTheme } from '../context/ThemeContext'
 const TRAIL_RGB_BY_THEME = {
   dark: '201,168,76',
   warm: '201,168,76',
-  halloween: '182,255,60',
 }
 
 export default function CursorTrail() {

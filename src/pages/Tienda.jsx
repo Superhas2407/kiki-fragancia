@@ -180,8 +180,8 @@ function PriceRangeSlider({ min, max, value, onChange, step = 5 }) {
   )
 }
 
-function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloHalloween, setSoloHalloween }) {
-  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false, estado: true, halloween: true })
+function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }) {
+  const [open, setOpen] = useState({ genero: true, categoria: true, concentracion: false, precio: true, marca: false, ocasion: false, estado: true })
   const toggle = k => setOpen(s => ({ ...s, [k]: !s[k] }))
 
   const marcas = useMemo(() => [...new Set(basePool.map(p => p.house))].sort(), [basePool])
@@ -264,19 +264,6 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
           />
         </SidebarSection>
       )}
-
-      {/* Oferta Halloween — solo admin, campaña en preparación */}
-      {isAdmin && basePool.some(p => p.promoHalloween) && (
-        <SidebarSection title="🎃 Oferta Halloween" open={open.halloween} onToggle={() => toggle('halloween')}>
-          <GoldCheckbox
-            label="Oferta Halloween"
-            checked={soloHalloween}
-            onToggle={() => setSoloHalloween(v => !v)}
-            count={basePool.filter(p => p.promoHalloween).length}
-          />
-        </SidebarSection>
-      )}
-
       {/* Concentración */}
       <SidebarSection title="Concentración" open={open.concentracion} onToggle={() => toggle('concentracion')}>
         {TIPO_OPTIONS.filter(opt => basePool.some(p => p.tipo === opt.value)).map(opt => (
@@ -343,7 +330,7 @@ function DesktopSidebar({ urlGenero, urlTipo, urlColeccion, navigate, selectedMa
   )
 }
 
-function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloHalloween, setSoloHalloween }) {
+function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }) {
   const marcas = useMemo(() => {
     const set = new Set(productPool.map(p => p.house))
     return [...set].sort()
@@ -520,19 +507,6 @@ function FilterPanel({ sortBy, setSortBy, selectedMarcas, toggleMarca, selectedT
           />
         </div>
       )}
-
-      {isAdmin && productPool.some(p => p.promoHalloween) && (
-        <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
-          {sectionLabel('🎃 Oferta Halloween')}
-          <GoldCheckbox
-            label="Oferta Halloween"
-            checked={soloHalloween}
-            onToggle={() => setSoloHalloween(v => !v)}
-            count={productPool.filter(p => p.promoHalloween).length}
-          />
-        </div>
-      )}
-
       <div style={{ paddingTop: 24, marginTop: 24, borderTop: '1px solid var(--line2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <span style={{ width: 18, height: 1, background: 'var(--gold)', flexShrink: 0 }}/>
@@ -606,12 +580,6 @@ export default function Tienda() {
       line: 'rgba(150,118,52,0.38)', line2: 'rgba(35,26,13,0.15)',
       gold: '#C9A84C', goldInk: '#6B5010', chip: 'rgba(35,26,13,0.07)',
     },
-    halloween: {
-      bg: '#0D0616', bg2: '#150A22', ink: '#F5E9D8',
-      inkMute: 'rgba(245,233,216,0.65)', inkFaint: 'rgba(245,233,216,0.35)',
-      line: 'rgba(255,122,24,0.35)', line2: 'rgba(245,233,216,0.12)',
-      gold: '#FF7A18', goldInk: '#FFB347', chip: 'rgba(255,122,24,0.08)',
-    },
   }
   const C = TIENDA_PALETTES[theme] ?? TIENDA_PALETTES.warm
   const [searchParams, setSearchParams] = useSearchParams()
@@ -621,7 +589,6 @@ export default function Tienda() {
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [selectedTipos, setSelectedTipos]   = useState([])
   const [soloAgotados, setSoloAgotados]     = useState(false)
-  const [soloHalloween, setSoloHalloween] = useState(false)
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
   const [priceRange, setPriceRange]   = useState(() => {
@@ -691,22 +658,21 @@ export default function Tienda() {
   }
 
   const isPriceFiltered = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1]
-  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados || soloHalloween
+  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados
   const clearFilters = () => {
-    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false); setSoloHalloween(false)
+    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false)
     setPriceRange(priceBounds)
     const params = new URLSearchParams(searchParams)
     params.delete('precioMin'); params.delete('precioMax')
     setSearchParams(params, { replace: true })
   }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0) + (soloHalloween ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...basePool]
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
     if (isAdmin && soloAgotados) result = result.filter(p => p.agotado)
-    if (isAdmin && soloHalloween) result = result.filter(p => p.promoHalloween)
     if (isPriceFiltered) result = result.filter(p => (p.precioUSD || 0) >= priceRange[0] && (p.precioUSD || 0) <= priceRange[1])
     if (searchQuery.trim()) {
       const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
@@ -725,7 +691,7 @@ export default function Tienda() {
     if (sortBy === 'price-asc')  result.sort((a, b) => (a.precioUSD || 9999) - (b.precioUSD || 9999))
     if (sortBy === 'price-desc') result.sort((a, b) => (b.precioUSD || 0) - (a.precioUSD || 0))
     return result
-  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, soloHalloween, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
+  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
@@ -758,8 +724,8 @@ export default function Tienda() {
     urlGenero ? LABEL_MAP[urlGenero]  : null,
   ].filter(Boolean).join(' · ') || 'Fragancias'
 
-  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloHalloween, setSoloHalloween }
-  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados, soloHalloween, setSoloHalloween }
+  const filterProps = { sortBy, setSortBy, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, productPool: basePool, urlTipo, urlGenero, navigate, urlColeccion, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }
+  const sidebarProps = { urlGenero, urlTipo, urlColeccion, navigate, selectedMarcas, toggleMarca, selectedTipos, toggleTipo, hasFilters, clearFilters, basePool, priceRange, setPriceRange: handlePriceChange, priceBounds, isAdmin, soloAgotados, setSoloAgotados }
 
   const visibleProducts = filtered.slice(0, visibleCount)
   const hasMore = visibleCount < filtered.length
@@ -950,14 +916,12 @@ export default function Tienda() {
                             <VitrinaCard
                               product={product}
                               ribbon={
-                                product.promoHalloween ? 'Oferta Halloween'
-                                : currency === 'usd' && product.precioUSD > 0
-                                  ? (theme === 'halloween' ? 'Precio embrujado' : 'Promo en divisa')
+                                currency === 'usd' && product.precioUSD > 0
+                                  ? ('Promo en divisa')
                                   : null
                               }
                               ribbonVariant={
-                                product.promoHalloween || (theme === 'halloween' && currency === 'usd' && product.precioUSD > 0)
-                                  ? 'halloween' : null
+                                null
                               }
                             />
                           </div>

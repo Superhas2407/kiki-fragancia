@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
-import { useTheme } from '../context/ThemeContext'
 import { allProducts } from '../data/all-products'
 
 const WA_NUMBER = '584149112002'
@@ -35,7 +34,6 @@ const WhatsAppIcon = () => (
 
 export default function WhatsAppFab() {
   const { drawerOpen } = useCartContext()
-  const { theme } = useTheme()
   const waUrl = useWaUrl()
 
   if (drawerOpen) return null
@@ -75,18 +73,6 @@ export default function WhatsAppFab() {
       }}
     >
       <WhatsAppIcon />
-      {theme === 'halloween' && (
-        <span
-          aria-hidden="true"
-          style={{
-            position: 'absolute', top: -4, right: -4,
-            fontSize: 18, lineHeight: 1,
-            filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))',
-          }}
-        >
-          🎃
-        </span>
-      )}
     </a>
   )
 }
