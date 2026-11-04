@@ -1267,7 +1267,7 @@ export default function ProductDetail() {
   const waMsg = encodeURIComponent(
     `Hola! Me interesa el *${product.house} ${product.name}*${waMl}${waPrecio ? ` (REF $${product.precioUSD})` : ''}. ¿Tienen disponibilidad?\n\n${canonicalUrl}`
   )
-  const waUrl = `https://wa.me/584149112002?text=${waMsg}&ref=detalle_${product.id}`
+  const waUrl = `https://wa.me/584221221983?text=${waMsg}&ref=detalle_${product.id}`
 
   function handleShare() {
     const shareData = {
