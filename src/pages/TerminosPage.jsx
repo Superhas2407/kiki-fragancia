@@ -6,7 +6,7 @@ const SECTIONS = [
     title: '1. Identificación',
     body: `KiKi Fragancia es una tienda venezolana de perfumería de lujo con sede en CC Todo Tecnología, Local #29, Av. Francisco de Miranda, Los Cortijos, Caracas, Venezuela. Operamos bajo las leyes de la República Bolivariana de Venezuela.
 
-Contacto: @kiki_fragancia (Instagram) · 0414-911-2002 (WhatsApp).`,
+Contacto: @kiki_fragancia (Instagram) · 0422-122-1983 (WhatsApp).`,
   },
   {
     title: '2. Objeto',
@@ -115,7 +115,7 @@ export default function TerminosPage() {
         <footer className="terminos-footer">
           <p>¿Preguntas? Escríbenos por{' '}
             <a
-              href={`https://wa.me/584149112002?text=${encodeURIComponent('Hola! Tengo una duda sobre los términos y condiciones de la tienda.')}`}
+              href={`https://wa.me/584221221983?text=${encodeURIComponent('Hola! Tengo una duda sobre los términos y condiciones de la tienda.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="terminos-wa-link"
