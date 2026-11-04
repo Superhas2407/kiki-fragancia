@@ -2379,7 +2379,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 193,

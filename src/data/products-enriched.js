@@ -5574,7 +5574,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 193,
