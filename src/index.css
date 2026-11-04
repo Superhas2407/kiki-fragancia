@@ -282,7 +282,7 @@
   h1, h2, h3 { text-wrap: balance; }
 
   :focus-visible {
-    outline: 2px solid #C4781A;
+    outline: 2px solid var(--gold);
     outline-offset: 3px;
   }
 
@@ -771,7 +771,7 @@
   color: rgba(247,242,234,0.7);
   font-size: 18px; line-height: 1;
   cursor: pointer; padding: 6px 10px;
-  min-width: 36px; min-height: 36px;
+  min-width: 44px; min-height: 44px;
   display: flex; align-items: center; justify-content: center;
   border-radius: 50%;
   transition: background .2s, color .2s;
@@ -920,7 +920,7 @@
   -webkit-text-stroke: 0.4px currentColor;
   letter-spacing: 0.12em; text-transform: uppercase;
   background: none; border: none; cursor: pointer;
-  color: rgba(255,255,255,0.35); padding: 8px 6px; min-height: 44px;
+  color: rgba(255,255,255,0.78); padding: 8px 6px; min-width: 44px; min-height: 44px;
   transition: color 0.18s;
 }
 .hcm-btn.active { color: rgba(255,255,255,0.9); }
@@ -1089,11 +1089,11 @@
 .hamburger-btn {
   background: none; border: none; cursor: pointer;
   color: var(--gold); display: flex; padding: 4px;
-  flex-shrink: 0; min-width: 36px; min-height: 44px;
+  flex-shrink: 0; min-width: 44px; min-height: 44px;
   align-items: center; justify-content: center;
 }
 
-.header-icon-btn { color: var(--ink-mute); }
+.header-icon-btn { color: var(--ink-mute); min-width: 44px; min-height: 44px; }
 [data-theme='warm'] .header-icon-btn { color: rgba(35,26,13,0.60); }
 [data-theme='warm'] .header-icon-btn:hover { color: var(--gold-ink); }
 
@@ -2593,7 +2593,7 @@
   border: 1px solid var(--line);
   color: var(--gold);
   cursor: pointer;
-  min-height: 38px;
+  min-height: 44px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   opacity: 0;
@@ -2766,6 +2766,7 @@
   font-family: 'KikiGotham', sans-serif;
   font-size: 10px; font-weight: 300; letter-spacing: 0.04em;
   padding: 3px 9px;
+  min-height: 44px;
   border: 1px solid var(--line);
   background: transparent; color: var(--ink-faint);
   cursor: pointer; transition: border-color .18s, color .18s, background .18s;
@@ -4671,7 +4672,7 @@
   background: rgba(10,8,4,0.72);
   border: 1px solid rgba(var(--gold-rgb),0.25);
   border-radius: 50%;
-  width: 32px; height: 32px;
+  width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
   color: rgba(247,242,234,0.80);
@@ -4745,7 +4746,8 @@
 }
 .wl-close-btn {
   background: none; border: none; cursor: pointer;
-  color: var(--ink-faint); padding: 4px;
+  color: var(--ink-mute); padding: 4px;
+  min-width: 44px; min-height: 44px;
   display: flex; align-items: center; justify-content: center;
   transition: color .2s;
 }
@@ -4799,15 +4801,15 @@
 }
 .wl-item-remove {
   background: none; border: none; cursor: pointer;
-  color: var(--ink-faint); font-size: 16px; line-height: 1;
-  padding: 4px; transition: color .2s;
+  color: var(--ink-mute); font-size: 16px; line-height: 1;
+  padding: 4px; min-width: 44px; min-height: 44px; transition: color .2s;
 }
 .wl-item-remove:hover { color: var(--ink); }
 .wl-item-cart-btn {
   font-family: var(--font-s); font-size: 9px;
   letter-spacing: 0.14em; text-transform: uppercase;
   background: transparent; border: 1px solid var(--line);
-  color: var(--ink-mute); cursor: pointer; padding: 7px 12px;
+  color: var(--ink-mute); cursor: pointer; padding: 7px 12px; min-height: 44px;
   transition: border-color .2s, color .2s;
   white-space: nowrap;
 }
@@ -6199,26 +6201,32 @@
   .hwd-skeleton-hand { width: 64px; height: 78px; left: 10px !important; }
 }
 
-/* November campaign, with a consistent black and muted gold surface. */
-.bf-section { background: #0d0c09; color: #f7f2ea; padding: clamp(48px, 7vw, 100px) 0; scroll-margin-top: 160px; }
-.bf-eyebrow { font-family: var(--font-s); font-size: 10px; letter-spacing: .23em; color: #ddbe55; margin-bottom: 24px; }
-.bf-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
-.bf-heading h2 { font-family: var(--font-d); font-size: clamp(34px, 5vw, 64px); font-weight: 400; line-height: 1.08; }
-.bf-heading h2 em { color: #ddbe55; }
-.bf-heading > p { font-family: var(--font-s); font-size: 13px; line-height: 1.8; color: #d1c8b6; }
-.bf-offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; }
-.bf-offer { border: 1px solid #ddbe554d; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; align-items: start; }
-.bf-offer-label { font-family: var(--font-s); font-size: 9px; letter-spacing: .2em; color: #ddbe55; }
-.bf-offer h3 { font-family: var(--font-d); font-size: 28px; font-weight: 400; margin-top: 16px; }
-.bf-price { font-family: var(--font-d); color: #ddbe55; font-size: clamp(54px, 6vw, 82px); line-height: 1.15; margin: 16px 0 10px; }
-.bf-price > span { font-family: var(--font-s); font-size: 14px; color: #f7f2ea; }
-.bf-size { font-family: var(--font-s); font-size: 12px; line-height: 1.6; color: #f7f2ea; }
-.bf-detail { font-family: var(--font-s); font-size: 12px; line-height: 1.8; color: #d1c8b6; margin: 10px 0 24px; }
-.bf-cta { margin-top: auto; font-family: var(--font-s); font-size: 11px; color: #ddbe55; border-bottom: 1px solid #ddbe55; padding: 12px 0; line-height: 1.6; letter-spacing: .04em; }
-.bf-cta:focus-visible { outline: 2px solid #ddbe55; outline-offset: 5px; }
-.bf-conditions { margin-top: 20px; font-family: var(--font-s); font-size: 10px; line-height: 1.8; color: #c6bda8; }
+/* Black Friday — built with the same Gotham and color tokens as the rest of the site. */
+.bf-section { background: var(--bg-warm); color: var(--ink); padding: clamp(56px, 8vw, 116px) 0; scroll-margin-top: 160px; position: relative; overflow: hidden; }
+.bf-section::before { content: ''; position: absolute; width: min(74vw, 900px); aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; top: -58%; right: -21%; pointer-events: none; }
+.bf-section .kiki-container { position: relative; }
+.bf-eyebrow { font-family: var(--font-s); font-size: 10px; font-weight: 500; letter-spacing: .25em; color: var(--gold-ink); margin-bottom: 18px; }
+.bf-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 38px; }
+.bf-heading h2 { font-family: var(--font-d); font-size: clamp(38px, 5.4vw, 72px); font-weight: 300; letter-spacing: -.025em; line-height: .98; }
+.bf-heading h2 em { color: var(--gold-ink); font-style: italic; }
+.bf-heading > p { max-width: 360px; font-family: var(--font-s); font-size: 11px; font-weight: 400; letter-spacing: .08em; line-height: 1.85; color: var(--ink-mute); }
+.bf-offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+.bf-offer { min-height: 388px; padding: clamp(24px, 4vw, 48px); background: var(--bg-warm); display: flex; flex-direction: column; align-items: start; }
+.bf-offer--grande { background: linear-gradient(140deg, rgba(var(--gold-rgb),.14), var(--bg-warm) 58%); }
+.bf-offer-topline { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.bf-offer-label, .bf-offer-tag { font-family: var(--font-s); font-size: 9px; font-weight: 500; letter-spacing: .20em; color: var(--gold-ink); }
+.bf-offer-tag { padding: 7px 9px; border: 1px solid var(--line); color: var(--ink-mute); }
+.bf-offer h3 { max-width: 380px; font-family: var(--font-d); font-size: clamp(25px, 2.5vw, 34px); font-weight: 300; letter-spacing: -.015em; line-height: 1.12; margin-top: clamp(32px, 4vw, 58px); }
+.bf-price { display: flex; flex-direction: column; gap: 3px; font-family: var(--font-s); font-size: 10px; font-weight: 500; letter-spacing: .20em; text-transform: uppercase; color: var(--ink-mute); margin: 18px 0 8px; }
+.bf-price strong { font-family: var(--font-d); font-size: clamp(64px, 8vw, 112px); font-weight: 300; letter-spacing: -.07em; line-height: .82; color: var(--gold-ink); }
+.bf-size { font-family: var(--font-s); font-size: 10px; font-weight: 500; letter-spacing: .12em; line-height: 1.7; color: var(--ink); }
+.bf-detail { max-width: 430px; font-family: var(--font-s); font-size: 11px; font-weight: 400; letter-spacing: .055em; line-height: 1.8; color: var(--ink-mute); margin: 10px 0 28px; }
+.bf-cta { min-height: 44px; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; font-family: var(--font-s); font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-fill-ink); background: var(--gold); text-decoration: none; transition: background .2s ease, color .2s ease, transform .2s ease; }
+.bf-cta:hover { background: var(--gold-ink); color: var(--gold-fill-ink); transform: translateY(-2px); }
+.bf-cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+.bf-conditions { margin-top: 18px; max-width: 840px; font-family: var(--font-s); font-size: 9px; font-weight: 400; letter-spacing: .11em; line-height: 1.9; color: var(--ink-mute); }
 [data-theme='warm'] .bf-section { -webkit-text-stroke: 0; }
-@media (max-width: 767px) { .bf-heading { align-items: start; flex-direction: column; } }
-/* Campaign announcement keeps the same restrained black/gold palette. */
-.announcement-bar, [data-theme='warm'] .announcement-bar { background: #0d0c09; color: #ddbe55; }
-.announcement-bar .ann-label, .announcement-bar .ann-dot, .announcement-bar-close { color: #ddbe55; }
+@media (max-width: 767px) { .bf-section { padding: 56px 0 64px; } .bf-heading { align-items: start; flex-direction: column; gap: 18px; } .bf-heading > p { font-size: 10px; } .bf-offers { grid-template-columns: 1fr; } .bf-offer { min-height: 350px; } .bf-offer h3 { margin-top: 34px; } }
+/* Campaign announcement keeps the existing token palette in both themes. */
+.announcement-bar, [data-theme='warm'] .announcement-bar { background: var(--bg-warm); color: var(--gold-ink); }
+.announcement-bar .ann-label, .announcement-bar .ann-dot, .announcement-bar-close { color: var(--gold-ink); }

@@ -12,24 +12,27 @@ export default function BlackFridaySection() {
       <div className="kiki-container">
         <p className="bf-eyebrow">BLACK FRIDAY · KIKI FRAGANCIA</p>
         <div className="bf-heading">
-          <h2 id="bf-title">Noviembre se vive<br /><em>en grande.</em></h2>
-          <p>Tres fragancias. Tu combinación.<br />Descubre las promos de Antonio Banderas.</p>
+          <h2 id="bf-title">Black Friday,<br /><em>en grande.</em></h2>
+          <p>Promociones seleccionadas de Antonio Banderas.<br />Elige tu combinación y escríbenos al DM.</p>
         </div>
         <div className="bf-offers">
           {activeNovemberCampaigns(now).map(c => (
-            <article className="bf-offer" key={c.id}>
-              <p className="bf-offer-label">ANTONIO BANDERAS</p>
+            <article className={`bf-offer bf-offer--${c.id}`} key={c.id}>
+              <div className="bf-offer-topline">
+                <p className="bf-offer-label">ANTONIO BANDERAS</p>
+                <span className="bf-offer-tag">PROMO {c.id === 'grande' ? 'XL' : 'SELECCIÓN'}</span>
+              </div>
               <h3>{c.title}</h3>
-              <p className="bf-price"><span>3 por</span> ${c.price}</p>
+              <p className="bf-price"><span>3 fragancias por</span> <strong>${c.price}</strong></p>
               <p className="bf-size">{c.size}</p>
               <p className="bf-detail">{c.detail}</p>
               <a className="bf-cta" href="https://www.instagram.com/kiki_fragancia/" target="_blank" rel="noopener noreferrer">
-                Escribe <strong>{c.keyword}</strong> al DM <span aria-hidden="true">↗</span>
+                <span>Escribe</span> <strong>{c.keyword}</strong> <span>al DM</span> <span aria-hidden="true">↗</span>
               </a>
             </article>
           ))}
         </div>
-        <p className="bf-conditions">Precios promocionales en divisas. Sujeto a disponibilidad. Consulta las condiciones al armar tu combo.</p>
+        <p className="bf-conditions">Precio promocional en divisas · Sujeto a disponibilidad · Ciertas condiciones aplican · Los Cortijos, Caracas</p>
       </div>
     </section>
   )
