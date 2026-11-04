@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import { allProducts } from '../data/all-products'
 
-const WA_NUMBER = '584149112002'
+const WA_NUMBER = '584221221983'
 
 const MESSAGES = {
   default: encodeURIComponent('Hola! Entré a la tienda y me gustaría que me ayuden a elegir una fragancia 🙌'),
