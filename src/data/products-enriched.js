@@ -10719,7 +10719,8 @@ export const products = [
     ],
     "ml": 125,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 373,
