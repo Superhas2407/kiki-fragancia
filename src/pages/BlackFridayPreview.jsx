@@ -16,8 +16,7 @@ export default function BlackFridayPreview() {
       <section className="kbf26__hero" aria-labelledby="kbf26-title">
         <div className="kbf26__ambient" aria-hidden="true" />
         <picture className="kbf26__hero-photo">
-          <source media="(max-width: 760px)" srcSet="/black-friday/kiki-hero-mobile.webp" type="image/webp" />
-          <img src="/black-friday/kiki-hero-desktop.webp" alt="Black Friday Kiki Fragancia: avión con pancarta, perfumes Nautica, Benetton y Antonio Banderas y promociones" fetchPriority="high" />
+          <img src="/black-friday/kiki-hero-desktop.webp" alt="Black Friday Kiki Fragancia: avión con pancarta, perfumes Nautica, Benetton y Antonio Banderas y promociones" fetchPriority="high" onError={event => event.currentTarget.parentElement.classList.add("is-missing")} />
         </picture>
         <div className="kbf26__hero-content kbf26__hero-content--with-photo">
           <p className="kbf26__overline">KIKI FRAGANCIA PRESENTA · BLACK FRIDAY 2026</p>
