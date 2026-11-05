@@ -12,35 +12,38 @@ export default function BlackFridayPreview() {
         <title>Black Edition — Vista previa | KiKi Fragancia</title>
         <meta name="robots" content="noindex,nofollow" />
       </Helmet>
-      <div className="kbf26__ribbon">BLACK FRIDAY 2026 <span aria-hidden="true">✦</span> KIKI FRAGANCIA <span aria-hidden="true">✦</span> EDICIÓN ESPECIAL</div>
+      <div className="kbf26__ribbon">EVENTO BLACK FRIDAY <span aria-hidden="true">✦</span> PROMOCIONES ESPECIALES <span aria-hidden="true">✦</span> HASTA AGOTAR EXISTENCIAS</div>
       <section className="kbf26__hero" aria-labelledby="kbf26-title">
         <div className="kbf26__ambient" aria-hidden="true" />
         <div className="kbf26__hero-content">
-          <p className="kbf26__overline">KIKI FRAGANCIA / EDICIÓN LIMITADA</p>
-          <h1 id="kbf26-title">BLACK<br /><span>EDITION.</span></h1>
-          <p className="kbf26__lead">El lujo de elegir más.</p>
-          <p className="kbf26__sublead">Las fragancias que dejan recuerdos, ahora con promociones especiales.</p>
-          <a className="kbf26__button" href="#kbf26-promos">Descubrir las promociones <span aria-hidden="true">↗</span></a>
+          <p className="kbf26__overline">KIKI FRAGANCIA PRESENTA · BLACK FRIDAY 2026</p>
+          <div className="kbf26__event-mark"><span className="kbf26__event-pulse" /> EVENTO ESPECIAL · STOCK LIMITADO</div>
+          <h1 id="kbf26-title">BLACK<br /><span>FRIDAY.</span></h1>
+          <p className="kbf26__lead">No es un viernes cualquiera.</p>
+          <p className="kbf26__sublead">Tres fragancias. Precios extraordinarios. Una edición que no estará siempre aquí.</p>
+          <a className="kbf26__button" href="#kbf26-promos">QUIERO VER LAS OFERTAS <span aria-hidden="true">↗</span></a>
+          <p className="kbf26__hero-disclaimer">Promociones sujetas a disponibilidad · Sin fecha de cierre anunciada</p>
         </div>
         <div className="kbf26__hero-visual" aria-hidden="true">
           <div className="kbf26__halo" />
-          <span className="kbf26__monogram">BLACK</span>
-          <span className="kbf26__visual-caption">THE BLACK FRIDAY EDITION · 2026</span>
+          <span className="kbf26__monogram">BF<span>26</span></span>
+          <div className="kbf26__visual-offer"><span>OFERTAS ESPECIALES</span><strong>3 × $60</strong><span>Y 3 × $90 EN 200 ML</span></div>
+          <span className="kbf26__visual-caption">KIKI BLACK FRIDAY · POR TIEMPO LIMITADO</span>
         </div>
         <span className="kbf26__hero-index">01 / LA EDICIÓN</span>
       </section>
       <section className="kbf26__offers" id="kbf26-promos" aria-labelledby="kbf26-offers-title">
         <div className="kbf26__section-heading">
-          <div><p className="kbf26__overline">02 / PROMOCIONES SELECCIONADAS</p><h2 id="kbf26-offers-title">Elige más.<br /><em>Recuerda siempre.</em></h2></div>
-          <p>Ofertas disponibles según existencias. Escríbenos para conocer las fragancias participantes.</p>
+          <div><p className="kbf26__overline">02 / OFERTAS BLACK FRIDAY</p><h2 id="kbf26-offers-title">Esta vez,<br /><em>llévate tres.</em></h2></div>
+          <p>No son descuentos de todos los días. Elige tu combinación mientras haya disponibilidad.</p>
         </div>
         <div className="kbf26__grid">
           {offers.map((offer, index) => (
             <article className="kbf26__offer" key={offer.id}>
-              <div className="kbf26__offer-head"><span>ANTONIO BANDERAS</span><span>0{index + 1} / SELECCIÓN</span></div>
-              <div className="kbf26__offer-art" aria-hidden="true"><span>{offer.id === 'grande' ? 'XL' : '03'}</span></div>
+              <div className="kbf26__offer-head"><span>ANTONIO BANDERAS</span><span>BLACK FRIDAY / 0{index + 1}</span></div>
+              <div className="kbf26__offer-art" aria-hidden="true"><span>{offer.id === 'grande' ? '200 ML' : '3 × 60'}</span><small>EDICIÓN PROMOCIONAL</small></div>
               <div className="kbf26__offer-body">
-                <p className="kbf26__offer-kicker">TRES FRAGANCIAS POR</p>
+                <p className="kbf26__offer-kicker">OFERTA ESPECIAL · 3 FRAGANCIAS POR</p>
                 <div className="kbf26__price"><span>$</span>{offer.price}</div>
                 <h3>{offer.title}</h3>
                 <p className="kbf26__offer-size">{offer.size}</p>
@@ -50,6 +53,7 @@ export default function BlackFridayPreview() {
             </article>
           ))}
         </div>
+        <p className="kbf26__limited-note">DISPONIBILIDAD LIMITADA · NO DEJES ESCAPAR TU COMBINACIÓN</p>
         <p className="kbf26__legal">Precios en USD · Sujeto a disponibilidad · Condiciones aplican · Caracas, Venezuela</p>
       </section>
       <section className="kbf26__closing">
