@@ -15,7 +15,11 @@ export default function BlackFridayPreview() {
       <div className="kbf26__ribbon">EVENTO BLACK FRIDAY <span aria-hidden="true">✦</span> PROMOCIONES ESPECIALES <span aria-hidden="true">✦</span> HASTA AGOTAR EXISTENCIAS</div>
       <section className="kbf26__hero" aria-labelledby="kbf26-title">
         <div className="kbf26__ambient" aria-hidden="true" />
-        <div className="kbf26__hero-content">
+        <picture className="kbf26__hero-photo">
+          <source media="(max-width: 760px)" srcSet="/black-friday/kiki-hero-mobile.webp" type="image/webp" />
+          <img src="/black-friday/kiki-hero-desktop.webp" alt="Black Friday Kiki Fragancia: avión con pancarta, perfumes Nautica, Benetton y Antonio Banderas y promociones" fetchPriority="high" />
+        </picture>
+        <div className="kbf26__hero-content kbf26__hero-content--with-photo">
           <p className="kbf26__overline">KIKI FRAGANCIA PRESENTA · BLACK FRIDAY 2026</p>
           <div className="kbf26__event-mark"><span className="kbf26__event-pulse" /> EVENTO ESPECIAL · STOCK LIMITADO</div>
           <h1 id="kbf26-title">BLACK<br /><span>FRIDAY.</span></h1>
@@ -24,7 +28,7 @@ export default function BlackFridayPreview() {
           <a className="kbf26__button" href="#kbf26-promos">QUIERO VER LAS OFERTAS <span aria-hidden="true">↗</span></a>
           <p className="kbf26__hero-disclaimer">Promociones sujetas a disponibilidad · Sin fecha de cierre anunciada</p>
         </div>
-        <div className="kbf26__hero-visual" aria-hidden="true">
+        <div className="kbf26__hero-visual kbf26__hero-visual--with-photo" aria-hidden="true">
           <div className="kbf26__halo" />
           <span className="kbf26__monogram">BF<span>26</span></span>
           <div className="kbf26__visual-offer"><span>OFERTAS ESPECIALES</span><strong>3 × $60</strong><span>Y 3 × $90 EN 200 ML</span></div>
