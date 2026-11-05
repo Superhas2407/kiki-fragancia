@@ -170,6 +170,49 @@ export default {
       description: 'Otras presentaciones de este mismo perfume (distinto ml y/o concentración, ej: 90ml y 200ml). Buscá el producto por nombre — cada opción te muestra su marca, ml, concentración, precio y si está agotado, para que no tengas que adivinar IDs.',
       validation: Rule => Rule.unique(),
     },
+    // ── Perfil de recomendación para Camila ─────────────────────────────
+    {
+      name: 'ocasiones',
+      title: 'Ocasiones recomendadas',
+      type: 'array',
+      of: [{ type: 'string', options: { list: [
+        { title: 'Diario', value: 'diario' },
+        { title: 'Oficina', value: 'oficina' },
+        { title: 'Universidad', value: 'universidad' },
+        { title: 'Citas', value: 'citas' },
+        { title: 'Fiestas', value: 'fiestas' },
+        { title: 'Eventos formales', value: 'formal' },
+        { title: 'Deporte', value: 'deporte' },
+      ]}}],
+      options: { layout: 'tags' },
+      validation: Rule => Rule.unique(),
+      description: 'Solo selecciona ocasiones apropiadas para esta fragancia según una ficha verificada.',
+    },
+    {
+      name: 'intensidad',
+      title: 'Intensidad percibida',
+      type: 'string',
+      options: { list: [
+        { title: 'Suave', value: 'suave' },
+        { title: 'Moderada', value: 'moderada' },
+        { title: 'Intensa', value: 'intensa' },
+      ]},
+      description: 'Clasificación orientativa; dejar en blanco si no está verificada. No equivale a duración.',
+    },
+    {
+      name: 'estilo',
+      title: 'Estilo de fragancia (no restringe por edad)',
+      type: 'array',
+      of: [{ type: 'string', options: { list: [
+        { title: 'Juvenil', value: 'juvenil' },
+        { title: 'Versátil', value: 'versatil' },
+        { title: 'Elegante', value: 'elegante' },
+        { title: 'Clásico', value: 'clasico' },
+      ]}}],
+      options: { layout: 'tags' },
+      validation: Rule => Rule.unique(),
+      description: 'Describe el estilo de la fragancia. Nunca implica que otras edades no puedan usarla.',
+    },
     // ── Descripción ─────────────────────────────────────────────────────
     {
       name: 'descripcion',
