@@ -147,3 +147,9 @@
 @media(max-width:760px) {
   .kbf26__hero:has(.kbf26__hero-photo.is-missing) { display:block; min-height:795px; padding:54px 24px 85px; }
 }
+
+/* Mantener completa la composición 16:9 en móvil hasta recibir un arte 9:16. */
+@media(max-width:760px) {
+  .kbf26__hero-photo { aspect-ratio:1672 / 941; }
+  .kbf26__hero-photo img { object-fit:contain; }
+}
