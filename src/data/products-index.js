@@ -3416,7 +3416,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 276,
