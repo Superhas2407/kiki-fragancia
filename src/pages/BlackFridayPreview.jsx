@@ -24,7 +24,7 @@ export default function BlackFridayPreview() {
         </div>
         <div className="kbf26__hero-visual" aria-hidden="true">
           <div className="kbf26__halo" />
-          <span className="kbf26__monogram">K<span>F</span></span>
+          <span className="kbf26__monogram">BLACK</span>
           <span className="kbf26__visual-caption">THE BLACK FRIDAY EDITION · 2026</span>
         </div>
         <span className="kbf26__hero-index">01 / LA EDICIÓN</span>
