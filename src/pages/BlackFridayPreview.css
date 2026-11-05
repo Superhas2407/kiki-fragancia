@@ -84,3 +84,45 @@
   .kbf26__closing { padding:75px 20px 85px; }
 }
 @media(prefers-reduced-motion:reduce) { .kbf26__button { transition:none; } }
+
+/* Event treatment: scoped entirely to Black Friday preview */
+.kbf26__ribbon { background:var(--kbf-gold); color:#0a0a0a; font-weight:700; padding:16px 18px; }
+.kbf26__hero { min-height:min(830px,92svh); border-bottom:1px solid var(--kbf-gold); }
+.kbf26__ambient { background:linear-gradient(110deg,rgba(10,10,10,.95) 30%,rgba(10,10,10,.54) 100%),radial-gradient(ellipse at 84% 47%,rgba(201,168,76,.28),transparent 54%); }
+.kbf26__event-mark { display:inline-flex; align-items:center; gap:12px; padding:9px 14px; margin-top:25px; color:var(--kbf-gold-soft); border:1px solid var(--kbf-rule); font-size:10px; letter-spacing:.15em; }
+.kbf26__event-pulse { display:block; height:7px; width:7px; border-radius:100%; background:var(--kbf-gold); box-shadow:0 0 0 4px rgba(201,168,76,.12); }
+.kbf26 h1 { font-weight:500; font-size:clamp(74px,12vw,175px); letter-spacing:-.092em; }
+.kbf26 h1 span { font-weight:200; }
+.kbf26__lead { font-weight:400; }
+.kbf26__hero-disclaimer { color:var(--kbf-mute); font-size:11px; letter-spacing:.04em; margin:16px 0 0; line-height:1.7; }
+.kbf26__monogram { font-size:clamp(170px,29vw,450px); color:rgba(201,168,76,.105); transform:rotate(-10deg) translateX(-8%); }
+.kbf26__monogram span { font-size:.4em; vertical-align:top; color:rgba(201,168,76,.32); }
+.kbf26__visual-offer { position:absolute; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; width:min(27vw,345px); aspect-ratio:1; border:1px solid rgba(201,168,76,.55); border-radius:50%; transform:rotate(10deg); background:rgba(10,10,10,.64); backdrop-filter:blur(2px); }
+.kbf26__visual-offer span { font-size:10px; letter-spacing:.16em; color:var(--kbf-gold-soft); text-align:center; }
+.kbf26__visual-offer strong { font-weight:400; letter-spacing:-.075em; font-size:clamp(39px,5vw,72px); line-height:1.1; }
+.kbf26__offers { background:linear-gradient(180deg,#14110c,#080808 32%); }
+.kbf26__offer { position:relative; border-color:rgba(201,168,76,.36); }
+.kbf26__offer::before { content:'BLACK FRIDAY'; position:absolute; top:62px; left:0; z-index:2; padding:9px 15px; background:var(--kbf-gold); color:#0a0a0a; font-size:10px; font-weight:700; letter-spacing:.16em; }
+.kbf26__offer-art { position:relative; min-height:245px; background:linear-gradient(135deg,#17120a,#352813 48%,#0a0a0a); }
+.kbf26__offer-art span { color:rgba(232,201,106,.38); font-size:clamp(70px,11vw,140px); font-weight:300; letter-spacing:-.085em; }
+.kbf26__offer-art small { position:absolute; bottom:20px; font-size:9px; letter-spacing:.2em; color:var(--kbf-gold-soft); }
+.kbf26__price { color:var(--kbf-gold-soft); font-weight:400; }
+.kbf26__price span { color:var(--kbf-gold-soft); }
+.kbf26__offer-link { padding:17px 18px; background:var(--kbf-gold); color:#0a0a0a; border:0; font-weight:700; }
+.kbf26__offer-link:hover { color:#0a0a0a; background:var(--kbf-gold-soft); }
+.kbf26__limited-note { margin:38px 0 10px; padding:18px 16px; border-top:1px solid var(--kbf-rule); border-bottom:1px solid var(--kbf-rule); color:var(--kbf-gold-soft); letter-spacing:.15em; font-size:11px; text-align:center; }
+@media(max-width:760px) {
+ .kbf26__ribbon { font-size:8px; padding:13px 5px; }
+ .kbf26__hero { min-height:795px; padding-top:54px; }
+ .kbf26__event-mark { margin-top:20px; font-size:8px; }
+ .kbf26 h1 { font-size:clamp(70px,17vw,112px); }
+ .kbf26__hero-visual { inset:51% 0 0; opacity:1; }
+ .kbf26__visual-offer { width: min(60vw,245px); }
+ .kbf26__visual-offer strong { font-size:42px; }
+ .kbf26__visual-offer span { font-size:8px; }
+ .kbf26__monogram { font-size:65vw; }
+ .kbf26__visual-caption { bottom:8%; }
+ .kbf26__offer-art { min-height:190px; }
+ .kbf26__offer-art span { font-size:80px; }
+ .kbf26__offer::before { top:56px; }
+}
