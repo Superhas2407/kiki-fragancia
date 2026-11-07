@@ -36,7 +36,7 @@ const client = createClient({
 // cliente (SanityProductsContext), gateada por sesión. Si se agregara acá,
 // el precio y flag de Halloween quedarían públicos para cualquiera antes de
 // lanzar la campaña.
-const QUERY = `*[_type == "product"] | order(id asc) {
+const QUERY = `*[_type == "product" && !(_id in path("drafts.**"))] | order(id asc) {
   id, house, name, image, sanityImage, familia, tipo, genero,
   ml, precioUSD, descuento, agotado, categoria, "variantIds": variantIds[]->id, descripcion,
   notasSalida, notasCorazon, notasFondo, acordes,
