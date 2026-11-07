@@ -557,7 +557,6 @@ export const notesLookup = {
   557: "mandarina, piña, manzana verde, cedro, musgo de roble, vainilla, caramelo, Maderas secas, almizcle",
   558: "naranja siciliana, bergamota, limón, frutos rojos, almizcle blanco, vainilla, ámbar",
   559: "pera, lavanda, menta, canela, salvia, vainilla, ámbar, pachulí",
-  559: "pera, lavanda, menta, canela, salvia, vainilla, ámbar, pachulí",
   560: "bergamota, neroli, pimienta rosa, lavanda, iris, cuero, cedro, sándalo, ámbar",
   561: "nuez moscada, elemí, cardamomo, Pimienta de Jamaica, lavandín, cuero, ládano, pachulí, vainilla",
   562: "naranja, menta, grosella negra, albaricoque, albahaca, rosa, higo, Ambreta, Maderas ambaradas",

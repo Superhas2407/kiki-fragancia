@@ -15943,34 +15943,6 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": 559,
-    "house": "JEAN PAUL GAULTIER",
-    "name": "Ultra Male",
-    "image": null,
-    "familia": "Ambarada aromática",
-    "tipo": "Eau de Toilette",
-    "genero": "Masculino",
-    "descripcion": "Ultra Male, Eau de Toilette Intense, combina pera, lavanda y menta con un corazón de canela y salvia. Vainilla, ámbar y pachulí aportan un fondo cálido. Sus acordes dulces, aromáticos y avainillados se recomiendan especialmente para la noche.",
-    "description": "Ultra Male, Eau de Toilette Intense, combina pera, lavanda y menta con un corazón de canela y salvia. Vainilla, ámbar y pachulí aportan un fondo cálido. Sus acordes dulces, aromáticos y avainillados se recomiendan especialmente para la noche.",
-    "notasSalida": "pera, lavanda, menta",
-    "notasCorazon": "canela, salvia",
-    "notasFondo": "vainilla, ámbar, pachulí",
-    "notes": [
-      "pera",
-      "lavanda",
-      "menta",
-      "canela",
-      "salvia",
-      "vainilla",
-      "ámbar",
-      "pachulí"
-    ],
-    "ml": 125,
-    "precioUSD": 170,
-    "categoria": "disenador",
-    "agotado": true
-  },
-  {
     "id": 560,
     "house": "BHARARA",
     "name": "Rome Melancholia Pour Homme",

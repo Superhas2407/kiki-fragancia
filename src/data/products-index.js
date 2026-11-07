@@ -6953,19 +6953,6 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": 559,
-    "house": "JEAN PAUL GAULTIER",
-    "name": "Ultra Male",
-    "image": null,
-    "familia": "Ambarada aromática",
-    "tipo": "Eau de Toilette",
-    "genero": "Masculino",
-    "ml": 125,
-    "precioUSD": 170,
-    "categoria": "disenador",
-    "agotado": true
-  },
-  {
     "id": 560,
     "house": "BHARARA",
     "name": "Rome Melancholia Pour Homme",
