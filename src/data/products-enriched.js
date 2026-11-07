@@ -9942,34 +9942,6 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": 346,
-    "house": "ANTONIO BANDERAS",
-    "name": "Antonio Banderas The Golden Secret",
-    "image": "antonio-banderas-the-golden-secret-100ml-m.webp",
-    "familia": null,
-    "tipo": "Eau de Toilette",
-    "genero": "Masculino",
-    "descripcion": null,
-    "description": null,
-    "notasSalida": "Pomelo, Limón, Cardamomo",
-    "notasCorazon": "Lavanda, Cedro, Geranio",
-    "notasFondo": "Almizcle, Ámbar, Madera",
-    "notes": [
-      "Pomelo",
-      "Limón",
-      "Cardamomo",
-      "Lavanda",
-      "Cedro",
-      "Geranio",
-      "Almizcle",
-      "Ámbar",
-      "Madera"
-    ],
-    "ml": 100,
-    "precioUSD": 25,
-    "categoria": "disenador"
-  },
-  {
     "id": 347,
     "house": "NAUTICA",
     "name": "Nautica Voyage Heritage",
@@ -12510,33 +12482,6 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": 435,
-    "house": "CLINIQUE",
-    "name": "Clinique Happy Woman",
-    "image": "clinique-happy-100ml-f.webp",
-    "familia": "Floral Cítrico",
-    "tipo": "Parfum",
-    "genero": "Femenino",
-    "descripcion": "Happy de Clinique es una fragancia para la mujer floral cítrica luminosa e icónica en concentración Parfum Spray 100ml, lanzada en 1997. Su apertura chispeante de pomelo, mandarina y bergamota evoluciona hacia un corazón floral brillante de flor de azahar y lirio tropical, cerrando con una base limpia y suave de almizcle y ámbar. Una fragancia optimista, fresca y reconocida mundialmente por su carácter alegre y sofisticado.",
-    "description": "Happy de Clinique es una fragancia para la mujer floral cítrica luminosa e icónica en concentración Parfum Spray 100ml, lanzada en 1997. Su apertura chispeante de pomelo, mandarina y bergamota evoluciona hacia un corazón floral brillante de flor de azahar y lirio tropical, cerrando con una base limpia y suave de almizcle y ámbar. Una fragancia optimista, fresca y reconocida mundialmente por su carácter alegre y sofisticado.",
-    "notasSalida": "Pomelo, Mandarina, Bergamota",
-    "notasCorazon": "Flor de azahar, Lirio tropical, Rosa silvestre",
-    "notasFondo": "Almizcle, Ámbar",
-    "notes": [
-      "Pomelo",
-      "Mandarina",
-      "Bergamota",
-      "Flor de azahar",
-      "Lirio tropical",
-      "Rosa silvestre",
-      "Almizcle",
-      "Ámbar"
-    ],
-    "ml": 100,
-    "precioUSD": 55,
-    "categoria": "disenador"
-  },
-  {
     "id": 436,
     "house": "BENETTON",
     "name": "Benetton Sisterland Red Rose",
@@ -13633,7 +13578,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 80,
-    "precioUSD": null,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {

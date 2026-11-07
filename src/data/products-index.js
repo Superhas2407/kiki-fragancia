@@ -4316,18 +4316,6 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": 346,
-    "house": "ANTONIO BANDERAS",
-    "name": "Antonio Banderas The Golden Secret",
-    "image": "antonio-banderas-the-golden-secret-100ml-m.webp",
-    "familia": null,
-    "tipo": "Eau de Toilette",
-    "genero": "Masculino",
-    "ml": 100,
-    "precioUSD": 25,
-    "categoria": "disenador"
-  },
-  {
     "id": 347,
     "house": "NAUTICA",
     "name": "Nautica Voyage Heritage",
@@ -5435,18 +5423,6 @@ export const products = [
     "categoria": "disenador"
   },
   {
-    "id": 435,
-    "house": "CLINIQUE",
-    "name": "Clinique Happy Woman",
-    "image": "clinique-happy-100ml-f.webp",
-    "familia": "Floral Cítrico",
-    "tipo": "Parfum",
-    "genero": "Femenino",
-    "ml": 100,
-    "precioUSD": 55,
-    "categoria": "disenador"
-  },
-  {
     "id": 436,
     "house": "BENETTON",
     "name": "Benetton Sisterland Red Rose",
@@ -5903,7 +5879,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 80,
-    "precioUSD": null,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
