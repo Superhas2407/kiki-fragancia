@@ -4637,7 +4637,7 @@ export const products = [
   {
     "id": 372,
     "house": "ISSEY MIYAKE",
-    "name": "Issey Miyake L'Eau d'Issey Pour Homme Intense",
+    "name": "Nuit Dissey Issey Miyake",
     "image": "issey-miyake-nuit-dissey-125ml-m.webp",
     "familia": null,
     "tipo": "Eau de Parfum",
