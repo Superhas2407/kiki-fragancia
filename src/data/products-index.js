@@ -4337,7 +4337,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 45,
+    "precioUSD": 50,
     "categoria": "disenador"
   },
   {
