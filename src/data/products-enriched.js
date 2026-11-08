@@ -2869,7 +2869,7 @@ export const products = [
       "musgo"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 55,
     "categoria": "arabes"
   },
   {
@@ -12229,7 +12229,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 105,
-    "precioUSD": 35,
+    "precioUSD": 45,
     "categoria": "arabes"
   },
   {
