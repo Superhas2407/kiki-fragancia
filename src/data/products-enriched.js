@@ -3023,7 +3023,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 103,
@@ -5238,7 +5239,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 181,
@@ -8857,7 +8859,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 100,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 309,
@@ -9706,7 +9709,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 20,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 339,
@@ -10780,7 +10784,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       355
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 376,
