@@ -13292,7 +13292,7 @@ export const products = [
       "pachulí"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 50,
     "categoria": "disenador"
   },
   {

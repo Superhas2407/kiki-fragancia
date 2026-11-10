@@ -5764,7 +5764,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 50,
     "categoria": "disenador"
   },
   {
