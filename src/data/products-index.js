@@ -134,7 +134,8 @@ export const products = [
     "variantIds": [
       8,
       9
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 11,
@@ -4215,8 +4216,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 20,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 339,
@@ -4228,7 +4228,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 340,
@@ -5090,7 +5091,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 65,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 408,
