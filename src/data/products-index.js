@@ -599,7 +599,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 49,
@@ -7660,6 +7661,18 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 30,
+    "categoria": "disenador"
+  },
+  {
+    "id": 617,
+    "house": "GUESS",
+    "name": "Guess Gold",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 75,
+    "precioUSD": 35,
     "categoria": "disenador"
   }
 ]

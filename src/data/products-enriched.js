@@ -1433,7 +1433,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 49,
@@ -17520,6 +17521,35 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
+    "categoria": "disenador"
+  },
+  {
+    "id": 617,
+    "house": "GUESS",
+    "name": "Guess Gold",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "Guess Gold de Guess es una fragancia de la familia olfativa Floral Frutal para Mujeres. Guess Gold se lanzó en 2007. La Nariz detrás de esta fragrancia es Claudette Belnavis. Las Notas de Salida son piña, manzana y limón (lima ácida); las Notas de Corazón son jazmín, jacinto, rosa y nenúfar (lirio de agua); las Notas de Fondo son ámbar, vetiver y sándalo.",
+    "description": "Guess Gold de Guess es una fragancia de la familia olfativa Floral Frutal para Mujeres. Guess Gold se lanzó en 2007. La Nariz detrás de esta fragrancia es Claudette Belnavis. Las Notas de Salida son piña, manzana y limón (lima ácida); las Notas de Corazón son jazmín, jacinto, rosa y nenúfar (lirio de agua); las Notas de Fondo son ámbar, vetiver y sándalo.",
+    "notasSalida": "piña, manzana, lima",
+    "notasCorazon": "jazmin, jacinto, rosa, nenúfar",
+    "notasFondo": "ambar, vetiver, sándalo",
+    "notes": [
+      "piña",
+      "manzana",
+      "lima",
+      "jazmin",
+      "jacinto",
+      "rosa",
+      "nenúfar",
+      "ambar",
+      "vetiver",
+      "sándalo"
+    ],
+    "ml": 75,
+    "precioUSD": 35,
     "categoria": "disenador"
   }
 ]

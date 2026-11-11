@@ -613,5 +613,6 @@ export const notesLookup = {
   613: "bergamota, limón, manzana verde, pera, grosella negra, peonía, neroli, lirio de los valles, jazmín, cedro, notas gourmand, almizcle",
   614: "bergamota, yuzu, manzana verde, té verde, ciclamen, flor de azahar, cardamomo, jengibre, cedro, madera de gaiac, ámbar, almizcle",
   615: "grosella negra, mandarina italiana, hoja de violeta, manzanilla, jazmín, ylang-ylang, geranio, rosa búlgara, musgo de roble, vetiver, benjuí, sándalo",
-  616: "bergamota, grosella negra, jazmín, flor de azahar, vainilla, almizcle"
+  616: "bergamota, grosella negra, jazmín, flor de azahar, vainilla, almizcle",
+  617: "piña, manzana, lima, jazmin, jacinto, rosa, nenúfar, ambar, vetiver, sándalo"
 }
