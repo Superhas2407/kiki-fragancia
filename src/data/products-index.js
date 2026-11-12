@@ -4040,8 +4040,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 125,
     "precioUSD": 95,
-    "categoria": "disenador",
-    "agotado": true
+    "categoria": "disenador"
   },
   {
     "id": 325,
