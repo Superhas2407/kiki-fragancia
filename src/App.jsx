@@ -22,6 +22,7 @@ const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
 const TerminosPage    = lazy(() => import('./pages/TerminosPage'))
+const BlackFridayPreview = lazy(() => import('./pages/BlackFridayPreview'))
 const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
 const KikiDeskPage    = lazy(() => import('./pages/KikiDeskPage'))
 const AdminLoginPage  = lazy(() => import('./pages/AdminLoginPage'))
@@ -103,6 +104,7 @@ function AppShell() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/tienda" element={<Tienda />} />
+              <Route path="/black-friday-preview" element={<BlackFridayPreview />} />
               <Route path="/tienda/:id" element={<ProductDetail />} />
               <Route path="/terminos-y-condiciones" element={<TerminosPage />} />
             </Routes>
