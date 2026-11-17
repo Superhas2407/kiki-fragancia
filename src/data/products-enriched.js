@@ -479,7 +479,8 @@ export const products = [
     ],
     "ml": 80,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 17,
@@ -624,7 +625,8 @@ export const products = [
     ],
     "ml": 105,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 22,
@@ -1144,7 +1146,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 39,
@@ -2872,7 +2875,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 98,
@@ -2901,8 +2905,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 99,
@@ -3025,8 +3028,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 103,
@@ -3053,7 +3055,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 104,
@@ -5186,8 +5189,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 179,
@@ -5829,8 +5831,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 202,
@@ -5857,8 +5858,7 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 203,
@@ -8264,7 +8264,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -9566,7 +9566,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 334,
@@ -10174,7 +10175,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 355,
@@ -10525,7 +10527,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       448
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 367,
@@ -10846,7 +10849,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       378
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 378,
@@ -11363,7 +11367,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 80,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 396,
@@ -11730,7 +11735,8 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 409,
@@ -12148,7 +12154,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 424,
@@ -13467,7 +13474,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 470,
@@ -14573,7 +14581,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 90,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 510,
@@ -15398,7 +15407,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       12
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 540,
@@ -15509,7 +15519,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 544,
@@ -15647,7 +15658,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 549,
@@ -17520,7 +17532,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 617,
@@ -17549,6 +17562,210 @@ export const products = [
     ],
     "ml": 75,
     "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 618,
+    "house": "FRENCH AVENUE ",
+    "name": "Liquid Brun",
+    "image": null,
+    "familia": "Amaderada",
+    "tipo": "Eau de Parfum",
+    "genero": "Masculino",
+    "descripcion": "Liquid Brun de French Avenue es una fragancia de la familia olfativa Amaderada para Hombres. Liquid Brun se lanzó en 2024. Las Notas de Salida son canela, flor de azahar del naranjo, cardamomo y bergamota; las Notas de Corazón son vainilla Bourbon y elemí; las Notas de Fondo son praliné, ambroxan, almizcle y madera de gaiac.",
+    "description": "Liquid Brun de French Avenue es una fragancia de la familia olfativa Amaderada para Hombres. Liquid Brun se lanzó en 2024. Las Notas de Salida son canela, flor de azahar del naranjo, cardamomo y bergamota; las Notas de Corazón son vainilla Bourbon y elemí; las Notas de Fondo son praliné, ambroxan, almizcle y madera de gaiac.",
+    "notasSalida": "canela, flor de azahar del naranjo, bergamota, cardamomo",
+    "notasCorazon": "vainilla bourbon, elemí",
+    "notasFondo": "praliné, ambroxan, almizcle, madera de gaiac",
+    "notes": [
+      "canela",
+      "flor de azahar del naranjo",
+      "bergamota",
+      "cardamomo",
+      "vainilla bourbon",
+      "elemí",
+      "praliné",
+      "ambroxan",
+      "almizcle",
+      "madera de gaiac"
+    ],
+    "ml": 100,
+    "precioUSD": 60,
+    "categoria": "arabes"
+  },
+  {
+    "id": 619,
+    "house": "EMPER",
+    "name": "Elixir 88",
+    "image": null,
+    "familia": "Aromática Especiada",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "descripcion": "Elixir 88 de Stallion 53 by Emper es una fragancia de la familia olfativa Aromática Especiada para Hombres y Mujeres. La fragrancia contiene cardamomo, lavanda, iris y pimienta negra.",
+    "description": "Elixir 88 de Stallion 53 by Emper es una fragancia de la familia olfativa Aromática Especiada para Hombres y Mujeres. La fragrancia contiene cardamomo, lavanda, iris y pimienta negra.",
+    "notasSalida": "cardamomo, lavanda, iris, pimienta negra",
+    "notasCorazon": null,
+    "notasFondo": null,
+    "notes": [
+      "cardamomo",
+      "lavanda",
+      "iris",
+      "pimienta negra"
+    ],
+    "ml": 120,
+    "precioUSD": 40,
+    "categoria": "arabes"
+  },
+  {
+    "id": 620,
+    "house": "EMPER",
+    "name": "Mandora ",
+    "image": null,
+    "familia": "Cítrica ",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "descripcion": "Mandora by Stallion 53 es un Eau de Parfum (EDP) de la casa Emper Perfumes, conocido por ser una alternativa económica inspirada en el perfil olfativo de Scandal Pour Homme de Jean Paul Gaultier. Combina frescura cítrica con un corazón dulce acaramelado y un fondo amaderado",
+    "description": "Mandora by Stallion 53 es un Eau de Parfum (EDP) de la casa Emper Perfumes, conocido por ser una alternativa económica inspirada en el perfil olfativo de Scandal Pour Homme de Jean Paul Gaultier. Combina frescura cítrica con un corazón dulce acaramelado y un fondo amaderado",
+    "notasSalida": "mandarina, naranja, azafrán, bergamota, salvia",
+    "notasCorazon": "caramelo, haba tonka tostada",
+    "notasFondo": "ambroxan, madera de cedro, vetiver, vainilla",
+    "notes": [
+      "mandarina",
+      "naranja",
+      "azafrán",
+      "bergamota",
+      "salvia",
+      "caramelo",
+      "haba tonka tostada",
+      "ambroxan",
+      "madera de cedro",
+      "vetiver",
+      "vainilla"
+    ],
+    "ml": 120,
+    "precioUSD": 40,
+    "categoria": "arabes"
+  },
+  {
+    "id": 621,
+    "house": "LATTAFA",
+    "name": "Emeer ",
+    "image": null,
+    "familia": "Amaderado Aromático ",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "descripcion": "Emeer de Lattafa Perfumes es una fragancia de la familia olfativa Amaderada Aromática para Hombres y Mujeres. Emeer se lanzó en 2024. Las Notas de Salida son limón (lima ácida), bergamota, esclarea y bayas de enebro; las Notas de Corazón son té Blanco, sándalo, cardamomo y incienso de olíbano (franquincienso); las Notas de Fondo son ámbar gris, cedro, pachulí y cachemira.",
+    "description": "Emeer de Lattafa Perfumes es una fragancia de la familia olfativa Amaderada Aromática para Hombres y Mujeres. Emeer se lanzó en 2024. Las Notas de Salida son limón (lima ácida), bergamota, esclarea y bayas de enebro; las Notas de Corazón son té Blanco, sándalo, cardamomo y incienso de olíbano (franquincienso); las Notas de Fondo son ámbar gris, cedro, pachulí y cachemira.",
+    "notasSalida": "limón, bergamota, salvia esclarea, bayas de enebro",
+    "notasCorazon": "té blanco, sándalo, cardamomo, incienso de olíbano",
+    "notasFondo": "ámbar gris, cedro, pachulí, cachemira",
+    "notes": [
+      "limón",
+      "bergamota",
+      "salvia esclarea",
+      "bayas de enebro",
+      "té blanco",
+      "sándalo",
+      "cardamomo",
+      "incienso de olíbano",
+      "ámbar gris",
+      "cedro",
+      "pachulí",
+      "cachemira"
+    ],
+    "ml": 100,
+    "precioUSD": 50,
+    "categoria": "arabes"
+  },
+  {
+    "id": 622,
+    "house": "DUMONT",
+    "name": "Nitro Pour Homme",
+    "image": null,
+    "familia": "Amaderada",
+    "tipo": "Eau de Parfum",
+    "genero": "Masculino",
+    "descripcion": "Nitro Pour Homme de Dumont es una fragancia de la familia olfativa Amaderada para Hombres. Nitro Pour Homme se lanzó en 2020. Las Notas de Salida son mandarina, toronja (pomelo), cardamomo, nuez moscada, limón (lima ácida) y bergamota; las Notas de Corazón son flor de azahar del naranjo, jazmín y cedro; las Notas de Fondo son almizcle, haba tonka, cedro, sándalo y madera de gaiac.",
+    "description": "Nitro Pour Homme de Dumont es una fragancia de la familia olfativa Amaderada para Hombres. Nitro Pour Homme se lanzó en 2020. Las Notas de Salida son mandarina, toronja (pomelo), cardamomo, nuez moscada, limón (lima ácida) y bergamota; las Notas de Corazón son flor de azahar del naranjo, jazmín y cedro; las Notas de Fondo son almizcle, haba tonka, cedro, sándalo y madera de gaiac.",
+    "notasSalida": "mandarina, toronja (pomelo), cardamomo, nuez moscada, limón, bergamota",
+    "notasCorazon": "flor de azahar del naranjo, cedro, jazmin",
+    "notasFondo": "almizcle, haba tonka, cedro, sandalo, madera de gaiac",
+    "notes": [
+      "mandarina",
+      "toronja (pomelo)",
+      "cardamomo",
+      "nuez moscada",
+      "limón",
+      "bergamota",
+      "flor de azahar del naranjo",
+      "cedro",
+      "jazmin",
+      "almizcle",
+      "haba tonka",
+      "cedro",
+      "sandalo",
+      "madera de gaiac"
+    ],
+    "ml": 100,
+    "precioUSD": 45,
+    "categoria": "arabes"
+  },
+  {
+    "id": 623,
+    "house": "ARMAF",
+    "name": "Odyssey Lichi Lush",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "Odyssey Li'chi Lush de Armaf es una fragancia de la familia olfativa Floral Frutal Gourmand para Mujeres. Esta fragrancia es nueva. Odyssey Li'chi Lush se lanzó en 2026. Las Notas de Salida son lichi, mandarina, durazno (melocotón) y frambuesa; las Notas de Corazón son peonía, flor de azahar del naranjo, magnolia, jazmín, rosa y ylang-ylang; las Notas de Fondo son sándalo, almizcle, ámbar, vainilla y caramelo.",
+    "description": "Odyssey Li'chi Lush de Armaf es una fragancia de la familia olfativa Floral Frutal Gourmand para Mujeres. Esta fragrancia es nueva. Odyssey Li'chi Lush se lanzó en 2026. Las Notas de Salida son lichi, mandarina, durazno (melocotón) y frambuesa; las Notas de Corazón son peonía, flor de azahar del naranjo, magnolia, jazmín, rosa y ylang-ylang; las Notas de Fondo son sándalo, almizcle, ámbar, vainilla y caramelo.",
+    "notasSalida": "lichi, mandarina, durazno, frambuesa",
+    "notasCorazon": "peonia, flor de azahar del naranjo, magnolia, jazmin, rosa, ylang-ylang",
+    "notasFondo": "sandalo, almizcle, ambar, vainilla, caramelo",
+    "notes": [
+      "lichi",
+      "mandarina",
+      "durazno",
+      "frambuesa",
+      "peonia",
+      "flor de azahar del naranjo",
+      "magnolia",
+      "jazmin",
+      "rosa",
+      "ylang-ylang",
+      "sandalo",
+      "almizcle",
+      "ambar",
+      "vainilla",
+      "caramelo"
+    ],
+    "ml": 100,
+    "precioUSD": 50,
+    "categoria": "arabes"
+  },
+  {
+    "id": 624,
+    "house": "CAROLINA HERRERA",
+    "name": "212 VIP Rosé Rodeo",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "descripcion": "212 VIP Rosé Rodeo de Carolina Herrera es una fragancia de la familia olfativa Floral Frutal para Mujeres. Esta fragrancia es nueva. 212 VIP Rosé Rodeo se lanzó en 2025. Las Notas de Salida son Frutas rojas y champaña; la Nota de Corazón es peonía; las Notas de Fondo son pachulí y notas amaderadas.",
+    "description": "212 VIP Rosé Rodeo de Carolina Herrera es una fragancia de la familia olfativa Floral Frutal para Mujeres. Esta fragrancia es nueva. 212 VIP Rosé Rodeo se lanzó en 2025. Las Notas de Salida son Frutas rojas y champaña; la Nota de Corazón es peonía; las Notas de Fondo son pachulí y notas amaderadas.",
+    "notasSalida": "frutas rojas, champán",
+    "notasCorazon": "peonia",
+    "notasFondo": "pachulí, notas amaderadas",
+    "notes": [
+      "frutas rojas",
+      "champán",
+      "peonia",
+      "pachulí",
+      "notas amaderadas"
+    ],
+    "ml": 80,
+    "precioUSD": 150,
     "categoria": "disenador"
   }
 ]

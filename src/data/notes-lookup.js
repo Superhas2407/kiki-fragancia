@@ -614,5 +614,12 @@ export const notesLookup = {
   614: "bergamota, yuzu, manzana verde, té verde, ciclamen, flor de azahar, cardamomo, jengibre, cedro, madera de gaiac, ámbar, almizcle",
   615: "grosella negra, mandarina italiana, hoja de violeta, manzanilla, jazmín, ylang-ylang, geranio, rosa búlgara, musgo de roble, vetiver, benjuí, sándalo",
   616: "bergamota, grosella negra, jazmín, flor de azahar, vainilla, almizcle",
-  617: "piña, manzana, lima, jazmin, jacinto, rosa, nenúfar, ambar, vetiver, sándalo"
+  617: "piña, manzana, lima, jazmin, jacinto, rosa, nenúfar, ambar, vetiver, sándalo",
+  618: "canela, flor de azahar del naranjo, bergamota, cardamomo, vainilla bourbon, elemí, praliné, ambroxan, almizcle, madera de gaiac",
+  619: "cardamomo, lavanda, iris, pimienta negra",
+  620: "mandarina, naranja, azafrán, bergamota, salvia, caramelo, haba tonka tostada, ambroxan, madera de cedro, vetiver, vainilla",
+  621: "limón, bergamota, salvia esclarea, bayas de enebro, té blanco, sándalo, cardamomo, incienso de olíbano, ámbar gris, cedro, pachulí, cachemira",
+  622: "mandarina, toronja (pomelo), cardamomo, nuez moscada, limón, bergamota, flor de azahar del naranjo, cedro, jazmin, almizcle, haba tonka, cedro, sandalo, madera de gaiac",
+  623: "lichi, mandarina, durazno, frambuesa, peonia, flor de azahar del naranjo, magnolia, jazmin, rosa, ylang-ylang, sandalo, almizcle, ambar, vainilla, caramelo",
+  624: "frutas rojas, champán, peonia, pachulí, notas amaderadas"
 }

@@ -209,7 +209,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 80,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 17,
@@ -270,7 +271,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 105,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 22,
@@ -478,7 +480,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 39,
@@ -1201,7 +1204,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 98,
@@ -1213,8 +1217,7 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 99,
@@ -1264,8 +1267,7 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 103,
@@ -1277,7 +1279,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 104,
@@ -2211,8 +2214,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 179,
@@ -2496,8 +2498,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 45,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 202,
@@ -2509,8 +2510,7 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "arabes",
-    "agotado": true
+    "categoria": "arabes"
   },
   {
     "id": 203,
@@ -3573,7 +3573,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 110,
     "categoria": "disenador"
   },
   {
@@ -4151,7 +4151,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 110,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 334,
@@ -4420,7 +4421,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 40,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 355,
@@ -4574,7 +4576,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       448
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 367,
@@ -4718,7 +4721,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       378
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 378,
@@ -4945,7 +4949,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 80,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 396,
@@ -5104,7 +5109,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 75,
     "precioUSD": 45,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 409,
@@ -5288,7 +5294,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 424,
@@ -5838,7 +5845,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 470,
@@ -6342,7 +6350,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 90,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 510,
@@ -6715,7 +6724,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       12
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 540,
@@ -6763,7 +6773,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 544,
@@ -6824,7 +6835,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 549,
@@ -7660,7 +7672,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 30,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 617,
@@ -7672,6 +7685,90 @@ export const products = [
     "genero": "Femenino",
     "ml": 75,
     "precioUSD": 35,
+    "categoria": "disenador"
+  },
+  {
+    "id": 618,
+    "house": "FRENCH AVENUE ",
+    "name": "Liquid Brun",
+    "image": null,
+    "familia": "Amaderada",
+    "tipo": "Eau de Parfum",
+    "genero": "Masculino",
+    "ml": 100,
+    "precioUSD": 60,
+    "categoria": "arabes"
+  },
+  {
+    "id": 619,
+    "house": "EMPER",
+    "name": "Elixir 88",
+    "image": null,
+    "familia": "Aromática Especiada",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 120,
+    "precioUSD": 40,
+    "categoria": "arabes"
+  },
+  {
+    "id": 620,
+    "house": "EMPER",
+    "name": "Mandora ",
+    "image": null,
+    "familia": "Cítrica ",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 120,
+    "precioUSD": 40,
+    "categoria": "arabes"
+  },
+  {
+    "id": 621,
+    "house": "LATTAFA",
+    "name": "Emeer ",
+    "image": null,
+    "familia": "Amaderado Aromático ",
+    "tipo": "Eau de Parfum",
+    "genero": "Unisex",
+    "ml": 100,
+    "precioUSD": 50,
+    "categoria": "arabes"
+  },
+  {
+    "id": 622,
+    "house": "DUMONT",
+    "name": "Nitro Pour Homme",
+    "image": null,
+    "familia": "Amaderada",
+    "tipo": "Eau de Parfum",
+    "genero": "Masculino",
+    "ml": 100,
+    "precioUSD": 45,
+    "categoria": "arabes"
+  },
+  {
+    "id": 623,
+    "house": "ARMAF",
+    "name": "Odyssey Lichi Lush",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 100,
+    "precioUSD": 50,
+    "categoria": "arabes"
+  },
+  {
+    "id": 624,
+    "house": "CAROLINA HERRERA",
+    "name": "212 VIP Rosé Rodeo",
+    "image": null,
+    "familia": "Floral Frutal",
+    "tipo": "Eau de Parfum",
+    "genero": "Femenino",
+    "ml": 80,
+    "precioUSD": 150,
     "categoria": "disenador"
   }
 ]
