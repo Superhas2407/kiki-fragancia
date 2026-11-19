@@ -53,7 +53,12 @@ export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
   const { theme } = useTheme()
   const { currency } = useCurrency()
-  const pricing = calculateCartPromotions(items, currency)
+  const catalog = useIndexProducts()
+  const liveItems = items.map(item => {
+    const product = catalog.find(p => Number(p.id) === Number(item.id))
+    return product ? { ...item, ...product, quantity: item.quantity } : { ...item, agotado: true }
+  })
+  const pricing = calculateCartPromotions(liveItems, currency)
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
 
@@ -289,7 +294,9 @@ export default function CartDrawer() {
                 <div>Ahorras ${pricing.savings}</div>
               </div>
             )}
-            {currency === 'bs' ? (\n              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: ink(0.75) }}>Total en Bs a confirmar con la tienda · Promociones en divisas no aplican</p>\n            ) : pricing.total > 0 && (
+            {currency === 'bs' ? (
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: ink(0.75) }}>Total en Bs a confirmar con la tienda · Promociones en divisas no aplican</p>
+            ) : pricing.total > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: '4px' }}>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: ink(0.35), letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                   Total estimado
