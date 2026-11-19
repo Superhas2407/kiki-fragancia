@@ -241,6 +241,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           if (!allPrices.length) return null
           const minPrice = Math.min(...allPrices)
           const hasRange = variants.length > 1 && allPrices.length > 1
+          const priceUsd = promotion?.count === 1 && !hasRange ? Math.min(minPrice, promotion.price) : minPrice
           // discPrice eliminado — se muestra precio original con badge de %
 
           // Modo Bs — precio base sin descuento, sin badges
@@ -266,11 +267,11 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
-                ) : <span className={`vitrina-price-badge${promotion ? " vitrina-price-badge--promo" : ""}`}>{promotion ? `COMBO ${promotion.label} · DIVISAS` : "PROMO DIVISA"}</span>}
+                ) : <span className={`vitrina-price-badge${promotion ? " vitrina-price-badge--promo" : ""}`}>{promotion ? (promotion.count === 1 ? 'PRECIO ESPECIAL · DIVISAS' : `COMBO ${promotion.label} · DIVISAS`) : "PROMO DIVISA"}</span>}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
-                  {hasRange ? 'Desde ' : ''}REF: {minPrice}
+                  {hasRange ? 'Desde ' : ''}REF: {priceUsd}
                 </span>
-                {!hasRange && product.precioOriginalUSD > minPrice && (
+                {!hasRange && ((promotion?.count === 1 && minPrice > priceUsd) || product.precioOriginalUSD > minPrice) && (
                   <span style={{ fontSize: 12, opacity: 0.5, textDecoration: 'line-through', marginLeft: 6 }}>
                     REF: {product.precioOriginalUSD}
                   </span>
