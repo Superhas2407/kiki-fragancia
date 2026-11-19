@@ -142,15 +142,15 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
         {badge && (
           <span className="badge-regalo">{badge}</span>
         )}
-        {promotion && !agotado && (
-          <span style={{ position: 'absolute', top: 12, left: 12, zIndex: 6, background: '#873F50', color: '#FFFFFF', padding: '7px 10px', fontFamily: "'KikiGotham', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.06em', borderRadius: 2 }}>
-            PROMO {promotion.label}
-          </span>
-        )}
+
 
         {agotado ? (
           <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
             <span>Agotado</span>
+          </div>
+        ) : promotion ? (
+          <div className="vitrina-ribbon vitrina-ribbon--promo" aria-hidden="true">
+            <span>PROMO {promotion.label}</span>
           </div>
         ) : ribbon ? (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
@@ -259,7 +259,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
-                ) : <span className="vitrina-price-badge">{promotion ? `COMBO ${promotion.label} · DIVISAS` : "PROMO DIVISA"}</span>}
+                ) : <span className={`vitrina-price-badge${promotion ? " vitrina-price-badge--promo" : ""}`}>{promotion ? `COMBO ${promotion.label} · DIVISAS` : "PROMO DIVISA"}</span>}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
                   {hasRange ? 'Desde ' : ''}REF: {minPrice}
                 </span>
