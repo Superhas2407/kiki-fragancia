@@ -6244,3 +6244,7 @@
   background: #873F50 !important;
   color: #FFFFFF !important;
 }
+
+/* La cinta de combo también abre el selector; el resto de cintas no cambian. */
+.vitrina-ribbon--promo[role='button'] { pointer-events: auto; cursor: pointer; }
+.vitrina-ribbon--promo[role='button']:focus-visible { outline: 2px solid #FFFFFF; outline-offset: -3px; }
