@@ -6230,3 +6230,17 @@
 /* Campaign announcement keeps the existing token palette in both themes. */
 .announcement-bar, [data-theme='warm'] .announcement-bar { background: var(--bg-warm); color: var(--gold-ink); }
 .announcement-bar .ann-label, .announcement-bar .ann-dot, .announcement-bar-close { color: var(--gold-ink); }
+
+
+/* Campañas de combos: misma geometría y tipografía que los ribbons existentes,
+   con vino sólido en vez de degradado dorado. */
+.vitrina-ribbon--promo > span {
+  background: #873F50;
+  color: #FFFFFF;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+.vitrina-price-badge--promo,
+[data-theme='warm'] .vitrina-price-badge--promo {
+  background: #873F50 !important;
+  color: #FFFFFF !important;
+}
