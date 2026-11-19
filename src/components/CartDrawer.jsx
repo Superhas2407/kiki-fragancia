@@ -4,6 +4,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { toSlug } from '../lib/slugs'
 import { resolveProductImage } from '../context/SanityProductsContext'
+import { calculateCartPromotions } from '../lib/cart-promotions'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -30,7 +31,7 @@ const WAIcon = () => (
   </svg>
 )
 
-function buildMessage(items) {
+function buildMessage(items, currency = 'usd') {
   const lines = items.map(item => {
     const unit = item.precioUSD || 0
     const priceNote = unit > 0 ? ` — REF $${unit}` : ''
@@ -40,11 +41,15 @@ function buildMessage(items) {
     return `• *${item.house} ${item.name}*${mlNote} x${item.quantity}${priceNote}\n  ${link}`
   })
   const hasPrice = items.some(item => item.precioUSD > 0)
-  const total = items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)
-  const totalLine = hasPrice ? `\n*Total: REF $${total}*\n` : ''
+  const pricing = calculateCartPromotions(items, currency)
+  const promoLines = pricing.applied.length && currency === 'usd'
+    ? `\n*Promociones en divisas:*\n${pricing.applied.map(p => `• ${p.label} (${p.count} por ${p.price})`).join('\n')}\n*Ahorro: ${pricing.savings}*\n`
+    : ''
+  const totalLine = hasPrice ? `\n*Total estimado: REF ${pricing.total}*\n` : ''
   return (
     `Hola! Quiero hacer el siguiente pedido:\n\n` +
     `${lines.join('\n\n')}\n` +
+    promoLines +
     totalLine +
     `\n¿Están disponibles?`
   )
@@ -54,6 +59,7 @@ export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const pricing = calculateCartPromotions(items, currency)
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
 
@@ -68,7 +74,7 @@ export default function CartDrawer() {
 
   function handleWhatsApp() {
     if (window.fbq) window.fbq('track', 'Contact')
-    const message = buildMessage(items)
+    const message = buildMessage(items, currency)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}&ref=carrito`
     window.open(url, '_blank', 'noopener,noreferrer')
     setDrawerOpen(false)
@@ -282,13 +288,20 @@ export default function CartDrawer() {
             borderTop: `1px solid ${bord(0.12)}`,
             display: 'flex', flexDirection: 'column', gap: '14px',
           }}>
-            {totalPrice > 0 && (
+            {pricing.applied.length > 0 && (
+              <div style={{ padding: '12px 14px', background: 'rgba(135,63,80,0.12)', border: '1px solid #873F50', color: 'var(--ink)', fontFamily: "'KikiGotham', sans-serif", fontSize: 11, lineHeight: 1.7 }}>
+                <strong>Promociones aplicadas</strong>
+                {pricing.applied.map((p, i) => <div key={`${p.id}-${i}`}>{p.label}: {p.count} por ${p.price}</div>)}
+                <div>Ahorras ${pricing.savings}</div>
+              </div>
+            )}
+            {pricing.total > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: '4px' }}>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: ink(0.35), letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                   Total estimado
                 </span>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '30px', fontStyle: 'italic', fontWeight: 300, color: 'var(--gold)', letterSpacing: '-0.02em' }}>
-                  REF {totalPrice}
+                  REF {pricing.total}
                 </span>
               </div>
             )}
@@ -316,7 +329,7 @@ export default function CartDrawer() {
               Consultar por WhatsApp
             </button>
             <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: ink(0.18), textAlign: 'center', letterSpacing: '0.04em', lineHeight: 1.5 }}>
-              Confirmamos disponibilidad y procesamos tu pedido
+              Promociones en divisas sujetas a disponibilidad. Confirmamos tu pedido por WhatsApp
             </p>
           </div>
         )}
