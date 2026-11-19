@@ -149,7 +149,14 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
             <span>Agotado</span>
           </div>
         ) : promotion ? (
-          <div className="vitrina-ribbon vitrina-ribbon--promo" aria-hidden="true">
+          <div
+            className="vitrina-ribbon vitrina-ribbon--promo"
+            role={promotion.count >= 2 ? 'button' : undefined}
+            tabIndex={promotion.count >= 2 ? 0 : undefined}
+            aria-label={promotion.count >= 2 ? `Armar combo ${promotion.name}` : undefined}
+            onClick={promotion.count >= 2 ? e => { e.preventDefault(); e.stopPropagation(); navigate(`/promociones/${promotion.id}`) } : undefined}
+            onKeyDown={promotion.count >= 2 ? e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); navigate(`/promociones/${promotion.id}`) } } : undefined}
+          >
             <span>PROMO {promotion.label}</span>
           </div>
         ) : ribbon ? (
