@@ -58,7 +58,7 @@ const CheckIcon = () => (
 )
 
 
-export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null, promotion = null }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
   const allProducts = useIndexProducts()
   const { addItem } = useCartContext()
@@ -141,6 +141,11 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
 
         {badge && (
           <span className="badge-regalo">{badge}</span>
+        )}
+        {promotion && !agotado && (
+          <span style={{ position: 'absolute', top: 12, left: 12, zIndex: 6, background: '#873F50', color: '#FFFFFF', padding: '7px 10px', fontFamily: "'KikiGotham', sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: '0.06em', borderRadius: 2 }}>
+            PROMO {promotion.label}
+          </span>
         )}
 
         {agotado ? (
@@ -254,7 +259,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
-                ) : <span className="vitrina-price-badge">PROMO DIVISA</span>}
+                ) : <span className="vitrina-price-badge">{promotion ? `COMBO ${promotion.label} · DIVISAS` : "PROMO DIVISA"}</span>}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
                   {hasRange ? 'Desde ' : ''}REF: {minPrice}
                 </span>
