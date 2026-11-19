@@ -1,4 +1,4 @@
-import { promotionForProduct, STORE_PROMOTIONS } from '../data/store-promotions'
+import { promotionForProduct, STORE_PROMOTIONS } from '../data/store-promotions.js'
 
 // El total es una referencia en USD; el método de pago se decide por separado.
 // Todos los productos deben venir del catálogo actualizado antes de calcular.
