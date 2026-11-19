@@ -231,7 +231,9 @@ export default function CartDrawer() {
                       )}
 
                       {/* Precio */}
-                      {currency === 'bs' ? (\n                        <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, color: ink(0.65), marginBottom: 10 }}>Precio en Bs a confirmar</p>\n                      ) : unit > 0 && (
+                      {currency === 'bs' ? (
+                        <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, color: ink(0.65), marginBottom: 10 }}>Precio en Bs a confirmar</p>
+                      ) : unit > 0 && (
                         <div style={{ marginBottom: '10px' }}>
                           <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '20px', fontStyle: 'italic', fontWeight: 300, color: 'var(--gold)', letterSpacing: '-0.01em' }}>
                             REF {lineTotal}
