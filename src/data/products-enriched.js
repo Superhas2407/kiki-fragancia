@@ -16700,7 +16700,8 @@ export const products = [
     "categoria": "disenador",
     "variantIds": [
       284
-    ]
+    ],
+    "agotado": true
   },
   {
     "id": 587,
