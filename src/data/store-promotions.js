@@ -1,7 +1,7 @@
 // Campañas de la tienda. Identificación por ID del catálogo y presentación exacta.
 // La disponibilidad sigue dependiendo del inventario vivo de Sanity.
 export const STORE_PROMOTIONS = [
-  { id: 'nautica', label: '3 × $60', name: 'Nautica', count: 3, price: 60, active: true, productIds: [383, 413, 588] },
+  { id: 'nautica', label: '3 × $60', name: 'Nautica', count: 3, price: 60, active: false, productIds: [383, 413, 588] },
   { id: 'benetton', label: '3 × $60', name: 'Benetton Colors / United Dreams', count: 3, price: 60, active: true, productIds: [382, 392, 587, 589, 590] },
   { id: 'sisterland', label: '3 × $60', name: 'Benetton Sisterland', count: 3, price: 60, active: true, productIds: [59, 417, 436, 472, 473, 474] },
   { id: 'banderas200', label: '3 × $90', name: 'Antonio Banderas 200 ml', count: 3, price: 90, active: true, productIds: [12, 355, 378, 447] },
