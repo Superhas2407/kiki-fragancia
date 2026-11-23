@@ -27,9 +27,18 @@ export default function Landing() {
   const [stickyVisible, setStickyVisible] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setStickyVisible(window.scrollY > window.innerHeight * 0.5)
+    const onScroll = () => {
+      const promo = document.getElementById('promociones')
+      const rect = promo?.getBoundingClientRect()
+      // Keep the fixed gold 'Ver colección' strip away from the custom
+      // artwork and its own 'Explorar promociones' CTA on mobile.
+      const showingPromos = rect && rect.top < window.innerHeight - 100 && rect.bottom > 100
+      setStickyVisible(window.scrollY > window.innerHeight * 0.5 && !showingPromos)
+    }
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    window.addEventListener('resize', onScroll)
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll) }
   }, [])
 
   const jsonLd = {
