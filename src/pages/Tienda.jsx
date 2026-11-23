@@ -11,6 +11,7 @@ import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 import { excludeVariantDuplicates } from '../lib/variants'
 import { promotionForProduct } from '../data/store-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 
 const PAGE_SIZE = 48
 
@@ -562,6 +563,7 @@ export default function Tienda() {
   const products = useIndexProducts()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const promotions = usePromotions()
   const { session } = useAuth()
   const isAdmin = !!session
   // Tienda tiene su propia paleta hardcodeada en JS (no los tokens --bg/--ink de
@@ -675,7 +677,7 @@ export default function Tienda() {
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
     if (isAdmin && soloAgotados) result = result.filter(p => p.agotado)
-    if (soloPromociones) result = result.filter(p => !!promotionForProduct(p))
+    if (soloPromociones) result = result.filter(p => !!promotionForProduct(p, promotions))
     if (isPriceFiltered) result = result.filter(p => (p.precioUSD || 0) >= priceRange[0] && (p.precioUSD || 0) <= priceRange[1])
     if (searchQuery.trim()) {
       const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
@@ -694,7 +696,7 @@ export default function Tienda() {
     if (sortBy === 'price-asc')  result.sort((a, b) => (a.precioUSD || 9999) - (b.precioUSD || 9999))
     if (sortBy === 'price-desc') result.sort((a, b) => (b.precioUSD || 0) - (a.precioUSD || 0))
     return result
-  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, soloPromociones, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
+  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, soloPromociones, promotions, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
@@ -943,12 +945,8 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              promotion={promotionForProduct(product)}
-                              ribbon={
-                                currency === 'usd' && product.precioUSD > 0 && !promotionForProduct(product)
-                                  ? ('Promo en divisa')
-                                  : null
-                              }
+                              promotion={promotionForProduct(product, promotions)}
+                              ribbon={null}
                               ribbonVariant={
                                 null
                               }
