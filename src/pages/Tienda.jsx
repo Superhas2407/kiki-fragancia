@@ -942,7 +942,7 @@ export default function Tienda() {
                 ) : (
                   <>
                     <GridBoundary>
-                      <div className="vitrina-grid">
+                      <div className="vitrina-grid vitrina-grid--mobile-preview">
                         {visibleProducts.map((product, index) => (
                           <div
                             key={product.id}
