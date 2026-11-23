@@ -5489,6 +5489,124 @@
   font-size: 16px; /* prevent iOS zoom */
 }
 
+/* Mobile Tienda composition — the product cards and their surroundings share
+   one boutique catalogue rhythm. */
+@media (max-width: 767px) {
+  .tienda-hero {
+    border-bottom: 1px solid rgba(85, 58, 31, .22);
+  }
+  .tienda-hero-title {
+    text-wrap: balance;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .32);
+  }
+  .tienda-hero-count {
+    display: inline-flex;
+    align-items: center;
+    min-height: 23px;
+    padding: 0 10px;
+    border: 1px solid rgba(255, 248, 237, .30);
+    border-radius: 999px;
+    background: rgba(8, 6, 4, .24);
+    color: rgba(255, 249, 239, .74) !important;
+    font-variant-numeric: tabular-nums;
+  }
+  .tienda-mobile-bar {
+    margin: 12px 16px 0;
+    border: 1px solid rgba(93, 67, 37, .22);
+    border-radius: 14px;
+    background: rgba(255, 252, 247, .88);
+    box-shadow: 0 8px 24px rgba(66, 43, 18, .06);
+    backdrop-filter: blur(12px);
+  }
+  .tienda-mobile-bar-btn,
+  .tienda-mobile-bar-sort {
+    min-height: 50px;
+    padding: 12px 14px;
+    color: #594431;
+    letter-spacing: .12em;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .tienda-mobile-bar-btn:focus-visible,
+  .tienda-mobile-bar-sort:focus-within {
+    outline: 2px solid #9A6820;
+    outline-offset: -3px;
+  }
+  .tienda-mobile-bar-sep {
+    margin: 10px 0;
+    background: rgba(93, 67, 37, .18);
+  }
+  .tienda-mobile-context {
+    display: flex;
+    align-items: center;
+    min-height: 55px;
+    margin: 0 16px;
+    padding: 17px 2px 8px;
+    border-bottom: 1px solid rgba(93, 67, 37, .16);
+  }
+  .tienda-mobile-context span {
+    color: #765f48 !important;
+    font-size: 10px !important;
+    font-weight: 500;
+    letter-spacing: .08em !important;
+    font-variant-numeric: tabular-nums;
+  }
+  .tienda-promo-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+    padding-bottom: 17px;
+  }
+  .tienda-promo-toggle {
+    min-height: 38px;
+    flex: 0 0 auto;
+    padding: 0 12px;
+    border: 1px solid #8B4050;
+    border-radius: 999px;
+    background: rgba(255, 252, 247, .58);
+    color: #713542;
+    cursor: pointer;
+    font-family: 'KikiGotham', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .055em;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .tienda-promo-toggle:hover,
+  .tienda-promo-toggle[aria-pressed='true'] {
+    border-color: #793743;
+    background: #793743;
+    color: #FFF9F2;
+  }
+  .tienda-promo-toggle:focus-visible {
+    outline: 2px solid #9A6820;
+    outline-offset: 2px;
+  }
+  .tienda-promo-note {
+    min-width: 0;
+    color: #77614B;
+    font-family: 'KikiGotham', sans-serif;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+  .tienda-products-stage {
+    position: relative;
+    padding-top: 3px;
+  }
+  .tienda-products-stage::before {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    left: 16px;
+    height: 1px;
+    content: '';
+    background: linear-gradient(90deg, transparent, rgba(93, 67, 37, .18) 18%, rgba(93, 67, 37, .18) 82%, transparent);
+  }
+}
+
 /* ══════════════════════════════════════════
    PRICE RANGE SLIDER
 ══════════════════════════════════════════ */

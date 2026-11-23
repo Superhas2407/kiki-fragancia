@@ -757,8 +757,8 @@ export default function Tienda() {
 
   return (
     <>
-      <div ref={topRef} style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
-        <div style={{ position: 'relative', width: '100%', height: 'clamp(200px, 28vw, 360px)', overflow: 'hidden' }}>
+      <div ref={topRef} className="tienda-page" style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
+        <div className="tienda-hero" style={{ position: 'relative', width: '100%', height: 'clamp(200px, 28vw, 360px)', overflow: 'hidden' }}>
           <img
             src={bannerSrc}
             alt=""
@@ -766,10 +766,10 @@ export default function Tienda() {
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,8,4,0.75) 0%, rgba(10,8,4,0.20) 50%, rgba(10,8,4,0.05) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 'clamp(24px, 4vw, 48px)', gap: 8 }}>
-            <h1 style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(36px, 6vw, 80px)', fontStyle: 'italic', fontWeight: 200, color: 'rgba(247,242,234,0.95)', letterSpacing: '-0.01em', margin: 0, lineHeight: 1 }}>
+            <h1 className="tienda-hero-title" style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(36px, 6vw, 80px)', fontStyle: 'italic', fontWeight: 200, color: 'rgba(247,242,234,0.95)', letterSpacing: '-0.01em', margin: 0, lineHeight: 1 }}>
               {sectionTitle}
             </h1>
-            <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, fontWeight: 400, color: 'rgba(247,242,234,0.50)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+            <span className="tienda-hero-count" style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, fontWeight: 400, color: 'rgba(247,242,234,0.50)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
               {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
             </span>
           </div>
@@ -836,7 +836,7 @@ export default function Tienda() {
               </div>
 
               {/* Conteo — mobile */}
-              <div className="tienda-pad tienda-mobile-only" style={{ paddingTop: 14, paddingBottom: 4 }}>
+              <div className="tienda-mobile-context tienda-mobile-only">
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, color: 'var(--ink-faint)', letterSpacing: '0.05em' }}>
                   {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
                   {sectionTitle !== 'Fragancias' && ` · ${sectionTitle}`}
@@ -844,9 +844,10 @@ export default function Tienda() {
               </div>
 
               {/* Promociones reales: filtro separado de precios individuales en divisas */}
-              <div className="tienda-main-pad" style={{ display: 'flex', gap: 10, alignItems: 'center', paddingTop: 12, paddingBottom: 16 }}>
+              <div className="tienda-promo-row tienda-main-pad">
                 <button
                   type="button"
+                  className="tienda-promo-toggle"
                   aria-pressed={soloPromociones}
                   onClick={() => {
                     const next = !soloPromociones
@@ -856,16 +857,8 @@ export default function Tienda() {
                     else params.delete('promos')
                     setSearchParams(params, { replace: true })
                   }}
-                  style={{
-                    padding: '10px 16px', borderRadius: 3, cursor: 'pointer',
-                    border: '1px solid #873F50',
-                    background: soloPromociones ? '#873F50' : 'transparent',
-                    color: soloPromociones ? '#FFFFFF' : C.ink,
-                    fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
-                    letterSpacing: '0.06em',
-                  }}
                 >En promoción</button>
-                <span style={{ fontSize: 11, color: C.inkMute }}>Combos seleccionados · Pago en divisas</span>
+                <span className="tienda-promo-note">Combos seleccionados · Pago en divisas</span>
               </div>
 
               {/* Banner colección activa */}
@@ -918,7 +911,7 @@ export default function Tienda() {
               </div>
 
               {/* Grid de productos */}
-              <div className="tienda-main-pad" style={{ paddingBottom: 80 }}>
+              <div className="tienda-products-stage tienda-main-pad" style={{ paddingBottom: 80 }}>
                 {filtered.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '80px 20px' }}>
                     <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'var(--ink-mute)', fontStyle: 'italic', marginBottom: 8 }}>
