@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 const section = readFileSync('src/components/BlackFridaySection.jsx','utf8')
 const source = readFileSync('src/hooks/usePromotionBanner.js','utf8')
 const schema = readFileSync('studio/schemas/promotionBanner.js','utf8')
-assert.match(section, /<picture>/)
+assert.match(section, /<picture(?:\\s|>)/)
 assert.match(section, /max-width: 767px/)
 assert.match(section, /banner\.desktopUrl/)
 assert.match(section, /banner\.mobileUrl/)
