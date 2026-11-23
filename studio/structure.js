@@ -1,4 +1,5 @@
 import QuickStock from './components/QuickStock'
+import QuickPrice from './components/QuickPrice'
 
 import { productFilters } from './lib/productFilters'
 
@@ -23,6 +24,9 @@ export const structure = (S) => {
       S.documentTypeListItem('product').title('Todos los perfumes'),
       S.listItem().id('stock-rapido').title('Stock rápido').child(
         S.component().id('stock-rapido').title('Stock rápido').component(QuickStock),
+      ),
+      S.listItem().id('precio-rapido').title('Cambio de precio rápido').child(
+        S.component().id('precio-rapido').title('Cambio de precio rápido').component(QuickPrice),
       ),
       filteredProducts('agotados', 'Agotados'),
       filteredProducts('disponibles', 'Disponibles'),
