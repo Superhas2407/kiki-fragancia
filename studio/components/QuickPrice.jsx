@@ -7,7 +7,7 @@ import { changePrice } from '../lib/price'
 const QUERY = `*[_type == "product" && !(_id in path("drafts.**")) && !(_id in path("versions.**"))] | order(name asc) {
   _id, name, house, ml, tipo, precioUSD, agotado, image, "photo": sanityImage.asset->url
 }`
-const normalize = value => String(value || '').normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').toLowerCase()
+const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 const controlStyle = { font: 'inherit', color: 'inherit', border: '1px solid #8888', borderRadius: 6, padding: '9px 12px', background: 'transparent' }
 const displayPrice = value => Number.isFinite(Number(value)) && Number(value) > 0 ? `$${Number(value).toFixed(2)}` : 'Sin precio'
 
