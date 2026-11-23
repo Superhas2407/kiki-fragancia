@@ -1,0 +1,23 @@
+name: Check Grande 200ml promotion in store
+on:
+  pull_request:
+    paths:
+      - 'src/pages/Tienda.jsx'
+      - 'scripts/test-grande-store-variants.mjs'
+      - '.github/workflows/check-grande-store-variants.yml'
+permissions:
+  contents: read
+jobs:
+  store:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/test-grande-store-variants.mjs
+      - run: node scripts/test-cart-promotions.mjs
+      - run: printf '{}' > src/data/responsive-images.json
+      - run: npx vite build
