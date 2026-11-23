@@ -1,6 +1,6 @@
 export function parsePrice(input) {
   const raw = String(input ?? '').trim().replace(',', '.')
-  if (!/^\\d+(?:\\.\\d{1,2})?$/.test(raw)) {
+  if (!/^\d+(?:\.\d{1,2})?$/.test(raw)) {
     throw new Error('Introduce un precio válido en USD (máximo 2 decimales).')
   }
   const price = Number(raw)
