@@ -6361,3 +6361,170 @@
 @media (prefers-reduced-motion: reduce) {
   .bf-section .bf-cta { transition: none; }
 }
+
+
+/* MOBILE CARD REDESIGN — isolated to Tienda's preview grid.
+   Original photographs, Gotham and price calculations are unchanged. */
+@media (max-width: 767px) {
+  .tienda-main .vitrina-grid--mobile-preview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 12px;
+    align-items: start;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card {
+    min-width: 0;
+    gap: 0;
+    border-bottom: 0;
+    background: transparent;
+  }
+  .vitrina-grid--mobile-preview .vitrina-display {
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(var(--gold-rgb), .13);
+    background: #F3EBDE;
+    overflow: hidden;
+  }
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-display {
+    background: #211C19;
+  }
+  .vitrina-grid--mobile-preview .vitrina-spotlight {
+    width: 91%;
+    height: 88%;
+    top: 48%;
+  }
+  .vitrina-grid--mobile-preview .vitrina-img {
+    padding: 5px;
+    filter: drop-shadow(0 9px 12px rgba(0,0,0,.13));
+  }
+  .vitrina-grid--mobile-preview .vitrina-pedestal { opacity: .36; bottom: 9%; }
+  .vitrina-grid--mobile-preview .vitrina-heart-btn {
+    width: 38px;
+    height: 38px;
+    top: 7px;
+    right: 7px;
+    border-radius: 50%;
+    background: rgba(244,236,220,.92);
+    color: #594532;
+    border-color: rgba(116,86,48,.20);
+    backdrop-filter: none;
+  }
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-heart-btn {
+    background: rgba(22,19,17,.85);
+    color: #F5E8D6;
+  }
+  .vitrina-grid--mobile-preview .vitrina-heart-btn svg { width: 15px; height: 15px; }
+  .vitrina-grid--mobile-preview .vitrina-ribbon {
+    width: 120px;
+    height: 120px;
+    z-index: 9;
+  }
+  .vitrina-grid--mobile-preview .vitrina-ribbon > span {
+    width: 166px;
+    right: -42px;
+    top: 28px;
+    padding: 7px 0;
+    letter-spacing: .06em;
+    font-size: 8px;
+    font-weight: 600;
+    box-shadow: none;
+  }
+  .vitrina-grid--mobile-preview .vitrina-quick-add {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    min-height: 42px;
+    opacity: 1;
+    transform: none;
+    background: rgba(29,23,20,.92);
+    border-color: rgba(255,255,255,.20);
+    color: #FFF7EC;
+    font-size: 9px;
+    letter-spacing: .10em;
+    backdrop-filter: none;
+  }
+  .vitrina-grid--mobile-preview .vitrina-quick-add.added {
+    background: #277649;
+    color: #fff;
+  }
+  .vitrina-grid--mobile-preview .vitrina-info {
+    padding: 12px 2px 0;
+    gap: 5px;
+    min-width: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-info-row {
+    gap: 5px;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .vitrina-grid--mobile-preview .vitrina-info-row::after { display: none; }
+  .vitrina-grid--mobile-preview .vitrina-house {
+    font-size: 9px;
+    letter-spacing: .14em;
+    font-weight: 500;
+    -webkit-text-stroke: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .vitrina-grid--mobile-preview .vitrina-gender-dot {
+    width: 5px;
+    height: 5px;
+    box-shadow: none;
+  }
+  .vitrina-grid--mobile-preview .vitrina-meta {
+    font-size: 9px;
+    letter-spacing: .10em;
+    font-weight: 400;
+    -webkit-text-stroke: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-name {
+    font-size: clamp(15px, 4.1vw, 19px);
+    line-height: 1.22;
+    min-height: 2.44em;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-text-stroke: 0;
+    letter-spacing: -.025em;
+  }
+  .vitrina-grid--mobile-preview .vitrina-size-pills { gap: 5px; margin: 5px 0 0; }
+  .vitrina-grid--mobile-preview .vitrina-size-pill {
+    min-height: 34px;
+    padding: 5px 8px;
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-price {
+    margin: 5px 0 0;
+    gap: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-price-disc-block {
+    gap: 5px;
+    width: 100%;
+  }
+  .vitrina-grid--mobile-preview .vitrina-price-usd--big {
+    font-size: clamp(18px, 5.2vw, 23px) !important;
+    line-height: 1.15;
+    letter-spacing: -.025em;
+  }
+  .vitrina-grid--mobile-preview .vitrina-price-badge {
+    max-width: 100%;
+    font-size: 8px;
+    letter-spacing: .04em;
+    line-height: 1.35;
+    padding: 5px 7px;
+    white-space: normal;
+  }
+  .vitrina-grid--mobile-preview .badge-regalo {
+    bottom: 55px;
+    left: 8px;
+    font-size: 8px;
+    padding: 5px 6px;
+  }
+}
+@media (max-width: 360px) {
+  .tienda-main .vitrina-grid--mobile-preview { gap: 20px 9px; }
+  .vitrina-grid--mobile-preview .vitrina-name { font-size: 14px; }
+  .vitrina-grid--mobile-preview .vitrina-ribbon > span { font-size: 7px; }
+}
