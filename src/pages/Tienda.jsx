@@ -615,6 +615,12 @@ export default function Tienda() {
     setSearchQuery(searchParams.get('q') || '')
   }, [searchParams.get('q')])
 
+  // A click on the homepage promotion banner updates the URL. Keep the
+  // selected promotion filter in sync even when React reuses this route.
+  useEffect(() => {
+    setSoloPromociones(searchParams.get('promos') === '1')
+  }, [searchParams.get('promos')])
+
   useEffect(() => {
     setSelectedMarcas([])
     setSelectedTipos([])
@@ -625,12 +631,14 @@ export default function Tienda() {
   const toggleTipo  = v => startTransition(() => setSelectedTipos(p  => p.filter(x => x !== v).concat(p.includes(v) ? [] : [v])))
 
   const basePool = useMemo(() => {
-    let pool = excludeVariantDuplicates(products)
+    // Regular listings collapse alternate bottle sizes. Promotions must show
+    // each specifically eligible presentation, including 200 ml variants.
+    let pool = soloPromociones ? products : excludeVariantDuplicates(products)
     if (urlGenero)     pool = pool.filter(p => p.genero === urlGenero)
     if (urlTipo)       pool = pool.filter(p => p.categoria === urlTipo)
     if (coleccionData) pool = pool.filter(p => coleccionData.ids.includes(p.id))
     return pool
-  }, [products, urlGenero, urlTipo, coleccionData])
+  }, [products, urlGenero, urlTipo, coleccionData, soloPromociones])
 
   const priceBounds = useMemo(() => {
     const prices = basePool.map(p => p.precioUSD).filter(v => v > 0)
