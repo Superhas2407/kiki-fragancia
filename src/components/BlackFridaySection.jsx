@@ -8,15 +8,20 @@ export default function BlackFridaySection() {
   const banner = usePromotionBanner()
   if (!promotions.length) return null
   return (
-    <section id="promociones" className="bf-section" aria-label="Promociones de Kiki Fragancia">
-      {banner && <Link to="/tienda?promos=1" aria-label={banner.altText} style={{display:'block',width:'100%',lineHeight:0}}>
-        <picture>
+    <section id="promociones" className={`bf-section${banner ? " bf-section--banner" : ""}`} aria-label="Promociones de Kiki Fragancia">
+      {banner && <Link className="bf-banner-link" to="/tienda?promos=1" aria-label={banner.altText}>
+        <picture className="bf-banner-picture">
           <source media="(max-width: 767px)" srcSet={banner.mobileUrl} />
-          <img src={banner.desktopUrl} alt={banner.altText} decoding="async" loading="lazy" style={{width:'100%',height:'auto',display:'block'}} />
+          <img className="bf-banner-image" src={banner.desktopUrl} alt={banner.altText} decoding="async" loading="lazy" />
         </picture>
       </Link>}
-      <div className="kiki-container">
-        <p className="bf-eyebrow">KIKI FRAGANCIA · PROMOCIONES</p>
+      <div className="kiki-container bf-inner">
+        <div className="bf-section-intro">
+          <span className="bf-intro-line" aria-hidden="true" />
+          <p className="bf-eyebrow">SELECCIÓN ESPECIAL · KIKI FRAGANCIA</p>
+          <h2 className="bf-intro-title">Elige tu próximo favorito</h2>
+          <p className="bf-intro-copy">Combina tus fragancias favoritas en nuestras ofertas vigentes.</p>
+        </div>
         {!banner && <div className="bf-heading">
           <h2 id="bf-title">Promociones <em>especiales.</em></h2>
           <p>Ofertas vigentes seleccionadas por Kiki Fragancia.<br />Elige tus perfumes participantes según disponibilidad.</p>
