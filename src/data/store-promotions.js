@@ -1,23 +1,35 @@
-// Campañas de la tienda. Identificación por ID del catálogo y presentación exacta.
-// La disponibilidad sigue dependiendo del inventario vivo de Sanity.
-export const STORE_PROMOTIONS = [
-  { id: 'nautica', label: '3 × $60', name: 'Nautica', count: 3, price: 60, active: false, productIds: [383, 413, 588] },
-  { id: 'benetton', label: '3 × $60', name: 'Benetton Colors / United Dreams', count: 3, price: 60, active: true, productIds: [382, 392, 587, 589, 590] },
-  { id: 'sisterland', label: '3 × $60', name: 'Benetton Sisterland', count: 3, price: 60, active: true, productIds: [59, 417, 436, 472, 473, 474] },
-  { id: 'banderas200', label: '3 × $90', name: 'Antonio Banderas 200 ml', count: 3, price: 90, active: true, productIds: [12, 355, 378, 447] },
-  { id: 'guess', label: '2 × $70', name: 'Guess Woman + Guess Gold', count: 2, price: 70, active: true, productIds: [110, 617] },
-  { id: 'stallion', label: '$30', name: 'Emper Stallion 53', count: 1, price: 30, active: true, productIds: [102] },
-]
+// Single source of truth: published Sanity "promotion" documents.
+// No campaign is enabled from historical ads, old application source or prices
+// displayed in a product story. If the live query fails, promotions = [].
+const norm=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()
 
-const EXPECTED_ML = { nautica: 100, benetton: 100, sisterland: 80, banderas200: 200, guess: 75, stallion: 100 }
-const EXPECTED_HOUSE = { nautica: 'nautica', benetton: 'benetton', sisterland: 'benetton', banderas200: 'antonio banderas', guess: 'guess', stallion: 'emper' }
-const norm = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim()
+export function sanitizePromotions(rows=[],now=new Date()){
+  const when=+new Date(now)
+  if(!Array.isArray(rows)||!Number.isFinite(when))return []
+  const used=new Set()
+  return rows.flatMap(raw=>{
+    const id=String(raw?.id||'').trim()
+    const name=String(raw?.name||'').trim()
+    const count=Number(raw?.count)
+    const price=Number(raw?.priceUSD)
+    const start=raw?.startsAt?Date.parse(raw.startsAt):null
+    const end=raw?.endsAt?Date.parse(raw.endsAt):null
+    const productIds=[...new Set((Array.isArray(raw?.productIds)?raw.productIds:[])
+      .map(Number).filter(x=>Number.isSafeInteger(x)&&x>0))]
+    if(raw?.active!==true||!id||!/^[a-z0-9-]+$/.test(id)||used.has(id)||!name||
+       !Number.isInteger(count)||count<1||count>10||!Number.isFinite(price)||price<=0||
+       !productIds.length||(start!==null&&(!Number.isFinite(start)||when<start))||
+       (end!==null&&(!Number.isFinite(end)||when>=end)))return []
+    used.add(id)
+    return [{id,name,count,price,active:true,label:count===1?'$'+price:count+' × $'+price,
+      productIds,startsAt:raw.startsAt||null,endsAt:raw.endsAt||null,
+      conditions:String(raw.conditions||'').slice(0,500)}]
+  })
+}
 
-export function promotionForProduct(product) {
-  if (!product || product.agotado) return null
-  const promo = STORE_PROMOTIONS.find(p => p.active && p.productIds.includes(Number(product.id)))
-  if (!promo) return null
-  if (Number(product.ml) !== EXPECTED_ML[promo.id]) return null
-  if (norm(product.house) !== EXPECTED_HOUSE[promo.id]) return null
-  return promo
+export function promotionForProduct(product,promotions=[]){
+  if(!product||product.agotado===true||!Array.isArray(promotions))return null
+  const productId=Number(product.id)
+  if(!Number.isSafeInteger(productId)||productId<=0)return null
+  return promotions.find(p=>p.active===true&&Array.isArray(p.productIds)&&p.productIds.includes(productId))||null
 }
