@@ -26,6 +26,7 @@ jobs:
       - run: npm ci
       - run: node scripts/test-promotion-home-banner.mjs
       - run: node scripts/test-cart-promotions.mjs
+      - run: printf '{}' > src/data/responsive-images.json
       - run: npx vite build
   sanity:
     runs-on: ubuntu-latest
