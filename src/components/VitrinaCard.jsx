@@ -58,7 +58,7 @@ const CheckIcon = () => (
 )
 
 
-export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null, promotion = null }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
   const allProducts = useIndexProducts()
   const { addItem } = useCartContext()
@@ -143,9 +143,21 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           <span className="badge-regalo">{badge}</span>
         )}
 
+
         {agotado ? (
           <div className="vitrina-ribbon vitrina-ribbon--agotado" aria-hidden="true">
             <span>Agotado</span>
+          </div>
+        ) : promotion ? (
+          <div
+            className="vitrina-ribbon vitrina-ribbon--promo"
+            role={promotion.count >= 2 ? 'button' : undefined}
+            tabIndex={promotion.count >= 2 ? 0 : undefined}
+            aria-label={promotion.count >= 2 ? `Armar combo ${promotion.name}` : undefined}
+            onClick={promotion.count >= 2 ? e => { e.preventDefault(); e.stopPropagation(); navigate(`/promociones/${promotion.id}`) } : undefined}
+            onKeyDown={promotion.count >= 2 ? e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); navigate(`/promociones/${promotion.id}`) } } : undefined}
+          >
+            <span>PROMO {promotion.label}</span>
           </div>
         ) : ribbon ? (
           <div className={`vitrina-ribbon${ribbonVariant ? ` vitrina-ribbon--${ribbonVariant}` : ''}`} aria-hidden="true">
@@ -229,6 +241,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           if (!allPrices.length) return null
           const minPrice = Math.min(...allPrices)
           const hasRange = variants.length > 1 && allPrices.length > 1
+          const priceUsd = promotion?.count === 1 && !hasRange ? Math.min(minPrice, promotion.price) : minPrice
           // discPrice eliminado — se muestra precio original con badge de %
 
           // Modo Bs — precio base sin descuento, sin badges
@@ -254,11 +267,11 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
-                ) : <span className="vitrina-price-badge">PROMO DIVISA</span>}
+                ) : <span className={`vitrina-price-badge${promotion ? " vitrina-price-badge--promo" : ""}`}>{promotion ? (promotion.count === 1 ? 'PRECIO ESPECIAL · DIVISAS' : `COMBO ${promotion.label} · DIVISAS`) : "PROMO DIVISA"}</span>}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
-                  {hasRange ? 'Desde ' : ''}REF: {minPrice}
+                  {hasRange ? 'Desde ' : ''}REF: {priceUsd}
                 </span>
-                {!hasRange && product.precioOriginalUSD > minPrice && (
+                {!hasRange && ((promotion?.count === 1 && minPrice > priceUsd) || product.precioOriginalUSD > minPrice) && (
                   <span style={{ fontSize: 12, opacity: 0.5, textDecoration: 'line-through', marginLeft: 6 }}>
                     REF: {product.precioOriginalUSD}
                   </span>
