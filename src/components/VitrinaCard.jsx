@@ -207,7 +207,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
       </div>
 
       <div className="vitrina-info">
-        {modernPreview && <div className="vitrina-modern-eyebrow">COLECCIÓN KIKI</div>}
         <div className="vitrina-info-row">
           <span className="vitrina-house">
             <span className="vitrina-gender-dot" style={{ background: genderDot }} aria-hidden="true" />
