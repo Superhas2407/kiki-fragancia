@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { SanityProductsProvider } from './context/SanityProductsContext'
+import { PromotionsProvider } from './context/PromotionsContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { CurrencyProvider } from './context/CurrencyContext'
 import { WishlistProvider } from './context/WishlistContext'
@@ -20,6 +21,7 @@ import InstallBanner from './components/InstallBanner'
 import OfertaDelDia from './components/OfertaDelDia'
 const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
+const ArmarCombo      = lazy(() => import('./pages/ArmarCombo'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
 const TerminosPage    = lazy(() => import('./pages/TerminosPage'))
 const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
@@ -103,6 +105,7 @@ function AppShell() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/tienda" element={<Tienda />} />
+              <Route path="/promociones/:promoId" element={<ArmarCombo />} />
               <Route path="/tienda/:id" element={<ProductDetail />} />
               <Route path="/terminos-y-condiciones" element={<TerminosPage />} />
             </Routes>
@@ -136,9 +139,9 @@ export default function App() {
                   </ProtectedRoute>
                 } />
                 <Route path="*" element={
-                  <SanityProductsProvider><WishlistProvider><CurrencyProvider><ThemeProvider>
+                  <SanityProductsProvider><PromotionsProvider><WishlistProvider><CurrencyProvider><ThemeProvider>
                     <AppShell />
-                  </ThemeProvider></CurrencyProvider></WishlistProvider></SanityProductsProvider>
+                  </ThemeProvider></CurrencyProvider></WishlistProvider></PromotionsProvider></SanityProductsProvider>
                 } />
               </Routes>
             </ErrorBoundary>

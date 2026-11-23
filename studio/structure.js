@@ -28,8 +28,9 @@ export const structure = (S) => {
       S.listItem().id('precio-rapido').title('Cambio de precio rápido').child(
         S.component().id('precio-rapido').title('Cambio de precio rápido').component(QuickPrice),
       ),
+      S.documentTypeListItem('promotion').title('Promociones'),
       filteredProducts('agotados', 'Agotados'),
       filteredProducts('disponibles', 'Disponibles'),
-      ...S.documentTypeListItems().filter((item) => item.getId() !== 'product'),
+      ...S.documentTypeListItems().filter((item) => item.getId() !== 'product' && item.getId() !== 'promotion'),
     ])
 }

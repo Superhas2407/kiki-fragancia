@@ -3,7 +3,9 @@ import { useCartContext } from '../context/CartContext'
 import { useTheme } from '../context/ThemeContext'
 import { useCurrency } from '../context/CurrencyContext'
 import { toSlug } from '../lib/slugs'
-import { resolveProductImage } from '../context/SanityProductsContext'
+import { resolveProductImage, useIndexProducts } from '../context/SanityProductsContext'
+import { calculateCartPromotions } from '../lib/cart-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -30,30 +32,35 @@ const WAIcon = () => (
   </svg>
 )
 
-function buildMessage(items) {
+function buildMessage(items, currency = 'usd', promotions = []) {
+  const pricing = calculateCartPromotions(items, currency, promotions)
   const lines = items.map(item => {
-    const unit = item.precioUSD || 0
-    const priceNote = unit > 0 ? ` — REF $${unit}` : ''
-    const mlNote = item.ml ? ` ${item.ml}ml` : ''
-    const slug = toSlug(item.house, item.name, item.ml)
-    const link = `https://kikifragancia.com/tienda/${slug}`
-    return `• *${item.house} ${item.name}*${mlNote} x${item.quantity}${priceNote}\n  ${link}`
+    const ml = item.ml ? ` ${item.ml} ml` : ''
+    const link = `https://kikifragancia.com/tienda/${toSlug(item.house, item.name, item.ml)}`
+    const individual = currency === 'usd' && item.precioUSD > 0 ? ` (precio individual REF $${item.precioUSD})` : ''
+    const availability = item.agotado ? ' (verificar disponibilidad)' : ''
+    return `• *${item.house} ${item.name}*${ml} ×${item.quantity}${individual}${availability}\n  ${link}`
   })
-  const hasPrice = items.some(item => item.precioUSD > 0)
-  const total = items.reduce((acc, item) => acc + (item.precioUSD || 0) * item.quantity, 0)
-  const totalLine = hasPrice ? `\n*Total: REF $${total}*\n` : ''
-  return (
-    `Hola! Quiero hacer el siguiente pedido:\n\n` +
-    `${lines.join('\n\n')}\n` +
-    totalLine +
-    `\n¿Están disponibles?`
-  )
+  const offers = currency === 'usd' && pricing.applied.length
+    ? `\n*Promociones aplicadas (divisas):*\n${pricing.applied.map(p => `• ${p.label}: ${p.count} por ${p.price}${p.conditions ? ` · ${p.conditions}` : ''}`).join('\n')}\n*Ahorro total: $${pricing.savings}*\n`
+    : ''
+  const total = currency === 'usd'
+    ? `\n*Total estimado en divisas: REF $${pricing.total}*\n`
+    : '\n*Pago en bolívares: confirmar precio y total en Bs con la tienda. No aplica promoción en divisas.*\n'
+  return `Hola! Quiero hacer el siguiente pedido:\n\n${lines.join('\n\n')}\n${offers}${total}\n¿Me confirman disponibilidad?`
 }
 
 export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const promotions = usePromotions()
+  const catalog = useIndexProducts()
+  const liveItems = items.map(item => {
+    const product = catalog.find(p => Number(p.id) === Number(item.id))
+    return product ? { ...item, ...product, quantity: item.quantity } : { ...item, agotado: true }
+  })
+  const pricing = calculateCartPromotions(liveItems, currency, promotions)
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
 
@@ -68,7 +75,7 @@ export default function CartDrawer() {
 
   function handleWhatsApp() {
     if (window.fbq) window.fbq('track', 'Contact')
-    const message = buildMessage(items)
+    const message = buildMessage(liveItems, currency, promotions)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}&ref=carrito`
     window.open(url, '_blank', 'noopener,noreferrer')
     setDrawerOpen(false)
@@ -166,7 +173,7 @@ export default function CartDrawer() {
             </div>
           ) : (
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0', listStyle: 'none', padding: 0, margin: 0 }}>
-              {items.map(item => {
+              {liveItems.map(item => {
                 const unit = item.precioUSD || 0
                 const lineTotal = unit * item.quantity
                 const imgSrc = resolveProductImage(item)
@@ -226,7 +233,9 @@ export default function CartDrawer() {
                       )}
 
                       {/* Precio */}
-                      {unit > 0 && (
+                      {currency === 'bs' ? (
+                        <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, color: ink(0.65), marginBottom: 10 }}>Precio en Bs a confirmar</p>
+                      ) : unit > 0 && (
                         <div style={{ marginBottom: '10px' }}>
                           <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '20px', fontStyle: 'italic', fontWeight: 300, color: 'var(--gold)', letterSpacing: '-0.01em' }}>
                             REF {lineTotal}
@@ -282,13 +291,22 @@ export default function CartDrawer() {
             borderTop: `1px solid ${bord(0.12)}`,
             display: 'flex', flexDirection: 'column', gap: '14px',
           }}>
-            {totalPrice > 0 && (
+            {pricing.applied.length > 0 && (
+              <div style={{ padding: '12px 14px', background: 'rgba(135,63,80,0.12)', border: '1px solid #873F50', color: 'var(--ink)', fontFamily: "'KikiGotham', sans-serif", fontSize: 11, lineHeight: 1.7 }}>
+                <strong>Promociones aplicadas</strong>
+                {pricing.applied.map((p, i) => <div key={`${p.id}-${i}`}>{p.label}: {p.count} por ${p.price}{p.conditions ? ` · ${p.conditions}` : ''}</div>)}
+                <div>Ahorras ${pricing.savings}</div>
+              </div>
+            )}
+            {currency === 'bs' ? (
+              <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 12, color: ink(0.75) }}>Total en Bs a confirmar con la tienda · Promociones en divisas no aplican</p>
+            ) : pricing.total > 0 && (
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', paddingBottom: '4px' }}>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: ink(0.35), letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                   Total estimado
                 </span>
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '30px', fontStyle: 'italic', fontWeight: 300, color: 'var(--gold)', letterSpacing: '-0.02em' }}>
-                  REF {totalPrice}
+                  REF ${pricing.total}
                 </span>
               </div>
             )}
@@ -316,7 +334,7 @@ export default function CartDrawer() {
               Consultar por WhatsApp
             </button>
             <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: '10px', color: ink(0.18), textAlign: 'center', letterSpacing: '0.04em', lineHeight: 1.5 }}>
-              Confirmamos disponibilidad y procesamos tu pedido
+              Promociones en divisas sujetas a disponibilidad. Confirmamos tu pedido por WhatsApp
             </p>
           </div>
         )}

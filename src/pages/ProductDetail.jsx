@@ -10,6 +10,8 @@ import { products } from '../data/products-enriched'
 import { useSanityProduct, useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { toSlug } from '../lib/slugs'
 import { norm } from '../lib/search'
+import { promotionForProduct } from '../data/store-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -1134,6 +1136,7 @@ export default function ProductDetail() {
   const { addItem } = useCartContext()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const promotions = usePromotions()
   const tasa = useTasaCambio()
   const oferta = useOfertaDelDia() // { id, setAt, precio } del producto activo en /kiki-desk, o null
 
@@ -1231,6 +1234,7 @@ export default function ProductDetail() {
     precioUSD: oferta.precio,
     _ofertaDelDiaActiva: true,
   } : rawProduct
+  const storePromotion = promotionForProduct(product, promotions)
 
   // Si el producto se resolvió por un slug viejo (nombre cambiado en Sanity), corrige
   // silenciosamente la URL a la canónica actual — sin recargar ni mostrar "no encontrado".
@@ -1477,6 +1481,16 @@ export default function ProductDetail() {
                             REF: {product.precioOriginalUSD}
                           </span>
                         </>
+                      ) : storePromotion?.count === 1 && storePromotion.price < product.precioUSD ? (
+                        <>
+                          <div style={{ marginBottom: 8 }}>
+                            <span style={{ ...badgeStyle, background: '#873F50', color: '#FFFFFF' }}>PRECIO ESPECIAL · DIVISAS</span>
+                          </div>
+                          <span className="pd-price-amount">REF: {storePromotion.price}</span>
+                          <span style={{ fontFamily: 'var(--font-s)', fontSize: 13, color: 'var(--ink-faint)', textDecoration: 'line-through', marginLeft: 8 }}>
+                            REF: {product.precioUSD}
+                          </span>
+                        </>
                       ) : discPct ? (
                         <>
                           <div style={{ marginBottom: 8 }}>
@@ -1505,6 +1519,15 @@ export default function ProductDetail() {
                     </div>
                   )
                 })()}
+
+                {!product.agotado && storePromotion?.count >= 2 && (
+                  <Link
+                    to={`/promociones/${storePromotion.id}`}
+                    style={{ display: 'inline-block', background: '#873F50', color: '#FFFFFF', textDecoration: 'none', padding: '12px 18px', fontFamily: 'var(--font-s)', fontSize: 12, letterSpacing: '.08em', marginTop: 14, marginBottom: 14 }}
+                  >
+                    ARMA TU COMBO {storePromotion.label} · DIVISAS
+                  </Link>
+                )}
 
                 {(() => {
                   // El grupo de variantes puede estar declarado en este producto (es el

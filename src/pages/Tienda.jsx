@@ -10,6 +10,8 @@ import { COLECCIONES, coleccionById } from '../data/colecciones'
 import { notesLookup } from '../data/notes-lookup'
 import { norm, productMatchesQuery, scoreProduct } from '../lib/search'
 import { excludeVariantDuplicates } from '../lib/variants'
+import { promotionForProduct } from '../data/store-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 
 const PAGE_SIZE = 48
 
@@ -561,6 +563,7 @@ export default function Tienda() {
   const products = useIndexProducts()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const promotions = usePromotions()
   const { session } = useAuth()
   const isAdmin = !!session
   // Tienda tiene su propia paleta hardcodeada en JS (no los tokens --bg/--ink de
@@ -589,6 +592,7 @@ export default function Tienda() {
   const [selectedMarcas, setSelectedMarcas] = useState([])
   const [selectedTipos, setSelectedTipos]   = useState([])
   const [soloAgotados, setSoloAgotados]     = useState(false)
+  const [soloPromociones, setSoloPromociones] = useState(() => searchParams.get('promos') === '1')
   const [drawerOpen, setDrawerOpen]   = useState(false)
   const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '')
   const [priceRange, setPriceRange]   = useState(() => {
@@ -658,21 +662,22 @@ export default function Tienda() {
   }
 
   const isPriceFiltered = priceRange[0] > priceBounds[0] || priceRange[1] < priceBounds[1]
-  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados
+  const hasFilters = selectedMarcas.length > 0 || selectedTipos.length > 0 || sortBy !== 'featured' || isPriceFiltered || soloAgotados || soloPromociones
   const clearFilters = () => {
-    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false)
+    setSortBy('featured'); setSelectedMarcas([]); setSelectedTipos([]); setSoloAgotados(false); setSoloPromociones(false)
     setPriceRange(priceBounds)
     const params = new URLSearchParams(searchParams)
-    params.delete('precioMin'); params.delete('precioMax')
+    params.delete('precioMin'); params.delete('precioMax'); params.delete('promos')
     setSearchParams(params, { replace: true })
   }
-  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0)
+  const activeFilterCount = selectedMarcas.length + selectedTipos.length + (sortBy !== 'featured' ? 1 : 0) + (urlTipo ? 1 : 0) + (urlColeccion ? 1 : 0) + (soloAgotados ? 1 : 0) + (soloPromociones ? 1 : 0)
 
   const filtered = useMemo(() => {
     let result = [...basePool]
     if (selectedMarcas.length) result = result.filter(p => selectedMarcas.includes(p.house))
     if (selectedTipos.length)  result = result.filter(p => selectedTipos.includes(p.tipo))
     if (isAdmin && soloAgotados) result = result.filter(p => p.agotado)
+    if (soloPromociones) result = result.filter(p => !!promotionForProduct(p, promotions))
     if (isPriceFiltered) result = result.filter(p => (p.precioUSD || 0) >= priceRange[0] && (p.precioUSD || 0) <= priceRange[1])
     if (searchQuery.trim()) {
       const terms = norm(searchQuery.trim()).split(/\s+/).filter(Boolean)
@@ -691,7 +696,7 @@ export default function Tienda() {
     if (sortBy === 'price-asc')  result.sort((a, b) => (a.precioUSD || 9999) - (b.precioUSD || 9999))
     if (sortBy === 'price-desc') result.sort((a, b) => (b.precioUSD || 0) - (a.precioUSD || 0))
     return result
-  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
+  }, [basePool, selectedMarcas, selectedTipos, soloAgotados, soloPromociones, promotions, isAdmin, searchQuery, sortBy, priceRange, priceBounds])
 
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
@@ -830,6 +835,31 @@ export default function Tienda() {
                 </span>
               </div>
 
+              {/* Promociones reales: filtro separado de precios individuales en divisas */}
+              <div className="tienda-main-pad" style={{ display: 'flex', gap: 10, alignItems: 'center', paddingTop: 12, paddingBottom: 16 }}>
+                <button
+                  type="button"
+                  aria-pressed={soloPromociones}
+                  onClick={() => {
+                    const next = !soloPromociones
+                    setSoloPromociones(next)
+                    const params = new URLSearchParams(searchParams)
+                    if (next) params.set('promos', '1')
+                    else params.delete('promos')
+                    setSearchParams(params, { replace: true })
+                  }}
+                  style={{
+                    padding: '10px 16px', borderRadius: 3, cursor: 'pointer',
+                    border: '1px solid #873F50',
+                    background: soloPromociones ? '#873F50' : 'transparent',
+                    color: soloPromociones ? '#FFFFFF' : C.ink,
+                    fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
+                    letterSpacing: '0.06em',
+                  }}
+                >En promoción</button>
+                <span style={{ fontSize: 11, color: C.inkMute }}>Combos seleccionados · Pago en divisas</span>
+              </div>
+
               {/* Banner colección activa */}
               {coleccionData && (
                 <div className="tienda-coleccion-banner tienda-pad">
@@ -915,11 +945,8 @@ export default function Tienda() {
                           >
                             <VitrinaCard
                               product={product}
-                              ribbon={
-                                currency === 'usd' && product.precioUSD > 0
-                                  ? ('Promo en divisa')
-                                  : null
-                              }
+                              promotion={promotionForProduct(product, promotions)}
+                              ribbon={null}
                               ribbonVariant={
                                 null
                               }

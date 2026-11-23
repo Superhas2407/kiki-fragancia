@@ -1,0 +1,52 @@
+name: Check Sanity-managed promotions
+
+on:
+  pull_request:
+    paths:
+      - 'studio/**'
+      - 'src/context/PromotionsContext.jsx'
+      - 'src/data/store-promotions.js'
+      - 'src/lib/cart-promotions.js'
+      - 'src/components/CartDrawer.jsx'
+      - 'src/components/VitrinaCard.jsx'
+      - 'src/pages/ArmarCombo.jsx'
+      - 'src/pages/Tienda.jsx'
+      - 'src/pages/ProductDetail.jsx'
+      - 'scripts/test-cart-promotions.mjs'
+      - '.github/workflows/check-sanity-managed-promotions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/test-cart-promotions.mjs
+      - run: node scripts/test-november-campaigns.mjs
+      - run: printf '{}' > src/data/responsive-images.json
+      - run: npx vite build
+  studio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: studio/package-lock.json
+      - run: npm ci
+        working-directory: studio
+      - run: npm run build
+        working-directory: studio
