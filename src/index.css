@@ -20,6 +20,231 @@
   --gold-rgb: 201, 168, 76;
 }
 
+/* MOBILE TIENDA — contemporary retail direction.
+   Product-led surfaces, restrained ornament, and gold only as a Kiki accent. */
+@media (max-width: 767px) {
+  .tienda-page {
+    background: #F4F0EA !important;
+  }
+  .tienda-hero {
+    border-bottom-color: #DCD5CB;
+  }
+  .tienda-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    content: '';
+    background: linear-gradient(180deg, rgba(10, 10, 10, .04), rgba(10, 10, 10, .60));
+    pointer-events: none;
+  }
+  .tienda-hero > div:last-child {
+    z-index: 2;
+    align-items: flex-start !important;
+    padding: 0 20px 18px !important;
+  }
+  .tienda-hero-title {
+    max-width: 12ch;
+    font-size: clamp(31px, 9vw, 44px) !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    letter-spacing: -.055em !important;
+    text-align: left;
+    text-shadow: none;
+  }
+  .tienda-hero-count {
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, .74) !important;
+    font-size: 9px !important;
+    font-weight: 500 !important;
+    letter-spacing: .10em !important;
+  }
+  .tienda-mobile-bar {
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #DCD5CB;
+    border-radius: 0;
+    background: rgba(255, 255, 255, .92);
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .tienda-mobile-bar-btn,
+  .tienda-mobile-bar-sort {
+    min-height: 54px;
+    color: #1C1B19;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .075em;
+  }
+  .tienda-mobile-bar-btn svg,
+  .tienda-mobile-bar-sort svg {
+    color: #B1884F;
+  }
+  .tienda-mobile-bar-sep {
+    height: 20px;
+    margin: auto 0;
+    background: #DDD7CF;
+  }
+  .tienda-mobile-bar-badge {
+    border-radius: 999px;
+    background: #1C1B19;
+    color: #FFF;
+    font-weight: 600;
+  }
+  .tienda-mobile-context {
+    min-height: 45px;
+    margin: 0 16px;
+    padding: 15px 0 7px;
+    border-bottom: 0;
+  }
+  .tienda-mobile-context span {
+    color: #615D57 !important;
+    font-size: 10px !important;
+    font-weight: 500;
+    letter-spacing: .035em !important;
+  }
+  .tienda-promo-row {
+    gap: 12px;
+    padding-top: 5px;
+    padding-bottom: 17px;
+  }
+  .tienda-promo-toggle {
+    min-height: 34px;
+    padding: 0 11px;
+    border-color: #22211F;
+    border-radius: 4px;
+    background: transparent;
+    color: #22211F;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .04em;
+  }
+  .tienda-promo-toggle:hover,
+  .tienda-promo-toggle[aria-pressed='true'] {
+    border-color: #22211F;
+    background: #22211F;
+    color: #FFF;
+  }
+  .tienda-promo-note {
+    color: #77716A;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+  .tienda-products-stage {
+    padding-top: 0;
+  }
+  .tienda-products-stage::before {
+    display: none;
+  }
+  .tienda-main .vitrina-grid--mobile-preview {
+    gap: 24px 10px;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview {
+    border: 0 !important;
+    border-radius: 12px;
+    box-shadow: none;
+    background: #FFF !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-display,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-display,
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-display {
+    aspect-ratio: 1 / 1.16;
+    background: #F2F1EE !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-spotlight {
+    width: 100%;
+    height: 94%;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-img {
+    padding: 0;
+    filter: none !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-heart-btn {
+    width: 34px;
+    height: 34px;
+    top: 7px;
+    right: 7px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92) !important;
+    box-shadow: none;
+    color: #1F1E1C !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-info,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-info,
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-info {
+    gap: 5px;
+    padding: 11px 2px 0;
+    background: transparent !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-house,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-house,
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-house {
+    color: #5C5853 !important;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .075em;
+  }
+  .vitrina-grid--mobile-preview .vitrina-gender-dot {
+    width: 5px;
+    height: 5px;
+    background: #B1884F !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-meta,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-meta,
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-meta {
+    color: #86817A !important;
+    font-size: 9px;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-name,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-name,
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-name {
+    min-height: 2.25em;
+    margin-top: 2px;
+    color: #181715 !important;
+    font-size: clamp(15px, 4.1vw, 18px);
+    font-weight: 550;
+    letter-spacing: -.045em;
+    line-height: 1.16;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd,
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd--big,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd,
+  [data-theme='dark'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd {
+    color: #181715 !important;
+    font-size: clamp(17px, 4.55vw, 21px) !important;
+    font-weight: 600;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-badge {
+    border-radius: 2px;
+    background: #B1884F !important;
+    color: #1C1B19 !important;
+    font-size: 7px;
+    font-weight: 700;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-actions {
+    min-height: 42px;
+    margin-top: 6px;
+    padding-top: 7px;
+    border-color: #E6E3DE;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-caption {
+    color: #77716A;
+    font-size: 8px;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-add {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    border-radius: 50%;
+    background: #1C1B19;
+  }
+}
+
 /* Claro cálido (boutique) */
 [data-theme='warm'] {
   --bg: #FAF6EE;
