@@ -1,0 +1,32 @@
+name: Sanity quick price editor
+
+on:
+  pull_request:
+    paths:
+      - 'studio/components/QuickPrice.jsx'
+      - 'studio/lib/price.js'
+      - 'studio/structure.js'
+      - 'scripts/test-sanity-quick-price.mjs'
+      - '.github/workflows/check-sanity-quick-price.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quick-price:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: studio/package-lock.json
+      - run: node scripts/test-sanity-quick-price.mjs
+      - run: npm ci
+        working-directory: studio
+      - run: npm run build
+        working-directory: studio
