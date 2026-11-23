@@ -11,6 +11,7 @@ import { useSanityProduct, useIndexProducts, resolveProductImage } from '../cont
 import { toSlug } from '../lib/slugs'
 import { norm } from '../lib/search'
 import { promotionForProduct } from '../data/store-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 import { NOTES_IMAGES } from '../data/notes-images'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -1135,6 +1136,7 @@ export default function ProductDetail() {
   const { addItem } = useCartContext()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const promotions = usePromotions()
   const tasa = useTasaCambio()
   const oferta = useOfertaDelDia() // { id, setAt, precio } del producto activo en /kiki-desk, o null
 
@@ -1232,7 +1234,7 @@ export default function ProductDetail() {
     precioUSD: oferta.precio,
     _ofertaDelDiaActiva: true,
   } : rawProduct
-  const storePromotion = promotionForProduct(product)
+  const storePromotion = promotionForProduct(product, promotions)
 
   // Si el producto se resolvió por un slug viejo (nombre cambiado en Sanity), corrige
   // silenciosamente la URL a la canónica actual — sin recargar ni mostrar "no encontrado".
