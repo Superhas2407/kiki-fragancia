@@ -5,6 +5,7 @@ import { useCurrency } from '../context/CurrencyContext'
 import { toSlug } from '../lib/slugs'
 import { resolveProductImage, useIndexProducts } from '../context/SanityProductsContext'
 import { calculateCartPromotions } from '../lib/cart-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 
 const WHATSAPP_NUMBER = '584149112002'
 
@@ -31,8 +32,8 @@ const WAIcon = () => (
   </svg>
 )
 
-function buildMessage(items, currency = 'usd') {
-  const pricing = calculateCartPromotions(items, currency)
+function buildMessage(items, currency = 'usd', promotions = []) {
+  const pricing = calculateCartPromotions(items, currency, promotions)
   const lines = items.map(item => {
     const ml = item.ml ? ` ${item.ml} ml` : ''
     const link = `https://kikifragancia.com/tienda/${toSlug(item.house, item.name, item.ml)}`
@@ -53,12 +54,13 @@ export default function CartDrawer() {
   const { items, removeItem, updateQuantity, totalItems, totalPrice, drawerOpen, setDrawerOpen } = useCartContext()
   const { theme } = useTheme()
   const { currency } = useCurrency()
+  const promotions = usePromotions()
   const catalog = useIndexProducts()
   const liveItems = items.map(item => {
     const product = catalog.find(p => Number(p.id) === Number(item.id))
     return product ? { ...item, ...product, quantity: item.quantity } : { ...item, agotado: true }
   })
-  const pricing = calculateCartPromotions(liveItems, currency)
+  const pricing = calculateCartPromotions(liveItems, currency, promotions)
   const [showToast, setShowToast] = useState(false)
   const toastTimerRef = useRef(null)
 
@@ -73,7 +75,7 @@ export default function CartDrawer() {
 
   function handleWhatsApp() {
     if (window.fbq) window.fbq('track', 'Contact')
-    const message = buildMessage(liveItems, currency)
+    const message = buildMessage(liveItems, currency, promotions)
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}&ref=carrito`
     window.open(url, '_blank', 'noopener,noreferrer')
     setDrawerOpen(false)
