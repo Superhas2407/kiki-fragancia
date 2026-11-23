@@ -46,6 +46,7 @@ export default function ArmarCombo() {
     <p style={{ marginTop: 35, letterSpacing: '.18em', fontSize: 10, color: '#AE7381' }}>KIKI FRAGANCIA · PROMOCIONES</p>
     <h1 style={{ fontSize: 'clamp(30px, 5vw, 50px)', fontWeight: 300, margin: '12px 0' }}>Arma tu combo {promo.name}</h1>
     <p style={{ opacity: .7, fontSize: 14 }}>Selecciona {promo.count} fragancias participantes. Puedes combinar o repetir modelos según disponibilidad.</p>
+    {promo.conditions && <p style={{ opacity: .7, fontSize: 13, marginTop: 8 }}>{promo.conditions}</p>}
     <div style={{ display: 'inline-block', background: '#873F50', color: '#fff', padding: '9px 18px', margin: '15px 0 25px', fontWeight: 600, fontSize: 14 }}>
       {promo.count} por ${promo.price} · Pago en divisas
     </div>
