@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { CartProvider } from './context/CartContext'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { SanityProductsProvider } from './context/SanityProductsContext'
+import { PromotionsProvider } from './context/PromotionsContext'
 import { ThemeProvider } from './context/ThemeContext'
 import { CurrencyProvider } from './context/CurrencyContext'
 import { WishlistProvider } from './context/WishlistContext'
@@ -138,9 +139,9 @@ export default function App() {
                   </ProtectedRoute>
                 } />
                 <Route path="*" element={
-                  <SanityProductsProvider><WishlistProvider><CurrencyProvider><ThemeProvider>
+                  <SanityProductsProvider><PromotionsProvider><WishlistProvider><CurrencyProvider><ThemeProvider>
                     <AppShell />
-                  </ThemeProvider></CurrencyProvider></WishlistProvider></SanityProductsProvider>
+                  </ThemeProvider></CurrencyProvider></WishlistProvider></PromotionsProvider></SanityProductsProvider>
                 } />
               </Routes>
             </ErrorBoundary>
