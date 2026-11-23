@@ -22,10 +22,6 @@ export default function BlackFridaySection() {
           <h2 className="bf-intro-title">Elige tu próximo favorito</h2>
           <p className="bf-intro-copy">Combina tus fragancias favoritas en nuestras ofertas vigentes.</p>
         </div>
-        {!banner && <div className="bf-heading">
-          <h2 id="bf-title">Promociones <em>especiales.</em></h2>
-          <p>Ofertas vigentes seleccionadas por Kiki Fragancia.<br />Elige tus perfumes participantes según disponibilidad.</p>
-        </div>}
         <div className="bf-offers">
           {promotions.map(promo => (
             <article className="bf-offer" key={promo.id}>
