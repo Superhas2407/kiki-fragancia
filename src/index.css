@@ -6579,3 +6579,118 @@
   .tienda-main .vitrina-grid--mobile-preview { gap: 24px 10px; }
   .vitrina-grid--mobile-preview .vitrina-name { font-size: 15px; }
 }
+
+
+/* MODERN MOBILE PREVIEW v3 — rounded editorial cards inspired by the
+   user's reference. Only Tienda; original product images and currencies. */
+@media (min-width: 768px) {
+  .vitrina-card--modern-preview .vitrina-modern-eyebrow,
+  .vitrina-card--modern-preview .vitrina-modern-actions { display: none; }
+}
+@media (max-width: 767px) {
+  .tienda-main .vitrina-grid--mobile-preview {
+    gap: 18px 12px;
+    align-items: stretch;
+  }
+  .vitrina-grid--mobile-preview > div { min-width: 0; height: 100%; }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview {
+    background: #FFFCF8 !important;
+    border: 1px solid #E9DED1 !important;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 16px rgba(49,35,20,.055);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-display,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-display {
+    width: 100%;
+    aspect-ratio: 1 / 1.22;
+    background: #F7F3ED !important;
+    border: 0 !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-spotlight { width: 95%; height: 88%; top: 49%; }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-img { padding: 3px; }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-pedestal { display: none; }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-heart-btn {
+    width: 35px; height: 35px; top: 9px; right: 9px;
+    background: #FFFDF9 !important; border: 1px solid #DED2C5;
+    box-shadow: 0 2px 10px rgba(26,23,19,.10);
+    color: #3B322C !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-quick-add { display: none !important; }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-ribbon {
+    width: 105px; height: 105px; z-index: 8;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-ribbon > span {
+    top: 22px; right: -45px; width: 149px;
+    font-size: 7px; padding: 6px 0; letter-spacing: .06em;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-info,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-info {
+    flex: 1; display: flex; flex-direction: column;
+    gap: 7px; padding: 12px 12px 11px;
+    background: #FFFCF8 !important;
+    color: #28231E !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-eyebrow {
+    display: block; font-family: 'KikiGotham', sans-serif;
+    color: #A18366; font-size: 8px; letter-spacing: .15em; font-weight: 500;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-info-row {
+    display: flex; flex-direction: column; gap: 3px; padding: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-house,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-house {
+    color: #655344 !important; font-size: 9px; letter-spacing: .12em;
+    font-weight: 600; -webkit-text-stroke: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-meta,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-meta {
+    color: #88796C !important; font-size: 9px; font-weight: 400; letter-spacing: .03em;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-name,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-name {
+    min-height: 2.5em; margin: 0; color: #211D1A !important;
+    font-style: normal; font-weight: 600; letter-spacing: -.035em;
+    font-size: clamp(15px, 4vw, 18px); line-height: 1.25;
+    -webkit-text-stroke: 0;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price {
+    padding-top: 4px; margin-top: auto;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd,
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd--big,
+  [data-theme='warm'] .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-usd {
+    color: #30261F !important; font-weight: 600;
+    font-size: clamp(18px, 4.8vw, 22px) !important;
+  }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-price-badge {
+    font-size: 8px; padding: 4px 6px;
+    background: #7E4250 !important; color: white !important;
+    font-weight: 500; letter-spacing: 0; border-radius: 4px;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-actions {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 5px; margin-top: auto; padding-top: 9px;
+    border-top: 1px solid #EFE7DD;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-caption {
+    font-family: 'KikiGotham', sans-serif;
+    font-size: 8px; color: #7B6B5C; line-height: 1.25;
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-add {
+    flex: 0 0 39px; width: 39px; height: 39px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: #2C2622; border: none; color: #FFFAF5; padding: 0;
+    cursor: pointer; box-shadow: 0 2px 7px rgba(0,0,0,.10);
+  }
+  .vitrina-grid--mobile-preview .vitrina-modern-add.added { background: #226B45; }
+  .vitrina-grid--mobile-preview .vitrina-modern-add svg { width: 17px; height: 17px; }
+  .vitrina-grid--mobile-preview .vitrina-card--modern-preview .vitrina-size-pill { min-height: 35px; }
+}
