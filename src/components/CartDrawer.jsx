@@ -42,7 +42,7 @@ function buildMessage(items, currency = 'usd', promotions = []) {
     return `• *${item.house} ${item.name}*${ml} ×${item.quantity}${individual}${availability}\n  ${link}`
   })
   const offers = currency === 'usd' && pricing.applied.length
-    ? `\n*Promociones aplicadas (divisas):*\n${pricing.applied.map(p => `• ${p.label}: ${p.count} por $${p.price}`).join('\n')}\n*Ahorro total: $${pricing.savings}*\n`
+    ? `\n*Promociones aplicadas (divisas):*\n${pricing.applied.map(p => `• ${p.label}: ${p.count} por ${p.price}${p.conditions ? ` · ${p.conditions}` : ''}`).join('\n')}\n*Ahorro total: $${pricing.savings}*\n`
     : ''
   const total = currency === 'usd'
     ? `\n*Total estimado en divisas: REF $${pricing.total}*\n`
@@ -294,7 +294,7 @@ export default function CartDrawer() {
             {pricing.applied.length > 0 && (
               <div style={{ padding: '12px 14px', background: 'rgba(135,63,80,0.12)', border: '1px solid #873F50', color: 'var(--ink)', fontFamily: "'KikiGotham', sans-serif", fontSize: 11, lineHeight: 1.7 }}>
                 <strong>Promociones aplicadas</strong>
-                {pricing.applied.map((p, i) => <div key={`${p.id}-${i}`}>{p.label}: {p.count} por ${p.price}</div>)}
+                {pricing.applied.map((p, i) => <div key={`${p.id}-${i}`}>{p.label}: {p.count} por ${p.price}{p.conditions ? ` · ${p.conditions}` : ''}</div>)}
                 <div>Ahorras ${pricing.savings}</div>
               </div>
             )}
