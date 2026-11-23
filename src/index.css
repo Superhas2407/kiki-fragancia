@@ -6248,3 +6248,116 @@
 /* La cinta de combo también abre el selector; el resto de cintas no cambian. */
 .vitrina-ribbon--promo[role='button'] { pointer-events: auto; cursor: pointer; }
 .vitrina-ribbon--promo[role='button']:focus-visible { outline: 2px solid #FFFFFF; outline-offset: -3px; }
+
+
+/* Homepage editorial flow: hero -> original artwork -> active offers.
+   Preserve user-created banner images and the existing Gotham typography. */
+.bf-section--banner {
+  padding-top: 0;
+  background: var(--bg-warm);
+}
+.bf-section--banner::before { display: none; }
+.bf-banner-link {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: #402719;
+  text-decoration: none;
+}
+.bf-banner-picture, .bf-banner-image {
+  display: block;
+  width: 100%;
+}
+.bf-banner-image { height: auto; object-fit: contain; }
+.bf-banner-link:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: -5px;
+}
+.bf-inner {
+  padding-top: clamp(48px, 6vw, 86px);
+}
+.bf-section-intro {
+  max-width: 760px;
+  margin: 0 auto clamp(28px, 4vw, 46px);
+  text-align: center;
+}
+.bf-intro-line {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: 0 auto 24px;
+  background: var(--gold-ink);
+}
+.bf-section-intro .bf-eyebrow {
+  font-size: 10px;
+  margin-bottom: 16px;
+  letter-spacing: .22em;
+}
+.bf-intro-title {
+  font-family: var(--font-d);
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -.025em;
+  color: var(--ink);
+}
+.bf-intro-copy {
+  margin: 14px auto 0;
+  font-family: var(--font-s);
+  font-size: 12px;
+  letter-spacing: .03em;
+  line-height: 1.8;
+  color: var(--ink-mute);
+}
+.bf-section .bf-offers {
+  gap: clamp(12px, 2vw, 26px);
+  border: none;
+  background: transparent;
+}
+.bf-section .bf-offer {
+  min-height: 320px;
+  background: var(--bg2);
+  border: 1px solid var(--line2);
+  padding: clamp(22px, 3vw, 40px);
+}
+.bf-section .bf-offer h3 {
+  margin-top: 35px;
+  font-size: clamp(27px, 3vw, 40px);
+}
+.bf-section .bf-price strong { font-size: clamp(64px, 7vw, 95px); }
+.bf-section .bf-offer-tag {
+  border: 0;
+  background: rgba(var(--gold-rgb), .08);
+  padding: 8px 11px;
+}
+.bf-section .bf-conditions {
+  margin-top: 26px;
+  text-align: center;
+  max-width: unset;
+}
+@media (max-width: 767px) {
+  .bf-section--banner { padding-top: 0; padding-bottom: 52px; }
+  .bf-banner-link { margin-bottom: 0; }
+  .bf-inner { padding-top: 38px; }
+  .bf-section-intro { margin-bottom: 25px; }
+  .bf-intro-line { margin-bottom: 19px; width: 38px; }
+  .bf-section-intro .bf-eyebrow { font-size: 9px; letter-spacing: .14em; }
+  .bf-intro-title { font-size: clamp(30px, 8vw, 39px); }
+  .bf-intro-copy { font-size: 11px; line-height: 1.65; max-width: 290px; }
+  .bf-section .bf-offers { grid-template-columns: 1fr; gap: 15px; }
+  .bf-section .bf-offer { min-height: 0; padding: 24px 23px 26px; }
+  .bf-section .bf-offer-topline { align-items: start; }
+  .bf-section .bf-offer-label,
+  .bf-section .bf-offer-tag { font-size: 8px; letter-spacing: .08em; }
+  .bf-section .bf-offer h3 { margin-top: 24px; font-size: clamp(29px, 7.2vw, 36px); }
+  .bf-section .bf-price { margin: 16px 0 10px; }
+  .bf-section .bf-price strong { font-size: clamp(67px, 18vw, 90px); }
+  .bf-section .bf-detail { margin: 10px 0 26px; font-size: 11px; }
+  .bf-section .bf-cta { margin-top: 16px; }
+  .bf-section .bf-conditions { margin-top: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bf-section .bf-cta { transition: none; }
+}
