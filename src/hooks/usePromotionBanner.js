@@ -8,11 +8,11 @@ export const PROMOTION_BANNER_QUERY = `*[_id == "home-promotion-banner" && _type
   "mobileUrl": mobileImage.asset->url
 }`
 
-// Original artworks supplied by Kiki Fragancia, hosted as immutable media.
+// Original artwork files supplied by Kiki Fragancia, served locally from /public/promociones.
 // Sanity can replace or disable this first edition without a code update.
 export const DEFAULT_PROMOTION_BANNER = {
-  desktopUrl: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3EN6bmi6QIZqo3bRCvLM2434GA1/ef460d69-28eb-4d3f-89d5-d7a0b916d750.jpg',
-  mobileUrl: 'https://d2ol7oe51mr4n9.cloudfront.net/user_3EN6bmi6QIZqo3bRCvLM2434GA1/09ec24a1-42e8-425b-97bc-a88e8dc380ec.jpg',
+  desktopUrl: '/promociones/portada-desktop.jpg',
+  mobileUrl: '/promociones/portada-mobile.jpg',
   altText: 'Promociones disponibles: combos especiales en tus marcas favoritas. Explorar promociones.',
 }
 
