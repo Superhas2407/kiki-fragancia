@@ -952,6 +952,7 @@ export default function Tienda() {
                             }}
                           >
                             <VitrinaCard
+                              modernPreview
                               product={product}
                               promotion={promotionForProduct(product, promotions)}
                               ribbon={null}
