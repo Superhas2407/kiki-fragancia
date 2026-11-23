@@ -1,13 +1,11 @@
 // Single source of truth: published Sanity "promotion" documents.
 // No campaign is enabled from historical ads, old application source or prices
 // displayed in a product story. If the live query fails, promotions = [].
-const norm=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()
-
 export function sanitizePromotions(rows=[],now=new Date()){
   const when=+new Date(now)
   if(!Array.isArray(rows)||!Number.isFinite(when))return []
   const used=new Set()
-  return rows.flatMap(raw=>{
+  const checked=rows.flatMap(raw=>{
     const id=String(raw?.id||'').trim()
     const name=String(raw?.name||'').trim()
     const count=Number(raw?.count)
@@ -25,6 +23,11 @@ export function sanitizePromotions(rows=[],now=new Date()){
       productIds,startsAt:raw.startsAt||null,endsAt:raw.endsAt||null,
       conditions:String(raw.conditions||'').slice(0,500)}]
   })
+  // Fail closed when two campaigns overlap in eligible SKUs; never select
+  // a random discount for the same perfume.
+  const totals=new Map()
+  for(const p of checked)for(const id of p.productIds)totals.set(id,(totals.get(id)||0)+1)
+  return checked.filter(p=>p.productIds.every(id=>totals.get(id)===1))
 }
 
 export function promotionForProduct(product,promotions=[]){
