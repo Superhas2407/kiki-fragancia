@@ -246,7 +246,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 105,
-    "precioUSD": 55,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -270,7 +270,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 105,
-    "precioUSD": 55,
+    "precioUSD": 50,
     "categoria": "arabes",
     "agotado": true
   },
@@ -468,7 +468,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -627,7 +627,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -640,7 +640,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 52,
@@ -714,7 +715,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -952,7 +953,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 55,
+    "precioUSD": 60,
     "categoria": "disenador"
   },
   {
@@ -965,7 +966,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 65,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 78,
@@ -1001,7 +1003,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 95,
+    "precioUSD": 80,
     "categoria": "disenador",
     "agotado": true
   },
@@ -1014,7 +1016,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 50,
-    "precioUSD": 50,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -2510,7 +2512,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -3245,7 +3247,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -3257,7 +3259,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -3320,7 +3322,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -3370,7 +3372,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -3470,7 +3472,7 @@ export const products = [
     "tipo": "Elixir",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 175,
+    "precioUSD": 160,
     "categoria": "disenador"
   },
   {
@@ -3625,7 +3627,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 95,
     "categoria": "disenador",
     "agotado": true
   },
@@ -3638,7 +3640,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -3650,7 +3652,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -3892,7 +3894,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 115,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 313,
@@ -4005,7 +4008,7 @@ export const products = [
     "tipo": "Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 150,
+    "precioUSD": 145,
     "categoria": "disenador",
     "agotado": true
   },
@@ -4081,7 +4084,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 328,
@@ -4092,7 +4096,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 100,
     "categoria": "disenador"
   },
   {
@@ -4104,7 +4108,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -4208,7 +4212,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 15,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
@@ -4282,7 +4286,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Unisex",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 35,
     "categoria": "disenador",
     "variantIds": [
       344
@@ -4812,7 +4816,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -5224,7 +5228,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 80,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
@@ -5516,7 +5520,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -5814,7 +5818,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 50,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -5863,7 +5867,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 80,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
@@ -5924,7 +5928,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Unisex",
     "ml": 120,
-    "precioUSD": 139,
+    "precioUSD": 140,
     "categoria": "nicho"
   },
   {
@@ -6132,9 +6136,8 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 79,
-    "categoria": "disenador",
-    "agotado": true
+    "precioUSD": 65,
+    "categoria": "disenador"
   },
   {
     "id": 492,
@@ -6570,7 +6573,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 527,
@@ -6653,7 +6657,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -7061,7 +7065,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 75,
-    "precioUSD": 55,
+    "precioUSD": 65,
     "categoria": "arabes"
   },
   {
@@ -7074,7 +7078,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 568,
@@ -7222,7 +7227,7 @@ export const products = [
     "tipo": "Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 130,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -7348,7 +7353,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Masculino",
     "ml": 100,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {

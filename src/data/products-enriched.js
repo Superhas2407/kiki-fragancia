@@ -570,7 +570,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 105,
-    "precioUSD": 55,
+    "precioUSD": 60,
     "categoria": "arabes"
   },
   {
@@ -624,7 +624,7 @@ export const products = [
       "Praliné"
     ],
     "ml": 105,
-    "precioUSD": 55,
+    "precioUSD": 50,
     "categoria": "arabes",
     "agotado": true
   },
@@ -1116,7 +1116,7 @@ export const products = [
       "Notas amaderadas"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -1494,7 +1494,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -1521,7 +1521,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 52,
@@ -1696,7 +1697,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -2247,7 +2248,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 100,
-    "precioUSD": 55,
+    "precioUSD": 60,
     "categoria": "disenador"
   },
   {
@@ -2279,7 +2280,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 65,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 78,
@@ -2378,7 +2380,7 @@ export const products = [
       "Algalia"
     ],
     "ml": 100,
-    "precioUSD": 95,
+    "precioUSD": 80,
     "categoria": "disenador",
     "agotado": true
   },
@@ -2401,7 +2403,7 @@ export const products = [
       "Madera blanca"
     ],
     "ml": 50,
-    "precioUSD": 50,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -5858,7 +5860,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 40,
     "categoria": "arabes"
   },
   {
@@ -7529,7 +7531,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -7555,7 +7557,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -7697,7 +7699,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -7811,7 +7813,7 @@ export const products = [
       "Madera"
     ],
     "ml": 100,
-    "precioUSD": 65,
+    "precioUSD": 70,
     "categoria": "disenador"
   },
   {
@@ -8035,7 +8037,7 @@ export const products = [
       "Cedro"
     ],
     "ml": 100,
-    "precioUSD": 175,
+    "precioUSD": 160,
     "categoria": "disenador"
   },
   {
@@ -8380,7 +8382,7 @@ export const products = [
       "Vainilla"
     ],
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 95,
     "categoria": "disenador",
     "agotado": true
   },
@@ -8409,7 +8411,7 @@ export const products = [
       "Cachemira"
     ],
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -8437,7 +8439,7 @@ export const products = [
       "Cachemira"
     ],
     "ml": 100,
-    "precioUSD": 75,
+    "precioUSD": 80,
     "categoria": "disenador"
   },
   {
@@ -8978,7 +8980,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 115,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 313,
@@ -9234,7 +9237,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 150,
+    "precioUSD": 145,
     "categoria": "disenador",
     "agotado": true
   },
@@ -9404,7 +9407,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 85,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 328,
@@ -9431,7 +9435,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 90,
+    "precioUSD": 100,
     "categoria": "disenador"
   },
   {
@@ -9459,7 +9463,7 @@ export const products = [
       "Ámbar"
     ],
     "ml": 100,
-    "precioUSD": 60,
+    "precioUSD": 65,
     "categoria": "disenador"
   },
   {
@@ -9686,7 +9690,7 @@ export const products = [
       "Vetiver"
     ],
     "ml": 100,
-    "precioUSD": 15,
+    "precioUSD": 20,
     "categoria": "disenador"
   },
   {
@@ -9859,7 +9863,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 35,
     "categoria": "disenador",
     "variantIds": [
       344
@@ -11052,7 +11056,7 @@ export const products = [
       "Sándalo"
     ],
     "ml": 100,
-    "precioUSD": 45,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -11991,7 +11995,7 @@ export const products = [
       "Almizcle"
     ],
     "ml": 80,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
@@ -12695,7 +12699,7 @@ export const products = [
       "Musgo de roble"
     ],
     "ml": 100,
-    "precioUSD": 40,
+    "precioUSD": 45,
     "categoria": "disenador"
   },
   {
@@ -13393,7 +13397,7 @@ export const products = [
       "cedro"
     ],
     "ml": 75,
-    "precioUSD": 50,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -13508,7 +13512,7 @@ export const products = [
       "notas amaderadas"
     ],
     "ml": 80,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
@@ -13655,7 +13659,7 @@ export const products = [
       "vainilla"
     ],
     "ml": 120,
-    "precioUSD": 139,
+    "precioUSD": 140,
     "categoria": "nicho"
   },
   {
@@ -14126,9 +14130,8 @@ export const products = [
       "cuero"
     ],
     "ml": 100,
-    "precioUSD": 79,
-    "categoria": "disenador",
-    "agotado": true
+    "precioUSD": 65,
+    "categoria": "disenador"
   },
   {
     "id": 492,
@@ -15051,7 +15054,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 35,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 527,
@@ -15244,7 +15248,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 100,
-    "precioUSD": 50,
+    "precioUSD": 55,
     "categoria": "disenador"
   },
   {
@@ -16156,7 +16160,7 @@ export const products = [
       "Maderas aterciopeladas"
     ],
     "ml": 75,
-    "precioUSD": 55,
+    "precioUSD": 65,
     "categoria": "arabes"
   },
   {
@@ -16185,7 +16189,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 50,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 568,
@@ -16510,7 +16515,7 @@ export const products = [
       "pachulí"
     ],
     "ml": 100,
-    "precioUSD": 130,
+    "precioUSD": 150,
     "categoria": "disenador"
   },
   {
@@ -16779,7 +16784,7 @@ export const products = [
       "benjuí"
     ],
     "ml": 100,
-    "precioUSD": 25,
+    "precioUSD": 30,
     "categoria": "disenador"
   },
   {
