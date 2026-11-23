@@ -29,8 +29,11 @@ export const structure = (S) => {
         S.component().id('precio-rapido').title('Cambio de precio rápido').component(QuickPrice),
       ),
       S.documentTypeListItem('promotion').title('Promociones'),
+      S.listItem().id('portada-promociones').title('Portada de promociones').child(
+        S.document().schemaType('promotionBanner').documentId('home-promotion-banner').title('Portada de promociones'),
+      ),
       filteredProducts('agotados', 'Agotados'),
       filteredProducts('disponibles', 'Disponibles'),
-      ...S.documentTypeListItems().filter((item) => item.getId() !== 'product' && item.getId() !== 'promotion'),
+      ...S.documentTypeListItems().filter((item) => item.getId() !== 'product' && item.getId() !== 'promotion' && item.getId() !== 'promotionBanner'),
     ])
 }

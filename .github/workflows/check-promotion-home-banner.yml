@@ -1,0 +1,45 @@
+name: Homepage promotion banner
+on:
+  pull_request:
+    paths:
+      - 'studio/schemas/promotionBanner.js'
+      - 'studio/sanity.config.js'
+      - 'studio/structure.js'
+      - 'src/components/BlackFridaySection.jsx'
+      - 'src/hooks/usePromotionBanner.js'
+      - 'scripts/test-promotion-home-banner.mjs'
+      - '.github/workflows/check-promotion-home-banner.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  home-banner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/test-promotion-home-banner.mjs
+      - run: node scripts/test-cart-promotions.mjs
+      - run: printf '{}' > src/data/responsive-images.json
+      - run: npx vite build
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: studio/package-lock.json
+      - run: npm ci
+        working-directory: studio
+      - run: npm run build
+        working-directory: studio
