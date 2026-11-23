@@ -130,6 +130,16 @@ const CATEGORIA_OPTIONS = [
   { key: 'nicho',     label: 'Nicho' },
 ]
 
+const MOBILE_STORE_CATEGORIES = [
+  { label: 'Todo',      genero: null,        tipo: null },
+  { label: 'Hombre',    genero: 'Masculino', tipo: null },
+  { label: 'Mujer',     genero: 'Femenino',  tipo: null },
+  { label: 'Unisex',    genero: 'Unisex',    tipo: null },
+  { label: 'Árabes',    genero: null,        tipo: 'arabes' },
+  { label: 'Diseñador', genero: null,        tipo: 'disenador' },
+  { label: 'Nicho',     genero: null,        tipo: 'nicho' },
+]
+
 function SidebarSection({ title, open, onToggle, children }) {
   return (
     <div style={{ borderBottom: '1px solid var(--line2)' }}>
@@ -755,6 +765,16 @@ export default function Tienda() {
   }
   const bannerSrc = BANNER_TIPO[urlTipo] || BANNER_GENERO[urlGenero] || '/BANNERTIENDATODOS.webp'
 
+  function selectMobileCategory({ genero, tipo }) {
+    const params = new URLSearchParams(searchParams)
+    params.delete('genero')
+    params.delete('tipo')
+    params.delete('coleccion')
+    if (genero) params.set('genero', genero)
+    if (tipo) params.set('tipo', tipo)
+    navigate(params.size ? `/tienda?${params}` : '/tienda')
+  }
+
   return (
     <>
       <div ref={topRef} className="tienda-page" style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
@@ -774,6 +794,22 @@ export default function Tienda() {
             </span>
           </div>
         </div>
+        <nav className="tienda-mobile-categories tienda-mobile-only" aria-label="Explorar colecciones">
+          {MOBILE_STORE_CATEGORIES.map(category => {
+            const isActive = urlGenero === category.genero && urlTipo === category.tipo && !urlColeccion
+            return (
+              <button
+                key={category.label}
+                type="button"
+                className={isActive ? 'active' : ''}
+                aria-current={isActive ? 'page' : undefined}
+                onClick={() => selectMobileCategory(category)}
+              >
+                {category.label}
+              </button>
+            )
+          })}
+        </nav>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <div className="tienda-layout">
 
