@@ -3,7 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useIndexProducts, resolveProductImage } from '../context/SanityProductsContext'
 import { useCartContext } from '../context/CartContext'
 import { useCurrency } from '../context/CurrencyContext'
-import { STORE_PROMOTIONS, promotionForProduct } from '../data/store-promotions'
+import { promotionForProduct } from '../data/store-promotions'
+import { usePromotions } from '../context/PromotionsContext'
 
 export default function ArmarCombo() {
   const { promoId } = useParams()
@@ -11,10 +12,11 @@ export default function ArmarCombo() {
   const products = useIndexProducts()
   const { addItem, setDrawerOpen } = useCartContext()
   const { currency } = useCurrency()
-  const promo = STORE_PROMOTIONS.find(p => p.id === promoId && p.active && p.count >= 2)
+  const promotions = usePromotions()
+  const promo = promotions.find(p => p.id === promoId && p.active && p.count >= 2)
   const [selection, setSelection] = useState({})
-  const eligible = useMemo(() => products.filter(p => promotionForProduct(p)?.id === promoId)
-    .sort((a,b) => String(a.name).localeCompare(String(b.name))), [products, promoId])
+  const eligible = useMemo(() => products.filter(p => promotionForProduct(p, promotions)?.id === promoId)
+    .sort((a,b) => String(a.name).localeCompare(String(b.name))), [products, promoId, promotions])
   const total = Object.values(selection).reduce((sum,n) => sum+n,0)
 
   if (!promo) return <main style={{ minHeight: '65vh', padding: '180px 24px 50px', textAlign: 'center' }}>
