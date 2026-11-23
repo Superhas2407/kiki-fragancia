@@ -267,7 +267,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               <div className="vitrina-price-disc-block">
                 {effectiveDiscount ? (
                   <span className="vitrina-price-badge">{effectiveDiscount}% DESCUENTO</span>
-                ) : <span className={`vitrina-price-badge${promotion ? " vitrina-price-badge--promo" : ""}`}>{promotion ? (promotion.count === 1 ? 'PRECIO ESPECIAL · DIVISAS' : `COMBO ${promotion.label} · DIVISAS`) : "PROMO DIVISA"}</span>}
+                ) : promotion ? <span className="vitrina-price-badge vitrina-price-badge--promo">{promotion.count === 1 ? 'PRECIO ESPECIAL · DIVISAS' : `COMBO ${promotion.label} · DIVISAS`}</span> : null}
                 <span className="vitrina-price-usd vitrina-price-usd--big">
                   {hasRange ? 'Desde ' : ''}REF: {priceUsd}
                 </span>
