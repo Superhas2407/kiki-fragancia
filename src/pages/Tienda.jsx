@@ -914,10 +914,10 @@ export default function Tienda() {
                 {filtered.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '80px 20px' }}>
                     <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'var(--ink-mute)', fontStyle: 'italic', marginBottom: 8 }}>
-                      No encontramos esa fragancia
+                      {soloPromociones && promotions.length === 0 ? 'No hay promociones activas por ahora' : soloPromociones ? 'No hay perfumes de promoción con estos filtros' : 'No encontramos esa fragancia'}
                     </p>
                     <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 13, color: 'var(--ink-faint)', marginBottom: 28 }}>
-                      Intenta con otros filtros
+                      {soloPromociones && promotions.length === 0 ? 'En este momento no hay ofertas vigentes publicadas. Puedes seguir explorando todos nuestros perfumes.' : 'Intenta con otros filtros'}
                     </p>
                     <button
                       onClick={clearFilters}
