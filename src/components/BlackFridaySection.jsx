@@ -1,18 +1,26 @@
 import { Link } from 'react-router-dom'
 import { usePromotions } from '../context/PromotionsContext'
+import { usePromotionBanner } from '../hooks/usePromotionBanner'
 
 // No older advertising calendar or static campaigns: only approved Sanity offers.
 export default function BlackFridaySection() {
   const promotions = usePromotions()
+  const banner = usePromotionBanner()
   if (!promotions.length) return null
   return (
-    <section id="promociones" className="bf-section" aria-labelledby="bf-title">
+    <section id="promociones" className="bf-section" aria-label="Promociones de Kiki Fragancia">
+      {banner && <Link to="/tienda?promos=1" aria-label={banner.altText} style={{display:'block',width:'100%',lineHeight:0}}>
+        <picture>
+          <source media="(max-width: 767px)" srcSet={banner.mobileUrl} />
+          <img src={banner.desktopUrl} alt={banner.altText} decoding="async" loading="lazy" style={{width:'100%',height:'auto',display:'block'}} />
+        </picture>
+      </Link>}
       <div className="kiki-container">
         <p className="bf-eyebrow">KIKI FRAGANCIA · PROMOCIONES</p>
-        <div className="bf-heading">
+        {!banner && <div className="bf-heading">
           <h2 id="bf-title">Promociones <em>especiales.</em></h2>
           <p>Ofertas vigentes seleccionadas por Kiki Fragancia.<br />Elige tus perfumes participantes según disponibilidad.</p>
-        </div>
+        </div>}
         <div className="bf-offers">
           {promotions.map(promo => (
             <article className="bf-offer" key={promo.id}>
