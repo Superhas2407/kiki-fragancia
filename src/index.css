@@ -234,6 +234,8 @@
 }
 
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 @theme {
   --color-ivory:     #F7F2EA;
@@ -247,6 +249,27 @@
 
   --font-display: 'KikiGotham', sans-serif;
   --font-sans:    'KikiGotham', sans-serif;
+}
+
+/* shadcn/ui utilities use the active Kiki theme. */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--raised);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--raised);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--gold);
+  --color-primary-foreground: var(--gold-fill-ink);
+  --color-secondary: var(--bg2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--bg2);
+  --color-muted-foreground: var(--ink-mute);
+  --color-accent: var(--bg-warm);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: #b42318;
+  --color-input: var(--line2);
+  --color-ring: var(--gold);
 }
 
 :root {
