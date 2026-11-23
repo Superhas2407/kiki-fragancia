@@ -20,6 +20,7 @@ import InstallBanner from './components/InstallBanner'
 import OfertaDelDia from './components/OfertaDelDia'
 const WishlistDrawer  = lazy(() => import('./components/WishlistDrawer'))
 const Tienda          = lazy(() => import('./pages/Tienda'))
+const ArmarCombo      = lazy(() => import('./pages/ArmarCombo'))
 const ProductDetail   = lazy(() => import('./pages/ProductDetail'))
 const TerminosPage    = lazy(() => import('./pages/TerminosPage'))
 const ComingSoon      = lazy(() => import('./pages/ComingSoon'))
@@ -103,6 +104,7 @@ function AppShell() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/tienda" element={<Tienda />} />
+              <Route path="/promociones/:promoId" element={<ArmarCombo />} />
               <Route path="/tienda/:id" element={<ProductDetail />} />
               <Route path="/terminos-y-condiciones" element={<TerminosPage />} />
             </Routes>
