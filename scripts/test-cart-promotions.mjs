@@ -18,6 +18,7 @@ assert.equal(sanitizePromotions([{id:'incomplete',name:'Incomplete',active:true,
 assert.equal(sanitizePromotions([{id:'invalid',name:'Invalid',active:true,count:3,priceUSD:-5,productIds:[123]}],NOW).length,0)
 assert.equal(sanitizePromotions([{id:'foo',name:'one',active:true,count:1,priceUSD:30,productIds:[102]},{id:'foo',name:'two',active:true,count:2,priceUSD:60,productIds:[102]}],NOW).length,1)
 assert.equal(sanitizePromotions(null,NOW).length,0)
+assert.equal(sanitizePromotions([{id:'a',name:'Promo A',active:true,count:2,priceUSD:40,productIds:[382]},{id:'b',name:'Promo B',active:true,count:2,priceUSD:50,productIds:[382]}],NOW).length,0,'Overlapping promos must not give arbitrary discounts')
 // A $40 image is just an ordinary price; it is not in any active promotion.
 const ninePm={id:3,house:'AFNAN',name:'9PM',ml:100,precioUSD:40,quantity:1}
 assert.equal(promotionForProduct(ninePm,available),null)
