@@ -1,0 +1,25 @@
+name: Preview mobile product cards
+on:
+  pull_request:
+    paths:
+      - 'src/pages/Tienda.jsx'
+      - 'src/index.css'
+      - 'scripts/test-mobile-cards-preview.mjs'
+      - '.github/workflows/check-mobile-cards-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mobile-cards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node scripts/test-mobile-cards-preview.mjs
+      - run: node scripts/test-cart-promotions.mjs
+      - run: printf '{}' > src/data/responsive-images.json
+      - run: npx vite build
