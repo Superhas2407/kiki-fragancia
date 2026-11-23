@@ -58,7 +58,7 @@ const CheckIcon = () => (
 )
 
 
-export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null, promotion = null }) {
+export default function VitrinaCard({ product, badge = null, ribbon = null, ribbonVariant = null, discount = null, promotion = null, modernPreview = false }) {
   const effectiveDiscount = discount ?? product?.descuento ?? null
   const allProducts = useIndexProducts()
   const { addItem } = useCartContext()
@@ -110,7 +110,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
     <Link
       ref={cardRef}
       to={`/tienda/${toSlug(product.house, product.name, product.ml)}`}
-      className="vitrina-card"
+      className={`vitrina-card${modernPreview ? " vitrina-card--modern-preview" : ""}`}
       style={famStyle(product.familia)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
@@ -183,6 +183,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           )}
         </button>
 
+        {!modernPreview && (
         {/* Quick-add CTA */}
         {!agotado && (
           <button
@@ -204,9 +205,11 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
             )}
           </button>
         )}
+        )}
       </div>
 
       <div className="vitrina-info">
+        {modernPreview && <div className="vitrina-modern-eyebrow">COLECCIÓN KIKI</div>}
         <div className="vitrina-info-row">
           <span className="vitrina-house">
             <span className="vitrina-gender-dot" style={{ background: genderDot }} aria-hidden="true" />
@@ -280,6 +283,15 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
             </div>
           )
         })()}
+        {modernPreview && <div className="vitrina-modern-actions">
+          <span className="vitrina-modern-caption">{agotado ? 'Sin disponibilidad' : promotion ? 'Oferta en divisas' : 'Original verificado'}</span>
+          {!agotado && <button
+            type="button"
+            className={`vitrina-modern-add${added ? ' added' : ''}`}
+            onClick={handleAdd}
+            aria-label={added ? 'Agregado al carrito' : 'Agregar al carrito'}
+          >{added ? <CheckIcon /> : <PlusIcon />}</button>}
+        </div>}
       </div>
     </Link>
   )
