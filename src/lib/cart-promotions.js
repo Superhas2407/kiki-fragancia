@@ -19,7 +19,7 @@ export function calculateCartPromotions(items, currency = 'usd', promotions = []
         if (unit.amount <= promo.price) continue
         const discount = unit.amount - promo.price
         savings += discount
-        applied.push({ id: promo.id, label: promo.name, count: 1, price: promo.price, savings: discount, products: [unit.id] })
+        applied.push({ id: promo.id, label: promo.name, count: 1, price: promo.price, savings: discount, conditions: promo.conditions || '', products: [unit.id] })
       }
       continue
     }
@@ -31,7 +31,7 @@ export function calculateCartPromotions(items, currency = 'usd', promotions = []
       if (original < promo.price) continue
       const discount = original - promo.price
       savings += discount
-      applied.push({ id: promo.id, label: promo.name, count: promo.count, price: promo.price, savings: discount, products: group.map(u => u.id) })
+      applied.push({ id: promo.id, label: promo.name, count: promo.count, price: promo.price, savings: discount, conditions: promo.conditions || '', products: group.map(u => u.id) })
     }
   }
   return { subtotal, total: Math.max(0, subtotal - savings), savings, applied }
