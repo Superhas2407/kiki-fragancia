@@ -183,7 +183,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
           )}
         </button>
 
-        {!modernPreview && (
         {/* Quick-add CTA */}
         {!agotado && (
           <button
@@ -204,7 +203,6 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
               </>
             )}
           </button>
-        )}
         )}
       </div>
 
