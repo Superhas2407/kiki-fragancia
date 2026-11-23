@@ -3,6 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import product from './schemas/product'
 import promotion from './schemas/promotion'
+import promotionBanner from './schemas/promotionBanner'
 import { structure } from './structure'
 
 export default defineConfig({
@@ -15,6 +16,6 @@ export default defineConfig({
     visionTool(),
   ],
   schema: {
-    types: [product, promotion],
+    types: [product, promotion, promotionBanner],
   },
 })
