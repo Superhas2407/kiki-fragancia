@@ -130,14 +130,17 @@ const CATEGORIA_OPTIONS = [
   { key: 'nicho',     label: 'Nicho' },
 ]
 
+const COLLECTION_TILES = [
+  { label: 'Árabes', tipo: 'arabes', img: '/silhouettes/mega-arabes.jpeg' },
+  { label: 'Diseñador', tipo: 'disenador', img: '/silhouettes/mega-disenador.jpeg' },
+  { label: 'Nicho', tipo: 'nicho', img: '/silhouettes/mega-nicho.jpeg' },
+]
+
 const MOBILE_STORE_CATEGORIES = [
   { label: 'Todo',      genero: null,        tipo: null },
   { label: 'Hombre',    genero: 'Masculino', tipo: null },
   { label: 'Mujer',     genero: 'Femenino',  tipo: null },
   { label: 'Unisex',    genero: 'Unisex',    tipo: null },
-  { label: 'Árabes',    genero: null,        tipo: 'arabes' },
-  { label: 'Diseñador', genero: null,        tipo: 'disenador' },
-  { label: 'Nicho',     genero: null,        tipo: 'nicho' },
 ]
 
 function SidebarSection({ title, open, onToggle, children }) {
@@ -794,6 +797,16 @@ export default function Tienda() {
             </span>
           </div>
         </div>
+        <nav className="tienda-collection-tiles" aria-label="Explorar tipos de fragancias">
+          {COLLECTION_TILES.map(collection => (
+            <button key={collection.tipo} type="button" className={`tienda-collection-tile${urlTipo === collection.tipo ? ' active' : ''}`}
+              aria-pressed={urlTipo === collection.tipo}
+              onClick={() => selectMobileCategory({ genero: null, tipo: collection.tipo })}>
+              <img src={collection.img} alt="" loading="lazy" />
+              <span>{collection.label}</span>
+            </button>
+          ))}
+        </nav>
         <nav className="tienda-mobile-categories tienda-mobile-only" aria-label="Explorar colecciones">
           {MOBILE_STORE_CATEGORIES.map(category => {
             const isActive = urlGenero === category.genero && urlTipo === category.tipo && !urlColeccion
