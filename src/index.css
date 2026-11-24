@@ -7474,6 +7474,17 @@
 .hero-section .hero-btn-primary { background: #dfb978; color: #171411; border: 1px solid #dfb978; font-weight: 700; letter-spacing: .04em; padding: 16px 24px; }
 .hero-section .hero-btn-primary:hover { background: #f0d5a6; color: #171411; }
 .hero-section .hero-content-wrap { padding-bottom: 50px; }
+.hero-section .hero-bg-mobile-only { transition: opacity 1.1s ease-in-out; }
+.hero-section .hero-btn-primary { transition: background-color .22s ease, transform .22s ease; }
+.hero-section .hero-btn-primary:hover { transform: translateY(-2px); }
+.explore-section .qg-tile:focus-visible, .bestseller-section .bs-card:focus-visible { outline: 3px solid #aa7a39; outline-offset: 3px; }
+.explore-section .qg-img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.bestseller-section .bs-card { transition: transform .25s ease, box-shadow .25s ease; }
+@media (hover: hover) { .bestseller-section .bs-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(24,23,21,.1); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-section .hero-bg-mobile-only, .hero-section .hero-btn-primary, .explore-section .qg-img, .bestseller-section .bs-card { transition: none; }
+  .hero-section .hero-btn-primary:hover, .bestseller-section .bs-card:hover, .explore-section .qg-tile:hover .qg-img { transform: none; }
+}
 .hero-section .hero-bottom-handle, .hero-section .kiki-scroll-indicator { display: none; }
 .bestseller-section { background: #f7f5f1; color: #181715; border: 0; padding: 24px clamp(20px, 5vw, 80px) 56px; }
 .bestseller-heading-wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; text-align: left; padding: 0; margin: 0 0 20px; }

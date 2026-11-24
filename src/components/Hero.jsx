@@ -12,7 +12,7 @@ const SLIDES = [
 ]
 
 export default function Hero() {
-  const [{ current, visited }, setSlides] = useState(() => ({ current: 0, visited: new Set([0]) }))
+  const [{ current, visited }, setSlides] = useState(() => ({ current: 0, visited: new Set([0, 1]) }))
   const [mounted, setMounted] = useState(false)
   const [videoEnabled, setVideoEnabled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 768px)').matches)
@@ -26,7 +26,7 @@ export default function Hero() {
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = setInterval(() => setSlides(prev => { const current = (prev.current + 1) % SLIDES.length; return { current, visited: new Set([...prev.visited, current]) } }), 7000)
+    const id = setInterval(() => setSlides(prev => { const current = (prev.current + 1) % SLIDES.length; return { current, visited: new Set([...prev.visited, current, (current + 1) % SLIDES.length]) } }), 7000)
     return () => clearInterval(id)
   }, [])
 
@@ -95,7 +95,7 @@ export default function Hero() {
         <div
           key={i}
           className="hero-bg hero-bg-mobile-only"
-          style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, transition: 'opacity 0.85s ease', zIndex: i === current ? 1 : 0 }}
+          style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
         >
           <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
             <source media="(max-width: 767px)" srcSet={visited.has(i) ? responsiveSrcSet(slide.mobile) || slide.mobile : undefined} sizes="100vw" type="image/webp" />
@@ -142,7 +142,7 @@ export default function Hero() {
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => setSlides(prev => ({ current: i, visited: new Set([...prev.visited, i]) }))}
+              onClick={() => setSlides(prev => ({ current: i, visited: new Set([...prev.visited, i, (i + 1) % SLIDES.length]) }))}
               className={`hero-dot${i === current ? ' active' : ''}`}
               aria-label={`Ver imagen ${i + 1}`}
               aria-pressed={i === current}
