@@ -7552,3 +7552,25 @@
   .on-landing .header-util-right { gap: 0; }
 }
 @media (max-width: 767px) { .explore-section .qg-cta { display: none; } }
+
+/* Discovery by occasion follows the same visual rhythm as the opening. */
+.occasion-section { background: #f7f5f1; color: #181715; padding: clamp(36px, 5vw, 72px) clamp(20px, 5vw, 80px); }
+.occasion-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 24px; }
+.occasion-heading h2 { font-family: 'KikiGothamDisplay', sans-serif; font-size: clamp(25px, 3vw, 40px); font-weight: 700; letter-spacing: -.04em; line-height: 1.1; margin: 0 0 10px; }
+.occasion-heading p { color: #625e59; font-size: 14px; line-height: 1.5; margin: 0; }
+.occasion-heading a { color: #181715; text-decoration: none; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.occasion-heading a span { color: #aa7a39; margin-left: 6px; }
+.occasion-section .qo-section { height: auto; min-height: 0; max-height: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.occasion-section .qg-tile { aspect-ratio: 4 / 5; border-radius: 4px; }
+.occasion-section .qg-label-wrap { left: 20px; right: 20px; bottom: 20px; padding: 0; justify-content: flex-start; }
+.occasion-section .qg-label { border: 0; padding: 0; color: #fff; font-family: 'KikiGothamDisplay', sans-serif; font-size: clamp(17px, 1.7vw, 24px); font-weight: 700; text-transform: none; letter-spacing: -.03em; -webkit-text-stroke: 0; }
+.occasion-section .qg-tile:hover .qg-label { color: #fff; }
+.occasion-section .qg-tile:focus-visible { outline: 3px solid #aa7a39; outline-offset: 3px; }
+@media (max-width: 767px) {
+  .occasion-section { padding: 36px 16px; }
+  .occasion-heading { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+  .occasion-section .qo-section { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .occasion-section .qo-section .qg-tile, .occasion-section .qo-section .qg-tile:last-child { grid-column: auto; aspect-ratio: 4 / 5; }
+  .occasion-section .qg-label-wrap { left: 12px; right: 12px; bottom: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .occasion-section .qg-img { transition: none; } .occasion-section .qg-tile:hover .qg-img { transform: none; } }
