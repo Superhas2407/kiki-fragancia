@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 const GENEROS = [
   {
     key: 'Masculino',
-    label: 'Para él',
+    label: 'Hombre',
     href: '/tienda?genero=Masculino',
     img: '/hero/sauvage-desktop.webp',
     imgMobile: '/hero/sauvage-mobile.webp',
   },
   {
     key: 'Femenino',
-    label: 'Para ella',
+    label: 'Mujer',
     href: '/tienda?genero=Femenino',
     img: '/hero/paraella-desktop.webp',
     imgMobile: '/hero/paraella-mobile.webp',
@@ -27,7 +27,9 @@ const GENEROS = [
 
 export default function QuickGenero() {
   return (
-    <section className="qg-section">
+    <section className="explore-section" aria-labelledby="explore-heading">
+      <div className="explore-heading"><h2 id="explore-heading">Explora a tu manera</h2><Link to="/tienda">Ver todo <span aria-hidden="true">→</span></Link></div>
+      <div className="qg-section">
       {GENEROS.map(g => (
         <Link key={g.key} to={g.href} className="qg-tile">
           <picture className="qg-picture">
@@ -37,10 +39,11 @@ export default function QuickGenero() {
           <div className="qg-overlay" />
           <div className="qg-label-wrap">
             <span className="qg-label">{g.label}</span>
-            <span className="qg-cta">Explorar →</span>
+            <span className="qg-cta" aria-hidden="true">→</span>
           </div>
         </Link>
       ))}
+      </div>
     </section>
   )
 }

@@ -114,15 +114,14 @@ export default function Hero() {
       {/* Contenido */}
       <div className="kiki-container" style={{ width: '100%', zIndex: 5 }}>
         <div className="hero-content-wrap">
-          <p className="hero-eyebrow" style={rv(0)}>Fragancias 100% Originales</p>
           <h1 className="hero-title" style={rv(120)}>
-            Oler bien<br />deja gratos<br /><em>recuerdos</em>
+            Encuentra<br />tu aroma
           </h1>
           <p className="hero-quote" style={rv(240)}>
-            con KiKi Fragancia nunca te olvidarán
+            Fragancias originales para cada estilo y ocasión.
           </p>
           <div className="hero-actions" style={rv(360)}>
-            <Link to="/tienda" className="hero-btn-primary">Explorar colección</Link>
+            <Link to="/tienda" className="hero-btn-primary">Explorar fragancias</Link>
           </div>
         </div>
       </div>
