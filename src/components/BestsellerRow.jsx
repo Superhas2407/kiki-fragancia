@@ -26,8 +26,8 @@ function BsCard({ product }) {
         <img srcSet={productImageSrcSet(product)} sizes="(max-width: 767px) 170px, 20vw" decoding="async" src={img} alt={product.name} className="bs-card-img" loading="lazy" />
       </div>
       <div className="bs-card-body">
-        <p className="bs-card-house">{product.house}</p>
         <p className="bs-card-name">{product.name}</p>
+        <p className="bs-card-house">{product.house}</p>
         {product.ml && <p className="bs-card-ml">{product.ml} ml</p>}
         <PriceTag product={product} />
       </div>

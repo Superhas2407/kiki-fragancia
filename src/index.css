@@ -7490,6 +7490,17 @@
 .bestseller-section .bs-price { color: #181715; font-family: 'KikiGotham', sans-serif; font-size: 15px; font-style: normal; font-weight: 700; }
 .bestseller-section .bs-row-wrap::after, .bestseller-section .bs-swipe-hint, .bestseller-section .bestseller-cta-wrap { display: none; }
 .home-header-nav { display: none; }
+.explore-section .qg-section { height: auto; min-height: 0; max-height: none; }
+.explore-section .qg-tile { border-radius: 4px; }
+.explore-section .qg-label-wrap { right: auto; padding: 0; flex-direction: column; align-items: flex-start; gap: 6px; }
+.explore-section .qg-label { font-family: 'KikiGothamDisplay', sans-serif; -webkit-text-stroke: 0; }
+.explore-section .qg-cta { display: block; line-height: 1; }
+.explore-heading h2 { font-family: 'KikiGothamDisplay', sans-serif; }
+.bestseller-section .bs-card-img { object-fit: contain; padding: 0; }
+.bestseller-section .bs-card-body { display: flex; flex-direction: column; gap: 4px; min-height: 110px; }
+.bestseller-section .bs-card-name { font-family: 'KikiGothamDisplay', sans-serif; line-height: 1.3; }
+.bestseller-section .bs-card-house, .bestseller-section .bs-card-ml { margin: 0; }
+.bestseller-section .bs-price { margin-top: auto; }
 @media (min-width: 1024px) {
   .kiki-header.on-landing { background: #111; }
   .on-landing .header-inner { max-width: none; grid-template-columns: auto minmax(0, 1fr) auto; gap: 30px; height: 76px; }
@@ -7523,3 +7534,4 @@
   .on-landing .header-util-right .header-icon-btn { visibility: visible; }
   .on-landing .header-util-right { gap: 0; }
 }
+@media (max-width: 767px) { .explore-section .qg-cta { display: none; } }
