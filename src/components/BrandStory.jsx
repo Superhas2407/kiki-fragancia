@@ -22,7 +22,7 @@ export default function BrandStory() {
           100% verificado, y nuestro equipo te ayuda a encontrar la que realmente
           va contigo.
         </p>
-        <p ref={textRef} className="bs2-attr">— KiKi Fragancia, Caracas</p>
+        <p className="bs2-attr">KiKi Fragancia, Caracas</p>
         <div ref={ctaRef} className="bs2-ctas">
           <Link to="/tienda" className="bs2-btn">Explorar colección</Link>
         </div>

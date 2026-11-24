@@ -42,10 +42,8 @@ export default function MustHaveWomen() {
   return (
     <section className="bestseller-section">
       <div className="bestseller-heading-wrap">
-        <p className="bestseller-label">Kiki Fragancia</p>
-        <h2 className="bestseller-title">DEBERÍAS COMPRAR</h2>
-        <p className="mhm-subtitle">Para mujeres</p>
-        <div className="bestseller-rule" />
+        <h2 className="bestseller-title">Para mujer</h2>
+        <Link to="/tienda?genero=Femenino" className="bestseller-heading-link">Ver todo <span aria-hidden="true">→</span></Link>
       </div>
 
       <div className="bs-row-wrap bs-mobile-only">

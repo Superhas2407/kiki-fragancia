@@ -7574,3 +7574,44 @@
   .occasion-section .qg-label-wrap { left: 12px; right: 12px; bottom: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .occasion-section .qg-img { transition: none; } .occasion-section .qg-tile:hover .qg-img { transform: none; } }
+
+/* Remaining homepage sections share the same calm retail surfaces. */
+.bs2-section { background: #eeeae4; height: auto; min-height: 420px; max-height: none; display: grid; grid-template-columns: 1.1fr 1fr; }
+.bs2-section .bs2-img { position: static; width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+.bs2-section .bs2-overlay { display: none; }
+.bs2-section .bs2-content { position: static; width: auto; max-width: 620px; text-align: left; align-items: flex-start; padding: clamp(32px, 5vw, 72px); }
+.bs2-section .bs2-eyebrow { color: #766145; letter-spacing: .05em; text-transform: none; font-size: 12px; margin-bottom: 16px; }
+.bs2-section .bs2-quote { font-family: 'KikiGothamDisplay', sans-serif; font-style: normal; font-weight: 700; letter-spacing: -.04em; color: #181715; }
+.bs2-section .bs2-text { color: #4f4b46; font-size: 14px; line-height: 1.7; max-width: 470px; }
+.bs2-section .bs2-attr { color: #766145; font-style: normal; margin: 8px 0 24px; }
+.bs2-section .bs2-btn { background: #181715; color: #fff; border-color: #181715; letter-spacing: .04em; }
+.bs2-section .bs2-btn:hover { background: #3a3530; color: #fff; }
+.testimonials-section, [data-theme='warm'] .testimonials-section { background: #f7f5f1; border-color: #e0dcd5; }
+.testimonials-section .testimonials-title { font-family: 'KikiGothamDisplay', sans-serif; font-style: normal; font-weight: 700; color: #181715; letter-spacing: -.04em; }
+.testimonials-section .testimonials-sub { color: #625e59; }
+.testimonials-section .testimonials-eyebrow { color: #766145; letter-spacing: .05em; text-transform: none; }
+.testimonials-section .testimonials-dots { gap: 0; }
+.testimonials-section .testimonials-dot, [data-theme='warm'] .testimonials-section .testimonials-dot { width: 36px; height: 44px; padding: 0; background: transparent; }
+.testimonials-section .testimonials-dot::after { content: ''; display: block; width: 8px; height: 8px; margin: auto; border-radius: 50%; background: #c7bcae; }
+.testimonials-section .testimonials-dot.active::after { background: #8d6c41; }
+.testimonials-section .testimonials-dot:focus-visible { outline: 2px solid #8d6c41; outline-offset: -4px; }
+.testimonials-section .testimonial-card { background: #fff; border: 0; border-radius: 4px; }
+.testimonials-section .testimonial-quote { color: #292724; font-style: normal; }
+.testimonials-section .testimonial-name { color: #181715; }
+.testimonials-section .testimonial-source { color: #69635d; }
+.guarantee-section, [data-theme='warm'] .guarantee-section { background: #eeeae4; border-color: #ded8cf; }
+.guarantee-section .kiki-section-title, [data-theme='warm'] .guarantee-section .title-light { font-family: 'KikiGothamDisplay', sans-serif; color: #181715 !important; font-style: normal; font-weight: 700; letter-spacing: -.04em; }
+.guarantee-section .kiki-section-subtitle, [data-theme='warm'] .guarantee-section .subtitle-light { color: #625e59 !important; }
+.guarantee-section .eyebrow-gold { color: #766145; }
+.guarantee-section .pillar-card { border-color: #d1cbc2; }
+.guarantee-section .pillar-title, [data-theme='warm'] .guarantee-section .pillar-title { color: #181715 !important; font-family: 'KikiGothamDisplay', sans-serif; font-weight: 700; }
+.guarantee-section .pillar-desc, [data-theme='warm'] .guarantee-section .pillar-desc { color: #514d48 !important; }
+@media (max-width: 767px) {
+  .bs2-section { display: flex; flex-direction: column; min-height: 0; }
+  .bs2-section .bs2-img { height: 260px; min-height: 0; }
+  .bs2-section .bs2-content { padding: 32px 20px 40px; }
+  .bs2-section .bs2-quote { font-size: 28px; margin-bottom: 16px; }
+  .testimonials-section { padding: 48px 0; }
+  .testimonials-section .testimonials-grid { gap: 18px; }
+  .testimonials-section .testimonials-sub { margin-bottom: 12px; }
+}
