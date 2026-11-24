@@ -7489,6 +7489,19 @@
 .bestseller-section .bs-card-name { font-family: 'KikiGotham', sans-serif; color: #181715; font-size: 14px; font-style: normal; font-weight: 600; }
 .bestseller-section .bs-price { color: #181715; font-family: 'KikiGotham', sans-serif; font-size: 15px; font-style: normal; font-weight: 700; }
 .bestseller-section .bs-row-wrap::after, .bestseller-section .bs-swipe-hint, .bestseller-section .bestseller-cta-wrap { display: none; }
+.home-header-nav { display: none; }
+@media (min-width: 1024px) {
+  .kiki-header.on-landing { background: #111; }
+  .on-landing .header-inner { max-width: none; grid-template-columns: auto minmax(0, 1fr) auto; gap: 30px; height: 76px; }
+  .on-landing .header-util-left { order: 3; }
+  .on-landing .kiki-logo { justify-self: start; }
+  .on-landing .home-header-nav { display: flex; align-items: center; justify-content: center; gap: clamp(12px, 2vw, 30px); }
+  .on-landing .home-header-nav a { color: #fff; text-decoration: none; font-size: 12px; font-weight: 600; white-space: nowrap; padding: 12px 0; }
+  .on-landing .home-header-nav a:hover { color: #dfb978; }
+  .on-landing .header-util-right { grid-column: 3; grid-row: 1; margin-right: 150px; }
+  .on-landing .header-util-left { grid-column: 3; grid-row: 1; justify-self: end; }
+  .on-landing .header-cat-nav { display: none; }
+}
 @media (max-width: 767px) {
   .hero-section { height: 560px; min-height: 0; justify-content: center; }
   .hero-section .hero-content-wrap { position: relative !important; align-items: flex-start; text-align: left; padding: 72px 22px 40px !important; }
@@ -7500,4 +7513,13 @@
   .bestseller-section .bs-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; }
   .bestseller-section .bs-card { width: auto; }
   .bestseller-section .bs-card:nth-child(n+5) { display: none; }
+}
+@media (max-width: 1023px) {
+  .kiki-header.on-landing { background: #111; }
+  .on-landing .header-inner { grid-template-columns: 44px minmax(0, 1fr) auto; gap: 4px; }
+  .on-landing .kiki-logo { width: 100%; min-width: 0; }
+  .on-landing .kiki-logo-img { width: min(100%, 180px); height: 19px; max-height: none; }
+  .on-landing .header-currency-mobile { display: none !important; }
+  .on-landing .header-util-right .header-icon-btn { visibility: visible; }
+  .on-landing .header-util-right { gap: 0; }
 }

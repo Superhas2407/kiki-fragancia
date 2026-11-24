@@ -281,6 +281,14 @@ export default function Header() {
             <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
           </Link>
 
+          {isLanding && <nav className="home-header-nav" aria-label="Categorías principales">
+            <Link to="/tienda">Tienda</Link>
+            <Link to="/tienda?genero=Masculino">Hombre</Link>
+            <Link to="/tienda?genero=Femenino">Mujer</Link>
+            <Link to="/tienda?genero=Unisex">Unisex</Link>
+            <Link to="/tienda?tipo=arabes">Árabes</Link>
+          </nav>}
+
           {/* RIGHT — currency pill (mobile) + search + wishlist (desktop) + cart */}
           <div className="header-util-right">
             <div className="header-currency-mobile header-desktop-hide">
