@@ -51,9 +51,8 @@ export default function BestsellerRow() {
   return (
     <section className="bestseller-section">
       <div className="bestseller-heading-wrap">
-        <p className="bestseller-label">Kiki Fragancia</p>
-        <h2 className="bestseller-title">LO MÁS VENDIDO</h2>
-        <div className="bestseller-rule" />
+        <h2 className="bestseller-title">Destacados de la tienda</h2>
+        <Link to="/tienda" className="bestseller-heading-link">Ver todo <span aria-hidden="true">→</span></Link>
       </div>
 
       {/* Mobile: scroll con todos los items */}

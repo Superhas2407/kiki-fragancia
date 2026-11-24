@@ -7465,3 +7465,39 @@
   .explore-section .qg-label { font-size: clamp(14px, 4vw, 19px); }
   .explore-section .qg-cta { display: none; }
 }
+
+/* Home: the approved retail composition, scoped to the homepage sections. */
+@font-face { font-family: 'KikiGothamDisplay'; src: url('/fonts/GothamThin.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+.hero-section { min-height: 620px; height: min(75vh, 760px); }
+.hero-section .hero-title { font-family: 'KikiGothamDisplay', sans-serif; font-size: clamp(48px, 6vw, 88px); font-weight: 700; font-style: normal; line-height: .98; letter-spacing: -.055em; text-transform: none; max-width: 650px; }
+.hero-section .hero-quote { font-family: 'KikiGotham', sans-serif; font-style: normal; font-size: clamp(14px, 1.2vw, 18px); line-height: 1.5; letter-spacing: 0; max-width: 360px; margin: 20px 0 24px; }
+.hero-section .hero-btn-primary { background: #dfb978; color: #171411; border: 1px solid #dfb978; font-weight: 700; letter-spacing: .04em; padding: 16px 24px; }
+.hero-section .hero-btn-primary:hover { background: #f0d5a6; color: #171411; }
+.hero-section .hero-content-wrap { padding-bottom: 50px; }
+.hero-section .hero-bottom-handle, .hero-section .kiki-scroll-indicator { display: none; }
+.bestseller-section { background: #f7f5f1; color: #181715; border: 0; padding: 24px clamp(20px, 5vw, 80px) 56px; }
+.bestseller-heading-wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; text-align: left; padding: 0; margin: 0 0 20px; }
+.bestseller-section .bestseller-title { color: #181715; font-family: 'KikiGothamDisplay', sans-serif; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; letter-spacing: -.04em; text-transform: none; margin: 0; -webkit-text-stroke: 0; }
+.bestseller-heading-link { color: #181715; font-size: 12px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.bestseller-heading-link span { color: #aa7a39; margin-left: 6px; }
+.bestseller-section .bs-row { padding: 0; gap: 12px; }
+.bestseller-section .bs-card { background: #fff; border-radius: 4px; overflow: hidden; }
+.bestseller-section .bs-card-img-wrap, [data-theme='warm'] .bestseller-section .bs-card-img-wrap { background: #efede9; border: 0; margin: 0; aspect-ratio: 1 / 1.1; }
+.bestseller-section .bs-card-img { padding: 0; object-fit: cover; filter: none; }
+.bestseller-section .bs-card-body { text-align: left; padding: 12px; }
+.bestseller-section .bs-card-house, .bestseller-section .bs-card-ml { font-family: 'KikiGotham', sans-serif; color: #706b65; letter-spacing: 0; font-size: 11px; text-transform: none; -webkit-text-stroke: 0; }
+.bestseller-section .bs-card-name { font-family: 'KikiGotham', sans-serif; color: #181715; font-size: 14px; font-style: normal; font-weight: 600; }
+.bestseller-section .bs-price { color: #181715; font-family: 'KikiGotham', sans-serif; font-size: 15px; font-style: normal; font-weight: 700; }
+.bestseller-section .bs-row-wrap::after, .bestseller-section .bs-swipe-hint, .bestseller-section .bestseller-cta-wrap { display: none; }
+@media (max-width: 767px) {
+  .hero-section { height: 560px; min-height: 0; justify-content: center; }
+  .hero-section .hero-content-wrap { position: relative !important; align-items: flex-start; text-align: left; padding: 72px 22px 40px !important; }
+  .hero-section .hero-title { font-size: clamp(38px, 10vw, 54px); text-align: left; }
+  .hero-section .hero-quote { text-align: left; max-width: 230px; }
+  .hero-section .hero-actions { justify-content: flex-start; }
+  .hero-section .hero-bg-gradient { background: linear-gradient(90deg, rgba(12,8,8,.82), rgba(12,8,8,.12) 90%); }
+  .bestseller-section { padding: 12px 16px 40px; }
+  .bestseller-section .bs-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; }
+  .bestseller-section .bs-card { width: auto; }
+  .bestseller-section .bs-card:nth-child(n+5) { display: none; }
+}
