@@ -75,10 +75,23 @@ export default function Landing() {
 
       <main>
         <Hero />
+        <section className="discovery-intro" aria-labelledby="discovery-title">
+          <div>
+            <h2 id="discovery-title">Encuentra tu próxima fragancia</h2>
+            <p>Explora por estilo, ocasión o descubre algo nuevo.</p>
+          </div>
+          <nav aria-label="Explorar fragancias" className="discovery-links">
+            <Link to="/tienda?genero=Masculino">Hombre</Link>
+            <Link to="/tienda?genero=Femenino">Mujer</Link>
+            <Link to="/tienda?genero=Unisex">Unisex</Link>
+            <Link to="/tienda?tipo=arabes">Árabes</Link>
+            <Link to="/tienda">Ver todo</Link>
+          </nav>
+        </section>
+        <QuickGenero />
         <BlackFridaySection />
         <NewLaunchBanner />
         <BestsellerRow />
-        <QuickGenero />
         <DeferredSection><Suspense fallback={<SectionFallback />}>
           <MustHaveMen />
         </Suspense></DeferredSection>

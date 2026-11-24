@@ -7419,3 +7419,30 @@
     background: #1C1B19;
   }
 }
+/* Homepage discovery: clear routes into the existing catalogue. */
+.discovery-intro {
+  background: #fff;
+  color: #181715;
+  padding: clamp(32px, 5vw, 72px) clamp(20px, 5vw, 80px);
+}
+.discovery-intro h2 {
+  font-family: 'KikiGotham', sans-serif;
+  font-size: clamp(25px, 3vw, 42px);
+  font-weight: 600;
+  letter-spacing: -.04em;
+  line-height: 1.1;
+  margin: 0 0 10px;
+}
+.discovery-intro p { color: #68645f; margin: 0; font-size: 14px; line-height: 1.5; }
+.discovery-links { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 24px; }
+.discovery-links a {
+  border: 1px solid #d6d3cf;
+  border-radius: 100px;
+  color: #181715;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 17px;
+  text-decoration: none;
+}
+.discovery-links a:hover, .discovery-links a:focus-visible { border-color: #181715; background: #f2f1ef; }
+
