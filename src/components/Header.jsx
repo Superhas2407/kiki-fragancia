@@ -68,7 +68,7 @@ function CartButton() {
     <button
       onClick={() => setDrawerOpen(true)}
       aria-label={`Carrito (${count} items)`}
-      className="header-icon-btn"
+      className="header-icon-btn header-cart-btn"
       style={{
         position: 'relative', background: 'none', border: 'none',
         cursor: 'pointer', display: 'flex', alignItems: 'center',
@@ -298,12 +298,13 @@ export default function Header() {
                 >{label}</button>
               ))}
             </div>
-            <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn"
+            <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn header-search-trigger"
               style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, minWidth: 44, minHeight: 44, transition: 'color .2s' }}
               onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
               onMouseLeave={e => e.currentTarget.style.color = ''}
             >
               <SearchIcon />
+              {isLanding && <span className="home-search-label">Buscar fragancias...</span>}
             </button>
             <span className="header-mobile-hide"><WishlistButton /></span>
             <span className="header-mobile-hide" style={{ position: 'relative' }}>
@@ -466,7 +467,7 @@ export default function Header() {
       {searchOpen && (
         <>
         <div className="kiki-search-backdrop" onClick={() => setSearchOpen(false)} />
-        <div className="kiki-search-overlay">
+        <div className={`kiki-search-overlay${isLanding ? ' home-search-overlay' : ''}`}>
           {/* Barra superior: input + X */}
           <div className="kiki-search-bar-row">
             <form onSubmit={handleSearch} className="kiki-search-form">
