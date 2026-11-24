@@ -2883,7 +2883,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 60,
-    "categoria": "arabes"
+    "categoria": "arabes",
+    "agotado": true
   },
   {
     "id": 233,
@@ -3678,7 +3679,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 125,
     "precioUSD": 60,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 296,
@@ -7624,7 +7626,8 @@ export const products = [
     "genero": "Femenino",
     "ml": 100,
     "precioUSD": 55,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 612,
