@@ -114,7 +114,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
       style={famStyle(product.familia)}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      aria-label={`${product.house} ${product.name}`}
+      aria-label={`${product.house} ${product.name}${agotado ? ', agotado' : ''}`}
     >
       <div className="vitrina-display">
         <div
@@ -273,7 +273,7 @@ export default function VitrinaCard({ product, badge = null, ribbon = null, ribb
                 </span>
                 {!hasRange && ((promotion?.count === 1 && minPrice > priceUsd) || product.precioOriginalUSD > minPrice) && (
                   <span style={{ fontSize: 12, opacity: 0.5, textDecoration: 'line-through', marginLeft: 6 }}>
-                    REF: {product.precioOriginalUSD}
+                    REF: {promotion?.count === 1 && minPrice > priceUsd ? minPrice : product.precioOriginalUSD}
                   </span>
                 )}
               </div>

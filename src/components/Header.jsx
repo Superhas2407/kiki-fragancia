@@ -139,6 +139,8 @@ export default function Header() {
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
+  const isStore = location.pathname === '/tienda' || location.pathname.startsWith('/tienda/')
+  const useRetailHeader = isLanding || isStore
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -249,7 +251,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`kiki-header${isLanding ? ' on-landing' : ''}`}>
+      <header className={`kiki-header${useRetailHeader ? ' on-landing' : ''}`}>
         <div className="header-inner">
           {/* LEFT — mobile: hamburger | desktop: currency + theme */}
           <div className="header-util-left">
@@ -281,7 +283,7 @@ export default function Header() {
             <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
           </Link>
 
-          {isLanding && <nav className="home-header-nav" aria-label="Categorías principales">
+          {useRetailHeader && <nav className="home-header-nav" aria-label="Categorías principales">
             <Link to="/tienda">Tienda</Link>
             <Link to="/tienda?genero=Masculino">Hombre</Link>
             <Link to="/tienda?genero=Femenino">Mujer</Link>
@@ -304,7 +306,7 @@ export default function Header() {
               onMouseLeave={e => e.currentTarget.style.color = ''}
             >
               <SearchIcon />
-              {isLanding && <span className="home-search-label">Buscar fragancias...</span>}
+              {useRetailHeader && <span className="home-search-label">Buscar fragancias...</span>}
             </button>
             <span className="header-mobile-hide"><WishlistButton /></span>
             <span className="header-mobile-hide" style={{ position: 'relative' }}>
@@ -467,7 +469,7 @@ export default function Header() {
       {searchOpen && (
         <>
         <div className="kiki-search-backdrop" onClick={() => setSearchOpen(false)} />
-        <div className={`kiki-search-overlay${isLanding ? ' home-search-overlay' : ''}`}>
+        <div className={`kiki-search-overlay${useRetailHeader ? ' home-search-overlay' : ''}`}>
           {/* Barra superior: input + X */}
           <div className="kiki-search-bar-row">
             <form onSubmit={handleSearch} className="kiki-search-form">
