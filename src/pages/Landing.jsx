@@ -1,7 +1,6 @@
 import BlackFridaySection from '../components/BlackFridaySection'
 import DeferredSection from '../components/DeferredSection'
-import { useState, useEffect, lazy, Suspense } from 'react'
-import { Link } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import { Helmet } from 'react-helmet-async'
 import Hero from '../components/Hero'
 import NewLaunchBanner from '../components/NewLaunchBanner'
@@ -24,23 +23,6 @@ export default function Landing() {
   const allProducts = useIndexProducts()
   const featuredIds = [88, 20, 311, 256, 172, 202, 260, 104, 247, 266]
   const featured = featuredIds.map(id => allProducts.find(p => p.id === id)).filter(Boolean)
-  const [stickyVisible, setStickyVisible] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => {
-      const promo = document.getElementById('promociones')
-      const rect = promo?.getBoundingClientRect()
-      // Keep the fixed gold 'Ver colección' strip away from the custom
-      // artwork and its own 'Explorar promociones' CTA on mobile.
-      const showingPromos = rect && rect.top < window.innerHeight - 100 && rect.bottom > 100
-      setStickyVisible(window.scrollY > window.innerHeight * 0.5 && !showingPromos)
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll) }
-  }, [])
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -66,12 +48,6 @@ export default function Landing() {
         <link rel="canonical" href="https://kikifragancia.com" />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
-
-      <div className={`landing-sticky-cta${stickyVisible ? ' visible' : ''}`}>
-        <Link to="/tienda" className="landing-sticky-btn">
-          Ver colección completa →
-        </Link>
-      </div>
 
       <main>
         <Hero />

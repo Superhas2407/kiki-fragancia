@@ -7520,6 +7520,12 @@
   .hero-section .hero-quote { text-align: left; max-width: 230px; }
   .hero-section .hero-actions { justify-content: flex-start; }
   .hero-section .hero-bg-gradient { background: linear-gradient(90deg, rgba(12,8,8,.82), rgba(12,8,8,.12) 90%); }
+  .hero-section .hero-bottom-bar { display: flex !important; justify-content: flex-start; left: 12px; bottom: 12px; padding: 0; right: auto; }
+  .hero-section .hero-dots { display: flex; align-items: center; }
+  .hero-section .hero-dot { width: 32px; height: 44px; border: 0; background: transparent; padding: 0; cursor: pointer; }
+  .hero-section .hero-dot::after { content: ''; display: block; width: 7px; height: 7px; margin: auto; border-radius: 50%; background: rgba(255,255,255,.65); }
+  .hero-section .hero-dot.active::after { background: #dfb978; }
+  .hero-section .hero-dot:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
   .bestseller-section { padding: 12px 16px 40px; }
   .bestseller-section .bs-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); overflow: visible; }
   .bestseller-section .bs-card { width: auto; }

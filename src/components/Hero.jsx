@@ -25,6 +25,7 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const id = setInterval(() => setSlides(prev => { const current = (prev.current + 1) % SLIDES.length; return { current, visited: new Set([...prev.visited, current]) } }), 7000)
     return () => clearInterval(id)
   }, [])
@@ -127,7 +128,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom bar */}
-      <div className="hero-bottom-bar" style={{ zIndex: 10 }}>
+      {!isDesktop && <div className="hero-bottom-bar" style={{ zIndex: 10 }}>
         <a
           href="https://instagram.com/kiki_fragancia"
           target="_blank"
@@ -143,7 +144,8 @@ export default function Hero() {
               key={i}
               onClick={() => setSlides(prev => ({ current: i, visited: new Set([...prev.visited, i]) }))}
               className={`hero-dot${i === current ? ' active' : ''}`}
-              aria-label={`Slide ${i + 1}`}
+              aria-label={`Ver imagen ${i + 1}`}
+              aria-pressed={i === current}
             />
           ))}
         </div>
@@ -153,7 +155,7 @@ export default function Hero() {
             <div className="scroll-line-drop" />
           </div>
         </div>
-      </div>
+      </div>}
     </section>
   )
 }
