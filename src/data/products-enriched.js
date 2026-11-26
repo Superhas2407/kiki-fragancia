@@ -17783,5 +17783,23 @@ export const products = [
     "ml": 80,
     "precioUSD": 150,
     "categoria": "disenador"
+  },
+  {
+    "id": 625,
+    "house": "VERSACE",
+    "name": "Versace Blue Jeans Men",
+    "image": null,
+    "familia": null,
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "descripcion": "Versace Blue Jeans Men es un Eau de Toilette de caballero en presentación de 75 ml.",
+    "description": "Versace Blue Jeans Men es un Eau de Toilette de caballero en presentación de 75 ml.",
+    "notasSalida": null,
+    "notasCorazon": null,
+    "notasFondo": null,
+    "notes": [],
+    "ml": 75,
+    "precioUSD": 35,
+    "categoria": "disenador"
   }
 ]

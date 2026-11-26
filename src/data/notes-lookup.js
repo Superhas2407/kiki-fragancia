@@ -621,5 +621,6 @@ export const notesLookup = {
   621: "limón, bergamota, salvia esclarea, bayas de enebro, té blanco, sándalo, cardamomo, incienso de olíbano, ámbar gris, cedro, pachulí, cachemira",
   622: "mandarina, toronja (pomelo), cardamomo, nuez moscada, limón, bergamota, flor de azahar del naranjo, cedro, jazmin, almizcle, haba tonka, cedro, sandalo, madera de gaiac",
   623: "lichi, mandarina, durazno, frambuesa, peonia, flor de azahar del naranjo, magnolia, jazmin, rosa, ylang-ylang, sandalo, almizcle, ambar, vainilla, caramelo",
-  624: "frutas rojas, champán, peonia, pachulí, notas amaderadas"
+  624: "frutas rojas, champán, peonia, pachulí, notas amaderadas",
+  625: ""
 }

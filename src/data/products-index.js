@@ -7786,5 +7786,17 @@ export const products = [
     "ml": 80,
     "precioUSD": 150,
     "categoria": "disenador"
+  },
+  {
+    "id": 625,
+    "house": "VERSACE",
+    "name": "Versace Blue Jeans Men",
+    "image": null,
+    "familia": null,
+    "tipo": "Eau de Toilette",
+    "genero": "Masculino",
+    "ml": 75,
+    "precioUSD": 35,
+    "categoria": "disenador"
   }
 ]
