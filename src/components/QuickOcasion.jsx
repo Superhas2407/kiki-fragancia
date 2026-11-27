@@ -36,7 +36,12 @@ const OCASIONES = [
 
 export default function QuickOcasion() {
   return (
-    <section className="qg-section qo-section">
+    <section className="occasion-section" aria-labelledby="occasion-heading">
+      <div className="occasion-heading">
+        <div><h2 id="occasion-heading">Una fragancia para cada momento</h2><p>Encuentra opciones para tu día y tus planes.</p></div>
+        <Link to="/tienda">Ver toda la tienda <span aria-hidden="true">→</span></Link>
+      </div>
+      <div className="qg-section qo-section">
       {OCASIONES.map(o => (
         <Link key={o.key} to={o.href} className="qg-tile">
           <picture className="qg-picture">
@@ -49,6 +54,7 @@ export default function QuickOcasion() {
           </div>
         </Link>
       ))}
+      </div>
     </section>
   )
 }

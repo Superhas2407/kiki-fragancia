@@ -130,6 +130,19 @@ const CATEGORIA_OPTIONS = [
   { key: 'nicho',     label: 'Nicho' },
 ]
 
+const COLLECTION_TILES = [
+  { label: 'Árabes', tipo: 'arabes', img: '/silhouettes/mega-arabes.jpeg' },
+  { label: 'Diseñador', tipo: 'disenador', img: '/silhouettes/mega-disenador.jpeg' },
+  { label: 'Nicho', tipo: 'nicho', img: '/silhouettes/mega-nicho.jpeg' },
+]
+
+const MOBILE_STORE_CATEGORIES = [
+  { label: 'Todo',      genero: null,        tipo: null },
+  { label: 'Hombre',    genero: 'Masculino', tipo: null },
+  { label: 'Mujer',     genero: 'Femenino',  tipo: null },
+  { label: 'Unisex',    genero: 'Unisex',    tipo: null },
+]
+
 function SidebarSection({ title, open, onToggle, children }) {
   return (
     <div style={{ borderBottom: '1px solid var(--line2)' }}>
@@ -755,10 +768,20 @@ export default function Tienda() {
   }
   const bannerSrc = BANNER_TIPO[urlTipo] || BANNER_GENERO[urlGenero] || '/BANNERTIENDATODOS.webp'
 
+  function selectMobileCategory({ genero, tipo }) {
+    const params = new URLSearchParams(searchParams)
+    params.delete('genero')
+    params.delete('tipo')
+    params.delete('coleccion')
+    if (genero) params.set('genero', genero)
+    if (tipo) params.set('tipo', tipo)
+    navigate(params.size ? `/tienda?${params}` : '/tienda')
+  }
+
   return (
     <>
-      <div ref={topRef} style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
-        <div style={{ position: 'relative', width: '100%', height: 'clamp(200px, 28vw, 360px)', overflow: 'hidden' }}>
+      <div ref={topRef} className="tienda-page" style={{ background: C.bg, minHeight: '100dvh', paddingTop: 'calc(var(--bar-h, 0px) + var(--kiki-header-h, 76px))' }}>
+        <div className="tienda-hero" style={{ position: 'relative', width: '100%', height: 'clamp(200px, 28vw, 360px)', overflow: 'hidden' }}>
           <img
             src={bannerSrc}
             alt=""
@@ -766,14 +789,40 @@ export default function Tienda() {
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,8,4,0.75) 0%, rgba(10,8,4,0.20) 50%, rgba(10,8,4,0.05) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end', paddingBottom: 'clamp(24px, 4vw, 48px)', gap: 8 }}>
-            <h1 style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(36px, 6vw, 80px)', fontStyle: 'italic', fontWeight: 200, color: 'rgba(247,242,234,0.95)', letterSpacing: '-0.01em', margin: 0, lineHeight: 1 }}>
+            <h1 className="tienda-hero-title" style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 'clamp(36px, 6vw, 80px)', fontStyle: 'italic', fontWeight: 200, color: 'rgba(247,242,234,0.95)', letterSpacing: '-0.01em', margin: 0, lineHeight: 1 }}>
               {sectionTitle}
             </h1>
-            <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, fontWeight: 400, color: 'rgba(247,242,234,0.50)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+            <span className="tienda-hero-count" style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 9, fontWeight: 400, color: 'rgba(247,242,234,0.50)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
               {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
             </span>
           </div>
         </div>
+        <nav className="tienda-collection-tiles" aria-label="Explorar tipos de fragancias">
+          {COLLECTION_TILES.map(collection => (
+            <button key={collection.tipo} type="button" className={`tienda-collection-tile${urlTipo === collection.tipo ? ' active' : ''}`}
+              aria-pressed={urlTipo === collection.tipo}
+              onClick={() => selectMobileCategory({ genero: null, tipo: collection.tipo })}>
+              <img src={collection.img} alt="" loading="lazy" />
+              <span>{collection.label}</span>
+            </button>
+          ))}
+        </nav>
+        <nav className="tienda-mobile-categories tienda-mobile-only" aria-label="Explorar colecciones">
+          {MOBILE_STORE_CATEGORIES.map(category => {
+            const isActive = urlGenero === category.genero && urlTipo === category.tipo && !urlColeccion
+            return (
+              <button
+                key={category.label}
+                type="button"
+                className={isActive ? 'active' : ''}
+                aria-current={isActive ? 'page' : undefined}
+                onClick={() => selectMobileCategory(category)}
+              >
+                {category.label}
+              </button>
+            )
+          })}
+        </nav>
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <div className="tienda-layout">
 
@@ -836,7 +885,7 @@ export default function Tienda() {
               </div>
 
               {/* Conteo — mobile */}
-              <div className="tienda-pad tienda-mobile-only" style={{ paddingTop: 14, paddingBottom: 4 }}>
+              <div className="tienda-mobile-context tienda-mobile-only">
                 <span style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 11, color: 'var(--ink-faint)', letterSpacing: '0.05em' }}>
                   {filtered.length} {filtered.length === 1 ? 'fragancia' : 'fragancias'}
                   {sectionTitle !== 'Fragancias' && ` · ${sectionTitle}`}
@@ -844,9 +893,10 @@ export default function Tienda() {
               </div>
 
               {/* Promociones reales: filtro separado de precios individuales en divisas */}
-              <div className="tienda-main-pad" style={{ display: 'flex', gap: 10, alignItems: 'center', paddingTop: 12, paddingBottom: 16 }}>
+              <div className="tienda-promo-row tienda-main-pad">
                 <button
                   type="button"
+                  className="tienda-promo-toggle"
                   aria-pressed={soloPromociones}
                   onClick={() => {
                     const next = !soloPromociones
@@ -856,16 +906,8 @@ export default function Tienda() {
                     else params.delete('promos')
                     setSearchParams(params, { replace: true })
                   }}
-                  style={{
-                    padding: '10px 16px', borderRadius: 3, cursor: 'pointer',
-                    border: '1px solid #873F50',
-                    background: soloPromociones ? '#873F50' : 'transparent',
-                    color: soloPromociones ? '#FFFFFF' : C.ink,
-                    fontFamily: "'KikiGotham', sans-serif", fontSize: 11,
-                    letterSpacing: '0.06em',
-                  }}
                 >En promoción</button>
-                <span style={{ fontSize: 11, color: C.inkMute }}>Combos seleccionados · Pago en divisas</span>
+                <span className="tienda-promo-note">Combos seleccionados · Pago en divisas</span>
               </div>
 
               {/* Banner colección activa */}
@@ -918,7 +960,7 @@ export default function Tienda() {
               </div>
 
               {/* Grid de productos */}
-              <div className="tienda-main-pad" style={{ paddingBottom: 80 }}>
+              <div className="tienda-products-stage tienda-main-pad" style={{ paddingBottom: 80 }}>
                 {filtered.length === 0 ? (
                   <div style={{ textAlign: 'center', padding: '80px 20px' }}>
                     <p style={{ fontFamily: "'KikiGotham', sans-serif", fontSize: 26, color: 'var(--ink-mute)', fontStyle: 'italic', marginBottom: 8 }}>
@@ -942,7 +984,7 @@ export default function Tienda() {
                 ) : (
                   <>
                     <GridBoundary>
-                      <div className="vitrina-grid">
+                      <div className="vitrina-grid vitrina-grid--mobile-preview">
                         {visibleProducts.map((product, index) => (
                           <div
                             key={product.id}
@@ -952,6 +994,7 @@ export default function Tienda() {
                             }}
                           >
                             <VitrinaCard
+                              modernPreview
                               product={product}
                               promotion={promotionForProduct(product, promotions)}
                               ribbon={null}

@@ -12,7 +12,7 @@ const SLIDES = [
 ]
 
 export default function Hero() {
-  const [{ current, visited }, setSlides] = useState(() => ({ current: 0, visited: new Set([0]) }))
+  const [{ current, visited }, setSlides] = useState(() => ({ current: 0, visited: new Set([0, 1]) }))
   const [mounted, setMounted] = useState(false)
   const [videoEnabled, setVideoEnabled] = useState(false)
   const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 768px)').matches)
@@ -25,7 +25,8 @@ export default function Hero() {
   }, [])
 
   useEffect(() => {
-    const id = setInterval(() => setSlides(prev => { const current = (prev.current + 1) % SLIDES.length; return { current, visited: new Set([...prev.visited, current]) } }), 7000)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => setSlides(prev => { const current = (prev.current + 1) % SLIDES.length; return { current, visited: new Set([...prev.visited, current, (current + 1) % SLIDES.length]) } }), 7000)
     return () => clearInterval(id)
   }, [])
 
@@ -94,7 +95,7 @@ export default function Hero() {
         <div
           key={i}
           className="hero-bg hero-bg-mobile-only"
-          style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, transition: 'opacity 0.85s ease', zIndex: i === current ? 1 : 0 }}
+          style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
         >
           <picture style={{ position: 'absolute', inset: 0, display: 'block' }}>
             <source media="(max-width: 767px)" srcSet={visited.has(i) ? responsiveSrcSet(slide.mobile) || slide.mobile : undefined} sizes="100vw" type="image/webp" />
@@ -114,21 +115,20 @@ export default function Hero() {
       {/* Contenido */}
       <div className="kiki-container" style={{ width: '100%', zIndex: 5 }}>
         <div className="hero-content-wrap">
-          <p className="hero-eyebrow" style={rv(0)}>Fragancias 100% Originales</p>
           <h1 className="hero-title" style={rv(120)}>
-            Oler bien<br />deja gratos<br /><em>recuerdos</em>
+            Encuentra<br />tu aroma
           </h1>
           <p className="hero-quote" style={rv(240)}>
-            con KiKi Fragancia nunca te olvidarán
+            Fragancias originales para cada estilo y ocasión.
           </p>
           <div className="hero-actions" style={rv(360)}>
-            <Link to="/tienda" className="hero-btn-primary">Explorar colección</Link>
+            <Link to="/tienda" className="hero-btn-primary">Explorar fragancias</Link>
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="hero-bottom-bar" style={{ zIndex: 10 }}>
+      {!isDesktop && <div className="hero-bottom-bar" style={{ zIndex: 10 }}>
         <a
           href="https://instagram.com/kiki_fragancia"
           target="_blank"
@@ -142,9 +142,10 @@ export default function Hero() {
           {SLIDES.map((_, i) => (
             <button
               key={i}
-              onClick={() => setSlides(prev => ({ current: i, visited: new Set([...prev.visited, i]) }))}
+              onClick={() => setSlides(prev => ({ current: i, visited: new Set([...prev.visited, i, (i + 1) % SLIDES.length]) }))}
               className={`hero-dot${i === current ? ' active' : ''}`}
-              aria-label={`Slide ${i + 1}`}
+              aria-label={`Ver imagen ${i + 1}`}
+              aria-pressed={i === current}
             />
           ))}
         </div>
@@ -154,7 +155,7 @@ export default function Hero() {
             <div className="scroll-line-drop" />
           </div>
         </div>
-      </div>
+      </div>}
     </section>
   )
 }

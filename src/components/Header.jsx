@@ -68,7 +68,7 @@ function CartButton() {
     <button
       onClick={() => setDrawerOpen(true)}
       aria-label={`Carrito (${count} items)`}
-      className="header-icon-btn"
+      className="header-icon-btn header-cart-btn"
       style={{
         position: 'relative', background: 'none', border: 'none',
         cursor: 'pointer', display: 'flex', alignItems: 'center',
@@ -139,6 +139,8 @@ export default function Header() {
   const location = useLocation()
   const navigate = useNavigate()
   const isLanding = location.pathname === '/'
+  const isStore = location.pathname === '/tienda' || location.pathname.startsWith('/tienda/')
+  const useRetailHeader = isLanding || isStore
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -249,7 +251,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`kiki-header${isLanding ? ' on-landing' : ''}`}>
+      <header className={`kiki-header${useRetailHeader ? ' on-landing' : ''}`}>
         <div className="header-inner">
           {/* LEFT — mobile: hamburger | desktop: currency + theme */}
           <div className="header-util-left">
@@ -281,6 +283,14 @@ export default function Header() {
             <img src={theme === 'warm' ? '/logo-warm.svg' : '/logo vector letras.svg'} alt="KiKi Fragancia" className="kiki-logo-img" />
           </Link>
 
+          {useRetailHeader && <nav className="home-header-nav" aria-label="Categorías principales">
+            <Link to="/tienda">Tienda</Link>
+            <Link to="/tienda?genero=Masculino">Hombre</Link>
+            <Link to="/tienda?genero=Femenino">Mujer</Link>
+            <Link to="/tienda?genero=Unisex">Unisex</Link>
+            <Link to="/tienda?tipo=arabes">Árabes</Link>
+          </nav>}
+
           {/* RIGHT — currency pill (mobile) + search + wishlist (desktop) + cart */}
           <div className="header-util-right">
             <div className="header-currency-mobile header-desktop-hide">
@@ -290,12 +300,13 @@ export default function Header() {
                 >{label}</button>
               ))}
             </div>
-            <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn"
+            <button onClick={() => setSearchOpen(true)} aria-label="Buscar" className="header-icon-btn header-search-trigger"
               style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, minWidth: 44, minHeight: 44, transition: 'color .2s' }}
               onMouseEnter={e => e.currentTarget.style.color = 'var(--gold)'}
               onMouseLeave={e => e.currentTarget.style.color = ''}
             >
               <SearchIcon />
+              {useRetailHeader && <span className="home-search-label">Buscar fragancias...</span>}
             </button>
             <span className="header-mobile-hide"><WishlistButton /></span>
             <span className="header-mobile-hide" style={{ position: 'relative' }}>
@@ -458,7 +469,7 @@ export default function Header() {
       {searchOpen && (
         <>
         <div className="kiki-search-backdrop" onClick={() => setSearchOpen(false)} />
-        <div className="kiki-search-overlay">
+        <div className={`kiki-search-overlay${useRetailHeader ? ' home-search-overlay' : ''}`}>
           {/* Barra superior: input + X */}
           <div className="kiki-search-bar-row">
             <form onSubmit={handleSearch} className="kiki-search-form">

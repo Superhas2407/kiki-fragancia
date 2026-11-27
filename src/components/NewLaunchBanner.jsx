@@ -48,6 +48,7 @@ export default function NewLaunchBanner() {
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const id = setInterval(() => {
       setCurrent(c => (c + 1) % LAUNCHES.length)
     }, AUTO_MS)
