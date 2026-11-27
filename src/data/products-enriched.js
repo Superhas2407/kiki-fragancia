@@ -3252,7 +3252,7 @@ export const products = [
       "Musgo de roble"
     ],
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -11889,7 +11889,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 414,
@@ -13226,7 +13227,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -15359,7 +15360,7 @@ export const products = [
       "sándalo"
     ],
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -15447,7 +15448,7 @@ export const products = [
       "almizcle"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -15503,7 +15504,7 @@ export const products = [
       "maderas"
     ],
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -15558,7 +15559,7 @@ export const products = [
       "vainilla"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -15585,7 +15586,7 @@ export const products = [
       "sándalo"
     ],
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -16762,7 +16763,8 @@ export const products = [
     ],
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 589,
@@ -17576,7 +17578,7 @@ export const products = [
       "sándalo"
     ],
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {

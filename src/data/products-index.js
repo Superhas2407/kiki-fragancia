@@ -1372,7 +1372,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -5183,7 +5183,8 @@ export const products = [
     "genero": "Masculino",
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 414,
@@ -5747,7 +5748,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -6708,7 +6709,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -6748,7 +6749,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -6772,7 +6773,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 30,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -6797,7 +6798,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -6809,7 +6810,7 @@ export const products = [
     "tipo": "Eau de Toilette",
     "genero": "Femenino",
     "ml": 100,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
@@ -7344,7 +7345,8 @@ export const products = [
     "genero": "Unisex",
     "ml": 100,
     "precioUSD": 25,
-    "categoria": "disenador"
+    "categoria": "disenador",
+    "agotado": true
   },
   {
     "id": 589,
@@ -7699,7 +7701,7 @@ export const products = [
     "tipo": "Eau de Parfum",
     "genero": "Femenino",
     "ml": 75,
-    "precioUSD": 35,
+    "precioUSD": 40,
     "categoria": "disenador"
   },
   {
